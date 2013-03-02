@@ -1,4 +1,10 @@
 SnaptivistWeb::Application.routes.draw do
+  devise_for :views
+
+  get "home/index"
+
+  devise_for :users
+
   get "home/welcome"
 
   # The priority is based upon order of creation:
@@ -50,7 +56,11 @@ SnaptivistWeb::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'home#welcome'
+# The following line is created by Devise automatically
+  devise_for :users
+
+  # Let's add the root route
+  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 
