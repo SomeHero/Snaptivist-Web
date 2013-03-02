@@ -1,37 +1,132 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- Le styles -->
+	<link href="/assets//bootstrap.css" rel="stylesheet">
+	<link href="/assets/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/assets/landapp.css" rel="stylesheet">
+	<link href="/assets/landapp-responsive.css" rel="stylesheet">
+	<link href="/assets/font-awesome.css" rel="stylesheet">
+	<!-- Flexslider Plugin -->
+	<link href="/assets/flexslider/flexslider.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>
+<!--[if IE 7]>
+<link rel="stylesheet" href="landapp-assets/css/font-awesome-ie7.min.css">
+<![endif]-->
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <!-- Fav and touch icons -->
+      <link rel="shortcut icon" href="assets/ico/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
   </head>
   <body>
-    <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </header>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
-  </body>
+  	<div class="navbar navbar-inverse navbar-static-top">
+  		<nav class="navbar-inner">
+  			<div class="container">
+  				<%= render 'layouts/navigation' %>
+  			</div>
+  		</nav>
+  	</div>
+  	<div id="main" role="main">
+  		<div id="wrap">
+  			<%= render 'layouts/messages' %>
+  			<%= yield %>
+  		</div>
+  		<div id="footer">
+  			<div class="container">
+  				<div class="row">
+  					<div class="span4">
+  						<div class="headline headline-simple">
+  							<h3>About Us</h3>
+  						</div>
+  						<!--/.headline -->
+  						<p>
+  							Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.
+  						</p>
+  						<p>
+  							Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+  						</p>
+  					</div>
+  					<!--/.span4 -->
+  					<div class="span4">
+  						<div class="headline headline-simple">
+  							<h3>Stay in Touch</h3>
+  						</div>
+  						<!--/.headline -->
+  						<p>
+  							Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.
+  						</p>
+  						<p class="social-media">
+  							<a href="#" class="facebook"><i class="icon-facebook-sign"></i></a>
+  							<a href="#" class="twitter"><i class="icon-twitter-sign"></i></a>
+  							<a href="#" class="google-plus"><i class="icon-google-plus-sign"></i></a>
+  							<a href="#" class="pinterest"><i class="icon-pinterest-sign"></i></a>
+  						</p>
+  						<!--/.social-media -->
+  					</div>
+  					<!--/.span4 -->
+  					<div class="span4">
+  						<div class="headline headline-simple">
+  							<h3>Contact Us</h3>
+  						</div>
+  						<!--/.headline -->
+  						<div class="contact-infos">
+  							<p>
+  								Telephone: +1 800 000 0000
+  							</p>
+  							<p>
+  								Mobile: +1 800 000 0000
+  							</p>
+  							<p>
+  								Fax: +1 800 000 0000
+  							</p>
+  							<p>
+  								Email: <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+  							</p>
+  						</div>
+  						<!--/.contact-infos -->
+  						<div class="adr">
+  							<div class="street-address">
+  								665 3rd St.
+  							</div>
+  							<div class="extended-address">
+  								Suite 207
+  							</div>
+  							<span class="locality">San Francisco</span> , <span class="region">CA</span><span class="postal-code">94107</span>
+  							<div class="country-name">
+  								U.S.A.
+  							</div>
+  						</div>
+  						<!--/.adr -->
+  					</div>
+  					<!--/.span4 -->
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  		<!--! end of #main -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/jquery.js"></script>
+    <script src="assets/bootstrap-button.js"></script>
+    <script src="assets/bootstrap-collapse.js"></script>
+    <script src="assets/flexslider/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+    	$('.flexslider').flexslider({
+    		animation: "slide"
+    	});
+    });
+    </script>
+</body>
 </html>
