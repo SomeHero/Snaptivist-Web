@@ -398,19 +398,19 @@ body {
 }
 
 .headline-simple {
-    background: url("../img/headlines/border-line.png") repeat-x 0 50%;
+    background: url("../images/headlines/border-line.png") repeat-x 0 50%;
 }
 
 .headline-dashed {
-    background: url("../img/headlines/border-line-dashed.png") repeat-x 0 50%;
+    background: url("../images/headlines/border-line-dashed.png") repeat-x 0 50%;
 }
 
 .headline-double {
-    background: url("../img/headlines/border-line-double.png") repeat-x 0 50%;
+    background: url("../images/headlines/border-line-double.png") repeat-x 0 50%;
 }
 
 .headline-triple-dashed {
-    background: url("../img/headlines/border-line-3dashed.png") repeat-x 0 50%;
+    background: url("../images/headlines/border-line-3dashed.png") repeat-x 0 50%;
 }
  /****************
 	BUTTONS
