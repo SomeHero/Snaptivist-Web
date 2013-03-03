@@ -1,0 +1,998 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "config/routes.rb",
+			"settings":
+			{
+				"buffer_size": 1981,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/home/welcome.html.erb",
+			"settings":
+			{
+				"buffer_size": 25,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gemfile",
+			"settings":
+			{
+				"buffer_size": 871,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/application.js",
+			"settings":
+			{
+				"buffer_size": 663,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/bootstrap_and_overrides.css.scss",
+			"settings":
+			{
+				"buffer_size": 80,
+				"line_ending": "Unix",
+				"name": "@import \"bootstrap\";"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/application.scss",
+			"settings":
+			{
+				"buffer_size": 935,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 4898,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 332 files for \"land\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/javascripts/flexslider/demo/js/shBrushCss.js:\n   52  						'embed embossed e-resize expanded extra-condensed extra-expanded fantasy far-left far-right fast faster fixed format fuchsia '+\n   53  						'gray green groove handheld hebrew help hidden hide high higher icon inline-table inline inset inside invert italic '+\n   54: 						'justify landscape large larger left-side left leftwards level lighter lime line-through list-item local loud lower-alpha '+\n   55  						'lowercase lower-greek lower-latin lower-roman lower low ltr marker maroon medium message-box middle mix move narrower '+\n   56  						'navy ne-resize no-close-quote none no-open-quote no-repeat normal nowrap n-resize nw-resize oblique olive once open-quote outset '+\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/docs.css:\n  933  }\n  934  \n  935: /* Landscape phones\n  936  ------------------------- */\n  937  @media (max-width: 480px) {\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/landapp-assets/js/flexslider/demo/js/shBrushCss.js:\n   52  						'embed embossed e-resize expanded extra-condensed extra-expanded fantasy far-left far-right fast faster fixed format fuchsia '+\n   53  						'gray green groove handheld hebrew help hidden hide high higher icon inline-table inline inset inside invert italic '+\n   54: 						'justify landscape large larger left-side left leftwards level lighter lime line-through list-item local loud lower-alpha '+\n   55  						'lowercase lower-greek lower-latin lower-roman lower low ltr marker maroon medium message-box middle mix move narrower '+\n   56  						'navy ne-resize no-close-quote none no-open-quote no-repeat normal nowrap n-resize nw-resize oblique olive once open-quote outset '+\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/home/index.html.erb:\n    4  		<div class=\"container\">\n    5  			<div class=\"hero-unit\">\n    6: 				<h2>Landing Page to Show The Power of Your Web App</h2>\n    7  				<p class=\"lead\">\n    8  					 This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.\n    .\n   14  			<!--/.hero-unit -->\n   15  			<div class=\"hero-media\">\n   16: 				<img src=\"landapp-assets/img/mac.png\" alt=\"\"/>\n   17  			</div>\n   18  			<!--/.hero-media -->\n   ..\n   75  			<!--/.headline -->\n   76  			<div class=\"span2\">\n   77: 				<img src=\"landapp-assets/img/clients/01.png\" alt=\"\"/>\n   78  			</div>\n   79  			<!-- /.span2 -->\n   80  			<div class=\"span2\">\n   81: 				<img src=\"landapp-assets/img/clients/02.png\" alt=\"\"/>\n   82  			</div>\n   83  			<!-- /.span2 -->\n   84  			<div class=\"span2\">\n   85: 				<img src=\"landapp-assets/img/clients/03.png\" alt=\"\"/>\n   86  			</div>\n   87  			<!-- /.span2 -->\n   88  			<div class=\"span2\">\n   89: 				<img src=\"landapp-assets/img/clients/04.png\" alt=\"\"/>\n   90  			</div>\n   91  			<!-- /.span2 -->\n   92  			<div class=\"span2\">\n   93: 				<img src=\"landapp-assets/img/clients/05.png\" alt=\"\"/>\n   94  			</div>\n   95  			<!-- /.span2 -->\n   96  			<div class=\"span2\">\n   97: 				<img src=\"landapp-assets/img/clients/06.png\" alt=\"\"/>\n   98  			</div>\n   99  			<!-- /.span2 -->\n  ...\n  146  		<div class=\"row call-to-action\">\n  147  			<div class=\"span9\">\n  148: 				<h4>Landing Page to Show The Power of Your Web App</h4>\n  149  				<p>\n  150  					 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/_navigation.html.erb:\n    5        <span class=\"icon-bar\"></span>\n    6        </a>\n    7:       <a class=\"brand\" href=\"#\">Land<span>App</span></a>\n    8        <div class=\"nav-collapse collapse\">\n    9          <ul class=\"nav\">\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/application.html.erb:\n    8  <link href=\"/assets//bootstrap.css\" rel=\"stylesheet\">\n    9  <link href=\"/assets/bootstrap-responsive.css\" rel=\"stylesheet\">\n   10: <link href=\"/assets/landapp.css\" rel=\"stylesheet\">\n   11: <link href=\"/assets/landapp-responsive.css\" rel=\"stylesheet\">\n   12  <link href=\"/assets/font-awesome.css\" rel=\"stylesheet\">\n   13  <!-- Flexslider Plugin -->\n   ..\n   15  <link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>\n   16  <!--[if IE 7]>\n   17: <link rel=\"stylesheet\" href=\"landapp-assets/css/font-awesome-ie7.min.css\">\n   18  <![endif]-->\n   19  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n\n16 matches across 6 files\n\n\nSearching 332 files for \"landapp\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/home/index.html.erb:\n   14  			<!--/.hero-unit -->\n   15  			<div class=\"hero-media\">\n   16: 				<img src=\"landapp-assets/img/mac.png\" alt=\"\"/>\n   17  			</div>\n   18  			<!--/.hero-media -->\n   ..\n   75  			<!--/.headline -->\n   76  			<div class=\"span2\">\n   77: 				<img src=\"landapp-assets/img/clients/01.png\" alt=\"\"/>\n   78  			</div>\n   79  			<!-- /.span2 -->\n   80  			<div class=\"span2\">\n   81: 				<img src=\"landapp-assets/img/clients/02.png\" alt=\"\"/>\n   82  			</div>\n   83  			<!-- /.span2 -->\n   84  			<div class=\"span2\">\n   85: 				<img src=\"landapp-assets/img/clients/03.png\" alt=\"\"/>\n   86  			</div>\n   87  			<!-- /.span2 -->\n   88  			<div class=\"span2\">\n   89: 				<img src=\"landapp-assets/img/clients/04.png\" alt=\"\"/>\n   90  			</div>\n   91  			<!-- /.span2 -->\n   92  			<div class=\"span2\">\n   93: 				<img src=\"landapp-assets/img/clients/05.png\" alt=\"\"/>\n   94  			</div>\n   95  			<!-- /.span2 -->\n   96  			<div class=\"span2\">\n   97: 				<img src=\"landapp-assets/img/clients/06.png\" alt=\"\"/>\n   98  			</div>\n   99  			<!-- /.span2 -->\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/application.html.erb:\n    8  <link href=\"/assets//bootstrap.css\" rel=\"stylesheet\">\n    9  <link href=\"/assets/bootstrap-responsive.css\" rel=\"stylesheet\">\n   10: <link href=\"/assets/landapp.css\" rel=\"stylesheet\">\n   11: <link href=\"/assets/landapp-responsive.css\" rel=\"stylesheet\">\n   12  <link href=\"/assets/font-awesome.css\" rel=\"stylesheet\">\n   13  <!-- Flexslider Plugin -->\n   ..\n   15  <link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>\n   16  <!--[if IE 7]>\n   17: <link rel=\"stylesheet\" href=\"landapp-assets/css/font-awesome-ie7.min.css\">\n   18  <![endif]-->\n   19  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n\n10 matches across 2 files\n\n\nSearching 344 files for \"mac_bg.png\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/landapp.css:\n  174      text-align: center;\n  175      padding-bottom: 60px;\n  176: 	background: url(\"../img/mac_bg.png\") no-repeat center center;\n  177  }\n  178  \n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/landapp-assets/css/landapp.css:\n  174      text-align: center;\n  175      padding-bottom: 60px;\n  176: 	background: url(\"../img/mac_bg.png\") no-repeat center center;\n  177  }\n  178  \n\n2 matches across 2 files\n\n\nSearching 482 files for \"border_line\"\n\n0 matches across 0 files\n\n\nSearching 482 files for \"borderline\"\n\n0 matches across 0 files\n\n\nSearching 482 files for \"border-line\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/landapp.css:\n  399  \n  400  .headline-simple {\n  401:     background: url(\"../img/headlines/border-line.png\") repeat-x 0 50%;\n  402  }\n  403  \n  404  .headline-dashed {\n  405:     background: url(\"../img/headlines/border-line-dashed.png\") repeat-x 0 50%;\n  406  }\n  407  \n  408  .headline-double {\n  409:     background: url(\"../img/headlines/border-line-double.png\") repeat-x 0 50%;\n  410  }\n  411  \n  412  .headline-triple-dashed {\n  413:     background: url(\"../img/headlines/border-line-3dashed.png\") repeat-x 0 50%;\n  414  }\n  415   /****************\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/landapp-assets/css/landapp.css:\n  399  \n  400  .headline-simple {\n  401:     background: url(\"../img/headlines/border-line.png\") repeat-x 0 50%;\n  402  }\n  403  \n  404  .headline-dashed {\n  405:     background: url(\"../img/headlines/border-line-dashed.png\") repeat-x 0 50%;\n  406  }\n  407  \n  408  .headline-double {\n  409:     background: url(\"../img/headlines/border-line-double.png\") repeat-x 0 50%;\n  410  }\n  411  \n  412  .headline-triple-dashed {\n  413:     background: url(\"../img/headlines/border-line-3dashed.png\") repeat-x 0 50%;\n  414  }\n  415   /****************\n\n8 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 8789,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/landapp.css",
+			"settings":
+			{
+				"buffer_size": 10601,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/_navigation.html.erb",
+			"settings":
+			{
+				"buffer_size": 937,
+				"line_ending": "Unix",
+				"name": "<%= link_to \"Home\", root_path, :class => 'brand' %"
+			}
+		},
+		{
+			"file": "app/views/layouts/_messages.html.erb",
+			"settings":
+			{
+				"buffer_size": 282,
+				"line_ending": "Unix",
+				"name": "<% flash.each do |name, msg| %>"
+			}
+		},
+		{
+			"file": "app/helpers/application_helper.rb",
+			"settings":
+			{
+				"buffer_size": 430,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/environments/development.rb",
+			"settings":
+			{
+				"buffer_size": 1510,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/bootstrap.css",
+			"settings":
+			{
+				"buffer_size": 121663,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/home/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 4577,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/devise/registrations/edit.html.erb",
+			"settings":
+			{
+				"buffer_size": 1180,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/devise/registrations/new.html.erb",
+			"settings":
+			{
+				"buffer_size": 594,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/devise/sessions/new.html.erb",
+			"settings":
+			{
+				"buffer_size": 586,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/config/mobylyze.sublime-project",
+		"/Users/jrhodes2705/Desktop/RootsBuilder/projects/MobylyzeJS/www/js/app.js",
+		"/Users/jrhodes2705/Desktop/RootsBuilder/projects/MobylyzeJS/www/index.html",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/controllers/api/api_controller.rb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/views/layouts/application.html.erb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/controllers/reports_controller.rb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/views/reports/index.html.erb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/views/main/piggybank.html.erb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/views/main/faq.html.erb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/models/daily_snap.rb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/models/admin.rb",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/app/views/gifting/give.html.haml",
+		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/config/routes.rb"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"/img",
+			"border-line",
+			"borderline",
+			"border_line",
+			"mac_bg.png",
+			"png",
+			"landapp",
+			"land",
+			"redirect=false",
+			"redirect=",
+			"redirect=fal",
+			"faqs",
+			"#faqs",
+			"text",
+			"faq",
+			"Just what is Treater anyway",
+			"users",
+			"css",
+			"style.css.erb",
+			"status",
+			"treatstatus",
+			"treatStatus",
+			"treatState",
+			"treatStatus",
+			"receive_link",
+			"send_sms",
+			"SMS",
+			"target_url",
+			"Error Rece",
+			"User not found",
+			"UA",
+			"urban airship",
+			"confirmationDialog:",
+			"confirmationDialog",
+			"onFetchTreatForRedeemLanding",
+			"alert",
+			"onFetchTreatForViewing",
+			"onFetchUserForTreatViewing",
+			"treater.events.onFetchUserForTreatViewing",
+			"reater.events.onFetchUserForTreatViewing",
+			"reater.events.onFetchUserForTreatViewing\"",
+			"redeemtreat",
+			"\"red",
+			"\"redee",
+			"storefront has not been",
+			"onFetchUserForTreatViewing",
+			"treater.events.onFetchUserForTreatViewing",
+			"alert",
+			"confirmationDialog",
+			"dialog",
+			"first_viewed_at",
+			"is_new",
+			"bg_header.gif",
+			"asset_path",
+			"assets",
+			"assets/images",
+			"product-default",
+			"treat-custom.png",
+			"images/treatbox.png",
+			"images/",
+			"images",
+			"login"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 14,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "config/routes.rb",
+					"settings":
+					{
+						"buffer_size": 1981,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1567,
+								1567
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 371.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/home/welcome.html.erb",
+					"settings":
+					{
+						"buffer_size": 25,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8,
+								8
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Gemfile",
+					"settings":
+					{
+						"buffer_size": 871,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								611,
+								611
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 67.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/assets/javascripts/application.js",
+					"settings":
+					{
+						"buffer_size": 663,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								621,
+								621
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/assets/stylesheets/bootstrap_and_overrides.css.scss",
+					"settings":
+					{
+						"buffer_size": 80,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								80,
+								80
+							]
+						],
+						"settings":
+						{
+							"auto_name": "@import \"bootstrap\";",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/assets/stylesheets/application.scss",
+					"settings":
+					{
+						"buffer_size": 935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								935,
+								935
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/layouts/application.html.erb",
+					"settings":
+					{
+						"buffer_size": 4898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1772,
+								1768
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 206.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"settings":
+					{
+						"buffer_size": 8789,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										446,
+										450
+									],
+									[
+										966,
+										970
+									],
+									[
+										1468,
+										1472
+									],
+									[
+										2041,
+										2045
+									],
+									[
+										2443,
+										2447
+									],
+									[
+										2614,
+										2618
+									],
+									[
+										2753,
+										2757
+									],
+									[
+										2892,
+										2896
+									],
+									[
+										3031,
+										3035
+									],
+									[
+										3170,
+										3174
+									],
+									[
+										3309,
+										3313
+									],
+									[
+										3490,
+										3494
+									],
+									[
+										3891,
+										3895
+									],
+									[
+										4259,
+										4263
+									],
+									[
+										4317,
+										4321
+									],
+									[
+										4628,
+										4632
+									],
+									[
+										5001,
+										5008
+									],
+									[
+										5172,
+										5179
+									],
+									[
+										5311,
+										5318
+									],
+									[
+										5450,
+										5457
+									],
+									[
+										5589,
+										5596
+									],
+									[
+										5728,
+										5735
+									],
+									[
+										5867,
+										5874
+									],
+									[
+										6217,
+										6224
+									],
+									[
+										6275,
+										6282
+									],
+									[
+										6586,
+										6593
+									],
+									[
+										6977,
+										6987
+									],
+									[
+										7227,
+										7237
+									],
+									[
+										7657,
+										7668
+									],
+									[
+										7779,
+										7790
+									],
+									[
+										7908,
+										7919
+									],
+									[
+										8044,
+										8055
+									],
+									[
+										8299,
+										8310
+									],
+									[
+										8421,
+										8432
+									],
+									[
+										8550,
+										8561
+									],
+									[
+										8686,
+										8697
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								7647,
+								7647
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 6,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2790.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/assets/stylesheets/landapp.css",
+					"settings":
+					{
+						"buffer_size": 10601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7475,
+								7478
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5711.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/views/layouts/_navigation.html.erb",
+					"settings":
+					{
+						"buffer_size": 937,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								389,
+								389
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<%= link_to \"Home\", root_path, :class => 'brand' %",
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/views/layouts/_messages.html.erb",
+					"settings":
+					{
+						"buffer_size": 282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								282,
+								282
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<% flash.each do |name, msg| %>",
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/helpers/application_helper.rb",
+					"settings":
+					{
+						"buffer_size": 430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								429,
+								429
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "config/environments/development.rb",
+					"settings":
+					{
+						"buffer_size": 1510,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1376,
+								1376
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 22.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/assets/stylesheets/bootstrap.css",
+					"settings":
+					{
+						"buffer_size": 121663,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 621.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/views/home/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 4577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2331,
+								2331
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 976.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/views/devise/registrations/edit.html.erb",
+					"settings":
+					{
+						"buffer_size": 1180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1179,
+								1179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/views/devise/registrations/new.html.erb",
+					"settings":
+					{
+						"buffer_size": 594,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								80,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/views/devise/sessions/new.html.erb",
+					"settings":
+					{
+						"buffer_size": 586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true
+}

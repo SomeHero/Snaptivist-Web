@@ -543,3 +543,7 @@ body {
     color: #ffffff;
     background-color: #000000;
 }
+/**** snaptivist custom ****/
+img.header_logo {
+    height: 40px;
+}
