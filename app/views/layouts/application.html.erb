@@ -13,6 +13,10 @@
 	<!-- Flexslider Plugin -->
 	<link href="/assets/flexslider/flexslider.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>
+	<script src="/assets/jquery.js"></script>
+ <!-- Load ScrollTo -->
+    <script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.2-min.js"></script>
+ 
 <!--[if IE 7]>
 <link rel="stylesheet" href="landapp-assets/css/font-awesome-ie7.min.css">
 <![endif]-->
@@ -27,6 +31,24 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
       <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+<!-- javascript that will initiate jQuery and the LocalScroll plugin -->
+    <script>
+ 
+    // When the document is loaded...
+    $(document).ready(function()
+    {
+    	$("#start-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+
+    	$("#start-petition").click(function() {
+    		var windowWidth = $(window).width();
+
+    		$('#start-petition-panel').animate({
+    			left:windowWidth/2-$('#start-petition-panel').width()/2
+			});
+    	});
+ 
+    });
+    </script>
   </head>
   <body>
   	<div class="navbar navbar-inverse navbar-static-top">
@@ -112,6 +134,47 @@
   				</div>
   			</div>
   		</div>
+  	</div>
+  	<div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+  		<form class="form-horizontal" style="position: relative;">
+  	   <fieldset>
+    <legend>Who is the target of your petition?</legend>
+    
+  <div class="control-group">
+    <div class="controls" style="margin-left: 0px;">
+      <label class="radio">
+        <input type="radio" name="targetOption" id="targetOption1" value="state">My Governor or State Legislator
+      </label>
+      <label class="radio">
+        <input type="radio" name="targetOption" id="targetOption2" value="federal">Congress or the Executive Branch
+      </label>
+      <label class="radio">
+        <input type="radio" name="targetOption" id="targetOption3" value="other">Someone else
+      </label>
+    </div>
+  </div>
+ </fieldset>
+ <fieldset>
+   <legend>What do you want them to do?</legend>
+    
+  <div class="control-group">
+    <div class="controls" style="margin-left: 0px;">
+    <input type="text" placeholder="Type your demand here" style="width: 98%">
+    <span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
+    </div>
+  </div>
+</fieldset>
+ <fieldset>
+   <legend>Petition Text</legend>
+    
+  <div class="control-group">
+    <div class="controls" style="margin-left: 0px;">
+<textarea rows="6" style="width: 98%"></textarea>
+    </div>
+  </div>
+</fieldset>
+<button class="btn btn-large btn-block btn-primary" type="button">Create Petition</button>
+</form>
   	</div>
   		<!--! end of #main -->
     <!-- Le javascript
