@@ -38,6 +38,8 @@
     $(document).ready(function()
     {
     	$("#start-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+		$("#launch-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+		$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
 
     	$("#start-petition").click(function() {
     		var windowWidth = $(window).width();
@@ -45,6 +47,42 @@
     		$('#start-petition-panel').animate({
     			left:windowWidth/2-$('#start-petition-panel').width()/2
 			});
+    	});
+
+    	$("#create-petition").click(function() {
+    		var windowWidth = $(window).width();
+
+    		$('#start-petition-panel').animate({
+    			left: -($(this).width() + windowWidth/2)
+    		}, 400, function() {
+    			
+    			$('#launch-petition-panel').animate({
+    				left:windowWidth/2-$(this).width()/2
+    			});
+    		});
+
+    	});
+
+    	$("#launch-petition").click(function() {
+    		var windowWidth = $(window).width();
+
+    		$('#launch-petition-panel').animate({
+    			left: -($(this).width() + windowWidth/2)
+    		}, 400, function() {
+    			
+    			$('#share-petition-panel').animate({
+    				left:windowWidth/2-$(this).width()/2
+    			});
+    		});
+
+    	});
+
+    	$("#share-petition").click(function() {
+    		var windowWidth = $(window).width();
+
+    		$('#share-petition-panel').animate({
+    			left: -($(this).width() + windowWidth/2)
+    		});
     	});
  
     });
@@ -135,47 +173,7 @@
   			</div>
   		</div>
   	</div>
-  	<div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-  		<form class="form-horizontal" style="position: relative;">
-  	   <fieldset>
-    <legend>Who is the target of your petition?</legend>
-    
-  <div class="control-group">
-    <div class="controls" style="margin-left: 0px;">
-      <label class="radio">
-        <input type="radio" name="targetOption" id="targetOption1" value="state">My Governor or State Legislator
-      </label>
-      <label class="radio">
-        <input type="radio" name="targetOption" id="targetOption2" value="federal">Congress or the Executive Branch
-      </label>
-      <label class="radio">
-        <input type="radio" name="targetOption" id="targetOption3" value="other">Someone else
-      </label>
-    </div>
-  </div>
- </fieldset>
- <fieldset>
-   <legend>What do you want them to do?</legend>
-    
-  <div class="control-group">
-    <div class="controls" style="margin-left: 0px;">
-    <input type="text" placeholder="Type your demand here" style="width: 98%">
-    <span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
-    </div>
-  </div>
-</fieldset>
- <fieldset>
-   <legend>Petition Text</legend>
-    
-  <div class="control-group">
-    <div class="controls" style="margin-left: 0px;">
-<textarea rows="6" style="width: 98%"></textarea>
-    </div>
-  </div>
-</fieldset>
-<button class="btn btn-large btn-block btn-primary" type="button">Create Petition</button>
-</form>
-  	</div>
+
   		<!--! end of #main -->
     <!-- Le javascript
     ================================================== -->
