@@ -35,7 +35,7 @@
 			"file": "app/assets/javascripts/application.js",
 			"settings":
 			{
-				"buffer_size": 663,
+				"buffer_size": 3949,
 				"line_ending": "Unix"
 			}
 		},
@@ -52,7 +52,7 @@
 			"file": "app/assets/stylesheets/application.scss",
 			"settings":
 			{
-				"buffer_size": 935,
+				"buffer_size": 546,
 				"line_ending": "Unix"
 			}
 		},
@@ -60,7 +60,7 @@
 			"file": "app/views/layouts/application.html.erb",
 			"settings":
 			{
-				"buffer_size": 4898,
+				"buffer_size": 6896,
 				"line_ending": "Unix"
 			}
 		},
@@ -78,7 +78,7 @@
 			"file": "app/assets/stylesheets/landapp.css",
 			"settings":
 			{
-				"buffer_size": 10601,
+				"buffer_size": 10669,
 				"line_ending": "Unix"
 			}
 		},
@@ -86,7 +86,7 @@
 			"file": "app/views/layouts/_navigation.html.erb",
 			"settings":
 			{
-				"buffer_size": 937,
+				"buffer_size": 1004,
 				"line_ending": "Unix",
 				"name": "<%= link_to \"Home\", root_path, :class => 'brand' %"
 			}
@@ -128,7 +128,7 @@
 			"file": "app/views/home/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 4577,
+				"buffer_size": 8889,
 				"line_ending": "Unix"
 			}
 		},
@@ -291,7 +291,7 @@
 	"groups":
 	[
 		{
-			"selected": 14,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -361,7 +361,7 @@
 						[
 							[
 								611,
-								611
+								555
 							]
 						],
 						"settings":
@@ -379,7 +379,7 @@
 					"file": "app/assets/javascripts/application.js",
 					"settings":
 					{
-						"buffer_size": 663,
+						"buffer_size": 3949,
 						"regions":
 						{
 						},
@@ -395,7 +395,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1737.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -432,15 +432,15 @@
 					"file": "app/assets/stylesheets/application.scss",
 					"settings":
 					{
-						"buffer_size": 935,
+						"buffer_size": 546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								935,
-								935
+								546,
+								546
 							]
 						],
 						"settings":
@@ -458,15 +458,15 @@
 					"file": "app/views/layouts/application.html.erb",
 					"settings":
 					{
-						"buffer_size": 4898,
+						"buffer_size": 6896,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1772,
-								1768
+								1866,
+								1866
 							]
 						],
 						"settings":
@@ -474,7 +474,7 @@
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 206.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -667,15 +667,15 @@
 					"file": "app/assets/stylesheets/landapp.css",
 					"settings":
 					{
-						"buffer_size": 10601,
+						"buffer_size": 10669,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7475,
-								7478
+								10602,
+								10602
 							]
 						],
 						"settings":
@@ -685,7 +685,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5711.0,
+						"translation.y": 7678.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -695,15 +695,15 @@
 					"file": "app/views/layouts/_navigation.html.erb",
 					"settings":
 					{
-						"buffer_size": 937,
+						"buffer_size": 1004,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								389,
-								389
+								316,
+								316
 							]
 						],
 						"settings":
@@ -833,15 +833,15 @@
 					"file": "app/views/home/index.html.erb",
 					"settings":
 					{
-						"buffer_size": 4577,
+						"buffer_size": 8889,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2331,
-								2331
+								8288,
+								8288
 							]
 						],
 						"settings":
@@ -849,7 +849,7 @@
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 976.0,
+						"translation.y": 3732.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
