@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var api_root_url = "http://dev.snaptivist.com"; //"http://localhost:3000/api/";
+	var api_root_url = "http://dev.snaptivist.com/api"; //"http://localhost:3000/api/";
 
 	$("#wrap").on("submit", "#create-petition-form", function(e) {
 		e.preventDefault();
