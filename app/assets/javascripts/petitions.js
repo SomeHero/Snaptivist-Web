@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var title = $("#title").val();
 		var summary = $("#summary").val();
 
-		var url = api_root_url + 'petitions';
+		var url = api_root_url + '/petitions';
 
 		$.ajax({
 			type: "POST",
@@ -55,7 +55,7 @@ $(document).ready(function() {
 		var comment = $('#comment').val();
 		var petition_id = $('#petition_id').val()
 
-		var url = api_root_url + 'signatures';
+		var url = api_root_url + '/signatures';
 
 		$.ajax({
 			type: "POST",
@@ -97,7 +97,7 @@ $(document).ready(function() {
 		var comment = $('#comment').val();
 		var petition_id = $('#petition_id').val();
 
-		var url = api_root_url +  'signatures';
+		var url = api_root_url +  '/signatures';
 
 		$.ajax({
 			type: "POST",
