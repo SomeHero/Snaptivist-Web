@@ -553,3 +553,9 @@ legend {
 legend + .control-group {
   margin-top: 10px;
 }
+#target-count-wrapper {
+    margin-bottom: 20px;
+}
+#target-count-wrapper .progress {
+    margin-bottom: 0px;
+}
