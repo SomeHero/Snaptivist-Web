@@ -547,3 +547,9 @@ body {
 img.header_logo {
     height: 40px;
 }
+legend {
+    margin-bottom: 0px;
+}
+legend + .control-group {
+  margin-top: 10px;
+}

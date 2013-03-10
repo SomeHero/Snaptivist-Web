@@ -1,0 +1,33 @@
+<h1>Listing petitions</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Summary</th>
+    <th>Target count</th>
+    <th>Target</th>
+    <th>Short url</th>
+    <th>Rewrite url key</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @petitions.each do |petition| %>
+  <tr>
+    <td><%= petition.title %></td>
+    <td><%= petition.summary %></td>
+    <td><%= petition.target_count %></td>
+    <td><%= petition.target %></td>
+    <td><%= petition.short_url %></td>
+    <td><%= petition.rewrite_url_key %></td>
+    <td><%= link_to 'Show', petition %></td>
+    <td><%= link_to 'Edit', edit_petition_path(petition) %></td>
+    <td><%= link_to 'Destroy', petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Petition', new_petition_path %>

@@ -14,6 +14,7 @@
 	<link href="/assets/flexslider/flexslider.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>
 	<script src="/assets/jquery.js"></script>
+  <script src="/assets/petitions.js"></script>
  <!-- Load ScrollTo -->
     <script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.2-min.js"></script>
  
@@ -49,20 +50,6 @@
     		$('#start-petition-panel').animate({
     			left:windowWidth/2-$('#start-petition-panel').width()/2
 			});
-    	});
-
-    	$("#create-petition").click(function() {
-    		var windowWidth = $(window).width();
-
-    		$('#start-petition-panel').animate({
-    			left: -($(this).width() + windowWidth/2)
-    		}, 400, function() {
-    			
-    			$('#launch-petition-panel').animate({
-    				left:windowWidth/2-$(this).width()/2
-    			});
-    		});
-
     	});
 
     	$("#launch-petition").click(function() {

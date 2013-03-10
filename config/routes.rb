@@ -1,4 +1,13 @@
 SnaptivistWeb::Application.routes.draw do
+  namespace :api do
+    resources :petitions
+  end
+  
+  resources :petitions
+
+  resources :targets
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

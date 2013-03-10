@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  summary: MyString
+  target_count: 1
+  target: 
+  short_url: MyString
+  rewrite_url_key: MyString
+
+two:
+  title: MyString
+  summary: MyString
+  target_count: 1
+  target: 
+  short_url: MyString
+  rewrite_url_key: MyString

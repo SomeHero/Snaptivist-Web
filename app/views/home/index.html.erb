@@ -166,7 +166,7 @@
 </div>
 <!--/#wrap -->
 <div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<form class="form-horizontal" style="position: relative;">
+	<%= form_tag("/api/petitions", :method => "post", :id => "create-petition-form") do %>
 		<fieldset>
 			<legend>Who is the target of your petition?</legend>
 
@@ -189,7 +189,7 @@
 
 			<div class="control-group">
 				<div class="controls" style="margin-left: 0px;">
-					<input type="text" placeholder="Type your demand here" style="width: 98%">
+					<input id="title" name="title" type="text" placeholder="Type your demand here" style="width: 98%">
 					<span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
 				</div>
 			</div>
@@ -199,18 +199,18 @@
 
 			<div class="control-group">
 				<div class="controls" style="margin-left: 0px;">
-					<textarea rows="6" style="width: 98%"></textarea>
+					<textarea id="summary" name="summary" rows="6" style="width: 98%"></textarea>
 				</div>
 			</div>
 		</fieldset>
-		<button id="create-petition" class="btn btn-large btn-block btn-primary" type="button">Create Petition</button>
-	</form>
+		<button id="create-petition" class="btn btn-large btn-block btn-primary" type="submit">Create Petition</button>
+	<% end %>
 </div>
 <div id="launch-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<h2>President Obama: Stop the Drone Assassinations of American Citizens</h2>
+	<h2>President Obama: <span id="title-edit"></span></h2>
 	<div class="control-group">
 				<div class="controls" style="margin-left: 0px;">
-					<textarea rows="4" style="width: 98%">As if it was actually necessary to elaborate on why the lack of due process and summary-execution-by-remote-control-robot is a bad thing for our health and rule of law.
+					<textarea id="summary-edit" rows="4" style="width: 98%">
 					</textarea>
 				</div>
 			</div>

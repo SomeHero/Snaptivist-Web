@@ -11,7 +11,7 @@
 			"file": "config/routes.rb",
 			"settings":
 			{
-				"buffer_size": 1981,
+				"buffer_size": 2064,
 				"line_ending": "Unix"
 			}
 		},
@@ -128,7 +128,7 @@
 			"file": "app/views/home/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 8889,
+				"buffer_size": 8789,
 				"line_ending": "Unix"
 			}
 		},
@@ -201,7 +201,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -291,7 +291,6 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
 				{
@@ -299,15 +298,15 @@
 					"file": "config/routes.rb",
 					"settings":
 					{
-						"buffer_size": 1981,
+						"buffer_size": 2064,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1567,
-								1567
+								0,
+								0
 							]
 						],
 						"settings":
@@ -392,10 +391,12 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1737.0,
+						"translation.y": 1702.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -471,7 +472,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 336.0,
@@ -764,7 +767,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -833,23 +838,24 @@
 					"file": "app/views/home/index.html.erb",
 					"settings":
 					{
-						"buffer_size": 8889,
+						"buffer_size": 8789,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8288,
-								8288
+								7685,
+								7685
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3732.0,
+						"translation.y": 3581.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -900,7 +906,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -926,7 +934,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
