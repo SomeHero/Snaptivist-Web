@@ -5,7 +5,7 @@ $(document).ready(function() {
 		var title = $("#title").val();
 		var summary = $("#summary").val();
 
-		var url = 'http://localhost:3000/api/petitions';
+		var url = 'http://dev.snaptivist.com/api/petitions';
 
 		$.ajax({
 			type: "POST",
