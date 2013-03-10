@@ -80,4 +80,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+ 
+	$("#wrap").on("click", "#sign-petition-fb", function(e) {
+		var FB = window.FB || '';
+		if(FB && FB.getAccessToken()){
+	    	FB.login(function(response) {
+	    	
+	    	},{scope: 'email'});
+		}else{
+	 	
+	 	};
+	});
 });
