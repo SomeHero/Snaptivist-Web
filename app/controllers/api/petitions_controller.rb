@@ -7,34 +7,34 @@ class Api::PetitionsController < ApplicationController
   API_VERSION = '1.0'
 
   def set_access_control_headers
-     headers['Access-Control-Allow-Origin'] = '*'
-     headers['Access-Control-Request-Method'] = '*'
-  end
-  
-  def create
+   headers['Access-Control-Allow-Origin'] = '*'
+   headers['Access-Control-Request-Method'] = '*'
+ end
+ 
+ def create
 
     #auth_mechanism = params.fetch(:auth_mechanism, 'standard')
     @petition = Petition.new do |p|
     	p.title = params[:title]
     	p.summary = params[:summary]
     	p.target_count =100
-        p.target_id = 1
-  	end
+      p.target_id = 1
+    end
 
-  if !@petition.valid?
-  	return render_result({}, 400, 'Error Creating Petition')
-  end
+    if !@petition.valid?
+     return render_result({}, 400, 'Error Creating Petition')
+   end
 
     #return if error_messages?(:config)
 
     @petition.save
     
     render_result({'petition' => {'id' => @petition.id,
-                                  'title' => @petition.title,
-                                  'summary' => @petition.summary
-                                  }})
+      'title' => @petition.title,
+      'summary' => @petition.summary
+      }})
 
-end
+  end
 
 	# render a result in the appropriate format
 	def render_result(result = {}, status = 200, status_string = 'OK')

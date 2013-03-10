@@ -15,7 +15,7 @@
      FB.Event.subscribe('auth.statusChange', function(response) {
            FB.api('/me/permissions', function(response){
 			if(response && response.data && $.isArray(response.data)){
-
+          console.log("status change complete");
 			};
 	   });
       });

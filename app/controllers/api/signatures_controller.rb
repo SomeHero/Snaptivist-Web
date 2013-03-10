@@ -8,6 +8,48 @@ class Api::SignaturesController < ApplicationController
 
    @petition = Petition.find(params[:petition_id])
 
+   if(params[:authentication_mechanism] == 'facebook')
+     graph = Koala::Facebook::GraphAPI.new(params[:access_token])
+     @fb_user = graph.get_object("me")
+
+     Rails.logger.debug @fb_user["email"]
+     Rails.logger.debug @fb_user["first_name"]
+     Rails.logger.debug @fb_user["last_name"]
+
+     email = @fb_user["email"]
+     first_name = @fb_user["first_name"]
+     last_name = @fb_user["last_name"]
+
+     @external_account = ExternalAccount.find_by_external_id(params[:external_id])
+     
+     if(!@external_account)
+      @external_account = ExternalAccount.new do |e|
+        e.external_id = params[:external_id]
+        e.type = 'FacebookAccount'
+        e.email = params[:email]
+        e.authenticated_at = Time.now
+        e.allowed_at = Time.now
+      end
+
+      @user = User.find_by_email(params[:email])
+
+      if(!@user)
+        
+        @user = User.new do |u|
+          u.first_name = first_name
+          u.last_name = last_name
+          u.email = email
+          u.password = "password"
+          u.password_confirmation = "password"
+          u.zip_code = ""
+
+          u.external_accounts << @external_account
+        end
+      else
+        @user = @external_account.user
+      end
+    end 
+  else
    if(params[:user_id])
     @user = User.find(params[:user_id])
   else
@@ -23,6 +65,7 @@ class Api::SignaturesController < ApplicationController
     u.password_confirmation = "password"
     u.zip_code = params[:zip_code]
   end
+end
 end
 
     #auth_mechanism = params.fetch(:auth_mechanism, 'standard')
