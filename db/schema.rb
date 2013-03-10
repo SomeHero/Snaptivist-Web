@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309020824) do
+ActiveRecord::Schema.define(:version => 20130310160314) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(:version => 20130309020824) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "external_accounts", :force => true do |t|
+    t.string   "type"
+    t.string   "external_id"
+    t.integer  "user_id"
+    t.string   "email"
+    t.datetime "authenticated_at"
+    t.datetime "allowed_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "external_accounts", ["user_id"], :name => "index_external_accounts_on_user_id"
+
   create_table "petitions", :force => true do |t|
     t.string   "title"
     t.string   "summary"
@@ -58,6 +71,17 @@ ActiveRecord::Schema.define(:version => 20130309020824) do
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
+
+  create_table "signatures", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "petition_id"
+    t.text     "comment"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"
+  add_index "signatures", ["user_id"], :name => "index_signatures_on_user_id"
 
   create_table "targets", :force => true do |t|
     t.string   "name"
@@ -81,6 +105,9 @@ ActiveRecord::Schema.define(:version => 20130309020824) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "zip_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

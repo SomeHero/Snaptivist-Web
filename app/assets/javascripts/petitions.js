@@ -42,4 +42,42 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$("#wrap").on("click", "#sign-petition-user-name", function(e) {
+		e.preventDefault();
+
+		var first_name = 'James';
+		var last_name = 'Rhodes';
+		var email = 'james@somehero.com';
+		var zip_code = '23221';
+		var comment = $('#comment').val();
+		var petition_id = $('#petition_id').val()
+
+		var url = 'http://dev.snaptivist.com/api/signatures';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				'petition_id': petition_id,
+				'first_name': first_name,
+				'last_name': last_name,
+				'email': email,
+				'zip_code': zip_code,
+				'comment': comment
+			}),
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+
+				var signature = result.result.signature;
+
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+	});
 });

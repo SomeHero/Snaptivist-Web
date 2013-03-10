@@ -1,4 +1,5 @@
 <div class="container">
+<input type="hidden" id="petition_id" value="<%= @petition.id %>" />
 <%= image_tag "default_petition.png" %>
 <h1>President Obama:</h1>
 <h2><%= @petition.title %></h2>
@@ -16,9 +17,9 @@ Signers: 3
 Goal: <%= @petition.target_count %>
 </div>
 </div>
-<textarea rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
+<textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
 <button class="btn btn-primary btn-block btn-large">Sign  with Facebook</button>
-<button class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
+<button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
 
 
 </div>

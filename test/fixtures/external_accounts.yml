@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  external_id: MyString
+  user: 
+  email: MyString
+  authenticated_at: 2013-03-10 11:01:34
+  allowed_at: 2013-03-10 11:01:34
+
+two:
+  type: 
+  external_id: MyString
+  user: 
+  email: MyString
+  authenticated_at: 2013-03-10 11:01:34
+  allowed_at: 2013-03-10 11:01:34
