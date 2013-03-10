@@ -1,9 +1,16 @@
 class Api::PetitionsController < ApplicationController
   #before_filter :authenticate_user!, :only => [:create]
+  after_filter :set_access_control_headers
+
   respond_to :json
 
   API_VERSION = '1.0'
 
+  def set_access_control_headers
+     headers['Access-Control-Allow-Origin'] = '*'
+     headers['Access-Control-Request-Method'] = '*'
+  end
+  
   def create
 
     #auth_mechanism = params.fetch(:auth_mechanism, 'standard')
