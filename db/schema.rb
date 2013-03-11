@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310160314) do
+ActiveRecord::Schema.define(:version => 20130311211922) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,8 +66,9 @@ ActiveRecord::Schema.define(:version => 20130310160314) do
     t.integer  "target_id"
     t.string   "short_url"
     t.string   "rewrite_url_key"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "signatures_count"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"

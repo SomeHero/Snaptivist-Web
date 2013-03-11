@@ -8,103 +8,18 @@
 	"buffers":
 	[
 		{
-			"file": "config/routes.rb",
-			"settings":
-			{
-				"buffer_size": 2064,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/home/welcome.html.erb",
-			"settings":
-			{
-				"buffer_size": 25,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Gemfile",
-			"settings":
-			{
-				"buffer_size": 871,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/javascripts/application.js",
-			"settings":
-			{
-				"buffer_size": 3949,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/bootstrap_and_overrides.css.scss",
-			"settings":
-			{
-				"buffer_size": 80,
-				"line_ending": "Unix",
-				"name": "@import \"bootstrap\";"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/application.scss",
-			"settings":
-			{
-				"buffer_size": 546,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/application.html.erb",
-			"settings":
-			{
-				"buffer_size": 6896,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 332 files for \"land\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/javascripts/flexslider/demo/js/shBrushCss.js:\n   52  						'embed embossed e-resize expanded extra-condensed extra-expanded fantasy far-left far-right fast faster fixed format fuchsia '+\n   53  						'gray green groove handheld hebrew help hidden hide high higher icon inline-table inline inset inside invert italic '+\n   54: 						'justify landscape large larger left-side left leftwards level lighter lime line-through list-item local loud lower-alpha '+\n   55  						'lowercase lower-greek lower-latin lower-roman lower low ltr marker maroon medium message-box middle mix move narrower '+\n   56  						'navy ne-resize no-close-quote none no-open-quote no-repeat normal nowrap n-resize nw-resize oblique olive once open-quote outset '+\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/docs.css:\n  933  }\n  934  \n  935: /* Landscape phones\n  936  ------------------------- */\n  937  @media (max-width: 480px) {\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/landapp-assets/js/flexslider/demo/js/shBrushCss.js:\n   52  						'embed embossed e-resize expanded extra-condensed extra-expanded fantasy far-left far-right fast faster fixed format fuchsia '+\n   53  						'gray green groove handheld hebrew help hidden hide high higher icon inline-table inline inset inside invert italic '+\n   54: 						'justify landscape large larger left-side left leftwards level lighter lime line-through list-item local loud lower-alpha '+\n   55  						'lowercase lower-greek lower-latin lower-roman lower low ltr marker maroon medium message-box middle mix move narrower '+\n   56  						'navy ne-resize no-close-quote none no-open-quote no-repeat normal nowrap n-resize nw-resize oblique olive once open-quote outset '+\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/home/index.html.erb:\n    4  		<div class=\"container\">\n    5  			<div class=\"hero-unit\">\n    6: 				<h2>Landing Page to Show The Power of Your Web App</h2>\n    7  				<p class=\"lead\">\n    8  					 This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.\n    .\n   14  			<!--/.hero-unit -->\n   15  			<div class=\"hero-media\">\n   16: 				<img src=\"landapp-assets/img/mac.png\" alt=\"\"/>\n   17  			</div>\n   18  			<!--/.hero-media -->\n   ..\n   75  			<!--/.headline -->\n   76  			<div class=\"span2\">\n   77: 				<img src=\"landapp-assets/img/clients/01.png\" alt=\"\"/>\n   78  			</div>\n   79  			<!-- /.span2 -->\n   80  			<div class=\"span2\">\n   81: 				<img src=\"landapp-assets/img/clients/02.png\" alt=\"\"/>\n   82  			</div>\n   83  			<!-- /.span2 -->\n   84  			<div class=\"span2\">\n   85: 				<img src=\"landapp-assets/img/clients/03.png\" alt=\"\"/>\n   86  			</div>\n   87  			<!-- /.span2 -->\n   88  			<div class=\"span2\">\n   89: 				<img src=\"landapp-assets/img/clients/04.png\" alt=\"\"/>\n   90  			</div>\n   91  			<!-- /.span2 -->\n   92  			<div class=\"span2\">\n   93: 				<img src=\"landapp-assets/img/clients/05.png\" alt=\"\"/>\n   94  			</div>\n   95  			<!-- /.span2 -->\n   96  			<div class=\"span2\">\n   97: 				<img src=\"landapp-assets/img/clients/06.png\" alt=\"\"/>\n   98  			</div>\n   99  			<!-- /.span2 -->\n  ...\n  146  		<div class=\"row call-to-action\">\n  147  			<div class=\"span9\">\n  148: 				<h4>Landing Page to Show The Power of Your Web App</h4>\n  149  				<p>\n  150  					 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/_navigation.html.erb:\n    5        <span class=\"icon-bar\"></span>\n    6        </a>\n    7:       <a class=\"brand\" href=\"#\">Land<span>App</span></a>\n    8        <div class=\"nav-collapse collapse\">\n    9          <ul class=\"nav\">\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/application.html.erb:\n    8  <link href=\"/assets//bootstrap.css\" rel=\"stylesheet\">\n    9  <link href=\"/assets/bootstrap-responsive.css\" rel=\"stylesheet\">\n   10: <link href=\"/assets/landapp.css\" rel=\"stylesheet\">\n   11: <link href=\"/assets/landapp-responsive.css\" rel=\"stylesheet\">\n   12  <link href=\"/assets/font-awesome.css\" rel=\"stylesheet\">\n   13  <!-- Flexslider Plugin -->\n   ..\n   15  <link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>\n   16  <!--[if IE 7]>\n   17: <link rel=\"stylesheet\" href=\"landapp-assets/css/font-awesome-ie7.min.css\">\n   18  <![endif]-->\n   19  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n\n16 matches across 6 files\n\n\nSearching 332 files for \"landapp\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/home/index.html.erb:\n   14  			<!--/.hero-unit -->\n   15  			<div class=\"hero-media\">\n   16: 				<img src=\"landapp-assets/img/mac.png\" alt=\"\"/>\n   17  			</div>\n   18  			<!--/.hero-media -->\n   ..\n   75  			<!--/.headline -->\n   76  			<div class=\"span2\">\n   77: 				<img src=\"landapp-assets/img/clients/01.png\" alt=\"\"/>\n   78  			</div>\n   79  			<!-- /.span2 -->\n   80  			<div class=\"span2\">\n   81: 				<img src=\"landapp-assets/img/clients/02.png\" alt=\"\"/>\n   82  			</div>\n   83  			<!-- /.span2 -->\n   84  			<div class=\"span2\">\n   85: 				<img src=\"landapp-assets/img/clients/03.png\" alt=\"\"/>\n   86  			</div>\n   87  			<!-- /.span2 -->\n   88  			<div class=\"span2\">\n   89: 				<img src=\"landapp-assets/img/clients/04.png\" alt=\"\"/>\n   90  			</div>\n   91  			<!-- /.span2 -->\n   92  			<div class=\"span2\">\n   93: 				<img src=\"landapp-assets/img/clients/05.png\" alt=\"\"/>\n   94  			</div>\n   95  			<!-- /.span2 -->\n   96  			<div class=\"span2\">\n   97: 				<img src=\"landapp-assets/img/clients/06.png\" alt=\"\"/>\n   98  			</div>\n   99  			<!-- /.span2 -->\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/application.html.erb:\n    8  <link href=\"/assets//bootstrap.css\" rel=\"stylesheet\">\n    9  <link href=\"/assets/bootstrap-responsive.css\" rel=\"stylesheet\">\n   10: <link href=\"/assets/landapp.css\" rel=\"stylesheet\">\n   11: <link href=\"/assets/landapp-responsive.css\" rel=\"stylesheet\">\n   12  <link href=\"/assets/font-awesome.css\" rel=\"stylesheet\">\n   13  <!-- Flexslider Plugin -->\n   ..\n   15  <link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>\n   16  <!--[if IE 7]>\n   17: <link rel=\"stylesheet\" href=\"landapp-assets/css/font-awesome-ie7.min.css\">\n   18  <![endif]-->\n   19  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n\n10 matches across 2 files\n\n\nSearching 344 files for \"mac_bg.png\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/landapp.css:\n  174      text-align: center;\n  175      padding-bottom: 60px;\n  176: 	background: url(\"../img/mac_bg.png\") no-repeat center center;\n  177  }\n  178  \n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/landapp-assets/css/landapp.css:\n  174      text-align: center;\n  175      padding-bottom: 60px;\n  176: 	background: url(\"../img/mac_bg.png\") no-repeat center center;\n  177  }\n  178  \n\n2 matches across 2 files\n\n\nSearching 482 files for \"border_line\"\n\n0 matches across 0 files\n\n\nSearching 482 files for \"borderline\"\n\n0 matches across 0 files\n\n\nSearching 482 files for \"border-line\"\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/landapp.css:\n  399  \n  400  .headline-simple {\n  401:     background: url(\"../img/headlines/border-line.png\") repeat-x 0 50%;\n  402  }\n  403  \n  404  .headline-dashed {\n  405:     background: url(\"../img/headlines/border-line-dashed.png\") repeat-x 0 50%;\n  406  }\n  407  \n  408  .headline-double {\n  409:     background: url(\"../img/headlines/border-line-double.png\") repeat-x 0 50%;\n  410  }\n  411  \n  412  .headline-triple-dashed {\n  413:     background: url(\"../img/headlines/border-line-3dashed.png\") repeat-x 0 50%;\n  414  }\n  415   /****************\n\n/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/landapp-assets/css/landapp.css:\n  399  \n  400  .headline-simple {\n  401:     background: url(\"../img/headlines/border-line.png\") repeat-x 0 50%;\n  402  }\n  403  \n  404  .headline-dashed {\n  405:     background: url(\"../img/headlines/border-line-dashed.png\") repeat-x 0 50%;\n  406  }\n  407  \n  408  .headline-double {\n  409:     background: url(\"../img/headlines/border-line-double.png\") repeat-x 0 50%;\n  410  }\n  411  \n  412  .headline-triple-dashed {\n  413:     background: url(\"../img/headlines/border-line-3dashed.png\") repeat-x 0 50%;\n  414  }\n  415   /****************\n\n8 matches across 2 files\n",
-			"settings":
-			{
-				"buffer_size": 8789,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/landapp.css",
-			"settings":
-			{
-				"buffer_size": 10669,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/_navigation.html.erb",
-			"settings":
-			{
-				"buffer_size": 1004,
-				"line_ending": "Unix",
-				"name": "<%= link_to \"Home\", root_path, :class => 'brand' %"
-			}
-		},
-		{
-			"file": "app/views/layouts/_messages.html.erb",
-			"settings":
-			{
-				"buffer_size": 282,
-				"line_ending": "Unix",
-				"name": "<% flash.each do |name, msg| %>"
-			}
-		},
-		{
 			"file": "app/helpers/application_helper.rb",
 			"settings":
 			{
 				"buffer_size": 430,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/api/signatures_controller.rb",
+			"settings":
+			{
+				"buffer_size": 2886,
 				"line_ending": "Unix"
 			}
 		},
@@ -128,31 +43,161 @@
 			"file": "app/views/home/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 8789,
+				"buffer_size": 8712,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/devise/registrations/edit.html.erb",
+			"contents": "class Api::ApiController < ApplicationController\n  class Error401 < StandardError; end\n  class Error404 < StandardError; end\n\n  rescue_from Error401, :with => :render_401\n  rescue_from Error404, :with => :render_404\n\nprotected\n  def validate_api_key!\n    raise Error401.new unless $api_key_manager.is_valid?(params[:api_key])\n  end\nprivate\n  def render_401\n    head :unauthorized\n  end\n  def render_404\n    head :not_found\n  end\nend",
 			"settings":
 			{
-				"buffer_size": 1180,
+				"buffer_size": 432,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/devise/registrations/new.html.erb",
+			"file": "app/views/layouts/application.html.erb",
 			"settings":
 			{
-				"buffer_size": 594,
+				"buffer_size": 6605,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/devise/sessions/new.html.erb",
+			"file": "app/assets/javascripts/petitions.js",
 			"settings":
 			{
-				"buffer_size": 586,
+				"buffer_size": 3224,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/_facebook_includes.html.erb",
+			"settings":
+			{
+				"buffer_size": 1132,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/api/petitions_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1420,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/petitions_controller.rb",
+			"settings":
+			{
+				"buffer_size": 75,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/routes.rb",
+			"settings":
+			{
+				"buffer_size": 2191,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/petitions/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 805,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/petitions/show.html.erb",
+			"settings":
+			{
+				"buffer_size": 860,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/actions.html.erb",
+			"settings":
+			{
+				"buffer_size": 2296,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/landapp.css",
+			"settings":
+			{
+				"buffer_size": 10863,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "class CreateExternalAccounts < ActiveRecord::Migration\n  def change\n    create_table :external_accounts do |t|\n      t.string :type\n      t.string :external_id\n      t.references :user\n      t.string :email\n      t.datetime :authenticated_at\n      t.datetime :allowed_at\n\n      t.timestamps\n    end\n  end\nend\n",
+			"file": "db/migrate/20130310145828_create_external_accounts.rb",
+			"file_size": 309,
+			"file_write_time": 1362949304000000,
+			"settings":
+			{
+				"buffer_size": 309,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gemfile",
+			"settings":
+			{
+				"buffer_size": 883,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/external_account.rb",
+			"settings":
+			{
+				"buffer_size": 395,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/facebook_account.rb",
+			"settings":
+			{
+				"buffer_size": 6271,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/user.rb",
+			"settings":
+			{
+				"buffer_size": 937,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/signature.rb",
+			"settings":
+			{
+				"buffer_size": 110,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/admin/petitions.rb",
+			"settings":
+			{
+				"buffer_size": 40,
 				"line_ending": "Unix"
 			}
 		}
@@ -181,6 +226,23 @@
 	},
 	"file_history":
 	[
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/devise/registrations/edit.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/devise/registrations/new.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/devise/sessions/new.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/models/petition.rb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/controllers/petitions_controller.rb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/controllers/api/petitions_controller.rb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/javascripts/petitions.js",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/_messages.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/_navigation.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/landapp.css",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/layouts/application.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/application.scss",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/stylesheets/bootstrap_and_overrides.css.scss",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/assets/javascripts/application.js",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/Gemfile",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/views/home/welcome.html.erb",
+		"/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/config/routes.rb",
 		"/Users/jrhodes2705/Desktop/Treater/projects/Treater/config/mobylyze.sublime-project",
 		"/Users/jrhodes2705/Desktop/RootsBuilder/projects/MobylyzeJS/www/js/app.js",
 		"/Users/jrhodes2705/Desktop/RootsBuilder/projects/MobylyzeJS/www/index.html",
@@ -201,7 +263,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -212,6 +274,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"app_id",
+			"47",
+			"facebook",
+			"_facebook",
+			"_facebook_includes",
+			"def process_auth",
+			"form",
 			"/img",
 			"border-line",
 			"borderline",
@@ -291,466 +360,11 @@
 	"groups":
 	[
 		{
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "config/routes.rb",
-					"settings":
-					{
-						"buffer_size": 2064,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 371.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/home/welcome.html.erb",
-					"settings":
-					{
-						"buffer_size": 25,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8,
-								8
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Gemfile",
-					"settings":
-					{
-						"buffer_size": 871,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								611,
-								555
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 67.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/assets/javascripts/application.js",
-					"settings":
-					{
-						"buffer_size": 3949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								621,
-								621
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1702.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/assets/stylesheets/bootstrap_and_overrides.css.scss",
-					"settings":
-					{
-						"buffer_size": 80,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								80,
-								80
-							]
-						],
-						"settings":
-						{
-							"auto_name": "@import \"bootstrap\";",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/assets/stylesheets/application.scss",
-					"settings":
-					{
-						"buffer_size": 546,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								546,
-								546
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/layouts/application.html.erb",
-					"settings":
-					{
-						"buffer_size": 6896,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1866,
-								1866
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 336.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"settings":
-					{
-						"buffer_size": 8789,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										446,
-										450
-									],
-									[
-										966,
-										970
-									],
-									[
-										1468,
-										1472
-									],
-									[
-										2041,
-										2045
-									],
-									[
-										2443,
-										2447
-									],
-									[
-										2614,
-										2618
-									],
-									[
-										2753,
-										2757
-									],
-									[
-										2892,
-										2896
-									],
-									[
-										3031,
-										3035
-									],
-									[
-										3170,
-										3174
-									],
-									[
-										3309,
-										3313
-									],
-									[
-										3490,
-										3494
-									],
-									[
-										3891,
-										3895
-									],
-									[
-										4259,
-										4263
-									],
-									[
-										4317,
-										4321
-									],
-									[
-										4628,
-										4632
-									],
-									[
-										5001,
-										5008
-									],
-									[
-										5172,
-										5179
-									],
-									[
-										5311,
-										5318
-									],
-									[
-										5450,
-										5457
-									],
-									[
-										5589,
-										5596
-									],
-									[
-										5728,
-										5735
-									],
-									[
-										5867,
-										5874
-									],
-									[
-										6217,
-										6224
-									],
-									[
-										6275,
-										6282
-									],
-									[
-										6586,
-										6593
-									],
-									[
-										6977,
-										6987
-									],
-									[
-										7227,
-										7237
-									],
-									[
-										7657,
-										7668
-									],
-									[
-										7779,
-										7790
-									],
-									[
-										7908,
-										7919
-									],
-									[
-										8044,
-										8055
-									],
-									[
-										8299,
-										8310
-									],
-									[
-										8421,
-										8432
-									],
-									[
-										8550,
-										8561
-									],
-									[
-										8686,
-										8697
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								7647,
-								7647
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 6,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2790.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/assets/stylesheets/landapp.css",
-					"settings":
-					{
-						"buffer_size": 10669,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10602,
-								10602
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7678.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/views/layouts/_navigation.html.erb",
-					"settings":
-					{
-						"buffer_size": 1004,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								316,
-								316
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<%= link_to \"Home\", root_path, :class => 'brand' %",
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/views/layouts/_messages.html.erb",
-					"settings":
-					{
-						"buffer_size": 282,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								282,
-								282
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<% flash.each do |name, msg| %>",
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
 					"file": "app/helpers/application_helper.rb",
 					"settings":
 					{
@@ -778,7 +392,35 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 1,
+					"file": "app/controllers/api/signatures_controller.rb",
+					"settings":
+					{
+						"buffer_size": 2886,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								873,
+								864
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "config/environments/development.rb",
 					"settings":
 					{
@@ -800,13 +442,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 22.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 3,
 					"file": "app/assets/stylesheets/bootstrap.css",
 					"settings":
 					{
@@ -834,19 +476,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 4,
 					"file": "app/views/home/index.html.erb",
 					"settings":
 					{
-						"buffer_size": 8789,
+						"buffer_size": 8712,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7685,
-								7685
+								6489,
+								6489
 							]
 						],
 						"settings":
@@ -855,25 +497,106 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3581.0,
+						"translation.y": 3399.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "app/views/devise/registrations/edit.html.erb",
+					"buffer": 5,
 					"settings":
 					{
-						"buffer_size": 1180,
+						"buffer_size": 432,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1179,
-								1179
+								11,
+								24
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/layouts/application.html.erb",
+					"settings":
+					{
+						"buffer_size": 6605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4680,
+								4688
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1761.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/assets/javascripts/petitions.js",
+					"settings":
+					{
+						"buffer_size": 3224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								86,
+								52
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/views/layouts/_facebook_includes.html.erb",
+					"settings":
+					{
+						"buffer_size": 1132,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								676,
+								676
 							]
 						],
 						"settings":
@@ -889,24 +612,160 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
-					"file": "app/views/devise/registrations/new.html.erb",
+					"buffer": 9,
+					"file": "app/controllers/api/petitions_controller.rb",
 					"settings":
 					{
-						"buffer_size": 594,
+						"buffer_size": 1420,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								80,
+								0,
+								1420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/jrhodes2705/Desktop/snaptivist/projects/snaptivist-web/app/controllers/api",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/controllers/petitions_controller.rb",
+					"settings":
+					{
+						"buffer_size": 75,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								69,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "config/routes.rb",
+					"settings":
+					{
+						"buffer_size": 2191,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/views/petitions/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 805,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
 								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/views/petitions/show.html.erb",
+					"settings":
+					{
+						"buffer_size": 860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								132,
+								93
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -917,19 +776,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
-					"file": "app/views/devise/sessions/new.html.erb",
+					"buffer": 15,
+					"file": "app/views/layouts/actions.html.erb",
 					"settings":
 					{
-						"buffer_size": 586,
+						"buffer_size": 2296,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								72,
-								72
+								1815,
+								1815
 							]
 						],
 						"settings":
@@ -937,6 +796,220 @@
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2345.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/assets/stylesheets/landapp.css",
+					"settings":
+					{
+						"buffer_size": 10863,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10801,
+								10801
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7813.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "db/migrate/20130310145828_create_external_accounts.rb",
+					"settings":
+					{
+						"buffer_size": 309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								178,
+								178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "Gemfile",
+					"settings":
+					{
+						"buffer_size": 883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								624,
+								624
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 117.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/models/external_account.rb",
+					"settings":
+					{
+						"buffer_size": 395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								91
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/models/facebook_account.rb",
+					"settings":
+					{
+						"buffer_size": 6271,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2074,
+								2074
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "app/models/user.rb",
+					"settings":
+					{
+						"buffer_size": 937,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								516,
+								516
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "app/models/signature.rb",
+					"settings":
+					{
+						"buffer_size": 110,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "app/admin/petitions.rb",
+					"settings":
+					{
+						"buffer_size": 40,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -978,6 +1051,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"replace":
 	{
 		"height": 0.0
@@ -1003,6 +1080,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 257.0,
+	"side_bar_width": 482.0,
 	"status_bar_visible": true
 }

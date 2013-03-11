@@ -8,10 +8,10 @@
 </div>
 <div id="target-count-wrapper" class="clearfix">
 <div class="progress">
-   <div class="bar" style="width: 60%;"></div>
+   <div class="bar" style="width: <%= (@petition.signatures_count*100)/@petition.target_count %>%;"></div>
 </div>
 <div class="pull-left">
-Signers: 3
+Signers: <%=  @petition.signatures_count %>
 </div>
 <div class="pull-right">
 Goal: <%= @petition.target_count %>
