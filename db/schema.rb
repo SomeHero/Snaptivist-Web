@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323140327) do
+ActiveRecord::Schema.define(:version => 20130323154731) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,6 +84,12 @@ ActiveRecord::Schema.define(:version => 20130323140327) do
   add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"
   add_index "signatures", ["user_id"], :name => "index_signatures_on_user_id"
 
+  create_table "target_groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "targets", :force => true do |t|
     t.string   "first_name"
     t.string   "title"
@@ -116,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20130323140327) do
     t.string   "official_rss"
     t.string   "senate_class"
     t.string   "birthdate"
+    t.integer  "targetgroup_id"
   end
 
   create_table "users", :force => true do |t|
