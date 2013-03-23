@@ -28,6 +28,8 @@ gem 'devise'
 gem 'activeadmin'
 gem 'coffee-script-source', '~> 1.4.0'
 gem "koala"
+gem "ym4r"
+gem "sunlight"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

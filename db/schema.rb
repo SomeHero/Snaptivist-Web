@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311211922) do
+ActiveRecord::Schema.define(:version => 20130323140327) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -85,12 +85,37 @@ ActiveRecord::Schema.define(:version => 20130311211922) do
   add_index "signatures", ["user_id"], :name => "index_signatures_on_user_id"
 
   create_table "targets", :force => true do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "title"
     t.string   "twitter_handle"
     t.string   "email_address"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "name_suffix"
+    t.string   "nickname"
+    t.string   "party"
+    t.string   "state"
+    t.string   "district"
+    t.string   "in_office"
+    t.string   "gender"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "website"
+    t.string   "webform"
+    t.string   "congress_office"
+    t.string   "bioguide_id"
+    t.string   "votesmart_id"
+    t.string   "fec_id"
+    t.string   "govtrack_id"
+    t.string   "crp_id"
+    t.string   "congresspedia_url"
+    t.string   "youtube_url"
+    t.string   "facebook_id"
+    t.string   "official_rss"
+    t.string   "senate_class"
+    t.string   "birthdate"
   end
 
   create_table "users", :force => true do |t|

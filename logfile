@@ -4,3 +4,5 @@ LOG:  record with zero length at 0/3AC01A8
 LOG:  redo is not required
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+ERROR:  relation "target" does not exist
+STATEMENT:  ALTER TABLE "target" RENAME COLUMN "name" TO "first_name"
