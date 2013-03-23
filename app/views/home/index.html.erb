@@ -167,44 +167,203 @@
 <!--/#wrap -->
 <div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
 	<%= form_tag("/api/petitions", :method => "post", :id => "create-petition-form") do %>
-		<fieldset>
-			<legend>Who is the target of your petition?</legend>
+	<fieldset>
+		<legend>Who is the target of your petition?</legend>
 
-			<div class="control-group">
-				<div class="controls" style="margin-left: 0px;">
-					<label class="radio">
-						<input type="radio" name="targetOption" id="targetOption1" value="state">My Governor or State Legislator
-					</label>
-					<label class="radio">
-						<input type="radio" name="targetOption" id="targetOption2" value="federal">Congress or the Executive Branch
-					</label>
-					<label class="radio">
-						<input type="radio" name="targetOption" id="targetOption3" value="other">Someone else
-					</label>
+		<div class="control-group">
+			<div class="controls" style="margin-left: 0px;">
+				<label class="radio">
+					<input type="radio" name="targetOption" id="target-group-the-white-house" value="state" class="target-group">The White House
+				</label>
+				<div id="target-group-the-white-house-items" class="control-group" style="margin-left: 20px; display: none;">
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target1" value="state">President - Barack Obama
+						</label>
+					</div>
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target2" value="state">Vice President - Joe Biden
+						</label>
+					</div> 	
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target3" value="state">Secretary of State - Eric Holder
+						</label>
+					</div> 	
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target3" value="state">Secretary of State - John Kerry
+						</label>
+					</div> 	
+				</div>
+				<label class="radio">
+					<input type="radio" name="targetOption" id="target-group-congress" value="federal" class="target-group">Congress
+				</label>
+				<div id="target-group-congress-items" class="control-group" style="margin-left: 20px; display: none;">
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target1" value="state">The entire U.S. House
+						</label>
+					</div>
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target1" value="state">The entire U.S. Senate
+						</label>
+					</div>
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" id="target-group-congress-state-select" class="state-select" name="target" id="target1" value="state">A Specific Legislator
+						</label>
+					</div>
+					<div id="target-group-congress-state-select-items" class="control-group" style="margin-left: 20px; display:none;">
+						<div class="controls" style="margin-left: 0px;">
+							<label>Choose a State:</label>
+							<select class="target-group-state-select" id="target-group-congress-select-state">
+								<option>-- Select a State --</option>
+								<option>AL</option>
+								<option>VA</option>
+							</select>
+						</div>
+						<div class="control-group" id="target-group-congress-select-state-items" style="margin-left: 20px; display: none;">
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">US Senator 1
+								</label>
+							</div>	
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">US Senator 2
+								</label>
+							</div>	
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">US Representative from District 1
+								</label>
+							</div>	
+<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">US Representative from District 2
+								</label>
+							</div>	
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">US Representative from District 3
+								</label>
+							</div>	
+					</div>
+
 				</div>
 			</div>
-		</fieldset>
-		<fieldset>
-			<legend>What do you want them to do?</legend>
-
-			<div class="control-group">
+			<label class="radio">
+				<input type="radio" name="targetOption" class="target-group" id="target-group-state" value="state">Your State Government
+			</label>
+			<div id="target-group-state-items" class="control-group" style="margin-left: 20px; display: none;">
 				<div class="controls" style="margin-left: 0px;">
-					<input id="title" name="title" type="text" placeholder="Type your demand here" style="width: 98%">
-					<span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
+					<label>Choose a State:</label>
+					<select class="target-group-state-select" id="target-group-state-select-state">
+						<option>-- Select a State --</option>
+						<option>AL</option>
+						<option>VA</option>
+					</select>
+				</div>
+				<div class="control-group" id="target-group-state-select-state-items" style="margin-left: 20px; display: none;">
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target1" value="state">Executive Branch
+						</label>
+						<div class="control-group" style="margin-left: 20px; display: none;">
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">Governor
+								</label>
+							</div>	
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">Lt. Governor
+								</label>
+							</div>	
+							<div class="controls" style="margin-left: 0px;">
+								<label class="radio">
+									<input type="radio" name="target" id="target1" value="state">Attorney General
+								</label>
+							</div>	
+						</div>
+					</div>	
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target1" value="state">The entire State House
+						</label>
+					</div>
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" id="target1" value="state">The entire State Senate
+						</label>
+					</div>
+					<div class="controls" style="margin-left: 0px;">
+						<label class="radio">
+							<input type="radio" name="target" class="target-group-other" id="target-group-state-other" value="state">A Specific Legislator
+						</label>
+					</div>
+					<div id="target-group-state-other-items" class="control-group" style="margin-left: 20px; display: none;">
+						<div class="controls" style="margin-left: 0px;">
+							<input type="text" placeholder="Name" />
+						</div>
+						<div class="controls" style="margin-left: 0px;">
+							<input type="text" placeholder="Title" />
+						</div>
+						<div class="controls" style="margin-left: 0px;">
+							<input type="text" placeholder="Email Address" />
+						</div>
+						<div class="controls" style="margin-left: 0px;">
+							<input type="text" placeholder="Twitter Handle" />
+						</div>
+
+					</div>
 				</div>
 			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Petition Text</legend>
-
-			<div class="control-group">
+			<label class="radio">
+				<input type="radio" name="targetOption" class="target-group" id="target-group-other" value="other">Someone else
+			</label>
+			<div id="target-group-other-items" class="control-group" style="margin-left: 20px; display: none;">
 				<div class="controls" style="margin-left: 0px;">
-					<textarea id="summary" name="summary" rows="6" style="width: 98%"></textarea>
+					<input type="text" placeholder="Name" />
 				</div>
+				<div class="controls" style="margin-left: 0px;">
+					<input type="text" placeholder="Title" />
+				</div>
+				<div class="controls" style="margin-left: 0px;">
+					<input type="text" placeholder="Email Address" />
+				</div>
+				<div class="controls" style="margin-left: 0px;">
+					<input type="text" placeholder="Twitter Handle" />
+				</div>
+
 			</div>
-		</fieldset>
-		<button id="create-petition" class="btn btn-large btn-block btn-primary" type="submit">Create Petition</button>
-	<% end %>
+		</div>
+
+</fieldset>
+<fieldset>
+	<legend>What do you want them to do?</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<input id="title" name="title" type="text" placeholder="Type your demand here" style="width: 98%">
+			<span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Petition Text</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<textarea id="summary" name="summary" rows="6" style="width: 98%"></textarea>
+		</div>
+	</div>
+</fieldset>
+<button id="create-petition" class="btn btn-large btn-block btn-primary" type="submit">Create Petition</button>
+<% end %>
 </div>
 <div id="launch-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
 	<%= image_tag "default_petition.png" %>
@@ -213,34 +372,34 @@
 	</div>
 	<h2>President Obama: <span id="title-edit"></span></h2>
 	<div class="control-group">
-				<div class="controls" style="margin-left: 0px;">
-					<textarea id="summary-edit" rows="4" style="width: 98%">
-					</textarea>
-				</div>
-				<div class="pull-right">
-					<a href="#">Edit</a>
-				</div>
-			</div>
+		<div class="controls" style="margin-left: 0px;">
+			<textarea id="summary-edit" rows="4" style="width: 98%">
+			</textarea>
+		</div>
+		<div class="pull-right">
+			<a href="#">Edit</a>
+		</div>
+	</div>
 	<form class="form-horizontal" style="position: relative;">
 		<fieldset>
 			<legend>How many signatures do you need?</legend>
 			
 			<div class="control-group">
 				<div id="target-count-wrapper" class="clearfix">
-<div class="progress">
-   <div class="bar" style="width: 1%;"></div>
-</div>
-<div class="pull-left">
-Signers: 0
-</div>
-<div class="pull-right">
-Goal: 1000
-</div>
-</div>
+					<div class="progress">
+						<div class="bar" style="width: 1%;"></div>
+					</div>
+					<div class="pull-left">
+						Signers: 0
+					</div>
+					<div class="pull-right">
+						Goal: 1000
+					</div>
+				</div>
 			</div>
 			<div class="pull-right">
-					<a href="#">Edit</a>
-				</div>
+				<a href="#">Edit</a>
+			</div>
 		</fieldset>
 		<fieldset>
 			<legend>Leave a brief comment about why you're signing this petition</legend>
@@ -257,19 +416,19 @@ Goal: 1000
 <div id="share-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
 	<h2>President Obama: Stop the Drone Assassinations of American Citizens</h2>
 	<p class="lead">As if it was actually necessary to elaborate on why the lack of due process and summary-execution-by-remote-control-robot is a bad thing for our health and rule of law.
-    <p>
-	<form class="form-horizontal" style="position: relative;">
-		<fieldset>
-			<legend>Share with Your Network</legend>
-			<div class="control-group">
-				<div class="controls" style="margin-left: 0px;">
-					<textarea rows="3" style="width: 98%">I just told @BarackObama: Stop the Drone Assassinations of American Citizens</textarea>
-				</div>
-			</div>
+		<p>
+			<form class="form-horizontal" style="position: relative;">
+				<fieldset>
+					<legend>Share with Your Network</legend>
+					<div class="control-group">
+						<div class="controls" style="margin-left: 0px;">
+							<textarea rows="3" style="width: 98%">I just told @BarackObama: Stop the Drone Assassinations of American Citizens</textarea>
+						</div>
+					</div>
 
-		</fieldset>
+				</fieldset>
 
-		<button id="share-petition" class="btn btn-large btn-block btn-primary" type="button">Share Petition</button>
-	</form>
-</div>
+				<button id="share-petition" class="btn btn-large btn-block btn-primary" type="button">Share Petition</button>
+			</form>
+		</div>
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var api_root_url = "http://dev.snaptivist.com/api"; //"http://localhost:3000/api/";
+	var api_root_url = "http://localhost:3000/api/";
 
 	$("#wrap").on("submit", "#create-petition-form", function(e) {
 		e.preventDefault();
@@ -76,6 +76,7 @@ $(document).ready(function() {
 
 				var signature = result.result.signature;
 
+	    		$('#sign-petition-thanks').modal();
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 
@@ -117,6 +118,8 @@ $(document).ready(function() {
 
 				var signature = result.result.signature;
 
+					$('#sign-petition-thanks').modal();
+			
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 
@@ -128,4 +131,16 @@ $(document).ready(function() {
 	 	console.log('fb login failed');
 	 	};
 	});
+$("#wrap").on("click", ".target-group", function() {
+	$("#" + $(this).attr("id") + "-items").toggle();
+});
+$("#wrap").on("click", ".state-select", function() {
+	$("#" + $(this).attr("id") + "-items").toggle();
+});
+$("#wrap").on("change", ".target-group-state-select", function() {
+	$("#" + $(this).attr("id") + "-items").toggle();
+});
+$("#wrap").on("click", ".target-group-other", function() {
+	$("#" + $(this).attr("id") + "-items").toggle();
+});
 });
