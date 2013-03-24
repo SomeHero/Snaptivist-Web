@@ -18,22 +18,27 @@ class Api::PetitionsController < ApplicationController
     	p.title = params[:title]
     	p.summary = params[:summary]
     	p.target_count =100
-      p.target_id = 1
+      p.target_id = params[:target_id]
     end
 
     if !@petition.valid?
-     return render_result({}, 400, 'Error Creating Petition')
+     return render_result({}, 400, @petition.errors)
    end
 
     #return if error_messages?(:config)
 
     @petition.save
     
-    render_result({'petition' => {'id' => @petition.id,
-      'title' => @petition.title,
-      'summary' => @petition.summary
-      }})
+    render_result(@petition.to_api)
 
+  end
+
+  def show
+    @petition = Petition.find(params[:id])
+
+    raise Error404 unless @petition
+
+    render_result(@petition.to_api)
   end
 
 	# render a result in the appropriate format

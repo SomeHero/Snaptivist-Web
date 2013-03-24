@@ -1,201 +1,27 @@
 
-<div class="hero-wrapper">
-	<div class="container">
-		<div class="hero-unit">
-			<h2>Snap In Speak Out</h2>
-			<p class="lead">
-				We're building a new kind of online activism platform, designed exclusively for the grassroots. The best part? You can use our free tools anywhere - but you can't get them anywhere else!
-			</p>
-			<p id="action-buttons" class="cta-actions">
-				<a id="start-petition" class="btn btn-primary btn-large">Start a Petition</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start an Event</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start a Phone Campaign</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start a Poll</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start a Bundle</a>&nbsp;
-			</p>
-		</div>
-		<!--/.hero-unit -->
-		<div class="hero-media">
-			<%= image_tag "mac.png" %>
-		</div>
-		<!--/.hero-media -->
-	</div>
-	<!--/.container -->
-</div>
-<!--/.hero-wrapper -->
-<div class="container">
-	<div class="row features">
-		<div class="headline headline-simple span12">
-			<h3>Explore Our Top Features</h3>
-		</div>
-		<!--/.headline -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-bell-alt"></i>
-			</div>
-			<h2>Simple & Clean</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-tablet"></i>
-			</div>
-			<h2>Responsive</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-beaker"></i>
-			</div>
-			<h2>A/B Tested</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-trophy"></i>
-			</div>
-			<h2>High Conversion rate</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-	</div>
-	<!-- /.features -->
-	<div class="row clients">
-		<div class="headline headline-simple span12">
-			<h3>Our Happy Clients</h3>
-		</div>
-		<!--/.headline -->
-		<div class="span2">
-			<%= image_tag "clients/01.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/02.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/03.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/04.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/05.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/06.png" %>
-		</div>
-		<!-- /.span2 -->
-	</div>
-	<!-- /.clients -->
-	<div class="testimonials">
-		<div class="container">
-			<div class="flexslider">
-				<ul class="slides">
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-				</ul>
-				<!--/.slides -->
-			</div>
-			<!--/.flexslider -->
-		</div>
-		<!--/.container -->
-	</div>
-	<!-- /.testimonials -->
-	<div class="row call-to-action">
-		<div class="span9">
-			<h4>Landing Page to Show The Power of Your Web App</h4>
-			<p>
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-			</p>
-		</div>
-		<!--/.span9 -->
-		<div class="span3">
-			<a class="btn btn-success btn-large btn-block">Sign up for Free</a>
-		</div>
-		<!--/.span3 -->
-	</div>
-	<!-- /.call-to-action -->
-</div>
-<!-- /container -->
-<div id="push">
-</div>
-<!--/#wrap -->
+<script id="target-template" type="text/x-handlebars-template">
+{{#each result}}
+  <div class="controls" style="margin-left: 0px;">
+		<label class="radio">
+			<input type="radio" name="target" class="target" id="target1" value="{{target_id}}">{{title}} - {{first_name}} {{last_name}}
+		</label>
+  </div>
+  {{/each}}
+</script>
+<script id="create-petition-template" type="text/x-handlebars-template">
 <div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
 	<%= form_tag("/api/petitions", :method => "post", :id => "create-petition-form") do %>
+	<input type="hidden" id="target_id" name="target_id" />
 	<fieldset>
 		<legend>Who is the target of your petition?</legend>
 
 		<div class="control-group">
 			<div class="controls" style="margin-left: 0px;">
 				<label class="radio">
-					<input type="radio" name="targetOption" id="target-group-the-white-house" value="state" class="target-group">The White House
+					<input type="radio" name="targetOption" id="target-group-the-white-house" data-target-group="1" value="state" class="target-group">The White House
 				</label>
 				<div id="target-group-the-white-house-items" class="control-group" style="margin-left: 20px; display: none;">
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target1" value="state">President - Barack Obama
-						</label>
-					</div>
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target2" value="state">Vice President - Joe Biden
-						</label>
-					</div> 	
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target3" value="state">Secretary of State - Eric Holder
-						</label>
-					</div> 	
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target3" value="state">Secretary of State - John Kerry
-						</label>
-					</div> 	
+					
 				</div>
 				<label class="radio">
 					<input type="radio" name="targetOption" id="target-group-congress" value="federal" class="target-group">Congress
@@ -365,16 +191,17 @@
 <button id="create-petition" class="btn btn-large btn-block btn-primary" type="submit">Create Petition</button>
 <% end %>
 </div>
+</script>
+<script id="launch-petition-template" type="text/x-handlebars-template">
 <div id="launch-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
 	<%= image_tag "default_petition.png" %>
 	<div class="pull-right">
 		<a href="#">Edit</a>
 	</div>
-	<h2>President Obama: <span id="title-edit"></span></h2>
+	<h2>{{target.first_name  target.last_name}}: {{title}}</h2>
 	<div class="control-group">
 		<div class="controls" style="margin-left: 0px;">
-			<textarea id="summary-edit" rows="4" style="width: 98%">
-			</textarea>
+			<textarea id="summary-edit" rows="4" style="width: 98%">{{summary}}</textarea>
 		</div>
 		<div class="pull-right">
 			<a href="#">Edit</a>
@@ -393,7 +220,7 @@
 						Signers: 0
 					</div>
 					<div class="pull-right">
-						Goal: 1000
+						Goal: {{target_count}}
 					</div>
 				</div>
 			</div>
@@ -406,23 +233,25 @@
 			
 			<div class="control-group">
 				<div class="controls" style="margin-left: 0px;">
-					<textarea rows="6" style="width: 98%" placeholder="I just told @BarackObama: Stop the Drone Assassinations of American Citizens"></textarea>
+					<textarea rows="6" style="width: 98%" placeholder="I just told @{{target.twitter_handle}}: {{title}}"></textarea>
 				</div>
 			</div>
 		</fieldset>
 		<button id="launch-petition" class="btn btn-large btn-block btn-primary" type="button">Launch Petition</button>
 	</form>
 </div>
+</script>
+<script id="share-petition-template"  type="text/x-handlebars-template">
 <div id="share-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<h2>President Obama: Stop the Drone Assassinations of American Citizens</h2>
-	<p class="lead">As if it was actually necessary to elaborate on why the lack of due process and summary-execution-by-remote-control-robot is a bad thing for our health and rule of law.
-		<p>
+	<h2>{{target.last_name}}: {{title}}</h2>
+	<p class="lead">{{summary}}
+		</p>
 			<form class="form-horizontal" style="position: relative;">
 				<fieldset>
 					<legend>Share with Your Network</legend>
 					<div class="control-group">
 						<div class="controls" style="margin-left: 0px;">
-							<textarea rows="3" style="width: 98%">I just told @BarackObama: Stop the Drone Assassinations of American Citizens</textarea>
+							<textarea rows="3" style="width: 98%">I just told @{{target.twitter_handle}}: {{summary}}</textarea>
 						</div>
 					</div>
 
@@ -431,4 +260,171 @@
 				<button id="share-petition" class="btn btn-large btn-block btn-primary" type="button">Share Petition</button>
 			</form>
 		</div>
+</script>
+<div class="hero-wrapper">
+	<div class="container">
+		<div class="hero-unit">
+			<h2>Snap In Speak Out</h2>
+			<p class="lead">
+				We're building a new kind of online activism platform, designed exclusively for the grassroots. The best part? You can use our free tools anywhere - but you can't get them anywhere else!
+			</p>
+			<p id="action-buttons" class="cta-actions">
+				<a id="start-petition" class="btn btn-primary btn-large">Start a Petition</a>&nbsp;
+				<a class="btn btn-primary btn-large">Start an Event</a>&nbsp;
+				<a class="btn btn-primary btn-large">Start a Phone Campaign</a>&nbsp;
+				<a class="btn btn-primary btn-large">Start a Poll</a>&nbsp;
+				<a class="btn btn-primary btn-large">Start a Bundle</a>&nbsp;
+			</p>
+		</div>
+		<!--/.hero-unit -->
+		<div class="hero-media">
+			<%= image_tag "mac.png" %>
+		</div>
+		<!--/.hero-media -->
+	</div>
+	<!--/.container -->
+</div>
+<!--/.hero-wrapper -->
+<div class="container">
+	<div class="row features">
+		<div class="headline headline-simple span12">
+			<h3>Explore Our Top Features</h3>
+		</div>
+		<!--/.headline -->
+		<div class="span3">
+			<div class="icon">
+				<i class="icon-bell-alt"></i>
+			</div>
+			<h2>Simple & Clean</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
+			</p>
+		</div>
+		<!--/.span3 -->
+		<div class="span3">
+			<div class="icon">
+				<i class="icon-tablet"></i>
+			</div>
+			<h2>Responsive</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
+			</p>
+		</div>
+		<!--/.span3 -->
+		<div class="span3">
+			<div class="icon">
+				<i class="icon-beaker"></i>
+			</div>
+			<h2>A/B Tested</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
+			</p>
+		</div>
+		<!--/.span3 -->
+		<div class="span3">
+			<div class="icon">
+				<i class="icon-trophy"></i>
+			</div>
+			<h2>High Conversion rate</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
+			</p>
+		</div>
+		<!--/.span3 -->
+	</div>
+	<!-- /.features -->
+	<div class="row clients">
+		<div class="headline headline-simple span12">
+			<h3>Our Happy Clients</h3>
+		</div>
+		<!--/.headline -->
+		<div class="span2">
+			<%= image_tag "clients/01.png" %>
+		</div>
+		<!-- /.span2 -->
+		<div class="span2">
+			<%= image_tag "clients/02.png" %>
+		</div>
+		<!-- /.span2 -->
+		<div class="span2">
+			<%= image_tag "clients/03.png" %>
+		</div>
+		<!-- /.span2 -->
+		<div class="span2">
+			<%= image_tag "clients/04.png" %>
+		</div>
+		<!-- /.span2 -->
+		<div class="span2">
+			<%= image_tag "clients/05.png" %>
+		</div>
+		<!-- /.span2 -->
+		<div class="span2">
+			<%= image_tag "clients/06.png" %>
+		</div>
+		<!-- /.span2 -->
+	</div>
+	<!-- /.clients -->
+	<div class="testimonials">
+		<div class="container">
+			<div class="flexslider">
+				<ul class="slides">
+					<li>
+						<blockquote>
+							<p>
+								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
+							</p>
+							<small>Jon Doe</small>
+						</blockquote>
+					</li>
+					<li>
+						<blockquote>
+							<p>
+								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
+							</p>
+							<small>Jon Doe</small>
+						</blockquote>
+					</li>
+					<li>
+						<blockquote>
+							<p>
+								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
+							</p>
+							<small>Jon Doe</small>
+						</blockquote>
+					</li>
+					<li>
+						<blockquote>
+							<p>
+								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
+							</p>
+							<small>Jon Doe</small>
+						</blockquote>
+					</li>
+				</ul>
+				<!--/.slides -->
+			</div>
+			<!--/.flexslider -->
+		</div>
+		<!--/.container -->
+	</div>
+	<!-- /.testimonials -->
+	<div class="row call-to-action">
+		<div class="span9">
+			<h4>Landing Page to Show The Power of Your Web App</h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
+			</p>
+		</div>
+		<!--/.span9 -->
+		<div class="span3">
+			<a class="btn btn-success btn-large btn-block">Sign up for Free</a>
+		</div>
+		<!--/.span3 -->
+	</div>
+	<!-- /.call-to-action -->
+</div>
+<!-- /container -->
+<div id="push">
+</div>
+<!--/#wrap -->
 

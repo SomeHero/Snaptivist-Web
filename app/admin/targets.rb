@@ -9,13 +9,13 @@ ActiveAdmin.register Target do
   	column :district
   	column :facebook_id
   	column :twitter_handle
-  	column :TargetGroup
+  	column :target_group
 
   	default_actions
   end
 
   # Filter only by state
-  filter :TargetGroup
+  filter :target_group
   filter :first_name
   filter :middle_name
   filter :last_name

@@ -1,10 +1,29 @@
 $(document).ready(function() {
 
-	var api_root_url = "http://localhost:3000/api/";
+	var api_root_url = "http://dev.snaptivist.com/api/";
+	var petition_id;
 
+	$("#start-petition").click(function() {
+
+        var source   = $("#create-petition-template").html();
+        var template = Handlebars.compile(source);
+
+    	var windowWidth = $(window).width();
+        var context = "";
+        var html = template(context);
+
+        $("#wrap").append(html);
+
+        $("#start-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+    	
+    	$('#start-petition-panel').animate({
+    			left:windowWidth/2-$('#start-petition-panel').width()/2
+		});
+    });
 	$("#wrap").on("submit", "#create-petition-form", function(e) {
 		e.preventDefault();
 
+		var target_id = $("#target_id").val();
 		var title = $("#title").val();
 		var summary = $("#summary").val();
 
@@ -14,6 +33,7 @@ $(document).ready(function() {
 			type: "POST",
 			url: url,
 			data: JSON.stringify({
+				'target_id': target_id,
 				'title': title,
 				'summary': summary 
 			}),
@@ -23,13 +43,19 @@ $(document).ready(function() {
 			// On success do some processing like closing the window and show an alert
 			success: function(result) {
 
-				var petition = result.result.petition;
+				 petition_id = result.result.petition_id;
 
-				$("#title-edit").text(petition.title);
-				$("#summary-edit").text(petition.summary);
+				 var source   = $("#launch-petition-template").html();
+        		 var template = Handlebars.compile(source);
 
-				var windowWidth = $(window).width();
+    			 var windowWidth = $(window).width();
+        		 var context = result.result;
+        		 var html = template(context);
 
+        		$("#wrap").append(html);
+
+        		$("#launch-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+    	
     			$('#start-petition-panel').animate({
     				left: -($("#create-petition").width() + windowWidth/2)
     			}, 400, function() {
@@ -45,6 +71,62 @@ $(document).ready(function() {
 			}
 		});
 	});
+    $("#wrap").on("click", "#launch-petition", function(e) {
+    	e.preventDefault();
+
+    	var url = api_root_url + '/petitions/' + petition_id;
+
+		$.ajax({
+			type: "GET",
+			url: url,
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+
+    		var source   = $("#share-petition-template").html();
+        	var template = Handlebars.compile(source);
+
+    		var windowWidth = $(window).width();
+
+        	var context = result.result;
+        	var html = template(context);
+
+        	$("#wrap").append(html);
+
+    		$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+			$('#launch-petition-panel').animate({
+    			left: -($('#launch-petition-panel').width() + windowWidth/2)
+    		}, 400, function() {
+    			
+    			$('#share-petition-panel').animate({
+    				left:windowWidth/2-$('#share-petition-panel').width()/2
+    			});
+    			});
+
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+
+
+    });
+    $("#wrap").on("click", "#share-petition", function(e) {
+    	e.preventDefault();
+
+    		var windowWidth = $(window).width();
+
+    		$('#share-petition-panel').animate({
+    			left: -($(this).width() + windowWidth/2)
+    		}, 400, function() {
+    			$("#start-petition-panel").remove();
+				$("#launch-petition-panel").remove();
+				$("#share-petition-panel").remove();
+    		});
+    });
 	$("#wrap").on("click", "#sign-petition-user-name", function(e) {
 		e.preventDefault();
 
@@ -131,16 +213,94 @@ $(document).ready(function() {
 	 	console.log('fb login failed');
 	 	};
 	});
-$("#wrap").on("click", ".target-group", function() {
-	$("#" + $(this).attr("id") + "-items").toggle();
+$("#wrap").on("click", "#target-group-the-white-house", function() {
+
+	var elem = $("#" + $(this).attr("id") + "-items");
+	var source   = $("#target-template").html();
+	var template = Handlebars.compile(source);
+
+	var url = api_root_url +  '/targets?targetgroup_id=1'
+		$.ajax({
+			type: "GET",
+			url: url,
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(results) {
+
+				var context = results;
+				var html    = template(context);
+
+				elem.empty().append(html);
+				elem.toggle();
+			
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+
+
+});
+$("#wrap").on("click", "#target-group-congress", function() {
+
+	var elem = $("#" + $(this).attr("id") + "-items");
+	elem.toggle();
+
+});
+$("#wrap").on("click", "#target-group-state", function() {
+
+	var elem = $("#" + $(this).attr("id") + "-items");
+	elem.toggle();
+
+});
+$("#wrap").on("click", "#target-group-other", function() {
+
+	var elem = $("#" + $(this).attr("id") + "-items");
+	elem.toggle();
+
+});
+$("#wrap").on("click", ".target", function() {
+
+	$("#target_id").val($(this).val())
+
 });
 $("#wrap").on("click", ".state-select", function() {
 	$("#" + $(this).attr("id") + "-items").toggle();
 });
-$("#wrap").on("change", ".target-group-state-select", function() {
-	$("#" + $(this).attr("id") + "-items").toggle();
+$("#wrap").on("change", "#target-group-congress-select-state", function() {
+	var elem = $("#" + $(this).attr("id") + "-items");
+	var state = $(this).val();
+	var source   = $("#target-template").html();
+	var template = Handlebars.compile(source);
+
+	var url = api_root_url +  '/targets?state='+ state +'&targetgroup_id=2'
+		$.ajax({
+			type: "GET",
+			url: url,
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(results) {
+
+				var context = results;
+				var html    = template(context);
+
+				elem.empty().append(html);
+				elem.show();
+			
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		})
 });
 $("#wrap").on("click", ".target-group-other", function() {
 	$("#" + $(this).attr("id") + "-items").toggle();
 });
+
 });

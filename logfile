@@ -6,3 +6,7 @@ LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
 ERROR:  relation "target" does not exist
 STATEMENT:  ALTER TABLE "target" RENAME COLUMN "name" TO "first_name"
+ERROR:  syntax error at or near ":" at character 68
+STATEMENT:  SELECT "targets".* FROM "targets"  WHERE (targetgroup_id = '2' AND :state = 'VA')
+ERROR:  syntax error at or near ":" at character 68
+STATEMENT:  SELECT "targets".* FROM "targets"  WHERE (targetgroup_id = '2' AND :state = 'VA')

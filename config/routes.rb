@@ -2,6 +2,7 @@ SnaptivistWeb::Application.routes.draw do
   namespace :api do
     resources :petitions
     resources :signatures
+    resources :targets
   end
   
   resources :petitions
