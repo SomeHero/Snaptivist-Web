@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
-	var api_root_url = "http://dev.snaptivist.com/api/";
+	var api_root_url = "http://localhost:3000/api";
 	var petition_id;
+	var phonecampaign_id;
+	var poll_id;
+
+	Handlebars.registerPartial("selectTarget", $("#select-target-template").html());
 
 	$("#start-petition").click(function() {
 
@@ -125,6 +129,246 @@ $(document).ready(function() {
     			$("#start-petition-panel").remove();
 				$("#launch-petition-panel").remove();
 				$("#share-petition-panel").remove();
+    		});
+    });
+    $("#start-phone-campaign").click(function() {
+
+        var source   = $("#create-phone-campaign-template").html();
+        var template = Handlebars.compile(source);
+
+    	var windowWidth = $(window).width();
+        var context = "";
+        var html = template(context);
+
+        $("#wrap").append(html);
+
+        $("#start-phone-campaign-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+    	
+    	$('#start-phone-campaign-panel').animate({
+    			left:windowWidth/2-$('#start-phone-campaign-panel').width()/2
+		});
+    });
+    $("#wrap").on("submit", "#create-phone-campaign-form", function(e) {
+		e.preventDefault();
+
+		var target_id = $("#target_id").val();
+		var title = $("#title").val();
+		var summary = $("#summary").val();
+
+		var url = api_root_url + '/phonecampaigns';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				'target_id': target_id,
+				'title': title,
+				'summary': summary 
+			}),
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+		
+				phonecampaign_id = result.result.phonecampaign_id;
+
+				 var source   = $("#launch-phone-campaign-template").html();
+        		 var template = Handlebars.compile(source);
+
+    			 var windowWidth = $(window).width();
+        		 var context = result.result;
+        		 var html = template(context);
+
+        		$("#wrap").append(html);
+
+        		$("#launch-phone-campaign-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+    	
+    			$('#start-phone-campaign-panel').animate({
+    				left: -($("#start-phone-campaign-panel").width() + windowWidth/2)
+    			}, 400, function() {
+    			
+    			$('#launch-phone-campaign-panel').animate({
+    				left:windowWidth/2-$("#launch-phone-campaign-panel").width()/2
+    			});
+    		});
+    		},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+			
+	});
+	$("#wrap").on("click", "#launch-phone-campaign", function(e) {
+    	e.preventDefault();
+
+    	var url = api_root_url + '/phonecampaigns/' + phonecampaign_id;
+
+		$.ajax({
+			type: "GET",
+			url: url,
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+    		var source   = $("#share-phone-campaign-template").html();
+        	var template = Handlebars.compile(source);
+
+    		var windowWidth = $(window).width();
+
+        	var context = result.result;
+        	var html = template(context);
+
+        	$("#wrap").append(html);
+
+    		$("#share-phone-campaign-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+			$('#launch-phone-campaign-panel').animate({
+    			left: -($('#launch-phone-campaign-panel').width() + windowWidth/2)
+    		}, 400, function() {
+    			
+    			$('#share-phone-campaign-panel').animate({
+    				left:windowWidth/2-$('#share-phone-campaign-panel').width()/2
+    			});
+    		});
+
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+
+    });
+    $("#wrap").on("click", "#share-phone-campaign", function(e) {
+    	e.preventDefault();
+
+    		var windowWidth = $(window).width();
+
+    		$('#share-phone-campaign-panel').animate({
+    			left: -($(this).width() + windowWidth/2)
+    		}, 400, function() {
+    			$("#start-phone-campaign-panel").remove();
+				$("#launch-phone-campaign-panel").remove();
+				$("#share-phone-campaign-panel").remove();
+    		});
+    });
+    $("#start-poll").click(function() {
+
+        var source   = $("#create-poll-template").html();
+        var template = Handlebars.compile(source);
+
+    	var windowWidth = $(window).width();
+        var context = "";
+        var html = template(context);
+
+        $("#wrap").append(html);
+
+        $("#start-poll-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+    	
+    	$('#start-poll-panel').animate({
+    			left:windowWidth/2-$('#start-poll-panel').width()/2
+		});
+    });
+    $("#wrap").on("submit", "#create-poll-form", function(e) {
+		e.preventDefault();
+
+		var question = $("#question").val();
+		var choices = [];
+
+		var choice = {};
+		choice = {
+			choice: $("#choice1").val()
+		}
+		choices.push(choice);
+
+		choice = {
+			choice: $("#choice2").val()
+		}
+		choices.push(choice);
+		var url = api_root_url + '/polls';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				'poll': {
+					'question': question,
+					'choices': choices
+				}
+			}),
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+
+				poll_id = result.result.poll_id;
+
+				 var source   = $("#launch-poll-template").html();
+        		 var template = Handlebars.compile(source);
+
+    			 var windowWidth = $(window).width();
+        		 var context = result.result;
+        		 var html = template(context);
+
+        		$("#wrap").append(html);
+
+        		$("#launch-poll-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+    	
+    			$('#start-poll-panel').animate({
+    				left: -($("#start-poll-panel").width() + windowWidth/2)
+    			}, 400, function() {
+    			
+    			$('#launch-poll-panel').animate({
+    				left:windowWidth/2-$("#launch-poll-panel").width()/2
+    			});
+    		});
+    		},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+			
+	});
+    $("#wrap").on("click", "#launch-poll", function(e) {
+    	e.preventDefault();
+
+    	//var url = api_root_url + '/phonecampaings/' + petition_id;
+
+    		var source   = $("#share-poll-template").html();
+        	var template = Handlebars.compile(source);
+
+    		var windowWidth = $(window).width();
+
+        	var context = {}; //result.result;
+        	var html = template(context);
+
+        	$("#wrap").append(html);
+
+    		$("#share-poll-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+			$('#launch-poll-panel').animate({
+    			left: -($('#launch-poll-panel').width() + windowWidth/2)
+    		}, 400, function() {
+    			
+    			$('#share-poll-panel').animate({
+    				left:windowWidth/2-$('#share-poll-panel').width()/2
+    			});
+    		});
+    });
+    $("#wrap").on("click", "#share-poll", function(e) {
+    	e.preventDefault();
+
+    		var windowWidth = $(window).width();
+
+    		$('#share-poll-panel').animate({
+    			left: -($(this).width() + windowWidth/2)
+    		}, 400, function() {
+    			$("#start-poll-panel").remove();
+				$("#launch-poll-panel").remove();
+				$("#share-poll-panel").remove();
     		});
     });
 	$("#wrap").on("click", "#sign-petition-user-name", function(e) {

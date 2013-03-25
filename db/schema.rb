@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323154731) do
+ActiveRecord::Schema.define(:version => 20130324182604) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(:version => 20130323154731) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "choice_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "choices", :force => true do |t|
+    t.string   "choice"
+    t.integer  "poll_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "external_accounts", :force => true do |t|
     t.string   "type"
     t.string   "external_id"
@@ -72,6 +86,27 @@ ActiveRecord::Schema.define(:version => 20130323154731) do
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
+
+  create_table "phone_campaigns", :force => true do |t|
+    t.string   "title"
+    t.string   "summary"
+    t.integer  "target_count"
+    t.string   "short_url"
+    t.string   "rewrite_url_key"
+    t.integer  "target_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "phone_campaigns", ["target_id"], :name => "index_phone_campaigns_on_target_id"
+
+  create_table "polls", :force => true do |t|
+    t.string   "question"
+    t.string   "short_url"
+    t.string   "rewrite_url_key"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "signatures", :force => true do |t|
     t.integer  "user_id"

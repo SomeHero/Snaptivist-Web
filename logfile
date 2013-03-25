@@ -10,3 +10,12 @@ ERROR:  syntax error at or near ":" at character 68
 STATEMENT:  SELECT "targets".* FROM "targets"  WHERE (targetgroup_id = '2' AND :state = 'VA')
 ERROR:  syntax error at or near ":" at character 68
 STATEMENT:  SELECT "targets".* FROM "targets"  WHERE (targetgroup_id = '2' AND :state = 'VA')
+ERROR:  relation "polls" does not exist at character 315
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+	                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"polls"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	

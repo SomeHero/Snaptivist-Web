@@ -8,14 +8,8 @@
   </div>
   {{/each}}
 </script>
-<script id="create-petition-template" type="text/x-handlebars-template">
-<div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<%= form_tag("/api/petitions", :method => "post", :id => "create-petition-form") do %>
-	<input type="hidden" id="target_id" name="target_id" />
-	<fieldset>
-		<legend>Who is the target of your petition?</legend>
-
-		<div class="control-group">
+<script id="select-target-template" type="text/x-handlebars-template">
+<div class="control-group">
 			<div class="controls" style="margin-left: 0px;">
 				<label class="radio">
 					<input type="radio" name="targetOption" id="target-group-the-white-house" data-target-group="1" value="state" class="target-group">The White House
@@ -167,7 +161,14 @@
 
 			</div>
 		</div>
-
+</script>
+<script id="create-petition-template" type="text/x-handlebars-template">
+<div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<%= form_tag("/api/petitions", :method => "post", :id => "create-petition-form") do %>
+	<input type="hidden" id="target_id" name="target_id" />
+	<fieldset>
+		<legend>Who is the target of your petition?</legend>
+		{{> selectTarget}}
 </fieldset>
 <fieldset>
 	<legend>What do you want them to do?</legend>
@@ -261,6 +262,186 @@
 			</form>
 		</div>
 </script>
+<!-- end create petition templates -->
+<!-- start create phone campaign templates -->
+<script id="create-phone-campaign-template"  type="text/x-handlebars-template">
+<div id="start-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<%= form_tag("/api/phonecampaigns", :method => "post", :id => "create-phone-campaign-form") do %>
+	<input type="hidden" id="target_id" name="target_id" />
+	<fieldset>
+		<legend>Who is the target of your phone campaign?</legend>
+		{{> selectTarget}}
+</fieldset>
+<fieldset>
+	<legend>What do you want them to do?</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<input id="title" name="title" type="text" placeholder="Type your demand here" style="width: 98%">
+			<span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>What should people say when they call?</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<textarea id="summary" name="summary" rows="6" style="width: 98%"></textarea>
+		</div>
+	</div>
+</fieldset>
+<button id="create-phone-campaign" class="btn btn-large btn-block btn-primary" type="submit">Create Phone Campaign</button>
+<% end %>
+</div>
+</script>
+<script id="launch-phone-campaign-template" type="text/x-handlebars-template">
+<div id="launch-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<%= image_tag "default_petition.png" %>
+	<div class="pull-right">
+		<a href="#">Edit</a>
+	</div>
+	<h2>{{target.first_name  target.last_name}}: {{title}}</h2>
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<textarea id="summary-edit" rows="4" style="width: 98%">{{summary}}</textarea>
+		</div>
+		<div class="pull-right">
+			<a href="#">Edit</a>
+		</div>
+	</div>
+	<form class="form-horizontal" style="position: relative;">
+		<fieldset>
+			<legend>How many calls do you need?</legend>
+			
+			<div class="control-group">
+				<div id="target-count-wrapper" class="clearfix">
+					<div class="progress">
+						<div class="bar" style="width: 1%;"></div>
+					</div>
+					<div class="pull-left">
+						Signers: 0
+					</div>
+					<div class="pull-right">
+						Goal: {{target_count}}
+					</div>
+				</div>
+			</div>
+			<div class="pull-right">
+				<a href="#">Edit</a>
+			</div>
+		</fieldset>
+		<h4>{{target.title}} {{target.last_name}}: {{target.phone}}</h4>
+		<button id="launch-phone-campaign" class="btn btn-large btn-block btn-primary" type="button">Launch Phone Campaign</button>
+	</form>
+</div>
+</script>
+<script id="share-phone-campaign-template"  type="text/x-handlebars-template">
+<div id="share-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<h2>{{target.last_name}}: {{title}}</h2>
+	<p class="lead">{{summary}}
+		</p>
+			<form class="form-horizontal" style="position: relative;">
+				<fieldset>
+					<legend>Share with Your Network</legend>
+					<div class="control-group">
+						<div class="controls" style="margin-left: 0px;">
+							<textarea rows="3" style="width: 98%">I just told @{{target.twitter_handle}}: {{summary}}</textarea>
+						</div>
+					</div>
+
+				</fieldset>
+
+				<button id="share-phone-campaign" class="btn btn-large btn-block btn-primary" type="button">Share Phone Campaign</button>
+			</form>
+		</div>
+</script>
+<!-- end create phone campaign templates -->
+<!-- start create poll templates -->
+<script id="create-poll-template"  type="text/x-handlebars-template">
+<div id="start-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<%= form_tag("/api/polls", :method => "post", :id => "create-poll-form") do %>
+	<input type="hidden" id="target_id" name="target_id" />
+<fieldset>
+	<legend>Gauge Public Opinion</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<input id="question" name="title" type="text" placeholder="Type your multiple choice question here" style="width: 98%">
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Choice 1</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<input id="choice1" name="title" type="text" placeholder="Type the first choice here" style="width: 98%">
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Choice 2</legend>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 0px;">
+			<input id="choice2" name="title" type="text" placeholder="Type your second choice here" style="width: 98%">
+		</div>
+	</div>
+</fieldset>
+<button id="create-poll" class="btn btn-large btn-block btn-primary" type="submit">Create Poll</button>
+<% end %>
+</div>
+</script>
+
+<script id="launch-poll-template" type="text/x-handlebars-template">
+<div id="launch-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<%= image_tag "default_petition.png" %>
+	<div class="pull-right">
+		<a href="#">Edit</a>
+	</div>
+	<h2>{{question}}</h2>
+    <div class="pull-right">
+			<a href="#">Edit</a>
+	</div>
+	<ul class="unstyled">
+		{{#each choices}}
+		<li>
+			<div class="well">
+				<input type="radio" name="choice" />{{choice}}
+			</div>
+			<div class="pull-right">
+				<a href="#">Edit</a>
+			</div>
+		</li>
+		{{/each}}
+	</ul>
+
+	<form class="form-horizontal" style="position: relative;">
+		<button id="launch-poll" class="btn btn-large btn-block btn-primary" type="button">Launch Poll</button>
+	</form>
+</div>
+</script>
+<script id="share-poll-template"  type="text/x-handlebars-template">
+<div id="share-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<h2>{{question}}</h2>
+	<p class="lead">Answers</p>
+			<form class="form-horizontal" style="position: relative;">
+				<fieldset>
+					<legend>Share with Your Network</legend>
+					<div class="control-group">
+						<div class="controls" style="margin-left: 0px;">
+							<textarea rows="3" style="width: 98%">I just told @{{target.twitter_handle}}: {{summary}}</textarea>
+						</div>
+					</div>
+
+				</fieldset>
+
+				<button id="share-poll" class="btn btn-large btn-block btn-primary" type="button">Share Poll</button>
+			</form>
+		</div>
+</script>
+<!-- end create poll templates -->
 <div class="hero-wrapper">
 	<div class="container">
 		<div class="hero-unit">
@@ -270,10 +451,10 @@
 			</p>
 			<p id="action-buttons" class="cta-actions">
 				<a id="start-petition" class="btn btn-primary btn-large">Start a Petition</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start an Event</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start a Phone Campaign</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start a Poll</a>&nbsp;
-				<a class="btn btn-primary btn-large">Start a Bundle</a>&nbsp;
+				<a id="start-event" class="btn btn-primary btn-large">Start an Event</a>&nbsp;
+				<a id="start-phone-campaign" class="btn btn-primary btn-large">Start a Phone Campaign</a>&nbsp;
+				<a id="start-poll" class="btn btn-primary btn-large">Start a Poll</a>&nbsp;
+				<a id="start-bundle" class="btn btn-primary btn-large">Start a Bundle</a>&nbsp;
 			</p>
 		</div>
 		<!--/.hero-unit -->

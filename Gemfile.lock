@@ -175,6 +175,7 @@ DEPENDENCIES
   coffee-script-source (~> 1.4.0)
   devise
   jquery-rails
+  json
   koala
   pg
   rails (= 3.2.11)

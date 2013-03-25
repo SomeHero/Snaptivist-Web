@@ -1,6 +1,8 @@
 SnaptivistWeb::Application.routes.draw do
   namespace :api do
     resources :petitions
+    resources :phonecampaigns
+    resources :polls
     resources :signatures
     resources :targets
   end
