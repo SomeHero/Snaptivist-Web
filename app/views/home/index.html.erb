@@ -38,14 +38,9 @@
 					</div>
 					<div id="target-group-congress-state-select-items" class="control-group" style="margin-left: 20px; display:none;">
 						<div class="controls" style="margin-left: 0px;">
-							<label>Choose a State:</label>
-							<select class="target-group-state-select" id="target-group-congress-select-state">
-								<option>-- Select a State --</option>
-								<option>AL</option>
-								<option>VA</option>
-							</select>
+							<%= subregion_select(:congress, :state_code, 'US', {:id => 'target-group-congress-select-state', :class => 'target-group-state-select', :prompt => 'Please select a state' }) %>
 						</div>
-						<div class="control-group" id="target-group-congress-select-state-items" style="margin-left: 20px; display: none;">
+						<div class="control-group" id="congress_state_code-items" style="margin-left: 20px; display: none;">
 							<div class="controls" style="margin-left: 0px;">
 								<label class="radio">
 									<input type="radio" name="target" id="target1" value="state">US Senator 1
@@ -80,14 +75,9 @@
 			</label>
 			<div id="target-group-state-items" class="control-group" style="margin-left: 20px; display: none;">
 				<div class="controls" style="margin-left: 0px;">
-					<label>Choose a State:</label>
-					<select class="target-group-state-select" id="target-group-state-select-state">
-						<option>-- Select a State --</option>
-						<option>AL</option>
-						<option>VA</option>
-					</select>
+					<%= subregion_select(:state, :state_code, 'US', {:id => 'target-group-congress-select-state', :class => 'target-group-state-select', :prompt => 'Please select a state' }) %>
 				</div>
-				<div class="control-group" id="target-group-state-select-state-items" style="margin-left: 20px; display: none;">
+				<div class="control-group" id="state_state_code-items" style="margin-left: 20px; display: none;">
 					<div class="controls" style="margin-left: 0px;">
 						<label class="radio">
 							<input type="radio" name="target" id="target1" value="state">Executive Branch

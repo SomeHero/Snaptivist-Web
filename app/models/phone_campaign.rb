@@ -8,6 +8,20 @@ class PhoneCampaign < ActiveRecord::Base
   validates :summary, :presence => true
   validates :target_count, :numericality => { :only_integer => true }
 
+  def shorten_url
+
+    Bitly.use_api_version_3
+    
+    bitly = Bitly.new('jrhodes621', 'R_097da24e7dfc44e6b422cd74b41a353e');
+
+    long_url = 'http://dev.snaptivist.com/phonecampaigns/' + id.to_s
+
+    url = bitly.shorten(long_url)
+
+    return url.short_url
+
+  end
+
    # generate the petition
   def to_api
 

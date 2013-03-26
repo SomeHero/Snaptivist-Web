@@ -1,3 +1,4 @@
+
 class Api::PetitionsController < ApplicationController
   #before_filter :authenticate_user!, :only => [:create]
   after_filter :set_access_control_headers
@@ -28,6 +29,10 @@ class Api::PetitionsController < ApplicationController
     #return if error_messages?(:config)
 
     @petition.save
+
+    @petition.short_url = @petition.shorten_url
+
+    @petition.save!
     
     render_result(@petition.to_api)
 
@@ -40,6 +45,7 @@ class Api::PetitionsController < ApplicationController
 
     render_result(@petition.to_api)
   end
+
 
 	# render a result in the appropriate format
 	def render_result(result = {}, status = 200, status_string = 'OK')

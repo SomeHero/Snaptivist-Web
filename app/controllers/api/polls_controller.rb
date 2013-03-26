@@ -27,6 +27,11 @@ class Api::PollsController < ApplicationController
     #return if error_messages?(:config)
 
     @poll.save
+
+    @poll.short_url = @poll.shorten_url
+
+    @poll.save!
+    
     
     render_result(@poll.to_api)
 

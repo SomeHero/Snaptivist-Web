@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var api_root_url = "http://dev.snaptivist.com/api";
+	var api_root_url = "http://localhost:3000/api";
 	var petition_id;
 	var phonecampaign_id;
 	var poll_id;
@@ -514,7 +514,7 @@ $("#wrap").on("click", ".target", function() {
 $("#wrap").on("click", ".state-select", function() {
 	$("#" + $(this).attr("id") + "-items").toggle();
 });
-$("#wrap").on("change", "#target-group-congress-select-state", function() {
+$("#wrap").on("change", "#congress_state_code", function() {
 	var elem = $("#" + $(this).attr("id") + "-items");
 	var state = $(this).val();
 	var source   = $("#target-template").html();

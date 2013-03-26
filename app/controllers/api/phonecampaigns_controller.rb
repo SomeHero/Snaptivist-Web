@@ -23,6 +23,11 @@ class Api::PhonecampaignsController < ApplicationController
 
     @phone_campaign.save
     
+
+    @phone_campaign.short_url = @phone_campaign.shorten_url
+
+    @phone_campaign.save!
+    
     render_result(@phone_campaign.to_api)
 
   end

@@ -31,6 +31,8 @@ gem "koala"
 gem "ym4r"
 gem "sunlight"
 gem "json"
+gem "bitly", "~> 0.8.1"
+gem 'carmen-rails', '~> 1.0.0.beta3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
