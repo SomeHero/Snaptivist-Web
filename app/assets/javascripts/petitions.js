@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var api_root_url = "http://localhost:3000/api";
+	var api_root_url = "http://dev.snaptivist.com/api";
 	var petition_id;
 	var phonecampaign_id;
 	var poll_id;
