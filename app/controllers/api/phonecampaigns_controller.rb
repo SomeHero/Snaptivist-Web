@@ -13,6 +13,7 @@ class Api::PhonecampaignsController < ApplicationController
     	p.summary = params[:summary]
     	p.target_count =100
       p.target_id = params[:target_id]
+      p.rewrite_url_key = params[:title].gsub(" ", "-")
     end
 
     if !@phone_campaign.valid?

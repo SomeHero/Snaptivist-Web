@@ -7,7 +7,8 @@ SnaptivistWeb::Application.routes.draw do
     resources :targets
   end
   
-  resources :petitions
+
+  match 'petitions/:action_title', :to =>'petitions#view'
 
   resources :targets
 
