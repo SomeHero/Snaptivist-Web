@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324182604) do
+ActiveRecord::Schema.define(:version => 20130330010928) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(:version => 20130324182604) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "call_results", :force => true do |t|
+    t.string   "result"
+    t.string   "comment"
+    t.integer  "phone_campaign_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "call_results", ["phone_campaign_id"], :name => "index_call_results_on_phone_campaign_id"
 
   create_table "choices", :force => true do |t|
     t.string   "choice"

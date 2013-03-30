@@ -17,7 +17,7 @@ class Api::PollsController < ApplicationController
     #auth_mechanism = params.fetch(:auth_mechanism, 'standard')
     @poll = Poll.new do |p|
     	p.question = poll[:question]
-      p.rewrite_url_key = params[:title].gsub(" ", "-")
+      p.rewrite_url_key = poll[:question].gsub(" ", "-")
       p.choices = @choices
     end
 

@@ -33,55 +33,6 @@
       <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
       <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-
-<!-- javascript that will initiate jQuery and the LocalScroll plugin -->
-    <script>
- 
-    // When the document is loaded...
-    $(document).ready(function()
-    {
-    	var originalLeft = $("#start-petition-panel").css('left');
-
-    	$("#start-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-		$("#launch-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-		$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-
-    	$("#start-petition").click(function() {
-    		var windowWidth = $(window).width();
-
-    		$('#start-petition-panel').animate({
-    			left:windowWidth/2-$('#start-petition-panel').width()/2
-			});
-    	});
-
-    	$("#launch-petition").click(function() {
-    		var windowWidth = $(window).width();
-
-    		$('#launch-petition-panel').animate({
-    			left: -($(this).width() + windowWidth/2)
-    		}, 400, function() {
-    			
-    			$('#share-petition-panel').animate({
-    				left:windowWidth/2-$(this).width()/2
-    			});
-    		});
-
-    	});
-
-    	$("#share-petition").click(function() {
-    		var windowWidth = $(window).width();
-
-    		$('#share-petition-panel').animate({
-    			left: -($(this).width() + windowWidth/2)
-    		}, 400, function() {
-    			$("#start-petition-panel").css('left', originalLeft);
-				$("#launch-petition-panel").css('left', originalLeft);
-				$("#share-petition-panel").css('left', originalLeft);
-    		});
-    	});
- 
-    });
-    </script>
   </head>
   <body>
   	<div class="navbar navbar-inverse navbar-static-top">

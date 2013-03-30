@@ -1,7 +1,7 @@
 class PhoneCampaign < ActiveRecord::Base
   belongs_to :target
   belongs_to :user
-
+  has_many :call_results
   attr_accessible :rewrite_url_key, :short_url, :summary, :target_count, :title
 
    validates :title, :presence => true

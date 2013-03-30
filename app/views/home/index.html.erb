@@ -185,6 +185,10 @@
 </script>
 <script id="launch-petition-template" type="text/x-handlebars-template">
 <div id="launch-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+    <div class="input-prepend" style="width:95%;">
+      <span class="add-on"><i class="icon-globe"></i></span>
+      <input class="span2" id="inputIcon" type="text" value="http://dev.snaptivist.com/petitions/{{rewrite_url_key}}" style="width: 100%;" />
+    </div>
 	<%= image_tag "default_petition.png" %>
 	<div class="pull-right">
 		<a href="#">Edit</a>
@@ -287,6 +291,10 @@
 </script>
 <script id="launch-phone-campaign-template" type="text/x-handlebars-template">
 <div id="launch-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
+	<div class="input-prepend" style="width:95%;">
+      <span class="add-on"><i class="icon-globe"></i></span>
+      <input class="span2" id="inputIcon" type="text" value="http://dev.snaptivist.com/phonecampaigns/{{rewrite_url_key}}" style="width: 100%;" />
+    </div>
 	<%= image_tag "default_petition.png" %>
 	<div class="pull-right">
 		<a href="#">Edit</a>
@@ -386,7 +394,11 @@
 
 <script id="launch-poll-template" type="text/x-handlebars-template">
 <div id="launch-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<%= image_tag "default_petition.png" %>
+	 <div class="input-prepend" style="width:95%;">
+      <span class="add-on"><i class="icon-globe"></i></span>
+      <input class="span2" id="inputIcon" type="text" value="http://dev.snaptivist.com/polls/{{rewrite_url_key}}" style="width: 100%;" />
+    </div>
+    <%= image_tag "default_petition.png" %>
 	<div class="pull-right">
 		<a href="#">Edit</a>
 	</div>
