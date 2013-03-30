@@ -40,6 +40,18 @@ class Api::PetitionsController < ApplicationController
 
   end
 
+  def launch
+
+    #update action to launched
+    
+  end
+
+  def share
+
+    #handle to tweating here
+
+  end
+
   def show
     @petition = Petition.find(params[:id])
 
@@ -47,7 +59,6 @@ class Api::PetitionsController < ApplicationController
 
     render_result(@petition.to_api)
   end
-
 
 	# render a result in the appropriate format
 	def render_result(result = {}, status = 200, status_string = 'OK')

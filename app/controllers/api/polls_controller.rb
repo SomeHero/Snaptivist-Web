@@ -38,6 +38,18 @@ class Api::PollsController < ApplicationController
 
   end
 
+  def launch
+
+    #update action to launched
+    
+  end
+
+  def share
+
+    #handle to tweating here
+
+  end
+  
   def show
     @poll = Poll.find(params[:id])
 
