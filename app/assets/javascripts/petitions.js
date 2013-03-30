@@ -543,6 +543,35 @@ $("#wrap").on("change", "#congress_state_code", function() {
 			}
 		})
 });
+$("#wrap").on("change", "#state_state_code", function() {
+	var elem = $("#" + $(this).attr("id") + "-items");
+	var state = $(this).val();
+	var source   = $("#target-template").html();
+	var template = Handlebars.compile(source);
+
+	var url = api_root_url +  '/targets?state='+ state +'&targetgroup_id=3'
+		$.ajax({
+			type: "GET",
+			url: url,
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(results) {
+
+				var context = results;
+				var html    = template(context);
+
+				elem.empty().append(html);
+				elem.show();
+			
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		})
+});
 $("#wrap").on("click", ".target-group-other", function() {
 	$("#" + $(this).attr("id") + "-items").toggle();
 });
