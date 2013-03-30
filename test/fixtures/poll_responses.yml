@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comment: MyString
+  poll: 
+  choice: 
+
+two:
+  comment: MyString
+  poll: 
+  choice: 

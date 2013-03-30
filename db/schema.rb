@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330010928) do
+ActiveRecord::Schema.define(:version => 20130330162626) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -109,6 +109,17 @@ ActiveRecord::Schema.define(:version => 20130330010928) do
   end
 
   add_index "phone_campaigns", ["target_id"], :name => "index_phone_campaigns_on_target_id"
+
+  create_table "poll_responses", :force => true do |t|
+    t.string   "comment"
+    t.integer  "poll_id"
+    t.integer  "choice_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "poll_responses", ["choice_id"], :name => "index_poll_responses_on_choice_id"
+  add_index "poll_responses", ["poll_id"], :name => "index_poll_responses_on_poll_id"
 
   create_table "polls", :force => true do |t|
     t.string   "question"

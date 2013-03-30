@@ -559,3 +559,6 @@ legend + .control-group {
 #target-count-wrapper .progress {
     margin-bottom: 0px;
 }
+.btn-tweet {
+    font-size: 36px;
+}

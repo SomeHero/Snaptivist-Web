@@ -193,7 +193,8 @@
 	<div class="pull-right">
 		<a href="#">Edit</a>
 	</div>
-	<h2>{{target.first_name  target.last_name}}: {{title}}</h2>
+	<h2>{{target.title target.last_name}}: 
+	<br />{{title}}</h2>
 	<div class="control-group">
 		<div class="controls" style="margin-left: 0px;">
 			<textarea id="summary-edit" rows="4" style="width: 98%">{{summary}}</textarea>
@@ -238,19 +239,43 @@
 </script>
 <script id="share-petition-template"  type="text/x-handlebars-template">
 <div id="share-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<h2>{{target.last_name}}: {{title}}</h2>
-	<p class="lead">{{summary}}
-		</p>
+	<%= image_tag "default_petition.png" %>
+	<h2>{{target.title}} {{target.last_name}}<br />{{title}}</h2>
+	<p class="well">{{summary}}</p>
+	<div class="control-group">
+				<div id="target-count-wrapper" class="clearfix">
+					<div class="progress">
+						<div class="bar" style="width: 1%;"></div>
+					</div>
+					<div class="pull-left">
+						Signers: 1
+					</div>
+					<div class="pull-right">
+						Goal: {{target_count}}
+					</div>
+				</div>
+			</div>
+			<p class="text-center">Great Job!</p>
+			<p class="text-center">Now use Twitter to publicly notify the target of your petition.  Let the whole world see your demand and join your campaign!</p>
 			<form class="form-horizontal" style="position: relative;">
 				<fieldset>
-					<legend>Share with Your Network</legend>
 					<div class="control-group">
 						<div class="controls" style="margin-left: 0px;">
-							<textarea rows="3" style="width: 98%">I just told @{{target.twitter_handle}}: {{summary}}</textarea>
+							<textarea rows="3" style="width: 98%">I demand @{{target.twitter_handle}}: {{summary}} {{short_url}} #tlot</textarea>
 						</div>
 					</div>
 
 				</fieldset>
+				<fieldset>
+					<div class="control-group">
+						<div class="controls text-center" style="margin-left: 0px;">
+				<button type="button" class="btn btn-success" style="opacity: 0.8">
+  <i class="icon-twitter-sign btn-tweet"></i> Tweet @{{target.twitter_handle}}
+</button>
+<p class="text-center">Connect Your Account</p>
+</div>
+</div>
+</fieldset>
 
 				<button id="share-petition" class="btn btn-large btn-block btn-primary" type="button">Share Petition</button>
 			</form>
