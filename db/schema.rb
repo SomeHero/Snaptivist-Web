@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331135521) do
+ActiveRecord::Schema.define(:version => 20130331191852) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -159,8 +159,8 @@ ActiveRecord::Schema.define(:version => 20130331135521) do
     t.string   "title"
     t.string   "twitter_handle"
     t.string   "email_address"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "name_suffix"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20130331135521) do
     t.string   "senate_class"
     t.string   "birthdate"
     t.integer  "targetgroup_id"
+    t.integer  "state_information_id"
   end
 
   create_table "users", :force => true do |t|
