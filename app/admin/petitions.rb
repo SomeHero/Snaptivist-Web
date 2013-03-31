@@ -8,6 +8,8 @@ ActiveAdmin.register Petition do
 		column :created_at
 		column :updated_at
 		column :signatures_count
+
+		default_actions
 	end
 
 end

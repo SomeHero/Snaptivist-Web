@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330162626) do
+ActiveRecord::Schema.define(:version => 20130331135521) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -139,6 +139,14 @@ ActiveRecord::Schema.define(:version => 20130330162626) do
 
   add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"
   add_index "signatures", ["user_id"], :name => "index_signatures_on_user_id"
+
+  create_table "state_informations", :force => true do |t|
+    t.string   "state_name"
+    t.string   "short_code"
+    t.string   "political_hashtag"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "target_groups", :force => true do |t|
     t.string   "name"

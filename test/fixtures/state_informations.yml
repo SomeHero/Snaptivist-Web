@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  state_name: MyString
+  short_code: MyString
+  political_hashtag: MyString
+
+two:
+  state_name: MyString
+  short_code: MyString
+  political_hashtag: MyString

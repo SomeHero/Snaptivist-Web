@@ -10,6 +10,8 @@ ActiveAdmin.register Poll do
 		column :rewrite_url_key
 		column :short_url
 
+		 default_actions
+
 		end
 
 	end
