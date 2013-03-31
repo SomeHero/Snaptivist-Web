@@ -3,7 +3,7 @@ require 'csv'
 desc "Import state hashtags from csv file"
 task :import_state_hashtags => [:environment] do
 
-  file = "db/state hashtags.csv"
+  file = "db/state_hashtags.csv"
 
   CSV.foreach(file, :headers => true) do |row|
     StateInformation.create(
