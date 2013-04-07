@@ -19,3 +19,12 @@ STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod),
 	               AND a.attnum > 0 AND NOT a.attisdropped
 	             ORDER BY a.attnum
 	
+LOG:  database system was interrupted; last known up at 2013-03-31 19:37:50 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/5D41B60
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "treater_staging" does not exist
+ERROR:  column "email" of relation "users" already exists
+STATEMENT:  ALTER TABLE "users" ADD COLUMN "email" character varying(255) DEFAULT '' NOT NULL

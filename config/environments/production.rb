@@ -64,4 +64,9 @@ SnaptivistWeb::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+    
+    #TWITTER STUFF
+    TWITTER_CONSUMER_KEY = 'JRkoDk6R3BxPpmu5sIsKLA'
+    TWITTER_CONSUMER_SECRET = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
+
 end

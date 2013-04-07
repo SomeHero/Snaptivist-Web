@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331191852) do
+ActiveRecord::Schema.define(:version => 20130407150659) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(:version => 20130331191852) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.string   "token_secret"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
+
   create_table "call_results", :force => true do |t|
     t.string   "result"
     t.string   "comment"
@@ -93,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130331191852) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "signatures_count"
+    t.integer  "user_id"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -206,6 +219,8 @@ ActiveRecord::Schema.define(:version => 20130331191852) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "zip_code"
+    t.string   "twitter_token"
+    t.string   "twitter_secret"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

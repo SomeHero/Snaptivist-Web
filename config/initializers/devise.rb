@@ -205,10 +205,10 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ["*/*", :html]
+  config.navigational_formats = ["*/*", :html, :json]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -237,4 +237,7 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+config.omniauth :facebook, '100940330104294', '541dba3520805d93dacdc078417b4b63', {:scope => 'publish_stream, email'}
+config.omniauth :twitter, 'JRkoDk6R3BxPpmu5sIsKLA', 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
+
 end

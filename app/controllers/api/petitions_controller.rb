@@ -1,21 +1,16 @@
 
 class Api::PetitionsController < ApplicationController
-  #before_filter :authenticate_user!, :only => [:create]
-  after_filter :set_access_control_headers
+  before_filter :authenticate_user!, :only => [:create, :share]
 
   respond_to :json
 
   API_VERSION = '1.0'
 
-  def set_access_control_headers
-   headers['Access-Control-Allow-Origin'] = '*'
-   headers['Access-Control-Request-Method'] = '*'
- end
- 
  def create
 
     #auth_mechanism = params.fetch(:auth_mechanism, 'standard')
     @petition = Petition.new do |p|
+      p.user = current_user
     	p.title = params[:title]
     	p.summary = params[:summary]
     	p.target_count =100
@@ -49,7 +44,21 @@ class Api::PetitionsController < ApplicationController
   def share
 
     #handle to tweating here
+    #if params[:tweet]
+    token = current_user.authentications.find_by_provider("twitter").token
+    token_secret = current_user.authentications.find_by_provider("twitter").token_secret
 
+    Twitter.configure do |config|
+      config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
+      config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
+      config.oauth_token = token
+     config.oauth_token_secret = token_secret
+
+    Twitter.update(params[:tweet])
+
+    render_result()
+
+    end
   end
 
   def show

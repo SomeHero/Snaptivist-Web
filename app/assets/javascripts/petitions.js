@@ -2,35 +2,17 @@ $(document).ready(function() {
 
 	var api_root_url = location.protocol + "//" + location.hostname + 
       (location.port && ":" + location.port) + "/api";
+    var petition = {};
 	var petition_id;
 	var phonecampaign_id;
 	var poll_id;
 
-	Handlebars.registerPartial("selectTarget", $("#select-target-template").html());
+	$(document).bind("signInComplete", function() { 
 
-	$("#start-petition").click(function() {
-
-        var source   = $("#create-petition-template").html();
-        var template = Handlebars.compile(source);
-
-    	var windowWidth = $(window).width();
-        var context = "";
-        var html = template(context);
-
-        $("#wrap").append(html);
-
-        $("#start-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-    	
-    	$('#start-petition-panel').animate({
-    			left:windowWidth/2-$('#start-petition-panel').width()/2
-		});
-    });
-	$("#wrap").on("submit", "#create-petition-form", function(e) {
-		e.preventDefault();
-
-		var target_id = $("#target_id").val();
-		var title = $("#title").val();
-		var summary = $("#summary").val();
+		//Add Petetion and slide in share screen
+		var target_id = petition.target_id;
+		var title = petition.title;
+		var summary = petition.summary;
 
 		var url = api_root_url + '/petitions';
 
@@ -42,74 +24,99 @@ $(document).ready(function() {
 				'title': title,
 				'summary': summary 
 			}),
+			beforeSend: function(jqXHR, settings) {
+        		jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    		},
 			// Stringify the node
 			dataType: 'json',
 			contentType: 'application/json',
 			// On success do some processing like closing the window and show an alert
 			success: function(result) {
 
-				 petition_id = result.result.petition_id;
+				petition_id = result.result.petition_id;
 
-				 var source   = $("#launch-petition-template").html();
-        		 var template = Handlebars.compile(source);
+				var source   = $("#share-petition-template").html();
+				var template = Handlebars.compile(source);
 
-    			 var windowWidth = $(window).width();
-        		 var context = result.result;
-        		 var html = template(context);
+				var windowWidth = $(window).width();
 
-        		$("#wrap").append(html);
+   				var context = {}; //result.result;
+   				var html = template(context);
 
-        		$("#launch-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-    	
-    			$('#start-petition-panel').animate({
-    				left: -($("#create-petition").width() + windowWidth/2)
-    			}, 400, function() {
-    			
-    			$('#launch-petition-panel').animate({
-    				left:windowWidth/2-$("#create-petition").width()/2
-    			});
-    			});
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
+   				$("#wrap").append(html);
+   				$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
 
-				return false;
-			}
-		});
-	});
-    $("#wrap").on("click", "#launch-petition", function(e) {
-    	e.preventDefault();
+   				$('#create-action-sign-in-panel').animate({
+   					left: -($('#create-action-sign-in-panel').width() + windowWidth/2)
+   				}, 400, function() {
 
-    	var url = api_root_url + '/petitions/' + petition_id;
+   					$('#share-petition-panel').animate({
+   						left:windowWidth/2-$('#share-petition-panel').width()/2
+   					});
+   				});
+   			},
+   			error: function(jqXHR, textStatus, errorThrown) {
+
+   				return false;
+   			}
+   		});
+});
+	
+	Handlebars.registerPartial("selectTarget", $("#select-target-template").html());
+
+	$("#wrap").on("submit", "#create-petition-form", function(e) {
+		e.preventDefault();
+
+		var target_id = $("#target_id").val();
+		var title = $("#title").val();
+		var summary = $("#summary").val();
+		var goal = 1000;
+		var rewrite_url_key = title.split(' ').join('-');
+
+		//get target information
+		petition = {
+			target_id: target_id,
+			title: title,
+			summary: summary,
+			target_count: goal,
+			rewrite_url_key: rewrite_url_key
+		};
+
+		var url = api_root_url + '/targets/' + petition.target_id;
 
 		$.ajax({
 			type: "GET",
 			url: url,
+			beforeSend: function(jqXHR, settings) {
+				jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
 			// Stringify the node
 			dataType: 'json',
 			contentType: 'application/json',
 			// On success do some processing like closing the window and show an alert
 			success: function(result) {
 
-    		var source   = $("#share-petition-template").html();
-        	var template = Handlebars.compile(source);
+				petition.target = result.result;
 
-    		var windowWidth = $(window).width();
+				var source   = $("#launch-petition-template").html();
+				var template = Handlebars.compile(source);
 
-        	var context = result.result;
-        	var html = template(context);
+				var windowWidth = $(window).width();
+				var context = petition;
+				var html = template(context);
 
-        	$("#wrap").append(html);
+				$("#wrap").append(html);
 
-    		$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-			$('#launch-petition-panel').animate({
-    			left: -($('#launch-petition-panel').width() + windowWidth/2)
-    		}, 400, function() {
-    			
-    			$('#share-petition-panel').animate({
-    				left:windowWidth/2-$('#share-petition-panel').width()/2
-    			});
-    			});
+				$("#launch-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
 
+				$('#start-petition-panel').animate({
+					left: -($("#create-petition").width() + windowWidth/2)
+				}, 400, function() {
+
+					$('#launch-petition-panel').animate({
+						left:windowWidth/2-$("#create-petition").width()/2
+					});
+				});
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 
@@ -117,24 +124,41 @@ $(document).ready(function() {
 			}
 		});
 
-
-    });
-    $("#wrap").on("click", "#share-petition", function(e) {
+});
+    $("#wrap").on("click", "#launch-petition", function(e) {
     	e.preventDefault();
 
-    		var windowWidth = $(window).width();
+    	//var url = api_root_url + '/petitions/' + petition_id;
 
-    		$('#share-petition-panel').animate({
-    			left: -($(this).width() + windowWidth/2)
-    		}, 400, function() {
-    			$("#start-petition-panel").remove();
-				$("#launch-petition-panel").remove();
-				$("#share-petition-panel").remove();
-    		});
-    });
-    $("#start-phone-campaign").click(function() {
+		// $.ajax({
+		// 	type: "GET",
+		// 	url: url,
+		// 	// Stringify the node
+		// 	dataType: 'json',
+		// 	contentType: 'application/json',
+		// 	// On success do some processing like closing the window and show an alert
+		// 	success: function(result) {
 
-        var source   = $("#create-phone-campaign-template").html();
+   //  		var source   = $("#share-petition-template").html();
+   //      	var template = Handlebars.compile(source);
+
+   //  		var windowWidth = $(window).width();
+
+   //      	var context = result.result;
+   //      	var html = template(context);
+
+   //      	$("#wrap").append(html);
+
+   //  		$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+			// $('#launch-petition-panel').animate({
+   //  			left: -($('#launch-petition-panel').width() + windowWidth/2)
+   //  		}, 400, function() {
+    			
+   //  			$('#share-petition-panel').animate({
+   //  				left:windowWidth/2-$('#share-petition-panel').width()/2
+   //  			});
+   //  			});
+		        var source   = $("#create-action-sign-in").html();
         var template = Handlebars.compile(source);
 
     	var windowWidth = $(window).width();
@@ -143,12 +167,76 @@ $(document).ready(function() {
 
         $("#wrap").append(html);
 
-        $("#start-phone-campaign-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+        $("#create-action-sign-in-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
     	
-    	$('#start-phone-campaign-panel').animate({
-    			left:windowWidth/2-$('#start-phone-campaign-panel').width()/2
-		});
+    	$('#launch-petition-panel').animate({
+     			left: -($('#launch-petition-panel').width() + windowWidth/2)
+     		}, 400, function() {
+    			
+    		$('#create-action-sign-in-panel').animate({
+    			left:windowWidth/2-$('#create-action-sign-in-panel').width()/2
+			});
+
+     		});
+
+		// 	},
+		// 	error: function(jqXHR, textStatus, errorThrown) {
+
+		// 		return false;
+		// 	}
+		// });
+
+
     });
+	$("#wrap").on("click", "#twitter-connect", function(e) {
+		e.preventDefault();
+
+		var twitter_connect = new TwitterConnect($("#twitter-connect").attr('href'));
+
+  		twitter_connect.exec();
+	});
+	$("#wrap").on("click", "#facebook-connect", function(e) {
+		e.preventDefault();
+
+		var facebook_connect = new FacebookConnect($("#facebook-connect").attr('href'));
+
+  		facebook_connect.exec();
+	});
+	$("#wrap").on("click", "#share-petition", function(e) {
+		e.preventDefault();
+
+		var url = api_root_url + '/petitions/' + petition_id + '/share';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				tweet: "I just created a petition on Snaptivist I demand " + petition.title
+			}),
+			beforeSend: function(jqXHR, settings) {
+				jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+				var windowWidth = $(window).width();
+
+				$('#share-petition-panel').animate({
+					left: -($('#share-petition-panel').width() + windowWidth/2)
+				}, 400, function() {
+					$("#start-petition-panel").remove();
+					$("#launch-petition-panel").remove();
+					$("#share-petition-panel").remove();
+				});
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+	});
     $("#wrap").on("submit", "#create-phone-campaign-form", function(e) {
 		e.preventDefault();
 
@@ -254,23 +342,6 @@ $(document).ready(function() {
 				$("#launch-phone-campaign-panel").remove();
 				$("#share-phone-campaign-panel").remove();
     		});
-    });
-    $("#start-poll").click(function() {
-
-        var source   = $("#create-poll-template").html();
-        var template = Handlebars.compile(source);
-
-    	var windowWidth = $(window).width();
-        var context = "";
-        var html = template(context);
-
-        $("#wrap").append(html);
-
-        $("#start-poll-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-    	
-    	$('#start-poll-panel').animate({
-    			left:windowWidth/2-$('#start-poll-panel').width()/2
-		});
     });
     $("#wrap").on("submit", "#create-poll-form", function(e) {
 		e.preventDefault();

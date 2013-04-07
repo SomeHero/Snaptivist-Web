@@ -38,4 +38,7 @@ SnaptivistWeb::Application.configure do
   # Add the config.action_mailer.default_url_options
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  #TWITTER STUFF
+  TWITTER_CONSUMER_KEY = 'JRkoDk6R3BxPpmu5sIsKLA'
+  TWITTER_CONSUMER_SECRET = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
 end

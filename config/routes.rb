@@ -1,6 +1,10 @@
 SnaptivistWeb::Application.routes.draw do
   namespace :api do
-    resources :petitions
+    resources :petitions do 
+      member do
+        post 'share'
+      end
+    end
     resources :phonecampaigns
     resources :polls
     resources :signatures
@@ -12,18 +16,13 @@ SnaptivistWeb::Application.routes.draw do
   match 'polls/:action_title', :to =>'polls#view'
   match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view'
   
+  resources :authentications
   resources :targets
-
+  resources :twitter
 
   ActiveAdmin.routes(self)
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  devise_for :views
-
   get "home/index"
-
-  devise_for :users
 
   get "home/welcome"
 
@@ -76,11 +75,13 @@ SnaptivistWeb::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-# The following line is created by Devise automatically
-  devise_for :users
+  # The following line is created by Devise automatically
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
+  controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
 
   # Let's add the root route
   root :to => "home#index"
+
 
   # See how all your routes lay out with "rake routes"
 

@@ -8,16 +8,23 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li class="active"><%= link_to "Home", root_path %></li>
-          <li><a href="#features">Tour</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a id="tour-button" href="#features">Tour</a></li>
+          <li><a id="pricing-button" href="#pricing">Pricing</a></li>
+          <li><a id="about-button" href="#about">About</a></li>
+          <li><a id="contact-button" href="#contact">Contact</a></li>
         </ul>
         <!--/.nav -->
         <div class="btn-group btn-nav">
-          <%= link_to 'Login', new_user_session_path, :class => 'btn btn-success'  %>
-          <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-primary'  %>
-        </div>
+
+        <% if user_signed_in? %>
+ Logged in as <strong><%= current_user.email %></strong>.
+ <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login', new_user_session_path, :id => 'login-button', :class => 'btn btn-success'  %>
+  <%= link_to 'Sign Up', new_user_registration_path, :id => 'signup-button', :class => 'btn btn-primary'  %>
+        
+<% end %>
+</div>
         <!--/.btn-group -->
       </div>
       <!--/.nav-collapse -->
