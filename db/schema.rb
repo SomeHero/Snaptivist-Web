@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407150659) do
+ActiveRecord::Schema.define(:version => 20130408014000) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20130407150659) do
     t.integer  "target_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   add_index "phone_campaigns", ["target_id"], :name => "index_phone_campaigns_on_target_id"
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20130407150659) do
     t.string   "rewrite_url_key"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "signatures", :force => true do |t|
