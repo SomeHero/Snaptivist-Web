@@ -2,7 +2,7 @@ class PetitionsController < InheritedResources::Base
 	layout 'actions'
 
 	def view
-		@petition = Petition.find_by_rewrite_url_key(params[:action_title])
+		@petition = Petition.includes('target').find_by_rewrite_url_key(params[:action_title])
 
 		render :show
 	end
