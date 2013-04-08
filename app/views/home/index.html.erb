@@ -168,20 +168,20 @@
     </div>
 </div>
 <div class="text-center pull-right" style="margin: 10px">
-<form id="sign-in" method="POST">
-
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 <fieldset>
-<label for="username">
-<input type="text" name="username" placeholder="Email address or username" tabindex="3">
-<span class="error-message"></span>
-</label>
-<label for="password">
-<input type="password" name="password" placeholder="Password" tabindex="4">
-<span class="error-message"></span>
-</label>
+<div>
+<%= devise_error_messages! %>
+ 
+ <%= f.label :email, :class => "text-left" %>
+ <%= f.email_field :email %></div>
+ 
+ <div><%= f.label :password, :class => "text-left" %>
+ <%= f.password_field :password %></div>
+
 <button type="submit" class="btn btn-large btn-primary">Sign in</button>
 </fieldset>
-</form>
+<% end %>
 </div>
 </div>
 </script>
@@ -193,32 +193,31 @@
 <div class="social-sign-in pull-left" style="width: 50%; margin: 10px;">
   	<div class="control-group">
 		<div class="controls" style="margin-bottom: 20px;">
-			<button id="twitter-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:twitter) %>">Sign up with Twitter</button>
+			<button id="twitter-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:twitter) %>"><i class="icon-twitter-sign icon-white" style="font-size: 24px"></i> Sign up with Twitter</button>
 		</div>
 		<div class="controls">
-			<button id="facebook-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign up with Facebook</button>
+			<button id="facebook-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>"><i class="icon-facebook-sign icon-white" style="font-size: 24px"></i> <span>Sign up with Facebook</span></button>
 		</div>
     </div>
 </div>
 <div class="text-center pull-right" style="margin: 10px">
-<form id="create-account" method="POST">
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
-<fieldset>
-<label for="username">
-<input type="text" name="username" placeholder="Email address" tabindex="3">
-<span class="error-message"></span>
-</label>
-<label for="password">
-<input type="password" name="password" placeholder="Password" tabindex="4">
-<span class="error-message"></span>
-</label>
-<label for="password-confirm">
-<input type="password" name="password-confirm" placeholder="Password again" tabindex="4">
-<span class="error-message"></span>
-</label>
-<button type="submit" class="btn btn-large btn-primary">Create Account</button>
-</fieldset>
-</form>
+<%= devise_error_messages! %>
+ 
+<div>
+ <%= f.label :email, :class => "text-left" %>
+ <%= f.email_field :email %></div>
+ 
+ <div><%= f.label :password, :class => "text-left" %>
+ <%= f.password_field :password %></div>
+ 
+<div><%= f.label :password_confirmation, :class => "text-left" %>
+ <%= f.password_field :password_confirmation %></div>
+ 
+<div><%= f.submit "Sign up", :class => "btn btn-large btn-primary" %></div>
+<% end %>
+ 
 </div>
 </div>
 </script>
