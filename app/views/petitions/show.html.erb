@@ -22,7 +22,7 @@
 <div id="signature-container">
   <div id="sign-petition">
     <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
-    <button id="sign-petition-fb" class="btn btn-primary btn-block btn-large">Sign  with Facebook</button>
+<button id="sign-petition-facebook-button" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign with Facebook</button>
     <button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
     <h3>These people have already signed</h3>
     <ul class="media-list">

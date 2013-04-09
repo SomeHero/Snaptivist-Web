@@ -40,5 +40,5 @@ var FacebookConnect = (function() {
     });
   };
 
-  return TwitterConnect;
+  return FacebookConnect;
 })();''

@@ -34,4 +34,11 @@ SnaptivistWeb::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+   #TWITTER STUFF
+  TWITTER_CONSUMER_KEY = 'JRkoDk6R3BxPpmu5sIsKLA'
+  TWITTER_CONSUMER_SECRET = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
+
+  FACEBOOK_APP_ID = '100940330104294'
+  FACEBOOK_APP_SECRET = '541dba3520805d93dacdc078417b4b63'
 end

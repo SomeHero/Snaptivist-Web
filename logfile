@@ -28,3 +28,317 @@ LOG:  autovacuum launcher started
 FATAL:  database "treater_staging" does not exist
 ERROR:  column "email" of relation "users" already exists
 STATEMENT:  ALTER TABLE "users" ADD COLUMN "email" character varying(255) DEFAULT '' NOT NULL
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  column "given_via_service" of relation "gifts" already exists
+STATEMENT:  ALTER TABLE "gifts" ADD COLUMN "given_via_service" character varying(255) DEFAULT 'facebook' NOT NULL
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "users" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"users"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	

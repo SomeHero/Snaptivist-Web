@@ -60,8 +60,7 @@ $(document).ready(function() {
    				return false;
    			}
    		});
-});
-	
+	});
 	Handlebars.registerPartial("selectTarget", $("#select-target-template").html());
 
 	$("#wrap").on("submit", "#create-petition-form", function(e) {
@@ -482,7 +481,13 @@ $(document).ready(function() {
 			}
 		});
 	});
- 
+ 	$("#wrap").on("click", "#sign-petition-facebook-button", function(e) {
+ 		e.preventDefault();
+
+		var facebook_connect = new FacebookConnect($(this).attr('href'));
+
+  		facebook_connect.exec();
+ 	});
 	$("#wrap").on("click", "#sign-petition-fb", function(e) {
 		var FB = window.FB || '';
 		if(FB){

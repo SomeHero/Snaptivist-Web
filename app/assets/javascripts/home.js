@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    var activeOverlay;
+
+
 	$("#login-button").click(function(e) {
 		e.preventDefault();
 
