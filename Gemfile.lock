@@ -88,6 +88,7 @@ GEM
       actionpack (>= 3.0)
     has_scope (0.5.1)
     hashie (1.2.0)
+    hashr (0.0.22)
     hike (1.2.1)
     httparty (0.10.2)
       multi_json (~> 1.0)
@@ -234,6 +235,7 @@ DEPENDENCIES
   coffee-script-source (~> 1.4.0)
   devise
   fb_graph
+  hashr
   jquery-rails
   json
   koala

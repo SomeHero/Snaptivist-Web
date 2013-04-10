@@ -65,11 +65,11 @@ SnaptivistWeb::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
     
-    #TWITTER STUFF
-    TWITTER_CONSUMER_KEY = 'JRkoDk6R3BxPpmu5sIsKLA'
-    TWITTER_CONSUMER_SECRET = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
+  #TWITTER STUFF
+  TWITTER_CONSUMER_KEY = Settings.twitter_app_key
+  TWITTER_CONSUMER_SECRET = Settings.twitter_app_secret
 
-  FACEBOOK_APP_ID = '430002697093907'
-  FACEBOOK_APP_SECRET = 'cb39a2074c8116b2a9e06b275ed17680'
+  FACEBOOK_APP_ID = Settings.facebook_app_id
+  FACEBOOK_APP_SECRET = Settings.facebook_secret_key
 
 end

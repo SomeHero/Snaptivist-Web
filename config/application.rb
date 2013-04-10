@@ -59,4 +59,34 @@ module SnaptivistWeb
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
+
+  
+  class Util
+    # Method to build a config hash from a YAML file.
+    # an array with a Settings hash and a required_settings
+    # array is returned.
+    def self.config2hash(file)
+      hash = YAML.load(ERB.new(File.read(file)).result)
+
+      # Read all the settings that are under the common block.
+      common_hash = hash['common'] || {}
+      required_settings = common_hash.keys
+      
+      # These are all the settings based on the environment you are in.
+      env_hash = hash[Rails.env.to_s] || {}
+
+      # Combine the common settings and the env specific setting together.
+      final_hash = common_hash.deep_merge(env_hash)
+      [Hashr.new(final_hash), required_settings]
+    end
+  end
 end
+
+# Read in the settings.yml file from the config directory.  Save it in the processed_settings array...
+processed_settings = SnaptivistWeb::Util.config2hash(Rails.root.join('config', 'settings.yml'))
+
+# These are settings from the settings.yml file that are in the common block.
+Settings = processed_settings[0]
+
+# These are just the keys from the common block in the settings.yml file.
+REQUIRED_SETTINGS = processed_settings[1]

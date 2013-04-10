@@ -1,0 +1,266 @@
+# Treater-specific Settings mechanism
+#
+# HOW IT WORKS
+#
+# Key-value type settings are defined in this file as follows:
+#   * settings that are the same for all environments are defined in the "common" section
+#   * settings that are different per-environment are defined in environment-specific sections
+#
+# This file is processed by a custom system, initialized in application.rb, which helps us make sure
+# we have meaningful defaults in all cases. Specifically:
+#   * we treat the common section of this file as the definitive list of which settings we care about
+#   * we allow settings to be defined as "PERENV", which means there should be a corresponding value for 
+#     that setting in each of the environment-specific sections
+#   * we validate this through our settings_check initializer, making sure we do not end up with undefined settings
+#
+# In addition to values being defined in this file, there may also simply be a reference to an environment-specific 
+# system variable. We add to this the ability to specify a "NOOP" value, which allows code to understand when there
+# is explicitly a system environment variable that has not been actually defined.
+#
+# All of this is an attempt to increase the strictness of the settings definition mechanism.
+#
+# ADDING AND EDITING SETTINGS
+#
+# Add the setting to the common block.  If it will include sensitive information then read the setting value from 
+# the ENV hash, defaulting to NOOP. If the setting needs to be environment-specific, set it to PERENV and add it to 
+# each of the subsequent environment sections
+#
+
+common:
+
+  # HTTP: Used to setup HTTP security, so when the application loads
+  # it prompts for a username and password.
+  http_username: <%= ENV['HTTP_USERNAME'] || "NOOP" %>
+  http_password: <%= ENV['HTTP_PASSWORD'] || "NOOP" %>
+
+  # NewRelic: Used for gathering mertics and analytics about the application.
+  # - The new_relic_license_key identifies the account in the NewRelic system.
+  # - The new_relic_app_name is a handle that allows you to have multiple
+  # applications per account.
+  new_relic_license_key: <%= ENV["NEW_RELIC_LICENSE_KEY"] || "NOOP" %>
+  new_relic_app_name: <%= ENV["NEW_RELIC_APP_NAME"] || "NOOP" %>
+
+  # Google Analytics: Used for tracking traffic that is coming to the site.
+  google_analytics_code: <%= ENV["GOOGLE_ANALYTICS_CODE"] || "NOOP" %>
+  google_mobile_analytics_code: <%= ENV["GOOGLE_MOBILE_ANALYTICS_CODE"] || "NOOP" %>
+  
+  # Exact Target mailer integration
+  exact_target_username: <%= ENV["EXACT_TARGET_USERNAME"] || "NOOP" %>
+  exact_target_password: <%= ENV["EXACT_TARGET_PASSWORD"] || "NOOP" %>
+  exact_target_url: https://webservice.s6.exacttarget.com/Service.asmx
+
+  # Proximo proxy server for use with static IPs
+  staticip_proxy_url: 'http://proxy:81ed3998ad86-4ed9-b90e-1bf5c5aebe83@proxy-184-73-183-47.proximo.io'
+
+  # Internal alerting
+  funmon_allowed: <%= (ENV['FUNMON_ALLOWED'] == "1") %>
+  funmon_funmond_host: <%= ENV['FUNMON_HOST'] || "NOOP" %>
+  funmon_funmond_port: <%= ENV['FUNMON_PORT'] || "NOOP" %>
+  
+  # Host plus the port of the application, port is only specified if you are not running on the default port (80).
+  path: PERENV
+  host: PERENV
+  protocol: PERENV
+  
+  # This is the default email address for mailers
+  default_from: PERENV
+  
+  # Used in the application controller's check_uri method to strip domain information, leaving the relative path only
+  skip_hostcheck: PERENV
+  help_email: PERENV
+  
+  # Determines if you should set the mobile_param in the session, which drives the is_mobile? method in the application_controller.rb
+  allow_mobile: PERENV
+  
+  cache_storefront: PERENV
+  cache_friends_action: PERENV
+  cache_friends_data: PERENV
+  friends_cache_hours: 10
+  friends_prefetch: PERENV
+  storefront_cache_hours: 24
+  friend_profiles_cache_time: 10.hours
+  searchable: PERENV
+  vcc_life_in: PERENV
+  vcc_expire_in_less_than: PERENV
+  report_mode: PERENV
+  vcc_renew_if_expires_within_days: PERENV
+
+  #Issuer percentages
+  issuers:
+    dummy_vcc: PERENV
+    comdata: PERENV
+    t_chek: PERENV
+    dummy_gc: PERENV
+    blackhawk: PERENV
+
+  # Enables logging of the processes: ccman and poolman to a seperate URL /system/daemons
+  run_daemon_monitoring: PERENV
+  custom_treat_min: PERENV
+  custom_treat_max: PERENV
+  blackhawk:
+    requestorId: PERENV 
+    request:
+        uri: PERENV
+    certificate:
+        pem_key: PERENV
+        pem_cert: PERENV
+  
+  # When enabled, display top level featured shelves
+  linked_in_login: PERENV
+  twitter_login: PERENV
+  facebook_login: PERENV
+  linked_in_app_key: PERENV
+  linked_in_app_secret: PERENV
+  twitter_app_key: PERENV
+  twitter_app_secret: PERENV
+  network_notifs: PERENV
+  featured_mode: PERENV
+  
+  # Facebook app configuration
+  facebook_app_id: PERENV
+  facebook_secret_key: PERENV
+  facebook_callback_url: PERENV
+  
+  # Twilio SMS service integration
+  sms_service_class: PERENV     
+  twilio_account_sid: PERENV
+  twilio_auth_token: PERENV
+  twilio_number: PERENV
+
+  # Push notification service integration
+  apple_service_class: PERENV
+  google_service_class: PERENV
+  google_gcm_api_key: PERENV
+  
+  # Notification async (or not)
+  notifications_async: PERENV
+  
+  # Notification time thresholds
+  notification_giver_treat_unviewed_threshold: 5 
+  notification_giver_treat_unviewed_repeat_every: 100
+  
+development:
+  path: localhost:3000
+  host: localhost
+  protocol: http://
+  default_from: admin@snaptivist.com
+  skip_hostcheck: true
+  help_email: help@snaptivist.com
+  allow_mobile: true            
+  searchable: false                    
+  google_mobile_analytics_code: UA-291232614-2
+  linked_in_login: false
+  twitter_login: false
+  facebook_login: true
+  linked_in_app_key: 7vv32138ozn9j
+  linked_in_app_secret: yAlQ32123FxmEhwG70
+  twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
+  twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
+  facebook_app_id: 100940330104294
+  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
+  facebook_callback_url: http://localhost:3000/
+  sms_service_class: TwilioSmsService
+  apple_service_class: GrocerAppleService
+  google_service_class: GcmGoogleService
+  google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  twilio_account_sid: AC00244b5e4f5032ab657a9522591c40b0
+  twilio_auth_token: 797293de7395d31091bae2d83e71423f
+  twilio_number: 8045550012
+
+sandbox:
+  path: sandbox.snaptivist.com
+  host: sandbox.snaptivist.com
+  protocol: http://
+  default_from: admin@sandbox.snaptivist.com
+  skip_hostcheck: true
+  help_email: help@snaptivist.com
+  allow_mobile: true           
+  searchable: false
+  linked_in_login: false
+  twitter_login: false
+  facebook_login: true
+  linked_in_app_key: 7vv1ai8ozn9j
+  linked_in_app_secret: yAlQwONFxmEhwG70
+  twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
+  twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
+  facebook_app_id: 100940330104294
+  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
+  facebook_callback_url: http://sandbox.snaptivist.com/
+  sms_service_class: TwilioSmsService
+  apple_service_class: GrocerAppleService    
+  google_service_class: GcmGoogleService
+  google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  twilio_account_sid: AC00244b5e4f5032ab657a9522591c40b0
+  twilio_auth_token: 797293de7395d31091bae2d83e71423f
+  twilio_number: 8045550006
+
+test:
+  path: localhost:3000
+  host: localhost
+  protocol: http://
+  default_from: admin@snaptivist.com
+  help_email: help@snaptivist.com
+  allow_mobile: true           
+  searchable: false
+  facebook_app_id: 100940330104294
+  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
+  facebook_callback_url: http://localhost:3000/
+  sms_service_class: TwilioSmsService
+  apple_service_class: GrocerAppleService
+  google_service_class: GcmGoogleService
+  google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  twilio_account_sid: AC00244b5e4f5032ab657a9522591c40b0
+  twilio_auth_token: 797293de7395d31091bae2d83e71423f
+  twilio_number: 8045550006
+  linked_in_app_key: 7vv1ai8ozn9j
+  linked_in_app_secret: yAlQwONFxmEhwG70
+  twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
+  twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
+
+      
+staging:
+  path: staging.snaptivist.com
+  host: staging.snaptivist.com
+  protocol: https://
+  default_from: admin@staging.snaptivist.com
+  skip_hostcheck: true
+  help_email: help@snaptivist.com
+  allow_mobile: true          
+  searchable: false
+  linked_in_app_key: 9nvjtdhxc71v
+  linked_in_app_secret: 7nNxtsZYsluvddHO    
+  twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
+  twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
+  facebook_app_id: 100940330104294
+  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
+  facebook_callback_url: http://staging.snaptivist.com/
+  sms_service_class: TwilioSmsService
+  apple_service_class: GrocerAppleService
+  google_service_class: GcmGoogleService
+  google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  twilio_account_sid: ACc57e9929548211a117eef25f4d63ac3c
+  twilio_auth_token: 2dafb1d49388d86e6e7c5bbab77a6b8e
+  twilio_number: 2028038459
+
+production:
+  path: snaptivist.com
+  host: snaptivist.com
+  protocol: https://
+  default_from: admin@snaptivist.com
+  skip_hostcheck: false
+  help_email: help@snaptivist.com
+  allow_mobile: true        
+  searchable: true
+  linked_in_app_key: 9nvjtdhxc71v
+  linked_in_app_secret: 7nNxtsZYsluvddHO
+  twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
+  twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
+  facebook_app_id: 430002697093907
+  facebook_secret_key: cb39a2074c8116b2a9e06b275ed17680
+  facebook_callback_url: http://dev.snaptivist.com/
+  sms_service_class: TwilioSmsService
+  apple_service_class: GrocerAppleService
+  google_service_class: GcmGoogleService
+  google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  twilio_account_sid: ACc57e9929548211a117eef25f4d63ac3c
+  twilio_auth_token: 2dafb1d49388d86e6e7c5bbab77a6b8e
