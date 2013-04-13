@@ -485,9 +485,81 @@ $(document).ready(function() {
  		e.preventDefault();
 
 		var facebook_connect = new FacebookConnect($(this).attr('href'));
+		
+  		facebook_connect.exec(function() {
+  		
+  		var petition_id = $("#petition_id").val();
+  		var comment = $("#comment").val();
 
-  		facebook_connect.exec();
+  		var url = api_root_url + '/petitions/' + petition_id + '/sign';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				"comment": comment
+			}),
+			beforeSend: function(jqXHR, settings) {
+				jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+				petition = result.result;
+
+				$("#signature_count").text(petition.signature_count);
+
+				$("#sign-petition").hide();
+				$("#sign-petition-deliver").show();
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+  		}, function() {
+  			alert("error with facebook signin");
+  		});
  	});
+	$("#wrap").on("click", "#deliver-signature", function(e) {
+		e.preventDefault();
+
+		var twitter_connect = new TwitterConnect($("#deliver-signature").attr('href'));
+
+  		twitter_connect.exec(function() {
+  			
+  			var petition_id = $("#petition_id").val();
+  			var url = api_root_url + '/petitions/' + petition_id + '/share';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				tweet: "I just delivered a petition"
+			}),
+			beforeSend: function(jqXHR, settings) {
+				jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+				$("#sign-petition-deliver").hide();
+				$("#sign-petition-thanks").show();
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+
+				return false;
+			}
+		});
+
+  		}, function() {
+  			alert('twitter authentication failed');
+  		});
+	});
 	$("#wrap").on("click", "#sign-petition-fb", function(e) {
 		var FB = window.FB || '';
 		if(FB){

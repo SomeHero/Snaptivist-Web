@@ -25,7 +25,7 @@ class AuthenticationsController < ApplicationController
        flash[:notice] = "Authentication successful."
        sign_in current_user
 
-       return render 'oauth__popup_close', :layout => false            
+       return render 'oauth_popup_close', :layout => false            
      
      else
        user = User.new 
@@ -51,12 +51,20 @@ class AuthenticationsController < ApplicationController
    
    
    def facebook
+     #raise omni = request.env["omniauth.auth"].to_yaml
+    
      omni = request.env["omniauth.auth"]
      authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
 
      if authentication
        #flash[:notice] = "Logged in Successfully"
-       sign_in User.find(authentication.user_id)
+       user = User.find(authentication.user_id)
+       user.first_name = omni['extra']['raw_info'].first_name
+       user.last_name = omni['extra']['raw_info'].last_name
+
+       user.save
+
+       sign_in user
        return render 'oauth_popup_close', :layout => false            
      elsif current_user
        token = omni['credentials'].token
@@ -72,6 +80,8 @@ class AuthenticationsController < ApplicationController
      else
        user = User.new
        user.email = omni['extra']['raw_info'].email 
+       user.first_name = omni['extra']['raw_info'].first_name
+       user.last_name = omni['extra']['raw_info'].last_name
 
        user.apply_omniauth(omni)
 

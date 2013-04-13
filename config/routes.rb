@@ -3,6 +3,7 @@ SnaptivistWeb::Application.routes.draw do
     resources :petitions do 
       member do
         post 'share'
+        post 'sign'
       end
     end
     resources :phonecampaigns

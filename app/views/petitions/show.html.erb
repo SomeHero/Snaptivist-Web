@@ -13,7 +13,7 @@
      <div class="bar" style="width: <%= (@petition.signatures_count*100)/@petition.target_count %>%;"></div>
    </div>
    <div class="pull-left">
-    Signers: <%=  @petition.signatures_count %>
+    Signers: <span id="signature_count"><%=  @petition.signatures_count %></span>
   </div>
   <div class="pull-right">
     Goal: <%= @petition.target_count %>
@@ -24,12 +24,33 @@
     <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
 <button id="sign-petition-facebook-button" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign with Facebook</button>
     <button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
+  </div>
+  <div id="sign-petition-deliver" style="display:none;">
+  <div class="body">
+    <div class="container">
+    <p>Thanks for Signing!</p>
+    <p>Now deliver your signature publicly on social media so your targt can't hide!
+    </div>
+      <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
+      </textarea>
+      <button id="deliver-signature" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Signature
+      </button>
+    </div>
+  </div>
+  <div id="sign-petition-thanks" style="display:none;">
+    <h4 class="text-center">Great!</h4>
+    <p class="text-center">Here is some more action we want you to take</p>
+  </div>
+
+</div>
+  <div id="comments">
+    <% if @petition.signatures.count > 0 %>
     <h3>These people have already signed</h3>
     <ul class="media-list">
     <% @petition.signatures.each do |signature| %>
     <li class="media">
       <div class="media-body">
-        <%= signature.user.first_name %> signed 2 days ago
+        <%= signature.user.first_name %> <%= signature.user.last_name %> signed 2 days ago
         <div class="well">
         <%= signature.comment %>
       </div>
@@ -37,11 +58,12 @@
     </li>
     <% end %>
     </ul>
+    <% end %>
   </div>
 </div>
 
-<div id="sign-petition-thanks"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-body">
+<div id="sign-petition-thanks" style="display:none;">
+  <div class="body">
     <div class="container">
     <p>Thanks for Signing!</p>
     <p>Now deliver your signature publicly on social media so your targt can't hide!

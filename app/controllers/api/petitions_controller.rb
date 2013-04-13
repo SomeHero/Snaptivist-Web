@@ -61,6 +61,28 @@ class Api::PetitionsController < ApplicationController
     end
   end
 
+  def sign
+
+      @petition = Petition.find(params[:id]);
+
+      raise "Unable to find petition" unless @petition
+
+      signature = @petition.signatures.new do |s|
+        s.user = current_user
+        s.comment = params[:comment]
+      end
+
+
+    if !signature.valid?
+     return render_result({}, 400, 'Error Signing Petition')
+    end
+
+    #return if error_messages?(:config)
+    @petition.save
+
+    render_result(@petition.to_api)
+  end
+
   def show
     @petition = Petition.find(params[:id])
 

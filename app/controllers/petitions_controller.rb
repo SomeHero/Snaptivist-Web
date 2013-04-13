@@ -6,4 +6,9 @@ class PetitionsController < InheritedResources::Base
 
 		render :show
 	end
+
+	def sign
+
+	end
+	
 end

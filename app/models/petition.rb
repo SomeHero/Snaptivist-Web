@@ -30,6 +30,7 @@ class Petition < ActiveRecord::Base
       'petition_id' => id,
       'title' => title,
       'summary' => summary,
+      'signature_count' => signatures_count,
       'target_count' => target_count,
       'short_url' => short_url,
       'rewrite_url_key' => rewrite_url_key,
