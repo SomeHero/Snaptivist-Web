@@ -7,60 +7,6 @@ $(document).ready(function() {
 	var phonecampaign_id;
 	var poll_id;
 
-	$(document).bind("signInComplete", function() { 
-
-		//Add Petetion and slide in share screen
-		var target_id = petition.target_id;
-		var title = petition.title;
-		var summary = petition.summary;
-
-		var url = api_root_url + '/petitions';
-
-		$.ajax({
-			type: "POST",
-			url: url,
-			data: JSON.stringify({
-				'target_id': target_id,
-				'title': title,
-				'summary': summary 
-			}),
-			beforeSend: function(jqXHR, settings) {
-        		jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-    		},
-			// Stringify the node
-			dataType: 'json',
-			contentType: 'application/json',
-			// On success do some processing like closing the window and show an alert
-			success: function(result) {
-
-				petition_id = result.result.petition_id;
-
-				var source   = $("#share-petition-template").html();
-				var template = Handlebars.compile(source);
-
-				var windowWidth = $(window).width();
-
-   				var context = {}; //result.result;
-   				var html = template(context);
-
-   				$("#wrap").append(html);
-   				$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-
-   				$('#create-action-sign-in-panel').animate({
-   					left: -($('#create-action-sign-in-panel').width() + windowWidth/2)
-   				}, 400, function() {
-
-   					$('#share-petition-panel').animate({
-   						left:windowWidth/2-$('#share-petition-panel').width()/2
-   					});
-   				});
-   			},
-   			error: function(jqXHR, textStatus, errorThrown) {
-
-   				return false;
-   			}
-   		});
-	});
 	Handlebars.registerPartial("selectTarget", $("#select-target-template").html());
 
 	$("#wrap").on("submit", "#create-petition-form", function(e) {
@@ -192,14 +138,122 @@ $(document).ready(function() {
 
 		var twitter_connect = new TwitterConnect($("#twitter-connect").attr('href'));
 
-  		twitter_connect.exec();
+  		twitter_connect.exec(function() {
+  			//Add Petetion and slide in share screen
+		var target_id = petition.target_id;
+		var title = petition.title;
+		var summary = petition.summary;
+
+		var url = api_root_url + '/petitions';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				'target_id': target_id,
+				'title': title,
+				'summary': summary 
+			}),
+			beforeSend: function(jqXHR, settings) {
+        		jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    		},
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+
+				petition_id = result.result.petition_id;
+
+				var source   = $("#share-petition-template").html();
+				var template = Handlebars.compile(source);
+
+				var windowWidth = $(window).width();
+
+   				var context = {}; //result.result;
+   				var html = template(context);
+
+   				$("#wrap").append(html);
+   				$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+
+   				$('#create-action-sign-in-panel').animate({
+   					left: -($('#create-action-sign-in-panel').width() + windowWidth/2)
+   				}, 400, function() {
+
+   					$('#share-petition-panel').animate({
+   						left:windowWidth/2-$('#share-petition-panel').width()/2
+   					});
+   				});
+   			},
+   			error: function(jqXHR, textStatus, errorThrown) {
+
+   				return false;
+   			}
+   		}, function() {
+   			alert('unable to create petition')
+   		});
+  		});
 	});
 	$("#wrap").on("click", "#facebook-connect", function(e) {
 		e.preventDefault();
 
 		var facebook_connect = new FacebookConnect($("#facebook-connect").attr('href'));
 
-  		facebook_connect.exec();
+  		facebook_connect.exec(function() {
+  			//Add Petetion and slide in share screen
+		var target_id = petition.target_id;
+		var title = petition.title;
+		var summary = petition.summary;
+
+		var url = api_root_url + '/petitions';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				'target_id': target_id,
+				'title': title,
+				'summary': summary 
+			}),
+			beforeSend: function(jqXHR, settings) {
+        		jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    		},
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+
+				petition_id = result.result.petition_id;
+
+				var source   = $("#share-petition-template").html();
+				var template = Handlebars.compile(source);
+
+				var windowWidth = $(window).width();
+
+   				var context = {}; //result.result;
+   				var html = template(context);
+
+   				$("#wrap").append(html);
+   				$("#share-petition-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
+
+   				$('#create-action-sign-in-panel').animate({
+   					left: -($('#create-action-sign-in-panel').width() + windowWidth/2)
+   				}, 400, function() {
+
+   					$('#share-petition-panel').animate({
+   						left:windowWidth/2-$('#share-petition-panel').width()/2
+   					});
+   				});
+   			},
+   			error: function(jqXHR, textStatus, errorThrown) {
+
+   				return false;
+   			}
+   		}, function() {
+   			alert('unable to create petition')
+   		});
+  		});
 	});
 	$("#wrap").on("click", "#share-petition", function(e) {
 		e.preventDefault();
