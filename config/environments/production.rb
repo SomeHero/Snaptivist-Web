@@ -12,7 +12,7 @@ SnaptivistWeb::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
@@ -68,7 +68,7 @@ SnaptivistWeb::Application.configure do
   #TWITTER STUFF
   TWITTER_CONSUMER_KEY = Settings.twitter_app_key
   TWITTER_CONSUMER_SECRET = Settings.twitter_app_secret
-
+  
   FACEBOOK_APP_ID = Settings.facebook_app_id
   FACEBOOK_APP_SECRET = Settings.facebook_secret_key
 
