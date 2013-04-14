@@ -67,6 +67,21 @@ class Api::PetitionsController < ApplicationController
 
       raise "Unable to find petition" unless @petition
 
+      if params[:email_address]
+
+        @user = User.new do |u|
+          u.first_name = params[:first_name]
+          u.last_name = params[:last_name]
+          u.email = params[:email_address]
+          u.password = "password"
+          u.password_confirmation = "password"
+          u.zip_code = params[:zip_code]
+        end
+
+        sign_in @user
+
+      end
+
       signature = @petition.signatures.new do |s|
         s.user = current_user
         s.comment = params[:comment]

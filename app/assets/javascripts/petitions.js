@@ -341,14 +341,21 @@ $(document).ready(function() {
 	$("#wrap").on("click", "#sign-petition-user-name", function(e) {
 		e.preventDefault();
 
-		var first_name = 'James';
-		var last_name = 'Rhodes';
-		var email = 'james@somehero.com';
-		var zip_code = '23221';
+		var first_name = $("#firstName").val();
+		var last_name = $("#lastName").val();
+		var email = $("#emailAddress").val();
+		var zip_code = $("#zipCode").val();
 		var comment = $('#comment').val();
-		var petition_id = $('#petition_id').val()
+		var petition_id = $('#petition_id').val();
 
-		
+		petition_services.createUserAndSign(petition_id, first_name, last_name, email, zip_code, comment, function(result) {
+			$("#signature_count").text(result.signature_count);
+
+			$("#sign-petition").hide();
+			$("#sign-petition-deliver").show();
+  		}, function() {
+  				alert('unable to sign petition');
+  		});	
 	});
  	$("#wrap").on("click", "#sign-petition-facebook-button", function(e) {
  		e.preventDefault();

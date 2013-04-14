@@ -22,8 +22,30 @@
 <div id="signature-container">
   <div id="sign-petition">
     <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
+<div class="container-fluid">
+  <div class="row-fluid">
+  <div class="span6">
 <button id="sign-petition-facebook-button" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign with Facebook</button>
+</div>
+<div class="span6">
+    <div  class="control-group">
+            <div class="controls">
+              <input type="text" id="firstName" name="FirstName" placeholder="First Name" /style="width: 100%">
+            </div>
+            <div class="controls">
+              <input type="text" id="lastName" name="LastName" placeholder="Last Name" style="width: 100%" />
+            </div>
+            <div class="controls">
+              <input type="text" id="emailAddress" name="EmailAddress" placeholder="Email Address" style="width: 100%" />
+            </div>
+            <div class="controls">
+              <input type="text" id="zipCode" name="ZipCode" placeholder="Zip Code" tyle="width: 40%" />
+            </div>
+    </div>
     <button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
+  </div>
+</div>
+</div>
   </div>
   <div id="sign-petition-deliver" style="display:none;">
   <div class="body">
@@ -49,6 +71,9 @@
     <ul class="media-list">
     <% @petition.signatures.each do |signature| %>
     <li class="media">
+       <div class="pull-left">
+      <img class="media-object" src="<%= signature.user.avatar_url %>" />
+    </div>
       <div class="media-body">
         <%= signature.user.first_name %> <%= signature.user.last_name %> signed 2 days ago
         <div class="well">
