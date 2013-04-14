@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     var petition = {};
 	var petition_id;
+	var signature_id;
 	var phonecampaign_id;
 	var poll_id;
 
@@ -349,7 +350,8 @@ $(document).ready(function() {
 		var petition_id = $('#petition_id').val();
 
 		petition_services.createUserAndSign(petition_id, first_name, last_name, email, zip_code, comment, function(result) {
-			$("#signature_count").text(result.signature_count);
+			signature_id = result.signature.signature_id
+			$("#signature_count").text(result.petition.signature_count);
 
 			$("#sign-petition").hide();
 			$("#sign-petition-deliver").show();
@@ -368,7 +370,9 @@ $(document).ready(function() {
   			var comment = $("#comment").val();
 
   			petition_services.sign(petition_id, comment, function(result) {
-				$("#signature_count").text(result.signature_count);
+				signature_id = result.signature.signature_id
+				
+				$("#signature_count").text(result.petition.signature_count);
 
 				$("#sign-petition").hide();
 				$("#sign-petition-deliver").show();
@@ -389,7 +393,7 @@ $(document).ready(function() {
   			var petition_id = $("#petition_id").val();
   			var tweet = "I just created a petition on Snaptivist I demand " + petition.title
 			
-  			petition_services.deliver(petition_id, tweet, function() {
+  			petition_services.deliver(petition_id, signature_id, tweet, function() {
   				$("#sign-petition-deliver").hide();
 				$("#sign-petition-thanks").show();
   			}, function() {

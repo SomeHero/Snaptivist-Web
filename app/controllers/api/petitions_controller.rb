@@ -43,6 +43,11 @@ class Api::PetitionsController < ApplicationController
   #TODO: rename to deliver also may want to refactor
   def share
 
+    @petition = Petition.find(params[:id]); 
+    raise "Unable to find petition" unless @petition
+
+    @signature = Signature.find(params[:signature_id])
+    rails "Unable to find signature" unless @signature
     #handle to tweating here
     #if params[:tweet]
     token = current_user.authentications.find_by_provider("twitter").token
@@ -55,6 +60,11 @@ class Api::PetitionsController < ApplicationController
      config.oauth_token_secret = token_secret
 
     Twitter.update(params[:tweet])
+
+    @signature.delivered = true
+    @signature.delivered_at = Time.now
+
+    @signature.save
 
     render_result()
 
@@ -110,7 +120,9 @@ class Api::PetitionsController < ApplicationController
     #return if error_messages?(:config)
     @petition.save
 
-    render_result(@petition.to_api)
+    render_result({ 'petition' => @petition.to_api,
+                    'signature' => signature.to_api})
+
   end
 
   #render a petition with id = params[:id]

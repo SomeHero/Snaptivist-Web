@@ -40,4 +40,5 @@ class Petition < ActiveRecord::Base
     return results;
 
   end
+  
 end

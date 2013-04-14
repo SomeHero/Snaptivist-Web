@@ -81,7 +81,14 @@
         </script>
         <div class="well">
         <%= signature.comment %>
-      </div>
+        </div>
+        <div class="pull-right">
+          <% if signature.delivered %>
+            delivered
+          <% else %>
+            pending delivery
+          <% end %>
+        </div>
       </div>
     </li>
     <% end %>

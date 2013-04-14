@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414022208) do
+ActiveRecord::Schema.define(:version => 20130414194045) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130414022208) do
     t.string   "token_secret"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "avatar_url"
   end
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
@@ -148,8 +149,10 @@ ActiveRecord::Schema.define(:version => 20130414022208) do
     t.integer  "user_id"
     t.integer  "petition_id"
     t.text     "comment"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.boolean  "delivered"
+    t.datetime "delivered_at"
   end
 
   add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"

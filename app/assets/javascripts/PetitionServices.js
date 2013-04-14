@@ -93,13 +93,14 @@ var PetitionServices = (function() {
 		});
   };
 
-  PetitionServices.prototype.deliver = function(petition_id, tweet, success, failure) {
+  PetitionServices.prototype.deliver = function(petition_id, signature_id, tweet, success, failure) {
   		var url = this.base_url + '/petitions/' + petition_id + '/share';
 
 		$.ajax({
 			type: "POST",
 			url: url,
 			data: JSON.stringify({
+				signature_id: signature_id,
 				tweet: tweet
 			}),
 			beforeSend: function(jqXHR, settings) {
