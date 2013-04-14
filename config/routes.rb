@@ -8,7 +8,6 @@ SnaptivistWeb::Application.routes.draw do
     end
     resources :phonecampaigns
     resources :polls
-    resources :signatures
     resources :targets
   end
   

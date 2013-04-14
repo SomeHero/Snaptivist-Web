@@ -75,7 +75,10 @@
       <img class="media-object" src="<%= signature.user.avatar_url %>" />
     </div>
       <div class="media-body">
-        <%= signature.user.first_name %> <%= signature.user.last_name %> signed 2 days ago
+        <%= signature.user.first_name %> <%= signature.user.last_name %> signed
+        <script language="javascript"> 
+          document.write(moment.unix("<%= signature.created_at.to_f() %>").fromNow());
+        </script>
         <div class="well">
         <%= signature.comment %>
       </div>

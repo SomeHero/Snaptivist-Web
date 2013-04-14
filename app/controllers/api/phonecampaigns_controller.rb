@@ -33,15 +33,13 @@ class Api::PhonecampaignsController < ApplicationController
 
   end
 
-  def launch
-
-    #update action to launched
-    
-  end
-
   def share
 
     #handle to tweating here
+
+  end
+
+  def log
 
   end
 

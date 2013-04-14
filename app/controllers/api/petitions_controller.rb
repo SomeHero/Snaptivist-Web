@@ -4,8 +4,12 @@ class Api::PetitionsController < ApplicationController
 
   respond_to :json
 
+  #the version of the API
+  #TODO: refactor to base class or something
   API_VERSION = '1.0'
 
+  #creates a new petition with a given target, title, summary and generates a new bitly url
+  #for the petition
  def create
 
     #auth_mechanism = params.fetch(:auth_mechanism, 'standard')
@@ -35,12 +39,8 @@ class Api::PetitionsController < ApplicationController
 
   end
 
-  def launch
-
-    #update action to launched
-    
-  end
-
+  #delivers the signature to a target via twitter
+  #TODO: rename to deliver also may want to refactor
   def share
 
     #handle to tweating here
@@ -61,6 +61,11 @@ class Api::PetitionsController < ApplicationController
     end
   end
 
+  #adds a Signature to a petition
+  #can be called with email address in which case we will look for the user account
+  #with that email address or create a new one
+  #if not called with email we are assuming the user has authenticated their account
+  #via Facebook or possibly some other social network
   def sign
 
       @petition = Petition.find(params[:id]);
@@ -69,18 +74,28 @@ class Api::PetitionsController < ApplicationController
 
       if params[:email_address]
 
-        @user = User.new do |u|
+        @user = User.find_by_email(params[:email_address])
+
+        if @user
+          @user.first_name = params[:first_name]
+          @user.last_name = params[:last_name]
+          @user.zip_code = params[:zip_code]
+        else
+         @user = User.new do |u|
           u.first_name = params[:first_name]
           u.last_name = params[:last_name]
           u.email = params[:email_address]
           u.password = "password"
           u.password_confirmation = "password"
           u.zip_code = params[:zip_code]
+          end
         end
 
         sign_in @user
 
       end
+
+      raise "Unable to find user" unless current_user
 
       signature = @petition.signatures.new do |s|
         s.user = current_user
@@ -98,6 +113,7 @@ class Api::PetitionsController < ApplicationController
     render_result(@petition.to_api)
   end
 
+  #render a petition with id = params[:id]
   def show
     @petition = Petition.find(params[:id])
 
@@ -107,6 +123,7 @@ class Api::PetitionsController < ApplicationController
   end
 
 	# render a result in the appropriate format
+  # TODO: move to some base class or something
 	def render_result(result = {}, status = 200, status_string = 'OK')
 		return_value = {'version' => API_VERSION,
 			'statusCode' => status,
