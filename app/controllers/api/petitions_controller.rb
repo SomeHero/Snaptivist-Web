@@ -64,7 +64,7 @@ class Api::PetitionsController < ApplicationController
     @signature.delivered = true
     @signature.delivered_at = Time.now
 
-    @signature.save
+    @signature.save!
 
     render_result()
 
