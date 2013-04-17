@@ -27,7 +27,7 @@ var FacebookConnect = (function() {
 
     $.ajax({
       type: 'get',
-      url: '/api/auth/check/facebook',
+      url: '/auth/check/facebook',
       dataType: 'json',
       success: function(response) {
         if (response.authed) {

@@ -9,15 +9,14 @@ SnaptivistWeb::Application.routes.draw do
     resources :phonecampaigns
     resources :polls
     resources :targets
-
-    match "/auth/check/:provider" => 'authentications#check' 
-
   end
   
   match 'petitions/:action_title', :to =>'petitions#view'
   match 'polls/:action_title', :to =>'polls#view'
   match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view'
   
+  match "auth/check/:provider" => 'authentications#check' 
+
   resources :authentications
   resources :targets
   resources :twitter

@@ -24,10 +24,10 @@ var TwitterConnect = (function() {
   }
 
   TwitterConnect.prototype.finish = function(success, failure) {
-    
+
     $.ajax({
       type: 'get',
-      url: '/api/auth/check/twitter',
+      url: '/auth/check/twitter',
       dataType: 'json',
       success: function(response) {
         if (response.authed) {
