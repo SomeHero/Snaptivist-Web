@@ -65,6 +65,21 @@ SnaptivistWeb::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
     
+  ###########################################################################################################
+  # User notifications
+  #
+  require 'user_notification.rb'
+  require 'elastic_email_email_user_notifier.rb'
+  router = UserNotification::UserNotificationRouter.instance()
+  #router.add_notifier(UserNotification::Channel::TEXT, UserNotification::SmsUserNotifier.new)
+  router.add_notifier(UserNotification::Channel::EMAIL, UserNotification::ElasticEmailEmailUserNotifier.new)
+  #router.add_notifier(UserNotification::Channel::APP, UserNotification::AppUserNotifier.new)
+
+  router.enable_notifications({ 
+                                UserNotification::Notification::APP_LINK => false, 
+                                UserNotification::Notification::USER_INVITE => false, 
+                                UserNotification::Notification::USER_WELCOME => false
+                                })
   #TWITTER STUFF
   TWITTER_CONSUMER_KEY = Settings.twitter_app_key
   TWITTER_CONSUMER_SECRET = Settings.twitter_app_secret
