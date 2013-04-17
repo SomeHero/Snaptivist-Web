@@ -64,6 +64,7 @@ common:
   
   # This is the default email address for mailers
   default_from: PERENV
+  default_from_name: PERENV
   
   # Used in the application controller's check_uri method to strip domain information, leaving the relative path only
   skip_hostcheck: PERENV
@@ -144,6 +145,7 @@ development:
   host: localhost
   protocol: http://
   default_from: admin@snaptivist.com
+  default_from_name : Snaptivist Dev
   skip_hostcheck: true
   help_email: help@snaptivist.com
   allow_mobile: true            
@@ -172,6 +174,7 @@ sandbox:
   host: sandbox.snaptivist.com
   protocol: http://
   default_from: admin@sandbox.snaptivist.com
+  default_from_name: Snaptivist Sandbox
   skip_hostcheck: true
   help_email: help@snaptivist.com
   allow_mobile: true           
@@ -199,6 +202,7 @@ test:
   host: localhost
   protocol: http://
   default_from: admin@snaptivist.com
+  default_from_name: Snaptivist Test
   help_email: help@snaptivist.com
   allow_mobile: true           
   searchable: false
@@ -223,6 +227,7 @@ staging:
   host: staging.snaptivist.com
   protocol: https://
   default_from: admin@staging.snaptivist.com
+  default_from_name: Snaptivist Staging
   skip_hostcheck: true
   help_email: help@snaptivist.com
   allow_mobile: true          
@@ -247,6 +252,7 @@ production:
   host: snaptivist.com
   protocol: https://
   default_from: admin@snaptivist.com
+  default_from_name: Snaptivist
   skip_hostcheck: false
   help_email: help@snaptivist.com
   allow_mobile: true        

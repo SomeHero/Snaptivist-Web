@@ -120,6 +120,9 @@ class Api::PetitionsController < ApplicationController
     #return if error_messages?(:config)
     @petition.save
 
+    #send petition action email
+    UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user)
+
     render_result({ 'petition' => @petition.to_api,
                     'signature' => signature.to_api})
 

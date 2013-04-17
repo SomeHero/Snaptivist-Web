@@ -5,6 +5,7 @@ class AuthenticationsController < ApplicationController
   end
   
   def home
+
   end
   
   def twitter
@@ -115,6 +116,19 @@ class AuthenticationsController < ApplicationController
      end
    end
  end
+
+  def check
+    if current_user and auth = current_user.authentications.where(:provider => params[:provider]).first
+      render :json => { :authed => true, :authentication => auth }
+    elsif session[params[:provider] + "_omniauth_success"]
+      # we set this session variable earlier - it lets us determine if an authenticaiton
+      # has been successful
+      session[params[:provider]] = nil
+      render :json => { :authed => true }
+    else
+      render :json => { :authed => false }
+    end
+  end
 
 
 

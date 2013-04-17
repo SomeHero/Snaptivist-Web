@@ -24,21 +24,19 @@ var TwitterConnect = (function() {
   }
 
   TwitterConnect.prototype.finish = function(success, failure) {
-    success();
-  //   $.event.trigger("signInComplete");
-
-  //   $.ajax({
-  //     type: 'get',
-  //     url: '/auth/check/twitter',
-  //     dataType: 'json',
-  //     success: function(response) {
-  //       if (response.authed) {
-  //         success();
-  //       } else {
-  //         failure();
-  //       }
-  //     }
-  //   });
+    
+    $.ajax({
+      type: 'get',
+      url: '/api/auth/check/twitter',
+      dataType: 'json',
+      success: function(response) {
+        if (response.authed) {
+          success();
+        } else {
+          failure();
+        }
+      }
+    });
    };
 
   return TwitterConnect;

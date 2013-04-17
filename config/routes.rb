@@ -9,6 +9,9 @@ SnaptivistWeb::Application.routes.draw do
     resources :phonecampaigns
     resources :polls
     resources :targets
+
+    match "/auth/check/:provider" => 'authentications#check' 
+
   end
   
 

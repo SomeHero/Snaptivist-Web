@@ -38,6 +38,28 @@ SnaptivistWeb::Application.configure do
   # Add the config.action_mailer.default_url_options
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  ###########################################################################################################
+  # Application logging
+  #
+
+  # Log detail
+  config.log_level = :debug
+  
+   ###########################################################################################################
+  # User notifications
+  #
+  require 'user_notification.rb'
+  require 'elastic_email_email_user_notifier.rb'
+  router = UserNotification::UserNotificationRouter.instance()
+  #router.add_notifier(UserNotification::Channel::TEXT, UserNotification::SmsUserNotifier.new)
+  router.add_notifier(UserNotification::Channel::EMAIL, UserNotification::ElasticEmailEmailUserNotifier.new)
+  #router.add_notifier(UserNotification::Channel::APP, UserNotification::AppUserNotifier.new)
+
+  router.enable_notifications({ 
+                                UserNotification::Notification::APP_LINK => true, 
+                                UserNotification::Notification::USER_INVITE => true, 
+                                UserNotification::Notification::USER_WELCOME => true
+                                })
   #TWITTER STUFF
   TWITTER_CONSUMER_KEY = Settings.twitter_app_key
   TWITTER_CONSUMER_SECRET = Settings.twitter_app_secret
