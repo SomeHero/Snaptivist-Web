@@ -5,7 +5,7 @@ var PhoneCampaignServices = (function() {
   };
 
   PhoneCampaignServices.prototype.get = function(id, success, failure) {
-  	var url = api_root_url + '/phonecampaigns/' + id;
+  	var url = this.base_url + '/phonecampaigns/' + id;
 
 	$.ajax({
 			type: "GET",
@@ -25,7 +25,7 @@ var PhoneCampaignServices = (function() {
   };
 
   PhoneCampaignServices.prototype.create = function(phone_campaign, success, failure) {
-  	var url = api_root_url + '/phonecampaigns';
+  	var url = this.base_url + '/phonecampaigns';
 
 		$.ajax({
 			type: "POST",

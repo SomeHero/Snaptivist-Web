@@ -1,11 +1,13 @@
 var TwitterConnect = (function() {
 
   // constructor accepts a url which should be your Twitter OAuth url
-  function TwitterConnect(url) {
+  function TwitterConnect(url, success, failure) {
     this.url = url;
+    this.success = success;
+    this.failure = failure;
   }
 
-  TwitterConnect.prototype.exec = function(success, failure) {
+  TwitterConnect.prototype.exec = function() {
     var self = this,
       params = 'location=0,status=0,width=800,height=600';
 
@@ -14,7 +16,7 @@ var TwitterConnect = (function() {
     this.interval = window.setInterval((function() {
       if (self.twitter_window.closed) {
         window.clearInterval(self.interval);
-        self.finish(success, failure);
+        self.finish();
       }
     }), 1000);
 
@@ -23,7 +25,7 @@ var TwitterConnect = (function() {
     document.cookie = 'twitter_oauth_popup=1; path=/';
   }
 
-  TwitterConnect.prototype.finish = function(success, failure) {
+  TwitterConnect.prototype.finish = function() {
 
     $.ajax({
       type: 'get',
@@ -31,9 +33,9 @@ var TwitterConnect = (function() {
       dataType: 'json',
       success: function(response) {
         if (response.authed) {
-          success();
+          this.success();
         } else {
-          failure();
+          this.failure();
         }
       }
     });

@@ -1,11 +1,14 @@
 var FacebookConnect = (function() {
-
+  var successCallback, failureCallback;
+  
   // constructor accepts a url which should be your Twitter OAuth url
-  function FacebookConnect(url) {
+  function FacebookConnect(url, success, failure) {
     this.url = url;
+    successCallback = success;
+    failureCallback = failure;
   }
 
-  FacebookConnect.prototype.exec = function(success, failure) {
+  FacebookConnect.prototype.exec = function() {
     var self = this,
       params = 'location=0,status=0,width=800,height=600';
 
@@ -14,7 +17,7 @@ var FacebookConnect = (function() {
     this.interval = window.setInterval((function() {
       if (self.facebook_window.closed) {
         window.clearInterval(self.interval);
-        self.finish(success, failure);
+        self.finish();
       }
     }), 1000);
 
@@ -31,9 +34,9 @@ var FacebookConnect = (function() {
       dataType: 'json',
       success: function(response) {
         if (response.authed) {
-          success();
+          successCallback();
         } else {
-          failure();
+          failureCallback();
         }
       }
     });

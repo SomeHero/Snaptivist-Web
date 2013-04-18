@@ -1,7 +1,16 @@
 $(document).ready(function() {
     var activeOverlay;
 
+    $("#wrap").on("click", "#twitter-connect", function(e) {
+        e.preventDefault();
 
+        twitter_connect.exec();
+    });
+    $("#wrap").on("click", "#facebook-connect", function(e) {
+        e.preventDefault();
+
+        facebook_connect.exec();
+    });
 	$("#login-button").click(function(e) {
 		e.preventDefault();
 
