@@ -9,7 +9,7 @@ var PollServices = (function() {
 
   };
 	
-  PollServices.prototype.create = function(question, choices, success, failure) {
+  PollServices.prototype.create = function(poll, success, failure) {
 
 		var url = this.base_url + '/polls';
 
@@ -18,8 +18,8 @@ var PollServices = (function() {
 			url: url,
 			data: JSON.stringify({
 				'poll': {
-					'question': question,
-					'choices': choices
+					'question': poll.question,
+					'choices': poll.choices
 				}
 			}),
 			// Stringify the node

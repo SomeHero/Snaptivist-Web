@@ -5,8 +5,6 @@ $(document).ready(function() {
     var phonecampaign_services = new PhoneCampaignServices(api_root_url);
 	var target_services = new TargetServices(api_root_url);
 
-	var twitter_connect = new TwitterConnect($("#twitter-connect").attr('href'));
-
 	var phone_campaign = {};
 
 	var createPhoneCampaign = function() {
