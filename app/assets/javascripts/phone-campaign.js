@@ -24,9 +24,9 @@ $(document).ready(function() {
         	$("#wrap").append(html);
 
     		$("#share-phone-campaign-panel").css('top', ($("#action-buttons").position().top - 20) + "px");
-			$('#launch-phone-campaign-panel').animate({
-    			left: -($('#launch-phone-campaign-panel').width() + windowWidth/2)
-    		}, 400, function() {
+			$('#create-action-sign-in-panel').animate({
+				left: -($('#create-action-sign-in-panel').width() + windowWidth/2)
+			}, 400, function() {
     			
     			$('#share-phone-campaign-panel').animate({
     				left:windowWidth/2-$('#share-phone-campaign-panel').width()/2
