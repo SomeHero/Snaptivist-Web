@@ -22,13 +22,13 @@
 <div id="signature-container">
   <div id="sign-petition">
     <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
-<div class="container-fluid">
-  <div class="row-fluid">
-  <div class="span6">
-<button id="sign-petition-facebook-button" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign with Facebook</button>
-</div>
-<div class="span6">
-    <div  class="control-group">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span6">
+          <button id="sign-petition-facebook-button" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign with Facebook</button>
+        </div>
+        <div class="span6">
+          <div  class="control-group">
             <div class="controls">
               <input type="text" id="firstName" name="FirstName" placeholder="First Name" /style="width: 100%">
             </div>
@@ -41,68 +41,67 @@
             <div class="controls">
               <input type="text" id="zipCode" name="ZipCode" placeholder="Zip Code" tyle="width: 40%" />
             </div>
+          </div>
+          <button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
+        </div>
+      </div>
     </div>
-    <button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
-  </div>
-</div>
-</div>
   </div>
   <div id="sign-petition-deliver" style="display:none;">
-  <div class="body">
-    <div class="container">
-    <p>Thanks for Signing!</p>
-    <p>Now deliver your signature publicly on social media so your targt can't hide!
+    <div class="body">
+      <div class="container">
+        <p>Thanks for Signing!</p>
+        <p>Now deliver your signature publicly on social media so your targt can't hide!
+          <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
+        </textarea>
+        <button id="deliver-signature" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Signature
+        </button>
+      </div>
     </div>
-      <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
-      </textarea>
-      <button id="deliver-signature" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Signature
-      </button>
+    <div id="sign-petition-thanks" style="display:none;">
+      <h4 class="text-center">Great!</h4>
+      <p class="text-center">Here is some more action we want you to take</p>
     </div>
-  </div>
-  <div id="sign-petition-thanks" style="display:none;">
-    <h4 class="text-center">Great!</h4>
-    <p class="text-center">Here is some more action we want you to take</p>
-  </div>
 
-</div>
+  </div>
   <div id="comments">
     <% if @petition.signatures.count > 0 %>
     <h3>These people have already signed</h3>
     <ul class="media-list">
-    <% @petition.signatures.each do |signature| %>
-    <li class="media">
+      <% @petition.signatures.each do |signature| %>
+      <li class="media">
        <div class="pull-left">
-      <img class="media-object" src="<%= signature.user.avatar_url %>" />
-    </div>
+        <img class="media-object" src="<%= signature.user.avatar_url %>" />
+      </div>
       <div class="media-body">
         <%= signature.user.first_name %> <%= signature.user.last_name %> signed
         <script language="javascript"> 
-          document.write(moment.unix("<%= signature.created_at.to_f() %>").fromNow());
+        document.write(moment.unix("<%= signature.created_at.to_f() %>").fromNow());
         </script>
         <div class="well">
-        <%= signature.comment %>
+          <%= signature.comment %>
         </div>
         <div class="pull-right">
           <% if signature.delivered %>
-            delivered
+          delivered
           <% else %>
-            pending delivery
+          pending delivery
           <% end %>
         </div>
       </div>
     </li>
     <% end %>
-    </ul>
-    <% end %>
-  </div>
+  </ul>
+  <% end %>
+</div>
 </div>
 
 <div id="sign-petition-thanks" style="display:none;">
   <div class="body">
     <div class="container">
-    <p>Thanks for Signing!</p>
-    <p>Now deliver your signature publicly on social media so your targt can't hide!
-    </div>
+      <p>Thanks for Signing!</p>
+      <p>Now deliver your signature publicly on social media so your targt can't hide!
+      </div>
       <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
       </textarea>
       <button id="share-petition" class="btn btn-primary btn-block btn-large">Deliver Signature

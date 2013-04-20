@@ -30,6 +30,7 @@ class PhoneCampaign < ActiveRecord::Base
       'title' => title,
       'summary' => summary,
       'target_count' => target_count,
+      'callresult_count' => call_results_count,
       'short_url' => short_url,
       'rewrite_url_key' => rewrite_url_key,
       'target' => target.to_api

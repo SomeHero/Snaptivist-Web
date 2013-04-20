@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418174817) do
+ActiveRecord::Schema.define(:version => 20130420024418) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -72,6 +72,9 @@ ActiveRecord::Schema.define(:version => 20130418174817) do
     t.integer  "phone_campaign_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "user_id"
+    t.boolean  "delivered"
+    t.datetime "delivered_at"
   end
 
   add_index "call_results", ["phone_campaign_id"], :name => "index_call_results_on_phone_campaign_id"

@@ -18,26 +18,30 @@
     Goal: <%= @phonecampaign.target_count %>
   </div>
 </div>
-<div id="signature-container">
-  <div id="sign-petition">
-    <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
-    <button id="log-call-facebook-button" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign  with Facebook</button>
-    <button id="log-call-user-name-button" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
+<div id="call-result-container">
+  <div id="call-phone-campaign">
+    <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people about the result of your call..."></textarea>
+    <button id="log-call-facebook-button" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:facebook) %>">Log Call with Facebook</button>
+    <button id="log-call-user-name-button" class="btn btn-primary btn-block btn-large">Log Call with UserName/Password</button>
     
   </div>
 </div>
-
-<div id="sign-petition-thanks"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-body">
+<div id="log-call-deliver" style="display:none;">
+  <div class="body">
     <div class="container">
-    <p>Thanks for Signing!</p>
-    <p>Now deliver your signature publicly on social media so your targt can't hide!
-    </div>
+      <p>Thanks for Calling!</p>
+      <p>Now let other know that you called the target, publicly on social media so your targt can't hide!
+      </div>
       <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
       </textarea>
-      <button id="share-phone-campaign" class="btn btn-primary btn-block btn-large">Call Now
+      <button id="deliver-call-result" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Call Result
       </button>
     </div>
   </div>
+  <div id="log-call-thanks" style="display:none;">
+    <h4 class="text-center">Great!</h4>
+    <p class="text-center">Here is some more action we want you to take</p>
+  </div>
 
 </div>
+

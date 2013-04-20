@@ -141,7 +141,7 @@ $(document).ready(function() {
 
 		phonecampaign_services.createUserAndLogCall(phonecampaign_id, first_name, last_name, email, zip_code, comment, function(result) {
 			callresult_id = result.call_result.call_result_id
-			$("#signature_count").text(result.phonecampaign.call_result_count);
+			$("#signature_count").text(result.phone_campaign.callresult_count);
 
 			$("#log-call").hide();
 			$("#log-call-deliver").show();
@@ -160,10 +160,10 @@ $(document).ready(function() {
   			var comment = $("#comment").val();
 
   			phonecampaign_services.logCall(phonecampaign_id, comment, function(result) {
-				signature_id = result.call_result.call_result_id
-				$("#signature_count").text(result.phonecampaign.call_result_count);
+				callresult_id = result.call_result.callresult_id
+				$("#signature_count").text(result.phone_campaign.callresult_count);
 
-				$("#log-call").hide();
+				$("#call-phone-campaign").hide();
 				$("#log-call-deliver").show();
   			}, function() {
   				alert('unable to sign petition');
@@ -174,17 +174,17 @@ $(document).ready(function() {
 
   		facebook_connect.exec();
  	});
-	$("#wrap").on("click", "#deliver-call", function(e) {
+	$("#wrap").on("click", "#deliver-call-result", function(e) {
 		e.preventDefault();
 
-		var twitter_connect = new TwitterConnect($("#deliver-signature").attr('href'), function() {
+		var twitter_connect = new TwitterConnect($("#deliver-call-result").attr('href'), function() {
   			
   			var phonecampaign_id = $("#phonecampaign_id").val();
-  			var tweet = "I just called somebody on Snaptivist I demand " + phonecampaign.title
+  			var tweet = "I just called somebody on Snaptivist I demand " + phone_campaign.title
 			
   			phonecampaign_services.deliver(phonecampaign_id, callresult_id, tweet, function() {
-  				$("#sign-petition-deliver").hide();
-				$("#sign-petition-thanks").show();
+  				$("#log-call-deliver").hide();
+				$("#log-call-thanks").show();
   			}, function() {
   				alert('unable to deliver signature');
   			})
@@ -192,5 +192,7 @@ $(document).ready(function() {
   		}, function() {
   			alert('twitter authentication failed');
   		});
+
+  		twitter_connect.exec();
 	});
 });

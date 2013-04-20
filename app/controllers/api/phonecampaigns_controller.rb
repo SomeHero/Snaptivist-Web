@@ -40,7 +40,32 @@ class Api::PhonecampaignsController < ApplicationController
   def share
 
     #handle to tweating here
+    @phonecampaign = PhoneCampaign.find(params[:id]); 
+    raise "Unable to find petition" unless @phonecampaign
 
+    @callresult = CallResult.find(params[:callresult_id])
+    rails "Unable to find signature" unless @callresult
+    #handle to tweating here
+    #if params[:tweet]
+    token = current_user.authentications.find_by_provider("twitter").token
+    token_secret = current_user.authentications.find_by_provider("twitter").token_secret
+
+    Twitter.configure do |config|
+      config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
+      config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
+      config.oauth_token = token
+     config.oauth_token_secret = token_secret
+
+    Twitter.update(params[:tweet])
+
+    @callresult.delivered = true
+    @callresult.delivered_at = Time.now
+
+    @callresult.save!
+
+    render_result()
+
+    end
   end
 
   #log a call_result; this endpoint is used when someone takes an action
@@ -86,7 +111,7 @@ class Api::PhonecampaignsController < ApplicationController
     end
 
     #return if error_messages?(:config)
-    @call_result.save
+    call_result.save!
 
     #send petition action email
     UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user)

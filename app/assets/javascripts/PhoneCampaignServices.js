@@ -108,6 +108,31 @@ var PhoneCampaignServices = (function() {
 			}
 		});
   };
+    PhoneCampaignServices.prototype.deliver = function(phonecampaign_id, callresult_id, tweet, success, failure) {
+  		var url = this.base_url + '/phonecampaigns/' + phonecampaign_id + '/share';
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify({
+				callresult_id: callresult_id,
+				tweet: tweet
+			}),
+			beforeSend: function(jqXHR, settings) {
+				jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
+			// Stringify the node
+			dataType: 'json',
+			contentType: 'application/json',
+			// On success do some processing like closing the window and show an alert
+			success: function(result) {
+				success();
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				failure();
+			}
+		});
+  	};
 
 
   return PhoneCampaignServices;
