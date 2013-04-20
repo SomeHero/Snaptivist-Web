@@ -6,7 +6,12 @@ SnaptivistWeb::Application.routes.draw do
         post 'sign'
       end
     end
-    resources :phonecampaigns
+    resources :phonecampaigns do
+      member do
+        post 'share'
+        post 'log'
+      end
+    end
     resources :polls
     resources :targets
   end

@@ -1,6 +1,6 @@
 
 <div class="container">
-  <input type="hidden" id="petition_id" value="<%= @petition.id %>" />
+  <input type="hidden" id="phonecampaign_id" value="<%= @phonecampaign.id %>" />
   <%= image_tag "default_petition.png" %>
   <h1>President Obama:</h1>
   <h2><%= @phonecampaign.title %></h2>
@@ -9,33 +9,21 @@
   </div>
   <div id="target-count-wrapper" class="clearfix">
     <div class="progress">
-     <div class="bar" style="width: <%= (@phonecampaign.calls_count*100)/@phonecampaign.target_count %>%;"></div>
+     <div class="bar" style="width: <%= (@phonecampaign.call_results_count*100)/@phonecampaign.target_count %>%;"></div>
    </div>
    <div class="pull-left">
-    Signers: <%=  @phonecampaign.calls %>
+    Callers: <%=  @phonecampaign.call_results_count %>
   </div>
   <div class="pull-right">
-    Goal: <%= @phoencampaign.target_count %>
+    Goal: <%= @phonecampaign.target_count %>
   </div>
 </div>
 <div id="signature-container">
   <div id="sign-petition">
     <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people why your signing..."></textarea>
-    <button id="sign-petition-fb" class="btn btn-primary btn-block btn-large">Sign  with Facebook</button>
-    <button id="sign-petition-user-name" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
-    <h3>These people have already signed</h3>
-    <ul class="media-list">
-    <% @petition.signatures.each do |signature| %>
-    <li class="media">
-      <div class="media-body">
-        <%= signature.user.first_name %> signed 2 days ago
-        <div class="well">
-        <%= signature.comment %>
-      </div>
-      </div>
-    </li>
-    <% end %>
-    </ul>
+    <button id="log-call-facebook-button" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign  with Facebook</button>
+    <button id="log-call-user-name-button" class="btn btn-primary btn-block btn-large">Sign  with UserName/Password</button>
+    
   </div>
 </div>
 

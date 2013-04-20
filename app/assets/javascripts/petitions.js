@@ -171,9 +171,7 @@ $(document).ready(function() {
  	$("#wrap").on("click", "#sign-petition-facebook-button", function(e) {
  		e.preventDefault();
 
-		var facebook_connect = new FacebookConnect($(this).attr('href'));
-		
-  		facebook_connect.exec(function() {
+		var facebook_connect = new FacebookConnect($(this).attr('href'), function() {
   		
   			var petition_id = $("#petition_id").val();
   			var comment = $("#comment").val();
@@ -191,13 +189,13 @@ $(document).ready(function() {
   		}, function() {
   			alert("error with facebook signin");
   		});
+		
+  		facebook_connect.exec();
  	});
 	$("#wrap").on("click", "#deliver-signature", function(e) {
 		e.preventDefault();
 
-		var twitter_connect = new TwitterConnect($("#deliver-signature").attr('href'));
-
-  		twitter_connect.exec(function() {
+		var twitter_connect = new TwitterConnect($("#deliver-signature").attr('href'), function() {
   			
   			var petition_id = $("#petition_id").val();
   			var tweet = "I just created a petition on Snaptivist I demand " + petition.title
@@ -212,6 +210,8 @@ $(document).ready(function() {
   		}, function() {
   			alert('twitter authentication failed');
   		});
+
+  		twitter_connect.exec();
 	});
 
 $("#wrap").on("click", "#target-group-the-white-house", function() {

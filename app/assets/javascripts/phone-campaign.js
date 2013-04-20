@@ -6,6 +6,8 @@ $(document).ready(function() {
 	var target_services = new TargetServices(api_root_url);
 
 	var phone_campaign = {};
+	var phonecampaign_id;
+	var callresult_id;
 
 	var createPhoneCampaign = function() {
 		phonecampaign_services.create(phone_campaign, function(result) {
@@ -127,4 +129,68 @@ $(document).ready(function() {
 				$("#share-phone-campaign-panel").remove();
     		});
     });
+    $("#wrap").on("click", "#log-call-user-name-button", function(e) {
+		e.preventDefault();
+
+		var first_name = $("#firstName").val();
+		var last_name = $("#lastName").val();
+		var email = $("#emailAddress").val();
+		var zip_code = $("#zipCode").val();
+		var comment = $('#comment').val();
+		var phonecampaign_id = $('#phonecampaign_id').val();
+
+		phonecampaign_services.createUserAndLogCall(phonecampaign_id, first_name, last_name, email, zip_code, comment, function(result) {
+			callresult_id = result.call_result.call_result_id
+			$("#signature_count").text(result.phonecampaign.call_result_count);
+
+			$("#log-call").hide();
+			$("#log-call-deliver").show();
+  		}, function() {
+  				alert('unable to sign petition');
+  		});	
+
+  		  facebook_connect.exec();
+	});
+ 	$("#wrap").on("click", "#log-call-facebook-button", function(e) {
+ 		e.preventDefault();
+
+		var facebook_connect = new FacebookConnect($(this).attr('href'), function() {
+  		
+  			var phonecampaign_id = $("#phonecampaign_id").val();
+  			var comment = $("#comment").val();
+
+  			phonecampaign_services.logCall(phonecampaign_id, comment, function(result) {
+				signature_id = result.call_result.call_result_id
+				$("#signature_count").text(result.phonecampaign.call_result_count);
+
+				$("#log-call").hide();
+				$("#log-call-deliver").show();
+  			}, function() {
+  				alert('unable to sign petition');
+  			});		
+  		}, function() {
+  			alert("error with facebook signin");
+  		});
+
+  		facebook_connect.exec();
+ 	});
+	$("#wrap").on("click", "#deliver-call", function(e) {
+		e.preventDefault();
+
+		var twitter_connect = new TwitterConnect($("#deliver-signature").attr('href'), function() {
+  			
+  			var phonecampaign_id = $("#phonecampaign_id").val();
+  			var tweet = "I just called somebody on Snaptivist I demand " + phonecampaign.title
+			
+  			phonecampaign_services.deliver(phonecampaign_id, callresult_id, tweet, function() {
+  				$("#sign-petition-deliver").hide();
+				$("#sign-petition-thanks").show();
+  			}, function() {
+  				alert('unable to deliver signature');
+  			})
+
+  		}, function() {
+  			alert('twitter authentication failed');
+  		});
+	});
 });

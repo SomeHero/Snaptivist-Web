@@ -22,6 +22,9 @@ var PollServices = (function() {
 					'choices': poll.choices
 				}
 			}),
+			beforeSend: function(jqXHR, settings) {
+				jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
 			// Stringify the node
 			dataType: 'json',
 			contentType: 'application/json',

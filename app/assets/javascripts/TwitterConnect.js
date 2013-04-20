@@ -1,10 +1,10 @@
 var TwitterConnect = (function() {
-
+  var successCallback, failureCallback;
   // constructor accepts a url which should be your Twitter OAuth url
   function TwitterConnect(url, success, failure) {
     this.url = url;
-    this.success = success;
-    this.failure = failure;
+    successCallback = success;
+    failureCallback = failure;
   }
 
   TwitterConnect.prototype.exec = function() {
@@ -33,9 +33,9 @@ var TwitterConnect = (function() {
       dataType: 'json',
       success: function(response) {
         if (response.authed) {
-          this.success();
+          successCallback();
         } else {
-          this.failure();
+          failureCallback();
         }
       }
     });
