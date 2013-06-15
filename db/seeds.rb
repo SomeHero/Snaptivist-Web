@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+admin_user = AdminUser.create({email:'admin@snaptivist.com',password:'password'})
+
+exe_target_group = TargetGroup.create({id:1, name:'Executive'})
+congress_target_group = TargetGroup.create({id:2, name:'State'})
+state_target_group = TargetGroup.create({id:3, name: 'Congress'})

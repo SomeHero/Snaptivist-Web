@@ -342,3 +342,11 @@ STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), 
 	               AND a.attnum > 0 AND NOT a.attisdropped
 	             ORDER BY a.attnum
 	
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 4428) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+LOG:  database system was interrupted; last known up at 2013-06-08 17:19:38 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/90DD928
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
