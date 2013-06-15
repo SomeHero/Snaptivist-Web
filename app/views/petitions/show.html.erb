@@ -18,13 +18,13 @@
 <div id="target-count-wrapper" class="container-fluid " style="margin: 80px auto;">
   <div class="row-fluid" style="text-align: center;">
     <div id="target-count-progress-wrapper" class="span11 solid-white-back drop-shadow-full">
-      <div class="progress progress-striped">
-        <div class="bar" style="width: <%= (@petition.signatures_count+10*100)/@petition.target_count %>%;">
+      <div class="progress progress-striped progress-green">
+        <div class="bar orange-bar" style="width: <%= (@petition.signatures_count+10*100)/@petition.target_count %>%;">
         </div>
         <span class="mark"></span>
       </div>
     </div>
-    <div id="target-count-goal" class="span1">
+    <div id="petition-target-count-goal" class="span1 target-count-goal">
       <%= @petition.target_count %>
     </div>
   </div>

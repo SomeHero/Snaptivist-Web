@@ -1,47 +1,185 @@
 
-<div class="container">
-  <input type="hidden" id="phonecampaign_id" value="<%= @phonecampaign.id %>" />
-  <%= image_tag "default_petition.png" %>
-  <h1>President Obama:</h1>
-  <h2><%= @phonecampaign.title %></h2>
-  <p class="well"><%= @phonecampaign.summary %></p>
-  <div class="bar">
+<input type="hidden" id="phonecampaign_id" value="<%= @phonecampaign.id %>" />
+<div class="container-fluid">
+  <div class="row-fluid"  style="text-align:center;">
+    <%= image_tag "header_images/header_petition_01.png", :id => "header-image", :class => "drop-shadow lifted" %>
   </div>
-  <div id="target-count-wrapper" class="clearfix">
-    <div class="progress">
-     <div class="bar" style="width: <%= (@phonecampaign.call_results_count*100)/@phonecampaign.target_count %>%;"></div>
-   </div>
-   <div class="pull-left">
-    Callers: <%=  @phonecampaign.call_results_count %>
+  <div class="row-fluid" style="text-align: center;">
+    <% if(@phonecampaign.target) %>
+    <h2 class="target-name"><%= @phonecampaign.target.title %> <%= @phonecampaign.target.last_name %>:</h2>
+    <% end %>
   </div>
-  <div class="pull-right">
+  <div class="row-fluid" style="text-align: center; width:">
+    <h1 class="title"><%= @phonecampaign.title %></h1>
+  </div>
+  <div class="row-fluid" style="text-align: center;">
+    <p class="description"><%= @phonecampaign.summary %></p>
+  </div>
+</div>
+<div id="target-count-wrapper" class="container-fluid " style="margin: 80px auto;">
+  <div class="row-fluid" style="text-align: center;">
+    <div id="target-count-progress-wrapper" class="span11 solid-green-back drop-shadow-full">
+      <div class="progress progress-striped progress-white">
+        <div class="bar blue-bar" style="width: <%= (@phonecampaign.call_results_count+10*100)/@phonecampaign.target_count %>%;">
+        </div>
+        <span class="mark"></span>
+      </div>
+    </div>
+    <div id="phonecampaign-target-count-goal" class="span1 target-count-goal">
+      <%= @phonecampaign.target_count %>
+    </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span6 action-count" style="text-align: left; padding-left: 22px;">
+    Callers: <span id="signature_count"><%=  @phonecampaign.call_results_count %></span>
+  </div>
+  <div class="span6 action-count" style="text-align: right; padding-right: 44px;">
     Goal: <%= @phonecampaign.target_count %>
   </div>
 </div>
-<div id="call-result-container">
-  <div id="call-phone-campaign">
-    <textarea id="comment" rows="6" name="comments" style="width: 98%" placeholder="Tell people about the result of your call..."></textarea>
-    <button id="log-call-facebook-button" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:facebook) %>">Log Call with Facebook</button>
-    <button id="log-call-user-name-button" class="btn btn-primary btn-block btn-large">Log Call with UserName/Password</button>
-    
-  </div>
 </div>
-<div id="log-call-deliver" style="display:none;">
-  <div class="body">
-    <div class="container">
-      <p>Thanks for Calling!</p>
-      <p>Now let other know that you called the target, publicly on social media so your targt can't hide!
+<div id="action-wrapper" style="position: relative;">
+  <div id="call-target-wrapper" class="drop-shadow-full">
+    <div id="target-phone-number" class="text-center">
+      <span id="target-phone-number-icon"></span>202.555.1234
+    </div>
+    <div id="target-call-result">
+      <div class="row-fluid">
+        <div id="target-call-answer-label" class="span7 text-right">
+          Did anyone answer?
+        </div>
+        <div id="target-call-answer-form" class="span5">
+          <label class="checkbox">
+            <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Yes
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+            No
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="optionsRadios" id="optionsRadios3" value="option3">
+            Left Message
+          </label>
+        </div>
       </div>
-      <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
-      </textarea>
-      <button id="deliver-call-result" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Call Result
-      </button>
     </div>
   </div>
-  <div id="log-call-thanks" style="display:none;">
-    <h4 class="text-center">Great!</h4>
-    <p class="text-center">Here is some more action we want you to take</p>
+  <div id="sign-petition-signature" style="position: absolute;">
+    <div id="signature-container">
+      <div id="sign-why" class="drop-shadow-full solid-white-back" style="text-align: left">
+        <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="Leave a note about why you called and what happenened..."></textarea>
+      </div>
+      <button id="sign-petition-facebook-button" class="action-button icon facebook sign-with-fb-button">
+        <span>Log Call with Facebook</span>
+      </button>
+    </div>
+    <div class="row-fluid">
+      <span class="span12 copy-or text-center">
+        -OR-
+      </span>
+    </div>
+    <div id="sign-petition">
+      <div class="row-fluid">
+        <div class="span6">
+         <div class="controls">
+          <input type="text" id="firstName" name="FirstName" placeholder="First Name" class="register-textfield span12" />
+        </div>
+      </div>
+      <div class="span6">
+        <div class="controls">
+          <input type="text" id="lastName" name="LastName" placeholder="Last Name" class="register-textfield span12" />
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="controls">
+          <input type="text" id="emailAddress" name="EmailAddress" placeholder="Email Address" class="register-textfield span12" />
+        </div>
+      </div>
+      <div class="span6">
+        <div class="controls">
+          <input type="text" id="zipCode" name="ZipCode" placeholder="Zip Code" class="register-textfield span12"  />
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+       <label class="checkbox">
+        <input type="checkbox" checked id="chkEmailSignUp" /> <span style="color: #768286;">Let me know about activists and events in my area.</span>
+      </label>
+    </div>
+    <div class="span6 text-right">
+      <button id="sign-petition-user-name" class="button orange" style="width: 100%">Log Call Results</button>
+    </div>
   </div>
-
 </div>
+<div id="sign-petition-deliver" style="display:none; position: absolute;">
+  <span class="thanks-heading-copy text-center">Thanks for Signing</span>
+  <span class="thank-body-copy text-center">Now deliver your signature publicly on social media so your target can't hide!</span>
+  <div id="share-comment" class="drop-shadow-full solid-white-back" style="text-align: left;">
+    <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot"></textarea>
+  </div>
+  <button id="deliver-signature" class="action-button icon facebook deliver-with-fb-button">
+    Deliver Signature
+  </button>
+</div>
+<div id="sign-petition-deliver-old" style="display:none;">
+  <div class="body">
+    <div class="container">
+      <p>Thanks for Signing!</p>
+      <p>Now deliver your signature publicly on social media so your targt can't hide!
+        <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
+        </textarea>
+        <button id="deliver-signature" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Signature
+        </button>
+      </div>
+    </div>
+    <div id="sign-petition-thanks" style="display:none;">
+      <h4 class="text-center">Great!</h4>
+      <p class="text-center">Here is some more action we want you to take</p>
+    </div>
+
+  </div>
+  <div id="comments">
+    <% if @phonecampaign.call_results.count > 0 %>
+    <% @phonecampaign.call_results.each do |signature| %>
+    <div class="container-fluid comment-wrapper">
+      <div class="media comment-container solid-white-back drop-shadow-full clear-fix">
+       <a class="pull-left" href="#">
+        <% if signature.user.avatar_url %>
+        <img class="media-object avatar" src="<%= signature.user.avatar_url %>" />
+        <% else %>
+        <%= image_tag "avatar.png", :class=> "media-object avatar" %>
+        <% end %>
+      </a>
+      <div class="media-body">
+        <span class="comment-username"><%= signature.user.first_name %> <%= signature.user.last_name %></span><span class="comment-timeago">signed  <script language="javascript"> 
+        document.write(moment.unix("<%= signature.created_at.to_f() %>").fromNow());
+      </script> ago in Seattle, WA</span>
+      <span class="comment"><%= signature.comment %></span>
+    </div>
+  </div>
+  <div class="delivery-status row-fluid text-right">
+    <%= image_tag "twitter-bird-delivery-status.png" %> <span class="delivery-status-text">STATUS: DELIVERED<span> <%= image_tag "checkbox-checked-delivery-status.png", :class => "delivery-status-checkbox" %>
+  </div>
+</div>
+
+<% end %>
+<% end %>
+</div>
+<% if @phonecampaign.call_results.count > 0 %>
+<div id="see-more-container">
+  <div class="row-fluid">
+    <button id="see-more-button" class="button green" style="width: 100%"><span>See More Callers<span></button>
+  </div>
+</div>
+<% end %>
+<div id="powered-by-wrapper" class="container-fluid">
+  <div id="powered-by-container" class="row-fluid text-right">
+    <%= image_tag "powered_by.png" %>
+  </div>
+  <div>
+  </div>
 

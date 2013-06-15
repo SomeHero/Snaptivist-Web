@@ -45,6 +45,8 @@ body {
     margin-bottom: 24px;
 }
 p {
+    font-family: 'Lato-Light', sans-serif;
+    color: #232323;
     font-size: 22px;
     margin: 5px auto;
 }
@@ -64,10 +66,6 @@ h2 {
     padding: 0px 0px 14px 0px;
     margin-bottom: 30px;
 }
-p {
-    font-family: 'Lato-Light', sans-serif;
-    color: #232323;
-}
 h1.title {
     max-width: 560px;
     margin: 0px auto 40px auto;
@@ -86,32 +84,6 @@ p.description {
     font-size: 28px;
     line-height: 36px;
 }
-.action-button {
-    background: url("../assets/action-button-background.png");
-    width: 620px;
-    height:145px;
-    color: #fff;
-    font-size: 50px;
-    font-family: 'Lato-Light', sans-serif;
-    border: none;
-    padding: none;
-    text-shadow: none;
-    -webkit-border-radius: 0em;
-    -moz-border-radius: 0em;
-    border-radius: 0em;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-.action-button.icon {
-    padding-left: 11px;
-}
-.action-button.icon span{
-    padding-left: 60px;
-    line-height: 130px;
-    background: url(../assets/facebook_icon.png) no-repeat 0 -4px;
-    background-position: left;
-}
 .drop-shadow-full {
     -moz-box-shadow:0px 0px 14px 3px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow:0px 0px 14px 3px rgba(0, 0, 0, 0.25);
@@ -119,6 +91,9 @@ p.description {
 }
 .solid-white-back {
     background-color: #ffffff;
+}
+.solid-green-back {
+    background-color: #1d3037;
 }
 #action-wrapper {
     max-width: 620px;
@@ -172,6 +147,7 @@ p.description {
     display: block;
     margin: 0px auto 40px auto;
 }
+/********** Button Styles ****************/
 .button {
     display: inline-block;
     outline: none;
@@ -227,9 +203,34 @@ p.description {
     color: #ffffff;
     background: #1d3037;
 }
-.avatar {
-    max-width: 128px;
+.action-button {
+    background: url("../assets/action-button-background.png");
+    width: 620px;
+    height:145px;
+    color: #fff;
+    font-size: 50px;
+    font-family: 'Lato-Light', sans-serif;
+    border: none;
+    padding: none;
+    text-shadow: none;
+    -webkit-border-radius: 0em;
+    -moz-border-radius: 0em;
+    border-radius: 0em;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
+.action-button.icon {
+    padding-left: 11px;
+}
+.action-button.icon span{
+    padding-left: 60px;
+    line-height: 130px;
+    background: url(../assets/facebook_icon.png) no-repeat 0 -4px;
+    background-position: left;
+}
+/************************************/
+
 input.register-textfield {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
@@ -769,17 +770,16 @@ legend + .control-group {
     position:relative;
     padding: 20px;
 }
-#target-count-goal {
+.target-count-goal {
     position:relative;
     line-height: 55px;
-    background-color: #14b9d6;
-    margin-left: 0px;
+    margin-left: 0px !important;
     color: #fff;
     font-size: 24px;
     font-family: 'Lato-Regular', sans-serif;
     border-radius: 4px;
 }
-#target-count-goal:before
+.target-count-goal:before
 {
     content: ' ';
     position: absolute;
@@ -791,14 +791,41 @@ legend + .control-group {
     border-bottom: 10px solid transparent; 
     border-right:10px solid #14b9d6; 
 }
+#petition-target-count-goal {
+    background-color: #14b9d6;
+}
+#phonecampaign-target-count-goal {
+    background-color: #ff6000;
+}
+#petition-target-count-goal:before {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right:10px solid #14b9d6; 
+}
+#phonecampaign-target-count-goal:before {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right:10px solid #ff6000; 
+}
 #target-count-wrapper .progress {
     margin-bottom: 0px;
     height: 15px;
     border-radius: 8px; 
     background-image: linear-gradient(to bottom, #757a80, #757a80);
 }
-#target-count-wrapper .bar {
+#target-count-wrapper .progress-white
+{
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff);    
+}
+#target-count-wrapper .progress-green 
+{
+      background-image: linear-gradient(to bottom, #757a80, #757a80);  
+}
+#target-count-wrapper .orange-bar {
     background-color: #ff6f00;
+}
+#target-count-wrapper .blue-bar {
+    background-color: #11e6f6;
 }
 #target-count-wrapper .mark:after {
     position: absolute;
@@ -826,12 +853,66 @@ legend + .control-group {
     padding-bottom: 2px;
     color: #ff6000;
 }
+/**** Petition Specific Styles *********/
 #sign-petition {
     width: 528px; 
     margin: 0px auto 120px auto;
 }
 #sign-petition input {
     max-width: 100%;
+}
+/***** Phone Campaign Specific Styles ****/
+#call-target-wrapper {
+    margin-bottom: 64px;
+    background-color: #fff;
+}
+#target-phone-number {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    font-size: 88px;
+    background-color: #1d3037;
+    color: #fff;
+    line-height: 235px;
+}
+#target-phone-number-icon {
+    content: ' ';
+    position: absolute;
+    left: -30px;
+    top:  50%;
+    margin-top: -30px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff6000;
+    background-image: url(../assets/phone-icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#target-phone-number-icon:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: -10px;
+    top: 18px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left:10px solid #ff6000; 
+}
+#target-call-answer-label {
+    font-family: 'Lato-Light', sans-serif;
+    font-size: 48px;
+    line-height: 45px;
+    color: #778387;
+    padding: 24px;
+}
+#target-call-answer-form {
+    font-family: 'Lato-Regular', sans-serif;
+    font-size: 22px;
+    color: #778387;
+    padding: 26px 0px 24px 0px;
+}
+#target-call-answer-form label {
+    margin: 8px 0px;
 }
 .comment-wrapper {
     max-width: 728px;
@@ -840,6 +921,9 @@ legend + .control-group {
 .comment-container {
     height: 128px;
     margin-bottom: 10px;
+}
+.comment-container .avatar {
+    max-width: 128px;
 }
 .comment-container .comment-username {
     font-family: 'Oswald', sans-serif;
