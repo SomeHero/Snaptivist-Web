@@ -124,7 +124,11 @@
     <div class="container-fluid comment-wrapper">
       <div class="media comment-container solid-white-back drop-shadow-full clear-fix">
        <a class="pull-left" href="#">
+        <% if signature.user.avatar_url %>
         <img class="media-object avatar" src="<%= signature.user.avatar_url %>" />
+        <% else %>
+        <%= image_tag "avatar.png", :class=> "media-object avatar" %>
+        <% end %>
       </a>
       <div class="media-body">
         <span class="comment-username"><%= signature.user.first_name %> <%= signature.user.last_name %></span><span class="comment-timeago">signed  <script language="javascript"> 
@@ -133,13 +137,17 @@
       <span class="comment"><%= signature.comment %></span>
     </div>
   </div>
+  <div class="delivery-status row-fluid text-right">
+    <%= image_tag "twitter-bird-delivery-status.png" %> <span class="delivery-status-text">STATUS: DELIVERED<span> <%= image_tag "checkbox-checked-delivery-status.png", :class => "delivery-status-checkbox" %>
+  </div>
 </div>
+
 <% end %>
 <% end %>
 </div>
 <div id="see-more-container">
   <div class="row-fluid">
-    <button id="see-more-button" class="button green" style="width: 100%">See More Signers</button>
+    <button id="see-more-button" class="button green" style="width: 100%"><span>See More Signers<span></button>
   </div>
 </div>
 <div id="powered-by-wrapper" class="container-fluid">
