@@ -38,12 +38,18 @@ body {
     line-height: 21px;
     background: url("../assets/background_pattern.png") repeat;
 }
+#header-image {
+    -webkit-box-shadow: 0 8px 6px -5px #9e9e9e;
+    -moz-box-shadow: 0 8px 6px -5px #9e9e9e;
+    box-shadow: 0 8px 6px -5px #9e9e9e;
+    margin-bottom: 24px;
+}
 p {
     font-size: 22px;
     margin: 5px auto;
 }
 h1 {
-    font-family: 'Oswald-Regular', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 56px;
     color: #1d3037;
     margin: 0px 0px 40px 0px;
@@ -62,6 +68,11 @@ p {
     font-family: 'Lato-Light', sans-serif;
     color: #232323;
 }
+h1.title {
+    max-width: 560px;
+    margin: 0px auto 40px auto;
+    line-height: 60px;
+}
 h2.target-name {
     display: inline-block; 
     padding-left: 18px; 
@@ -69,8 +80,11 @@ h2.target-name {
     border-bottom: inset 1px #dedede;
 
 }
-.description {
+p.description {
+    max-width: 728px;
+    margin: 0px auto;
     font-size: 28px;
+    line-height: 36px;
 }
 .action-button {
     background: url("../assets/action-button-background.png");

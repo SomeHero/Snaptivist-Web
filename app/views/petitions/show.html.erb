@@ -1,15 +1,17 @@
 <input type="hidden" id="petition_id" value="<%= @petition.id %>" />
 <div class="container-fluid">
   <div class="row-fluid"  style="text-align:center;">
-    <%= image_tag "header_images/header_petition_01.png", :class => "drop-shadow lifted" %>
+    <%= image_tag "header_images/header_petition_01.png", :id => "header-image", :class => "drop-shadow lifted" %>
   </div>
   <div class="row-fluid" style="text-align: center;">
     <% if(@petition.target) %>
     <h2 class="target-name"><%= @petition.target.title %> <%= @petition.target.last_name %>:</h2>
     <% end %>
   </div>
+  <div class="row-fluid" style="text-align: center; width:">
+    <h1 class="title"><%= @petition.title %></h1>
+  </div>
   <div class="row-fluid" style="text-align: center;">
-    <h1><%= @petition.title %></h1>
     <p class="description"><%= @petition.summary %></p>
   </div>
 </div>
