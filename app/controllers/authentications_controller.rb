@@ -62,7 +62,7 @@ class AuthenticationsController < ApplicationController
        user = User.find(authentication.user_id)
        user.first_name = omni['extra']['raw_info'].first_name
        user.last_name = omni['extra']['raw_info'].last_name
-       user.avatar_url = omni['info'].image
+       user.avatar_url = "http://graph.facebook.com/" + omni['uid'] + "/picture"
 
        user.save
 

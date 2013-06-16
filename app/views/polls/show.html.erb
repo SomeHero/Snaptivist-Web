@@ -1,0 +1,111 @@
+<input type="hidden" id="poll_id" value="<%= @poll.id %>" />
+<div class="container-fluid">
+  <div class="row-fluid"  style="text-align:center;">
+    <%= image_tag "header_images/header_petition_01.png", :id => "header-image", :class => "drop-shadow lifted" %>
+  </div>
+  <div class="row-fluid" style="text-align: center; width:">
+    <h1 class="title"><%= @poll.question %></h1>
+  </div>
+</div>
+<div id="poll-choices-container" class="container-fluid">
+  <% @poll.choices.each do |choice| %>
+  <div class="span6">
+    <label class="checkbox">
+      <input name="choice" type="checkbox" /> <span style="color: #768286;"><%= choice.choice %></span>
+    </label>
+  </div>
+  <% end %>
+</div>
+<div id="action-wrapper" style="position: relative;">
+<div id="sign-petition-signature" style="position: absolute;">
+<div id="signature-container">
+  <div id="sign-why" class="drop-shadow-full solid-white-back" style="text-align: left">
+    <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="Please explain your vote.."></textarea>
+  </div>
+  <button id="sign-petition-facebook-button" class="action-button icon facebook sign-with-fb-button">
+    <span>Vote with Facebook</span>
+  </button>
+</div>
+<div class="row-fluid">
+  <span class="span12 copy-or text-center">
+    -OR-
+  </span>
+</div>
+<div id="sign-petition">
+  <div class="row-fluid">
+    <div class="span6">
+     <div class="controls">
+      <input type="text" id="firstName" name="FirstName" placeholder="First Name" class="register-textfield span12" />
+    </div>
+  </div>
+  <div class="span6">
+    <div class="controls">
+      <input type="text" id="lastName" name="LastName" placeholder="Last Name" class="register-textfield span12" />
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <div class="controls">
+      <input type="text" id="emailAddress" name="EmailAddress" placeholder="Email Address" class="register-textfield span12" />
+    </div>
+  </div>
+  <div class="span6">
+    <div class="controls">
+      <input type="text" id="zipCode" name="ZipCode" placeholder="Zip Code" class="register-textfield span12"  />
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+   <label class="checkbox">
+    <input type="checkbox" checked id="chkEmailSignUp" /> <span style="color: #768286;">Let me know about activists and events in my area.</span>
+  </label>
+</div>
+<div class="span6 text-right">
+  <button id="sign-petition-user-name" class="button orange" style="width: 100%">Vote and See Results</button>
+</div>
+</div>
+</div>
+</div>
+<div id="sign-petition-deliver" style="display:none; position: absolute;">
+  <span class="thanks-heading-copy text-center">Thanks for Signing</span>
+  <span class="thank-body-copy text-center">Now deliver your signature publicly on social media so your target can't hide!</span>
+  <div id="share-comment" class="drop-shadow-full solid-white-back" style="text-align: left;">
+    <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot"></textarea>
+  </div>
+    <button id="deliver-signature" class="action-button icon facebook deliver-with-fb-button">
+    Deliver Signature
+  </button>
+</div>
+</div>
+
+<div id="sign-petition-deliver-old" style="display:none;">
+  <div class="body">
+    <div class="container">
+      <p>Thanks for Signing!</p>
+      <p>Now deliver your signature publicly on social media so your targt can't hide!
+        <textarea id="share-comment" rows="3" name="share-comment" style="width:98%">4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot
+        </textarea>
+        <button id="deliver-signature" class="btn btn-primary btn-block btn-large" href="<%= user_omniauth_authorize_path(:twitter) %>">Deliver Signature
+        </button>
+      </div>
+    </div>
+    <div id="sign-petition-thanks" style="display:none;">
+      <h4 class="text-center">Great!</h4>
+      <p class="text-center">Here is some more action we want you to take</p>
+    </div>
+
+  </div>
+<div id="see-more-container">
+  <div class="row-fluid">
+    <button id="see-more-button" class="button green" style="width: 100%"><span>See More Signers<span></button>
+  </div>
+</div>
+<div id="powered-by-wrapper" class="container-fluid">
+  <div id="powered-by-container" class="row-fluid text-right">
+    <%= image_tag "powered_by.png" %>
+  </div>
+  <div>
+  </div>
+

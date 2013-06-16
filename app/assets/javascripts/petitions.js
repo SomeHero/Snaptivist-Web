@@ -196,8 +196,20 @@ $(document).ready(function() {
 				
 				$("#signature_count").text(result.petition.signature_count);
 
-				$("#sign-petition").hide();
-				$("#sign-petition-deliver").show();
+				$("#sign-petition-deliver").css('top', "0px");
+    			$("#sign-petition-deliver").css('left', "1200px");
+    			$("#sign-petition-deliver").show();
+    			$("#sign-petition-deliver").width($("#action-wrapper").width());
+
+    			var windowWidth = $(window).width();
+
+				$("#sign-petition-signature").animate({
+					left: -($("#sign-petition-signature").width() + windowWidth/2)
+				}, 400, function() {
+					$("#sign-petition-deliver").animate({
+						left: 0
+					});
+				});
   			}, function() {
   				alert('unable to sign petition');
   			});		
@@ -217,7 +229,7 @@ $(document).ready(function() {
 			
   			petition_services.deliver(petition_id, signature_id, tweet, function() {
   				$("#sign-petition-deliver").hide();
-				$("#sign-petition-thanks").show();
+				$("#other-campaigns-container").show();
   			}, function() {
   				alert('unable to deliver signature');
   			})
