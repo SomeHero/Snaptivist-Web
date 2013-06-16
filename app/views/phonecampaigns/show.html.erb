@@ -20,7 +20,7 @@
   <div class="row-fluid" style="text-align: center;">
     <div id="target-count-progress-wrapper" class="span11 solid-green-back drop-shadow-full">
       <div class="progress progress-striped progress-white">
-        <div class="bar blue-bar" style="width: <%= (@phonecampaign.call_results_count+10*100)/@phonecampaign.target_count %>%;">
+        <div class="bar blue-bar" style="width: <%= (@phonecampaign.call_results_count*100)/@phonecampaign.target_count %>%;">
         </div>
         <span class="mark"></span>
       </div>
