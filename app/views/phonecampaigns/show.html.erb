@@ -41,7 +41,7 @@
 <div id="action-wrapper" style="position: relative;">
   <div id="call-target-wrapper" class="drop-shadow-full">
     <div id="target-phone-number" class="text-center">
-      <span id="target-phone-number-icon"></span>202.555.1234
+      <span id="target-phone-number-icon"></span><%= @phonecampaign.target.phone.gsub("-",".") %>
     </div>
     <div id="target-call-result">
       <div class="row-fluid">
