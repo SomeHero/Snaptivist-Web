@@ -43,7 +43,7 @@
   <div id="sign-why" class="drop-shadow-full solid-white-back" style="text-align: left">
     <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="Tell us why you're signing.."></textarea>
   </div>
-  <button id="sign-petition-facebook-button" class="action-button icon facebook sign-with-fb-button"  href="<%= user_omniauth_authorize_path(:facebook) %>">
+  <button id="sign-petition-facebook-button" class="action-button icon sign-with-fb-button"  href="<%= user_omniauth_authorize_path(:facebook) %>">
     <span>Sign with Facebook</span>
   </button>
 </div>
@@ -93,10 +93,10 @@
   <h4 class="text-center">Thanks for Signing</h4>
   <h5 class="text-center">Now deliver your signature publicly on social media so your target can't hide!</h5>
   <div id="share-comment" class="drop-shadow-full solid-white-back" style="text-align: left;">
-    <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="4 demand @BarackObama: Stop the Drone Assassinations of American Citizens.  Join us: bit.ly/12345 #tlot"></textarea>
+    <textarea id="comment" maxlength="115" style="width: 90%;" placeholder="<%= @petition.signatures_count %> demand @<%=@petition.target.twitter_handle %>: <%= @petition.title %>.  Join us: <%= @petition.short_url %>"></textarea>
   </div>
-  <button id="deliver-signature" class="action-button icon facebook deliver-with-fb-button"  href="<%= user_omniauth_authorize_path(:twitter) %>">
-    Deliver Signature
+  <button id="deliver-signature" class="action-button icon"  href="<%= user_omniauth_authorize_path(:twitter) %>">
+    <span>Deliver Signature</span>
   </button>
 </div>
 <div id="other-campaigns-container" style="display:none; position: absolute;">
@@ -143,7 +143,11 @@
     </div>
   </div>
   <div class="delivery-status row-fluid text-right">
+    <% if(signature.delivered) %>
     <%= image_tag "twitter-bird-delivery-status.png" %> <span class="delivery-status-text">STATUS: DELIVERED<span> <%= image_tag "checkbox-checked-delivery-status.png", :class => "delivery-status-checkbox" %>
+    <% else %>
+        <%= image_tag "twitter-bird-delivery-status.png" %> <span class="delivery-status-text">STATUS: PENDING<span> <%= image_tag "checkbox-delivery-status.png", :class => "delivery-status-checkbox" %>
+      <% end %>
   </div>
 </div>
 

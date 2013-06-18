@@ -258,8 +258,16 @@ p.description {
 .action-button.icon span{
     padding-left: 60px;
     line-height: 130px;
-    background: url(../assets/facebook_icon.png) no-repeat 0 -4px;
     background-position: left;
+}
+#sign-petition-facebook-button.action-button.icon span {
+    background: url(../assets/facebook_icon.png);
+    background-repeat: no-repeat;
+}
+#deliver-signature.action-button.icon span{
+    background: url(../assets/twitter-icon.png);
+    background-repeat: no-repeat;
+   
 }
 /************************************/
 
