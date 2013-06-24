@@ -1,0 +1,75 @@
+.container-fluid{:style => "text-align:center;", "ng-controller" => "PetitionController"}
+  .row-fluid
+    = image_tag "header_images/header_petition_01.png", :id => "header-image", :class => "drop-shadow lifted"
+  .row-fluid
+    - if@petition.target
+      %h2.target-name
+        = @petition.target.last_name
+  .row-fluid
+    %h1.title {{petition.title}}
+  .row-fluid
+    %p.description{:style => "margin-bottom: 60px;"}
+      {{petition.summary}}
+  %div{"ng-view" => ""}
+  %div{"royal-slider" => "rsDefaultInv"}
+  .row-fluid
+    #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
+      .row-fluid
+        #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
+          .progress.progress-striped.progress-green
+            .bar.orange-bar{:style => "width: #{(@petition.signatures_count*100)/@petition.target_count}%;"}
+              %span.mark{:style => "left: #{(@petition.signatures_count*100)/@petition.target_count}%;"}
+        #petition-target-count-goal.span1.target-count-goal
+          %span
+            {{ petition.signature_count*100/petition.target_count }}
+            \%
+      .row-fluid
+        .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
+          Signers:
+          %span#signature_count
+            {{petition.signature_count}}
+        .span6.action-count{:style => "text-align: right; padding-right: 44px"}
+          Goal: {{petition.target_count}}
+  .row-fluid
+    - if @petition.signatures.count > 0
+      - @petition.signatures.each do |signature|
+        .container-fluid.comment-wrapper
+          .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
+            %a.pull-left{:href => "#"}
+              - if signature.user.avatar_url
+                %img.media-object.avatar{:src => "#{signature.user.avatar_url}?type=large"}/
+              - else
+                = image_tag "avatar.png", :class=> "media-object avatar"
+            .media-body{:style => "text-align: left;"}
+              %span.comment-username
+                = signature.user.first_name
+                = signature.user.last_name
+              %span.comment-timeago
+                signed
+                %script{:language => "javascript"}
+                  document.write(moment.unix("<haml:loud> signature.created_at.to_f() </haml:loud>").fromNow());
+                ago in Seattle, WA
+              %span.comment= signature.comment
+          .delivery-status.row-fluid.text-right
+            - if(signature.delivered)
+              = image_tag "twitter-bird-delivery-status.png"
+              %span.delivery-status-text
+                STATUS: DELIVERED
+                %span
+                  = image_tag "checkbox-checked-delivery-status.png", :class => "delivery-status-checkbox"
+            - else
+              = image_tag "twitter-bird-delivery-status.png"
+              %span.delivery-status-text
+                STATUS: PENDING
+                %span
+                  = image_tag "checkbox-delivery-status.png", :class => "delivery-status-checkbox"
+  .row-fluid
+    #see-more-container
+      %button#see-more-button.button.green{:style => "width: 100%"}
+        %span
+          See More Signers
+          %span
+  .row-flud
+    #powered-by-wrapper
+      #powered-by-container.row-fluid.text-right
+        = image_tag "powered_by.png"

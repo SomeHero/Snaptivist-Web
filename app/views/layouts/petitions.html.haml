@@ -1,0 +1,18 @@
+!!!
+%html{"xmlns:ng" => "http://angularjs.org"}
+  %head
+    = render partial: 'layouts/actions_head'
+    = render partial: 'layouts/petitions_stylesheets'
+
+    = render partial: 'layouts/actions_footer'
+    = render partial: 'partials/angular_setup'
+  
+    = javascript_include_tag 'petitions.js'
+
+  %body#ng-app{'ng-app' => 'petition'}
+    - if flash[:notice]
+      #notice.notice-box
+        = flash[:notice]
+    %container.angular-frame
+      = yield
+    %footer

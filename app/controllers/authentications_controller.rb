@@ -14,7 +14,7 @@ class AuthenticationsController < ApplicationController
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
 
     if authentication
-     flash[:notice] = "Logged in Successfully"
+     #flash[:notice] = "Logged in Successfully"
      sign_in User.find(authentication.user_id)
 
      return render 'oauth_popup_close', :layout => false            
@@ -23,7 +23,7 @@ class AuthenticationsController < ApplicationController
      token_secret = omni['credentials'].secret
 
      current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
-     flash[:notice] = "Authentication successful."
+     #flash[:notice] = "Authentication successful."
      sign_in current_user
 
      return render 'oauth_popup_close', :layout => false            
@@ -34,7 +34,7 @@ class AuthenticationsController < ApplicationController
      user.apply_omniauth(omni)
 
      if user.save
-       flash[:notice] = "Logged in."
+       #flash[:notice] = "Logged in."
          #sign_in_and_redirect User.find(user.id) 
          return render 'oauth_popup_close', :layout => false            
        else
@@ -75,7 +75,7 @@ class AuthenticationsController < ApplicationController
 
        current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
 
-       flash[:notice] = "Authentication successful."
+       #flash[:notice] = "Authentication successful."
        sign_in current_user
 
        return render 'oauth_popup_close', :layout => false            

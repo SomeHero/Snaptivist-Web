@@ -350,3 +350,54 @@ LOG:  record with zero length at 0/90DD928
 LOG:  redo is not required
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2013-06-18 08:42:56 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/913DD80
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_development" does not exist
+LOG:  database system was interrupted; last known up at 2013-06-20 15:21:20 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/9C9DAD8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_development" does not exist
+ERROR:  relation "external_products" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"external_products"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+FATAL:  database "treater_development" does not exist
+ERROR:  duplicate key value violates unique constraint "users_pkey"
+DETAIL:  Key (id)=(13) already exists.
+STATEMENT:  INSERT INTO "users" ("admin_password", "birthdate", "cached_avatar_url", "cached_profile_url", "created_at", "email_address", "external_bhn_bag_id", "external_bhn_id", "first_gave_at", "first_received_at", "first_redeemed_at", "first_viewed_at", "gifts_given_counter", "gifts_received_counter", "gifts_redeemed_counter", "gifts_viewed_counter", "got_freebie", "id", "invitation_id", "is_admin", "is_banned", "is_fake_user", "is_financial_admin", "is_gifter", "is_stats_invisible", "is_storefront_admin", "is_superduper", "is_superuser", "is_users_admin", "join_event", "last_ip", "last_login_at", "mobile_number", "name", "post_activity", "requested_notification", "single_use_promos_used", "temp", "treat_bank", "updated_at", "welcomed_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41) RETURNING "id"
+FATAL:  database "treater_development" does not exist
+ERROR:  duplicate key value violates unique constraint "users_pkey"
+DETAIL:  Key (id)=(13) already exists.
+STATEMENT:  INSERT INTO "users" ("admin_password", "birthdate", "cached_avatar_url", "cached_profile_url", "created_at", "email_address", "external_bhn_bag_id", "external_bhn_id", "first_gave_at", "first_received_at", "first_redeemed_at", "first_viewed_at", "gifts_given_counter", "gifts_received_counter", "gifts_redeemed_counter", "gifts_viewed_counter", "got_freebie", "id", "invitation_id", "is_admin", "is_banned", "is_fake_user", "is_financial_admin", "is_gifter", "is_stats_invisible", "is_storefront_admin", "is_superduper", "is_superuser", "is_users_admin", "join_event", "last_ip", "last_login_at", "mobile_number", "name", "post_activity", "requested_notification", "single_use_promos_used", "temp", "treat_bank", "updated_at", "welcomed_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41) RETURNING "id"
+ERROR:  duplicate key value violates unique constraint "users_pkey"
+DETAIL:  Key (id)=(13) already exists.
+STATEMENT:  INSERT INTO "users" ("admin_password", "birthdate", "cached_avatar_url", "cached_profile_url", "created_at", "email_address", "external_bhn_bag_id", "external_bhn_id", "first_gave_at", "first_received_at", "first_redeemed_at", "first_viewed_at", "gifts_given_counter", "gifts_received_counter", "gifts_redeemed_counter", "gifts_viewed_counter", "got_freebie", "id", "invitation_id", "is_admin", "is_banned", "is_fake_user", "is_financial_admin", "is_gifter", "is_stats_invisible", "is_storefront_admin", "is_superduper", "is_superuser", "is_users_admin", "join_event", "last_ip", "last_login_at", "mobile_number", "name", "post_activity", "requested_notification", "single_use_promos_used", "temp", "treat_bank", "updated_at", "welcomed_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41) RETURNING "id"
+FATAL:  database "treater_development" does not exist
+ERROR:  relation "products_promos" does not exist at character 44
+STATEMENT:  SELECT "promos".* FROM "promos" INNER JOIN "products_promos" ON "promos"."id" = "products_promos"."promo_id" WHERE "products_promos"."product_id" = 332
+ERROR:  database "treater_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  database "treater_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down

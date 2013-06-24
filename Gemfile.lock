@@ -40,7 +40,7 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.3.3)
+    addressable (2.3.4)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -86,6 +86,9 @@ GEM
       tzinfo
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    geocoder (1.1.8)
+    haml (4.0.3)
+      tilt
     has_scope (0.5.1)
     hashie (1.2.0)
     hashr (0.0.22)
@@ -239,10 +242,12 @@ DEPENDENCIES
   coffee-script-source (~> 1.4.0)
   devise
   fb_graph
+  geocoder
+  haml
   hashr
   jquery-rails
   json
-  koala
+  koala (~> 1.4)
   mocha
   nifty-generators
   omniauth-facebook

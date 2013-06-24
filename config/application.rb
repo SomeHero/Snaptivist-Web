@@ -58,6 +58,16 @@ module SnaptivistWeb
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.paths << Rails.root.join("app", "assets", "images", "mail")
+    config.assets.paths << Rails.root.join("public", "mobile", "images")
+    #config.assets.paths << Rails.root.join("public", "mobile", "javascripts")
+    #config.assets.paths << Rails.root.join("public", "mobile", "stylesheets")
+    config.assets.paths << Rails.root.join("public", "mobile", "images")
+
+    config.assets.paths << Rails.root.join('public', 'merchants', 'assets')
+
+    config.assets.paths << Rails.root.join("app", "assets", "images", "mobile", "media_images")
+
   end
 
   

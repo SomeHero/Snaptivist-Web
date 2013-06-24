@@ -4,6 +4,7 @@ SnaptivistWeb::Application.routes.draw do
       member do
         post 'share'
         post 'sign'
+        post 'sign_with_facebook'
       end
     end
     resources :phonecampaigns do
@@ -16,6 +17,9 @@ SnaptivistWeb::Application.routes.draw do
     resources :targets
   end
   
+
+  resources :client_views, only: [:show]
+
   match 'petitions/:action_title', :to =>'petitions#view'
   match 'polls/:action_title', :to =>'polls#view'
   match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view'

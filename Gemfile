@@ -32,7 +32,7 @@ gem 'twitter_oauth'
 gem 'fb_graph'
 gem 'activeadmin'
 gem 'coffee-script-source', '~> 1.4.0'
-gem "koala"
+gem 'koala', '~> 1.4'
 gem "ym4r"
 gem "sunlight"
 gem "json"
@@ -40,6 +40,8 @@ gem "bitly", "~> 0.8.1"
 gem 'carmen-rails', '~> 1.0.0.beta3'
 gem 'nifty-generators'
 gem 'hashr'
+gem 'haml'
+gem 'geocoder'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

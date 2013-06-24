@@ -134,7 +134,7 @@ p.description {
     box-shadow: none;
     resize: none;
     margin: 10px 10px 0px 10px;
-    height: 250px;
+    height: 180px;
     width: 90%;
     font-size: 18px;
     font-family: 'Lato-Regular', sans-serif;
@@ -815,7 +815,7 @@ legend + .control-group {
     line-height: 55px;
     margin-left: 0px !important;
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     font-family: 'Lato-Regular', sans-serif;
     border-radius: 4px;
 }
@@ -867,11 +867,10 @@ legend + .control-group {
 #target-count-wrapper .blue-bar {
     background-color: #11e6f6;
 }
-#target-count-wrapper .mark:after {
+#target-count-wrapper .mark {
     position: absolute;
     content: ' ';
-    left: 10%;
-    margin-left: 14px;
+    margin-left: -14px;
     top: 16px;
     width: 12px;
     height: 12px;
@@ -894,13 +893,6 @@ legend + .control-group {
     color: #ff6000;
 }
 /**** Petition Specific Styles *********/
-#sign-petition {
-    width: 528px; 
-    margin: 0px auto 120px auto;
-}
-#sign-petition input {
-    max-width: 100%;
-}
 /***** Phone Campaign Specific Styles ****/
 #call-target-wrapper {
     margin-bottom: 64px;
@@ -1039,4 +1031,79 @@ legend + .control-group {
 }
 .btn-tweet {
     font-size: 36px;
+}
+.view-enter, .view-leave {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.view-enter {
+  opacity:1;
+  left:1000px;
+  width:100%;
+    background: #333; 
+}
+.view-enter.view-enter-active {
+  left:100px;
+  opacity:1;
+  float: left;
+  position: relative;
+      background: red; 
+}
+.view-leave {
+  left:-1000px;
+  width:100%;
+  opacity:1;
+  background: #333;  
+}
+.view-leave.view-leave-active {
+  position:relative;
+  float: left;
+  left:-1000px;
+  opacity:1;
+}
+.slide-in-setup, .slide-out-setup {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+}
+
+.slide-out-setup {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-out-setup.slide-out-start {
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-in-setup {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-in-setup.slide-in-start {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+    
 }

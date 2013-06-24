@@ -1,6 +1,8 @@
+require 'koala'
+
 
 class Api::PetitionsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create, :share]
+  #before_filter :authenticate_user!, :only => [:create, :share]
 
   respond_to :json
 
@@ -109,7 +111,11 @@ class Api::PetitionsController < ApplicationController
 
       signature = @petition.signatures.new do |s|
         s.user = current_user
+        s.latitude = params[:latitude]
+        s.longitude = params[:longitude]
+        s.zip_code = params[:zip_code]
         s.comment = params[:comment]
+        s.opt_in = params[:opt_in]
       end
 
 
@@ -119,12 +125,87 @@ class Api::PetitionsController < ApplicationController
 
     #return if error_messages?(:config)
     @petition.save
+    @petition.reload
 
     #send petition action email
     UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user)
 
+
     render_result({ 'petition' => @petition.to_api,
                     'signature' => signature.to_api})
+
+  end
+
+  #end point to sign a petition using a facebook account; you must present a facebook user id, token;
+  #this method will take care of the rest, if no user exists with with that facebook id, we'll create one and
+  #sign the petition; otherwise just sign
+  def sign_with_facebook
+    
+    petition = Petition.find(params[:id])
+    
+    Rails.logger.debug "The access token is " + params[:accessToken]
+
+    #see if we have this FB user in the authentications table
+    authentication = Authentication.find_by_provider_and_uid('facebook', params[:userID])
+
+    @graph =Koala::Facebook::API.new(params[:accessToken])
+    facebook_profile = @graph.get_object("me")
+    if authentication
+      #flash[:notice] = "Logged in Successfully"
+      user = User.find(authentication.user_id)
+      user.first_name = facebook_profile['first_name']
+      user.last_name = facebook_profile['last_name']
+      user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
+
+      user.save
+
+    else
+      user = User.new
+      user.email =  facebook_profile["email"]
+      user.first_name = facebook_profile['first_name']
+      user.last_name = facebook_profile['last_name']
+      user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
+      user.password = "James123"
+
+      user.authentications.build(
+          :provider => 'facebook', 
+          :uid => params[:userID], 
+          :token => params[:accessToken], 
+          :token_secret => params[:token_secret])
+
+      user.save!
+
+
+    end
+
+    raise "Unable to find user" unless user
+
+    signature = user.signatures.find_by_petition_id(petition.id)
+
+    unless signature
+      signature = petition.signatures.new do |s|
+        s.user = user
+        s.latitude = params[:latitude]
+        s.longitude = params[:longitude]
+        s.comment = params[:comment]
+        s.opt_in = params[:opt_in]
+      end
+
+
+      if !signature.valid?
+        return render_result({}, 400, 'Error Signing Petition')
+      end
+
+      #return if error_messages?(:config)
+      petition.save
+
+      #send petition action email
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user)
+
+    end
+
+    render_result({ 'petition' => petition.to_api,
+      'signature' => signature.to_api})
 
   end
 
@@ -136,6 +217,16 @@ class Api::PetitionsController < ApplicationController
 
     render_result(@petition.to_api)
   end
+
+    #render a petition with id = params[:id]
+  def index
+    @petition = Petition.find(params[:id])
+
+    raise Error404 unless @petition
+
+    render_result(@petition.to_api)
+  end
+
 
 	# render a result in the appropriate format
   # TODO: move to some base class or something

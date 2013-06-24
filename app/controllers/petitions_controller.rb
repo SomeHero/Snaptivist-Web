@@ -1,5 +1,5 @@
 class PetitionsController < InheritedResources::Base
-	layout 'actions'
+	layout 'petitions'
 
 	def view
 		@petition = Petition.includes(:target).includes(:signatures)

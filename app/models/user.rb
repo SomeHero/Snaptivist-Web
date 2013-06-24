@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
   # holds the twitter client
   attr_accessor :twitter_client
 
-  has_many :authentications, :dependent => :destroy
+  has_many :authentications, :dependent => :destroy, :autosave => true
   has_many :external_accounts, :dependent => :destroy
+  has_many :signatures, :dependent => :destroy
+
     # note that the user has authenticated
   # def process_authentication
   #   if (is_gifter || Parameter.is_set?(Parameter::OPEN_BETA)) && welcomed_at.nil? && !email.blank?
