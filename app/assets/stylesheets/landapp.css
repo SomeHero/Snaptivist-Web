@@ -129,14 +129,17 @@ p.description {
 #signature-container {
 
 }
+#sign-why {
+    height: 160px;
+    padding: 10px;
+    color: #757a80;
+}
 #sign-why textarea {
     border:none;
     box-shadow: none;
     resize: none;
-    margin: 10px 10px 0px 10px;
-    height: 180px;
-    width: 90%;
-    font-size: 18px;
+    height: 120px;
+    font-size: 15px;
     font-family: 'Lato-Regular', sans-serif;
     color: #757a80;
 }
@@ -148,12 +151,18 @@ p.description {
     max-width: 620px;
     margin: 0px auto 60px auto;
 }
+#share-comment {
+    height: 160px;
+    padding: 10px;
+    color: #757a80;
+}
 #share-comment textarea {
     border:none;
     box-shadow: none;
     resize: none;
-    margin: 10px 10px 0px 10px;
-    height: 160px;
+    height: 120px;
+    font-size: 15px;
+    font-family: 'Lato-Regular', sans-serif;
 }
 #sign-petition-deliver .thanks-heading-copy {
     font-family: 'Lato-Light', sans-serif;

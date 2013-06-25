@@ -211,7 +211,8 @@ class Api::PetitionsController < ApplicationController
 
   #render a petition with id = params[:id]
   def show
-    @petition = Petition.find(params[:id])
+    @petition = Petition.includes("user")
+      .find(params[:id])
 
     raise Error404 unless @petition
 

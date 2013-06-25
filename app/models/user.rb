@@ -66,5 +66,20 @@ def apply_omniauth(omni)
       false
     end
   end
+
+  # generate the user as json
+  def to_api
+
+    results = {
+      'user_id' => id,
+      'first_name' => first_name,
+      'last_name' => last_name,
+      'organization_name' => organization_name,
+      'zip_code' => zip_code,
+      'avatar_url' => avatar_url,
+    }
+
+    return results;
+  end
   
 end

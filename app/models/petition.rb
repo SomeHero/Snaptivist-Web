@@ -33,7 +33,8 @@ class Petition < ActiveRecord::Base
       'target_count' => target_count,
       'short_url' => short_url,
       'rewrite_url_key' => rewrite_url_key,
-      'target' => target.to_api
+      'target' => target.to_api,
+      'creator' => user.to_api
     }
 
     return results;

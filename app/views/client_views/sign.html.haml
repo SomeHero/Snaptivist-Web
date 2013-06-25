@@ -4,6 +4,7 @@
       #signature-container{"data-facebook" => '100940330104294'}
         #sign-why.drop-shadow-full.solid-white-back{:style => "text-align: left;"}
           %textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "Tell us why you're signing..", "ng-model" => "sign_comment"}
+          #message-counter.text-right {{115 - sign_comment.length}}
         %button#sign-petition-facebook-button.action-button.icon.sign-with-fb-button{"ng-click" => "fetch()"}
           %span
             Sign With Facebook
@@ -31,7 +32,9 @@
         .controls
           %label.checkbox{:style => "text-align: left"}
             %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
-              %span{:style => "color: #768286;"} Let me know about activists and events in my area.
+              %span{:style => "color: #768286;"}
+                Update me on the results of this campaign and others from
+                %span{:style => "font-weight: bold;"} {{petition.creator.organization_name}}
       .span6
         .controls
           %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address()"}
