@@ -209,6 +209,27 @@ class Api::PetitionsController < ApplicationController
 
   end
 
+  def signatures
+    @petition = Petition.find(params[:id])
+
+    page_size = 10
+    offset = 0
+
+    if params[:offset]
+      offset = params[:offset]
+    end
+
+    @signatures = @petition.signatures.limit(page_size).offset(offset)
+
+    result = {
+      signatures: @signatures.map { |s| s.to_api },
+      total: Signature.find_all_by_petition_id(@petition.id).count
+    }
+
+    render_result result
+
+  end
+
   #render a petition with id = params[:id]
   def show
     @petition = Petition.includes("user")

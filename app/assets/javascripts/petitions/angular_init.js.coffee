@@ -17,7 +17,9 @@
 @app.config ['$locationProvider', ($locationProvider) ->
   $locationProvider.html5mode = true
 ]
-
+@app.filter "fromNow", ->
+  (dateString) ->
+    moment(new Date(dateString)).fromNow()
 @app.directive "facebook", ($http, Util, $q, $location, PetitionServices) ->
   restrict: "A"
   scope: true
@@ -71,7 +73,7 @@
           console.log "error: " + response
       .error (response) ->
         console.log "signature failed: " + response
-        
+
 
     ((d) ->
       js = undefined

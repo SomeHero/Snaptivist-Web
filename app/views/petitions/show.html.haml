@@ -34,49 +34,28 @@
             {{petition.signature_count}}
         .span6.action-count{:style => "text-align: right; padding-right: 44px"}
           Goal: {{petition.target_count}}
-  .row-fluid
-    - if @petition.signatures.count > 0
-      - @petition.signatures.each do |signature|
-        .container-fluid.comment-wrapper
-          .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
-            %a.pull-left{:href => "#"}
-              - if signature.user.avatar_url
-                %img.media-object.avatar{:src => "#{signature.user.avatar_url}?type=large"}/
-              - else
-                = image_tag "avatar.png", :class=> "media-object avatar"
-            .media-body{:style => "text-align: left;"}
-              %span.comment-username
-                = signature.user.first_name
-                = signature.user.last_name
-              %span.comment-timeago
-                signed
-                %script{:language => "javascript"}
-                  document.write(moment.unix("<haml:loud> signature.created_at.to_f() </haml:loud>").fromNow());
-                ago in 
-                = signature.city
-                , 
-                = signature.state
-              %span.comment= signature.comment
-          .delivery-status.row-fluid.text-right
-            - if(signature.delivered)
-              = image_tag "twitter-bird-delivery-status.png"
-              %span.delivery-status-text
-                STATUS: DELIVERED
-                %span
-                  = image_tag "checkbox-checked-delivery-status.png", :class => "delivery-status-checkbox"
-            - else
-              = image_tag "twitter-bird-delivery-status.png"
-              %span.delivery-status-text
-                STATUS: PENDING
-                %span
-                  = image_tag "checkbox-delivery-status.png", :class => "delivery-status-checkbox"
-  .row-fluid
-    #see-more-container
-      %button#see-more-button.button.green{:style => "width: 100%"}
-        %span
-          See More Signers
+  .row-fluid{"ng-controller" => "CommentController"}
+    .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+      .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
+        %a.pull-left{:href => "#"}
+          %img.media-object.avatar{:src => "{{get_avatar_url(signature)}}"}/
+        .media-body{:style => "text-align: left;"}
+          %span.comment-username
+            {{signature.user.first_name}}
+            {{signature.user.last_name}}
+          %span.comment-timeago
+            signed {{signature.created_at | fromNow }} in 
+            {{signature.city + ", " + signature.state}}
+          %span.comment
+            {{signature.comment}}
+    .row-fluid{"ng-hide" => "show_more_signatures_button()"}
+      #see-more-container
+        %button#see-more-button.button.green{:style => "width: 100%", "ng-click" => "show_more_signatures_click()"}
           %span
+            See More Signers
+            %span
   .row-flud
     #powered-by-wrapper
       #powered-by-container.row-fluid.text-right
         = image_tag "powered_by.png"
+  %div{"loading-screen" => "loading.show_spinner"}

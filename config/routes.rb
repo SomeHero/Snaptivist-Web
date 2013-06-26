@@ -5,6 +5,7 @@ SnaptivistWeb::Application.routes.draw do
         post 'share'
         post 'sign'
         post 'sign_with_facebook'
+        get 'signatures'
       end
     end
     resources :phonecampaigns do

@@ -29,9 +29,13 @@ class Signature < ActiveRecord::Base
       'signature_id' => id,
       'petition_id' => petition.id,
       'user_id' => user.id,
+      'city' => city,
+      'state' => state,
+      'country' => country,
       'comment' => comment,
       'created_at' => created_at,
-      'updated_at' => updated_at
+      'updated_at' => updated_at,
+      'user' => user.to_api
     }
 
     return results;
