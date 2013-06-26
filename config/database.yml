@@ -24,6 +24,14 @@ test:
   password: snaptivist
   host: localhost
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: snaptivist_staging
+  pool: 5
+  username: snaptivist
+  password: snaptivist
+
 production:
   adapter: postgresql
   encoding: unicode
