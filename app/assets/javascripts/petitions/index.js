@@ -6,6 +6,5 @@
 //= require_directory ./controllers
 //= require_directory ../services
 //= require_directory ./services
-//= require_directory ./filters
 //= require_directory ./directives
 //= require ../ui-bootstrap-0.3.0
