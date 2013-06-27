@@ -236,9 +236,9 @@ staging:
   linked_in_app_secret: 7nNxtsZYsluvddHO    
   twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
   twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
-  facebook_app_id: 100940330104294
-  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
-  facebook_callback_url: http://staging.snaptivist.com/
+  facebook_app_id: 190498344444219
+  facebook_secret_key:  6c26fb77aac43ddb8cefd47202e505fe
+  facebook_callback_url: http://staging-snaptivist.heroku.com/
   sms_service_class: TwilioSmsService
   apple_service_class: GrocerAppleService
   google_service_class: GcmGoogleService
