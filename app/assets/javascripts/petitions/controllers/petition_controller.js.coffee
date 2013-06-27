@@ -1,6 +1,5 @@
 @PetitionController = ($scope, PetitionServices, $http, Util, $rootScope) ->
 	
-  $scope.tweet = '79 demand somebody: Stop the drone assassinations of american citizens. Join us: http://bit.ly/ZFg2gl'
   $scope.petition = petition
   $scope.isCollapsed = true
   $scope.summary_more_text = "More"
@@ -18,6 +17,8 @@
 
   window.scope = $scope
 
+  $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
+
   $scope.read_summary_click = ->
     $scope.isCollapsed = !$scope.isCollapsed
     if $scope.isCollapsed
@@ -29,30 +30,33 @@
     $scope.loading.show_spinner = true
     Util.navigate "/petitions/Stop/deliver"
 
-  $scope.sign_with_email_address = ->
+  $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
+
+    form.submitted = true
+    if form.$valid
     
-    $scope.loading.show_spinner = true
+      $scope.loading.show_spinner = true
 
-    petition_id = $scope.petition.petition_id
+      petition_id = $scope.petition.petition_id
 
-    PetitionServices.sign_with_email_address(petition_id, $scope.signature).success (response) ->
-      console.log "signature complete"
+      PetitionServices.sign_with_email_address(petition_id, $scope.signature).success (response) ->
+        console.log "signature complete"
 
-      $scope.loading.show_spinner = false
+        $scope.loading.show_spinner = false
 
-      result = response.result
-      $scope.petition = result.petition
-      $scope.signature = result.signature
+        result = response.result
+        $scope.petition = result.petition
+        $scope.signature = result.signature
 
-      $rootScope.$broadcast('signedPetition', $scope.signature)
+        $rootScope.$broadcast('signedPetition', $scope.signature)
 
-      Util.navigate "/petitions/Stop/deliver"
+        Util.navigate "/petitions/Stop/deliver"
 
-    .error ->
-      console.log "signature failed"
+      .error ->
+        console.log "signature failed"
 
-      $scope.loading.show_spinner = false
+        $scope.loading.show_spinner = false
 
   $scope.deliver_signature = ->
     console.log("delivering signature")

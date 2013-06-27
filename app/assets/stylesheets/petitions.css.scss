@@ -5,6 +5,13 @@
     width: 528px; 
     margin: 0px auto 80px auto;
 }
+#sign-petition .row-fluid {
+	margin-bottom: 16px;
+}
 #sign-petition input {
     max-width: 100%;
+    margin-bottom: 2px;
+}
+#sign-petition .text-error {
+	margin-left: 4px;
 }

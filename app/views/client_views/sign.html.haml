@@ -13,29 +13,38 @@
     \-OR-
 .row-fluid
   #sign-petition
-    .row-fluid
-      .span6
-        .controls
-          %input#firstName.register-textField.span12{:type => "text", :name => "FirstName", :placeholder => "First Name", "ng-model" => "signature.first_name"}
-      .span6
-        .controls
-          %input#lastName.register-textField.span12{:type => "text", :name => "LastName", :placeholder => "Last Name", "ng-model" => "signature.last_name"}
-    .row-fluid
-      .span6
-        .controls
-          %input#emailAddress.register-textField.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature.email_address"}
-      .span6
-        .controls
-          %input#zipCode.register-textField.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature.zip_code"}
-    .row-fluid
-      .span6
-        .controls
-          %label.checkbox{:style => "text-align: left"}
-            %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
-              %span{:style => "color: #768286;"}
-                Update me on the results of this campaign and others from
-                %span{:style => "font-weight: bold;"} {{petition.creator.organization_name}}
-      .span6
-        .controls
-          %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address()"}
-            Add My Name
+    %form{:name => "myForm", "novalidate" => true}
+      .row-fluid
+        .span6
+          .controls
+            %input#firstName.register-textField.span12{:type => "text", :name => "FirstName", :placeholder => "First Name", "ng-model" => "signature.first_name", "required" => true}
+            .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.FirstName.$invalid"}
+              First Name is required  
+        .span6
+          .controls
+            %input#lastName.register-textField.span12{:type => "text", :name => "LastName", :placeholder => "Last Name", "ng-model" => "signature.last_name", "required" => true}
+            .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.LastName.$invalid"}
+              Last Name is required  
+      .row-fluid
+        .span6
+          .controls
+            %input#emailAddress.register-textField.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature.email_address", "required" => true}
+            .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid"}
+              Email Address is required  
+        .span6
+          .controls
+            %input#zipCode.register-textField.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature.zip_code", "required" => true}
+            .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.ZipCode.$invalid"}
+              Zip Code is required  
+      .row-fluid
+        .span6
+          .controls
+            %label.checkbox{:style => "text-align: left"}
+              %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
+                %span{:style => "color: #768286;"}
+                  Update me on the results of this campaign and others from
+                  %span{:style => "font-weight: bold;"} {{petition.creator.organization_name}}
+        .span6
+          .controls
+            %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
+              Add My Name
