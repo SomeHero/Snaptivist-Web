@@ -34,11 +34,23 @@
             {{petition.signature_count}}
         .span6.action-count{:style => "text-align: right; padding-right: 44px"}
           Goal: {{petition.target_count}}
+  .row-fluid
+    .container-fluid.comment-wrapper
+      .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
+        %a.pull-left{:href => "#"}
+          %img.media-object.avatar{:src => "{{get_avatar_url(petition.creator)}}"}/
+        .media-body{:style => "text-align: left;"}
+          %span.comment-username
+            {{petition.creator.organization_name}}
+          %span.comment-timeago
+            created this petition {{petition.created_at | fromNow }}
+          %span.comment
+            Comment Goes Here   
   .row-fluid{"ng-controller" => "CommentController"}
     .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
       .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
         %a.pull-left{:href => "#"}
-          %img.media-object.avatar{:src => "{{get_avatar_url(signature)}}"}/
+          %img.media-object.avatar{:src => "{{get_avatar_url(signature.user)}}"}/
         .media-body{:style => "text-align: left;"}
           %span.comment-username
             {{signature.user.first_name}}

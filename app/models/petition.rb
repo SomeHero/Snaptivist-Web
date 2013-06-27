@@ -34,7 +34,9 @@ class Petition < ActiveRecord::Base
       'short_url' => short_url,
       'rewrite_url_key' => rewrite_url_key,
       'target' => target.to_api,
-      'creator' => user.to_api
+      'creator' => user.to_api,
+      'created_at' => created_at,
+      'updated_at' => updated_at,
     }
 
     return results;

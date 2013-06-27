@@ -11,9 +11,9 @@
 	$rootScope.$on 'signedPetition', (event, comment) ->
 		$scope.comments.items.push comment
   			
-	$scope.get_avatar_url = (comment) ->
-		if comment.user.avatar_url 
-			return comment.user.avatar_url + "?type=large"
+	$scope.get_avatar_url = (user) ->
+		if user.avatar_url 
+			return user.avatar_url + "?type=large"
 		else
 			return '/assets/avatar.png'
 

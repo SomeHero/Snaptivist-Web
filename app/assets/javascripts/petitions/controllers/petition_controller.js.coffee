@@ -19,6 +19,14 @@
 
   $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
 
+  #need to refactor in comment controller too
+  
+  $scope.get_avatar_url = (user) ->
+    if user.avatar_url 
+      return user.avatar_url + "?type=large"
+    else
+      return '/assets/avatar.png'
+
   $scope.read_summary_click = ->
     $scope.isCollapsed = !$scope.isCollapsed
     if $scope.isCollapsed
