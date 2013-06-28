@@ -150,6 +150,9 @@ class Api::PetitionsController < ApplicationController
 
     @graph =Koala::Facebook::API.new(params[:accessToken])
     facebook_profile = @graph.get_object("me")
+
+  raise "Unable to retrieve Facebook profile" unless facebook_profile
+
     if authentication
       #flash[:notice] = "Logged in Successfully"
       user = User.find(authentication.user_id)
@@ -189,6 +192,8 @@ class Api::PetitionsController < ApplicationController
         s.longitude = params[:longitude]
         s.comment = params[:comment]
         s.opt_in = params[:opt_in]
+        s.city = facebook_profile["location"]["name"].split(",")[0]
+        s.state = facebook_profile["location"]["name"].split(",")[1]
       end
 
 
