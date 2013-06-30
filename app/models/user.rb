@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   #     save
   #   end
   # end
+def display_name
+  self.organization_name
+end
 
 def apply_omniauth(omni)
     authentications.build(:provider => omni['provider'], 

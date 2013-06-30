@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625173113) do
+ActiveRecord::Schema.define(:version => 20130629004802) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,10 +106,14 @@ ActiveRecord::Schema.define(:version => 20130625173113) do
     t.integer  "target_id"
     t.string   "short_url"
     t.string   "rewrite_url_key"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "signatures_count"
     t.integer  "user_id"
+    t.string   "header_image_file_name"
+    t.string   "header_image_content_type"
+    t.integer  "header_image_file_size"
+    t.datetime "header_image_updated_at"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"

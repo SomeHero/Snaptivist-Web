@@ -879,7 +879,6 @@ legend + .control-group {
 #target-count-wrapper .mark {
     position: absolute;
     content: ' ';
-    margin-left: -14px;
     top: 16px;
     width: 12px;
     height: 12px;

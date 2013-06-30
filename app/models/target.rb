@@ -45,4 +45,9 @@ class Target < ActiveRecord::Base
     return results;
 
   end
+
+  def display_name
+    self.last_name
+  end
+
 end

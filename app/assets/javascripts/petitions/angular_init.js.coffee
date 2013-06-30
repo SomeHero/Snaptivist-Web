@@ -48,7 +48,6 @@
           
           result = response.result
           scope.signature = result.signature
-
           fb_message_obj =
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'

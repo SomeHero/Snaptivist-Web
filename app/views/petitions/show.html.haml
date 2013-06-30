@@ -1,6 +1,6 @@
 .container-fluid{:style => "text-align:center;", "ng-controller" => "PetitionController"}
   .row-fluid
-    = image_tag "header_images/header_petition_01.png", :id => "header-image", :class => "drop-shadow lifted"
+    %img{:src => "{{petition.image_full}}", :id => "header-image", :class => "drop-shadow lifted"}
   .row-fluid
     %h2.target-name
       {{petition.target.title}} {{petition.target.last_name}}
@@ -20,12 +20,12 @@
     #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
       .row-fluid
         #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
-          .progress.progress-striped.progress-green
-            .bar.orange-bar{:style => "width: #{(@petition.signatures_count*100)/@petition.target_count}%;"}
-              %span.mark{:style => "left: #{(@petition.signatures_count*100)/@petition.target_count}%;"}
+          #progress-bar-wrapper.progress.progress-striped.progress-green
+            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
+            %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
         #petition-target-count-goal.span1.target-count-goal
           %span
-            {{ petition.signature_count*100/petition.target_count }}
+            {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
             \%
       .row-fluid
         .span6.action-count{:style => "text-align: left; padding-left: 22px;"}

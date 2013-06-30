@@ -19,8 +19,22 @@
 
   $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
 
+  $scope.get_percentage_signed = (signatures, target) ->
+    if (signatures * 100) / target > 100
+      return 100
+    else
+      return (signatures * 100) / target
+
+  $scope.load_progress_marker = (signatures, target) ->
+    width = $("#progress-bar-wrapper").width()
+
+    percentage = (signatures * 100) / target
+    if (signatures * 100) / target > 100
+      percentage = 100
+
+    return (width*(percentage/100)) + "px"
+
   #need to refactor in comment controller too
-  
   $scope.get_avatar_url = (user) ->
     if user.avatar_url 
       return user.avatar_url + "?type=large"
@@ -36,6 +50,7 @@
 
   $scope.sign_with_facebook_click = ->
     $scope.loading.show_spinner = true
+
     Util.navigate "/petitions/Stop/deliver"
 
   $scope.sign_with_email_address = (form) ->
@@ -92,4 +107,6 @@
     console.log("skipping delivery")
     
     Util.navigate "/petitions/Stop/complete"
+
+  $scope.load_progress_marker()
 

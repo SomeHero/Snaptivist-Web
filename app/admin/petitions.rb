@@ -12,4 +12,19 @@ ActiveAdmin.register Petition do
 		default_actions
 	end
 
+	form :html => { :enctype => "multipart/form-data" } do |f|
+		f.inputs "Details" do
+			f.input :user
+			f.input :target
+			f.input :title
+			f.input :summary
+			f.input :short_url
+			f.input :rewrite_url_key
+			f.input :target_count
+			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
+    
+	end
+	f.buttons
+   end
+
 end

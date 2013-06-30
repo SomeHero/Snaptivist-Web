@@ -8,6 +8,20 @@ class Petition < ActiveRecord::Base
   validates :summary, :presence => true
   validates :target_count, :numericality => { :only_integer => true }
 
+  has_attached_file :header_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  IMAGE_SIZES = {"thumb" => "100x100",
+                "square" => "200x200#",
+                "medium" => "300x300",
+                "full" => "782x271"}
+
   def shorten_url
 
     Bitly.use_api_version_3
@@ -20,6 +34,23 @@ class Petition < ActiveRecord::Base
 
     return url.short_url
 
+  end
+
+  # get URL to image of a specific size
+  def p_image_url(label = nil, use_pre_publish = false)
+    if use_pre_publish && !p_pre_publish_image_file_name.blank?
+      if label.nil?
+        p_pre_publish_image.url
+      else
+        p_pre_publish_image.url(label)
+      end
+    elsif p_image_file_name.blank?
+      Product.default_image(label)
+    elsif label.nil?
+      p_image.url
+    else
+      p_image.url(label)
+    end
   end
 
    # generate the petition
@@ -38,6 +69,10 @@ class Petition < ActiveRecord::Base
       'created_at' => created_at,
       'updated_at' => updated_at,
     }
+
+    Petition::IMAGE_SIZES.each do |label, size|
+      results["image_#{label}"] = header_image(label)
+    end
 
     return results;
 

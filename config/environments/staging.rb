@@ -67,4 +67,13 @@ SnaptivistWeb::Application.configure do
   FACEBOOK_APP_ID = Settings.facebook_app_id
   FACEBOOK_APP_SECRET = Settings.facebook_secret_key
 
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => "snaptivist-staging",
+    :access_key_id => "AKIAIKSNRNLLIFLI7AMA",
+    :secret_access_key => "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"
+  }
+}
 end
