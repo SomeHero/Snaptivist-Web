@@ -1,0 +1,134 @@
+/*@import 'compass/reset';*/
+/*@import 'foundation';*/
+/*@import 'brand';*/
+/*@import 'compass/css3';*/
+
+.howitworks-block {
+	background: $light_grey;
+	font-family: $brand_font, sans-serif;
+	font-weight: 400;
+	padding-bottom: 100px;
+	display: block;
+	.hitw-row {
+		padding-top: 50px;
+	}
+	.hitw-title {
+		width: 70%;
+		margin: 0px auto;
+		text-align: center;
+		color: $mid_grey;
+	  font-weight: 400;
+	  font-size: 25px;
+	  border-bottom: 2px solid $grey;
+	  @include single-box-shadow($color: white, $hoff: 0, $voff: 7px, $blur: 1px, $spread: -5px, $inset: false);
+	  padding: 20px;
+	}
+	.hitw-topic-block {
+		display: table;
+		.hitw-topic-img {
+			border-bottom: 2px solid $grey;
+			@include single-box-shadow($color: white, $hoff: 0, $voff: 7px, $blur: 1px, $spread: -5px, $inset: false);
+			img {width: 100%}
+		}
+		.hitw-topic {
+			color: $mid_grey;
+			padding: 25px;
+			margin: auto 0px;
+			.hitw-heading {
+				font-size: 28px;
+				line-height: 30px;
+			}
+			.hitw-detail {
+				font-size: 18px;
+				line-height: 21px;
+				padding-top: 10px;
+			}	
+		}
+	}
+	.hitw-topic-block-wide {
+		@extend .hitw-topic-block;
+	}
+	.hitw-circle-block {
+  	.hitw-circle-box {
+			.hitw-circle {
+				width: 200px;
+				height: 200px;
+				margin: 50px auto;
+				background: $dark-green;
+				@include border-radius(50%);
+				position: relative;
+				p {
+					color: white;
+					text-align: center;
+					font-size: 25px;
+					line-height: 25px;
+					padding-top: 36%;
+				}
+				.imgicon { position: absolute; }
+
+				#icon-facebook { z-index: 1; top: -20px; left: -20px; width: 85px }
+				#icon-f1 { z-index: 3; bottom: -36px; right: 36px; width: 75px }
+				#icon-f3 { z-index: 1; bottom: 0px; right: 0px; width: 55px }
+
+				#icon-mail { z-index: 1; bottom: -37px; left: 23px; width: 85px }
+				#icon-food { z-index: 2; top: -20px; right: -15px; width: 85px; @include rotate(45deg) }
+				#icon-drink { z-index: 3; top: -35px; right: 20px; width: 85px  }
+
+				#icon-plane { z-index: 1; top: 0px; right: 0px; width: 85px  }				
+			}
+		}
+  }
+}
+
+
+/*Imported styles based on screen size of viewing device*/
+/*This creates the responsive design*/
+@media only screen and (max-width:959px) {
+  //@import 'size/mobile';
+  .hitw-topic-block {
+  	@include grid-column($columns: 10, $center: true);
+  	text-align: center;
+  	#mobile-give {
+  		max-width: 500px;
+  		margin: 0 auto;
+  	}
+  }
+	.hitw-circle-block {
+  	.hitw-circle-box:first-child { margin-top: -50px }
+  	.hitw-circle-box:nth-child(2) { padding-top: 1px }
+  	.hitw-circle-box:last-child { padding-top: 1px; margin-bottom: -50px }
+  }
+  .hitw-topic-block-wide {
+  	padding: -25px;
+  }
+}
+
+@media only screen and (min-width:960px) {
+  //@import 'size/full';
+  .hitw-topic-block {
+  	@include grid-column($columns: 8, $center: true);
+  	.hitw-topic-img {
+  		@include grid-column($columns: 6, $float: left);
+  	}
+  	.hitw-topic {
+  		@include grid-column($columns: 6, $float: left);
+  	}
+  }
+  .hitw-topic-block-wide {
+		border-bottom: 2px solid $grey;
+		@include single-box-shadow($color: white, $hoff: 0, $voff: 7px, $blur: 1px, $spread: -5px, $inset: false);
+		.hitw-topic-img {
+			border: 0px  !important;
+			box-shadow: none  !important;
+		}
+	}
+	.hitw-circle-block {
+  	@include grid-column($columns: 10, $center: true);
+  	.hitw-circle-box {
+  		@include grid-column($columns: 4, $float: left);
+  	}
+  }
+}
+
+
+

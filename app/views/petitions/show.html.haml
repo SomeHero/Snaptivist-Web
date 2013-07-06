@@ -1,8 +1,8 @@
 .container-fluid{:style => "text-align:center;", "ng-controller" => "PetitionController"}
   .row-fluid
-    %img{:src => "{{petition.image_full}}", :id => "header-image", :class => "drop-shadow lifted"}
+    %img{:src => "{{petition.image_full}}", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
   .row-fluid
-    %h2.target-name
+    %h2.target-name{"ng-cloak" => ""}
       {{petition.target.title}} {{petition.target.last_name}}
   .row-fluid
     %h1.title {{petition.title}}
@@ -12,28 +12,25 @@
         {{petition.summary}}
     %button.btn{"ng-click" => "read_summary_click()", :style => "margin-bottom: 40px;",}
       {{summary_more_text}}
-  .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 0px auto;"}
+  #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
+    .row-fluid
+      #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
+        #progress-bar-wrapper.progress.progress-striped.progress-green
+          #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
+          %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
+      #petition-target-count-goal.span1.target-count-goal
+        %span
+          {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
+          \%
+    .row-fluid
+      .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
+        Signers:
+        %span#signature_count
+          {{petition.signature_count}}
+      .span6.action-count{:style => "text-align: right; padding-right: 44px"}
+        Goal: {{petition.target_count}}
+  .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 80px auto;"}
     %div.view-animate-container{"ng-view" => "", "ng-animate" => "{enter: 'slide-in-setup', leave: 'view-leave'}"}
-  .row-fluid
-    %div{"royal-slider" => "rsDefaultInv"}
-  .row-fluid
-    #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
-      .row-fluid
-        #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
-          #progress-bar-wrapper.progress.progress-striped.progress-green
-            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
-            %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
-        #petition-target-count-goal.span1.target-count-goal
-          %span
-            {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
-            \%
-      .row-fluid
-        .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
-          Signers:
-          %span#signature_count
-            {{petition.signature_count}}
-        .span6.action-count{:style => "text-align: right; padding-right: 44px"}
-          Goal: {{petition.target_count}}
   .row-fluid
     .container-fluid.comment-wrapper
       .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
@@ -47,8 +44,8 @@
           %span.comment
             Comment Goes Here   
   .row-fluid{"ng-controller" => "CommentController"}
-    .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
-      .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
+    .container-fluid.comment-wrapper{:style => "width: 90%", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+      .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
         %a.pull-left{:href => "#"}
           %img.media-object.avatar{:src => "{{get_avatar_url(signature.user)}}"}/
         .media-body{:style => "text-align: left;"}

@@ -5,9 +5,6 @@
  *= require_self
  *= require ./libs/royalslider
  *= require ./libs/rs-default-inverted
- *= require ./libs/ribbon
  *= require ./main
  *= require ./libs/ajax-spinner
- *= require ./libs/error-box
- *= require ./libs/animate-custom
 */

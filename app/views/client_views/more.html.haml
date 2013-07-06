@@ -1,2 +1,10 @@
-.row-fluid
-	Take More Actions
+.row-fluid.more-actions
+	%h4.text-center
+		Thanks for Signing
+	%h5.text-center
+		Here are some other actions that need your support
+	%div{"royal-slider" => "rsDefaultInv"}
+		%div{"ng-repeat" => "action in more_actions()"}
+			.product-background{"ng-style" => "set_action_background(action)", "ng-show" => "rs_display"}
+				.product-details
+					{{action.title}}

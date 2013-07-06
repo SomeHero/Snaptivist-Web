@@ -60,3 +60,114 @@
         display: block;
     }
 }
+@media (max-width: 767px)  {
+    #target-count-progress-wrapper {
+        float: left !important;
+        width: 85%;
+    }
+}
+@media (max-width: 767px)  {
+    #petition-target-count-goal {
+        float: left !important;
+        width: 15%;
+        font-size: 14px;
+    }
+}
+@media (max-width: 767px)  {
+    .action-count {
+        float: left !important;
+        width: 50% !important;
+    }
+}
+/* Large desktop */
+@media (min-width: 1200px) { 
+    .action-button {
+        font-size: 50px !important;
+    }
+    #see-more-button {
+        font-size: 45px !important;
+    }
+    .comment-container .pull-left {
+        float: left !important;
+    }
+    .comment-container .comment-username {
+        font-size: 18px;
+    }
+    .comment-container .comment-timeago {
+        font-size: 14px;
+    }
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+    .action-button {
+        font-size: 40px !important;
+    }
+    #see-more-button {
+        font-size: 35px !important;
+    }
+    .comment-container .pull-left {
+        float: left !important;
+    }
+    .comment-container .comment-username {
+        font-size: 16px;
+    }
+    .comment-container .comment-timeago {
+        font-size: 13px;
+    }
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .action-button {
+        font-size: 40px !important;
+    }
+    #see-more-button {
+        font-size: 35px !important;
+    }
+    .comment-container .pull-left {
+        float: left !important;
+    }
+    .comment-container .comment-username {
+        font-size: 16px;
+    }
+    .comment-container .comment-timeago {
+        font-size: 13px;
+    }
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+    .action-button {
+        font-size: 30px !important;
+    }
+    #see-more-button {
+        font-size: 25px !important;
+    }
+    .comment-container {
+        height: 75px;
+    }
+    .comment-wrapper {
+        margin: 0px auto 20px auto;
+    } 
+    .comment-container .media-body {
+        padding: 10px 4px 4px 4px;
+        line-height: 14px;
+    }
+    .comment-container .pull-left {
+        float: left !important;
+        margin-right: 6px;
+    }
+    .comment-container .comment-username {
+        font-size: 14px;
+    }
+    .comment-container .comment-timeago {
+        font-size: 12px;
+    }
+    .comment-container .avatar {
+        max-width: 75px;
+    }
+    .comment-container .comment {
+        display: none;
+    }
+}

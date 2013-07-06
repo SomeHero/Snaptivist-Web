@@ -1,0 +1,1017 @@
+@import 'compass/reset';
+@import 'foundation';
+@import 'brand';
+@import 'compass/css3';
+
+@import 'howitworks';
+
+// Defaults for ZURB's grid system
+$columns: 12;
+$center: true;
+$offset: false;
+$last-column: false;
+$offset: false;
+$push: false;
+$pull: false;
+$collapse: true;
+$float: left;
+
+// default values for transitions
+$default-transition-property : all;
+$default-transition-duration : 0.5s;
+$default-transition-function : ease;
+$default-transition-delay    : false;
+
+// defaults for box shadows
+$default-box-shadow-color: $dark_red;
+$default-box-shadow-v-offset: 4px;
+$default-box-shadow-blur: 0;
+
+// defaults for text shadows
+$default-text-shadow-color: black;
+$default-text-shadow-v-offset: 2px;
+$default-text-shadow-blur: 0px;
+$default-text-shadow-spread: false;
+
+@mixin titles {
+  h2, h3, h4 {
+    text-align: left;
+  }
+  margin: 15px 0 0 0;
+}
+
+@mixin current-breadcrumb {
+  color: $dark_green;
+}
+
+@mixin full-div-background($url: $url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+@mixin placeholder-text($placeholder-color: $placeholder-color, $placeholder-font-size: $placeholder-font-size) {
+  color: $placeholder-color;
+  font-family: $brand_font, sans-serif;
+  font-size: $placeholder-font-size;
+  font-weight: 400;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, body, small, label, button {
+  font-family: $brand_font, sans-serif;
+  color: $dark_grey;
+  font-weight: 600;
+}
+
+a {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+body, .angular-frame {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  &:hover { color: $mid_grey; }
+}
+
+.notice-box {
+  padding: 4px;
+  height: 25px;
+  text-align: center;
+  background-color: tint($dark_red, 75%);
+}
+
+
+#delivery-title, .treat-delivered {
+  h3, h4 {
+    color: $dark_green;
+    font-weight: 400;
+    @include single-text-shadow(0, 2px, 0, false, white)
+  }
+  position: relative;
+}
+
+.main-grid {
+  @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
+}
+
+.circle {
+  @include border-radius(35px)
+}
+
+.landing-view {
+  .marketing-copy {
+    background: rgba(0, 0, 0, 0.5);
+    @include grid-column($columns: 10, $center: false, $float: right);
+    p {
+      line-height: 18px;
+      margin-bottom: 10px;
+    }
+    h2, p, a.offer-terms {
+      @include text-shadow();
+      color: white;
+    }
+    a.offer-terms { font-size: emCalc(14px); }
+  }
+}
+
+.cc-error {
+  border: 2px solid red;
+}
+
+.hidden { display: none; }
+
+.full-screen{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.row .row { margin: 0px; }
+
+$url: "http://placehold.it/200x200&text=Airplane";
+
+.product-background {
+  @include full-div-background($url: '');
+}
+
+.slide-from-right {
+  @include single-transition(all, 1.0s, ease, false);
+}
+
+
+.ease-in {
+  @include transition();
+  &.initial-hide {
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+.friends-view, .payment-view, .delivery-view, .share-view, .receiving-view {
+  p, span, small{
+    font-weight: 400;
+    font-size: 1em;
+  }
+  background-color: $light_grey;
+  & > .row.bread-crumbs {
+    background-color: $light_grey;
+    p {
+      margin: 5px auto;
+    }
+  }
+  & > .row {
+    background-color: $light_grey;
+    &.main { border: 2px solid $light_green; }
+    & > .product-background {
+      border-right: 2px solid $light-green;
+    }
+  }
+}
+
+#loading {
+  background-color: rgba(0, 0, 0, 0.71);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  @include border-radius(4px);
+  height: 130px;
+  width: 130px;
+  margin: -65px 0 0 -65px;
+  img {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+}
+
+.input-with-label {
+  @include grid-column($columns: 12, $center: true);
+  width: 96%
+  label { font-size: emCalc(12px); }
+  padding: 5px 0;
+}
+
+.input-wrapper {
+  @include grid-column($columns: 12, $center: true);
+  @include border-radius(4px);
+  height: 45px;
+  border: 2px solid $grey;
+  padding: 0;
+  background-color: white;
+  &.valid { border: 2px solid $light_green; }
+  & > img {
+    margin-top: 5px;
+  }
+  input, .card-info {
+    height: 100%;
+    &:focus {
+      background-color: inherit;
+      outline-width: 0;
+    }
+    border: none;
+    @include grid-column($columns: 12);
+    padding: 0;
+    font-size: emCalc(18px);
+    box-shadow: none;
+    &.card-input {
+      @include grid-column($columns: 10, $float: left);
+      width: 77.333%;
+      padding: 0 0 0 3px;
+    }
+  }
+  input {
+    padding-left: 5px;
+  }
+  .card-img {
+    @include grid-column($columns: 2, $float: left);
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    margin: 5px 0 4px 4px;
+  }
+  &.error {
+    border: 2px solid $dark_red;
+    input, input:focus { background-color: inherit; }
+  }
+}
+
+.input-hack {
+  position: absolute;
+  top: -99999px;
+  left: -999999px;
+  height: 1px;
+  width: 1px;
+}
+.payment-form {
+  margin-top: 10px;
+  #other-payment-details, #credit-card {
+    @include grid-column($columns: 12, $center: true);
+    width: 96%;
+  }
+  #month, #year {
+    width: 45px;
+    float: left;
+  }
+  #month {
+    margin-right: 5px;
+  }
+  #expiry {
+    @include grid-column($columns: 5, $float: left);
+    padding-right: 0px;
+    width: 95px;
+    margin-right: 15px;
+  }
+  #cvv {
+    @include grid-column($columns: 3.5, $float: left);
+    width: 72px;
+  }
+  .cc-label-with-close {
+    label {
+      display: inline;
+    }
+    a {
+      float: right;
+      font-size: 0.8em;
+      position: relative;
+    }
+  }
+  #save-card-checkbox {
+    @include grid-column($columns: 3.5, $center: true, $float: left);
+    padding: 5px 0 0 0;
+    top: 25px;
+    label {
+      font-size: 0.7em;
+      float: right;
+      margin-top: 7px;
+    }
+    .input-wrapper {
+      background-color: $mid_grey;
+      height: 25px;
+      width: 25px;
+      float: left;
+      img{
+        width: 16px;
+        float: right;
+        position: relative;
+        bottom: 2px;
+        right: 2px;
+      }
+    }
+  }
+  #expiry, #cvv {
+    padding-left: 0;
+    float: left;
+  }
+}
+
+$placeholder-color: $grey;
+$placeholder-font-size: 18px;
+
+:-ms-input-placeholder {
+  @include placeholder-text();
+}
+::-webkit-input-placeholder {
+  @include placeholder-text();
+}
+::-moz-placeholder {
+  @include placeholder-text($placeholder-color: $dark_grey);
+}
+:-moz-placeholder {
+  @include placeholder-text($placeholder-color: $dark_grey);
+}
+
+.delivery-view {
+  :-ms-input-placeholder {
+    @include placeholder-text($placeholder-color: $dark_grey);
+  }
+  ::-webkit-input-placeholder {
+    @include placeholder-text($placeholder-color: $dark_grey);
+  }
+  ::-moz-placeholder {
+    @include placeholder-text($placeholder-color: black);
+  }
+  :-moz-placeholder {
+    @include placeholder-text($placeholder-color: black);
+  }
+}
+
+.clearfix {
+  clear: both;
+}
+
+.delivery-wrapper {
+  @extend .input-wrapper;
+  border: 2px solid $grey;
+  @include border-radius(4px);
+  margin: 10px 0;
+  width: 270px;
+  position: relative;
+  img {
+    display: block;
+    float: left;
+    padding: 0 5px;
+    width: 45px;
+    margin-top: 4px;
+    &#facebook-icon {
+      width: 50px;
+      margin: 1px 0 0 -4px;
+    }
+  }
+  a, button {
+    float: left;
+    color: $dark_grey;
+    text-align: center;
+  }
+  textarea, input {
+    @include placeholder-text();
+    color: $dark_grey;
+    background-color: inherit;
+  }
+  input {
+    float: left;
+    position: relative;
+    height: 100%;
+    @include grid-column($columns: 10);
+    padding: 0 5px 0 0;
+    &:focus {
+      outline-width: 0;
+    }
+    &.sms-input, &.email-input {
+      width: 81.333%;
+      margin: 0;
+    }
+  }
+  span, small, a { line-height: 37px; }
+  .prefilled-message {
+    padding: 7px;
+  }
+
+  &#message {
+    height: auto;
+    img {
+      position: relative;
+      top: 4px;
+    }
+    textarea {
+      width: 90%;
+      border: none;
+      resize: none;
+      height: 65px;
+      box-shadow: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+    #message-counter {
+      float: right;
+      padding-right: 0.935em;
+      position: relative;
+      top: 30px;
+    }
+   p {
+     margin-bottom: -2px;
+     position: relative;
+     left: 37px;
+     width: 50%;
+     float: left;
+     color: tint($dark_grey, 20%);
+   }
+  }
+  #treat-url {
+    display: block;
+    position: relative;
+    top: 0;
+
+
+  }
+}
+
+.treat-url {
+  padding-right: 3px;
+  text-align: center;
+  height: 100%;
+  p { margin: 7px 0 0 0; }
+  a {
+    margin-top: 3px;
+    float: right;
+  }
+}
+
+input {
+  height: 35px;
+}
+
+#action-button {
+  margin-top: 15px;
+}
+
+.friend-details {
+  p {
+    margin: 15px 0 0;
+ }
+}
+
+.payment-view {
+  #confirm-crumb { @include current-breadcrumb(); }
+  #payment {
+    margin-top: 30px;
+  }
+  .product-subheader {
+    p {
+      @include grid-column($columns: 12, $center: false, $float: left);
+      color: $dark_grey;
+      font-size: emCalc(19px);
+    }
+  }
+  .saved-card {
+    @extend .input-wrapper;
+    margin: 10px 0 0 0;
+    padding: 8px;
+    border-color: $light_green;
+    .card-info {
+      display: inline;
+      img {
+        float: left;
+        width: 50px;
+        margin: 0;
+        left: -5px;
+        bottom: 3px;
+      }
+      span {
+        float: left;
+        margin: 4px 0 0 5px;
+      }
+    }
+    .close {
+      @include grid-column($columns: 1, $float: right);
+      padding: 0;
+      width: 25px;
+      cursor: pointer;
+      margin-top: 0 !important;
+    }
+  }
+  #terms-of-service {
+    display: block;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+}
+
+.delivery-view, .payment-view {
+  #action-button, #action-button a {
+    font-size: 23px;
+    &#terms-of-service { font-size: 13px; }
+  }
+}
+
+.delivery-view, .share-view {
+  #deliver-crumb { @include current-breadcrumb(); }
+  .bread-crumbs-filler {
+    height: 35px;
+  }
+}
+
+.product-background {
+  img {
+    display: inline;
+  }
+  #airplane {
+    width: 60px;
+    float: left;
+    margin-left: 5px;
+  }
+  #friend {
+    @extend .circle;
+    float: right;
+    margin: 8px 12px 0 0;
+  }
+}
+
+.treat-delivered {
+  @include full-div-background($url: "/assets/give_flow/airplane-medium.png");
+  height: 200px;
+}
+
+.friends-view {
+  #friend-crumb { @include current-breadcrumb(); }
+
+  .search-block {
+    height: 47px;
+    border-bottom: 2px solid $light_green;
+    .input-wrapper {
+      border: none;
+      @include border-radius(0px);
+      input {
+        padding-left: 49px;
+      }
+    }
+    .icon {
+      position: absolute;
+      width: 23px;
+      right: 23px;
+      top: 13px;
+      margin-top: 0;
+      &#facebook-icon {
+        left: 5px;
+        top: 5px;
+        width: 36px;
+        z-index: 5;
+      }
+      &#plus-icon {
+        @extend #facebook-icon;
+        left: 19px;
+      }
+    }
+    &.with-offnetwork-search {
+      position: relative;
+      #friend-search {
+        float: left;
+        width: 50%;
+        border: none;
+        border-right: 1.5px solid $light_green;
+      }
+      #or-symbol {
+        position: absolute;
+        left: 47.5%;
+        top: 15px;
+        z-index: 100;
+        span {
+          background-color: $light_green;
+          @include border-radius(35px);
+          color: white;
+          padding: 4px;
+          border: 2px solid $grey;
+        }
+      }
+      #off-network {
+        width: 50%;
+        float: right;
+        padding-top: 0;
+        border-left: 1.5px solid $light_green;
+      }
+    }
+    &.socialnet-only-search {
+      #friend-serach {
+        width: 100%;
+        border-right: 0;
+        background-color: red;
+        input { padding-left: 49px; }
+      }
+    }
+  }
+  .friend {
+    height: 78px;
+    & > .image {
+      @include grid-column($columns: 4);
+      float: left;
+      img {
+        @include border-radius(35px);
+        margin: 12px auto 0 auto;
+        border: 2px solid $mid_grey;
+        width: 55px;
+      }
+    }
+    & > .friend-details {
+      @include grid-column($columns: 6);
+      float: left;
+      img {
+        width: 25px;
+        display: inline;
+        margin-top: -2px;
+      }
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 12px 0 0;
+        &.contact-info {
+          font-size: emCalc(13px);
+          margin: 0;
+          color: $mid_grey;
+          margin-top: -5px;
+        }
+      }
+      small {
+        font-size: 85%;
+        position: relative;
+        bottom: 7px;
+      }
+    }
+    & > .arrow {
+      @include grid-column($columns: 2);
+      width: 45px;
+      padding: 0;
+      float: left;
+      margin-top: 15px;
+    }
+  }
+}
+
+.share-view {
+  h3, h4 {
+    text-align: center;
+  }
+  #share-title {
+    //@include grid-column($columns: 8, $center: true);
+    //width: 50%;
+    h3 { font-size: 1.15em; }
+    h5, i {
+      color: $dark_grey;
+      font-weight: 400;
+      display: inline;
+    }
+    i { font-weight: 400italic; }
+  }
+  /* 
+  #link-help {
+    float: right;
+    font-size: 0.8em;
+    margin-top: -10px;
+    text-align: center;
+    width: 56%;
+  }
+  .facebook {
+    padding-left: 0;
+    span {
+      margin: 5px 3px 0 0;
+      float: left;
+      line-height: 32px;
+    }
+  } */
+}
+
+.payment-details {
+  margin: 15px 0 0 0;
+  @include grid-column($columns: 12, $center: true);
+  .price-break {
+    @include grid-column($columns: 12);
+    left: 2%;
+    margin: 5px 0;
+    border-bottom: 1px solid $grey;
+    width: 96%;
+    &#total {
+      border-bottom: 1px solid $dark_grey;
+    }
+  }
+  #treat-value, #credit, #fee, #piggybank, #you-pay {
+    height: 16px;
+    margin: 3px 0;
+    span {
+      height: 100%;
+      color: $mid_grey;
+    }
+    &>:first-child {
+      @include grid-column($columns: 7, $push: 1);
+      float: left;
+      padding-left: 0;
+      left: 2.333%;
+    }
+    &>:last-child {
+      @include grid-column($columns: 3, $pull: 1);
+      float: right;
+      text-align: right;
+      padding-right: 0;
+      right: 2.333%;
+    }
+  }
+  #you-pay {
+    span {
+      color: $dark_grey;
+      font-weight: 600;
+    }
+  }
+}
+
+.share-options {
+  #facebook > button {
+    border: none;
+  }
+}
+
+.error_box {
+  @include border-radius(4px);
+  position: absolute;
+  bottom: 55px;
+  white-space: nowrap;
+  z-index: 5;
+  p {
+    padding: 2.5px 5px;
+    margin: 0;
+    color: white;
+    font-size: 0.9em;
+  }
+}
+
+.landing-view.multi-product {
+  .marketing-copy {
+    height: auto;
+    width: 100%;
+    float: left;
+    max-width: none;
+    right: 0;
+    margin: 0;
+    height: 80px;
+    background-color: $grey;
+    h2, p, a {
+      color: $dark_grey;
+      @include single-text-shadow(0, 1px, 0, false, white);
+    }
+    a {
+      font-size: 0.7em;
+    }
+    .left-block {
+      @include grid-column($columns: 4, $center: false, $float: left);
+      padding-left: 7px;
+      left: 5%;
+      display: table;
+      height: 80px;
+      padding-right: 0;
+      h2 {
+        display: table-cell;
+        vertical-align: middle;
+        margin-top: 0;
+      }
+    }
+    .right-block {
+      @include grid-column($columns: 8, $center: true, $float: left);
+      display: table;
+      height: 80px;
+      left: 7.5%;
+      width: 59%;
+      padding-left: 0;
+      .copy-and-details {
+        display: table-cell;
+        vertical-align: middle;
+        p { margin-bottom: 5px; }
+      }
+    }
+  }
+  .royalSlider {
+    width: 100%;
+    float: left;
+    clear: left;
+  }
+  .rsSlide {
+    & > div {
+      position: relative;
+      height: 100%;
+    }
+    .product-background {
+      opacity: 0.7;
+      @include scale(0.85);
+      @include single-transition(all, 0.3s, ease-out);
+      height: 100%;
+      background-size: cover;
+      .product-details {
+        background-color: transparent;
+        @include background-image(linear-gradient(rgba(34,34,34,0.8), rgba(0,0,0,0)));
+        min-height: 120px;
+      }
+    }
+  }
+  .rsActiveSlide .product-background {
+    opacity: 1;
+    @include scale(1);
+    border: 2px solid $dark_green;
+  }
+
+  .rsThumb {
+    img {
+      opacity: 0.5;
+    }
+    &.rsNavSelected {
+      img {
+        opacity: 1.0;
+      }
+    }
+  }
+  .sub-header-block {
+    width: 100%;
+    clear: left;
+    float: left;
+    height: 80px;
+    border-top: 3px solid $border_grey;
+    margin-bottom: 25px;
+
+    background-color: $grey;
+    .caption-with-action {
+      &:before, &:after {
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        bottom: 80px;
+        pointer-events: none;
+        left: 48%;
+      }
+      &:before {
+        border-color: rgba(250, 92, 103, 0);
+        border-bottom-color: #adadad;
+        border-width: 24px;
+        margin-top: -9px;
+      }
+      &:after {
+        border-color: rgba(250, 92, 103, 0);
+        border-bottom-color: $grey;
+        border-width: 20px;
+        margin-top: 0px;
+        margin-left: 4px;
+      }
+      @include grid-column($columns: 12, $center: true);
+      width: 100%;
+      padding: 0;
+      height: 80px;
+      .sub-header {
+        @include grid-column($columns: 7, $center: false, $float: left);
+        width: 68%;
+        padding: 0;
+        text-align: right;
+        z-index: 1;
+        height: 80px;
+        overflow: hidden;
+        .animated-block {
+          display: table;
+          width: 100%;
+          height: 80px;
+          position: relative;
+          left: 0;
+          &.initial-hide {
+            left: 100%;
+          }
+          p {
+            color: $dark_grey;
+            display: table-cell;
+            vertical-align: middle;
+            @include single-text-shadow(0, 1px, 0, false, white);
+            position: relative;
+          }
+        }
+      }
+      #action-button {
+        margin-top: 0;
+        @include grid-column($columns: 5, $center: false, $float: left);
+        width: 32%;
+        z-index: 5;
+        padding: 0;
+        .button {
+          width: auto;
+          margin-top: 18px;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: auto;
+          height: 40px;
+          padding: 3px 18px;
+        }
+      }
+    }
+  }
+}
+
+.product-background {
+  padding: 0;
+  .product-details {
+    background-color: $dark_grey;
+    min-height: 82px;
+    .details {
+      padding-top: 10px;
+      p {
+        padding: 0;
+        color: white;
+        font-size: emCalc(18px);
+        margin-bottom: -10px;
+        &.left {
+          padding-left: 22px;
+          float: left;
+          clear: left;
+        }
+        &.right {
+          float: right;
+          padding-right: 22px;
+          clear: right;
+        }
+        &:nth-child(1), &:nth-child(2) {
+          font-size: emCalc(27px);
+        }
+        &:nth-child(3) {
+          font-size: emCalc(16px);
+        }
+        &#value {
+          font-size: emCalc(15px);
+        }
+      }
+      &.receiving {
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.success-background {
+  @include single-transition(all, 1.0s, ease, false);
+  background-color: tint($light_green, 50%) !important;
+}
+
+.general-error {
+  p {
+    font-size: 16px;
+    color: $error_dark_red;
+    width: 88%;
+  }
+}
+
+.click-copy {
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  color: #000;
+  background-color: inherit;
+  &:focus {
+    background-color: inherit;
+    outline-width: 0;
+  }
+}
+
+
+/*Imported styles based on screen size of viewing device*/
+/*This creates the responsive design*/
+@media only screen and (max-width:959px) {
+  @import 'size/mobile';
+}
+@media only screen and (max-width:449px) {
+  @import 'size/portrait';
+}
+@media only screen and (min-width:450px) and (max-width:959px) {
+  @import 'size/landscape';
+}
+
+@media only screen and (min-width:960px) {
+  @import 'size/full';
+}
+
+// Styling for facebooks modal. Fixing its buggy loading text
+#fb-root {
+  .fb_dialog_content .dialog_header .header_center {
+    color: rgba(55, 83, 141, 0.8)
+  }
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+  }

@@ -15,6 +15,8 @@
     show_spinner: false
   }
 
+  get_more_actions = [{ title: "Another Petition 1"}, {title: "Another Petition2"}, {title: "Another Petition3"}, {title: "Another Petition4"}]
+
   window.scope = $scope
 
   $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
@@ -107,6 +109,14 @@
     console.log("skipping delivery")
     
     Util.navigate "/petitions/Stop/complete"
+
+  $scope.more_actions = ->
+    get_more_actions
+
+  $scope.set_action_background = (action) ->
+    {
+      'background-image': 'url(assets/avatar.png)'
+    }
 
   $scope.load_progress_marker()
 

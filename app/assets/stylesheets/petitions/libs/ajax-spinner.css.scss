@@ -1,3 +1,18 @@
+
+#loading {
+  background-color: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 130px;
+  width: 130px;
+  margin: -65px 0 0 -65px;
+}
+#loading img {
+    position: absolute;
+    top: 50px;
+}
+
 #circularG {
   position:relative;
   width: 80%;
@@ -8,7 +23,7 @@
 
 .circularG{
   position:absolute;
-  background-color:#99cc08;
+  background-color:#ff6000;
   width:23px;
   height:23px;
   -moz-border-radius:15px;
