@@ -14,7 +14,14 @@
   $scope.loading = {
     show_spinner: false
   }
+  $scope.getWidth = ->
+    $(window).width()
 
+  $scope.$watch $scope.getWidth, (newValue, oldValue) ->
+    console.log "browser width changed"
+
+  window.onresize = ->
+    $scope.$apply()
   get_more_actions = [{ title: "Another Petition 1"}, {title: "Another Petition2"}, {title: "Another Petition3"}, {title: "Another Petition4"}]
 
   window.scope = $scope
