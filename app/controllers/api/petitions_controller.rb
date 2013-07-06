@@ -49,7 +49,7 @@ class Api::PetitionsController < ApplicationController
     raise "Unable to find petition" unless @petition
 
     @signature = Signature.find(params[:signature_id])
-    rails "Unable to find signature" unless @signature
+    raise "Unable to find signature" unless @signature
     #handle to tweating here
     #if params[:tweet]
     token = current_user.authentications.find_by_provider("twitter").token

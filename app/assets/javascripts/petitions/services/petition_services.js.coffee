@@ -37,7 +37,8 @@
     data =
       tweet: tweet
       signature_id: signature_id
-    $http.post('/api/petitions/' + petition_id + '/share', data).success(response) ->
+   
+    $http.post('/api/petitions/' + petition_id + '/share', data).success (response) ->
       if response.statusCode is 200
         success response
       else
