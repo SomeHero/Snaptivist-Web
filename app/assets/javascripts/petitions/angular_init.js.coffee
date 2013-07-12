@@ -56,7 +56,6 @@
             name: 'I just signed a petition on Snaptivist'
             caption: 'Name of Petition'
             description: 'Some more info about the petition',
-            display: 'popup'
 
 
           FB.ui fb_message_obj, (response) ->

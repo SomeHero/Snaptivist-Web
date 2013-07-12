@@ -96,6 +96,9 @@
     .comment-container .comment-timeago {
         font-size: 14px;
     }
+    .comment-wrapper .comment-container.comment {
+        width: 90%;
+    }
 }
  
 /* Portrait tablet to landscape and desktop */
@@ -115,6 +118,9 @@
     .comment-container .comment-timeago {
         font-size: 13px;
     }
+    .comment-wrapper .comment-container.comment {
+        width: 90%;
+    }
 }
  
 /* Landscape phone to portrait tablet */
@@ -133,6 +139,9 @@
     }
     .comment-container .comment-timeago {
         font-size: 13px;
+    }
+    .comment-wrapper .comment-container.comment {
+        width: 90%;
     }
 }
  
@@ -169,5 +178,8 @@
     }
     .comment-container .comment {
         display: none;
+    }
+    .comment-wrapper .comment-container.comment {
+        width: 100%;
     }
 }

@@ -18,8 +18,7 @@ ActiveAdmin.register Petition do
 			f.input :target
 			f.input :title
 			f.input :summary
-			f.input :short_url
-			f.input :rewrite_url_key
+			f.input :subdomain
 			f.input :target_count
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
     

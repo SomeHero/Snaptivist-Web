@@ -44,7 +44,7 @@
           %span.comment
             Comment Goes Here   
   .row-fluid{"ng-controller" => "CommentController"}
-    .container-fluid.comment-wrapper{:style => "width: 90%", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+    .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
       .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
         %a.pull-left{:href => "#"}
           %img.media-object.avatar{:src => "{{get_avatar_url(signature.user)}}"}/

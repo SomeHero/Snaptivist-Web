@@ -4,7 +4,7 @@ class PetitionsController < InheritedResources::Base
 	def view
 
 		@petition = Petition.includes(:target).includes(:signatures)
-		.find_by_rewrite_url_key(request.subdomain.gsub(".localhost", ""))
+		.find_by_subdomain(request.subdomain)
 
 		raise "Unable to find petition" unless @petition
 
