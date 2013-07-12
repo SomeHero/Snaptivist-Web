@@ -1,6 +1,6 @@
 .container-fluid{:style => "text-align:center;", "ng-controller" => "PetitionController"}
   .row-fluid
-    %img{:src => "{{petition.image_full}}", "ng-show" => "{{petition.image_full}}" :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
+    %img{:src => "{{petition.image_full}}", "ng-show" => "{{petition.image_full}}", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
   .row-fluid
     %h2.target-name{"ng-cloak" => ""}
       {{petition.target.title}} {{petition.target.last_name}}
