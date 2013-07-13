@@ -142,7 +142,7 @@ common:
   
 development:
   path: localhost:3000
-  host: localhost
+  host: localhost:3000
   protocol: http://
   default_from: admin@snaptivist.com
   default_from_name : Snaptivist Dev
@@ -223,8 +223,8 @@ test:
 
       
 staging:
-  path: staging.snaptivist.com
-  host: staging.snaptivist.com
+  path: snaptivist.net
+  host: snaptivist.net
   protocol: https://
   default_from: admin@staging.snaptivist.com
   default_from_name: Snaptivist Staging

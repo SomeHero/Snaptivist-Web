@@ -401,3 +401,17 @@ LOG:  received smart shutdown request
 LOG:  autovacuum launcher shutting down
 LOG:  shutting down
 LOG:  database system is shut down
+LOG:  database system was interrupted; last known up at 2013-07-12 13:40:50 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/CC53400
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  zero-length delimited identifier at or near """" at character 60
+STATEMENT:  SELECT "users".* FROM "users"  WHERE (organization_name != "")
+ERROR:  column "nil" does not exist at character 60
+STATEMENT:  SELECT "users".* FROM "users"  WHERE (organization_name != nil)
+ERROR:  zero-length delimited identifier at or near """" at character 60
+STATEMENT:  SELECT "users".* FROM "users"  WHERE (organization_name <> "")
+ERROR:  column "target_group" does not exist at character 45
+STATEMENT:  SELECT "targets".* FROM "targets"  ORDER BY target_group, last_name, first_name

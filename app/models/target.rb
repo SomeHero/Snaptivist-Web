@@ -4,6 +4,9 @@ class Target < ActiveRecord::Base
 
   attr_accessible :email_address, :first_name, :middle_name, :last_name, :name_suffix, :nickname, :party, :state, :district, :in_office, :gender, :phone, :fax, :website, :webform, :congress_office, :bioguide_id, :votesmart_id, :fec_id, :govtrack_id, :crp_id, :congresspedia_url, :youtube_url, :facebook_id, :official_rss, :senate_class, :birthdate, :title, :twitter_handle, :targetgroup_id
 
+  def display_name 
+    "#{title} #{first_name} #{last_name}"
+  end
     # generate the team
   def to_api
 
@@ -44,10 +47,6 @@ class Target < ActiveRecord::Base
 
     return results;
 
-  end
-
-  def display_name
-    self.last_name
   end
 
 end

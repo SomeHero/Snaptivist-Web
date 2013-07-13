@@ -7,14 +7,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  #attr_accessible :email, :password, :password_confirmation, :remember_me
   # holds the twitter client
   attr_accessor :twitter_client
 
   has_many :authentications, :dependent => :destroy, :autosave => true
   has_many :external_accounts, :dependent => :destroy
   has_many :signatures, :dependent => :destroy
-
     # note that the user has authenticated
   # def process_authentication
   #   if (is_gifter || Parameter.is_set?(Parameter::OPEN_BETA)) && welcomed_at.nil? && !email.blank?
@@ -68,6 +67,10 @@ def apply_omniauth(omni)
     else
       false
     end
+  end
+
+  def display_name 
+    "#{first_name} #{last_name} (#{organization_name})"
   end
 
   # generate the user as json

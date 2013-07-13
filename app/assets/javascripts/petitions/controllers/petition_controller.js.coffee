@@ -26,6 +26,9 @@
 
   window.scope = $scope
 
+  $scope.has_header_image = ->
+    return $scope.petition.headeer_image_full.length
+    
   $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
 
   $scope.get_percentage_signed = (signatures, target) ->

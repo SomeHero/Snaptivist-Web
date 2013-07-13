@@ -22,19 +22,22 @@ class Petition < ActiveRecord::Base
                 "medium" => "300x300",
                 "full" => "782x271"}
 
-  def shorten_url
+  before_create :shorten_url
 
-    Bitly.use_api_version_3
-    
-    bitly = Bitly.new('jrhodes621', 'R_097da24e7dfc44e6b422cd74b41a353e');
+  private 
+    def shorten_url
 
-    long_url = 'http://dev.snaptivist.com/petitions/' + id.to_s
+      Bitly.use_api_version_3
+      
+      bitly = Bitly.new('jrhodes621', 'R_097da24e7dfc44e6b422cd74b41a353e');
 
-    url = bitly.shorten(long_url)
+      long_url = Settings.protocol + self.subdomain + "." + Settings.path
 
-    return url.short_url
+      url = bitly.shorten(long_url)
 
-  end
+      self.short_url = url.short_url
+
+    end
 
   # get URL to image of a specific size
   def p_image_url(label = nil, use_pre_publish = false)
