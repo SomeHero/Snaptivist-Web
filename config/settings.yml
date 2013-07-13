@@ -225,7 +225,7 @@ test:
 staging:
   path: snaptivist.net
   host: snaptivist.net
-  protocol: https://
+  protocol: http://
   default_from: admin@staging.snaptivist.com
   default_from_name: Snaptivist Staging
   skip_hostcheck: true
