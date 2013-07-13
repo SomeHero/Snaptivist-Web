@@ -51,11 +51,11 @@
           fb_message_obj =
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
-            link: 'http://dev.snaptivist.com'
-            picture: 'http://fbrell.com/f8.jpg'
+            link: scope.petition.short_url
+            picture: scope.petition.image_square
             name: 'I just signed a petition on Snaptivist'
-            caption: 'Name of Petition'
-            description: 'Some more info about the petition',
+            caption: scope.petition.title
+            description: scope.petition.summary,
 
 
           FB.ui fb_message_obj, (response) ->
