@@ -261,8 +261,8 @@ production:
   linked_in_app_secret: 7nNxtsZYsluvddHO
   twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
   twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
-  facebook_app_id: 430002697093907
-  facebook_secret_key: cb39a2074c8116b2a9e06b275ed17680
+  facebook_app_id: 478676018853709
+  facebook_secret_key: c534ff1d422dccd59262c3b3e36abfae
   facebook_callback_url: http://dev.snaptivist.com/
   sms_service_class: TwilioSmsService
   apple_service_class: GrocerAppleService
