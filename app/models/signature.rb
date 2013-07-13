@@ -35,7 +35,9 @@ class Signature < ActiveRecord::Base
       'comment' => comment,
       'created_at' => created_at,
       'updated_at' => updated_at,
-      'user' => user.to_api
+      'user' => user.to_api,
+      'delivered' => delivered,
+      'delivered_at' => delivered_at
     }
 
     return results;

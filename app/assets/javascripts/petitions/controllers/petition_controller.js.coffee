@@ -32,6 +32,9 @@
     else
       return true
 
+  $scope.show_signature_delivered = (signature) ->
+    return signature.delivered
+
   $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
 
   $scope.get_percentage_signed = (signatures, target) ->
