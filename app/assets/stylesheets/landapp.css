@@ -1019,14 +1019,12 @@ legend + .control-group {
   left:100px;
   opacity:1;
   float: left;
-  position: relative;
-      background: red; 
+  position: relative; 
 }
 .view-leave {
   left:-1000px;
   width:100%;
   opacity:1;
-  background: #333;  
 }
 .view-leave.view-leave-active {
   position:relative;
