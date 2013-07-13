@@ -36,7 +36,7 @@
         else
           console.log "FB.login cancelled"
       ),
-        scope: "email,read_stream"
+        scope: "email,publish_stream"
 
     fetch = ->
 

@@ -128,8 +128,9 @@ class Api::PetitionsController < ApplicationController
     @petition.reload
 
     #send petition action email
-    UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user)
-
+    UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
+          "merge_petitiontitle" => @petition.title
+      })
 
     render_result({ 'petition' => @petition.to_api,
                     'signature' => signature.to_api})
@@ -205,7 +206,9 @@ class Api::PetitionsController < ApplicationController
       petition.save
 
       #send petition action email
-      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user)
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
+          "merge_PETITIONTITLE" => petition.title
+      })
 
     end
 
