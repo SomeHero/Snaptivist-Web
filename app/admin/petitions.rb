@@ -21,7 +21,7 @@ ActiveAdmin.register Petition do
 			f.input :subdomain
 			f.input :target_count
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
-    
+    		f.input :comment
 	end
 	f.buttons
    end

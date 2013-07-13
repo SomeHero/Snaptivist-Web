@@ -415,3 +415,5 @@ ERROR:  zero-length delimited identifier at or near """" at character 60
 STATEMENT:  SELECT "users".* FROM "users"  WHERE (organization_name <> "")
 ERROR:  column "target_group" does not exist at character 45
 STATEMENT:  SELECT "targets".* FROM "targets"  ORDER BY target_group, last_name, first_name
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "petitions".* FROM "petitions"  WHERE "petitions"."id" = $1 LIMIT 1

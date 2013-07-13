@@ -70,6 +70,7 @@ class Petition < ActiveRecord::Base
         'rewrite_url_key' => rewrite_url_key,
         'target' => target.to_api,
         'creator' => user.to_api,
+        'comment' => comment,
         'created_at' => created_at,
         'updated_at' => updated_at,
       }

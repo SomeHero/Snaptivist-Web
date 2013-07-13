@@ -250,7 +250,7 @@ staging:
 production:
   path: snaptivist.com
   host: snaptivist.com
-  protocol: https://
+  protocol: http://
   default_from: admin@snaptivist.com
   default_from_name: Snaptivist
   skip_hostcheck: false

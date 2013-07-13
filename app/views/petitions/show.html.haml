@@ -42,7 +42,7 @@
           %span.comment-timeago
             created this petition {{petition.created_at | fromNow }}
           %span.comment
-            Comment Goes Here   
+            {{petition.comment}}   
   .row-fluid{"ng-controller" => "CommentController"}
     .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
       .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
