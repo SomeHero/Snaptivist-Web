@@ -2,7 +2,7 @@ require 'koala'
 
 
 class Api::PetitionsController < ApplicationController
-  #before_filter :authenticate_user!, :only => [:create, :share]
+  before_filter :authenticate_user!, :only => [:create, :share]
 
   respond_to :json
 
