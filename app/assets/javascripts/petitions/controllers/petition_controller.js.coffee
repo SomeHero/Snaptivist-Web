@@ -27,10 +27,10 @@
   window.scope = $scope
 
   $scope.has_header_image = ->
-    if $scope.petition.image_full == "/header_images/full/missing.png"
-      return false
-    else
+    if $scope.petition.image_full
       return true
+    else
+      return false
 
   $scope.show_signature_delivered = (signature) ->
     return signature.delivered

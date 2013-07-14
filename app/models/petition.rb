@@ -76,7 +76,9 @@ class Petition < ActiveRecord::Base
       }
 
       Petition::IMAGE_SIZES.each do |label, size|
-        results["image_#{label}"] = header_image(label)
+        if header_image_file_name
+          results["image_#{label}"] = header_image(label)
+        end
       end
 
       return results;

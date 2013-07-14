@@ -52,12 +52,15 @@
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
             link: scope.petition.short_url
-            picture: scope.petition.image_square
             name: 'I just signed a petition on Snaptivist'
             caption: scope.petition.title
             description: scope.petition.summary,
 
-
+          if scope.petition.image_square
+            $.extend true, fb_message_obj, { picture: scope.petition.image_square }
+          else  
+            $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
+          
           FB.ui fb_message_obj, (response) ->
             if response
               console.log "share complete"
