@@ -5,6 +5,15 @@
 		Here are some other actions that need your support
 	%div{"royal-slider" => "rsDefaultInv"}
 		%div{"ng-repeat" => "action in more_actions"}
-			.product-background{"ng-style" => "set_action_background(action)", "ng-show" => "rs_display"}
-				.product-details
-					{{action.title}}
+			.action-background.solid-white-back.drop-shadow-full{"ng-show" => "rs_display", :style => "padding: 10px; margin: 10px;"}
+				.action-details
+					%h2
+						Tell {{action.target.title}} {{action.target.last_name}}
+					%h4
+						{{action.title}}
+				%button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address()"}
+					Add My Name
+				%input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
+					%span{:style => "color: #768286;"}
+						Update me on the results of this campaign and others from
+						%span{:style => "font-weight: bold;"} {{action.creator.organization_name}}
