@@ -16,13 +16,13 @@
   }
   $scope.getWidth = ->
     $(window).width()
+  $scope.more_actions = []
 
   $scope.$watch $scope.getWidth, (newValue, oldValue) ->
     console.log "browser width changed"
 
   window.onresize = ->
     $scope.$apply()
-  get_more_actions = [{ title: "Another Petition 1"}, {title: "Another Petition2"}, {title: "Another Petition3"}, {title: "Another Petition4"}]
 
   window.scope = $scope
 
@@ -117,6 +117,8 @@
         scope.$apply ->
             $scope.loading.show_spinner = false
 
+            $scope.load_more_actions()
+   
             Util.navigate "/petitions/Stop/complete"
       )
     ), 1000)
@@ -124,10 +126,14 @@
   $scope.skip_delivery = ->
     console.log("skipping delivery")
     
+    $scope.load_more_actions()
     Util.navigate "/petitions/Stop/complete"
 
-  $scope.more_actions = ->
-    get_more_actions
+  $scope.load_more_actions = ->
+    PetitionServices.get_more_petitions().then (petitions) ->
+      console.log "got some other actions"
+
+      $scope.more_actions = petitions
 
   $scope.set_action_background = (action) ->
     {

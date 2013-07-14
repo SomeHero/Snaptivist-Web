@@ -43,4 +43,16 @@
         success response
       else
         error response
+
+  get_more_petitions: () ->
+    console.log "getting some more petitions"
+
+    deferred = $q.defer()
+    $http.get('/api/petitions/more').then (response) ->
+      if response.data.statusCode is 200
+        deferred.resolve(response.data.result.petitions)
+      else
+        deferred.reject(response)
+    deferred.promise
+
 ]

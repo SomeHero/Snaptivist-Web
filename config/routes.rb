@@ -1,5 +1,8 @@
 SnaptivistWeb::Application.routes.draw do
+
   namespace :api do
+    match 'petitions/more', :to => 'petitions#more'
+  
     resources :petitions do 
       member do
         post 'share'
