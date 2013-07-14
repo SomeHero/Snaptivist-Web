@@ -15,7 +15,7 @@ module UserNotification
       case notification_type
       when UserNotification::Notification::USER_WELCOME  
         user = params_hash[:user]
-        template_name = "NewUser"
+        template_name = "PetitionSignature"
         subject = "You just signed a petition using Snaptivist."
 
         merge_fields = params_hash[:merge_fields]
