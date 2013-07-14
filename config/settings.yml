@@ -165,6 +165,7 @@ development:
   apple_service_class: GrocerAppleService
   google_service_class: GcmGoogleService
   google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  google_analytics_code: UA-42433387-2
   twilio_account_sid: AC00244b5e4f5032ab657a9522591c40b0
   twilio_auth_token: 797293de7395d31091bae2d83e71423f
   twilio_number: 8045550012
@@ -193,6 +194,7 @@ sandbox:
   apple_service_class: GrocerAppleService    
   google_service_class: GcmGoogleService
   google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  google_analytics_code: UA-42433387-2
   twilio_account_sid: AC00244b5e4f5032ab657a9522591c40b0
   twilio_auth_token: 797293de7395d31091bae2d83e71423f
   twilio_number: 8045550006
@@ -213,6 +215,7 @@ test:
   apple_service_class: GrocerAppleService
   google_service_class: GcmGoogleService
   google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  google_analytics_code: UA-42433387-2
   twilio_account_sid: AC00244b5e4f5032ab657a9522591c40b0
   twilio_auth_token: 797293de7395d31091bae2d83e71423f
   twilio_number: 8045550006
@@ -243,6 +246,7 @@ staging:
   apple_service_class: GrocerAppleService
   google_service_class: GcmGoogleService
   google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  google_analytics_code: UA-42433387-2
   twilio_account_sid: ACc57e9929548211a117eef25f4d63ac3c
   twilio_auth_token: 2dafb1d49388d86e6e7c5bbab77a6b8e
   twilio_number: 2028038459
@@ -268,5 +272,6 @@ production:
   apple_service_class: GrocerAppleService
   google_service_class: GcmGoogleService
   google_gcm_api_key: AIzaSyAiQcYQgkG_UUNUyOu2QilSia6kQNLF2h4
+  google_analytics_code: UA-42433387-1
   twilio_account_sid: ACc57e9929548211a117eef25f4d63ac3c
   twilio_auth_token: 2dafb1d49388d86e6e7c5bbab77a6b8e
