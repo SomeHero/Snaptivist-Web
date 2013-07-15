@@ -5,12 +5,17 @@
   base_page_url = '/petitions'
   $routeProvider.when('/petitions',
     templateUrl: '/client_views/sign'
+    controller: PetitionController 
   ).when('/petitions/:key/sign',
     templateUrl: '/client_views/sign'
+    controller: PetitionController 
   ).when('/petitions/:key/deliver',
     templateUrl: '/client_views/deliver'
+    controller: PetitionController 
   ).when('/petitions/:key/complete',
     templateUrl: '/client_views/more'
+    controller: MoreActionController 
+    resolve: MoreActionController.resolve
   ).otherwise redirectTo: base_page_url
 ]
 
