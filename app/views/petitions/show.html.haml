@@ -15,9 +15,10 @@
   #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
     .row-fluid
       #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
-        #progress-bar-wrapper.progress.progress-striped.progress-green
-          #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
-          %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
+        #progress-bar-outer-wrapper
+          #progress-bar-wrapper.progress.progress-striped.progress-green
+            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
+            %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
       #petition-target-count-goal.span1.target-count-goal
         %span
           {{ get_percentage_signed(petition.signature_count, petition.target_count) }}

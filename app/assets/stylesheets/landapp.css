@@ -820,8 +820,11 @@ legend + .control-group {
     width: 90%;
     float: left;
 }
-#progress-bar-wrapper {
+#progress-bar-outer-wrapper {
     margin: 20px;
+}
+#progress-bar-wrapper {
+    margin-bottom: 0px;
 }
 .target-count-goal {
     position:relative;

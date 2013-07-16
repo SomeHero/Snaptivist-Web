@@ -49,7 +49,7 @@
     if (signatures * 100) / target > 100
       percentage = 100
 
-    return (width*(percentage/100)) + "px"
+    return (width*(percentage/100)) + $("#progress-marker").width()/2 + "px"
 
   #need to refactor in comment controller too
   $scope.get_avatar_url = (user) ->
