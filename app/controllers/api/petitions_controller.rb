@@ -212,12 +212,12 @@ class Api::PetitionsController < ApplicationController
 
       #send petition action email
       UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
-          "merge_petitiontitle" => @petition.title,
-          "merge_firstname" => @user.first_name,
-          "merge_lastname" => @user.last_name,
-          "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
-          "merge_shorturl" => @petition.short_url,
-          "merge_organizationname" => @petition.user.organization_name
+          "merge_petitiontitle" => petition.title,
+          "merge_firstname" => user.first_name,
+          "merge_lastname" => user.last_name,
+          "merge_targetname" => petition.target.title + " " + petition.target.last_name,
+          "merge_shorturl" => petition.short_url,
+          "merge_organizationname" => petition.user.organization_name
       })
 
     end
