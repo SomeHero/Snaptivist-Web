@@ -47,7 +47,7 @@
 
 
   $scope.read_more = (petition) ->
-    Util.navigate_absolute "http://#{petition.subdomain}." + window.location.hostname.split('.').slice(2  - window.location.hostname.split('.').length).join('.') + ":" + (if window.location.port then window.location.port else ""), null, false
+    Util.navigate_absolute "http://#{petition.subdomain}." + window.location.hostname.split('.').slice(2  - window.location.hostname.split('.').length - 1).join('.') + ":" + (if window.location.port then window.location.port else ""), null, false
 
   window.scope = $scope
 
