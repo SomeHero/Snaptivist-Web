@@ -10,39 +10,33 @@
         deferred.reject(response)
     deferred.promise
   
-  sign_with_facebook: (auth, petition_id, comment) ->
+  sign_with_facebook: (auth, petition_id, signature) ->
     console.log "Petition Services: Signing with Facebook"
 
     data = {} 
     data = $.extend true, data, auth
-    data = $.extend true, data, { 'comment': comment }
+    data = $.extend true, data, signature
 
-    $http.post("/api/petitions/" + petition_id + "/sign_with_facebook", data).success (response) ->
-      if response.statusCode is 200
-        success response
-      else
-        error response
+    $http.post("/api/petitions/" + petition_id + "/sign_with_facebook", data)
 
   sign_with_email_address: (petition_id, signature) ->
     console.log "Petition Services: Signing with Email Address"
 
-    $http.post("/api/petitions/" + petition_id + "/sign", signature).success (response) ->
-      if response.StatusCode is 200
-        success response
-      else
-        error response
+    $http.post("/api/petitions/" + petition_id + "/sign", signature)
+
+  sign_another: (petition_id, signature) ->
+    console.log "Petition Services: Signing Another Petition"
+
+    $http.post("/api/petitions/" + petition_id + "/sign_another", signature)
 
   deliver_signature: (petition_id, signature_id, tweet) ->
     console.log "Delivering Signature: ", signature_id
-    data =
-      tweet: tweet
-      signature_id: signature_id
+    
+    data = {} 
+    data = $.extend true, data, { 'tweet': tweet }
+    data = $.extend true, data, { 'signature_id': signature_id }
    
-    $http.post('/api/petitions/' + petition_id + '/share', data).success (response) ->
-      if response.statusCode is 200
-        success response
-      else
-        error response
+    $http.post("/api/petitions/" + petition_id + "/share", data)
 
   get_more_petitions: () ->
     console.log "getting some more petitions"

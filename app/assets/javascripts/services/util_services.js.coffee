@@ -19,9 +19,12 @@
 
   navigate_back: -> $window.history.back()
 
-  navigate_absolute: (url, hash) ->
-    $window.location.hash = hash
-    $window.location.pathname = url
+  navigate_absolute: (url, hash, new_window) ->
+    url += hash if hash
+    if new_window is true
+      $window.open url
+    else
+      $window.location.href = url
 
   navigate: (url, query_params) ->
     #console.log "navigating to: " url

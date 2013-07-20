@@ -5,15 +5,24 @@
 		Here are some other actions that need your support
 	%div{"royal-slider" => "rsDefaultInv"}
 		%div{"ng-repeat" => "action in more_actions"}
-			.action-background.solid-white-back.drop-shadow-full{"ng-show" => "rs_display", :style => "padding: 10px; margin: 10px;"}
-				.action-details
-					%h2
+			.action-background.solid-white-back.drop-shadow-full{"ng-show" => "rs_display", :style => "padding: 10px; margin: 10px; position: relative;"}
+				.action-details{:style => "padding: 0px 10px;"}
+					%h2{:style => "margin-bottom: 4px;"}
 						Tell {{action.target.title}} {{action.target.last_name}}
-					%h4
+					%h1{:style => "font-size: 24px; line-height: 28px; margin-bottom:20px;"}
 						{{action.title}}
-				%button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address()"}
-					Add My Name
-				%input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
-					%span{:style => "color: #768286;"}
-						Update me on the results of this campaign and others from
-						%span{:style => "font-weight: bold;"} {{action.creator.organization_name}}
+					%h4{:style => "margin-bottom: 40px;"}
+						{{action.signature_count}} 
+						.span{:style => "font-size: 18px; display: inline;"}
+							signers
+				%span{:style => "position: absolute; left: 0px; top: 240px; margin: 0px 10px;"}
+					%button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_another(action)"}
+						Add My Name
+					%span
+						%input#chkEmailSignUp{"checked" => "true", :type => "checkbox"}
+							%span{:style => "color: #768286; font-size: 12px; line-height: 15px;"}
+								Update me on the results of this campaign and others from
+								%span{:style => "font-weight: bold;"} {{action.creator.organization_name}}
+				%div.read-more-bar{:style => "width: 100%; position: absolute; left: 0px; bottom: 0px; background: #555; line-height: 36px; opacity: 0.6;", "ng-click" => "read_more(action)"}
+					%a{:style => "font-size: 18px; color: #fff;"}
+						Read More

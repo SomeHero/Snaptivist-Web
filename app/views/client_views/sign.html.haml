@@ -17,23 +17,23 @@
       .row-fluid
         .span6
           .controls
-            %input#firstName.register-textField.span12{:type => "text", :name => "FirstName", :placeholder => "First Name", "ng-model" => "signature.first_name", "required" => true}
+            %input#firstName.register-textField.span12{:type => "text", :name => "FirstName", :placeholder => "First Name", "ng-model" => "signature_form.first_name", "required" => true}
             .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.FirstName.$invalid"}
               First Name is required  
         .span6
           .controls
-            %input#lastName.register-textField.span12{:type => "text", :name => "LastName", :placeholder => "Last Name", "ng-model" => "signature.last_name", "required" => true}
+            %input#lastName.register-textField.span12{:type => "text", :name => "LastName", :placeholder => "Last Name", "ng-model" => "signature_form.last_name", "required" => true}
             .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.LastName.$invalid"}
               Last Name is required  
       .row-fluid
         .span6
           .controls
-            %input#emailAddress.register-textField.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature.email_address", "required" => true}
+            %input#emailAddress.register-textField.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature_form.email_address", "required" => true}
             .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid"}
               Email Address is required  
         .span6
           .controls
-            %input#zipCode.register-textField.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature.zip_code", "required" => true}
+            %input#zipCode.register-textField.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature_form.zip_code", "required" => true}
             .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.ZipCode.$invalid"}
               Zip Code is required  
       .row-fluid
@@ -45,7 +45,7 @@
         .span12
           .controls
             %label.checkbox{:style => "text-align: left"}
-              %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
+              %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature_form.opt_in"}
                 %span{:style => "color: #768286;"}
                   Update me on the results of this campaign and others from
                   %span{:style => "font-weight: bold;"} {{petition.creator.organization_name}}

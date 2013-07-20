@@ -1,6 +1,6 @@
 .container-fluid{:style => "text-align:center;", "ng-controller" => "PetitionController"}
   .row-fluid
-    %img{:src => "{{petition.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
+    %img{"ng-src" => "{{petition.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
   .row-fluid
     %h2.target-name{"ng-cloak" => ""}
       {{petition.target.title}} {{petition.target.last_name}}
@@ -36,7 +36,7 @@
     .container-fluid.comment-wrapper
       .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
         %a.pull-left{:href => "#"}
-          %img.media-object.avatar{:src => "{{get_avatar_url(petition.creator)}}"}/
+          %img.media-object.avatar{"ng-src" => "{{get_avatar_url(petition.creator)}}"}/
         .media-body{:style => "text-align: left;"}
           %span.comment-username
             {{petition.creator.organization_name}}
@@ -48,7 +48,7 @@
     .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
       .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
         %a.pull-left{:href => "#"}
-          %img.media-object.avatar{:src => "{{get_avatar_url(signature.user)}}"}/
+          %img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature.user)}}"}/
         .media-body{:style => "text-align: left;"}
           %span.comment-username
             {{signature.user.first_name}}

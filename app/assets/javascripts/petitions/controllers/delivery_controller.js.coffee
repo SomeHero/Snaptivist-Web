@@ -1,16 +1,8 @@
-@PetitionController = ($scope, PetitionServices, $http, Util, $rootScope) ->
+@DeliveryController = ($scope, PetitionServices, $http, $q, Util, $rootScope) ->
 
-  $scope.petition = petition
   $scope.isCollapsed = true
   $scope.summary_more_text = "More"
-  $scope.signature_form = {
-    first_name: ''
-    last_name: ''
-    email_address: ''
-    zip_code: ''
-    opt_in: true
-    comment: ''
-  }
+ 
   $scope.loading = {
     show_spinner: false
   }
@@ -73,6 +65,8 @@
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
 
+    $scope.loading.show_spinner = true
+
     form.submitted = true
     if form.$valid
     
@@ -80,14 +74,14 @@
 
       petition_id = $scope.petition.petition_id
 
-      PetitionServices.sign_with_email_address(petition_id, $scope.signature_form).success (response) ->
+      PetitionServices.sign_with_email_address(petition_id, $scope.signature).success (response) ->
         console.log "signature complete"
 
         $scope.loading.show_spinner = false
 
         result = response.result
-        $rootScope.petition = result.petition
-        $rootScope.signature = result.signature
+        $scope.petition = result.petition
+        $scope.signature = result.signature
 
         $rootScope.$broadcast('signedPetition', $scope.signature)
 
@@ -98,26 +92,31 @@
 
         $scope.loading.show_spinner = false
 
+  $scope.post_signature = ->
+    PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
+      console.log "signature delivered"
+      $scope.loading.show_spinner = false
+
+      Util.navigate "/complete"
+    .error (response) ->
+      console.log "delivery failed"
+      
+      Util.navigate "/complete"
+
   $scope.deliver_signature = ->
     console.log("delivering signature")
 
     $scope.loading.show_spinner = true
-    
-    tweet = $scope.tweet
-    console.log(tweet)
 
     params = 'location=0,status=0,width=800,height=600'
     twitter_window = window.open '/users/auth/twitter', 'twitterWindow', params
     
     interval = window.setInterval((->
-      window.clearInterval interval
-      PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, tweet).success (response) ->
-        console.log "signature delivered"
+      if twitter_window.closed
+        window.clearInterval interval
+        
         $scope.$apply ->
-            $scope.loading.show_spinner = false
-
-            Util.navigate "/complete"
-      
+          $scope.post_signature()
     ), 1000)
 
   $scope.skip_delivery = ->

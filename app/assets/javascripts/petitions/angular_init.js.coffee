@@ -2,17 +2,14 @@
 	.value('$anchorScroll', angular.noop)
 
 @app.config ['$routeProvider', ($routeProvider) ->
-  base_page_url = '/petitions'
-  $routeProvider.when('/petitions',
+  base_page_url = '/sign'
+  $routeProvider.when('/sign',
     templateUrl: '/client_views/sign'
     controller: PetitionController 
-  ).when('/petitions/:key/sign',
-    templateUrl: '/client_views/sign'
-    controller: PetitionController 
-  ).when('/petitions/:key/deliver',
+  ).when('/deliver',
     templateUrl: '/client_views/deliver'
-    controller: PetitionController 
-  ).when('/petitions/:key/complete',
+    controller: DeliveryController 
+  ).when('/complete',
     templateUrl: '/client_views/more'
     controller: MoreActionController 
     resolve: MoreActionController.resolve
@@ -35,9 +32,9 @@
       FB.login ((response) ->
         if response.authResponse
           console.log "FB.login connected"
-          scope.auth = response.authResponse;
+          scope.auth = response.authResponse
           scope.$apply ->
-            fetch()
+            scope.$broadcast('handleFacebookAuth')
         else
           console.log "FB.login cancelled"
       ),
@@ -47,38 +44,8 @@
 
       console.log "Signing with Facebook"
 
-      PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.sign_comment).success (response) ->
-        if response.statusCode is 200
-          console.log "signature complete; trying to Share via FB"
-          
-          result = response.result
-          scope.signature = result.signature
-          fb_message_obj =
-            method: 'feed'
-            redirect_uri: 'YOUR URL HERE'
-            link: scope.petition.short_url
-            name: 'I just signed a petition on Snaptivist'
-            caption: scope.petition.title
-            description: scope.petition.summary,
-
-          if scope.petition.image_square
-            $.extend true, fb_message_obj, { picture: scope.petition.image_square }
-          else  
-            $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
-          
-          FB.ui fb_message_obj, (response) ->
-            if response
-              console.log "share complete"
-              scope.$apply ->
-                $location.path "/petitions/Stop/deliver"
-            else
-              console.log "error sharing"
-              scope.$apply ->
-                $location.path "/petitions/Stop/deliver"
-        else
-          console.log "error: " + response
-      .error (response) ->
-        console.log "signature failed: " + response
+      scope.$apply ->
+        scope.$broadcast('handleFacebookAuth')
 
 
     ((d) ->

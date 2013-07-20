@@ -67,7 +67,7 @@ class Petition < ActiveRecord::Base
         'signature_count' => signatures_count,
         'target_count' => target_count,
         'short_url' => short_url,
-        'rewrite_url_key' => rewrite_url_key,
+        'subdomain' => subdomain,
         'target' => target.to_api,
         'creator' => user.to_api,
         'comment' => comment,

@@ -417,3 +417,12 @@ ERROR:  column "target_group" does not exist at character 45
 STATEMENT:  SELECT "targets".* FROM "targets"  ORDER BY target_group, last_name, first_name
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "petitions".* FROM "petitions"  WHERE "petitions"."id" = $1 LIMIT 1
+ERROR:  database "treater_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout

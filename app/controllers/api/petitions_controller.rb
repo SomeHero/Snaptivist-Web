@@ -2,7 +2,7 @@ require 'koala'
 
 
 class Api::PetitionsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create, :share]
+  before_filter :authenticate_user!, :only => [:create, :share, :sign_another]
 
   respond_to :json
 
@@ -149,6 +149,8 @@ class Api::PetitionsController < ApplicationController
     
     petition = Petition.find(params[:id])
     
+    raise "Unable to find petition" unless petition
+
     Rails.logger.debug "The access token is " + params[:accessToken]
 
     #see if we have this FB user in the authentications table
@@ -157,7 +159,7 @@ class Api::PetitionsController < ApplicationController
     @graph =Koala::Facebook::API.new(params[:accessToken])
     facebook_profile = @graph.get_object("me")
 
-  raise "Unable to retrieve Facebook profile" unless facebook_profile
+    raise "Unable to retrieve Facebook profile" unless facebook_profile
 
     if authentication
       #flash[:notice] = "Logged in Successfully"
@@ -224,6 +226,47 @@ class Api::PetitionsController < ApplicationController
 
     render_result({ 'petition' => petition.to_api,
       'signature' => signature.to_api})
+
+  end
+
+  def sign_another
+
+    petition = Petition.find(params[:id]);
+
+    raise "Unable to find petition" unless petition
+
+    signature = current_user.signatures.find_by_petition_id(petition.id)
+
+    unless signature
+      signature = petition.signatures.new do |s|
+        s.user = current_user
+        s.zip_code = current_user.zip_code
+        s.comment = ""
+        s.opt_in = params[:opt_in]
+      end
+
+      if !signature.valid?
+        return render_result({}, 400, 'Error Signing Petition')
+      end
+
+      #return if error_messages?(:config)
+      petition.save
+
+      #send petition action email
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
+          "merge_petitiontitle" => petition.title,
+          "merge_firstname" => current_user.first_name,
+          "merge_lastname" => current_user.last_name,
+          "merge_targetname" => petition.target.title + " " + petition.target.last_name,
+          "merge_shorturl" => petition.short_url,
+          "merge_organizationname" => petition.user.organization_name
+      })
+
+    end
+
+    render_result({ 'petition' => petition.to_api,
+        'signature' => signature.to_api})
+
 
   end
 
