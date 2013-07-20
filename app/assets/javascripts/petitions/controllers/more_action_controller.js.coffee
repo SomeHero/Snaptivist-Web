@@ -29,7 +29,11 @@
         else  
           $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
         
+        scroll = $(window).scrollTop()
+
         FB.ui fb_message_obj, (response) ->
+          $(window).scrollTop scroll
+            
           if response
             console.log "share complete"
             

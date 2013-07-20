@@ -191,6 +191,8 @@ class Api::PetitionsController < ApplicationController
 
     raise "Unable to find user" unless user
 
+    sign_in user
+
     signature = user.signatures.find_by_petition_id(petition.id)
 
     unless signature

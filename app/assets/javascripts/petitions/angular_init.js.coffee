@@ -60,6 +60,7 @@
       ref.parentNode.insertBefore js, ref
     ) document
     $scope.fetch = ->
+      $scope.loading.show_spinner = true
       if $scope.login_status is "connected"
         console.log "fetch"
         fetch()
