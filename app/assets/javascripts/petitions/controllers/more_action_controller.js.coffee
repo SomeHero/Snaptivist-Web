@@ -1,18 +1,18 @@
 @MoreActionController = ($scope, PetitionServices, $http, Util, $rootScope, more_actions) ->
   
   $scope.more_actions = more_actions
-  $scope.petition = petition
-  $scope.isCollapsed = true
-  $scope.summary_more_text = "More"
-  $scope.loading = {
-    show_spinner: false
-  }
+  $scope.loading.show_spinner = false
 
   $scope.sign_another = (petition) ->
+
+    $scope.loading.show_spinner = true
+
     PetitionServices.sign_another(petition.petition_id).success (response) ->
       if response.statusCode is 200
         console.log "signature complete; trying to Share via FB"
         
+        $scope.loading.show_spinner = false
+
         result = response.result
         $rootScope.signature = result.signature
 
@@ -39,9 +39,12 @@
             
           else
             console.log "error sharing"
-            
+
       else
         console.log "error: " + response
+
+        $scope.loading.show_spinner = false
+
 
   $scope.read_more = (petition) ->
     Util.navigate_absolute "http://#{petition.subdomain}." + window.location.hostname.split('.').slice(2  - window.location.hostname.split('.').length).join('.') + ":" + (if window.location.port then window.location.port else ""), null, false

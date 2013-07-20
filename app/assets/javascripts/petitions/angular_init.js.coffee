@@ -5,7 +5,7 @@
   base_page_url = '/sign'
   $routeProvider.when('/sign',
     templateUrl: '/client_views/sign'
-    controller: PetitionController 
+    controller: SignatureController 
   ).when('/deliver',
     templateUrl: '/client_views/deliver'
     controller: DeliveryController 

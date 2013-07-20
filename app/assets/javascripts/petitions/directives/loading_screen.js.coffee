@@ -24,3 +24,4 @@
         element.css('background-color', 'transparent')
       else
         element.css('background-color', background_color)
+    , true
