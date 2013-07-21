@@ -5,6 +5,8 @@
     loop_toggle = (if $window.screen.width <= 959 then false else true)
     thumbnail_toggle = 'none'
 
+    scope.rs_display = true
+
     init_royal_slider = ->
       element.royalSlider
         controlNavigation: thumbnail_toggle
@@ -13,11 +15,11 @@
         addActiveClass: true
         arrowsNav: true
         keyboardNavEnabled: true
-        slidesSpacing: 0
+        slidesSpacing: 10
         loop: loop_toggle
         allowCSS3: true
         randomizeSlides: false
-        userPreloader: true
+        usePreloader: true
         arrowsNavHideOnTouch: true
         globalCaption: false
         imageScaleMode: 'fit'

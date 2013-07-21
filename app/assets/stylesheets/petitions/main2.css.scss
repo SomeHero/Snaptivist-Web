@@ -58,6 +58,7 @@
 .comment-wrapper .delivery-status-checkbox {
     padding-left: 6px;
 }
+
 .more-actions {
   .royalSlider {
     width: 100%;
@@ -65,6 +66,8 @@
     clear: left;
   }
   .rsSlide {
+    position: absolute;
+    width: 340px;
     & > div {
       position: relative;
       height: 360px;

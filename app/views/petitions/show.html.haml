@@ -30,8 +30,8 @@
           {{petition.signature_count}}
       .span6.action-count{:style => "text-align: right; padding-right: 44px"}
         Goal: {{petition.target_count}}
-  .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 80px auto;"}
-    %div.view-animate-container{"ng-view" => "", "ng-animate" => "{enter: 'slide-in-setup', leave: 'view-leave'}"}
+  .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 40px auto;"}
+    %div#view-container.view-animate-container{"ng-view" => "", :style => "height: 580px;", "ng-animate" => "{enter: 'view-enter', leave: 'view-leave'}"}
   .row-fluid
     .container-fluid.comment-wrapper
       .media.comment-container.solid-white-back.drop-shadow-full.clear-fix

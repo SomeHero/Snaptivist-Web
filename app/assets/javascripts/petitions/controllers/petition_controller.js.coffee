@@ -58,4 +58,15 @@
     else
       $scope.summary_more_text = "Less"
 
+  $scope.$on '$viewContentLoaded', ->
+    console.log 'view loaded'
+
+    new_height = $(".view-enter#loaded-view").height()
+    if $(".with-rs-slider").length
+      new_height += 420 
+
+    $("#view-container").animate({
+      height: new_height
+    }, 1000)
+
   $scope.load_progress_marker()
