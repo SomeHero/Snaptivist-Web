@@ -1,5 +1,7 @@
 @SignatureController = ($scope, PetitionServices, $http, Util, $rootScope) ->
 
+  window.scope = $scope
+
   $scope.signature_form = {
     first_name: ''
     last_name: ''
@@ -8,9 +10,7 @@
     opt_in: true
     comment: ''
   }
-
-  window.scope = $scope
-
+  
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
 

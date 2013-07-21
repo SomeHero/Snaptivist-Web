@@ -103,14 +103,10 @@ class Api::PetitionsController < ApplicationController
           end
         end
 
-        sign_in @user
-
       end
 
-      raise "Unable to find user" unless current_user
-
       signature = @petition.signatures.new do |s|
-        s.user = current_user
+        s.user = @user
         s.latitude = params[:latitude]
         s.longitude = params[:longitude]
         s.zip_code = params[:zip_code]
@@ -128,7 +124,7 @@ class Api::PetitionsController < ApplicationController
     @petition.reload
 
     #send petition action email
-    UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
+    UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => @user, :merge_fields => {
           "merge_petitiontitle" => @petition.title,
           "merge_firstname" => @user.first_name,
           "merge_lastname" => @user.last_name,
@@ -136,6 +132,8 @@ class Api::PetitionsController < ApplicationController
           "merge_shorturl" => @petition.short_url,
           "merge_organizationname" => @petition.user.organization_name
       })
+
+    sign_in @user
 
     render_result({ 'petition' => @petition.to_api,
                     'signature' => signature.to_api})
@@ -191,8 +189,6 @@ class Api::PetitionsController < ApplicationController
 
     raise "Unable to find user" unless user
 
-    sign_in user
-
     signature = user.signatures.find_by_petition_id(petition.id)
 
     unless signature
@@ -225,6 +221,8 @@ class Api::PetitionsController < ApplicationController
       })
 
     end
+
+    sign_in user
 
     render_result({ 'petition' => petition.to_api,
       'signature' => signature.to_api})
