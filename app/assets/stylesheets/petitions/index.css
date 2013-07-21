@@ -5,4 +5,5 @@
  *= require_self
  *= require ./main
  *= require ./main2
+ *= require ./libs/ajax-spinner
 */

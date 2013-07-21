@@ -1,7 +1,6 @@
 @MoreActionController = ($scope, PetitionServices, $http, Util, $rootScope, more_actions) ->
   
   $scope.more_actions = more_actions
-  $scope.loading.show_spinner = false
 
   $scope.sign_another = (petition) ->
 

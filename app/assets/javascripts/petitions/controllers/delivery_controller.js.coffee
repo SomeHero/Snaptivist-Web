@@ -1,10 +1,8 @@
 @DeliveryController = ($scope, PetitionServices, $http, $q, Util, $rootScope) ->
 
-  $scope.loading.show_spinner = false
-
   window.scope = $scope
 
-  $scope.deliver_signature = ->
+  $scope.deliver_action = ->
     console.log("delivering signature")
 
     $scope.loading.show_spinner = true

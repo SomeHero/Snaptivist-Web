@@ -63,10 +63,13 @@
 
     new_height = $(".view-enter#loaded-view").height()
     if $(".with-rs-slider").length
-      new_height += 420 
+      new_height += 450 
 
     $("#view-container").animate({
       height: new_height
-    }, 1000)
+    }, 1000, ->
+      $scope.$apply ->
+        $scope.loading.show_spinner = false
+    )
 
   $scope.load_progress_marker()
