@@ -4,7 +4,7 @@ ActiveAdmin.register Petition do
 		column :id
 		column :title
 		column :short_url
-		column :rewrite_url_key
+		column :subdomain
 		column :created_at
 		column :updated_at
 		column :signatures_count

@@ -9,6 +9,7 @@
 
     PetitionServices.sign_another(petition.petition_id).success (response) ->
       if response.statusCode is 200
+
         console.log "signature complete; trying to Share via FB"
         
         $scope.loading.show_spinner = false
@@ -16,29 +17,31 @@
         result = response.result
         $rootScope.signature = result.signature
 
-        fb_message_obj =
-          method: 'feed'
-          redirect_uri: 'YOUR URL HERE'
-          link: petition.short_url
-          name: 'I just signed a petition on Snaptivist'
-          caption: petition.title
-          description: petition.summary,
-
-        if scope.petition.image_square
-          $.extend true, fb_message_obj, { picture: $scope.petition.image_square }
-        else  
-          $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
+        if $scope.auth
         
-        scroll = $(window).scrollTop()
+          fb_message_obj =
+            method: 'feed'
+            redirect_uri: 'YOUR URL HERE'
+            link: petition.short_url
+            name: 'I just signed a petition on Snaptivist'
+            caption: petition.title
+            description: petition.summary,
 
-        FB.ui fb_message_obj, (response) ->
-          $(window).scrollTop scroll
-            
-          if response
-            console.log "share complete"
-            
-          else
-            console.log "error sharing"
+          if scope.petition.image_square
+            $.extend true, fb_message_obj, { picture: $scope.petition.image_square }
+          else  
+            $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
+          
+          scroll = $(window).scrollTop()
+
+          FB.ui fb_message_obj, (response) ->
+            $(window).scrollTop scroll
+              
+            if response
+              console.log "share complete"
+              
+            else
+              console.log "error sharing"
 
       else
         console.log "error: " + response

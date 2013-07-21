@@ -4,17 +4,6 @@
 
   window.scope = $scope
 
-  $scope.post_signature = ->
-    PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
-      console.log "signature delivered"
-      $scope.loading.show_spinner = false
-
-      Util.navigate "/complete"
-    .error (response) ->
-      console.log "delivery failed"
-      
-      Util.navigate "/complete"
-
   $scope.deliver_signature = ->
     console.log("delivering signature")
 
@@ -28,7 +17,15 @@
         window.clearInterval interval
         
         $scope.$apply ->
-          $scope.post_signature()
+          PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
+            console.log "signature delivered"
+            $scope.loading.show_spinner = false
+
+            Util.navigate "/complete"
+          .error (response) ->
+            console.log "delivery failed"
+            
+            Util.navigate "/complete"
     ), 1000)
 
   $scope.skip_delivery = ->
