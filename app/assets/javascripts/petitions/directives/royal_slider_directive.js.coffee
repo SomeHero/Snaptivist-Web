@@ -16,6 +16,7 @@
         arrowsNav: true
         keyboardNavEnabled: true
         slidesSpacing: 10
+        navigateByClick: false
         loop: loop_toggle
         allowCSS3: true
         randomizeSlides: false
@@ -34,12 +35,6 @@
           navigateByCenterClick: false
           breakpoint: 959
           breakpointCenterArea: 0.75
-        thumbs:
-          spacing: 0
-          arrows: true
-          touch: true
-          autoCenter: true
-          fitInViewport: true
 
       scope.rs_display = true
 

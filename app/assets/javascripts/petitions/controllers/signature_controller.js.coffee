@@ -10,11 +10,6 @@
   }
 
   window.scope = $scope
-  
-  $scope.sign_with_facebook_click = ->
-    $scope.loading.show_spinner = true
-
-    Util.navigate "/deliver"
 
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
@@ -44,33 +39,6 @@
 
         $scope.loading.show_spinner = false
 
-  $scope.deliver_signature = ->
-    console.log("delivering signature")
-
-    $scope.loading.show_spinner = true
-    
-    tweet = $scope.tweet
-    console.log(tweet)
-
-    params = 'location=0,status=0,width=800,height=600'
-    twitter_window = window.open '/users/auth/twitter', 'twitterWindow', params
-    
-    interval = window.setInterval((->
-      window.clearInterval interval
-      PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, tweet).success (response) ->
-        console.log "signature delivered"
-        $scope.$apply ->
-            $scope.loading.show_spinner = false
-
-            Util.navigate "/complete"
-      
-    ), 1000)
-
-  $scope.skip_delivery = ->
-    console.log("skipping delivery")
-    
-    Util.navigate "/complete"
-
   $scope.set_action_background = (action) ->
     {
       'background-image': 'url(assets/avatar.png)'
@@ -79,7 +47,7 @@
   $scope.$on 'handleFacebookAuth', (event, source) ->
     console.log "Facebook Login Success"
 
-    PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature).success (response) ->
+    PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature_form).success (response) ->
         if response.statusCode is 200
           console.log "signature complete; trying to Share via FB"
           
