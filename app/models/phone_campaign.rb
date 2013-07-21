@@ -2,11 +2,26 @@ class PhoneCampaign < ActiveRecord::Base
   belongs_to :target
   belongs_to :user
   has_many :call_results
-  attr_accessible :rewrite_url_key, :short_url, :summary, :target_count, :title, :target_id, :user_id
 
-   validates :title, :presence => true
+  validates :title, :presence => true
   validates :summary, :presence => true
   validates :target_count, :numericality => { :only_integer => true }
+  
+  has_attached_file :header_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  IMAGE_SIZES = {"thumb" => "100x100",
+                "square" => "200x200#",
+                "medium" => "300x300",
+                "full" => "782x271"}
+
+  before_create :shorten_url
 
   def shorten_url
 
@@ -30,11 +45,21 @@ class PhoneCampaign < ActiveRecord::Base
       'title' => title,
       'summary' => summary,
       'target_count' => target_count,
-      'callresult_count' => call_results_count,
+      'call_results_count' => call_results_count,
       'short_url' => short_url,
       'rewrite_url_key' => rewrite_url_key,
-      'target' => target.to_api
+      'target' => target.to_api,
+      'creator' => user.to_api,
+      'comment' => 'test',
+      'created_at' => created_at,
+      'updated_at' => updated_at,
     }
+
+    PhoneCampaign::IMAGE_SIZES.each do |label, size|
+      if header_image_file_name
+        results["image_#{label}"] = header_image(label)
+      end
+    end
 
     return results;
 

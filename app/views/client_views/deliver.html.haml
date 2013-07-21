@@ -6,9 +6,8 @@
 			Now Use Twitter to Deliver Your Signature So Your Target Can’t Hide!
 		#share-comment.drop-shadow-full.solid-white-back.text-left
 			%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "tweet"}
-				{{petition.signature_count}} demand somebody: {{petition.title}}. Join us: {{petition.short_url}}
 			#message-counter.text-right {{115 - tweet.length}}
-		%button#deliver-signature.action-button.icon{"ng-click" => "deliver_signature()"}
+		%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
 			%span
 				Tweet @Target
 		.text-right

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy, :autosave => true
   has_many :external_accounts, :dependent => :destroy
   has_many :signatures, :dependent => :destroy
+  has_many :call_results, :dependent => :destroy
     # note that the user has authenticated
   # def process_authentication
   #   if (is_gifter || Parameter.is_set?(Parameter::OPEN_BETA)) && welcomed_at.nil? && !email.blank?

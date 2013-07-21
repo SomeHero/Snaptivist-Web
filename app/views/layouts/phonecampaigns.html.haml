@@ -2,23 +2,23 @@
 %html{"xmlns:ng" => "http://angularjs.org"}
   %head
     %title
-      = "Tell " + @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title
-    %meta{"name" => "description", "content" => @petition.summary}
+      = "Tell " + @phonecampaign.target.first_name + " " + @phonecampaign.target.last_name + ": " + @phonecampaign.title
+    %meta{"name" => "description", "content" => @phonecampaign.summary}
     = render partial: 'layouts/actions_head'
     = render partial: 'layouts/petitions_stylesheets'
 
     = render partial: 'layouts/actions_footer'
     %script
 
-      petition =
-      != @petition ? @petition.to_api.to_json : nil
+      phonecampaign =
+      != @phonecampaign ? @phonecampaign.to_api.to_json : nil
 
       _test_env =
       != (Rails.env == 'production' ? nil : 'testing' ).to_json
       
-    = javascript_include_tag 'petitions.js'
+    = javascript_include_tag 'phonecampaigns.js'
 
-  %body#ng-app{'ng-app' => 'petition'}
+  %body#ng-app{'ng-app' => 'phonecampaign'}
     %span{:style => "position:relative"}
       #fb-root
     - if flash[:notice]

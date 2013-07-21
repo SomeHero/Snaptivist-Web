@@ -8,47 +8,50 @@
         .row-fluid
           #target-call-answer-label.span7.text-right
             Did anyone answer?
-          #target-call-answer-form.span5
+          #target-call-answer-form.span5.text-left
             %label.checkbox
               %input#optionsRadios1{"type" => "checkbox", "name" => "optionsRadios", "value" => "option1", "checked" => ""}
                 Yes
             %label.checkbox
               %input#optionsRoadios2{"type" => "checkbox", "name" => "optionsRadios", "value" => "options2"}
-                No
+                %span.text-left
+                  No
             %label.checkbox
               %input#optionsRoadios2{"type" => "checkbox", "name" => "optionsRadios3", "value" => "options3"}
                 Left Message
-  #sign-petition-signature{:style => "postion: absolute;"}
-    #signature-container
-      #sign-why.drop-shadow-full.solid-white-back.text-left
-        %textarea#comment{"maxlength" => "115", "placeholder" => "Leave a note about why you called and what happenened...", :style => "width: 90%"}
-      %button#sign-petition-facebook-button.action-button.icon.facebook.sign-with-fb-button
-        %span
-          Log Call with Facebook
-    .row-fluid
-      .span12.copy-or.text-center
-        -OR-
-    #sign-petition
+.row-fluid
+  #action-wrapper
+    #sign-petition-signature{:style => "postion: absolute;"}
+      #signature-container
+        #sign-why.drop-shadow-full.solid-white-back.text-left
+          %textarea#comment{"maxlength" => "115", "placeholder" => "Leave a note about why you called and what happenened...", :style => "width: 90%"}
+        %button#sign-petition-facebook-button.action-button.icon.facebook.sign-with-fb-button{"ng-click" => "log_call_with_facebook()"}
+          %span
+            Log Call with Facebook
       .row-fluid
-        .span6
-          .controls
-            %input#firstName.register-textfield.span12{"type" => "text", "name" => "FirstName", "placeholder" => "First Name"}
-        .span6
-          .controls
-            %input#lastName.register-textfield.span12{"type" => "text", "name" => "LastName", "plalceholder" => "Last Name"}
-      .row-fluid
-        .span6
-          .controls
-            %input#emailAddress.register-textfield.span12{"type" => "text", "name" => "EmailAddress", "placeholder" => "Email Address"}
-        .span6
-          .controls
-            %input#zipCode.register-textfield.span12{"type" => "text", "name" => "ZipCode", "plalceholder" => "Zip Code"}
-      .row-fluid
-        .span6
-          %label.checkbox
-            %input#chkEmailSignUp{"type" => "checkbox", "checked" => ""}
-              %span{:style => "color: #768285"}
-                Let me know about activists and events in my area.
-        .span6.text-right
-          %button#sign-petition-user-name.button.orange{:style => "width: 100%"}
-            Log Call Results
+        .span12.copy-or.text-center
+          \-OR-
+      #sign-petition
+        .row-fluid
+          .span6
+            .controls
+              %input#firstName.register-textfield.span12{"type" => "text", "name" => "FirstName", "placeholder" => "First Name"}
+          .span6
+            .controls
+              %input#lastName.register-textfield.span12{"type" => "text", "name" => "LastName", "plalceholder" => "Last Name"}
+        .row-fluid
+          .span6
+            .controls
+              %input#emailAddress.register-textfield.span12{"type" => "text", "name" => "EmailAddress", "placeholder" => "Email Address"}
+          .span6
+            .controls
+              %input#zipCode.register-textfield.span12{"type" => "text", "name" => "ZipCode", "plalceholder" => "Zip Code"}
+        .row-fluid
+          .span6
+            %label.checkbox.text-left
+              %input#chkEmailSignUp{"type" => "checkbox", "checked" => ""}
+                %span{:style => "color: #768285"}
+                  Let me know about activists and events in my area.
+          .span6.text-right
+            %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "log_call_with_email_address()"}
+              Log Call Results

@@ -120,6 +120,92 @@ class Api::PhonecampaignsController < ApplicationController
                     'call_result' => call_result.to_api})
   end
 
+  def log_with_facebook
+    
+    phonecampaign = PhoneCampaign.find(params[:id])
+    
+    raise "Unable to find phone campaign" unless phonecampaign
+
+    Rails.logger.debug "The access token is " + params[:accessToken]
+
+    #see if we have this FB user in the authentications table
+    authentication = Authentication.find_by_provider_and_uid('facebook', params[:userID])
+
+    @graph =Koala::Facebook::API.new(params[:accessToken])
+    facebook_profile = @graph.get_object("me")
+
+    raise "Unable to retrieve Facebook profile" unless facebook_profile
+
+    if authentication
+      #flash[:notice] = "Logged in Successfully"
+      user = User.find(authentication.user_id)
+      user.first_name = facebook_profile['first_name']
+      user.last_name = facebook_profile['last_name']
+      user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
+
+      user.save
+
+    else
+      user = User.new
+      user.email =  facebook_profile["email"]
+      user.first_name = facebook_profile['first_name']
+      user.last_name = facebook_profile['last_name']
+      user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
+      user.password = "James123"
+
+      user.authentications.build(
+          :provider => 'facebook', 
+          :uid => params[:userID], 
+          :token => params[:accessToken], 
+          :token_secret => params[:token_secret])
+
+      user.save!
+
+
+    end
+
+    raise "Unable to find user" unless user
+
+    sign_in user
+
+    call_result = user.call_results.find_by_phone_campaign_id(phonecampaign.id)
+
+    unless call_result
+      call_result = phonecampaign.call_results.new do |s|
+        s.user = user
+        s.latitude = params[:latitude]
+        s.longitude = params[:longitude]
+        s.comment = params[:comment]
+        s.opt_in = params[:opt_in]
+        s.city = facebook_profile["location"]["name"].split(",")[0]
+        s.state = facebook_profile["location"]["name"].split(",")[1]
+      end
+
+
+      if !call_result.valid?
+        return render_result({}, 400, 'Error Logging Call Result')
+      end
+
+      #return if error_messages?(:config)
+      call_result.save
+
+      #send petition action email
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
+          "merge_petitiontitle" => phonecampaign.title,
+          "merge_firstname" => user.first_name,
+          "merge_lastname" => user.last_name,
+          "merge_targetname" => phonecampaign.target.title + " " + phonecampaign.target.last_name,
+          "merge_shorturl" => phonecampaign.short_url,
+          "merge_organizationname" => phonecampaign.user.organization_name
+      })
+
+    end
+
+    render_result({ 'petition' => petition.to_api,
+      'call_result' => call_result.to_api})
+
+  end
+
   def show
     @phone_campaign = PhoneCampaign.find(params[:id])
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713051201) do
+ActiveRecord::Schema.define(:version => 20130720192703) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -127,10 +127,15 @@ ActiveRecord::Schema.define(:version => 20130713051201) do
     t.string   "short_url"
     t.string   "rewrite_url_key"
     t.integer  "target_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "user_id"
     t.integer  "call_results_count"
+    t.string   "subdomain"
+    t.string   "header_image_file_name"
+    t.string   "header_image_content_type"
+    t.integer  "header_image_file_size"
+    t.datetime "header_image_updated_at"
   end
 
   add_index "phone_campaigns", ["target_id"], :name => "index_phone_campaigns_on_target_id"
@@ -150,9 +155,14 @@ ActiveRecord::Schema.define(:version => 20130713051201) do
     t.string   "question"
     t.string   "short_url"
     t.string   "rewrite_url_key"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "user_id"
+    t.string   "subdomain"
+    t.string   "header_image_file_name"
+    t.string   "header_image_content_type"
+    t.integer  "header_image_file_size"
+    t.datetime "header_image_updated_at"
   end
 
   create_table "signatures", :force => true do |t|
