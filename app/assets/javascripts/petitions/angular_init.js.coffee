@@ -44,8 +44,7 @@
 
       console.log "Signing with Facebook"
 
-      scope.$apply ->
-        scope.$broadcast('handleFacebookAuth')
+      scope.$broadcast('handleFacebookAuth')
 
 
     ((d) ->
