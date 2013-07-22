@@ -10,7 +10,7 @@
     opt_in: true
     comment: ''
   }
-  
+
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
 
@@ -81,6 +81,7 @@
                 Util.navigate "/deliver"
             else
               console.log "error sharing"
+              
               $scope.$apply ->
                 Util.navigate "/deliver"
         else
