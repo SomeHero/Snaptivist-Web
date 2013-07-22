@@ -18,7 +18,7 @@
       
     = javascript_include_tag 'petitions.js'
 
-  %body#ng-app{'ng-app' => 'petition'}
+  %body#ng-app{'ng-app' => 'petition', 'ng-cloak' => ""}
     %span{:style => "position:relative"}
       #fb-root
     - if flash[:notice]
