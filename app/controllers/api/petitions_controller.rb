@@ -198,8 +198,11 @@ class Api::PetitionsController < ApplicationController
         s.longitude = params[:longitude]
         s.comment = params[:comment]
         s.opt_in = params[:opt_in]
-        s.city = facebook_profile["location"]["name"].split(",")[0]
-        s.state = facebook_profile["location"]["name"].split(",")[1]
+
+        if facebook_profile["location"]
+          s.city = facebook_profile["location"]["name"].split(",")[0]
+          s.state = facebook_profile["location"]["name"].split(",")[1]
+        end
       end
 
 
