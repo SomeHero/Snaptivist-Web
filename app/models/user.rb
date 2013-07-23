@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
   #attr_accessible :email, :password, :password_confirmation, :remember_me
   # holds the twitter client
   attr_accessor :twitter_client
-  attr_accessor :organization_avatar_file_name
-  
+
   has_many :authentications, :dependent => :destroy, :autosave => true
   has_many :external_accounts, :dependent => :destroy
   has_many :signatures, :dependent => :destroy
