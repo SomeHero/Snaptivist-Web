@@ -15,6 +15,18 @@ class User < ActiveRecord::Base
   has_many :external_accounts, :dependent => :destroy
   has_many :signatures, :dependent => :destroy
   has_many :call_results, :dependent => :destroy
+
+  has_attached_file :organization_avatar, styles: {
+    small: '128x128',
+    medium: '256x256',
+    large: '512x512',
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  IMAGE_SIZES = {"small" => "128x128",
+                "medium" => "256x256",
+                "medium" => "512x512"}
     # note that the user has authenticated
   # def process_authentication
   #   if (is_gifter || Parameter.is_set?(Parameter::OPEN_BETA)) && welcomed_at.nil? && !email.blank?
@@ -83,8 +95,12 @@ def apply_omniauth(omni)
       'last_name' => last_name[0,1],
       'organization_name' => organization_name,
       'zip_code' => zip_code,
-      'avatar_url' => avatar_url,
+      'avatar_url' => avatar_url
     }
+
+    User::IMAGE_SIZES.each do |label, size|
+      results["image_#{label}"] = organization_avatar(label)
+    end
 
     return results;
   end

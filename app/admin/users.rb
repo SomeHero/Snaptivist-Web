@@ -22,6 +22,7 @@ ActiveAdmin.register User do
 			f.input :first_name
 			f.input :last_name
 			f.input :organization_name
+			f.input :organization_avatar, :as => :file, :hint => f.template.image_tag(f.object.organization_avatar.url(:medium))
 			f.input :zip_code
     
 	end
