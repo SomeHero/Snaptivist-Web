@@ -80,7 +80,7 @@ def apply_omniauth(omni)
     results = {
       'user_id' => id,
       'first_name' => first_name,
-      'last_name' => last_name,
+      'last_name' => last_name[0,1],
       'organization_name' => organization_name,
       'zip_code' => zip_code,
       'avatar_url' => avatar_url,

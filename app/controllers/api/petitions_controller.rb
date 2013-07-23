@@ -92,6 +92,9 @@ class Api::PetitionsController < ApplicationController
           @user.first_name = params[:first_name]
           @user.last_name = params[:last_name]
           @user.zip_code = params[:zip_code]
+
+          @user.save!
+
         else
          @user = User.new do |u|
           u.first_name = params[:first_name]
@@ -101,6 +104,9 @@ class Api::PetitionsController < ApplicationController
           u.password_confirmation = "password"
           u.zip_code = params[:zip_code]
           end
+
+          @user.save!
+
         end
 
       end
@@ -166,7 +172,7 @@ class Api::PetitionsController < ApplicationController
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
 
-      user.save
+      user.save!
 
     else
       user = User.new
