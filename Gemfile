@@ -45,6 +45,7 @@ gem "rmagick", :require => 'RMagick'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'newrelic_rpm'
+gem 'airbrake'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

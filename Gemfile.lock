@@ -41,6 +41,10 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.4)
+    airbrake (3.1.12)
+      activesupport
+      builder
+      json
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -253,6 +257,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  airbrake
   aws-sdk
   bitly (~> 0.8.1)
   bootstrap-sass
