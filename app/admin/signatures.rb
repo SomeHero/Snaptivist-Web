@@ -2,6 +2,7 @@ ActiveAdmin.register Signature do
      menu :parent => "Petitions"
 
      csv do
+     	column :id
      	column("First Name") { |signature| signature.user.first_name }
 		column("Last Name") { |signature| signature.user.last_name }
 		column("Email Address") { |signature| signature.user.email }
