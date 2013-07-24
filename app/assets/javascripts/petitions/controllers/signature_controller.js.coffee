@@ -1,5 +1,7 @@
 @SignatureController = ($scope, PetitionServices, $http, Util, $rootScope) ->
 
+  Util.push_ga_event("Petition", "Load", "Sign")
+   
   window.scope = $scope
 
   $scope.signature_form = {
@@ -23,6 +25,8 @@
 
       PetitionServices.sign_with_email_address(petition_id, $scope.signature_form).success (response) ->
         console.log "signature complete"
+        Util.push_ga_event("Petition", "Complete", "Sign With Email")
+   
 
         $scope.loading.show_spinner = false
 
@@ -37,6 +41,8 @@
       .error ->
         console.log "signature failed"
 
+        Util.push_ga_event("Petition", "Failed", "Sign With Email")
+   
         $scope.loading.show_spinner = false
 
   $scope.set_action_background = (action) ->
@@ -50,6 +56,8 @@
     PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature_form).success (response) ->
         if response.statusCode is 200
           console.log "signature complete; trying to Share via FB"
+        
+          Util.push_ga_event("Petition", "Complete", "Sign With Facebook")
           
           result = response.result
           $rootScope.signature = result.signature
@@ -76,15 +84,25 @@
             
             if response
               console.log "share complete"
+
+              Util.push_ga_event("Petition", "Complete", "Facebook Share")
+
               
               $scope.$apply -> 
                 Util.navigate "/deliver"
             else
               console.log "error sharing"
+
+              Util.push_ga_event("Petition", "Failed", "Facebook Share")
               
               $scope.$apply ->
                 Util.navigate "/deliver"
         else
           console.log "error: " + response
+
+          Util.push_ga_event("Petition", "Failed", "Sign With Facebook")
+
       .error (response) ->
         console.log "signature failed: " + response
+
+        Util.push_ga_event("Petition", "Failed", "Sign With Facebook")

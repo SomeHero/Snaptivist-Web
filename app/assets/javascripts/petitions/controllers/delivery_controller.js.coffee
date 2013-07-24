@@ -1,5 +1,7 @@
 @DeliveryController = ($scope, PetitionServices, $http, $q, Util, $rootScope) ->
 
+  Util.push_ga_event("Core_Funnel", "Load", "Deliver")
+   
   window.scope = $scope
 
   $scope.deliver_action = ->

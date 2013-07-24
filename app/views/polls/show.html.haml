@@ -1,0 +1,82 @@
+.container-fluid{:style => "text-align:center;", "ng-controller" => "PollController"}
+  .row-fluid
+    %img{"ng-src" => "{{petition.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
+  .row-fluid
+    %h1.title {{poll.question}}
+#poll-choices-container.container-fluid
+  .span6{"ng-repeat" => "choice in poll.choices"}
+    %label.checkbox
+      %input{:type => "checkbox", "name" => "choice"}
+        {{choice.choice}}
+  #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
+    .row-fluid
+      #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
+        #progress-bar-outer-wrapper
+          #progress-bar-wrapper.progress.progress-striped.progress-green
+            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
+            %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
+      #petition-target-count-goal.span1.target-count-goal
+        %span
+          {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
+          \%
+    .row-fluid
+      .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
+        Signers:
+        %span#signature_count
+          {{petition.signature_count}}
+      .span6.action-count{:style => "text-align: right; padding-right: 44px"}
+        Goal: {{petition.target_count}}
+  .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 40px auto;"}
+    %div#view-container.view-animate-container{"ng-view" => "", :style => "height: 580px;", "ng-animate" => "{enter: 'view-enter', leave: 'view-leave'}"}
+  .row-fluid
+    .container-fluid.comment-wrapper
+      .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
+        %a.pull-left{:href => "#"}
+          %img.media-object.avatar{"ng-src" => "{{petition.creator.image_medium}}"}/
+        .media-body{:style => "text-align: left;"}
+          %span.comment-username
+            {{petition.creator.organization_name}}
+          %span.comment-timeago
+            created this petition {{petition.created_at | fromNow }}
+          %span.comment
+            {{petition.comment}} 
+  %div#comment-container  
+    .row-fluid{"ng-controller" => "CommentController"}
+      .container-fluid.comment-wrapper{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+        .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
+          %a.pull-left{:href => "#"}
+            %img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature.user)}}"}/
+          .media-body{:style => "text-align: left;"}
+            %span.comment-username
+              {{signature.user.first_name}}
+              {{signature.user.last_name}}
+            %span.comment-timeago
+              signed {{signature.created_at | fromNow }} in 
+              {{signature.city + ", " + signature.state}}
+            %span.comment
+              {{signature.comment}}
+        .delivery-status.row-fluid.text-right
+          .devivered{"ng-show" => "show_signature_delivered(signature)"}
+            %img{"ng-src" => "/assets/twitter-bird-delivery-status.png"}
+            %span.delivery-status-text
+              STATUS: DELIVERED
+              %span
+                %img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-checked-delivery-status.png"}
+          .not-delivered{"ng-hide"  => "show_signature_delivered(signature)"}
+            %img{"ng-src" => "/assets/twitter-bird-delivery-status.png"}
+            %span.delivery-status-text
+              STATUS: PENDING
+              %span
+                %img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-delivery-status.png"}
+      .row-fluid{"ng-hide" => "show_more_signatures_button()"}
+        #see-more-container
+          %button#see-more-button.button.green{:style => "width: 100%", "ng-click" => "show_more_signatures_click()"}
+            %span
+              See More Signers
+              %span
+    .row-flud
+      #powered-by-wrapper
+        %a#powered-by-container.row-fluid.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
+          = image_tag "powered_by.png"
+
+  %div{"loading-screen" => "loading.show_spinner"}

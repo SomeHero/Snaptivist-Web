@@ -1,7 +1,8 @@
 @MoreActionController = ($scope, PetitionServices, $http, Util, $rootScope, more_actions) ->
   
   $scope.more_actions = more_actions
-
+  Util.push_ga_event("Petition", "Load", "More Actions")
+   
   $scope.sign_another = (petition) ->
 
     $scope.loading.show_spinner = true
@@ -11,6 +12,8 @@
 
         console.log "signature complete; trying to Share via FB"
         
+        Util.push_ga_event("Petition", "Complete", "More Actions Taken")
+   
         $scope.loading.show_spinner = false
 
         result = response.result
@@ -38,17 +41,29 @@
               
             if response
               console.log "share complete"
+
+              Util.push_ga_event("Petition", "Complete", "Facebook Share")
+   
               
             else
               console.log "error sharing"
+
+              Util.push_ga_event("Petition", "Failed", "Facebook Share")
+   
 
       else
         console.log "error: " + response
 
         $scope.loading.show_spinner = false
 
+        Util.push_ga_event("Petition", "Failed", "More Actions Taken")
+   
+
 
   $scope.read_more = (petition) ->
+
+    Util.push_ga_event("Petition", "Complete", "More Actions Read More")
+   
     Util.navigate_absolute "http://#{petition.subdomain}." + window.location.hostname.split('.').slice(2  - window.location.hostname.split('.').length - 1).join('.') + ":" + (if window.location.port then window.location.port else ""), null, false
 
   window.scope = $scope
