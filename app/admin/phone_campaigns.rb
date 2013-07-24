@@ -20,7 +20,7 @@ ActiveAdmin.register PhoneCampaign do
 			f.input :summary
 			f.input :subdomain
 			f.input :target_count
-			f.input :comment
+			f.input :commento
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
 
 	end

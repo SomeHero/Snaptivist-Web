@@ -20,7 +20,7 @@
           PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
             console.log "signature delivered"
 
-            Util.push_ga_event("Petition", "Complete", "Delivery")
+            Util.push_ga_event("Petition", "Deliver Signature", "Success")
 
             $scope.loading.show_spinner = false
 
@@ -28,7 +28,7 @@
           .error (response) ->
             console.log "delivery failed"
 
-            Util.push_ga_event("Petition", "Failed", "Delivery")
+            Util.push_ga_event("Petition", "Deliver Signature", "Failed")
             
             Util.navigate "/complete"
     ), 1000)
@@ -36,7 +36,7 @@
   $scope.skip_delivery = ->
     console.log("skipping delivery")
     
-    Util.push_ga_event("Petition", "Skipped", "Delivery")
+    Util.push_ga_event("Petition", "Deliver Signature", "Skipped")
             
     $scope.loading.show_spinner = true
 

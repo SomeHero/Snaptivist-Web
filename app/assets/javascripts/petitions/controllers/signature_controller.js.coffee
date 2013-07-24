@@ -25,7 +25,7 @@
 
       PetitionServices.sign_with_email_address(petition_id, $scope.signature_form).success (response) ->
         console.log "signature complete"
-        Util.push_ga_event("Petition", "Complete", "Sign With Email")
+        Util.push_ga_event("Petition", "Sign With Email", "Success")
    
 
         $scope.loading.show_spinner = false
@@ -41,7 +41,7 @@
       .error ->
         console.log "signature failed"
 
-        Util.push_ga_event("Petition", "Failed", "Sign With Email")
+        Util.push_ga_event("Petition", "Sign With Email", "Failed")
    
         $scope.loading.show_spinner = false
 
@@ -57,7 +57,7 @@
         if response.statusCode is 200
           console.log "signature complete; trying to Share via FB"
         
-          Util.push_ga_event("Petition", "Complete", "Sign With Facebook")
+          Util.push_ga_event("Petition", "Sign With Facebook", "Success")
           
           result = response.result
           $rootScope.signature = result.signature
@@ -85,7 +85,7 @@
             if response
               console.log "share complete"
 
-              Util.push_ga_event("Petition", "Complete", "Facebook Share")
+              Util.push_ga_event("Petition", "Facebook Share", "Success")
 
               
               $scope.$apply -> 
@@ -93,16 +93,16 @@
             else
               console.log "error sharing"
 
-              Util.push_ga_event("Petition", "Failed", "Facebook Share")
+              Util.push_ga_event("Petition", "Facebook Share", "Failed")
               
               $scope.$apply ->
                 Util.navigate "/deliver"
         else
           console.log "error: " + response
 
-          Util.push_ga_event("Petition", "Failed", "Sign With Facebook")
+          Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
 
       .error (response) ->
         console.log "signature failed: " + response
 
-        Util.push_ga_event("Petition", "Failed", "Sign With Facebook")
+        Util.push_ga_event("Petition", "Sign With Facebook", "Failed")

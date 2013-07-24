@@ -1,15 +1,16 @@
 .row-fluid#loaded-view{:style => "position: absolute"}
-	#sign-petition-deliver
+	#loaded-view-wrapper
 		%h4.text-center
 			Almost Done
-		%h5.text-center
+		%p{:style => "margin-bottom: 40px; color: #757A80; width: 80%;"}
 			Now Use Twitter to Deliver Your Signature So Your Target Can’t Hide!
-		#share-comment.drop-shadow-full.solid-white-back.text-left
-			%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "tweet"}
-			#message-counter.text-right {{115 - tweet.length}}
-		%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
-			%span
-				Tweet @Target
-		.text-right
-			%a{"ng-click" => "skip_delivery()"}
-				Not Right Now
+		#sign-petition-deliver
+			#share-comment.drop-shadow-full.solid-white-back.text-left
+				%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "tweet"}
+				#message-counter.text-right {{115 - tweet.length}}
+			%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
+				%span
+					Tweet @Target
+			.text-right
+				%a{"ng-click" => "skip_delivery()"}
+					Not Right Now

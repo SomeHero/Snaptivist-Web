@@ -1,52 +1,55 @@
 .row-fluid#loaded-view{:style => "position: absolute;"}
-  .row-fluid
-    #action-wrapper
-      #sign-petition-signature
-        #signature-container{"data-facebook" => Settings.facebook_app_id }
-          #sign-why.drop-shadow-full.solid-white-back{:style => "text-align: left;"}
-            %textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "Tell us why you're signing..", "ng-model" => "signature_form.comment"}
-            #message-counter.text-right {{115 - signature_form.comment.length}}
-          %button#sign-petition-facebook-button.action-button.icon.sign-with-fb-button{"ng-click" => "fetch()"}
-            %span
-              Sign With Facebook
-  .row-fluid
-    %span.span12.copy-or.text-center
-      \-OR-
-  .row-fluid
-    #sign-petition
-      %form{:name => "myForm", "novalidate" => true, :style => "margin: 0px;"}
-        .row-fluid
-          .span6
-            .controls
-              %input#firstName.register-textfield.span12{:type => "text", :name => "FirstName", :placeholder => "First Name", "ng-model" => "signature_form.first_name", "required" => true}
-              .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.FirstName.$invalid"}
-                First Name is required  
-          .span6
-            .controls
-              %input#lastName.register-textfield.span12{:type => "text", :name => "LastName", :placeholder => "Last Name", "ng-model" => "signature_form.last_name", "required" => true}
-              .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.LastName.$invalid"}
-                Last Name is required  
-        .row-fluid
-          .span6
-            .controls
-              %input#emailAddress.register-textfield.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature_form.email_address", "required" => true}
-              .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid"}
-                Email Address is required  
-          .span6
-            .controls
-              %input#zipCode.register-textfield.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature_form.zip_code", "required" => true}
-              .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.ZipCode.$invalid"}
-                Zip Code is required  
-        .row-fluid
-          .span12
-            .controls
-              %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
-                Add My Name
-        .row-fluid
-          .span12
-            .controls
-              %label.checkbox{:style => "text-align: left"}
-                %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature_form.opt_in"}
-                  %span{:style => "color: #768286;"}
-                    Update me on the results of this campaign and others from
-                    %span{:style => "font-weight: bold;"} {{petition.creator.organization_name}}
+  #loaded-view-wrapper
+    %h4 Join Us!
+    %p{:style => "margin-bottom: 40px; color: #757A80; width: 80%;"} Sign our petition below and tell President Obama: Stop Drone Assassinations of American Citizen's, then use Snaptivist to deliver your signature right to his door
+    .row-fluid
+      #action-wrapper
+        #sign-petition-signature
+          #signature-container{"data-facebook" => Settings.facebook_app_id }
+            #sign-why.solid-white-back{:style => "text-align: left;"}
+              %textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "Tell us why you're signing..", "ng-model" => "signature_form.comment"}
+              #message-counter.text-right {{115 - signature_form.comment.length}}
+            %button#sign-petition-facebook-button.action-button.icon.sign-with-fb-button{"ng-click" => "fetch()"}
+              %span
+                Sign With Facebook
+    .row-fluid
+      %span.span12.copy-or.text-center
+        \-OR-
+    .row-fluid
+      #sign-petition
+        %form{:name => "myForm", "novalidate" => true, :style => "margin: 0px;"}
+          .row-fluid
+            .span6
+              .controls
+                %input#firstName.register-textfield.span12{:type => "text", :name => "FirstName", :placeholder => "First Name", "ng-model" => "signature_form.first_name", "required" => true}
+                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.FirstName.$invalid"}
+                  First Name is required  
+            .span6
+              .controls
+                %input#lastName.register-textfield.span12{:type => "text", :name => "LastName", :placeholder => "Last Name", "ng-model" => "signature_form.last_name", "required" => true}
+                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.LastName.$invalid"}
+                  Last Name is required  
+          .row-fluid
+            .span6
+              .controls
+                %input#emailAddress.register-textfield.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature_form.email_address", "required" => true}
+                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid"}
+                  Email Address is required  
+            .span6
+              .controls
+                %input#zipCode.register-textfield.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature_form.zip_code", "required" => true}
+                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.ZipCode.$invalid"}
+                  Zip Code is required  
+          .row-fluid
+            .span12
+              .controls
+                %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
+                  Add My Name
+          .row-fluid
+            .span12
+              .controls
+                %label.checkbox{:style => "text-align: left"}
+                  %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature_form.opt_in"}
+                    %span{:style => "color: #768286;"}
+                      Update me on the results of this campaign and others from
+                      %span{:style => "font-weight: bold;"} {{petition.creator.organization_name}}
