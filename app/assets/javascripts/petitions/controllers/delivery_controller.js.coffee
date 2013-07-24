@@ -1,6 +1,6 @@
 @DeliveryController = ($scope, PetitionServices, $http, $q, Util, $rootScope) ->
 
-  Util.push_ga_event("Core_Funnel", "Load", "Deliver")
+  Util.push_ga_event("Petition", "Load", "Delivery")
    
   window.scope = $scope
 
@@ -19,11 +19,16 @@
         $scope.$apply ->
           PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
             console.log "signature delivered"
+
+            Util.push_ga_event("Petition", "Complete", "Delivery")
+
             $scope.loading.show_spinner = false
 
             Util.navigate "/complete"
           .error (response) ->
             console.log "delivery failed"
+
+            Util.push_ga_event("Petition", "Failed", "Delivery")
             
             Util.navigate "/complete"
     ), 1000)
@@ -31,6 +36,8 @@
   $scope.skip_delivery = ->
     console.log("skipping delivery")
     
+    Util.push_ga_event("Petition", "Skipped", "Delivery")
+            
     $scope.loading.show_spinner = true
 
     Util.navigate "/complete"
