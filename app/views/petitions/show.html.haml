@@ -6,31 +6,32 @@
       {{petition.target_headline_text}}
   .row-fluid
     %h1.title {{petition.title}}
-  #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
-    .row-fluid
-      #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
-        #progress-bar-outer-wrapper
-          #progress-bar-wrapper.progress.progress-striped.progress-green
-            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
-            %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
-      #petition-target-count-goal.span1.target-count-goal
-        %span
-          {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
-          \%
-    .row-fluid
-      .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
-        Signers:
-        %span#signature_count
-          {{petition.signature_count}}
-      .span6.action-count{:style => "text-align: right; padding-right: 44px"}
-        Goal: {{petition.target_count}}
-  .row-fluid{:style => "margin-bottom: 40px"}
-    %button#sign-petition-user-name.button.orange{:style => "padding: 20px 80px"}
-      {{petition.call_to_action_button_text}}
   .row-fluid
     %p.description
       %span{:style => "display: block; margin-bottom: 20px;"}
         {{petition.summary}}
+  .row-fluid{:style => "margin: 20px auto 40px auto"}
+    %button#sign-petition-user-name.button.orange{:style => "padding: 20px 80px"}
+      {{petition.call_to_action_button_text}}
+  .row-fluid
+    #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
+      .row-fluid
+        #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
+          #progress-bar-outer-wrapper
+            #progress-bar-wrapper.progress.progress-striped.progress-green
+              #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
+              %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
+        #petition-target-count-goal.span1.target-count-goal
+          %span
+            {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
+            \%
+      .row-fluid
+        .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
+          Signers:
+          %span#signature_count
+            {{petition.signature_count}}
+        .span6.action-count{:style => "text-align: right; padding-right: 44px"}
+          Goal: {{petition.target_count}}
   .row-fluid
     .container-fluid.comment-wrapper
       %p.text-left{:style => "margin-bottom: 25px;"} This Petition is Sponsored By
