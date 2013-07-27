@@ -1,6 +1,21 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :question, :rewrite_url_key, :short_url
+  attr_accessible :question, :rewrite_url_key, :short_url, :user_id,  :subdomain, :comment
+  belongs_to :user
   has_many :choices
+
+  has_attached_file :header_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  IMAGE_SIZES = {"thumb" => "100x100",
+                "square" => "200x200#",
+                "medium" => "300x300",
+                "full" => "782x271"}
 
   def shorten_url
 

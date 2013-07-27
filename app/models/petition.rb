@@ -62,8 +62,13 @@ class Petition < ActiveRecord::Base
 
       results = {
         'petition_id' => id,
+        'target_headline_text' => target_headline_text,
         'title' => title,
+        'call_to_action_button_text' => call_to_action_button_text,
         'summary' => summary,
+        'signature_comment_placeholder_text' => signature_comment_placeholder_text,
+        'sign_with_facebook_cta_button_text' => sign_with_facebook_cta_button_text,
+        'sign_with_email_cta_button_text' => sign_with_email_cta_button_text,
         'signature_count' => signatures_count,
         'target_count' => target_count,
         'short_url' => short_url,

@@ -16,7 +16,7 @@ class ActionsController < InheritedResources::Base
 		elsif @phonecampaign
 			render 'phonecampaigns/show', :layout => 'phonecampaigns'
 		elsif @poll
-			render 'polls/show'
+			render 'polls/show', :layout => 'polls'
 		else
 			raise "No action found; not sure what to do"
 		end

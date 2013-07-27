@@ -16,10 +16,15 @@ ActiveAdmin.register Petition do
 		f.inputs "Details" do
 			f.input :user, :collection => User.where("organization_name is not null")
 			f.input :target, :collection => Target.order("targetgroup_id").order("last_name").order("first_name").all
-			f.input :title
-			f.input :summary
 			f.input :subdomain
 			f.input :target_count
+			f.input :target_headline_text
+			f.input :title
+			f.input :call_to_action_button_text
+			f.input :summary
+			f.input :signature_comment_placeholder_text
+			f.input :sign_with_facebook_cta_button_text
+			f.input :sign_with_email_cta_button_text
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
     		f.input :comment
 	end

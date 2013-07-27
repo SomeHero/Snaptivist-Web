@@ -1,31 +1,13 @@
 .container-fluid{:style => "text-align:center;", "ng-controller" => "PollController"}
   .row-fluid
-    %img{"ng-src" => "{{petition.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
+    %img{"ng-src" => "{{poll.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
   .row-fluid
     %h1.title {{poll.question}}
-#poll-choices-container.container-fluid
-  .span6{"ng-repeat" => "choice in poll.choices"}
-    %label.checkbox
-      %input{:type => "checkbox", "name" => "choice"}
-        {{choice.choice}}
-  #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
-    .row-fluid
-      #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
-        #progress-bar-outer-wrapper
-          #progress-bar-wrapper.progress.progress-striped.progress-green
-            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(petition.signature_count, petition.target_count)}}%;"}
-            %span#progress-marker.mark{:style => "left: {{load_progress_marker(petition.signature_count, petition.target_count)}}"}
-      #petition-target-count-goal.span1.target-count-goal
-        %span
-          {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
-          \%
-    .row-fluid
-      .span6.action-count{:style => "text-align: left; padding-left: 22px;"}
-        Signers:
-        %span#signature_count
-          {{petition.signature_count}}
-      .span6.action-count{:style => "text-align: right; padding-right: 44px"}
-        Goal: {{petition.target_count}}
+  .row-fluid
+    #poll-choices-container.container-fluid
+      %label.checkbox{"ng-repeat" => "choice in poll.choices"}
+        %input{:type => "checkbox", "name" => "choice"}
+          %span {{choice.choice}}
   .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 40px auto;"}
     %div#view-container.view-animate-container{"ng-view" => "", :style => "height: 580px;", "ng-animate" => "{enter: 'view-enter', leave: 'view-leave'}"}
   .row-fluid

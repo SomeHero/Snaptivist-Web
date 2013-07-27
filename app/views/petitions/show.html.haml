@@ -3,16 +3,10 @@
     %img{"ng-src" => "{{petition.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
   .row-fluid
     %h2.target-name{"ng-cloak" => ""}
-      {{petition.target.title}} {{petition.target.last_name}}
+      {{petition.target_headline_text}}
   .row-fluid
     %h1.title {{petition.title}}
-  .row-fluid
-    %p.description{"collapse" => "isCollapsed"}
-      %span{:style => "display: block; margin-bottom: 20px;"}
-        {{petition.summary}}
-    %button.btn{"ng-click" => "read_summary_click()", :style => "margin-bottom: 40px;",}
-      {{summary_more_text}}
-  #target-count-wrapper.container-fluid{:style => "margin: 0px auto 80px auto;"}
+  #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
     .row-fluid
       #target-count-progress-wrapper.span11.solid-white-back.drop-shadow-full
         #progress-bar-outer-wrapper
@@ -30,8 +24,13 @@
           {{petition.signature_count}}
       .span6.action-count{:style => "text-align: right; padding-right: 44px"}
         Goal: {{petition.target_count}}
-  .row-fluid{:style => "position: relative; width: 100%; margin: 0px auto 40px auto;"}
-    %div#view-container.view-animate-container{"ng-view" => "", :style => "height: 580px;", "ng-animate" => "{enter: 'view-enter', leave: 'view-leave'}"}
+  .row-fluid{:style => "margin-bottom: 40px"}
+    %button#sign-petition-user-name.button.orange{:style => "padding: 20px 80px"}
+      {{petition.call_to_action_button_text}}
+  .row-fluid
+    %p.description
+      %span{:style => "display: block; margin-bottom: 20px;"}
+        {{petition.summary}}
   .row-fluid
     .container-fluid.comment-wrapper
       %p.text-left{:style => "margin-bottom: 25px;"} This Petition is Sponsored By
