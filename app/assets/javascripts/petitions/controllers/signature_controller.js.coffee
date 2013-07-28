@@ -61,7 +61,7 @@
             Util.push_ga_event("Petition", "Sign With Facebook", "Success")
             
             result = response.result
-            $rootScope.signature = result.signature
+            signature = result.signature
 
             fb_message_obj =
               method: 'feed'
@@ -86,14 +86,14 @@
 
                 Util.push_ga_event("Petition", "Facebook Share", "Success")
 
-                $rootScope.$broadcast('signedPetitionWithFacebook', $scope.signature)
+                $rootScope.$broadcast('signedPetitionWithFacebook', signature)
           
               else
                 console.log "error sharing"
 
                 Util.push_ga_event("Petition", "Facebook Share", "Failed")
                 
-                $rootScope.$broadcast('signedPetitionWithFacebook', $scope.signature)
+                $rootScope.$broadcast('signedPetitionWithFacebook', signature)
           
           else
             console.log "error: " + response

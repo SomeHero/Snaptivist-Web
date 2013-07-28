@@ -4,6 +4,15 @@
    
   window.scope = $scope
 
+  $scope.get_avatar_url = (signature) ->
+    if !signature.user
+      return '/assets/avatar.png'
+
+    if signature.user.avatar_url 
+      return signature.user.avatar_url + "?type=large"
+    else
+      return '/assets/avatar.png'
+
   $scope.deliver_action = ->
     console.log("delivering signature")
 

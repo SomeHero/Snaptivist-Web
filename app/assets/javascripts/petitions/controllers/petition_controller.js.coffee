@@ -11,6 +11,7 @@
     more_actions_url: '/client_views/more'
   }
   $scope.petition = petition
+  $scope.signature = {}
   $scope.more_actions = []
   $scope.isCollapsed = true
   $scope.summary_more_text = "More"
@@ -60,7 +61,7 @@
     $scope.scroll_to_signature()
 
   $scope.scroll_to_signature = ->
-    $('body').animate
+    $('body,html').animate
       scrollTop: $("#actions-container").offset().top
 
   $scope.scroll_to_deliver = ->
@@ -85,10 +86,11 @@
 
     $scope.scroll_to_deliver()
 
-  $scope.$on 'signedPetitionWithFacebook', ->
+  $scope.$on 'signedPetitionWithFacebook', (event, signature) ->
     console.log 'petition signed with facebook'
 
     $scope.$apply ->
+      $scope.signature = signature
       $scope.loading.show_spinner = false
       $scope.show.deliver = true
 
@@ -137,13 +139,6 @@
       percentage = 100
 
     return (width*(percentage/100)) + $("#progress-marker").width()/2 + "px"
-
-  #need to refactor in comment controller too
-  $scope.get_avatar_url = (user) ->
-    if user.avatar_url 
-      return user.avatar_url + "?type=large"
-    else
-      return '/assets/avatar.png'
 
   $scope.read_summary_click = ->
     $scope.isCollapsed = !$scope.isCollapsed
