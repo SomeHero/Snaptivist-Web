@@ -69,6 +69,7 @@ class Petition < ActiveRecord::Base
         'signature_comment_placeholder_text' => signature_comment_placeholder_text,
         'sign_with_facebook_cta_button_text' => sign_with_facebook_cta_button_text,
         'sign_with_email_cta_button_text' => sign_with_email_cta_button_text,
+        'default_tweet_text' => default_tweet_text,
         'signature_count' => signatures_count,
         'target_count' => target_count,
         'short_url' => short_url,

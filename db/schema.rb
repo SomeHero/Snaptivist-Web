@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726234837) do
+ActiveRecord::Schema.define(:version => 20130728201722) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20130726234837) do
     t.string   "signature_comment_placeholder_text"
     t.string   "sign_with_facebook_cta_button_text"
     t.string   "sign_with_email_cta_button_text"
+    t.string   "default_tweet_text"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"

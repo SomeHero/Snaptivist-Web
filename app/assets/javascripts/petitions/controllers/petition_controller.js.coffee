@@ -1,4 +1,4 @@
-@PetitionController = ($scope, PetitionServices, $http, Util, $rootScope) ->
+@PetitionController = ($scope, PetitionServices, $http, Util, $rootScope, $interpolate) ->
 
   $scope.show = {
     signature: true
@@ -123,7 +123,7 @@
   $show_signature_delivered = (signature) ->
     return signature.delivered
 
-  $scope.tweet = $scope.petition.signature_count + ' demand @' + $scope.petition.target.twitter_handle + ': ' + $scope.petition.title + '. Join us: ' + $scope.petition.short_url
+  $scope.tweet = $interpolate($scope.petition.default_tweet_text)(scope)
 
   $scope.get_percentage_signed = (signatures, target) ->
     if (signatures * 100) / target > 100
