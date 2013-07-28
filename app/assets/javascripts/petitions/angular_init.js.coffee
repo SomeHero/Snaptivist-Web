@@ -22,6 +22,7 @@
 @app.filter "fromNow", ->
   (dateString) ->
     moment(new Date(dateString)).fromNow()
+
 @app.directive "facebook", ($http, Util, $q, $location, PetitionServices) ->
   restrict: "A"
   scope: true
@@ -32,9 +33,7 @@
       FB.login ((response) ->
         if response.authResponse
           console.log "FB.login connected"
-          scope.auth = response.authResponse
-          scope.$apply ->
-            scope.$broadcast('handleFacebookAuth')
+          $scope.sign_with_facebook(response.authResponse)
         else
           console.log "FB.login cancelled"
       ),

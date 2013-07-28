@@ -1,6 +1,5 @@
-@MoreActionController = ($scope, PetitionServices, $http, Util, $rootScope, more_actions) ->
+@MoreActionController = ($scope, PetitionServices, $http, Util, $rootScope) ->
   
-  $scope.more_actions = more_actions
   Util.push_ga_event("Petition", "Load", "More Actions")
    
   $scope.sign_another = (petition) ->
@@ -68,14 +67,4 @@
 
   window.scope = $scope
 
-MoreActionController.resolve =
-  more_actions: ['PetitionServices', '$q', '$rootScope', (PetitionServices, $q, $rootScope) ->
-    deferred = $q.defer()
-    PetitionServices.get_more_petitions().then (petitions) ->
-      console.log "got some other actions"
-
-      deferred.resolve petitions
-    
-    deferred.promise
-  ]
 

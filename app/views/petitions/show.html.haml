@@ -8,10 +8,10 @@
     %h1.title {{petition.title}}
   .row-fluid
     %p.description
-      %span{:style => "display: block; margin-bottom: 20px;"}
+      %span{:style => "display: block;"}
         {{petition.summary}}
-  .row-fluid{:style => "margin: 20px auto 40px auto"}
-    %button#sign-petition-user-name.button.orange{:style => "padding: 20px 80px"}
+  .row-fluid{:style => "margin: 0px auto 30px auto"}
+    %button#sign-petition-user-name.button.orange{:style => "padding: 20px 80px","ng-click"=>"show_action_click()"}
       {{petition.call_to_action_button_text}}
   .row-fluid
     #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
@@ -33,6 +33,15 @@
         .span6.action-count{:style => "text-align: right; padding-right: 44px"}
           Goal: {{petition.target_count}}
   .row-fluid
+    %div#actions-container{:style => "position: relative;  overflow-y: hidden;"}
+      %div#action-slider{:style => "position: relative;"}
+        .row-fluid#sign-panel{:style => "position: absolute", "ng-controller" => "SignatureController"}
+          %div{"ng-show" => "show.signature", "ng-include" => "templates.sign_url"}
+        .row-fluid#deliver-panel{:style => "position: absolute", "ng-controller" => "DeliveryController"}
+          %div{"ng-show" => "show.deliver", "ng-include" => "templates.deliver_url"}
+        .row-fluid#more-actions-panel{:style => "position: absolute"}
+          %div{"ng-show" => "show.more_actions", "ng-include" => "templates.more_actions_url"}
+  .row-fluid
     .container-fluid.comment-wrapper
       %p.text-left{:style => "margin-bottom: 25px;"} This Petition is Sponsored By
       .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
@@ -45,7 +54,7 @@
             created this petition {{petition.created_at | fromNow }}
           %span.comment
             {{petition.comment}} 
-  %div#comment-container  
+  %div#comment-container
     .row-fluid{"ng-controller" => "CommentController"}
       .container-fluid.comment-wrapper
         %p.text-left{:style => "margin-bottom: 25px;"} This Petiton was Signed By
@@ -81,7 +90,7 @@
             %span
               See More Signers
               %span
-    .row-flud
+    .row-fluid
       #powered-by-wrapper
         %a#powered-by-container.row-fluid.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
           = image_tag "powered_by.png"

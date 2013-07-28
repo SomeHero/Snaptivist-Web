@@ -1,16 +1,38 @@
-.row-fluid#loaded-view{:style => "position: absolute"}
-	#loaded-view-wrapper
-		%h4.text-center
-			Almost Done
-		%p{:style => "margin-bottom: 40px; color: #757A80; width: 80%;"}
-			Now Use Twitter to Deliver Your Signature So Your Target Can’t Hide!
-		#sign-petition-deliver
-			#share-comment.drop-shadow-full.solid-white-back.text-left
-				%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "tweet"}
-				#message-counter.text-right {{115 - tweet.length}}
-			%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
-				%span
-					Tweet @Target
-			.text-right
-				%a{"ng-click" => "skip_delivery()"}
-					Not Right Now
+.row-fluid{:style => "margin: 20px 0px 20px 0px"}
+	#loaded-view-wrappe
+		.row-fluid
+			.container-fluid.comment-wrapper
+				.media.comment-container.solid-white-back.drop-shadow-full.clear-fix
+					%a.pull-left{:href => "#"}
+						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature.user)}}"}/
+					.media-body{:style => "text-align: left;"}
+						%span.comment-username
+							You
+						%span.comment-timeago
+							signed this petition {{signature.created_at | fromNow }}
+						%span.comment
+							{{signature.comment}} 
+				.delivery-status.row-fluid.text-right
+					.devivered{"ng-show" => "show_signature_delivered(signature)"}
+						%img{"ng-src" => "/assets/twitter-bird-delivery-status.png"}
+						%span.delivery-status-text
+							STATUS: DELIVERED
+							%span
+								%img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-checked-delivery-status.png"}
+					.not-delivered{"ng-hide"  => "show_signature_delivered(signature)"}
+						%img{"ng-src" => "/assets/twitter-bird-delivery-status.png"}
+						%span.delivery-status-text
+							STATUS: PENDING
+							%span
+								%img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-delivery-status.png"}
+			.row-fluid
+				#sign-petition-deliver
+					#share-comment.drop-shadow-full.solid-white-back.text-left
+						%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "tweet"}
+						#message-counter.text-right {{115 - tweet.length}}
+					%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
+						%span
+							Tweet @Target
+					.text-center
+						%a{"ng-click" => "skip_delivery()"}
+							Not Right Now

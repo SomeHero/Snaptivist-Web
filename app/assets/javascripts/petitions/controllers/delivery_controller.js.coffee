@@ -24,13 +24,15 @@
 
             $scope.loading.show_spinner = false
 
-            Util.navigate "/complete"
+            $rootScope.$broadcast('deliveredPetition')
+        
           .error (response) ->
             console.log "delivery failed"
 
             Util.push_ga_event("Petition", "Deliver Signature", "Failed")
             
-            Util.navigate "/complete"
+            $rootScope.$broadcast('deliveredPetition')
+        
     ), 1000)
 
   $scope.skip_delivery = ->
@@ -40,5 +42,6 @@
             
     $scope.loading.show_spinner = true
 
-    Util.navigate "/complete"
+    $rootScope.$broadcast('skipDelivery')
+        
 
