@@ -121,9 +121,6 @@
       $scope.loading.show_spinner = false
       $scope.scroll_to_more_actions()
 
-  $show_signature_delivered = (signature) ->
-    return signature.delivered
-
   $scope.tweet = $interpolate($scope.petition.default_tweet_text)(scope)
 
   $scope.get_percentage_signed = (signatures, target) ->

@@ -19,6 +19,9 @@
 			return signature.user.avatar_url + "?type=large"
 		else
 			return '/assets/avatar.png'
+			  
+	$scope.show_signature_delivered = (signature) ->
+    	return signature.delivered
 
 	$scope.show_more_signatures_click = ->
 		console.log 'Show More Signatures Clicked'
