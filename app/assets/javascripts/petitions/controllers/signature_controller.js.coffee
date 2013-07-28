@@ -17,6 +17,7 @@
     console.log("signing petition with email address")
 
     form.submitted = true
+
     if form.$valid
     
       $scope.loading.show_spinner = true
@@ -42,11 +43,6 @@
         Util.push_ga_event("Petition", "Sign With Email", "Failed")
    
         $scope.loading.show_spinner = false
-
-  $scope.set_action_background = (action) ->
-    {
-      'background-image': 'url(assets/avatar.png)'
-    }
 
   $scope.sign_with_facebook = (auth)->
     console.log "Facebook Login Success 2"
