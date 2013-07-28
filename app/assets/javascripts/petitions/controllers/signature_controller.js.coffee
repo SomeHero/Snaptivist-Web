@@ -33,9 +33,8 @@
 
         result = response.result
         $rootScope.petition = result.petition
-        $rootScope.signature = result.signature
 
-        $rootScope.$broadcast('signedPetition', $scope.signature)
+        $rootScope.$broadcast('signedPetition', result.signature)
         
       .error ->
         console.log "signature failed"

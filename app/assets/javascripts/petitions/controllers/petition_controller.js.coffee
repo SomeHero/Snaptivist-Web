@@ -78,9 +78,10 @@
       height: $("#more-actions-panel").height()
     }, 300
 
-  $scope.$on 'signedPetition', ->
+  $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'
 
+    $scope.signature = signature
     $scope.loading.show_spinner = false
     $scope.show.deliver = true
 
