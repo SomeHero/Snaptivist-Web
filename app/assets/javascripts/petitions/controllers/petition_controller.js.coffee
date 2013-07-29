@@ -61,7 +61,12 @@
       return false
 
   $scope.show_action_click = ->
-    $scope.show.signature = true
+    if $scope.show.more_actions
+      Util.push_ga_event("Petition", "Action Button Clicked", "More Actions")
+    else if $scope.show.deliver
+      Util.push_ga_event("Petition", "Action Button Clicked", "Deliver")
+    else
+      Util.push_ga_event("Petition", "Action Button Clicked", "Signature")
 
     $scope.scroll_to_signature()
 
