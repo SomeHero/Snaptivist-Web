@@ -260,7 +260,7 @@ class Api::PetitionsController < ApplicationController
       signature = petition.signatures.new do |s|
         s.user = current_user
         s.zip_code = current_user.zip_code
-        s.comment = ""
+        s.comment = params[:comment]
         s.opt_in = params[:opt_in]
       end
 

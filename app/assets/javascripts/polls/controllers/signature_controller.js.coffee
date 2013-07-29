@@ -68,7 +68,7 @@
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
             link: $scope.petition.short_url
-            name: 'I just signed a petition on Snaptivist'
+            name: 'Sign the Petition'
             caption: $scope.petition.title
             description: $scope.petition.summary,
 

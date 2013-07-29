@@ -2,11 +2,23 @@
   
   Util.push_ga_event("Petition", "Load", "More Actions")
    
-  $scope.sign_another = (petition, form) ->
+  $scope.sign_another = (petition) ->
 
     $scope.loading.show_spinner = true
 
-    PetitionServices.sign_another(petition.petition_id).success (response) ->
+    petition_id = petition.petition_id
+
+    opt_in = $("div.action-wrapper[data-petition-id='" + petition_id + "']").find("#chkEmailSignUp").is(':checked')
+    comment = $("div.action-wrapper[data-petition-id='" + petition_id + "']").find("#comment").val()
+
+    console.log("signing petition with comment " + comment + " and opt_in " + opt_in)
+    
+    data = {
+      'comment': comment
+      'opt_in': opt_in
+    }
+
+    PetitionServices.sign_another(petition.petition_id, data).success (response) ->
       if response.statusCode is 200
 
         console.log "signature complete; trying to Share via FB"
@@ -24,7 +36,7 @@
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
             link: petition.short_url
-            name: 'I just signed a petition on Snaptivist'
+            name: 'Sign the Petition'
             caption: petition.title
             description: petition.summary,
 

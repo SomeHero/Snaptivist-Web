@@ -25,7 +25,7 @@
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
             link: petition.short_url
-            name: 'I just signed a petition on Snaptivist'
+            name: 'Vote'
             caption: petition.title
             description: petition.summary,
 
