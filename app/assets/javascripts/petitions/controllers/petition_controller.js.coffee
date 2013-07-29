@@ -12,6 +12,11 @@
   }
   $scope.petition = petition
   $scope.signature = {}
+  $scope.comments = {
+    offset: 0
+    total: 0
+    items: []
+  }
   $scope.more_actions = []
   $scope.isCollapsed = true
   $scope.summary_more_text = "More"

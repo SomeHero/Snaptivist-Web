@@ -93,9 +93,9 @@ class Api::PetitionsController < ApplicationController
           @user.last_name = params[:last_name]
           @user.zip_code = params[:zip_code]
           if @user.action_tags
-            @user.action_tags += petition.action_tags
+            @user.action_tags += @petition.action_tags
           else
-            @user.action_tags = petition.action_tags
+            @user.action_tags = @petition.action_tags
           end
           @user.save!
 

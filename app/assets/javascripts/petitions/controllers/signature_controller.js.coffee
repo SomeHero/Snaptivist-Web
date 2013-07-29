@@ -28,11 +28,9 @@
         console.log "signature complete"
         Util.push_ga_event("Petition", "Sign With Email", "Success")
    
-
         $scope.loading.show_spinner = false
 
         result = response.result
-        $rootScope.petition = result.petition
 
         $rootScope.$broadcast('signedPetition', result.signature)
         

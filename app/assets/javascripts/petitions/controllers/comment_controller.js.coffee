@@ -1,15 +1,12 @@
 @CommentController = ($scope, CommentServices, $http, $q, Util, $rootScope) ->
-	
-	$scope.comments = {
-		offset: 0
-		total: 0
-		items: []
-	}
-
-	window.scope.comments = $scope
 
 	$rootScope.$on 'signedPetition', (event, comment) ->
 		$scope.comments.items.push comment
+		$scope.comments.total += 1
+
+	$rootScope.$on 'signedPetitionWithFacebook', (event, comment) ->
+		$scope.comments.items.push comment
+		$scope.comments.total += 1
   			
 	$scope.get_avatar_url = (signature) ->
 		if !signature.user
@@ -22,6 +19,12 @@
 			  
 	$scope.show_signature_delivered = (signature) ->
     	return signature.delivered
+
+    $scope.show_comments = ->
+    	if $scope.comments.items.length > 0
+    		return true
+    	else
+    		return false
 
 	$scope.show_more_signatures_click = ->
 		console.log 'Show More Signatures Clicked'
