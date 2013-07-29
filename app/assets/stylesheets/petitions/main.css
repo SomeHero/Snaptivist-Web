@@ -166,7 +166,8 @@ p.description {
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    font: 14px/100% Arial, Helvetica, sans-serif;
+    font: 18px/100% 'Lato-Light', sans-serif;
+    letter-spacing: 4px;
     padding: .5em 2em .55em;
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
     -webkit-border-radius: 0em; 

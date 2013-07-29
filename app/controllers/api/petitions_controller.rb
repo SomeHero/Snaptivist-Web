@@ -92,7 +92,11 @@ class Api::PetitionsController < ApplicationController
           @user.first_name = params[:first_name]
           @user.last_name = params[:last_name]
           @user.zip_code = params[:zip_code]
-
+          if @user.action_tags
+            @user.action_tags += petition.action_tags
+          else
+            @user.action_tags = petition.action_tags
+          end
           @user.save!
 
         else
@@ -103,6 +107,7 @@ class Api::PetitionsController < ApplicationController
           u.password = "password"
           u.password_confirmation = "password"
           u.zip_code = params[:zip_code]
+          u.action_tags = @petition.action_tags
           end
 
           @user.save!
@@ -171,7 +176,11 @@ class Api::PetitionsController < ApplicationController
       user.first_name = facebook_profile['first_name']
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-
+      if user.action_tags
+        user.action_tags += petition.action_tags
+      else
+        user.action_tags = petition.action_tags
+      end
       user.save!
 
     else
@@ -181,7 +190,8 @@ class Api::PetitionsController < ApplicationController
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
       user.password = "James123"
-
+      user.action_tags = petition.action_tags
+      
       user.authentications.build(
           :provider => 'facebook', 
           :uid => params[:userID], 

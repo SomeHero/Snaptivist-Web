@@ -27,6 +27,7 @@ ActiveAdmin.register Petition do
 			f.input :sign_with_email_cta_button_text
 			f.input :default_tweet_text, :as => :text, :input_html => { :class => 'autogrow', :rows => 10, :cols => 20 }
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
+    		f.input :action_tags
     		f.input :comment
 	end
 	f.buttons
