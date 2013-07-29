@@ -13,6 +13,12 @@
     else
       return '/assets/avatar.png'
 
+  $scope.display_location = (signature) ->
+    if signature.city && signature.state
+      return "in " + signature.city + ", " + signature.state
+    else
+      return ""
+
   $scope.show_signature_delivered = (signature) ->
     return signature.delivered
 

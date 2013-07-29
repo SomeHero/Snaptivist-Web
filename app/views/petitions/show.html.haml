@@ -66,8 +66,8 @@
                 {{signature.user.first_name}}
                 {{signature.user.last_name}}
               %span.comment-timeago
-                signed {{signature.created_at | fromNow }} in 
-                {{signature.city + ", " + signature.state}}
+                signed {{signature.created_at | fromNow }} 
+              %span{"ng-bind" => "display_location(signature)"}
               %span.comment
                 {{signature.comment}}
           .delivery-status.row-fluid.text-right

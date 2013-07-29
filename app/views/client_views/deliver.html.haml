@@ -10,6 +10,7 @@
 							You
 						%span.comment-timeago
 							signed this petition {{signature.created_at | fromNow }}
+						%span{"ng-bind" => "display_location(signature)"}
 						%span.comment
 							{{signature.comment}} 
 				.delivery-status.row-fluid.text-right
