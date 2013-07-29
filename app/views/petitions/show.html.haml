@@ -39,7 +39,7 @@
           %div{"ng-show" => "show.signature", "ng-include" => "templates.sign_url"}
         .row-fluid#deliver-panel{:style => "position: absolute", "ng-controller" => "DeliveryController"}
           %div{"ng-show" => "show.deliver", "ng-include" => "templates.deliver_url"}
-        .row-fluid#more-actions-panel{:style => "position: absolute"}
+        .row-fluid#more-actions-panel{:style => "position: absolute", "ng-controller" => "MoreActionController"}
           %div{"ng-show" => "show.more_actions", "ng-include" => "templates.more_actions_url"}
   .row-fluid
     .container-fluid.comment-wrapper

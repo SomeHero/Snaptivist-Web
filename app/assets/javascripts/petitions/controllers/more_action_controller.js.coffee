@@ -2,7 +2,7 @@
   
   Util.push_ga_event("Petition", "Load", "More Actions")
    
-  $scope.sign_another = (petition) ->
+  $scope.sign_another = (petition, form) ->
 
     $scope.loading.show_spinner = true
 
