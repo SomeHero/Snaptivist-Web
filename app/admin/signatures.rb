@@ -18,5 +18,6 @@ ActiveAdmin.register Signature do
 		column :zip_code
 		column :country
 		column :opt_in
+		column("Tags") { |signature| signature.user.action_tags }
 	end
 end

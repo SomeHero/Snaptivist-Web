@@ -93,7 +93,7 @@ class Api::PetitionsController < ApplicationController
           @user.last_name = params[:last_name]
           @user.zip_code = params[:zip_code]
           if @user.action_tags
-            @user.action_tags += @petition.action_tags
+            @user.action_tags += "," + @petition.action_tags
           else
             @user.action_tags = @petition.action_tags
           end
@@ -179,7 +179,7 @@ class Api::PetitionsController < ApplicationController
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
       if user.action_tags
-        user.action_tags += petition.action_tags
+        user.action_tags += "," + petition.action_tags
       else
         user.action_tags = petition.action_tags
       end
