@@ -135,14 +135,16 @@ class Api::PetitionsController < ApplicationController
     @petition.reload
 
     #send petition action email
-    UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => @user, :merge_fields => {
-          "merge_petitiontitle" => @petition.title,
-          "merge_firstname" => @user.first_name,
-          "merge_lastname" => @user.last_name,
-          "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
-          "merge_shorturl" => @petition.short_url,
-          "merge_organizationname" => @petition.user.organization_name
-      })
+    if signature.opt_in
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => @user, :merge_fields => {
+            "merge_petitiontitle" => @petition.title,
+            "merge_firstname" => @user.first_name,
+            "merge_lastname" => @user.last_name,
+            "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
+            "merge_shorturl" => @petition.short_url,
+            "merge_organizationname" => @petition.user.organization_name
+        })
+    end
 
     sign_in @user
 
@@ -230,14 +232,16 @@ class Api::PetitionsController < ApplicationController
       petition.save
 
       #send petition action email
-      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
-          "merge_petitiontitle" => petition.title,
-          "merge_firstname" => user.first_name,
-          "merge_lastname" => user.last_name,
-          "merge_targetname" => petition.target.title + " " + petition.target.last_name,
-          "merge_shorturl" => petition.short_url,
-          "merge_organizationname" => petition.user.organization_name
-      })
+      if signature.opt_in
+        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
+            "merge_petitiontitle" => petition.title,
+            "merge_firstname" => user.first_name,
+            "merge_lastname" => user.last_name,
+            "merge_targetname" => petition.target.title + " " + petition.target.last_name,
+            "merge_shorturl" => petition.short_url,
+            "merge_organizationname" => petition.user.organization_name
+        })
+      end
 
     end
 
@@ -271,15 +275,17 @@ class Api::PetitionsController < ApplicationController
       #return if error_messages?(:config)
       petition.save
 
+      if signature.opt_id
       #send petition action email
-      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
-          "merge_petitiontitle" => petition.title,
-          "merge_firstname" => current_user.first_name,
-          "merge_lastname" => current_user.last_name,
-          "merge_targetname" => petition.target.title + " " + petition.target.last_name,
-          "merge_shorturl" => petition.short_url,
-          "merge_organizationname" => petition.user.organization_name
-      })
+        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
+            "merge_petitiontitle" => petition.title,
+            "merge_firstname" => current_user.first_name,
+            "merge_lastname" => current_user.last_name,
+            "merge_targetname" => petition.target.title + " " + petition.target.last_name,
+            "merge_shorturl" => petition.short_url,
+            "merge_organizationname" => petition.user.organization_name
+        })
+      end
 
     end
 
