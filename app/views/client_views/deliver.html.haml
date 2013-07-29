@@ -33,7 +33,7 @@
 						#message-counter.text-right {{115 - tweet.length}}
 					%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
 						%span
-							Tweet @Target
+							{{petition.tweet_cta_button_text || "Tweet @Target"}}
 					.text-center
 						%a{"ng-click" => "skip_delivery()"}
 							Not Right Now
