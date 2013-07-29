@@ -121,7 +121,7 @@
       $scope.loading.show_spinner = false
       $scope.scroll_to_more_actions()
 
-  $scope.tweet = $interpolate($scope.petition.default_tweet_text)(scope)
+  $scope.tweet = $interpolate($scope.petition.default_tweet_text || "")(scope)
 
   $scope.get_percentage_signed = (signatures, target) ->
     if (signatures * 100) / target > 100

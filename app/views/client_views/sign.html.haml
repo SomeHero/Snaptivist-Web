@@ -5,11 +5,11 @@
         #sign-petition-signature
           #signature-container{"data-facebook" => Settings.facebook_app_id }
             #sign-why.solid-white-back{:style => "text-align: left;"}
-              %textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "{{petition.signature_comment_placeholder_text}}", "ng-model" => "signature_form.comment"}
+              %textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "{{petition.signature_comment_placeholder_text || 'Tell Us Why Your Signing...'}}", "ng-model" => "signature_form.comment"}
               #message-counter.text-right {{115 - signature_form.comment.length}}
             %button#sign-petition-facebook-button.action-button.icon.sign-with-fb-button{"ng-click" => "fetch()"}
               %span
-                {{petition.sign_with_facebook_cta_button_text}}
+                {{petition.sign_with_facebook_cta_button_text || "Sign With Facebook"}}
     .row-fluid
       %span.span12.copy-or.text-center
         \-OR-
@@ -42,7 +42,7 @@
             .span12
               .controls
                 %button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
-                  {{petition.sign_with_email_cta_button_text}}
+                  {{petition.sign_with_email_cta_button_text || "Add My Name"}}
           .row-fluid
             .span12
               .controls

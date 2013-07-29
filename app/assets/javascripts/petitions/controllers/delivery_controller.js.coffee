@@ -13,6 +13,9 @@
     else
       return '/assets/avatar.png'
 
+  $scope.show_signature_delivered = (signature) ->
+    return signature.delivered
+
   $scope.deliver_action = ->
     console.log("delivering signature")
 

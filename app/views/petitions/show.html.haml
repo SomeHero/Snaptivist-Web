@@ -12,7 +12,7 @@
         {{petition.summary}}
   .row-fluid{:style => "margin: 0px auto 30px auto"}
     %button#sign-petition-user-name.button.orange{:style => "padding: 20px 80px","ng-click"=>"show_action_click()"}
-      {{petition.call_to_action_button_text}}
+      {{petition.call_to_action_button_text || "Sign Petition"}}
   .row-fluid
     #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
       .row-fluid
