@@ -54,7 +54,7 @@
             created this petition {{petition.created_at | fromNow }}
           %span.comment
             {{petition.comment}} 
-    .row-fluid{"ng-controller" => "CommentController"}
+    .row-fluid{"ng-controller" => "CommentController", :style => "margin-bottom: 40px;"}
       %div#comment-container.container-fluid.comment-wrapper{"ng-show" => "show_comments()"}
         %p.text-left{:style => "margin-bottom: 25px;"} This Petiton was Signed By
         %div{:style => "margin-bottom: 25px", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
