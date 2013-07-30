@@ -275,7 +275,7 @@ class Api::PetitionsController < ApplicationController
       #return if error_messages?(:config)
       petition.save
 
-      if signature.opt_id
+      if signature.opt_in
       #send petition action email
         UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
             "merge_petitiontitle" => petition.title,
