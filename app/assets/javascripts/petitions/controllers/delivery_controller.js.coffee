@@ -33,22 +33,29 @@
         window.clearInterval interval
         
         $scope.$apply ->
-          PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
-            console.log "signature delivered"
+          PetitionServices.check_twitter_connect().then (response) ->
+            PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
+              console.log "signature delivered"
 
-            Util.push_ga_event("Petition", "Deliver Signature", "Success")
+              Util.push_ga_event("Petition", "Deliver Signature", "Success")
 
-            $scope.loading.show_spinner = false
+              $scope.loading.show_spinner = false
 
-            $rootScope.$broadcast('deliveredPetition')
-        
-          .error (response) ->
-            console.log "delivery failed"
+              $rootScope.$broadcast('deliveredPetition')
+          
+            .error (response) ->
+              console.log "delivery failed"
 
-            Util.push_ga_event("Petition", "Deliver Signature", "Failed")
+              Util.push_ga_event("Petition", "Deliver Signature", "Failed")
             
-            $rootScope.$broadcast('deliveredPetition')
-        
+              $rootScope.$broadcast('skipDelivery')
+
+          , (response) ->
+            console.log "failed check for twitter credentials"
+
+            Util.push_ga_event("Petition", "Deliver Signature", "Skipped (No Auth)")
+          
+            $rootScope.$broadcast('skipDelivery')    
     ), 1000)
 
   $scope.skip_delivery = ->

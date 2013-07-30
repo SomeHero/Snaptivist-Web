@@ -29,6 +29,16 @@
 
     $http.post("/api/petitions/" + petition_id + "/sign_another", signature)
 
+  check_twitter_connect: () ->
+    deferred = $q.defer()
+    
+    $http.get("/auth/check/twitter").success (response) ->
+      if response.authed
+        deferred.resolve(response)
+      else
+        deferred.reject(response)
+    deferred.promise
+
   deliver_signature: (petition_id, signature_id, tweet) ->
     console.log "Delivering Signature: ", signature_id
     
