@@ -1,7 +1,5 @@
 @SignatureController = ($scope, PetitionServices, $http, Util, $rootScope) ->
 
-  Util.push_ga_event("Petition", "Load", "Sign")
-   
   window.scope = $scope
 
   $scope.signature_form = {

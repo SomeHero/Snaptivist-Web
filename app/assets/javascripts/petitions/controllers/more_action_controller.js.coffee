@@ -1,7 +1,5 @@
 @MoreActionController = ($scope, PetitionServices, $http, Util, $rootScope) ->
   
-  Util.push_ga_event("Petition", "Load", "More Actions")
-   
   $scope.sign_another = (petition) ->
 
     $scope.loading.show_spinner = true

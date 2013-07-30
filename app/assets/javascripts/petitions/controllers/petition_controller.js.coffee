@@ -1,5 +1,7 @@
 @PetitionController = ($scope, PetitionServices, $http, Util, $rootScope, $interpolate) ->
 
+  Util.push_ga_event("Petition", "Load", "Sign")
+   
   $scope.show = {
     signature: true
     deliver: false

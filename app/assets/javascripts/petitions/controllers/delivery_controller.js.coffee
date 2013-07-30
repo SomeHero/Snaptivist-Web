@@ -1,7 +1,5 @@
 @DeliveryController = ($scope, PetitionServices, $http, $q, Util, $rootScope) ->
 
-  Util.push_ga_event("Petition", "Load", "Delivery")
-   
   window.scope = $scope
 
   $scope.get_avatar_url = (signature) ->
