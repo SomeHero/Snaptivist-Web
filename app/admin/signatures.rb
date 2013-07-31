@@ -6,9 +6,8 @@ ActiveAdmin.register Signature do
      	column("First Name") { |signature| signature.user.first_name }
 		column("Last Name") { |signature| signature.user.last_name }
 		column("Email Address") { |signature| signature.user.email }
+		column :signature_method
 		column :comment
-		column :created_at
-		column :updated_at
 		column :shared
 		column :shared_at
 		column :delivered
@@ -21,5 +20,8 @@ ActiveAdmin.register Signature do
 		column :country
 		column :opt_in
 		column("Tags") { |signature| signature.user.action_tags }
+		column :created_at
+		column :updated_at
+		
 	end
 end

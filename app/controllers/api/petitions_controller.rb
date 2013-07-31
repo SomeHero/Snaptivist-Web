@@ -118,6 +118,7 @@ class Api::PetitionsController < ApplicationController
 
       signature = @petition.signatures.new do |s|
         s.user = @user
+        s.signature_method = "Email"
         s.latitude = params[:latitude]
         s.longitude = params[:longitude]
         s.zip_code = params[:zip_code]
@@ -212,6 +213,7 @@ class Api::PetitionsController < ApplicationController
     unless signature
       signature = petition.signatures.new do |s|
         s.user = user
+        s.signature_method = "Facebook"
         s.latitude = params[:latitude]
         s.longitude = params[:longitude]
         s.comment = params[:comment]
@@ -276,6 +278,13 @@ class Api::PetitionsController < ApplicationController
     raise "Unable to find petition" unless petition
 
     signature = current_user.signatures.find_by_petition_id(petition.id)
+    last_signature = current_user.signatures.last_signature
+
+    signature_method = ""
+
+    if last_signature 
+      signature_method = last_signature.signature_method
+    end
 
     unless signature
       signature = petition.signatures.new do |s|
@@ -283,6 +292,7 @@ class Api::PetitionsController < ApplicationController
         s.zip_code = current_user.zip_code
         s.comment = params[:comment]
         s.opt_in = params[:opt_in]
+        s.signature_method = signature_method
       end
 
       if !signature.valid?
