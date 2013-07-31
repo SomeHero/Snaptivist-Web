@@ -29,7 +29,7 @@
 			.row-fluid
 				#sign-petition-deliver
 					#share-comment.drop-shadow-full.solid-white-back.text-left
-						%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "tweet"}
+						%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "deliver.tweet"}
 						#message-counter.text-right {{115 - tweet.length}}
 					%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
 						%span

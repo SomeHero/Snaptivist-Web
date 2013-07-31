@@ -34,7 +34,7 @@
         
         $scope.$apply ->
           PetitionServices.check_twitter_connect().then (response) ->
-            PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet).success (response) ->
+            PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.deliver.tweet).success (response) ->
               console.log "signature delivered"
 
               Util.push_ga_event("Petition", "Deliver Signature", "Success")
