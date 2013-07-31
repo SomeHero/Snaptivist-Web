@@ -2,11 +2,10 @@ ActiveAdmin.register Petition do
   	index do
 		selectable_column
 		column :id
+		column("Organization") { |petition| petition.user.organization_name }
 		column :title
 		column :short_url
 		column :subdomain
-		column :created_at
-		column :updated_at
 		column :signatures_count
 		column("Share Count") { |petition| petition.signatures.where("shared = true").count }
 		column("Delivery Count") { |petition| petition.signatures.where("delivered = true").count }
