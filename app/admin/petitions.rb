@@ -8,7 +8,7 @@ ActiveAdmin.register Petition do
 		column :created_at
 		column :updated_at
 		column :signatures_count
-
+		column("Delivery Count") { |petition| petition.signatures.where("delivered = true").count }
 		default_actions
 	end
 
