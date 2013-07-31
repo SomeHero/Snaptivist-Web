@@ -56,7 +56,7 @@
             {{petition.comment}} 
     .row-fluid{"ng-controller" => "CommentController", :style => "margin-bottom: 40px;"}
       %div#comment-container.container-fluid.comment-wrapper{"ng-show" => "show_comments()"}
-        %p.text-left{:style => "margin-bottom: 25px;"} This Petiton was Signed By
+        %p.text-left{:style => "margin-bottom: 25px;"} This Petition was Signed By
         %div{:style => "margin-bottom: 25px", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
           .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
             %a.pull-left
