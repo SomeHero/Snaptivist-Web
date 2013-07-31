@@ -9,6 +9,7 @@ SnaptivistWeb::Application.routes.draw do
         post 'sign'
         post 'sign_another'
         post 'sign_with_facebook'
+        post 'share_with_facebook'
         get 'signatures'
       end
     end

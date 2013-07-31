@@ -252,6 +252,23 @@ class Api::PetitionsController < ApplicationController
 
   end
 
+  def share_with_facebook
+
+    @petition = Petition.find(params[:id]); 
+    raise "Unable to find petition" unless @petition
+
+    @signature = Signature.find(params[:signature_id])
+    raise "Unable to find signature" unless @signature
+
+    @signature.shared = true
+    @signature.shared_at = Time.now
+
+    @signature.save!
+
+    render_result()
+
+  end
+
   def sign_another
 
     petition = Petition.find(params[:id]);

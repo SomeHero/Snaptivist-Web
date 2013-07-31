@@ -106,6 +106,9 @@
     console.log 'petition signed with facebook'
 
     $scope.$apply ->
+      if(signature.shared)
+        PetitionServices.share_with_facebook($scope.petition.petition_id, signature.signature_id)
+        
       $scope.signature = signature
       $scope.loading.show_spinner = false
       $scope.show.deliver = true

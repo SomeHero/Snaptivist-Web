@@ -77,6 +77,7 @@
 
                 Util.push_ga_event("Petition", "Facebook Share", "Success")
 
+                signature.shared = true
                 $rootScope.$broadcast('signedPetitionWithFacebook', signature)
           
               else
@@ -84,6 +85,7 @@
 
                 Util.push_ga_event("Petition", "Facebook Share", "Failed")
                 
+                signature.shared = false
                 $rootScope.$broadcast('signedPetitionWithFacebook', signature)
           
           else

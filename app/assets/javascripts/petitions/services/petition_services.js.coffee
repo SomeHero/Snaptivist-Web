@@ -39,6 +39,14 @@
         deferred.reject(response)
     deferred.promise
 
+  share_with_facebook: (petition_id, signature_id) ->
+    console.log "Signature Shared! ", signature_id
+    
+    data = {} 
+    data = $.extend true, data, { 'signature_id': signature_id }
+   
+    $http.post("/api/petitions/" + petition_id + "/share_with_facebook", data)
+
   deliver_signature: (petition_id, signature_id, tweet) ->
     console.log "Delivering Signature: ", signature_id
     

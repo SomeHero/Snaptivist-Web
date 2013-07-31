@@ -9,6 +9,8 @@ ActiveAdmin.register Signature do
 		column :comment
 		column :created_at
 		column :updated_at
+		column :shared
+		column :shared_at
 		column :delivered
 		column :delivered_at
 		column :latitude

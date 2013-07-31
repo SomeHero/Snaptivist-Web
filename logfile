@@ -426,3 +426,11 @@ WARNING:  pgstat wait timeout
 WARNING:  pgstat wait timeout
 WARNING:  pgstat wait timeout
 WARNING:  pgstat wait timeout
+LOG:  database system was interrupted; last known up at 2013-07-30 22:03:42 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/D8B72E8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  column "shared" does not exist at character 122
+STATEMENT:  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "signatures"  WHERE "signatures"."petition_id" = 12 AND (shared = true) LIMIT 10) subquery_for_count 
