@@ -280,7 +280,7 @@ class Api::PetitionsController < ApplicationController
     raise "Unable to find petition" unless petition
 
     signature = current_user.signatures.find_by_petition_id(petition.id)
-    last_signature = current_user.signatures.last_signature
+    last_signature = current_user.signatures.last
 
     signature_method = ""
 
