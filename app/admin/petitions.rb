@@ -9,6 +9,7 @@ ActiveAdmin.register Petition do
 		column :signatures_count
 		column("Share Count") { |petition| petition.signatures.where("shared = true").count }
 		column("Delivery Count") { |petition| petition.signatures.where("delivered = true").count }
+		column :active
 		default_actions
 	end
 
@@ -30,6 +31,7 @@ ActiveAdmin.register Petition do
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
     		f.input :action_tags
     		f.input :comment
+    		f.input :active
 	end
 	f.buttons
    end
