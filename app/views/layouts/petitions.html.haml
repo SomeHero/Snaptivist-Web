@@ -2,7 +2,7 @@
 %html{"xmlns:ng" => "http://angularjs.org"}
   %head
     %title
-      = "Tell " + @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title
+      = @petition.target_headline_text || @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title
     %meta{"name" => "description", "content" => @petition.summary}
     %meta{"property" => "og:title", "content" => "Tell " + @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title }
     %meta{"property" => "og:type", "content" => "cause"}
