@@ -135,6 +135,8 @@ class Api::PetitionsController < ApplicationController
     @petition.save
     @petition.reload
 
+    Rails.logger.debug "Attempting to send email"
+
     #send petition action email
     if signature.opt_in
       UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::SIGNATURE_CONFIRMATION, :user => @user, :merge_fields => {
