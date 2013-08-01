@@ -366,7 +366,7 @@ class Api::PetitionsController < ApplicationController
   end
 
   def more
-    @petitions = Petition.all()
+    @petitions = Petition.where(:active == true)
 
     result = {
       petitions: @petitions.map { |p| p.to_api }

@@ -436,3 +436,5 @@ ERROR:  column "shared" does not exist at character 122
 STATEMENT:  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "signatures"  WHERE "signatures"."petition_id" = 12 AND (shared = true) LIMIT 10) subquery_for_count 
 ERROR:  column "active" of relation "petitions" does not exist at character 24
 STATEMENT:  UPDATE "petitions" SET "active" = 't'
+ERROR:  invalid input syntax for type boolean: "active" at character 47
+STATEMENT:  SELECT "petitions".* FROM "petitions"  WHERE ('active')
