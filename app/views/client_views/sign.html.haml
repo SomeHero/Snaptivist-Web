@@ -30,9 +30,11 @@
           .row-fluid
             .span6
               .controls
-                %input#emailAddress.register-textfield.span12{:type => "text", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature_form.email_address", "required" => true}
-                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid"}
+                %input#emailAddress.register-textfield.span12{:type => "email", :name => "EmailAddress", :placeholder => "Email Address", "ng-model" => "signature_form.email_address", "required" => true}
+                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid && myForm.EmailAddress.$error.required"}
                   Email Address is required  
+                .text-error.text-left{"ng-show" => "myForm.submitted  && myForm.EmailAddress.$invalid && myForm.EmailAddress.$error.email"}
+                  This is not a valid Email Address
             .span6
               .controls
                 %input#zipCode.register-textfield.span12{:type => "text", :name => "ZipCode", :placeholder => "Zip Code", "ng-model" => "signature_form.zip_code", "required" => true}
