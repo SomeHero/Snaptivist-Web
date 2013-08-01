@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731204527) do
+ActiveRecord::Schema.define(:version => 20130801003333) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(:version => 20130731204527) do
     t.integer  "target_id"
     t.string   "short_url"
     t.string   "rewrite_url_key"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.integer  "signatures_count"
     t.integer  "user_id"
     t.string   "header_image_file_name"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130731204527) do
     t.string   "default_tweet_text"
     t.string   "action_tags"
     t.string   "tweet_cta_button_text"
+    t.boolean  "active",                             :default => false
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
