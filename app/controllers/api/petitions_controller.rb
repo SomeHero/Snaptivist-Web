@@ -137,13 +137,14 @@ class Api::PetitionsController < ApplicationController
 
     #send petition action email
     if signature.opt_in
-      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => @user, :merge_fields => {
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::SIGNATURE_CONFIRMATION, :user => @user, :merge_fields => {
             "merge_petitiontitle" => @petition.title,
             "merge_firstname" => @user.first_name,
             "merge_lastname" => @user.last_name,
             "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
             "merge_shorturl" => @petition.short_url,
-            "merge_organizationname" => @petition.user.organization_name
+            "merge_organizationname" => @petition.user.organization_name,
+            "merge_organizationavatar" => @petition.user.organization_avatar("medium")
         })
     end
 
@@ -235,13 +236,14 @@ class Api::PetitionsController < ApplicationController
 
       #send petition action email
       if signature.opt_in
-        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
+        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::SIGNATURE_CONFIRMATION, :user => user, :merge_fields => {
             "merge_petitiontitle" => petition.title,
             "merge_firstname" => user.first_name,
             "merge_lastname" => user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name
+            "merge_organizationname" => petition.user.organization_name,
+            "merge_organizationavatar" => petition.user.organization_avatar("medium")
         })
       end
 
@@ -304,13 +306,14 @@ class Api::PetitionsController < ApplicationController
 
       if signature.opt_in
       #send petition action email
-        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
+        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::SIGNATURE_CONFIRMATION, :user => current_user, :merge_fields => {
             "merge_petitiontitle" => petition.title,
             "merge_firstname" => current_user.first_name,
             "merge_lastname" => current_user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name
+            "merge_organizationname" => petition.user.organization_name,
+            "merge_organizationavatar" => petition.user.organization_avatar("medium")
         })
       end
 

@@ -42,6 +42,10 @@ module UserNotification
     #   :user => The User we are welcoming
     USER_WELCOME = :user_welcome
 
+    # Confirmation email to a petition signer. Params:
+    #   :user => The User we are welcoming
+    SIGNATURE_CONFIRMATION = :signature_confirmation
+
   end
 
   # Notification channel types
