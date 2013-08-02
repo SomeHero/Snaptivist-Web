@@ -3,7 +3,7 @@
   get_petition: (petition_id) ->
     console.log "Fetching petition details for petition: ", petition_id
     deferred = $q.defer()
-    $http.get('http://www.snaptivist.net/api/petitions', params: {id: petition_id}).success (response) ->
+    $http.jsonp('http://investigate-benghazi.snaptivist.net/api/petitions?callback=JSON_CALLBACK', params: {id: petition_id}).success (response) ->
       if response.statusCode is 200
         deferred.resolve(response)
       else
