@@ -29,6 +29,7 @@ SnaptivistWeb::Application.routes.draw do
   resources :client_views, only: [:show]
 
   match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
+  match '/welcome' => 'home#welcome'
   
   match '/' => 'actions#view', :constraints => { :subdomain => /.+/ }
   match 'petitions/:action_title', :to =>'petitions#view'
