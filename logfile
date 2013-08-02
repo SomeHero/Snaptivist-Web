@@ -438,3 +438,15 @@ ERROR:  column "active" of relation "petitions" does not exist at character 24
 STATEMENT:  UPDATE "petitions" SET "active" = 't'
 ERROR:  invalid input syntax for type boolean: "active" at character 47
 STATEMENT:  SELECT "petitions".* FROM "petitions"  WHERE ('active')
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
