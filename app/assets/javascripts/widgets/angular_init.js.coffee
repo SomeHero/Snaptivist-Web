@@ -4,7 +4,7 @@
 @app.config ['$routeProvider', ($routeProvider) ->
   base_page_url = '/'
   $routeProvider.when('/',
-    templateUrl: '/client_views/petition'
+    templateUrl: 'http://investigate-benghazi.snaptivist.net/client_views/petition'
     controller: PetitionController 
     resolve: PetitionController.resolve
   ).otherwise redirectTo: base_page_url
