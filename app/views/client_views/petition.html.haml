@@ -1,0 +1,9 @@
+%div#actions-container{:style => "position: relative;  overflow-y: hidden;"}
+	%div#action-slider{:style => "position: relative;"}
+		.row-fluid#sign-panel{:style => "position: absolute", "ng-controller" => "SignatureController"}
+			%div{"ng-show" => "show.signature", "ng-include" => "templates.sign_url"}
+		.row-fluid#deliver-panel{:style => "position: absolute", "ng-controller" => "DeliveryController"}
+			%div{"ng-show" => "show.deliver", "ng-include" => "templates.deliver_url"}
+		.row-fluid#more-actions-panel{:style => "position: absolute", "ng-controller" => "MoreActionController"}
+			%div{"ng-show" => "show.more_actions", "ng-include" => "templates.more_actions_url"}
+%div{"loading-screen" => "loading.show_spinner"}

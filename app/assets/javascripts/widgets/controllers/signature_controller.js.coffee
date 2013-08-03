@@ -1,6 +1,4 @@
-@SignatureController = ($scope, petition, PetitionServices, $http, Util, $rootScope) ->
-
-  $scope.petition = petition
+@SignatureController = ($scope, PetitionServices, $http, Util, $rootScope) ->
 
   window.scope = $scope
 
@@ -99,18 +97,3 @@
           console.log "signature failed: " + response
 
           Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
-
-SignatureController.resolve =
-  petition: ['PetitionServices', '$q', '$rootScope', (PetitionServices, $q, $rootScope) ->
-    deferred = $q.defer()
-
-    script_tag = document.getElementById('snaptivist-widget')
-    petition_id = script_tag.getAttribute("petition-id");
-    
-    PetitionServices.get_petition(petition_id).then (response) ->
-      console.log "got petition"
-
-      deferred.resolve response.result
-    
-    deferred.promise
-  ]

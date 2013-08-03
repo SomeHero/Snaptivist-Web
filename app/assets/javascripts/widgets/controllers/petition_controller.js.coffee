@@ -9,8 +9,8 @@
   }
   $scope.templates = {
     sign_url: 'http://investigate-benghazi.snaptivist.net/client_views/sign'
-    deliver_url: '/client_views/deliver'
-    more_actions_url: '/client_views/more'
+    deliver_url: 'http://investigate-benghazi.snaptivist.net/client_views/deliver'
+    more_actions_url: 'http://investigate-benghazi.snaptivist.net/client_views/more'
   }
   $scope.petition = petition
   $scope.signature = {}
@@ -181,13 +181,17 @@
 
   $scope.load_progress_marker()
 
-  PetitionController.resolve =
-  petition: ['PetitionServices', '$q', '$rootScope', (PhoneCampaignServices, $q, $rootScope) ->
+PetitionController.resolve =
+  petition: ['PetitionServices', '$q', '$rootScope', (PetitionServices, $q, $rootScope) ->
     deferred = $q.defer()
-    PetitionServices.get_petition(1).then (actions) ->
-      console.log "got some other actions"
 
-      deferred.resolve actions
+    script_tag = document.getElementById('snaptivist-widget')
+    petition_id = script_tag.getAttribute("petition-id");
+    
+    PetitionServices.get_petition(petition_id).then (response) ->
+      console.log "got petition"
+
+      deferred.resolve response.result
     
     deferred.promise
   ]

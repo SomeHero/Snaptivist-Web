@@ -2,18 +2,11 @@
 	.value('$anchorScroll', angular.noop)
 
 @app.config ['$routeProvider', ($routeProvider) ->
-  base_page_url = '/sign'
-  $routeProvider.when('/sign',
-    templateUrl: 'http://investigate-benghazi.snaptivist.net/client_views/sign'
-    controller: SignatureController 
-    resolve: SignatureController.resolve
-  ).when('/deliver',
-    templateUrl: '/client_views/deliver'
-    controller: DeliveryController 
-  ).when('/complete',
-    templateUrl: '/client_views/more'
-    controller: MoreActionController 
-    resolve: MoreActionController.resolve
+  base_page_url = '/'
+  $routeProvider.when('/',
+    templateUrl: '/client_views/petition'
+    controller: PetitionController 
+    resolve: PetitionController.resolve
   ).otherwise redirectTo: base_page_url
 ]
 
