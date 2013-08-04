@@ -1,9 +1,9 @@
 .row-fluid.more-actions{:style => "margin: 20px 0px 20px 0px"}
 	#action-wrapper
-		%h4.text-center
-			Thanks for Signing
-		%h5.text-center
-			Here are some other actions that need your support
+		%h2
+			You're voice has been heard
+		%p.description
+			We appreciate your support on the related actions below
 		%div{"ng-repeat" => "action in more_actions", :style => "margin-bottom: 40px"}
 			%div.action-wrapper.solid-white-back.drop-shadow-full{:style => "padding: 10px; margin: 10px; position: relative; max-width: 650px; margin: 10px auto;", "data-petition-id" => "{{action.petition_id}}"}
 				%div.action-detail{:style => "padding: 0px 10px;"}
@@ -11,10 +11,6 @@
 						{{action.target_headline_text}}
 					%h1{:style => "font-size: 24px; line-height: 28px; margin-bottom:20px;"}
 						{{action.title}}
-					.row-fluid
-						%p.description
-							%span{:style => "display: block;"}
-								{{action.summary}}
 					.row-fluid
 						%button.btn{"ng-click" => "read_more(action)"}
 							Read More

@@ -12,6 +12,14 @@
     deliver_url: '/client_views/deliver'
     more_actions_url: '/client_views/more'
   }
+  $scope.get_call_to_action_button_copy = ->
+    if $scope.show.more_actions
+      return "Take More Actions"
+    else if $scope.show.deliver
+      return "Deliver Your Signature"
+    else
+     return scope.petition.call_to_action_button_text || "Sign Petition"
+
   $scope.petition = petition
   $scope.signature = {}
   $scope.deliver = {
@@ -84,14 +92,16 @@
       top: $("#action-slider").position().top - $("#sign-panel").height()
     }, 500, "linear", -> $('#actions-container').animate {
       height: $("#deliver-panel").height()
-    }, 300
+    }, 300, "linear", -> $('body,html').animate
+      scrollTop: $("#actions-container").offset().top
 
   $scope.scroll_to_more_actions= ->
     $('#action-slider').animate {
       top: $("#action-slider").position().top - $("#deliver-panel").height()
     }, 500, "linear", -> $('#actions-container').animate {
       height: $("#more-actions-panel").height()
-    }, 300
+    }, 300, "linear", -> $('body,html').animate
+      scrollTop: $("#actions-container").offset().top
 
   $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'

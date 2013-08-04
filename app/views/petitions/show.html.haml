@@ -11,8 +11,8 @@
       %span{:style => "display: block;"}
         {{petition.summary}}
   .row-fluid{:style => "margin: 0px auto 30px auto"}
-    %button#call-to-action-button.button.action-button.orange{:style => "padding: 20px 10%","ng-click"=>"show_action_click()"}
-      {{petition.call_to_action_button_text || "Sign Petition"}}
+    %button#call-to-action-button.button.action-button.orange{:style => "padding: 20px 10%", "ng-class" => "get_call_to_action_button_style", "ng-click"=>"show_action_click()"}
+      {{get_call_to_action_button_copy()}}
   .row-fluid
     #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
       .row-fluid
