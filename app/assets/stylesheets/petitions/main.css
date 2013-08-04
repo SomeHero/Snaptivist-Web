@@ -706,12 +706,6 @@ legend + .control-group {
     #header-image {
         display: none;
     }
-    #call-to-action-button {
-        display: none;
-    }
-    p.description {
-        display: none;
-    }
     #sign-why {
         height: 100px;
     }
