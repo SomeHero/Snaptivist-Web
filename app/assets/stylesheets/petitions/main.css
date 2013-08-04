@@ -709,6 +709,7 @@ legend + .control-group {
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
+    body { -webkit-text-size-adjust:100% } 
     #header-image {
         display: none;
     }
