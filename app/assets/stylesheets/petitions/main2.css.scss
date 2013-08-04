@@ -1,8 +1,12 @@
 @import '../brand';
 
+#sign-petition-signature {
+  max-width: 528px; 
+  margin: 0px auto;
+}
 #sign-petition {
   max-width: 528px; 
-  margin: 0px auto 0px auto;
+  margin: 0px auto;
   padding: 0px 10px;
   .controls {
     margin-bottom: 12px;
@@ -20,22 +24,17 @@
     margin: 0px auto 12px auto;
 }
 .comment-wrapper .comment-container {
-  margin: 0px auto 0px auto;
-  max-height: 128px;
   margin-bottom: 14px;
 }
 .comment-container .comment-username {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.28em;
     color: #14b9d6;
+    font-size: 1.15em
 }
 .comment-container .comment-timeago {
-   font-family: 'Lato-Bold', sans-serif;
-    font-size: 1em;
     color: #1d3037;
 }
 .comment-container .comment {
-   font-size: 16px;
+   font-size: .92em;
     color: #7a7a7a;
     display: block;
     margin-top: 10px;
@@ -45,7 +44,7 @@
 }
 .comment-wrapper .delivery-status {
     font-family: 'Lato', sans-serif;
-    font-size: 1.14em;
+    font-size: 1em;
     color: #d9d6d6;
 }
 
@@ -56,7 +55,7 @@
 .comment-wrapper .delivery-status-text:before {
     font-family: "FontAwesome";
     content: "\f099";
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 .comment-wrapper .delivery-status-checkbox {
     padding-left: 6px;

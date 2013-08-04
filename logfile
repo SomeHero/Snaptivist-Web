@@ -450,3 +450,11 @@ WARNING:  pgstat wait timeout
 WARNING:  pgstat wait timeout
 ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-04 15:32:45.673849' WHERE "users"."id" = 1
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-04 15:32:51.808434' WHERE "users"."id" = 1
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-04 15:33:02.450450' WHERE "users"."id" = 1
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-04 15:33:25.845930' WHERE "users"."id" = 1
