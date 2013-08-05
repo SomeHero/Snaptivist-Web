@@ -6,29 +6,6 @@
 					{{signature.user.first_name}}, thanks for adding your name, now let's deliver your signature
 				%p.description
 					Rest assured, adding your name is very valuable towards meeting our goal, but we want to get your voice heard today by delivering your signature directly to {{petition.target.first_name}} using Twitter
-				.container-fluid.comment-wrapper
-					.media.comment-container.solid-white-back.drop-shadow-full.clear-fix
-						%a.pull-left{:href => "#"}
-							%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature)}}"}/
-						.media-body{:style => "text-align: left;"}
-							%span.comment-username
-								You
-							%span.comment-timeago
-								signed this petition {{signature.created_at | fromNow }}
-							%span{"ng-bind" => "display_location(signature)"}
-							%span.comment
-								{{signature.comment}} 
-					.delivery-status.row-fluid.text-right
-						.devivered{"ng-show" => "show_signature_delivered(signature)"}
-							%span.delivery-status-text
-								STATUS: DELIVERED
-								%span
-									%img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-checked-delivery-status.png"}
-						.not-delivered{"ng-hide"  => "show_signature_delivered(signature)"}
-							%span.delivery-status-text
-								STATUS: PENDING
-								%span
-									%img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-delivery-status.png"}
 				.row-fluid
 					#sign-petition-deliver
 						#share-comment.drop-shadow-full.solid-white-back.text-left
