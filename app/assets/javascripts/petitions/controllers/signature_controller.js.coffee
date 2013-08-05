@@ -14,10 +14,14 @@
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
 
+    Util.push_ga_event("Petition", "Sign With Email", "Clicked (Pre Form Validation")
+   
     form.submitted = true
 
     if form.$valid
     
+      Util.push_ga_event("Petition", "Sign With Email", "Clicked ("Post Form Validation")
+   
       $scope.loading.show_spinner = true
 
       petition_id = $scope.petition.petition_id
