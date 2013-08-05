@@ -30,6 +30,8 @@
     
     # Load the SDK Asynchronously
     login = ->
+      Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
+   
       FB.login ((response) ->
         if response.authResponse
           console.log "FB.login connected"
@@ -74,11 +76,17 @@
 
   link: (scope, element, attrs, controller) ->
     
-    Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
-   
     # Additional JS functions here
     window.fbAsyncInit = ->
+      FB.init
+        appId: attrs.facebook # App ID
+        channelUrl: "//localhost:3000/channel.html" # Channel File
+        status: true # check login status
+        cookie: true # enable cookies to allow the server to access the session
+        oauth: true
+        xfbml: true # parse XFBML
 
+      
       # Additional init code here
       FB.getLoginStatus (response) ->
         if response.status is "connected"
