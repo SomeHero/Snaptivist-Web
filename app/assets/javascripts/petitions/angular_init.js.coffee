@@ -72,7 +72,7 @@
 
       if $scope.login_status is "connected"
         console.log "fetch"
-        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In))
+        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In")
    
         fetch()
       else
