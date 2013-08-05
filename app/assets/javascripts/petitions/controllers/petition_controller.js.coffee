@@ -126,6 +126,13 @@
 
     $scope.scroll_to_deliver()
 
+  $scope.$on 'signedPetitionWithFacebookFailed', (event) ->
+    console.log 'petition signed with facebook failed'
+
+    $scope.$apply ->
+      $scope.loading.show_spinner = false
+
+
   $scope.$on 'deliveredPetition', ->
     console.log 'petition delivered'
 
@@ -174,7 +181,7 @@
 
   $scope.has_sponsor = ->
     return $scope.petition.client
-    
+
   $scope.$on '$viewContentLoaded', ->
     console.log 'view loaded'
 

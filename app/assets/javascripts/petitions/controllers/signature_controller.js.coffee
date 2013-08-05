@@ -97,3 +97,10 @@
           console.log "signature failed: " + response
 
           Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
+
+          $rootScope.$broadcast('signedPetitionWithFacebookFailed')
+
+  $scope.sign_with_facebook_cancelled = ->
+      Util.push_ga_event("Petition", "Sign With Facebook", "Cancelled")
+            
+      $rootScope.$broadcast('signedPetitionWithFacebookFailed')

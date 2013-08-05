@@ -33,9 +33,16 @@
       FB.login ((response) ->
         if response.authResponse
           console.log "FB.login connected"
+          Util.push_ga_event("Petition", "Facebook Login", "Connected")
+   
           $scope.sign_with_facebook(response.authResponse)
         else
           console.log "FB.login cancelled"
+
+          Util.push_ga_event("Petition", "Facebook Login", "Cancelled")
+
+          $scope.sign_with_facebook_cancelled()
+   
       ),
         scope: "email,publish_stream"
 
@@ -67,6 +74,8 @@
 
   link: (scope, element, attrs, controller) ->
     
+    Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
+   
     # Additional JS functions here
     window.fbAsyncInit = ->
       FB.init
@@ -81,18 +90,20 @@
       FB.getLoginStatus (response) ->
         if response.status is "connected"
           
+          Util.push_ga_event("Petition", "Facebook Status", "Connected")
+   
           # connected
           scope.auth = response.authResponse
         else if response.status is "not_authorized"
-
+          Util.push_ga_event("Petition", "Facebook Status", "Not Authorized")
         
         # not_authorized
         else
-
+          Util.push_ga_event("Petition", "Facebook Status", "Not Logged In")
         
-        # not_logged_in
-        scope.login_status = response.status
-        scope.$apply()
+          # not_logged_in
+          scope.login_status = response.status
+          scope.$apply()
 
 
 # end of fbAsyncInit
