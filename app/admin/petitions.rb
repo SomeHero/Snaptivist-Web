@@ -2,7 +2,7 @@ ActiveAdmin.register Petition do
   	index do
 		selectable_column
 		column :id
-		column("Organization") { |petition| petition.user.organization_name }
+		column :client
 		column :title
 		column :short_url
 		column :subdomain
