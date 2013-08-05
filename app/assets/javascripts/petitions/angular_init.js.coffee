@@ -30,8 +30,7 @@
     
     # Load the SDK Asynchronously
     login = ->
-      Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
-   
+
       FB.login ((response) ->
         if response.authResponse
           console.log "FB.login connected"
@@ -67,11 +66,18 @@
       ref.parentNode.insertBefore js, ref
     ) document
     $scope.fetch = ->
+      Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
+   
       $scope.loading.show_spinner = true
+
       if $scope.login_status is "connected"
         console.log "fetch"
+        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In))
+   
         fetch()
       else
+        Util.push_ga_event("Petition", "Sign With Facebook", "Logging In")
+   
         login()
 
   link: (scope, element, attrs, controller) ->
