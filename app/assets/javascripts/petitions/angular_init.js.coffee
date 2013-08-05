@@ -44,7 +44,7 @@
           $scope.sign_with_facebook_cancelled()
    
       ),
-        scope: "email,publish_stream"
+        scope: "email"
 
     fetch = ->
 
