@@ -15,6 +15,7 @@ ActiveAdmin.register Petition do
 
 	form :html => { :enctype => "multipart/form-data" } do |f|
 		f.inputs "Details" do
+			f.input :client
 			f.input :user, :collection => User.where("organization_name is not null")
 			f.input :target, :collection => Target.order("targetgroup_id").order("last_name").order("first_name").all
 			f.input :subdomain

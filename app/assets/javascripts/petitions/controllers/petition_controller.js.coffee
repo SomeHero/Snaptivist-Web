@@ -22,6 +22,7 @@
 
   $scope.petition = petition
   $scope.signature = {}
+
   $scope.deliver = {
     tweet: $interpolate($scope.petition.default_tweet_text || "")($scope)
   }
@@ -171,22 +172,22 @@
     else
       $scope.summary_more_text = "Less"
 
+  $scope.has_sponsor = ->
+    return $scope.petition.client
+    
   $scope.$on '$viewContentLoaded', ->
     console.log 'view loaded'
-
-    new_height = $(".view-enter#loaded-view").height()
-    if $(".with-rs-slider").length
-      new_height += 450 
-
-    $("#view-container").animate({
-      height: new_height
-    }, 1000, ->
-      $scope.$apply ->
-        $scope.loading.show_spinner = false
-    )
 
   $scope.$on 'handleFacebookAuth', (event, source) ->
     console.log "Facebook Login Success"
 
 
   $scope.load_progress_marker()
+
+  if signature
+    $scope.signature = signature
+
+    $scope.show.signature = false
+    $scope.show.deliver = true
+
+    $scope.scroll_to_deliver()

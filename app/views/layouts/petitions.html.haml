@@ -20,6 +20,9 @@
       petition =
       != @petition ? @petition.to_api.to_json : nil
 
+      signature =
+      != @signature ? @signature.to_api.to_json : false
+
       _test_env =
       != (Rails.env == 'production' ? nil : 'testing' ).to_json
       

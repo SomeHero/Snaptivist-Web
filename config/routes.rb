@@ -31,6 +31,7 @@ SnaptivistWeb::Application.routes.draw do
   match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
   match '/welcome' => 'home#welcome'
   
+  match '/:signature_id' => 'actions#view', :constraints => { :subdomain => /.+/ }
   match '/' => 'actions#view', :constraints => { :subdomain => /.+/ }
   match 'petitions/:action_title', :to =>'petitions#view'
   match 'polls/:action_title', :to =>'polls#view'

@@ -11,7 +11,7 @@
       %span{:style => "display: block;"}
         {{petition.summary}}
   .row-fluid{:style => "margin: 0px auto 30px auto"}
-    %button#call-to-action-button.button.action-button.orange{:style => "padding: 20px 10%", "ng-class" => "get_call_to_action_button_style", "ng-click"=>"show_action_click()"}
+    %button#call-to-action-button.button.action-button.orange{:style => "padding: 20px 10%", "ng-click"=>"show_action_click()"}
       {{get_call_to_action_button_copy()}}
   .row-fluid
     #target-count-wrapper.container-fluid{:style => "margin: 0px auto 10px auto;"}
@@ -41,15 +41,15 @@
           %div{"ng-show" => "show.deliver", "ng-include" => "templates.deliver_url"}
         .row-fluid#more-actions-panel{:style => "position: absolute", "ng-controller" => "MoreActionController"}
           %div{"ng-show" => "show.more_actions", "ng-include" => "templates.more_actions_url"}
-  .row-fluid#sponsor-comment
+  .row-fluid#sponsor-comment{"ng-show" => "has_sponsor()"}
     .container-fluid.comment-wrapper
       %h5.text-left This Petition is Sponsored By
       .media.comment-container.solid-white-back.drop-shadow-full.clear-fix
         %a.pull-left{:href => "#"}
-          %img.media-object.avatar{"ng-src" => "{{petition.creator.image_medium}}"}/
+          %img.media-object.avatar{"ng-src" => "{{petition.client.image_medium}}"}/
         .media-body{:style => "text-align: left;"}
           %span.comment-username
-            {{petition.creator.organization_name}}
+            {{petition.client.name}}
           %span.comment-timeago
             created this petition {{petition.created_at | fromNow }}
           %span.comment
