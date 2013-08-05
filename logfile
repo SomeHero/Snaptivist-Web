@@ -462,3 +462,12 @@ ERROR:  value too long for type character varying(255)
 STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-04 18:26:31.549176' WHERE "users"."id" = 1
 ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+WARNING:  pgstat wait timeout
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-05 15:21:27.285896' WHERE "users"."id" = 1
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-05 15:22:59.496724' WHERE "users"."id" = 1
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-05 15:23:45.924032' WHERE "users"."id" = 1
+ERROR:  value too long for type character varying(255)
+STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-05 15:30:20.762021' WHERE "users"."id" = 1
