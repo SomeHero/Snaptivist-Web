@@ -129,8 +129,9 @@
   $scope.$on 'signedPetitionWithFacebookFailed', (event) ->
     console.log 'petition signed with facebook failed'
 
-    $scope.$apply ->
-      $scope.loading.show_spinner = false
+    unless $scope.$$phase
+      $scope.$apply ->
+        $scope.loading.show_spinner = false 
 
 
   $scope.$on 'deliveredPetition', ->
