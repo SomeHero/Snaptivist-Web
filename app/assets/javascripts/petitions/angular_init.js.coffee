@@ -78,14 +78,7 @@
    
     # Additional JS functions here
     window.fbAsyncInit = ->
-      FB.init
-        appId: attrs.facebook # App ID
-        channelUrl: "//localhost:3000/channel.html" # Channel File
-        status: true # check login status
-        cookie: true # enable cookies to allow the server to access the session
-        xfbml: true # parse XFBML
 
-      
       # Additional init code here
       FB.getLoginStatus (response) ->
         if response.status is "connected"
