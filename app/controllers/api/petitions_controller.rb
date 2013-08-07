@@ -92,9 +92,14 @@ class Api::PetitionsController < ApplicationController
           @user.first_name = params[:first_name]
           @user.last_name = params[:last_name]
           @user.zip_code = params[:zip_code]
-          if @user.action_tags
-            
-            @user.action_tags += "," + @petition.action_tags
+          
+          if @user.action_tags && @petition.action_tags
+            action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
+            current_tags = Array.wrap(@user.action_tags.split(",")).collect{|x| x.strip}
+        
+            action_tags.each do |action_tag|
+              @user.action_tags += "," + action_tag if !action_tags.include?(action_tag)
+            end
           else
             @user.action_tags = @petition.action_tags
           end
@@ -181,8 +186,13 @@ class Api::PetitionsController < ApplicationController
       user.first_name = facebook_profile['first_name']
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-      if user.action_tags
-        user.action_tags += "," + petition.action_tags
+
+      if user.action_tags  && petition.action_tags
+          action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
+          current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
+          action_tags.each do |action_tag|
+            @user.action_tags += "," + action_tag if !action_tags.include?(action_tag)
+          end
       else
         user.action_tags = petition.action_tags
       end
@@ -279,6 +289,22 @@ class Api::PetitionsController < ApplicationController
     petition = Petition.find(params[:id]);
 
     raise "Unable to find petition" unless petition
+
+    if petition.action_tags
+      if current_user.action_tags
+        action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
+        current_tags = Array.wrap(current_user.action_tags.split(",")).collect{|x| x.strip}
+        action_tags.each do |action_tag|
+          Rails.logger.debug "Action Tag is " + action_tag
+
+          current_user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+        end
+      else
+        current_user.action_tags = petition.action_tags
+      end
+
+      current_user.save!
+    end
 
     signature = current_user.signatures.find_by_petition_id(petition.id)
     last_signature = current_user.signatures.last
