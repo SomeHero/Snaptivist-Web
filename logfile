@@ -473,3 +473,4 @@ ERROR:  value too long for type character varying(255)
 STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones,#drones', "updated_at" = '2013-08-05 15:30:20.762021' WHERE "users"."id" = 1
 ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+WARNING:  pgstat wait timeout
