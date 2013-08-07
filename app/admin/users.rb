@@ -5,8 +5,8 @@ ActiveAdmin.register User do
 		column :email
 		column :first_name
 		column :last_name
-		column :organization_name
 		column :zip_code
+		column :action_tags
 		column :created_at
 
 		default_actions

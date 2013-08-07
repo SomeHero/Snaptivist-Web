@@ -474,3 +474,13 @@ STATEMENT:  UPDATE "users" SET "action_tags" = ',#drones,#drones,#drones,#drones
 ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
 WARNING:  pgstat wait timeout
+LOG:  database system was interrupted; last known up at 2013-08-06 20:39:20 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/EE330B8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "give_flows".* FROM "give_flows"  WHERE "give_flows"."id" = $1 LIMIT 1
