@@ -98,7 +98,7 @@ class Api::PetitionsController < ApplicationController
             current_tags = Array.wrap(@user.action_tags.split(",")).collect{|x| x.strip}
         
             action_tags.each do |action_tag|
-              @user.action_tags += "," + action_tag if !action_tags.include?(action_tag)
+              @user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
             end
           else
             @user.action_tags = @petition.action_tags
@@ -191,7 +191,7 @@ class Api::PetitionsController < ApplicationController
           action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
           current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
           action_tags.each do |action_tag|
-            @user.action_tags += "," + action_tag if !action_tags.include?(action_tag)
+            @user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
           end
       else
         user.action_tags = petition.action_tags
