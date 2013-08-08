@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805012341) do
+ActiveRecord::Schema.define(:version => 20130807233424) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -263,6 +263,18 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
     t.integer  "targetgroup_id"
     t.integer  "state_information_id"
   end
+
+  create_table "user_notification_logs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "notification_type"
+    t.string   "notification_uri"
+    t.boolean  "sent"
+    t.boolean  "test"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "user_notification_logs", ["user_id"], :name => "index_user_notification_logs_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                            :default => "", :null => false

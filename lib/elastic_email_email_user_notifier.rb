@@ -27,6 +27,13 @@ module UserNotification
 
         merge_fields = params_hash[:merge_fields]
         ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields)
+      when UserNotification::Notification::SIGNATURE_DELIVERY_REMINDER
+        user = params_hash[:user]
+        template_name = "Delivery Follow Up"
+        subject = "Your Message Wasn't Delivered"
+
+        merge_fields = params_hash[:merge_fields]
+        ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields)
       else
           raise "I don't know how to handle notifications of type '#{notification_type}'!"
       end
