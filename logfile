@@ -484,3 +484,12 @@ ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "give_flows".* FROM "give_flows"  WHERE "give_flows"."id" = $1 LIMIT 1
+LOG:  database system was shut down at 2013-08-09 09:34:34 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"

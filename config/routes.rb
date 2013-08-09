@@ -25,6 +25,10 @@ SnaptivistWeb::Application.routes.draw do
     resources :targets
   end
   
+  namespace :dashboard do
+    resource :widgets
+    resources :client_views, only: [:show]
+  end
 
   resources :client_views, only: [:show]
 
