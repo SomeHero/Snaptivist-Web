@@ -9,8 +9,8 @@
 				.row-fluid
 					#sign-petition-deliver
 						#share-comment.drop-shadow-full.solid-white-back.text-left
-							%textarea#comment{:maxlength => "115", :style => "width: 90%", "ng-model" => "deliver.tweet"}
-							#message-counter.text-right {{115 - deliver.tweet.length}}
+							%textarea#comment{:maxlength => "140", :style => "width: 90%", "ng-model" => "deliver.tweet"}
+							#message-counter.text-right {{140 - deliver.tweet.length}}
 						%button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
 							%span
 								{{petition.tweet_cta_button_text || "Tweet @Target"}}
