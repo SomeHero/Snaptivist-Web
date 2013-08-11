@@ -7,8 +7,8 @@ ActiveAdmin.register Petition do
 		column :short_url
 		column :subdomain
 		column :signatures_count
-		column("Share Count") { |petition| petition.signatures.where("shared = true").count }
-		column("Delivery Count") { |petition| petition.signatures.where("delivered = true").count }
+		column("Share Count") { |petition| petition.signatures.limit(nil).where("shared = true").count }
+		column("Delivery Count") { |petition| petition.signatures.limit(nil).where("delivered = true").count }
 		column :active
 		default_actions
 	end
