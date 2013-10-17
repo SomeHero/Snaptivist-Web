@@ -7,8 +7,8 @@
 			.row-fluid#signature-container
 				.span6.top-content-wrapper#petition-image-wrapper
 					%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
-				.span6.top-content-wrapper#signature-form-wrapper.well
-					%div#signature-form-container
+				.span6.top-content-wrapper.vertical-middle-table#signature-form-wrapper.well
+					%div.vertical-middle-cell#signature-form-container
 						.row-fluid.bottom-margin
 							.span12.text-center
 								%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()"}
@@ -66,4 +66,4 @@
 			More Signers
 	.row-fluid.bottom-margin#client-logo-wrapper
 		.span12.text-center
-			Campaign Logo
+			%img{"ng-src" => "{{petition.client.image_small}}"}

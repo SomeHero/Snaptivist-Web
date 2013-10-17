@@ -63,6 +63,7 @@ class Api::PetitionsController < ApplicationController
 
     Twitter.update(params[:tweet])
 
+    #add tweet record
     @signature.delivered = true
     @signature.delivered_at = Time.now
 
@@ -367,6 +368,27 @@ class Api::PetitionsController < ApplicationController
     result = {
       signatures: @signatures.map { |s| s.to_api },
       total: Signature.find_all_by_petition_id(@petition.id).count
+    }
+
+    render_result result
+
+  end
+
+  def tweets
+    @petition = Petition.find(params[:id])
+
+    page_size = 10
+    offset = 0
+
+    if params[:offset]
+      offset = params[:offset]
+    end
+
+    @signatures_with_tweets = @petition.signatures.joins(:tweet).uniq.limit(page_size).offset(offset)
+
+    result = {
+      tweets: @signatures_with_tweets.map { |s| s.tweet.to_api },
+      total: @petition.signatures.joins(:tweet).uniq.all.count
     }
 
     render_result result

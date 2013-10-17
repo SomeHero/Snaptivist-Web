@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131013144340) do
+ActiveRecord::Schema.define(:version => 20131017034328) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20131013144340) do
     t.boolean  "shared"
     t.datetime "shared_at"
     t.string   "signature_method"
+    t.integer  "tweet_id"
   end
 
   add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"
@@ -308,6 +309,12 @@ ActiveRecord::Schema.define(:version => 20131013144340) do
     t.string   "css_file"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tweets", :force => true do |t|
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_notification_logs", :force => true do |t|

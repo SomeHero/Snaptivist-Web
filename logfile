@@ -493,3 +493,64 @@ ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
 ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+LOG:  database system was shut down at 2013-10-17 00:25:33 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column signatures.tweet_id does not exist at character 90
+STATEMENT:  SELECT  DISTINCT "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+ERROR:  column signatures.tweet_id does not exist at character 90
+STATEMENT:  SELECT  DISTINCT "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 2 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 2 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column signatures.tweet_id does not exist at character 90
+STATEMENT:  SELECT  DISTINCT "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+ERROR:  column signatures.tweet_id does not exist at character 81
+STATEMENT:  SELECT  "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+ERROR:  relation "signature" does not exist
+STATEMENT:  ALTER TABLE "signature" DROP "tweet_id"
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist

@@ -20,7 +20,8 @@ jcc_user = User.create!(
 )
 #create some client users
 jcc = Client.create!(
-	name: 'John Cornyn Campaign'
+	name: 'John Cornyn Campaign',
+	avatar: File.open(File.join(image_dir, 'jcc_logo.png')),
 
 )
 #seeding in layout, pages and themes
@@ -79,7 +80,7 @@ Petition.create!(
 	signature_comment_placeholder_text: 'Tell Obama what you think',
 	sign_with_facebook_cta_button_text: 'Sign with Facebook',
 	sign_with_email_cta_button_text: 'Sign with Email Address',
-	default_tweet_text: 'Tweet Barack',
+	default_tweet_text: 'Hey @BarackObama stop killing people with flying robots! Sign the petition: http://sign.ru/p232a',
 	action_tags: '#petition-1',
 	tweet_cta_button_text: 'Tweet',
 	active: true,
@@ -102,10 +103,14 @@ Petition.create!(
 				zip_code: "23221"
 		),
 		comment: "This practice needs to stop now #{index + 1}"
-	)
-	end
-	#seed in some tweeters
-	13.times do |index|
+	).tap { |sig|
+		if [true, false].sample
+			sig.tweet = Tweet.create!(
+				message: "Hey @BarackObama stop killing people with flying robots! Sign the petition: http://sign.ru/p232a"
+			)
+			sig.save!
+		end
+	}
 
 	end
 	#seed in a premium

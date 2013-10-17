@@ -7,16 +7,25 @@
 			.row-fluid
 				.span6.top-content-wrapper
 					%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
-				.span6.top-content-wrapper.well
-					%div.delivery-form-container
-						.row-fluid
-							.span12
-								%h5
-									Please Tweet Your Signature to Help Us Reach Our Goal
-						.row-fluid
-							.span12
-								%textarea
-									Hey @BarackObama stop killing people with flying robots! Sign the petition: http://sign.ru/p232a
+				.span6.top-content-wrapper.vertical-middle-table.well
+					%div.delivery-form-container.vertical-middle-cell
+						%form{:name => "myForm", "novalidate" => true, :style => "margin: 0px;"}
+							.row-fluid
+								.span12
+									%h4{:style => "font-size: 1.4em"}
+										Please Tweet Your Signature to Help Us Reach Our Goal
+							.row-fluid
+								.span12
+									%textarea{:style=>"width: 96%", "rows"=>"5"}
+										{{petition.default_tweet_text}}
+							.row-fluid
+								.span12
+									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "sign_with_email_address(myForm)"}
+										Tweet My Signature
+							.row-fluid
+								.span12
+									%button.btn.btn-link
+										I Don't Use Twitter
 			.row-fluid#signature-count-wrapper
 				.span12
 					%div.progress
@@ -26,16 +35,24 @@
 							Signers:  {{petition.signature_count || 0 }}
 						.span6.text-right#target-count
 							Goal: {{petition.target_count || 1000 }}
-	.row-fluid
-		.row-fluid
-			.span6.text-center
-				Tweet 1
-			.span6.text-center
-				Tweet 2
+	.row-fluid.bottom-margin#user-signature-wrapper{"ng-controller" => "TweetController"}
+		%ul#user-signature-list
+			%li.user-signature-item{"ng-repeat" => "tweet in tweets.items | orderBy: 'created_at':true"}
+				%div.media.thumbnail
+					%a.pull-left
+						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(tweet)}}"}
+					.media-body
+						%div.comment
+							%div.user-name
+								Test U
+							%div.tweet-message
+								{{tweet.message}}
+						%div.comment-timeago
+							Tweeted {{tweet.created_at | fromNow }} 
 
 	.row-fluid.bottom-margin#more-tweets-button-wrapper
 		%button.btn.btn-primary#more-tweets-button
 			More Tweets
 	.row-fluid.bottom-margin#client-logo-wrapper
 		.span12.text-center
-			Campaign Logo
+			%img{"ng-src" => "{{petition.client.image_small}}"}

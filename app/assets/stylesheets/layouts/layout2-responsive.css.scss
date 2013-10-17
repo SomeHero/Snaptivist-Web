@@ -58,6 +58,15 @@
 }
 
 @media only screen and (min-width:960px) {
+	.vertical-middle-table {
+		min-height: 350px; 
+		display: table;
+		.vertical-middle-cell {
+			display: table-cell; 
+			vertical-align: middle; 
+			height: 310px;
+		}
+	}
 	#petition-container {
 		width: 80%;
 		margin: 0px auto;
