@@ -20,11 +20,11 @@
 										{{petition.default_tweet_text}}
 							.row-fluid
 								.span12
-									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "sign_with_email_address(myForm)"}
+									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_premium()"}
 										Tweet My Signature
 							.row-fluid
 								.span12
-									%button.btn.btn-link
+									%button.btn.btn-link{"ng-click" => "go_to_premium()"}
 										I Don't Use Twitter
 			.row-fluid#signature-count-wrapper
 				.span12

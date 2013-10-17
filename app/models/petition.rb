@@ -8,6 +8,7 @@ class Petition < ActiveRecord::Base
   
   belongs_to :layout
   belongs_to :theme
+  belongs_to :premium_offer
 
   validates :title, :presence => true
   validates :summary, :presence => true
@@ -84,6 +85,7 @@ class Petition < ActiveRecord::Base
         'creator' => user.to_api,
         'client' => client ? client.to_api : nil,
         'comment' => comment,
+        'premium_offer' => premium_offer ? premium_offer.to_api : nil,
         'created_at' => created_at,
         'updated_at' => updated_at,
       }

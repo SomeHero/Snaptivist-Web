@@ -67,4 +67,5 @@
 
     $rootScope.$broadcast('skipDelivery')
         
-
+  $scope.go_to_premium = ->
+    Util.navigate "/premium"

@@ -108,3 +108,6 @@
       Util.push_ga_event("Petition", "Sign With Facebook", "Cancelled")
             
       $rootScope.$broadcast('signedPetitionWithFacebookFailed')
+
+  $scope.go_to_delivery = ->
+    Util.navigate "/deliver"

@@ -111,8 +111,14 @@ Petition.create!(
 			sig.save!
 		end
 	}
+	p.premium_offer = PremiumOffer.create!(
+		name: "Bumper Magnet",
+		headline_text: "Thanks for 	Signing! Complete the Form below to Request Your Free Bumper Magnet",
+		call_to_action_button_text: "Send My Magnet"
+	)
+
+	p.save!
 
 	end
-	#seed in a premium
 }
 

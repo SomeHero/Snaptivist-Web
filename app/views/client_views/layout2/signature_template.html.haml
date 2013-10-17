@@ -11,7 +11,7 @@
 					%div.vertical-middle-cell#signature-form-container
 						.row-fluid.bottom-margin
 							.span12.text-center
-								%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()"}
+								%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "go_to_delivery()"}
 									%span
 										{{petition.sign_with_facebook_cta_button_text || "Sign With Facebook"}}
 						.row-fluid.text-center.bottom-margin#signature-form-or-container
@@ -32,7 +32,7 @@
 										%input{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required" => true}
 								.row-fluid
 									.span12.text-center
-										%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "sign_with_email_address(myForm)"}
+										%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
 											{{petition.sign_with_email_cta_button_text || "Add My Name"}}
 			.row-fluid#signature-count-wrapper
 				.span12

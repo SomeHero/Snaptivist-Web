@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017034328) do
+ActiveRecord::Schema.define(:version => 20131017154425) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -137,6 +137,21 @@ ActiveRecord::Schema.define(:version => 20131017034328) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "mailing_addresses", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "city"
+    t.string   "string"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "phone_number"
+    t.string   "email_address"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -178,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20131017034328) do
     t.integer  "client_id"
     t.integer  "layout_id"
     t.integer  "theme_id"
+    t.integer  "premium_offer_id"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -227,6 +243,26 @@ ActiveRecord::Schema.define(:version => 20131017034328) do
     t.integer  "header_image_file_size"
     t.datetime "header_image_updated_at"
     t.string   "comment"
+  end
+
+  create_table "premium_gives", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "signature_id"
+    t.integer  "mailing_address_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "premium_gives", ["mailing_address_id"], :name => "index_premium_gives_on_mailing_address_id"
+  add_index "premium_gives", ["signature_id"], :name => "index_premium_gives_on_signature_id"
+  add_index "premium_gives", ["user_id"], :name => "index_premium_gives_on_user_id"
+
+  create_table "premium_offers", :force => true do |t|
+    t.string   "name"
+    t.string   "headline_text"
+    t.string   "call_to_action_button_text"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "signatures", :force => true do |t|
