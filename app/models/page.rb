@@ -11,7 +11,6 @@ class Page < ActiveRecord::Base
       'description' => description,
       'template_name' => template_name
     }
-
     return results;
 
   end
