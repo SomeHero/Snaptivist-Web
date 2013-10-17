@@ -47,6 +47,7 @@ gem 'aws-sdk'
 gem 'newrelic_rpm'
 gem 'airbrake'
 gem 'rufus-scheduler'
+gem  'awesome_print'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -2,7 +2,7 @@
 
   window.scope = $scope
 
-  $scope.signature_form = {
+  $scope.signature = {
     first_name: ''
     last_name: ''
     email_address: ''
@@ -26,7 +26,7 @@
 
       petition_id = $scope.petition.petition_id
 
-      PetitionServices.sign_with_email_address(petition_id, $scope.signature_form).success (response) ->
+      PetitionServices.sign_with_email_address(petition_id, $scope.signature).success (response) ->
         console.log "signature complete"
         Util.push_ga_event("Petition", "Sign With Email", "Success")
    
@@ -44,12 +44,12 @@
         $scope.loading.show_spinner = false
 
   $scope.sign_with_facebook = (auth)->
-    console.log "Facebook Login Success 2"
+    console.log "Facebook Login Success"
 
     $scope.auth = auth
 
     $scope.$apply ->
-      PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature_form).success (response) ->
+      PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature).success (response) ->
           if response.statusCode is 200
             console.log "signature complete; trying to Share via FB"
           

@@ -31,15 +31,19 @@
 			
 			}
 		%script
+			stats =
+			!= @stats ? @stats.to_json : nil
 
 			petitions =
-			!= @petitions ? @petitions.map { |p| p.to_api.to_json } : nil
-
-	= yield
+			!= @petitions ? @petitions.to_json : nil
+	
+	%div{"ng-app"=>"clients"}
+		= yield
 
 	%script{:src => "/assets/libs/jquery-1.8.3.min.js"}
+	%script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"}
 	%script{:src => "/assets/libs/jquery-ui-1.10.0.custom.min.js"}
-	%script{:src => "/assets/libs/bootstrap.min.js"}
+	%script{:src => "/assets/dashboard/clients/index.js"}
 	%script{:src => "/assets/libs/plugins/flot/jquery.flot.js"}
 	%script{:src => "/assets/libs/plugins/flot/jquery.flot.pie.js"}
 	%script{:src => "/assets/libs/plugins/flot/jquery.flot.orderBars.js"}

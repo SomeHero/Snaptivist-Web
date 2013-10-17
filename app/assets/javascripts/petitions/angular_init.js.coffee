@@ -4,10 +4,13 @@
 @app.config ['$routeProvider', ($routeProvider) ->
   base_page_url = '/sign'
   $routeProvider.when('/sign',
-    templateUrl: '/client_views/sign'
+    templateUrl: '/client_views/layout2/signature_template'
     controller: SignatureController 
   ).when('/deliver',
-    templateUrl: '/client_views/deliver'
+    templateUrl: '/client_views/layout2/delivery_template'
+    controller: DeliveryController 
+  ).when('/premium',
+    templateUrl: '/client_views/layout2/premium_template'
     controller: DeliveryController 
   ).when('/complete',
     templateUrl: '/client_views/more'

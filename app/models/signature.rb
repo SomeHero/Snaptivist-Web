@@ -1,7 +1,7 @@
 class Signature < ActiveRecord::Base
   belongs_to :user
   belongs_to :petition, :counter_cache => true
-  attr_accessible :comment
+  attr_accessible :user, :comment
 
   validates :user, :presence => true
 
@@ -22,7 +22,7 @@ class Signature < ActiveRecord::Base
   end
   after_validation :geocode, :reverse_geocode
   
-     # generate the petition
+  # generate the petition
   def to_api
 
     results = {

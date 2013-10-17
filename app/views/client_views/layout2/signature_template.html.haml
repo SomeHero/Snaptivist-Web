@@ -1,0 +1,69 @@
+.container-fluid#petition-container
+	.row-fluid
+		%h2.text-left#petition-headline
+			{{petition.title }}
+	.row-fluid
+		%div#signature-container-wrapper.well{"data-facebook" => Settings.facebook_app_id }
+			.row-fluid#signature-container
+				.span6.top-content-wrapper#petition-image-wrapper
+					%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
+				.span6.top-content-wrapper#signature-form-wrapper.well
+					%div#signature-form-container
+						.row-fluid.bottom-margin
+							.span12.text-center
+								%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()"}
+									%span
+										{{petition.sign_with_facebook_cta_button_text || "Sign With Facebook"}}
+						.row-fluid.text-center.bottom-margin#signature-form-or-container
+							%span
+								Or
+						%div#sign-with-email-address-wrapper
+							%form{:name => "myForm", "novalidate" => true, :style => "margin: 0px;"}
+								.row-fluid
+									.span6.text-left#first-name-wrapper
+										%input#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "required" => true}
+									.span6.text-left
+										%input{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name", "required" => true}
+								.row-fluid
+									.span12.text-left
+										%input{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address", "required" => true}
+								.row-fluid
+									.span12.text-left
+										%input{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required" => true}
+								.row-fluid
+									.span12.text-center
+										%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "sign_with_email_address(myForm)"}
+											{{petition.sign_with_email_cta_button_text || "Add My Name"}}
+			.row-fluid#signature-count-wrapper
+				.span12
+					%div.progress
+						%div.bar{:style => "width: {{calulate_petition_signature_percentage()}}%"}
+					.row-fluid
+						.span6.text-left#signers-count
+							Signers:  {{petition.signature_count || 0 }}
+						.span6.text-right#target-count
+							Goal: {{petition.target_count || 1000 }}
+	.row-fluid
+		%div#petition-summary-wrapper
+			%p.text-left
+				{{petition.summary}}
+	.row-fluid.bottom-margin#user-signature-wrapper{"ng-controller" => "CommentController"}
+		%ul#user-signature-list
+			%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+				%div.media.thumbnail
+					%a.pull-left
+						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature)}}"}
+					.media-body
+						%div.comment
+							%span.user-name
+								{{signature.user.first_name + " " + signature.user.last_name}}
+							%span.location
+								in Richmond, VA
+						%div.comment-timeago
+							Signed {{signature.created_at | fromNow }} 
+	.row-fluid.bottom-margin#more-signers-button-wrapper
+		%button.btn.btn-primary#more-signers-button
+			More Signers
+	.row-fluid.bottom-margin#client-logo-wrapper
+		.span12.text-center
+			Campaign Logo

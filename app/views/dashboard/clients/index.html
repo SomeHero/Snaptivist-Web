@@ -1,4 +1,4 @@
-
+<div ng-controller="ClientsController" ng-cloak="">
 <div class="navbar navbar-inverse navbar-fixed-top">
 	
 	<div class="navbar-inner">
@@ -10,7 +10,7 @@
 			</a>
 			
 			<a class="brand" href="./index.html">
-				Base Admin <sup>2.0</sup>				
+				Snaptivist <sup>1.0</sup>				
 			</a>		
 			
 			<div class="nav-collapse">
@@ -34,7 +34,7 @@
 					<li class="dropdown">						
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-user"></i> 
-							Rod Howard
+							Norm Leahy
 							<b class="caret"></b>
 						</a>
 						
@@ -46,11 +46,7 @@
 						</ul>						
 					</li>
 				</ul>
-			
-				<form class="navbar-search pull-right">
-					<input type="text" class="search-query" placeholder="Search">
-				</form>
-				
+
 			</div><!--/.nav-collapse -->	
 	
 		</div> <!-- /container -->
@@ -76,17 +72,17 @@
 			<div class="subnav-collapse collapse">
 				<ul class="mainnav">
 				
-					<li class="">
-						<a href="./index.html">
+					<li class="active">
+						<a href="/dashboard/clients">
 							<i class="icon-home"></i>
-							<span>Home</span>
+							<span>Dashboard</span>
 						</a>	    				
 					</li>
 					
 					<li class="dropdown">					
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-th"></i>
-							<span>Components</span>
+							<span>Petitions</span>
 							<b class="caret"></b>
 						</a>	    
 					
@@ -99,7 +95,7 @@
 						</ul> 				
 					</li>
 					
-					<li class="dropdown active">					
+					<li class="dropdown">					
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-copy"></i>
 							<span>Sample Pages</span>
@@ -156,35 +152,8 @@
       
       	<div class="span12">
       		
-      		<div class="widget big-stats-container stacked">
-      			
-      			<div class="widget-content">
-      				
-		      		<div id="big_stats" class="cf">
-						<div class="stat">								
-							<h4>Active Campaigns</h4>
-							<span class="value">12</span>								
-						</div> <!-- .stat -->
-						
-						<div class="stat">								
-							<h4>Daily Signatures</h4>
-							<span class="value">23</span>								
-						</div> <!-- .stat -->
-						
-						<div class="stat">								
-							<h4>Daily Shares</h4>
-							<span class="value">2</span>								
-						</div> <!-- .stat -->
-						
-						<div class="stat">								
-							<h4>Daily Deliveries</h4>
-							<span class="value">13</span>								
-						</div> <!-- .stat -->
-					</div>
-				
-				</div> <!-- /widget-content -->
-				
-			</div> <!-- /widget -->
+      		<div class="widget big-stats-container stacked" ng-include="" src="'/dashboard/client_views/stat_bar.html'">
+      		</div>
       		
       	</div> <!-- /span12 -->	
       	
@@ -194,16 +163,10 @@
       	
       	<div class="span12">
       		
-      		<div class="widget stacked">
-					
-				
-					
-			</div> <!-- /widget -->
-			
-      		
-      		
-      		
-	    </div> <!-- /span6 -->
+      		<div class="widget stacked" ng-include="" src="'/dashboard/client_views/all_campaigns.html'">
+      		</div>
+			      		
+	    </div> <!-- /span12 -->
       	
       	
       	

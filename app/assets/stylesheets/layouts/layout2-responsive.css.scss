@@ -1,0 +1,97 @@
+/*Imported styles based on screen size of viewing device*/
+/*This creates the responsive design*/
+@media only screen and (max-width:959px) {
+  /*@import 'size/mobile';*/
+	#petition-container {
+		#petition-image-wrapper {
+			margin-bottom: 20px;
+		}
+		#signature-form-wrapper {
+			#sign-with-facebook-button {
+				width: 100%;
+			}
+			#sign-with-email-address-wrapper {
+				input {
+					width: 96%;
+				}
+				#sign-with-email-address-button {
+					width: 100%;
+				}
+			}
+		}
+		#signature-count-wrapper {
+			#signers-count {
+				float: left;
+				width: auto;
+			}
+			#target-count {
+				width: auto;
+			}
+		}
+		#user-signature-wrapper {
+			.user-signature-item {
+				width: 100%;
+				.media {
+					.pull-left {
+						float: left;
+					}
+				}
+			}
+		}
+		#more-signers-button-wrapper { 
+			#more-signers-button {
+				width: 100%;
+			}
+		}
+		#more-tweets-button-wrapper { 
+			#more-tweets-button {
+				width: 100%;
+			}
+		}
+	}
+}
+@media only screen and (max-width:449px) {
+  /*@import 'size/portrait';*/
+}
+@media only screen and (min-width:450px) and (max-width:959px) {
+  /*@import 'size/landscape';*/
+}
+
+@media only screen and (min-width:960px) {
+	#petition-container {
+		width: 80%;
+		margin: 0px auto;
+		text-align: center;
+		#signature-form-wrapper {
+			min-height: 350px; 
+			display: table;
+			#signature-form-container {
+				display: table-cell; 
+				vertical-align: middle; 
+				height: 310px;
+			}
+			#sign-with-facebook-button {
+				min-width: 300px;
+			}
+			#sign-with-email-address-wrapper {
+				padding: 0px 10%;
+				#first-name-wrapper {
+					padding-right: 10px;
+					input#first-name {
+						width: 98%;
+					}
+				}
+			}
+		}
+		#more-signers-button-wrapper { 
+			#more-signers-button {
+				min-width: 400px;
+			}
+		}
+		#more-tweets-button-wrapper { 
+			#more-tweets-button {
+				min-width: 400px;
+			}
+		}
+	}
+}

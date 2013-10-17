@@ -38,34 +38,6 @@
   $scope.loading =
     show_spinner: false
 
-  $scope.getWidth = ->
-    $(window).width()
-
-  $scope.getSignaturePanelHeight = ->
-    $("#sign-panel").height()
-
-  $scope.getDeliverPanelHeight = ->
-    $("#deliver-panel").height()
-
-  $scope.$watch $scope.getWidth, (newValue, oldValue) ->
-    console.log "browser width changed"
-
-  $scope.$watch $scope.getSignaturePanelHeight, (newValue, oldValue) ->
-    console.log "signature panel height changed"
-
-    $("#action-slider").height($("#sign-panel").height())
-    $("#actions-container").height($("#sign-panel").height())
-
-    $("#deliver-panel").css("top", $("#sign-panel").height())
-
-  $scope.$watch $scope.getDeliverPanelHeight, (newValue, oldValue) ->
-    console.log "deliver panel height changed"
-
-    $("#more-actions-panel").css("top", $("#deliver-panel").position().top + $("#deliver-panel").height())
-
-  window.onresize = ->
-    $scope.$apply()
-
   window.scope = $scope
 
   $scope.has_header_image = ->
@@ -107,11 +79,7 @@
   $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'
 
-    $scope.signature = signature
-    $scope.loading.show_spinner = false
-    $scope.show.deliver = true
-
-    $scope.scroll_to_deliver()
+    Util.navigate "/deliver"
 
   $scope.$on 'signedPetitionWithFacebook', (event, signature) ->
     console.log 'petition signed with facebook'
@@ -181,6 +149,9 @@
       $scope.summary_more_text = "More"
     else
       $scope.summary_more_text = "Less"
+
+  $scope.calulate_petition_signature_percentage = ->
+    return $scope.petition.signature_count/$scope.petition.target_count*100
 
   $scope.has_sponsor = ->
     return $scope.petition.client

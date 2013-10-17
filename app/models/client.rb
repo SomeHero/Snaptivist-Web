@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
-  belongs_to :user
 
+  devise :database_authenticatable, :timeoutable
 
   has_attached_file :avatar, styles: {
     small: '128x128',

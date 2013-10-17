@@ -31,8 +31,7 @@ SnaptivistWeb::Application.routes.draw do
     resources :client_views, only: [:show]
   end
 
-  resources :client_views, only: [:show]
-
+  match 'client_views/:layout/:template', :to => 'client_views#show'
   match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
   match '/welcome' => 'home#welcome'
   
@@ -52,6 +51,7 @@ SnaptivistWeb::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  get 'dashboard/clients/sign_up' => 'dashboard/clients/registrations#new_client', :as => 'new_client_registration'
   get "home/index"
 
   get "home/welcome"
@@ -110,6 +110,8 @@ SnaptivistWeb::Application.routes.draw do
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
 
   resources :users
+
+
   
   # Let's add the root route
   root :to => "home#index"

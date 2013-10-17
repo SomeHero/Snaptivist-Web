@@ -139,6 +139,9 @@ common:
   # Notification time thresholds
   notification_giver_treat_unviewed_threshold: 5 
   notification_giver_treat_unviewed_repeat_every: 100
+  #Nation Build API Configuration
+  nation_builder_uid: cc2280d2ccd036385f201b748b9874421dac6c3d101f4c689fd6737948263819
+  nation_builder_secret: 79ec71253f20bb397961318a86af8fd0477d20af50d0901beca490a822314783
   
 development:
   path: localhost:3000

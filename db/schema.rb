@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807233424) do
+ActiveRecord::Schema.define(:version => 20131013144340) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -86,6 +86,24 @@ ActiveRecord::Schema.define(:version => 20130807233424) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "client_users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "client_users", ["email"], :name => "index_client_users_on_email", :unique => true
+  add_index "client_users", ["reset_password_token"], :name => "index_client_users_on_reset_password_token", :unique => true
+
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -111,6 +129,24 @@ ActiveRecord::Schema.define(:version => 20130807233424) do
   end
 
   add_index "external_accounts", ["user_id"], :name => "index_external_accounts_on_user_id"
+
+  create_table "layouts", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "template_name"
+    t.integer  "layout_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "pages", ["layout_id"], :name => "index_pages_on_layout_id"
 
   create_table "petitions", :force => true do |t|
     t.string   "title"
@@ -140,6 +176,8 @@ ActiveRecord::Schema.define(:version => 20130807233424) do
     t.boolean  "active",                             :default => false
     t.boolean  "unsponsored",                        :default => false
     t.integer  "client_id"
+    t.integer  "layout_id"
+    t.integer  "theme_id"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -262,6 +300,14 @@ ActiveRecord::Schema.define(:version => 20130807233424) do
     t.string   "birthdate"
     t.integer  "targetgroup_id"
     t.integer  "state_information_id"
+  end
+
+  create_table "themes", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "css_file"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "user_notification_logs", :force => true do |t|

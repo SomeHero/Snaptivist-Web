@@ -27,6 +27,7 @@
       != (Rails.env == 'production' ? nil : 'testing' ).to_json
       
     = javascript_include_tag 'petitions.js'
+    = content_for :head
 
   %body#ng-app{'ng-app' => 'petition', 'ng-cloak' => ""}
     %span{:style => "position:relative"}

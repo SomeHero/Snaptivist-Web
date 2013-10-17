@@ -5,6 +5,10 @@ class Petition < ActiveRecord::Base
   belongs_to :user
   belongs_to :client
   has_many :signatures, :order => 'created_at DESC', :limit => 10
+  
+  belongs_to :layout
+  belongs_to :theme
+
   validates :title, :presence => true
   validates :summary, :presence => true
   validates :target_count, :numericality => { :only_integer => true }

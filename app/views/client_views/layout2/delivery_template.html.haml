@@ -1,0 +1,41 @@
+.container-fluid#petition-container
+	.row-fluid
+		%h2.text-left
+			Thanks for Signing!
+	.row-fluid
+		%div.well#delivery-container
+			.row-fluid
+				.span6.top-content-wrapper
+					%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
+				.span6.top-content-wrapper.well
+					%div.delivery-form-container
+						.row-fluid
+							.span12
+								%h5
+									Please Tweet Your Signature to Help Us Reach Our Goal
+						.row-fluid
+							.span12
+								%textarea
+									Hey @BarackObama stop killing people with flying robots! Sign the petition: http://sign.ru/p232a
+			.row-fluid#signature-count-wrapper
+				.span12
+					%div.progress
+						%div.bar{:style => "width: {{calulate_petition_signature_percentage()}}%"}
+					.row-fluid
+						.span6.text-left#signers-count
+							Signers:  {{petition.signature_count || 0 }}
+						.span6.text-right#target-count
+							Goal: {{petition.target_count || 1000 }}
+	.row-fluid
+		.row-fluid
+			.span6.text-center
+				Tweet 1
+			.span6.text-center
+				Tweet 2
+
+	.row-fluid.bottom-margin#more-tweets-button-wrapper
+		%button.btn.btn-primary#more-tweets-button
+			More Tweets
+	.row-fluid.bottom-margin#client-logo-wrapper
+		.span12.text-center
+			Campaign Logo

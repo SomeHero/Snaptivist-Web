@@ -25,6 +25,6 @@ class ClientViewsController < ApplicationController
   end
 	
 	def show 
-		render params[:id], layout: nil 
+		render  "client_views/#{params[:layout]}/#{params[:template]}", layout: nil 
 	end
 end
