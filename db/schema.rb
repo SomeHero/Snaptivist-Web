@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017154425) do
+ActiveRecord::Schema.define(:version => 20131106183733) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20131017154425) do
 
   create_table "petitions", :force => true do |t|
     t.string   "title"
-    t.string   "summary"
+    t.text     "summary"
     t.integer  "target_count"
     t.integer  "target_id"
     t.string   "short_url"
@@ -194,6 +194,9 @@ ActiveRecord::Schema.define(:version => 20131017154425) do
     t.integer  "layout_id"
     t.integer  "theme_id"
     t.integer  "premium_offer_id"
+    t.string   "headline_primary"
+    t.string   "headline_secondary"
+    t.string   "subheadline"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"

@@ -3,14 +3,14 @@
 		%img{"ng-src" => "{{petition.client.image_large}}"}
 .container#petition-container
 	#petition-headline.section-header.text-center
-		%h2 Tell President Obama
-		%h5 Stop the Drone Assassinations of American Citizens
+		%h2 {{petition.headline_primary}}
+		%h5 {{petition.headline_secondary}}
 	#signature-container-wrapper{"data-facebook" => Settings.facebook_app_id }
 		.panel.panel-default.panel-indented
 			.row#petition-subheadline
 				.col-md-12
 					%h4.text-center
-						Demand Your Right Due Process
+						{{petition.subheadline}}
 			.row
 				.col-md-6.top-content-wrapper#petition-image-wrapper
 					.panel
@@ -52,8 +52,7 @@
 	#petition-summary-header.section-header.text-left
 		Petition
 	#petition-summary-wrapper.panel.panel-default.panel-indented
-		%p.text-left
-			{{petition.summary}}
+		%p.text-left{"ng-bind-html-unsafe"=>"petition.summary"}
 	#user-signature-header.section-header.text-left
 		Signers
 	#user-signature-wrapper.panel.panel-default.panel-indented.clearfix{"ng-controller" => "CommentController"}
