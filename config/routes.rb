@@ -32,6 +32,7 @@ SnaptivistWeb::Application.routes.draw do
     resources :client_views, only: [:show]
   end
 
+
   match 'client_views/:layout/:template', :to => 'client_views#show'
   match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
   match '/welcome' => 'home#welcome'
@@ -47,6 +48,7 @@ SnaptivistWeb::Application.routes.draw do
   resources :authentications
   resources :targets
   resources :twitter
+  resources :clients
 
   ActiveAdmin.routes(self)
 

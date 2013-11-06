@@ -1,0 +1,174 @@
+body {
+	background: url("../layout2/background_pattern.png") repeat;
+   font-family: "Raleway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 400;
+}
+.client-logo-wrapper {
+	display: table;
+	width: 100%;
+}
+.client-logo {
+	display: table-cell;
+	vertical-align: middle;
+	background: #333333;
+	padding: 10px 0px;
+}
+#petition-container, #premium-container {
+	h1, h2, h3, h4, h5, h6, p, .section-header, button {
+		font-family: "Raleway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	}
+	h2 {
+		font-weight: 400;
+		font-size: 64px;
+	}
+	h4 {
+		font-weight: 300;
+		font-size: 32px;
+	}
+	h5 {
+		font-weight: 400;
+		font-size: 24px;
+	}
+	.section-header {
+		background-color: #666666;
+		color: #ffffff;
+		font-size: 1.8em;
+		font-weight: 300;
+		padding: 2px 22px;
+		position: relative;
+		z-index: 1000;
+		letter-spacing: 4px
+	}
+	button {
+		font-weight: 300;
+	}
+	.panel {
+		border-top-right-radius: 0px;
+		border-top-left-radius: 0px;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	.panel-indented {
+		padding: 0px 5% 20px 5%;
+	}
+	#petition-headline, #delivery-headline, #premium-headline {
+		background-color: #ff0000;
+		color: #ffffff;
+		margin: 18px 0px 0px 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-bottom: 10px;
+		h2 {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		h5 {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+	}
+	#petition-subheadline {
+		h4 {
+			margin: 16px 0px 20px 0px
+		}
+	}
+	#petition-headline:before, #delivery-headline:before, #premium-headline:before { 
+		border-top: 0px solid transparent;
+		border-bottom: 20px solid transparent; 
+		border-left:36px solid #070707; 
+		bottom: -20px; 
+		right: -36px;
+
+	}
+	#petition-headline:after, #delivery-headline:after, #premium-headline:after { 
+		border-top: 0px solid transparent;
+		border-bottom: 20px solid transparent; 
+		border-right:36px solid #070707; 
+		bottom: -20px; 
+		left: -36px;
+	}
+	#signature-container-wrapper {
+		.panel-indented {
+			padding-bottom: 50px;
+		}
+	}
+	.progress-wrapper {
+		position: relative;
+		border-radius: 21px;
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, #838487), color-stop(0.67, #d0d1d2));
+		background-image: -moz-linear-gradient(center bottom, #838487 33%, #d0d1d2 67% );
+		padding: 4px 3px;
+	}
+	.progress {
+		position: relative;
+		height: 42px;
+		border-radius: 21px;
+		margin: 0px 1px;
+		/* fallback */
+		background-color: #d0d1d3;
+		background: url(images/linear_bg_2.png);
+		background-repeat: repeat-x;
+
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d0d1d3), to(#858689));
+
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #858689, #d0d1d3);
+
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #858689, #d0d1d3);
+
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #858689, #d0d1d3);
+
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #858689, #d0d1d3);
+	}
+	.progress-bar {
+		background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ed3d32), to(#a31e21));
+		background-image: -webkit-linear-gradient(top, #ed3d32, 0%, #a31e21, 100%);
+		background-image: -moz-linear-gradient(top, #ed3d32 0%, #a31e21 100%);
+		background-image: linear-gradient(to bottom, #ed3d32 0%, #a31e21 100%);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFed3d32, endColorstr=#FFa31e21, GradientType=0);
+		border-bottom: 2px solid #8c1a1d;
+	}
+	.target-count {
+		position: absolute;
+		right: 20px;
+		top: 0px;
+		line-height: 41px;
+		color: #ed0000;
+		font-size: 1.4em;
+		font-weight: 800;
+	}
+	#signature-count {
+		position: absolute;
+		left: 2%;
+		width: 50px;
+		margin-top: 10px;
+		background: #00a3d2;
+		color: white;
+		z-index: 20000;
+		margin-left: -23px;
+		border-radius: 4px;
+		font-size: 15px;
+		font-weight: 800;
+		text-align: center;
+	}
+	/* shared with before and after */
+	#signature-count:after {
+		content: ' ';
+		height: 0;
+		position: absolute;
+		width: 0;
+		border: 10px solid transparent; /* arrow size */
+		border-bottom-color: #00a3d2;  /* arrow color */
+
+		/* positioning */
+		position: absolute;
+		top: -20px;
+		left: 15px;
+		z-index: 2;
+	}
+}

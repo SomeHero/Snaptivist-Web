@@ -10,12 +10,12 @@
   			
 	$scope.get_avatar_url = (signature) ->
 		if !signature.user
-			return '/assets/avatar.png'
+			return '/assets/jcc_avatar_logo.png'
 
 		if signature.user.avatar_url 
 			return signature.user.avatar_url + "?type=large"
 		else
-			return '/assets/avatar.png'
+			return '/assets/jcc_avatar_logo.png'
 			  
 	$scope.display_location = (signature) ->
 		if signature.city && signature.state

@@ -1,0 +1,51 @@
+.setup_give_flow{"ng-controller" => "PetitionSetupController"}
+	%div.top-nav{:style => "min-height: 35px"}
+		.row
+			.col-md-1{:style=>"padding-right: 0px"}
+				%ul.nav.action-menu-items.pull-left
+					%li.text-center
+					%li.text-center
+						Config
+					%li.text-center
+						Layout
+					%li.text-center
+						Theme
+					%li.text-center
+						Pages
+					%li.text-center
+						Email
+			.col-md-8{:style=>"padding-left: 0px; padding-right: 0px"}
+				%div{:style => "height: 80px;"}
+					%h2.contenteditable.petition-title{:style=>"display: inline-block;", "contenteditable"=>"true", "ng-model" => "petition.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Give Your Campaign a Name"}
+						New Campaign Name
+				%div
+					%ul.nav.action-menu-items.pull-left
+						
+					%div{:style=>"margin: 20px;"}		
+						%div{"ng-include"=>"", "src"=>"content_template_urls()"}
+					%div.text-right{:style => "margin-right: 20px;"}
+						%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked()", :style=>"width: 100px"}
+							Next!
+			.col-md-3{:style=>"padding-left: 0px; padding-right: 0px"}
+				%ul.nav.action-menu-items
+					%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;"}
+						%i.glyphicon.glyphicon-save{:style=>"font-size: 30px;"}
+						.text-center{:style=>"margin-top: 10px"}
+							Save
+					%li.pull-left.text-center{:style=>"width:34%; height: 80px; padding: 10px 0px;"}
+						%i.glyphicon.glyphicon-ban-circle{:style=>"font-size: 30px;"}
+						.text-center{:style=>"margin-top: 10px"}
+						Cancel
+					%li.pull-left.text-center{:style=>"width:33%; height: 80px;  padding: 10px 0px;"}
+						%i.glyphicon.glyphicon-ok{:style=>"font-size: 30px;"}
+						.text-center{:style=>"margin-top: 10px"}
+						Publish
+				%div{:style=>"border-left: solid 1px white;"}
+					%div{:style=>"background: #FF9900; color: white; border-bottom: solid 1px #ccc; height: 80px;"}
+						.text-center{:style=>"font-size: 32px; line-height: 80px;"}
+							DRAFT
+					%div{:style=>"margin: 10px"}
+						%div{"ng-include"=>"", "src"=>"sidebar_template_urls()"}
+
+
+

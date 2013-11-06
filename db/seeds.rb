@@ -21,7 +21,7 @@ jcc_user = User.create!(
 #create some client users
 jcc = Client.create!(
 	name: 'John Cornyn Campaign',
-	avatar: File.open(File.join(image_dir, 'jcc_logo.png')),
+	avatar: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
 
 )
 #seeding in layout, pages and themes

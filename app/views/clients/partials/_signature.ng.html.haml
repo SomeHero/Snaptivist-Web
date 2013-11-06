@@ -1,0 +1,77 @@
+.container#petition-container
+	.row
+		%h2.contenteditable.text-left#petition-headline{"contenteditable"=>"true", "ng-model" => "petition.title", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Headline or Title for Your Petition"}
+	.row
+		%div#signature-container-wrapper.well{"data-facebook" => Settings.facebook_app_id }
+			.row#signature-container
+				.col-md-6.top-content-wrapper
+					.panel.vertical-middle-table#petition-image-wrapper{:style=>"display: table;vertical-align: middle; height: 350px; width: 100%;"}
+						%div.vertical-middle-cell.text-center{:style=>"height: 350px; font-size: 1.4em; vertical-align: middle; display: table-cell;"}
+							%div.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.sub_heading", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Upload Your Petition Image"}
+							%button.btn.btn-lg{"type"=>"file"}
+								Select File
+				.col-md-6.top-content-wrapper.vertical-middle-table#signature-form-wrapper.well
+					%div.vertical-middle-cell#signature-form-container
+						.row.bottom-margin
+							.col-md-12.text-center
+								%h5.contenteditable#petition-sub-headline{:style => "font-size: 1.4em", "contenteditable"=>"true", "ng-model" => "petition.sub_heading", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Heading"}
+								%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "go_to_delivery()"}
+									%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+						.row.text-center.bottom-margin#signature-form-or-container
+							%span
+								Or
+						%div#sign-with-email-address-wrapper
+							%form{:name => "myForm", "novalidate" => true}
+								.form-group.clearfix
+									.col-md-6.text-left#first-name-wrapper
+										%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "required" => true}
+									.col-md-6.text-left
+										%input.form-control{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name", "required" => true}
+								.form-group
+									.col-md-12.text-left
+										%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address", "required" => true}
+								.form-group
+									.col-md-12.text-left
+										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required" => true}
+								.form-group
+									.col-md-12.text-center
+										%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
+											%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Email Signatures"}
+			.row#signature-count-wrapper
+				.col-md-12
+					%div.progress
+						%div.progress-bar{:style => "width: {{calulate_petition_signature_percentage()}}%;", "role"=>"progressbar", "aria-valuenow"=>"{{calulate_petition_signature_percentage()}}", "aria-valuemin"=>"0", "aria-valuemax"=>"100"}
+					.row
+						.col-md-6
+							%span.text-left#signers-count
+							Signers:  {{petition.signature_count || 0 }}
+						.col-md-6.text-right
+							%span
+								Goal: 
+							%span.contenteditable#target-count{"contenteditable"=>"true", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add your Target Number of Signatures for this Petition"}
+							
+	.row
+		%div#petition-summary-wrapper
+			%p.text-left.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"The meat of your petition goes here"}
+	.row.bottom-margin#user-signature-wrapper
+		%ul#user-signature-list
+			%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+				%div.media.thumbnail
+					%a.pull-left
+						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature)}}"}
+					.media-body
+						%div.comment
+							%span.user-name
+								{{signature.user.first_name + " " + signature.user.last_name}}
+							%span.location
+								in Richmond, VA
+						%div.comment-timeago
+							Signed {{signature.created_at }} 
+	.row.bottom-margin#more-signers-button-wrapper
+		.col-md-12.text-center
+			%button.btn.btn-primary#more-signers-button
+				%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Customize text for More Signers Button"}
+					More Signers
+	.row.bottom-margin#client-logo-wrapper
+		.col-md-12.text-center
+			%img{"ng-src" => "{{petition.client.image_small}}"}

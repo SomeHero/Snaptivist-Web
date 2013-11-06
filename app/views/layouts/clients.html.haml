@@ -1,0 +1,9 @@
+%html{"ng-app" => "clients"}
+  %head
+    = render partial: 'layouts/clients/head'
+
+  %body
+    = render partial: 'layouts/clients/header'
+    .container-fluid-full
+      .row-fluid
+        = yield

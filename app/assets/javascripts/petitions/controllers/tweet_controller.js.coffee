@@ -1,7 +1,7 @@
 @TweetController = ($scope, TweetServices, $http, $q, Util, $rootScope) ->
 			
 	$scope.get_avatar_url = (tweet) ->
-		return '/assets/avatar.png'
+		return '/assets/jcc_avatar_logo.png'
 			  
 	$scope.display_location = (signature) ->
 		if signature.city && signature.state
