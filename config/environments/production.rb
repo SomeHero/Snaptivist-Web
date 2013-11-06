@@ -55,6 +55,8 @@ SnaptivistWeb::Application.configure do
     'phonecampaigns.js',
     'polls.js',
     'widgets.js',
+    'moment.js',
+    'ui-bootstrap-0.3.0.js',
     'layouts/layout1.css',
     'layouts/layout2.css',
     'layouts/layout2-responsive.css',
