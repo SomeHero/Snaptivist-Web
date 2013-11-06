@@ -57,10 +57,10 @@ SnaptivistWeb::Application.configure do
     'widgets.js',
     'layouts/layout1.css',
     'layouts/layout2.css',
-    'layouts/layout2-responsive.css'
+    'layouts/layout2-responsive.css',
     'themes/layout1_standard.css',
     'themes/layout2_standard.css',
-    'petitioins.css',
+    'petitions.css',
     'phonecampaigns.css',
     'polls.css'
   ]
