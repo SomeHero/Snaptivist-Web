@@ -50,6 +50,7 @@ SnaptivistWeb::Application.configure do
 
   config.assets.precompile += [
     'libs/modernizr-2.6.2.js',
+    'active_admin.js',
     'clients.js',
     'dashboard.js',
     'petitions.js',
@@ -64,6 +65,7 @@ SnaptivistWeb::Application.configure do
     'themes/layout1_standard.css',
     'themes/layout2_standard.css',
     'active_admin.css',
+    'active_admin/print.css',
     'clients.css',
     'petitions.css',
     'phonecampaigns.css',
