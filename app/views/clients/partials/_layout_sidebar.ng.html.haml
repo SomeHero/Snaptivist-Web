@@ -1,2 +1,5 @@
 %h6
 	Layout Configuration
+%div{"ng-repeat"=>"layout in layouts"}
+	%h5 {{layout.name}}
+	%p {{layout.description}}

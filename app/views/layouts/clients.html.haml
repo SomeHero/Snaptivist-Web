@@ -1,9 +1,9 @@
-%html{"ng-app" => "clients"}
+%html{"ng-app" => "clients", "ng-controller"=>"ClientsController"}
   %head
     = render partial: 'layouts/clients/head'
 
   %body
     = render partial: 'layouts/clients/header'
-    .container-fluid-full
-      .row-fluid
+    .row-wrapper-fluid
+      .row
         = yield

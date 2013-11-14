@@ -1,30 +1,30 @@
-.navbar
+.navbar{:style => "min-height: 0px; border: none;"}
   .navbar-inner
-    .container-fluid
-      %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".top-nav.nav-collapse,.sidebar-nav.nav-collapse"}
+    .row-wrapper-fluid
+      %button.navbar-toggle{"data-toggle" => "collapse", "data-target" => ".top-nav.nav-collapse,.sidebar-nav.nav-collapse"}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      - if current_user
+        
+      // Logo
+      .row.no-gutter
+        %a.brand.col-md-2
+          = image_tag 'logo.png', :height => 18
         %a#main-menu-toggle.hidden-phone.open
           %i.icon-reorder
-
-      // Logo
-      .row-fluid
-        %a.brand.span2
-          = image_tag 'logo.png'
 
       .nav-no-collapse.header-nav
         %ul.nav.pull-right
           %li.dropdown
             %a.btn.account.dropdown-toggle{"data-toggle" => "dropdown"}
-              - if current_user
+              - if @current_client
                 .avatar
                 .user
                   %span.hello Welcome
-                  %span.name= "#{current_user.name}!"
-            %ul.dropdown-menu
+                  %span.name= @current_client.organization_name
+            %ul.dropdown-menu{:style=>"width: 100%"}
               %li.dropdown-menu-title
               %li
                 %a{"href" => "/auth/logout"}
-                  %i.icon-off= " Logout"
+                  %i.icon-off.pull-left
+                  = "Logout"

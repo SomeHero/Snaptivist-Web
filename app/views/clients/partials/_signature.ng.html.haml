@@ -7,16 +7,16 @@
 				.col-md-6.top-content-wrapper
 					.panel.vertical-middle-table#petition-image-wrapper{:style=>"display: table;vertical-align: middle; height: 350px; width: 100%;"}
 						%div.vertical-middle-cell.text-center{:style=>"height: 350px; font-size: 1.4em; vertical-align: middle; display: table-cell;"}
-							%div.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.sub_heading", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Upload Your Petition Image"}
-							%button.btn.btn-lg{"type"=>"file"}
+							%div.contenteditable.placeholder-showing{"contenteditable"=>"true", "ng-model" => "petition.sub_heading", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Upload Your Petition Image"}
+							%img{"image-upload-overlay"=>""}
 								Select File
 				.col-md-6.top-content-wrapper.vertical-middle-table#signature-form-wrapper.well
 					%div.vertical-middle-cell#signature-form-container
 						.row.bottom-margin
 							.col-md-12.text-center
-								%h5.contenteditable#petition-sub-headline{:style => "font-size: 1.4em", "contenteditable"=>"true", "ng-model" => "petition.sub_heading", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Heading"}
+								%h5.contenteditable.placeholder-showing#petition-sub-headline{:style => "font-size: 1.4em", "contenteditable"=>"true", "ng-model" => "petition.sub_heading", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Heading"}
 								%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "go_to_delivery()"}
-									%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+									%span.contenteditable.placeholder-showing{"contenteditable"=>"true", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
 						.row.text-center.bottom-margin#signature-form-or-container
 							%span
 								Or

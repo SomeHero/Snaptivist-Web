@@ -585,3 +585,10 @@ LOG:  database system is shut down
 LOG:  database system was shut down at 2013-10-18 15:30:40 EDT
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2013-11-12 09:37:19 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  database "treater_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+FATAL:  database "treater_test" does not exist

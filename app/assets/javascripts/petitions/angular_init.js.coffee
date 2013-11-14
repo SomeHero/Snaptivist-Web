@@ -2,15 +2,16 @@
 	.value('$anchorScroll', angular.noop)
 
 @app.config ['$routeProvider', ($routeProvider) ->
+  layout = 'layout2'
   base_page_url = '/sign'
   $routeProvider.when('/sign',
-    templateUrl: '/client_views/layout2/signature_template'
+    templateUrl: '/client_views/' + layout + '/signature_template'
     controller: SignatureController 
   ).when('/deliver',
-    templateUrl: '/client_views/layout2/delivery_template'
+    templateUrl: '/client_views/' + layout + '/delivery_template'
     controller: DeliveryController 
   ).when('/premium',
-    templateUrl: '/client_views/layout2/premium_template'
+    templateUrl: '/client_views/' + layout + '/premium_template'
     controller: DeliveryController 
   ).when('/complete',
     templateUrl: '/client_views/more'

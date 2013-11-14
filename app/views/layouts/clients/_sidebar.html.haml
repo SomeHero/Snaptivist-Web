@@ -1,0 +1,25 @@
+#sidebar-left.col-md-2.no-gutter{"ng-controller" => "SidebarController", "resize"=>"content"}
+  .nav-collapse.sidebar-nav
+    %ul.nav.nav-tabs.nav-stacked.main-menu
+      %li
+        %a{'href' => '#/home'}
+          %i.icon-star
+          %span Home
+      %li
+        %a.dropmenu{'href' => '#'}
+          %i.icon-bar-chart
+          %span.hidden-tablet Petitions
+          %span.label {{client.campaigns.length}}
+        %ul
+          %li{"ng-repeat" => "petition in cient.petitions"}
+            %a.submenu{"ng-click" => "view_campaign(campaign)"}
+              %i.icon-list-alt
+              %span.hidden-tablet {{petition.name}}
+      %li
+        %a{'href' => '#/petition_setup'}
+          %i.icon-list-alt
+          %span.hidden-tablet New Petition
+      %li
+        %a{'href' => '#/customers'}
+          %i.icon-group
+          %span Supporters

@@ -1,5 +1,5 @@
 !!!
-%html{"xmlns:ng" => "http://angularjs.org"}
+%html{"xmlns:ng" => "http://angularjs.org", 'ng-app' => 'petition', "ng-controller" => "PetitionController"}
   %head
     %title
       = @petition.target_headline_text || @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title
@@ -13,6 +13,8 @@
 
     = render partial: 'layouts/actions_head'
     = render partial: 'layouts/petitions_stylesheets'
+    %link{"ng-repeat"=>"stylesheet in stylesheets()", "ng-href"=>"{{stylesheet.href}}", "type"=>"text/css", "rel"=>"stylesheet"}
+
 
     = render partial: 'layouts/actions_footer'
     %script
@@ -29,7 +31,7 @@
     = javascript_include_tag 'petitions.js'
     = content_for :head
 
-  %body#ng-app{'ng-app' => 'petition', 'ng-cloak' => ""}
+  %body#ng-app{'ng-cloak' => ""}
     %span{:style => "position:relative"}
       #fb-root
     - if flash[:notice]

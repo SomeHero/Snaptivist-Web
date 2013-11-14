@@ -1,13 +1,14 @@
 .home
-  .row-fluid
-    .span6.offset3
+  .row
+    .col-md-6.col-md-offset-3
       %h1 Welcome {{client.name}}!
-  .row-fluid
-    .box.span6.offset3
-      .box-header
-        %h2
-          %i.icon-user
-          Billing Address:
-      .box-content
-        %p{"ng-show" => "merchant.address.line_1"} {{client.address.line_1}}
-        %p{"ng-show" => "merchant.address.line_2"} {{client.address.line_2}}
+  .row
+    .col-md-6.col-md-offset-3
+      .box
+        .box-header
+          %h2
+            %i.icon-user
+            Billing Address:
+        .box-content
+          %p{"ng-show" => "merchant.address.line_1"} {{client.address.line_1}}
+          %p{"ng-show" => "merchant.address.line_2"} {{client.address.line_2}}

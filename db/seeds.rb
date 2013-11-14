@@ -25,7 +25,13 @@ jcc = Client.create!(
 
 )
 #seeding in layout, pages and themes
+standard_layout = Layout.create!(
+	id: 1,
+	name: "Snaptivist Standard",
+	description: "Standard Layout for Petitions"
+)
 jcc_layout = Layout.create!(
+	id: 2,
 	name: "JCC Layout",
 	description: "Seeded layout for JCC campaign",
 ).tap { |p|
@@ -74,6 +80,12 @@ Petition.create!(
 	headline_primary: 'Tell President Obama',
 	headline_secondary: 'Stop the Drone Assassinations of American Citizens',
 	subheadline: 'Demand Your Right Due Process',
+	signature_headline_primary: 'Thanks for Signing',
+	signature_headline_secondary: '',
+	signature_subheadline: '',
+	premium_headline_primary: 'Thanks for Signing',
+	premium_headline_secondary: 'Complete the Form below to Request Your Free Bumpter Magnet',
+	premium_subheadline: '',
 	header_image: File.open(File.join(image_dir, 'obama_drone.jpg')),
 	summary: 'The IRS has been targeting Americans for their political beliefs and using their power to intimidate law-abiding citizens and chill their freedom of speech. It is time to get rid of this corrupt agency and start over again with a flat or fair tax system.',
 	target: Target.first,
@@ -84,6 +96,13 @@ Petition.create!(
 	signature_comment_placeholder_text: 'Tell Obama what you think',
 	sign_with_facebook_cta_button_text: 'Sign with Facebook',
 	sign_with_email_cta_button_text: 'Sign with Email Address',
+	delivery_call_to_action_text: 'Please Tweet Your Signature to Help Us Reach Our Goal',
+	delivery_call_to_action_button_text: 'Tweet My Signature',
+	delivery_skip_button_text: 'I Don\'t Use Twitter',
+	delivery_more_tweets_button_text: 'More Tweets',
+	premium_call_to_action_text: '',
+	premium_call_to_action_button_text: 'Send My Magnet',
+	premium_skip_button_text: '',
 	default_tweet_text: 'Hey @BarackObama stop killing people with flying robots! Sign the petition: http://sign.ru/p232a',
 	action_tags: '#petition-1',
 	tweet_cta_button_text: 'Tweet',

@@ -1,15 +1,13 @@
-.container{:style => "text-align:center;", "ng-controller" => "PetitionController"}
+.container.text-center
   .row
     %img{"ng-src" => "{{petition.image_full}}", "ng-show" => "has_header_image()", :id => "header-image", :class => "drop-shadow lifted", "ng-cloak" => ""}
   .row
-    %h2#petition-headline{"ng-cloak" => ""}
-      {{petition.target_headline_text || petition.target.title + " " + petition.target.last_name}}
+    %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Signature Headline", "ng-bind"=>"!is_admin && petition.headline_primary || ''"}
   .row
-    %h1.title {{petition.title}}
+    %h1.title.contenteditable.placeholer-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Signature Headline (Secondary)", "ng-bind"=>"!is_admin && petition.headline_secondary || ''"}
   .row
     %p.description
-      %span{:style => "display: block;"}
-        {{petition.summary}}
+      %span.contenteditable.placeholer-showing{:style=>"display: block", "contenteditable"=>"{{is_admin}}", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "ng-bind"=>"!is_admin && petition.summary || ''"}
   .row{:style => "margin: 0px auto 30px auto"}
     %button#call-to-action-button.button.action-button.orange{"ng-click"=>"show_action_click()"}
       {{get_call_to_action_button_copy()}}
@@ -96,7 +94,7 @@
             created this petition {{petition.created_at | fromNow }}
           %span.comment
             {{petition.comment}} 
-  .row{"ng-controller" => "CommentController", :style => "margin-bottom: 40px;"}
+  .row{:style => "margin-bottom: 40px;"}
     %div#comment-container.comment-wrapper{"ng-show" => "show_comments()"}
       %h5.text-left This Petition was Signed By
       %div{:style => "margin-bottom: 25px", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}

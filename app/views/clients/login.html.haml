@@ -1,0 +1,13 @@
+.row-fluid
+  .login-box
+    %h2 Login to your Account
+    = form_tag login_auth_path, class: 'form-horizontal' do |f|
+      = hidden_field_tag :on_complete_url, @on_complete_url
+      = hidden_field_tag :on_fail_url, @on_fail_url
+      %fieldset
+        = email_field_tag :email, '', class: 'input-large span12', placeholder: 'Email Address', 'autofocus' => ''
+        = password_field_tag :password, '', class: 'input-large span12', placeholder: 'Password'
+
+        .text-danger= flash[:notice]
+        = submit_tag :login, value: 'Log In', class: 'btn btn-primary span12'
+

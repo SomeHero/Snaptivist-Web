@@ -1,0 +1,66 @@
+/* ContentEditable Styles */
+::-webkit-input-placeholder {
+    color: #BBB;
+}
+.contenteditable:not(.placeholder-showing):focus:before {
+    position: absolute;
+    content: attr(data-placeholder);
+    top: -20px;
+    left: 0;
+    color: white;
+    height: auto;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background: #12c2ff;
+    border-radius: 2px;
+    padding: 3px 6px;
+    line-height: normal!important;
+    white-space: nowrap;
+    z-index: 20000;
+    text-shadow: none !important;
+}
+.contenteditable.editing-placeholder:not(.placeholder-showing):focus:before {
+    content: attr(data-editing-placeholder);
+}
+[contenteditable]:hover:not(:focus) {
+  outline: 1px solid #ccc;
+}
+.contenteditable {
+    position: relative;
+}
+.contenteditable.placeholder-showing:before {
+    content: attr(data-placeholder);
+    text-transform: uppercase;
+    color: #C0C0C0;
+    background: #F9F9F9;
+    text-shadow: none !important;
+}
+.contenteditable.placeholder-showing.right:before {
+    left: inherit;
+    right: 3px;
+}
+.contenteditable.placeholder-showing:focus:before {
+    color: #12c2ff;
+}
+.description {
+    min-width: 80px;
+    max-width: 95%;
+    padding: 3px;
+    display: inline-block;
+}
+.slowmode .contenteditable.description {
+    min-width: 300px;
+}
+.editor-wrapper input:hover, .editor-wrapper .contenteditable:hover {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3)!important;
+    outline: solid 1px #ccc\9;
+    outline: solid 1px rgba(0, 0, 0, 0)\9;
+}
+.editor-wrapper input:focus, .editor-wrapper .contenteditable:focus {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 1px 1px #12c2ff!important;
+    outline: solid 1px #12c2ff\9;
+    outline: solid 1px rgba(0, 0, 0, 0)\9;
+    z-index: 5;
+}

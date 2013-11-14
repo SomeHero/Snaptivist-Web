@@ -3,9 +3,12 @@
 		%img{"ng-src" => "{{petition.client.image_large}}"}
 .container#petition-container
 	#delivery-headline.section-header.text-center
-		%h2
-			Thanks for Signing!
+		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
+		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_secondary || ''"}
 	.panel.panel-default.panel-indented#delivery-container
+		.row#petition-subheadline
+			.col-md-12
+				%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_subheadline || ''"}
 		.row
 			.col-md-6.top-content-wrapper
 				%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
@@ -14,8 +17,7 @@
 					%form{:name => "myForm", "novalidate" => true, "role"=>"form"}
 						.form-group
 							.col-md-12
-								%h4{:style => "font-size: 1.4em"}
-									Please Tweet Your Signature to Help Us Reach Our Goal
+								%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_text || ''"}
 						.form-group
 							.col-md-12
 								%textarea{:style=>"width: 96%", "rows"=>"5"}
@@ -23,18 +25,18 @@
 						.form-group
 							.col-md-12
 								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_premium()"}
-									Tweet My Signature
+									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_button_text || ''"}
 						.form-group
 							.col-md-12
 								%button.btn.btn-link{"ng-click" => "go_to_premium()"}
-									I Don't Use Twitter
+									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text", "ng-bind"=>"!is_admin && petition.delivery_skip_button_text || ''"}
 		#signature-count-outer-wrapper
 			#signature-count-wrapper
 				.progress-wrapper
 					.progress
 						.progress-bar{:style => "width: {{calulate_petition_signature_percentage()}}%;", "role"=>"progressbar", "aria-valuenow"=>"{{calulate_petition_signature_percentage()}}", "aria-valuemin"=>"0", "aria-valuemax"=>"100"}
 						.target-count
-							1000
+							%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures", "ng-bind"=>"!is_admin && petition.target_count || ''"}
 					#signature-count
 						200
 	#user-signature-header.section-header.text-left
@@ -56,7 +58,7 @@
 
 	.bottom-margin#more-tweets-button-wrapper
 		%button.btn.btn-primary#more-tweets-button
-			More Tweets
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text", "ng-bind"=>"!is_admin && petition.delivery_more_tweets_button_text || ''"}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
 		%img{"ng-src" => "{{petition.client.image_large}}"}

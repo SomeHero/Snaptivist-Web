@@ -69,6 +69,22 @@ module SnaptivistWeb
 
     config.assets.paths << Rails.root.join("app", "assets", "images", "mobile", "media_images")
 
+    config.paths.add "app/api", glob: "**/*.rb"
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/api/*)
+    
+
+    config.middleware.use Rack::Cors do
+        allow do
+          origins '*'
+          # location of your API
+          resource '/*', :headers => :any, :methods => [:get, :post, :options, :put, :delete]
+        end
+    end
+
+    config.middleware.use(Rack::Config) do |env|
+        env['api.tilt.root'] = Rails.root.join "app", "views", "api"
+    end
+
   end
 
   

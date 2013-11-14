@@ -1,6 +1,18 @@
 body {
  	background: #f4f4f4
 }
+.row-wrapper-fluid {
+	padding: 0 15px;
+}
+.no-gutter[class*='col-md-'] {
+	padding-right: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+#petition-container.container {
+    width: 100% !important;
+}
 .navbar {
 	margin-bottom: 0px;
 }
@@ -18,6 +30,44 @@ ul.action-menu-items {
 		background: #efefef;
 	}
 }
+#left-nav {
+  z-index: 10001;
+  display: block;
+  height: 100%;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  width: 100px;
+  background: #232323;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #424242), color-stop(1, #292929));
+  background: -ms-linear-gradient(left, #424242, #292929);
+  background: -moz-linear-gradient(center left, #424242 0%, #292929 100%);
+  ul.steps-menu-items {
+    li {
+      display: block;
+      width: 100px;
+      height: 80px;
+      a {
+      	padding: 0px;
+      }
+      a:hover {
+        cursor: pointer;
+      	.icon-large {
+      		color: #FF9900;
+      	}
+      }
+      .icon-large {
+        display: block;
+        width: 100px;
+        height: 80px;
+        color: white;
+        font-size: 28px;
+        vertical-align: middle;
+        display: table-cell;
+      }
+    }
+  }
+}
 .petition-title {
 	display: block;
 	padding: 0px 20px;
@@ -28,52 +78,4 @@ ul.action-menu-items {
 	margin-top: 0px;
 	width: 100%;
 	z-index: 1000;
-}
-[contenteditable]:hover:not(:focus) {
-  outline: 1px solid #ccc;
-}
-.contenteditable:not(.placeholder-showing):focus:before {
-    position: absolute;
-    content: attr(data-placeholder);
-    top: -20px;
-    left: 0;
-    color: white;
-    height: auto;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
-    background: #12c2ff;
-    border-radius: 2px;
-    padding: 3px 6px;
-    line-height: normal!important;
-}
-.contenteditable.editing-placeholder:not(.placeholder-showing):focus:before {
-    content: attr(data-editing-placeholder);
-}
-.contenteditable {
-    position: relative;
-}
-.contenteditable.placeholder-showing {
-    color: black;
-}
-.contenteditable.placeholder-showing:before {
-    position: absolute;
-    content: attr(data-placeholder);
-    top: 4px;
-    left: 3px;
-    color: #BBB;
-    height: auto;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
-    line-height: inherit;
-}
-.contenteditable.placeholder-showing.right:before {
-    left: inherit;
-    right: 3px;
-}
-.contenteditable.placeholder-showing:focus:before {
-    color: #12c2ff;
 }

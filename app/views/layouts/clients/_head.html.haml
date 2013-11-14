@@ -5,5 +5,7 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Domine:400,700", :rel => "stylesheet", :type => "text/css"}
 <script src="/assets/moment.js"></script>
 = stylesheet_link_tag 'clients/index.css'
+= stylesheet_link_tag 'petitions'
+%link{"ng-repeat"=>"stylesheet in stylesheets()", "ng-href"=>"{{stylesheet.href}}", "type"=>"text/css", "rel"=>"stylesheet"}
 = javascript_include_tag 'clients/index.js'
 = render partial: 'layouts/clients/angular_setup'

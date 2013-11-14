@@ -3,14 +3,13 @@
 		%img{"ng-src" => "{{petition.client.image_large}}"}
 .container#petition-container
 	#petition-headline.section-header.text-center
-		%h2 {{petition.headline_primary}}
-		%h5 {{petition.headline_secondary}}
+		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Headline", "ng-bind"=>"!is_admin && petition.headline_primary || ''"}
+		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline", "ng-bind"=>"!is_admin && petition.headline_secondary || ''"}
 	#signature-container-wrapper{"data-facebook" => Settings.facebook_app_id }
 		.panel.panel-default.panel-indented
 			.row#petition-subheadline
 				.col-md-12
-					%h4.text-center
-						{{petition.subheadline}}
+					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline", "ng-bind"=>"!is_admin && petition.subheadline || ''"}
 			.row
 				.col-md-6.top-content-wrapper#petition-image-wrapper
 					.panel
@@ -21,8 +20,7 @@
 							.row.bottom-margin
 								.col-md-12.text-center
 									%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "go_to_delivery()"}
-										%span
-											{{petition.sign_with_facebook_cta_button_text || "Sign With Facebook"}}
+										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_facebook_cta_button_text || ''"}
 							.row.text-center.bottom-margin#signature-form-or-container
 								%h6
 									%span
@@ -39,20 +37,20 @@
 									.form-group
 										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required" => true}
 									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
-										{{petition.sign_with_email_cta_button_text || "Add My Name"}}
+										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_email_cta_button_text || ''"}
 			#signature-count-outer-wrapper
 				#signature-count-wrapper
 					.progress-wrapper
 						.progress
 							.progress-bar{:style => "width: {{calulate_petition_signature_percentage()}}%;", "role"=>"progressbar", "aria-valuenow"=>"{{calulate_petition_signature_percentage()}}", "aria-valuemin"=>"0", "aria-valuemax"=>"100"}
 							.target-count
-								1000
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures", "ng-bind"=>"!is_admin && petition.target_count || ''"}
 						#signature-count
 							200
 	#petition-summary-header.section-header.text-left
 		Petition
 	#petition-summary-wrapper.panel.panel-default.panel-indented
-		%p.text-left{"ng-bind-html-unsafe"=>"petition.summary"}
+		%p.text-left.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "ng-bind-html-unsafe"=>"!is_admin && petition.summary || ''"}
 	#user-signature-header.section-header.text-left
 		Signers
 	#user-signature-wrapper.panel.panel-default.panel-indented.clearfix{"ng-controller" => "CommentController"}
@@ -70,11 +68,11 @@
 								.col-md-6.text-right
 									.location
 										Richmond, VA
-							.comment-timeago
-								Signed {{signature.created_at | fromNow }} 	
+									.comment-timeago
+										Signed {{signature.created_at | fromNow }}         
 	.bottom-margin#more-signers-button-wrapper
-		%button.btn.btn-primary#more-signers-button
-			More Signers
+		%button.btn.btn-primary#more-signers-button{"ng-click" => "show_more_signers()"}
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.more_signers_button_text || ''"}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
 		%img{"ng-src" => "{{petition.client.image_large}}"}

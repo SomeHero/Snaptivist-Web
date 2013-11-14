@@ -1,5 +1,7 @@
 SnaptivistWeb::Application.routes.draw do
 
+  mount API => "/api", :at => '/'
+
   namespace :api do
     match 'petitions/more', :to => 'petitions#more'
   
@@ -48,7 +50,6 @@ SnaptivistWeb::Application.routes.draw do
   resources :authentications
   resources :targets
   resources :twitter
-  resources :clients
 
   ActiveAdmin.routes(self)
 
@@ -113,6 +114,28 @@ SnaptivistWeb::Application.routes.draw do
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
 
   resources :users
+
+
+  resource :auth do
+    collection do
+      post :login
+      get :logout
+    end
+  end
+  resources :clients do
+    member do
+      get :login
+    end
+    collection do
+      post :confirm
+      get :demo
+      get :customers
+      get :twitter_support
+    end
+    member do
+      get :customers
+    end
+  end
 
 
   

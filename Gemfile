@@ -21,6 +21,19 @@ group :assets do
   gem 'angularjs-rails', '>= 1.2.0.rc2'
 end
 
+group :development do
+  gem 'guard-rspec'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'terminal-notifier'
+  gem 'quiet_assets'
+  gem 'letter_opener'
+  gem "meta_request"
+  gem "pry", "~> 0.9"
+  gem "pry-nav", "~> 0.2"
+  gem 'pry-rails'
+  gem 'pry-remote'
+end
+
 gem 'jquery-rails'
 
 gem 'simple_form'
