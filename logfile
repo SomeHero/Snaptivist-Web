@@ -592,3 +592,31 @@ ERROR:  database "treater_development" is being accessed by other users
 DETAIL:  There is 1 other session using the database.
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
 FATAL:  database "treater_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist

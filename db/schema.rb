@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131110142120) do
+ActiveRecord::Schema.define(:version => 20131114180415) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -197,9 +197,9 @@ ActiveRecord::Schema.define(:version => 20131110142120) do
     t.string   "headline_primary"
     t.string   "headline_secondary"
     t.string   "subheadline"
-    t.string   "signature_headline_primary"
-    t.string   "signature_headline_secondary"
-    t.string   "signature_subheadline"
+    t.string   "delivery_headline_primary"
+    t.string   "delivery_headline_secondary"
+    t.string   "delivery_subheadline"
     t.string   "premium_headline_primary"
     t.string   "premium_headline_secondary"
     t.string   "premium_subheadline"
@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(:version => 20131110142120) do
     t.string   "premium_call_to_action_button_text"
     t.string   "premium_skip_button_text"
     t.string   "premium_more_tweets_button_text"
+    t.string   "signature_more_signers_button_text"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"

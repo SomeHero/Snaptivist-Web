@@ -72,7 +72,7 @@
 										Signed {{signature.created_at | fromNow }}         
 	.bottom-margin#more-signers-button-wrapper
 		%button.btn.btn-primary#more-signers-button{"ng-click" => "show_more_signers()"}
-			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.more_signers_button_text || ''"}
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''"}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
 		%img{"ng-src" => "{{petition.client.image_large}}"}
