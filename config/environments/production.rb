@@ -49,6 +49,7 @@ SnaptivistWeb::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   config.assets.precompile += [
+    'libs/modernizr-2.6.2.js',
     'clients.js',
     'dashboard.js',
     'petitions.js',
