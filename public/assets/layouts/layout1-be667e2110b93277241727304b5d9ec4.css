@@ -1,0 +1,381 @@
+/* line 1, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+body {
+  height: 100%;
+  font-family: "Lato", sans-serif;
+}
+
+/* line 5, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+h1 {
+  font-family: "Oswald-Regular", sans-serif;
+  font-size: 2.57em;
+  line-height: 1.15;
+  margin: 0px 0px 40px 0px;
+}
+
+/* line 11, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+h2 {
+  font-family: "Lato-Black", sans-serif;
+  font-size: 1.28em;
+  line-height: 1.15;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding: 0px 0px 4px 0px;
+  margin-bottom: .71em;
+}
+
+/* line 21, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+h3 {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 2.57em;
+  line-height: 1.15;
+  margin-bottom: 2em;
+}
+
+/* line 27, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+h4 {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 1.8em;
+  line-height: 1.15;
+  font-weight: normal;
+}
+
+/* line 33, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+h5 {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 1.15em;
+  line-height: 1.4;
+  margin-bottom: 1em;
+  font-weight: normal;
+}
+
+/* line 40, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+h6 {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: .85em;
+  line-height: 1;
+  margin-bottom: 36px;
+  font-weight: normal;
+}
+
+/* line 48, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+p {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 22px;
+  margin: 5px auto;
+}
+
+/* line 53, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+button {
+  font-family: "Lato-Light", sans-serif;
+}
+
+/* line 56, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.container {
+  max-width: 728px;
+}
+
+/* line 59, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.drop-shadow-full {
+  -moz-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* line 64, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 0em;
+  -moz-border-radius: 0em;
+  border-radius: 0em;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* line 79, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.action-button {
+  border: none;
+  -webkit-text-stroke-width: 0.1px;
+  padding: none;
+  text-shadow: none;
+  -webkit-border-radius: 0em;
+  -moz-border-radius: 0em;
+  border-radius: 0em;
+  -webkit-box-shadow: 0 8px 6px -5px #9e9e9e;
+  -moz-box-shadow: 0 8px 6px -5px #9e9e9e;
+  box-shadow: 0 8px 6px -5px #9e9e9e;
+}
+
+/* line 91, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#petition-headline {
+  display: inline-block;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-bottom: inset 1px #dedede;
+  padding: 10px 0px;
+}
+
+/* line 98, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#call-to-action-button {
+  padding: 20px 10%;
+  font-size: 1.28em;
+  font-family: "Lato-Light", sans-serif;
+}
+
+/* line 103, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#action-wrapper {
+  max-width: 620px;
+  margin: 0px auto;
+  padding: 0px 10px;
+}
+
+/* line 108, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-petition-signature {
+  max-width: 528px;
+  margin: 0px auto;
+}
+
+/* line 112, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-why {
+  height: 160px;
+  padding: 10px;
+  -moz-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* line 119, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-why textarea {
+  border: none;
+  box-shadow: none;
+  resize: none;
+  height: 120px;
+}
+
+/* line 125, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#copy-or {
+  margin: 20px 0px;
+}
+
+/* line 128, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-with-fb-button, #deliver-signature {
+  display: block;
+  min-height: 100px;
+  padding: 20px 10%;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#dddddd));
+  background: -moz-linear-gradient(top, #dddddd, #dddddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#dddddd');
+  color: #fff;
+  font-size: 2.5em;
+  line-height: 1;
+  font-family: "Lato-Light", sans-serif;
+}
+
+/* line 141, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-with-fb-button {
+  margin: 40px auto 0px auto;
+}
+
+/* line 144, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-with-fb-button span:before {
+  font-family: "FontAwesome";
+  content: "\f09a";
+  margin-right: 20px;
+  color: #ffffff;
+  font-size: 1.15em;
+}
+
+/* line 151, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#sign-petition-user-name {
+  font-size: 1.4em;
+  font-family: "Lato-Light", sans-serif;
+  min-width: 280px;
+  padding: 20px 10%;
+}
+
+/* line 157, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper {
+  margin-bottom: 20px;
+  width: 96%;
+  max-width: 668px;
+}
+
+/* line 162, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-progress-wrapper {
+  position: relative;
+  width: 90%;
+  float: left;
+}
+
+/* line 167, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#progress-bar-outer-wrapper {
+  margin: 20px;
+}
+
+/* line 170, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#progress-bar-wrapper {
+  margin-bottom: 0px;
+}
+
+/* line 173, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.target-count-goal {
+  position: relative;
+  line-height: 55px;
+  margin-left: 0px !important;
+  border-radius: 4px;
+}
+
+/* line 180, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.target-count-goal:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -10px;
+  top: 18px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #dddddd;
+}
+
+/* line 191, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#petition-target-count-goal {
+  background-color: #ddd;
+  width: 10%;
+  float: left;
+}
+
+/* line 196, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper .progress {
+  height: 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(to bottom, #757a80, #757a80);
+}
+
+/* line 202, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper .progress-white {
+  background-image: linear-gradient(to bottom, white, white);
+}
+
+/* line 206, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper .progress-green {
+  background-image: linear-gradient(to bottom, #757a80, #757a80);
+}
+
+/* line 209, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper .mark {
+  position: absolute;
+  content: ' ';
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  border: solid 6px #434446;
+  z-index: 1001;
+}
+
+/* line 222, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper .action-count {
+  font-size: 15px;
+  line-height: 44px;
+  color: #ddd;
+}
+
+/* line 227, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#target-count-wrapper .action-count #signature_count {
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 2px;
+}
+
+/* line 231, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-wrapper {
+  max-width: 728px;
+  margin: 0px auto 12px auto;
+}
+
+/* line 235, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-wrapper .comment-container {
+  margin-bottom: 14px;
+}
+
+/* line 238, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-container .comment-username {
+  font-size: 1.15em;
+}
+
+/* line 241, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-container .comment {
+  font-size: .92em;
+  display: block;
+  margin-top: 10px;
+}
+
+/* line 246, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-container .media-body {
+  padding: 10px;
+}
+
+/* line 249, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-wrapper .delivery-status {
+  font-size: 1em;
+}
+
+/* line 252, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-wrapper .delivery-status-text {
+  padding-left: 2px;
+  padding-right: 6px;
+}
+
+/* line 256, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-wrapper .delivery-status-text:before {
+  font-family: "FontAwesome";
+  content: "\f099";
+  font-size: 1.2em;
+}
+
+/* line 261, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+.comment-wrapper .delivery-status-checkbox {
+  padding-left: 6px;
+}
+
+/* line 264, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#see-more-container {
+  margin: 0px auto;
+  max-width: 528px;
+}
+
+/* line 268, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#see-more-container #see-more-button {
+  position: relative;
+  height: 78px;
+  line-height: 2;
+  padding: 0px;
+  font-size: 1.28em;
+  padding: 20px 10%;
+}
+
+/* line 276, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#see-more-container #see-more-button span span:after {
+  font-family: "FontAwesome";
+  content: "\f0da";
+  color: #ffffff;
+  font-size: 1em;
+  padding-left: 12px;
+}
+
+/* line 283, ../../../app/assets/stylesheets/layouts/layout1.css.scss */
+#powered-by-wrapper {
+  max-width: 950px;
+  margin: 0px auto 20px auto;
+}
