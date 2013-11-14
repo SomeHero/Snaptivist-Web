@@ -63,7 +63,7 @@ SnaptivistWeb::Application.configure do
     'layouts/layout2-responsive.css',
     'themes/layout1_standard.css',
     'themes/layout2_standard.css',
-    'clients.css'
+    'clients.css',
     'petitions.css',
     'phonecampaigns.css',
     'polls.css'

@@ -321,6 +321,8 @@ widgets.js: widgets-3034bfc46cfdd90e681817471486f78b.js
 widgets/index.js: widgets-3034bfc46cfdd90e681817471486f78b.js
 application.css: application-b50bda189756536b225db0a4e675212f.css
 application/index.css: application-b50bda189756536b225db0a4e675212f.css
+clients.css: clients-48c8d4b72b6f4b24f5a672755b74bfcf.css
+clients/index.css: clients-48c8d4b72b6f4b24f5a672755b74bfcf.css
 dashboard/application.css: dashboard/application-5810014ed6335031d5ce1eb7640eb765.css
 dashboard/application/index.css: dashboard/application-5810014ed6335031d5ce1eb7640eb765.css
 font/FontAwesome.otf: font/FontAwesome-4a334c842571e9552187a64b958aef1a.otf
