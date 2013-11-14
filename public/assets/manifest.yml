@@ -319,6 +319,8 @@ ui-bootstrap-0.3.0.js: ui-bootstrap-0.3.0-f0e9bce0347382bc6dd5e18b5d8897a9.js
 ui-bootstrap-0/index.3.0.js: ui-bootstrap-0.3.0-f0e9bce0347382bc6dd5e18b5d8897a9.js
 widgets.js: widgets-3034bfc46cfdd90e681817471486f78b.js
 widgets/index.js: widgets-3034bfc46cfdd90e681817471486f78b.js
+active_admin.css: active_admin-0bc9e59cf9db97adb0858a6092d46a4b.css
+active_admin/index.css: active_admin-0bc9e59cf9db97adb0858a6092d46a4b.css
 application.css: application-b50bda189756536b225db0a4e675212f.css
 application/index.css: application-b50bda189756536b225db0a4e675212f.css
 clients.css: clients-48c8d4b72b6f4b24f5a672755b74bfcf.css
