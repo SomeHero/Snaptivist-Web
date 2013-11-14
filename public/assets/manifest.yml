@@ -325,8 +325,8 @@ active_admin.css: active_admin-0bc9e59cf9db97adb0858a6092d46a4b.css
 active_admin/index.css: active_admin-0bc9e59cf9db97adb0858a6092d46a4b.css
 application.css: application-b50bda189756536b225db0a4e675212f.css
 application/index.css: application-b50bda189756536b225db0a4e675212f.css
-clients.css: clients-48c8d4b72b6f4b24f5a672755b74bfcf.css
-clients/index.css: clients-48c8d4b72b6f4b24f5a672755b74bfcf.css
+clients.css: clients-4c4bfde7b20e3bf070650a7d245886ab.css
+clients/index.css: clients-4c4bfde7b20e3bf070650a7d245886ab.css
 dashboard/application.css: dashboard/application-5810014ed6335031d5ce1eb7640eb765.css
 dashboard/application/index.css: dashboard/application-5810014ed6335031d5ce1eb7640eb765.css
 font/FontAwesome.otf: font/FontAwesome-4a334c842571e9552187a64b958aef1a.otf
