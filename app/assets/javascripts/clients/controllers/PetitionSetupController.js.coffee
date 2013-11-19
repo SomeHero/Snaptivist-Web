@@ -1,7 +1,7 @@
 @PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, PetitionServices, layouts) ->
 	window.scope = $scope
 
-	$scope.client_id = 1
+	$scope.client_id = $scope.client.client_id
 	$scope.is_admin = true
 	$scope.layouts = layouts
 	$scope.petition = {}
@@ -114,6 +114,9 @@
 		.error ->
 			console.log "create give flow failed"
 
+	$scope.client_image_url = () ->
+		$scope.client.image_large
+		
 	$scope.signature_image_styling = ->
 		{
 			'background-image': 'url(' + $scope.image_full_url + ')'

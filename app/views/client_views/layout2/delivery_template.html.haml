@@ -1,6 +1,6 @@
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-top
-		%img{"ng-src" => "{{petition.client.image_large}}"}
+		%img{"ng-src" => "{{client_image_url()}}"}
 .container#petition-container
 	#delivery-headline.section-header.text-center
 		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
@@ -61,4 +61,4 @@
 			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text", "ng-bind"=>"!is_admin && petition.delivery_more_tweets_button_text || ''"}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
-		%img{"ng-src" => "{{petition.client.image_large}}"}
+		%img{"ng-src" => "{{client_image_url()}}"}

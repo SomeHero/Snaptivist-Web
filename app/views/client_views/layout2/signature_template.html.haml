@@ -1,6 +1,6 @@
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-top
-		%img{"ng-src" => "{{petition.client.image_large}}"}
+		%img{"ng-src" => "{{client_image_url()}}"}
 .container#petition-container
 	#petition-headline.section-header.text-center
 		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Headline", "ng-bind"=>"!is_admin && petition.headline_primary || ''", "name"=>"headline_primary", "required"=>""}
@@ -74,4 +74,4 @@
 			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''", "name"=>"signature_more_signers_button_text","required"=>""}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
-		%img{"ng-src" => "{{petition.client.image_large}}"}
+		%img{"ng-src" => "{{client_image_url()}}"}
