@@ -10,11 +10,20 @@ class Petition < ActiveRecord::Base
   belongs_to :theme
   belongs_to :premium_offer
 
-  validates :title, :presence => true
+  #validates :title, :presence => true
   validates :summary, :presence => true
   validates :target_count, :numericality => { :only_integer => true }
 
   has_attached_file :header_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  has_attached_file :premium_image, styles: {
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>',
@@ -112,7 +121,13 @@ class Petition < ActiveRecord::Base
 
       Petition::IMAGE_SIZES.each do |label, size|
         if header_image_file_name
-          results["image_#{label}"] = header_image(label)
+          results["image_#{label}_url"] = header_image(label)
+        end
+      end
+
+      Petition::IMAGE_SIZES.each do |label, size|
+        if premium_image_file_name
+          results["premium_image_#{label}_url"] = premium_image(label)
         end
       end
 

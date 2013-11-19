@@ -1,4 +1,4 @@
-@app = angular.module 'clients', ['contenteditable']
+@app = angular.module 'clients', ['contenteditable', 'angularFileUpload', 'ui.bootstrap']
 
 @app.config ['$routeProvider', ($routeProvider) ->
   base_page_url = '/home'

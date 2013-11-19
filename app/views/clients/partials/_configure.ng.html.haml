@@ -1,13 +1,12 @@
-%form{"role"=>"form"}
-	.form-group
-		%label
-			Petition URL
-		%input.form-control{"type"=>"text", "placeholder"=>"http://mypetition.snaptivist.com"}
+.form-group
+	%label
+		Petition Sub Domain
+	%input.form-control{"type"=>"text", "placeholder"=>"http://mypetition.snaptivist.com", "ng-model"=>"petition.subdomain", "name"=>"subdomain", "required"=>""}
 
-		%label
-			Petition Target
-		%input.form-control{"type"=>"text"}
+	%label
+		Petition Target
+	%input.form-control{"type"=>"text"}
 
-		%label
-			Action Tags
-		%input.form-control{"type"=>"text"}	
+	%label
+		Action Tags
+	%input.form-control{"type"=>"text"}	

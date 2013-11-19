@@ -3,7 +3,7 @@
 		%img{"ng-src" => "{{petition.client.image_large}}"}
 .container#petition-container
 	#petition-headline.section-header.text-center
-		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Headline", "ng-bind"=>"!is_admin && petition.headline_primary || ''"}
+		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Headline", "ng-bind"=>"!is_admin && petition.headline_primary || ''", "name"=>"headline_primary", "required"=>""}
 		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline", "ng-bind"=>"!is_admin && petition.headline_secondary || ''"}
 	#signature-container-wrapper{"data-facebook" => Settings.facebook_app_id }
 		.panel.panel-default.panel-indented
@@ -11,46 +11,45 @@
 				.col-md-12
 					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline", "ng-bind"=>"!is_admin && petition.subheadline || ''"}
 			.row
-				.col-md-6.top-content-wrapper#petition-image-wrapper
+				.col-md-6.top-content-wrapper#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Logo", "notes"=>"Recommended image size: 350x350px", "image-name"=>"image_full"}
 					.panel
-						#petition-image{:style=>"background-image: url({{petition.image_full}});"}
+						#petition-image{"ng-style" => "signature_image_styling()"}
 				.col-md-6.top-content-wrapper#signature-form-wrapper
 					.panel
 						#signature-form-container
 							.row.bottom-margin
 								.col-md-12.text-center
-									%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "go_to_delivery()"}
-										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_facebook_cta_button_text || ''"}
+									%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()"}
+										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_facebook_cta_button_text || ''", "name"=>"sign_with_facebook_cta_button_text", "required"=>""}
 							.row.text-center.bottom-margin#signature-form-or-container
 								%h6
 									%span
 										Or
 							%div#sign-with-email-address-wrapper
-								%form{:name => "myForm", "novalidate" => true}
-									.form-group.clearfix
-										.col-md-6.text-left#first-name-wrapper
-											%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "required" => true}
-										.col-md-6.text-left#last-name-wrapper
-											%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name", "required" => true}
-									.form-group
-										%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address", "required" => true}
-									.form-group
-										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required" => true}
-									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
-										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_email_cta_button_text || ''"}
+								.form-group.clearfix
+									.col-md-6.text-left#first-name-wrapper
+										%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name"}
+									.col-md-6.text-left#last-name-wrapper
+										%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name"}
+								.form-group
+									%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address"}
+								.form-group
+									%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code"}
+								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
+									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_email_cta_button_text || ''", "name"=>"sign_with_email_cta_button_text", "required"=>""}
 			#signature-count-outer-wrapper
 				#signature-count-wrapper
 					.progress-wrapper
 						.progress
 							.progress-bar{:style => "width: {{calulate_petition_signature_percentage()}}%;", "role"=>"progressbar", "aria-valuenow"=>"{{calulate_petition_signature_percentage()}}", "aria-valuemin"=>"0", "aria-valuemax"=>"100"}
 							.target-count
-								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures", "ng-bind"=>"!is_admin && petition.target_count || ''"}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures", "ng-bind"=>"!is_admin && petition.target_count || ''","name"=>"target_count", "required"=>""}
 						#signature-count
 							200
 	#petition-summary-header.section-header.text-left
 		Petition
 	#petition-summary-wrapper.panel.panel-default.panel-indented
-		%p.text-left.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "ng-bind-html-unsafe"=>"!is_admin && petition.summary || ''"}
+		%p.text-left.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "ng-bind-html-unsafe"=>"!is_admin && petition.summary || ''", "name"=>"summary", "required"=>""}
 	#user-signature-header.section-header.text-left
 		Signers
 	#user-signature-wrapper.panel.panel-default.panel-indented.clearfix{"ng-controller" => "CommentController"}
@@ -71,8 +70,8 @@
 									.comment-timeago
 										Signed {{signature.created_at | fromNow }}         
 	.bottom-margin#more-signers-button-wrapper
-		%button.btn.btn-primary#more-signers-button{"ng-click" => "show_more_signers()"}
-			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''"}
+		%button.btn.btn-primary#more-signers-button
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''", "name"=>"signature_more_signers_button_text","required"=>""}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
 		%img{"ng-src" => "{{petition.client.image_large}}"}

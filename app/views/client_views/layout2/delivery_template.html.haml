@@ -11,7 +11,7 @@
 				%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_subheadline || ''"}
 		.row
 			.col-md-6.top-content-wrapper
-				%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
+				%div#petition-image{"ng-style" => "signature_image_styling()"}
 			.col-md-6.top-content-wrapper
 				%div.delivery-form-container
 					%form{:name => "myForm", "novalidate" => true, "role"=>"form"}

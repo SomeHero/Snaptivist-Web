@@ -31,17 +31,18 @@
 									%a{"ng-click"=>"goto_step_clicked(5)"}
 										%i.icon-large.icon-bullhorn{"ng-style"=>"highlight_step(5)"}
 					%div{:style=>"position: absolute; top: 0px; left: 100px; width: 100%; padding-right: 100px;"}
-						%div
-							%h2.contenteditable.petition-title{:style=>"display: inline-block;", "contenteditable"=>"true", "ng-model" => "petition.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Give Your Campaign a Name"}
-								New Campaign Name
-						%div
-							%ul.nav.action-menu-items.pull-left
-								
-							%div{:style=>"margin: 20px;"}		
-								%div{"ng-include"=>"", "src"=>"content_template_urls()"}
-							%div.text-right{:style => "margin-right: 20px;"}
-								%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked()", :style=>"width: 100px"}
-									Next!
+						%form{"name"=>"petition_setup", "novalidate" => "", "role"=>"form"}
+							%div
+								%h2.contenteditable.petition-title{:style=>"display: inline-block;", "contenteditable"=>"true", "ng-model" => "petition.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Give Your Campaign a Name", "name"=>"petition_name", "required"=>""}
+									New Campaign Name
+							%div
+								%ul.nav.action-menu-items.pull-left
+									
+								%div{:style=>"margin: 20px;"}		
+									%div{"ng-include"=>"", "src"=>"content_template_urls()"}
+								%div.text-right{:style => "margin-right: 20px;"}
+									%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked(petition_setup)", :style=>"width: 100px"}
+										Next!
 				.col-md-3.no-gutter
 					%ul.nav.action-menu-items
 						%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;"}

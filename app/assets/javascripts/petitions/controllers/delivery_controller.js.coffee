@@ -69,3 +69,13 @@
         
   $scope.go_to_premium = ->
     Util.navigate "/premium"
+
+  $scope.signature_image_styling = ->
+    {
+      'background-image': 'url(' + $scope.petition.image_full_url + ')'
+    }
+
+  $scope.premium_image_styling = ->
+    {
+      'background-image': 'url(' + $scope.petition.premium_image_full_url + ')'
+    }

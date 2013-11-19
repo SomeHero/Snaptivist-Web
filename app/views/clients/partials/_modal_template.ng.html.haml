@@ -1,0 +1,14 @@
+.modal-dialog
+    .modal-content
+        .modal-header
+            %button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+                &times;
+            %h4.modal-title
+                We found some issues with your petition.  Fix the errors below before moving to the next step.
+        .modal-body
+            %ul
+                %li{"ng-repeat"=>"error in errors"}
+                    {{error}}
+        .modal-footer
+            %button.btn.btn-primary{"ng-click"=>"ok()"}
+                Ok

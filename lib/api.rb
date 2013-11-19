@@ -16,6 +16,31 @@ class API < Grape::API
     end
   end
 
+  resource :clients do
+
+    desc "Create a new petition"
+    post "/:id/petitions", :rabl => "petition" do
+      binding.pry
+      client = Client.find(params[:id])
+      @petition = Petition.new(JSON.parse(params[:petition]))
+
+      @petition.target = Target.first
+      @petition.title = @petition.name
+      @petition.client = client
+
+      if params[:file_image]
+        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
+      end
+
+      if params[:file_premium_image]
+        @petition.premium_image = ActionDispatch::Http::UploadedFile.new(params[:file_premium_image])
+      end
+
+      @petition.save!
+    end
+
+  end
+
   resource :layouts do
 
     desc "Return all layouts."
@@ -30,8 +55,14 @@ class API < Grape::API
 
     desc "Return all petitions."
     get "/", :rabl => "petitions" do
-      @layouts = Layout.all
+      @petitions = Petition.all
                         
+    end
+
+    desc "Return the specified petition."
+    get "/:id", :rabl => "petition" do
+      @petition = Petition.find(params[:id])   
+     
     end
 
   end

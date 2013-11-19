@@ -109,5 +109,12 @@
             
       $rootScope.$broadcast('signedPetitionWithFacebookFailed')
 
+  $scope.signature_image_styling = ->
+    {
+      'background-image': 'url(' + $scope.petition.image_full_url + ')'
+    }
+
+    
+
   $scope.go_to_delivery = ->
     Util.navigate "/deliver"

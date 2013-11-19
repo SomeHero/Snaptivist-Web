@@ -128,9 +128,8 @@
         
       $scope.signature = signature
       $scope.loading.show_spinner = false
-      $scope.show.deliver = true
-
-    $scope.scroll_to_deliver()
+      
+      Util.navigate "/deliver"
 
   $scope.$on 'signedPetitionWithFacebookFailed', (event) ->
     console.log 'petition signed with facebook failed'

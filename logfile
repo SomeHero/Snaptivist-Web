@@ -620,3 +620,19 @@ ERROR:  database "snaptivist_development" is being accessed by other users
 DETAIL:  There is 1 other session using the database.
 STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
 FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_test" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_test" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_test" does not exist
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+FATAL:  terminating autovacuum process due to administrator command
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-15 08:34:52 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

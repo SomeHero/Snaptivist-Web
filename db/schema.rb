@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114180415) do
+ActiveRecord::Schema.define(:version => 20131118181601) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -212,6 +212,11 @@ ActiveRecord::Schema.define(:version => 20131114180415) do
     t.string   "premium_skip_button_text"
     t.string   "premium_more_tweets_button_text"
     t.string   "signature_more_signers_button_text"
+    t.string   "premium_image_file_name"
+    t.string   "premium_image_content_type"
+    t.integer  "premium_image_file_size"
+    t.datetime "premium_image_updated_at"
+    t.string   "name"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
