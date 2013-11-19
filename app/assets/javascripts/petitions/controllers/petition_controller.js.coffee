@@ -202,6 +202,9 @@
 
   $scope.load_progress_marker()
 
+  $scope.client_image_url = () ->
+    $scope.petition.client.image_large
+
   if signature
     $scope.signature = signature
 
