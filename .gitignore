@@ -15,4 +15,4 @@
 /tmp
 
 # Ignore Bower Assets
-#/vendor/assets/components	
+/vendor/assets/components	
