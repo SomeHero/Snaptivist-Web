@@ -24,7 +24,9 @@
 			}
 
 	$scope.content_template_urls = () ->
-		if $scope.step == 5
+		if $scope.step == 6
+			return "clients/partials/publish"
+		else if $scope.step == 5
 			return "clients/partials/email_config"
 		else if $scope.step == 4
 			return "clients/partials/pages"
@@ -36,7 +38,9 @@
 			return "clients/partials/configure"
 
 	$scope.sidebar_template_urls = () ->
-		if $scope.step == 5
+		if $scope.step == 6
+			return "clients/partials/publish_sidebar"
+		else if $scope.step == 5
 			return "clients/partials/email_config_sidebar"
 		else if $scope.step == 4
 			return "clients/partials/pages_sidebar"
@@ -142,6 +146,8 @@
 		{
 			'background-image': 'url(' + $scope.premium_image_url + ')'
 		}
+	$scope.petition_url = () ->
+		$location.protocol() + "://" + $location.host() + "/petitions/" + $scope.petition.id
 
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
