@@ -68,6 +68,7 @@ module SnaptivistWeb
     config.assets.paths << Rails.root.join('public', 'merchants', 'assets')
 
     config.assets.paths << Rails.root.join("app", "assets", "images", "mobile", "media_images")
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
     config.paths.add "app/api", glob: "**/*.rb"
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/api/*)

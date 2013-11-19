@@ -1,0 +1,213 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+
+
+
+
+
+
+*/
+
+@font-face {
+    font-family: 'Lato-Black';
+    src: url('/assets/font/lato-bla-webfont.eot');
+    src: url('/assets/font/lato-bla-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/font/lato-bla-webfont.woff') format('woff'),
+         url('/assets/font/lato-bla-webfont.ttf') format('truetype'),
+         url('/assets/font/lato-bla-webfont.svg#latoblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato-Light';
+    src: url('/assets/font/lato-lig-webfont.eot');
+    src: url('/assets/font/lato-lig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/font/lato-lig-webfont.woff') format('woff'),
+         url('/assets/font/lato-lig-webfont.ttf') format('truetype'),
+         url('/assets/font/lato-lig-webfont.svg#latolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('/assets/font/lato-reg-webfont.eot');
+    src: url('/assets/font/lato-reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/font/lato-reg-webfont.woff') format('woff'),
+         url('/assetsfont/lato-reg-webfont.ttf') format('truetype'),
+         url('/assetsfont/lato-reg-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Oswald-Regular';
+    src: url('/assets/font/oswald-webfont.eot');
+    src: url('/assets/font/oswald-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/font/oswald-webfont.woff') format('woff'),
+         url('/assets/font/oswald-webfont.ttf') format('truetype'),
+         url('/assetsfont/oswald-webfont.svg#oswaldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/* line 1, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#loading {
+  background-color: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 130px;
+  width: 130px;
+  margin: -65px 0 0 -65px;
+}
+
+/* line 10, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#loading img {
+  position: absolute;
+  top: 50px;
+}
+
+/* line 15, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+}
+
+/* line 23, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+.circularG {
+  position: absolute;
+  background-color: #ff6000;
+  width: 23px;
+  height: 23px;
+  -moz-border-radius: 15px;
+  -moz-animation-name: bounce_circularG;
+  -moz-animation-duration: 1.12s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: linear;
+  -webkit-border-radius: 15px;
+  -webkit-animation-name: bounce_circularG;
+  -webkit-animation-duration: 1.12s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: linear;
+  -ms-border-radius: 15px;
+  -ms-animation-name: bounce_circularG;
+  -ms-animation-duration: 1.12s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: linear;
+  border-radius: 15px;
+  animation-name: bounce_circularG;
+  animation-duration: 1.12s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+}
+
+/* line 50, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_1 {
+  left: 0;
+  top: 39px;
+  -moz-animation-delay: 0.42s;
+  -webkit-animation-delay: 0.42s;
+  -ms-animation-delay: 0.42s;
+  animation-delay: 0.42s;
+}
+
+/* line 59, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_2 {
+  left: 11px;
+  top: 11px;
+  -moz-animation-delay: 0.56s;
+  -webkit-animation-delay: 0.56s;
+  -ms-animation-delay: 0.56s;
+  animation-delay: 0.56s;
+}
+
+/* line 68, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_3 {
+  top: 0;
+  left: 39px;
+  -moz-animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+  -ms-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+/* line 77, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_4 {
+  right: 11px;
+  top: 11px;
+  -moz-animation-delay: 0.84s;
+  -webkit-animation-delay: 0.84s;
+  -ms-animation-delay: 0.84s;
+  animation-delay: 0.84s;
+}
+
+/* line 86, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_5 {
+  right: 0;
+  top: 39px;
+  -moz-animation-delay: 0.98s;
+  -webkit-animation-delay: 0.98s;
+  -ms-animation-delay: 0.98s;
+  animation-delay: 0.98s;
+}
+
+/* line 95, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_6 {
+  right: 11px;
+  bottom: 11px;
+  -moz-animation-delay: 1.12s;
+  -webkit-animation-delay: 1.12s;
+  -ms-animation-delay: 1.12s;
+  animation-delay: 1.12s;
+}
+
+/* line 104, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_7 {
+  left: 39px;
+  bottom: 0;
+  -moz-animation-delay: 1.26s;
+  -webkit-animation-delay: 1.26s;
+  -ms-animation-delay: 1.26s;
+  animation-delay: 1.26s;
+}
+
+/* line 113, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+#circularG_8 {
+  left: 11px;
+  bottom: 11px;
+  -moz-animation-delay: 1.4s;
+  -webkit-animation-delay: 1.4s;
+  -ms-animation-delay: 1.4s;
+  animation-delay: 1.4s;
+}
+
+@-moz-keyframes bounce_circularG {
+  /* line 123, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+  0% {
+    -moz-transform: scale(1);
+  }
+
+  /* line 126, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+  100% {
+    -moz-transform: scale(0.3);
+  }
+}
+
+@-webkit-keyframes bounce_circularG {
+  /* line 132, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+  0% {
+    -webkit-transform: scale(1);
+  }
+
+  /* line 135, ../../../../app/assets/stylesheets/petitions/libs/ajax-spinner.css.scss */
+  100% {
+    -webkit-transform: scale(0.3);
+  }
+}
