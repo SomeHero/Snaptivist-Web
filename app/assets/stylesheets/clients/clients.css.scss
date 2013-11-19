@@ -79,16 +79,3 @@ ul.action-menu-items {
 	width: 100%;
 	z-index: 1000;
 }
-.modal {
-display: block;
-}
-.modal-body:before,
-.modal-body:after {
-display: table;
-content: " ";
-}
-.modal-header:before,
-.modal-header:after {
-display: table;
-content: " ";
-}
