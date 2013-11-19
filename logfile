@@ -636,3 +636,8 @@ LOG:  database system is shut down
 LOG:  database system was shut down at 2013-11-15 08:34:52 EST
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout

@@ -11,6 +11,18 @@
 	else
 		$scope.step = 1
 
+	$scope.goto_step_clicked = (step) ->
+		console.log("step clicked")
+		$scope.step = step
+
+		$location.hash($scope.step)
+
+	$scope.highlight_step = (step) ->
+		if step == $scope.step
+			return {
+				'color':  '#eae874'
+			}
+
 	$scope.content_template_urls = () ->
 		if $scope.step == 5
 			return "clients/partials/email_config"
@@ -41,9 +53,13 @@
 		console.log("next clicked")
 
 		if form.$valid
-			$scope.step = parseInt($scope.step) + 1
-			
-			$location.hash($scope.step)
+
+			if $scope.step == 5
+				$scope.submit_petition()
+			else
+				$scope.step = parseInt($scope.step) + 1
+				
+				$location.hash($scope.step)
 		else
 			errors = []
 
@@ -103,9 +119,9 @@
 		client_id = 1
 
 		PetitionServices.create(client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
-			console.log "petitioin created"
+			console.log "petition created"
 			
-			$scope.petition.result = response
+			$scope.petition.id = response.id
 
 			$scope.step += 1
 		
@@ -116,7 +132,7 @@
 
 	$scope.client_image_url = () ->
 		$scope.client.image_large
-		
+
 	$scope.signature_image_styling = ->
 		{
 			'background-image': 'url(' + $scope.image_full_url + ')'
@@ -129,7 +145,8 @@
 
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
-	  $route.current = lastRoute
+		if $route.current.templateUrl == 'clients/petition_setup'
+	  		$route.current = lastRoute
 	
 	PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'PetitionServices', 'layouts']
 

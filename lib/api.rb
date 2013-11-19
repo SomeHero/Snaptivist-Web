@@ -20,7 +20,7 @@ class API < Grape::API
 
     desc "Create a new petition"
     post "/:id/petitions", :rabl => "petition" do
-      binding.pry
+
       client = Client.find(params[:id])
       @petition = Petition.new(JSON.parse(params[:petition]))
 
