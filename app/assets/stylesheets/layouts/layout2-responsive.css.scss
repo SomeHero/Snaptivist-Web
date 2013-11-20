@@ -30,6 +30,18 @@
 				}
 			}
 		}
+		#premium-form-wrapper {
+			#sign-with-email-address-button {
+				width: 100%;
+			}
+			#first-name-wrapper {
+				padding: 0px;
+				margin-bottom: 5px;
+			}
+			#last-name-wrapper {
+				padding: 0px;
+			}
+		}
 		#signature-count-wrapper {
 			#signers-count {
 				float: left;
@@ -137,6 +149,17 @@
 				#last-name-wrapper {
 					padding: 0px 0px 0px 5px;
 				}
+			}
+		}
+		#premium-form-wrapper {
+			#sign-with-email-address-button {
+				width: 100%;
+			}
+			#first-name-wrapper {
+				padding: 0px 5px 0px 15px;
+			}
+			#last-name-wrapper {
+				padding: 0px 15px 0px 5px;
 			}
 		}
 		#more-signers-button-wrapper { 

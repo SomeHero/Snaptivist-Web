@@ -5,7 +5,7 @@
 	#delivery-headline.section-header.text-center
 		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
 		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_secondary || ''"}
-	.panel.panel-default.panel-indented#delivery-container
+	.panel.panel-default.panel-indented
 		.row#petition-subheadline
 			.col-md-12
 				%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_subheadline || ''"}

@@ -5,7 +5,7 @@
 	#premium-headline.section-header.text-center
 		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
 		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_headline_secondary || ''"}
-	.panel.panel-default.panel-indented#premium-container
+	.panel.panel-default.panel-indented
 		.row#petition-subheadline
 			.col-md-12
 				%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_subheadline || ''"}
@@ -13,12 +13,12 @@
 			.col-md-6.top-content-wrapper
 				%div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Logo", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image"}
 					%div#petition-image{"ng-style" => "premium_image_styling()"}
-			.col-md-6.vertical-middle-table.panel.panel-default
+			.col-md-6.top-content-wrapper#premium-form-wrapper
 				%div.signature-form-container.vertical-middle-cell
-					.form-group
-						.col-md-6.text-left
+					.form-group.clearfix
+						.col-md-6.text-left#first-name-wrapper
 							%input.form-control{"type"=>"text", "placeholder"=>"First Name"}
-						.col-md-6.text-left
+						.col-md-6.text-left#last-name-wrapper
 							%input.form-control{"type"=>"text", "placeholder"=>"Last Name"}
 					.form-group
 						.col-md-12.text-left
@@ -28,7 +28,7 @@
 							%input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2"}
 					.form-group
 						.col-md-12.text-left
-							%inpu.form-controlt{:style=>"width: 100%","type"=>"text", "placeholder"=>"City"}
+							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City"}
 					.form-group
 						.col-md-12.text-left
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State"}
