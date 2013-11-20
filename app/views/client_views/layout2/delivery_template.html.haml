@@ -14,17 +14,17 @@
 				%div#petition-image{"ng-style" => "signature_image_styling()"}
 			.col-md-6.top-content-wrapper
 				%div.delivery-form-container
-					%form{:name => "myForm", "novalidate" => true, "role"=>"form"}
+					%form{:name => "form", "novalidate" => true, "role"=>"form"}
 						.form-group
 							.col-md-12
 								%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_text || ''"}
 						.form-group
 							.col-md-12
-								%textarea{:style=>"width: 96%", "rows"=>"5"}
+								%textarea{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message"}
 									{{petition.default_tweet_text}}
 						.form-group
 							.col-md-12
-								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_premium()"}
+								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)"}
 									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_button_text || ''"}
 						.form-group
 							.col-md-12

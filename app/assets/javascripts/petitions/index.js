@@ -8,6 +8,7 @@
 //= require_directory ../services
 //= require_directory ./services
 //= require_directory ./directives
+//= require_directory ./models
 //= require ../ui-bootstrap-0.3.0
 //= require ./libs/jquery.royalslider
 //= require ./libs/modules/jquery.rs.visible-nearby.js

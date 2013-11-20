@@ -1,4 +1,4 @@
-@PetitionController = ($scope, PetitionServices, $http, Util, $rootScope, $interpolate) ->
+@PetitionController = ($scope, PetitionServices, $http, Util, PetitionFactory, $rootScope, $interpolate) ->
 
   Util.push_ga_event("Petition", "Load", "Sign")
    
@@ -59,6 +59,14 @@
   $scope.deliver = {
     tweet: $interpolate($scope.petition.default_tweet_text || "")($scope)
   }
+  $scope.signature = {
+    first_name: ''
+    last_name: ''
+    email_address: ''
+    zip_code: ''
+    opt_in: true
+    comment: ''
+  }
   $scope.comments = {
     offset: 0
     total: 0
@@ -117,6 +125,8 @@
   $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'
 
+    PetitionFactory.signature = signature
+
     Util.navigate "/deliver"
 
   $scope.$on 'signedPetitionWithFacebook', (event, signature) ->
@@ -144,26 +154,14 @@
   $scope.$on 'deliveredPetition', ->
     console.log 'petition delivered'
 
-    PetitionServices.get_more_petitions().then (petitions) ->
-      console.log "got some other actions"
-
-      $scope.more_actions = petitions
-    
-      $scope.loading.show_spinner = false
-      $scope.show.more_actions = true
-
-      $scope.scroll_to_more_actions()
+    Util.navigate "/premium"
 
   $scope.$on 'skipDelivery', ->
 
     PetitionServices.get_more_petitions().then (petitions) ->
       console.log "got some other actions"
 
-      $scope.more_actions = petitions
-      $scope.show.more_actions = true
-
-      $scope.loading.show_spinner = false
-      $scope.scroll_to_more_actions()
+      Util.navigate "/premium"
 
   $scope.get_percentage_signed = (signatures, target) ->
     if (signatures * 100) / target > 100
@@ -186,10 +184,6 @@
       $scope.summary_more_text = "More"
     else
       $scope.summary_more_text = "Less"
-
-  $scope.calulate_petition_signature_percentage = ->
-    return $scope.petition.signature_count/$scope.petition.target_count*100
-
   $scope.has_sponsor = ->
     return $scope.petition.client
 

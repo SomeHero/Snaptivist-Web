@@ -1,6 +1,11 @@
-@DeliveryController = ($scope, PetitionServices, $http, $q, Util, $rootScope) ->
+@DeliveryController = ($scope, PetitionServices, PetitionFactory, $http, $q, Util, $rootScope) ->
 
   window.scope = $scope
+
+  $scope.signature = PetitionFactory.signature
+  $scope.tweet = {
+    message: ''
+  }
 
   $scope.get_avatar_url = (signature) ->
     if !signature.user
@@ -20,7 +25,7 @@
   $scope.show_signature_delivered = (signature) ->
     return signature.delivered
 
-  $scope.deliver_action = ->
+  $scope.deliver_action = (form) ->
     console.log("delivering signature")
 
     $scope.loading.show_spinner = true
@@ -34,7 +39,7 @@
         
         $scope.$apply ->
           PetitionServices.check_twitter_connect().then (response) ->
-            PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.deliver.tweet).success (response) ->
+            PetitionServices.deliver_signature($scope.petition.petition_id, $scope.signature.signature_id, $scope.tweet.message).success (response) ->
               console.log "signature delivered"
 
               Util.push_ga_event("Petition", "Deliver Signature", "Success")
