@@ -53,7 +53,7 @@
 	#user-signature-header.section-header.text-left
 		Signers
 	#user-signature-wrapper.panel.panel-default.panel-indented.clearfix{"ng-controller" => "CommentController"}
-		%ul#user-signature-list
+		%ul#user-signature-list{"ng-show"=>"comments.items.length > 0"}
 			%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
 				%div.media.thumbnail
 					%a.pull-left
@@ -69,6 +69,8 @@
 										Richmond, VA
 									.comment-timeago
 										Signed {{signature.created_at | fromNow }}         
+		%p.text-left{"ng-hide"=>"comments.items.length > 0"}
+			Be the first to sign this petition.
 	.bottom-margin#more-signers-button-wrapper
 		%button.btn.btn-primary#more-signers-button
 			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''", "name"=>"signature_more_signers_button_text","required"=>""}
