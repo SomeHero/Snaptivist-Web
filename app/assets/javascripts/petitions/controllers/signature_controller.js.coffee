@@ -114,7 +114,12 @@
       'background-image': 'url(' + $scope.petition.image_full_url + ')'
     }
 
-    
+  $scope.get_number_of_signatures = () ->
+    $scope.petition.signature_count || 0
+  
+  $scope.calulate_petition_signature_percentage = ->
+    return $scope.petition.signature_count/$scope.petition.target_count*100
+
 
   $scope.go_to_delivery = ->
     Util.navigate "/deliver"

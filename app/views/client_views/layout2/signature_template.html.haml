@@ -11,7 +11,7 @@
 				.col-md-12
 					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline", "ng-bind"=>"!is_admin && petition.subheadline || ''"}
 			.row
-				.col-md-6.top-content-wrapper#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Logo", "notes"=>"Recommended image size: 350x350px", "image-name"=>"image_full"}
+				.col-md-6.top-content-wrapper#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Petition Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"image_full"}
 					.panel
 						#petition-image{"ng-style" => "signature_image_styling()"}
 				.col-md-6.top-content-wrapper#signature-form-wrapper
@@ -25,7 +25,20 @@
 								%h6
 									%span
 										Or
-							%div#sign-with-email-address-wrapper
+							%div#sign-with-email-address-wrapper{"ng-switch"=>"is_admin"}
+								%form{"ng-switch-when"=>"false", "name"=>"sign_with_email_form"}
+									.form-group.clearfix
+										.col-md-6.text-left#first-name-wrapper
+											%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name"}
+										.col-md-6.text-left#last-name-wrapper
+											%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name"}
+									.form-group
+										%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address"}
+									.form-group
+										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code"}
+									%button.btn.btn-primary#sign-with-email-address-button{"ng-click"=>"sign_with_email_address(sign_with_email_form)"}
+										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_email_cta_button_text || ''", "name"=>"sign_with_email_cta_button_text", "required"=>""}
+							%div{"ng-switch-when"=>"true"}
 								.form-group.clearfix
 									.col-md-6.text-left#first-name-wrapper
 										%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name"}
@@ -37,6 +50,7 @@
 									%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code"}
 								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
 									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_email_cta_button_text || ''", "name"=>"sign_with_email_cta_button_text", "required"=>""}
+
 			#signature-count-outer-wrapper
 				#signature-count-wrapper
 					.progress-wrapper
@@ -45,7 +59,7 @@
 							.target-count
 								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures", "ng-bind"=>"!is_admin && petition.target_count || ''","name"=>"target_count", "required"=>""}
 						#signature-count
-							200
+							{{get_number_of_signatures()}}
 	#petition-summary-header.section-header.text-left
 		Petition
 	#petition-summary-wrapper.panel.panel-default.panel-indented
