@@ -190,9 +190,9 @@ sandbox:
   linked_in_app_secret: yAlQwONFxmEhwG70
   twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
   twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
-  facebook_app_id: 100940330104294
-  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
-  facebook_callback_url: http://sandbox.snaptivist.com/
+  facebook_app_id: 175645112634819
+  facebook_secret_key: 2a59cfd93ae96c13966a4a341565b4c5
+  facebook_callback_url: http://www.snaptivist.org/
   sms_service_class: TwilioSmsService
   apple_service_class: GrocerAppleService    
   google_service_class: GcmGoogleService
