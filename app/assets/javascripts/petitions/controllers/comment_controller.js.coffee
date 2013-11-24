@@ -56,4 +56,5 @@
 	error_comments = (response) ->
 		console.log "Failed Getting Comments"
 
-	CommentServices.get_comments($scope.petition.petition_id, $scope.comments.offset).then(save_comments, error_comments)
+	if $scope.comments.items.length == 0
+		CommentServices.get_comments($scope.petition.petition_id, $scope.comments.offset).then(save_comments, error_comments)

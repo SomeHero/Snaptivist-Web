@@ -66,28 +66,29 @@
 		%p.text-left.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "ng-bind-html-unsafe"=>"!is_admin && petition.summary || ''", "name"=>"summary", "required"=>""}
 	#user-signature-header.section-header.text-left
 		Signers
-	#user-signature-wrapper.panel.panel-default.panel-indented.clearfix{"ng-controller" => "CommentController"}
-		%ul#user-signature-list{"ng-show"=>"comments.items.length > 0"}
-			%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
-				%div.media.thumbnail
-					%a.pull-left
-						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature)}}"}
-					.media-body
-						.comment
-							.row
-								.col-md-6
-									.user-name
-										{{signature.user.first_name + " " + signature.user.last_name}}
-								.col-md-6.text-right
-									.location
-										Richmond, VA
-									.comment-timeago
-										Signed {{signature.created_at | fromNow }}         
-		%p.text-left{"ng-hide"=>"comments.items.length > 0"}
-			Be the first to sign this petition.
-	.bottom-margin#more-signers-button-wrapper
-		%button.btn.btn-primary#more-signers-button
-			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''", "name"=>"signature_more_signers_button_text","required"=>""}
+	%div{"ng-controller" => "CommentController"}
+		#user-signature-wrapper.panel.panel-default.panel-indented.clearfix
+			%ul#user-signature-list{"ng-show"=>"comments.items.length > 0"}
+				%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+					%div.media.thumbnail
+						%a.pull-left
+							%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature)}}"}
+						.media-body
+							.comment
+								.row
+									.col-md-6
+										.user-name
+											{{signature.user.first_name + " " + signature.user.last_name}}
+									.col-md-6.text-right
+										.location
+											Richmond, VA
+								.comment-timeago
+									Signed {{signature.created_at | fromNow }}         
+			%p.text-left{"ng-hide"=>"comments.items.length > 0"}
+				Be the first to sign this petition.
+		.bottom-margin#more-signers-button-wrapper
+			%button.btn.btn-primary#more-signers-button{"ng-hide"=>"comments.items.length >= comments.total", "ng-click"=>"show_more_signatures_click()"}
+				%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "ng-bind"=>"!is_admin && petition.signature_more_signers_button_text || ''", "name"=>"signature_more_signers_button_text","required"=>""}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
 		%img{"ng-src" => "{{client_image_url()}}"}

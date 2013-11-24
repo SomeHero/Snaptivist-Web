@@ -45,6 +45,20 @@ body {
 	button {
 		font-weight: 300;
 	}
+	.btn-primary {
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0, #0033CC),
+			color-stop(1, #008BCC)
+		);
+		background-image: -o-linear-gradient(top, #0033CC 0%, #008BCC 100%);
+		background-image: -moz-linear-gradient(top, #0033CC 0%, #008BCC 100%);
+		background-image: -webkit-linear-gradient(top, #0033CC 0%, #008BCC 100%);
+		background-image: -ms-linear-gradient(top, #0033CC 0%, #008BCC 100%);
+		background-image: linear-gradient(to top, #0033CC 0%, #008BCC 100%);
+	}
 	.panel {
 		border-top-right-radius: 0px;
 		border-top-left-radius: 0px;
