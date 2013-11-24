@@ -28,11 +28,13 @@ jcc = Client.create!(
 standard_layout = Layout.create!(
 	id: 1,
 	name: "Snaptivist Standard",
+	url_fragment: 'layout1',
 	description: "Standard Layout for Petitions"
 )
 jcc_layout = Layout.create!(
 	id: 2,
 	name: "JCC Layout",
+	url_fragment: 'layout2',
 	description: "Seeded layout for JCC campaign",
 ).tap { |p|
 	p.pages.create!(

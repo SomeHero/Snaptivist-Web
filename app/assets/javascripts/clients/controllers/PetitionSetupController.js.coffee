@@ -1,10 +1,10 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, PetitionServices, layouts) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, layouts) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
 	$scope.is_admin = true
 	$scope.layouts = layouts
-	$scope.petition = {}
+	$scope.petition = ClientFactory.petition
 
 	if $location.hash()
 		$scope.step = parseInt($location.hash())
@@ -149,12 +149,17 @@
 	$scope.petition_url = () ->
 		$location.protocol() + "://" + $location.host() + "/petitions/" + $scope.petition.id
 
+	$scope.set_layout = (layout) ->
+		$scope.settings.layout = layout.url_fragment
+		$scope.update_page_list()
+		$scope.update_stylesheet_list()
+
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
 		if $route.current.templateUrl == 'clients/petition_setup'
 	  		$route.current = lastRoute
 	
-	PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'PetitionServices', 'layouts']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'layouts']
 
 PetitionSetupController.resolve =
   layouts: ['LayoutServices', '$q', (LayoutServices, $q) ->

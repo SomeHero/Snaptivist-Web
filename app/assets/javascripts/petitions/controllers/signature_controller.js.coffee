@@ -2,15 +2,6 @@
 
   window.scope = $scope
 
-  $scope.signature = {
-    first_name: ''
-    last_name: ''
-    email_address: ''
-    zip_code: ''
-    opt_in: true
-    comment: ''
-  }
-
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
 

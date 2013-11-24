@@ -1,37 +1,52 @@
-@ClientsController = ($scope, $rootScope) ->
+@ClientsController = ($scope, $rootScope, ClientFactory) ->
   window.scope = $scope
   $scope.client = client
 
-  $scope.layout = 'layout2'
+  $scope.settings = {
+    layout: 'layout2',
+    theme: 'standard'
+  }
   $scope.theme = 'standard'
 
-  $scope.stylesheet_list = 
-  	[{
-  		href: '/assets/layouts/' + $scope.layout + '.css'
-  	},
-  	{
-  		href: '/assets/layouts/' + $scope.layout + '-responsive.css'
-  	},
-  	{
-  		href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '.css'
-  	}]
+  $scope.stylesheet_list = []
 
   $scope.stylesheets = () ->
   	return $scope.stylesheet_list
 
-  $scope.page_list =  
-  	[{
-  		title: 'Signature Page',
-  		url: '/client_views/' + $scope.layout + '/signature_template'
-  	}, {
-  		title: 'Delivery Page',
-  		url: '/client_views/' + $scope.layout + '/delivery_template'
-  	}, {
-  		title: 'Premium Page',
-  		url: '/client_views/' + $scope.layout + '/premium_template'
-  	}]
+  $scope.page_list = []
 
-  $scope.pages = () ->
-  	return $scope.page_list
+  $scope.pages = [{
+      name: 'Signature Page'
+      page_url: 'signature_template'
+    }, {
+      name: 'Delivery Page'
+      page_url: 'delivery_template'
+    }, {
+      name: 'Premium Page'
+      page_url: 'premium_template'
+    }]
 
-ClientsController.$inject = ['$scope', '$rootScope']
+  $scope.update_page_list = () ->
+    $scope.page_list = []
+    for page in $scope.pages
+      $scope.page_list.push({
+        title: page.name,
+        url: '/client_views/' + $scope.settings.layout + '/' + page.page_url
+      })
+
+  $scope.update_stylesheet_list = () ->
+    $scope.stylesheet_list.push({
+      href: '/assets/layouts/' + $scope.settings.layout + '.css'
+    })
+    $scope.stylesheet_list.push({
+      href: '/assets/layouts/' + $scope.settings.layout + '-responsive.css'
+    })
+    $scope.stylesheet_list.push({
+      href: '/assets/themes/' + $scope.settings.layout + '_' + $scope.settings.theme + '.css'
+    })
+
+
+  $scope.update_page_list()
+  $scope.update_stylesheet_list()
+
+ClientsController.$inject = ['$scope', '$rootScope', 'ClientFactory']

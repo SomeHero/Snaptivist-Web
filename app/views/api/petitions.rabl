@@ -1,0 +1,3 @@
+collection @petitions
+
+extends('petition')

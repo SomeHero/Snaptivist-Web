@@ -1,5 +1,6 @@
 object @petition
 attributes :id, 
+  :name,
   :target_headline_text,
   :title,
   :headline_primary,
@@ -32,4 +33,6 @@ attributes :id,
   :signature_count,
   :target_count,
   :short_url,
-  :subdomain
+  :subdomain,
+  :created_at,
+  :updated_at

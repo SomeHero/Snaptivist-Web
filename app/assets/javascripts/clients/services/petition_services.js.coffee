@@ -1,5 +1,13 @@
 @app.factory "PetitionServices", ['$http', '$q', '$rootScope', ($http, $q, $rootScope) ->
 
+  get: (client_id) ->
+    console.log "Getting Petitions for client"
+    deferred = $q.defer()
+    $http.get('/api/clients/' + client_id + '/petitions').success (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+
   create: (client_id, petition, signature_image, premium_image) ->
 
     data = {}

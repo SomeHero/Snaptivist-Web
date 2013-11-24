@@ -18,7 +18,13 @@ class API < Grape::API
 
   resource :clients do
 
-    desc "Create a new petition"
+    desc "Return all petitions for the specified client."
+    get "/:id/petitions", :rabl => "petitions" do
+      client = Client.find(params[:id])
+      @petitions = Petition.where(:client_id => client.id)              
+    end
+
+    desc "Create a new petition for the specified client"
     post "/:id/petitions", :rabl => "petition" do
 
       client = Client.find(params[:id])

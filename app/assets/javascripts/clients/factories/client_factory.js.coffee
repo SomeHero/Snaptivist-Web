@@ -1,0 +1,2 @@
+@app.factory "ClientFactory", ->
+  petition: {}

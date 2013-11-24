@@ -5,13 +5,17 @@
   $routeProvider
     .when('/home',
     templateUrl: 'clients/home'
+  ).when('/petitions',
+    templateUrl: 'clients/petitions'
+    controller: PetitionController
+    resolve: PetitionController.resolve
   ).when('/petition_setup',
     templateUrl: 'clients/petition_setup'
     controller: PetitionSetupController
     resolve: PetitionSetupController.resolve
   ).when('/petition_pages',
     templateUrl: 'clients/pages'
-  ).when('/customers',
+  ).when('/supporters',
     templateUrl: 'clients/customers'
   ).otherwise(redirectTo: base_page_url)
 ]

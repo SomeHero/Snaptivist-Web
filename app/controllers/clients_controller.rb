@@ -13,10 +13,10 @@ class ClientsController < ApplicationController
   end
 
   def login
+
     @on_complete_url = client_path(@client)
     @on_fail_url = request.original_url
 
-    return redirect_to root_path if current_user && !(client_admin?)
     return redirect_to client_path(@client) if client_admin?
   end
 
