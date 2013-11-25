@@ -29,7 +29,7 @@
 									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_button_text || ''"}
 						.form-group
 							.col-md-12
-								%button.btn.btn-link{"ng-click" => "go_to_premium()"}
+								%button.btn.btn-link{"ng-click" => "skip_delivery()"}
 									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text", "ng-bind"=>"!is_admin && petition.delivery_skip_button_text || ''"}
 		#signature-count-outer-wrapper
 			#signature-count-wrapper

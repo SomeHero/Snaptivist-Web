@@ -6,53 +6,6 @@
   $scope.layout = 'layout2'
   $scope.theme = 'standard'
 
-  $scope.stylesheet_list = 
-    [{
-      href: '/assets/layouts/' + $scope.layout + '.css'
-    },
-    {
-      href: '/assets/layouts/' + $scope.layout + '-responsive.css'
-    },
-    {
-      href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '.css'
-    }]
-
-  $scope.stylesheets = () ->
-    return $scope.stylesheet_list
-
-  $scope.page_list =  
-    [{
-      title: 'Signature Page',
-      url: '/client_views/' + $scope.layout + '/signature_template'
-    }, {
-      title: 'Delivery Page',
-      url: '/client_views/' + $scope.layout + '/delivery_template'
-    }, {
-      title: 'Premium Page',
-      url: '/client_views/' + $scope.layout + '/premium_template'
-    }]
-
-  $scope.pages = () ->
-    return $scope.page_list
-
-  $scope.show = {
-    signature: true
-    deliver: false
-    more_actions: false
-  }
-  $scope.templates = {
-    sign_url: '/client_views/sign'
-    deliver_url: '/client_views/deliver'
-    more_actions_url: '/client_views/more'
-  }
-  $scope.get_call_to_action_button_copy = ->
-    if $scope.show.more_actions
-      return "Take More Actions"
-    else if $scope.show.deliver
-      return "Deliver Your Signature"
-    else
-     return scope.petition.call_to_action_button_text || "Sign Petition"
-
   $scope.petition = petition
   $scope.signature = {}
 
@@ -77,57 +30,85 @@
     total: 0
     items: []
   }
+  
+  $scope.stylesheet_list = 
+    [{
+      href: '/assets/layouts/' + $scope.layout + '.css'
+    },
+    {
+      href: '/assets/layouts/' + $scope.layout + '-responsive.css'
+    },
+    {
+      href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '.css'
+    }]
+
+  $scope.stylesheets = () ->
+    return $scope.stylesheet_list
+
+  $scope.page_index = 1
+  $scope.page_list =  
+    [{
+      title: 'Signature Page',
+      url: '/client_views/' + $scope.layout + '/signature_template',
+      route: '/sign'
+    }, {
+      title: 'Delivery Page',
+      url: '/client_views/' + $scope.layout + '/delivery_template',
+      route: '/deliver'
+    }, {
+      title: 'Donation Page',
+      url: $scope.petition.donation_page_url,
+      route: ''
+    }, {
+      title: 'Premium Page',
+      url: '/client_views/' + $scope.layout + '/premium_template',
+      route: '/premium'
+    }]
+
+  $scope.pages = () ->
+    return $scope.page_list
+
+  $scope.show = {
+    signature: true
+    deliver: false
+    more_actions: false
+  }
+  $scope.templates = {
+    sign_url: '/client_views/sign'
+    deliver_url: '/client_views/deliver'
+    more_actions_url: '/client_views/more'
+  }
+  $scope.get_call_to_action_button_copy = ->
+    if $scope.show.more_actions
+      return "Take More Actions"
+    else if $scope.show.deliver
+      return "Deliver Your Signature"
+    else
+     return scope.petition.call_to_action_button_text || "Sign Petition"
+
   $scope.more_actions = []
   $scope.isCollapsed = true
-  $scope.summary_more_text = "More"
 
   $scope.loading =
     show_spinner: false
 
   window.scope = $scope
 
-  $scope.has_header_image = ->
-    if $scope.petition.image_full
-      return true
+  $scope.change_page = () ->
+    page = $scope.page_list[$scope.page_index++]
+
+    if page.route.length > 0
+      Util.navigate page.route
     else
-      return false
+      Util.navigate_absolute page.url, "", false
 
-  $scope.show_action_click = ->
-    if $scope.show.more_actions
-      Util.push_ga_event("Petition", "Action Button Clicked", "More Actions")
-    else if $scope.show.deliver
-      Util.push_ga_event("Petition", "Action Button Clicked", "Deliver")
-    else
-      Util.push_ga_event("Petition", "Action Button Clicked", "Signature")
-
-    $scope.scroll_to_signature()
-
-  $scope.scroll_to_signature = ->
-    $('body,html').animate
-      scrollTop: $("#actions-container").offset().top
-
-  $scope.scroll_to_deliver = ->
-    $('#action-slider').animate {
-      top: $("#action-slider").position().top - $("#sign-panel").height()
-    }, 500, "linear", -> $('#actions-container').animate {
-      height: $("#deliver-panel").height()
-    }, 300, "linear", -> $('body,html').animate
-      scrollTop: $("#actions-container").offset().top
-
-  $scope.scroll_to_more_actions= ->
-    $('#action-slider').animate {
-      top: $("#action-slider").position().top - $("#deliver-panel").height()
-    }, 500, "linear", -> $('#actions-container').animate {
-      height: $("#more-actions-panel").height()
-    }, 300, "linear", -> $('body,html').animate
-      scrollTop: $("#actions-container").offset().top
 
   $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'
 
     PetitionFactory.signature = signature
 
-    Util.navigate "/deliver"
+    $scope.change_page()
 
   $scope.$on 'signedPetitionWithFacebook', (event, signature) ->
     console.log 'petition signed with facebook'
@@ -139,7 +120,7 @@
       PetitionFactory.signature = signature
       $scope.loading.show_spinner = false
       
-      Util.navigate "/deliver"
+      $scope.change_page()
 
   $scope.$on 'signedPetitionWithFacebookFailed', (event) ->
     console.log 'petition signed with facebook failed'
@@ -154,14 +135,14 @@
   $scope.$on 'deliveredPetition', ->
     console.log 'petition delivered'
 
-    Util.navigate "/premium"
+    $scope.change_page()
 
   $scope.$on 'skipDelivery', ->
 
     PetitionServices.get_more_petitions().then (petitions) ->
       console.log "got some other actions"
 
-      Util.navigate "/premium"
+    $scope.change_page()
 
   $scope.get_percentage_signed = (signatures, target) ->
     if (signatures * 100) / target > 100

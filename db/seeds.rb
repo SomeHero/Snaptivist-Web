@@ -114,7 +114,8 @@ Petition.create!(
 	client: jcc,
 	user: jcc_user,
 	layout: jcc_layout,
-	theme: theme_a
+	theme: theme_a,
+	donation_page_url: "https://johncornyn.nationbuilder.com/donation_landing_page"
 ).tap { |p| 
 	#seed in some signers
 	20.times do |index|

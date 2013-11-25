@@ -115,6 +115,7 @@ class Petition < ActiveRecord::Base
         'client' => client ? client.to_api : nil,
         'comment' => comment,
         'premium_offer' => premium_offer ? premium_offer.to_api : nil,
+        'donation_page_url' => donation_page_url,
         'created_at' => created_at,
         'updated_at' => updated_at,
       }
