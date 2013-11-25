@@ -42,24 +42,25 @@
 						200
 	#user-signature-header.section-header.text-left
 		Tweeters
-	#user-signature-wrapper.panel.panel-default.panel-indented.clearfix{"ng-controller" => "TweetController"}
-		%ul#user-signature-list
-			%li.user-signature-item{"ng-repeat" => "tweet in tweets.items | orderBy: 'created_at':true"}
-				%div.media.thumbnail
-					%a.pull-left
-						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(tweet)}}"}
-					.media-body
-						%div.comment
-							%div.user-name
-								Test U
-							%div.tweet-message
-								{{tweet.message}}
-						%div.comment-timeago
-							Tweeted {{tweet.created_at | fromNow }} 
+	%div{"ng-controller" => "TweetController"}
+		#user-signature-wrapper.panel.panel-default.panel-indented.clearfix
+			%ul#user-signature-list
+				%li.user-signature-item{"ng-repeat" => "tweet in tweets.items | orderBy: 'created_at':true"}
+					%div.media.thumbnail
+						%a.pull-left
+							%img.media-object.avatar{"ng-src" => "{{get_avatar_url(tweet)}}"}
+						.media-body
+							%div.comment
+								%div.user-name
+									{{tweet.first_name}} {{tweet.last_name}}
+								%div.tweet-message
+									{{tweet.message}}
+							%div.comment-timeago
+								Tweeted {{tweet.created_at | fromNow }} 
 
-	.bottom-margin#more-tweets-button-wrapper
-		%button.btn.btn-primary#more-tweets-button
-			%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text", "ng-bind"=>"!is_admin && petition.delivery_more_tweets_button_text || ''"}
+		.bottom-margin#more-tweets-button-wrapper
+			%button.btn.btn-primary#more-tweets-button{"ng-hide"=>"tweets.items.length >= tweets.total", "ng-click"=>"show_more_tweets_click()"}
+				%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text", "ng-bind"=>"!is_admin && petition.delivery_more_tweets_button_text || ''"}
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-bottom
 		%img{"ng-src" => "{{client_image_url()}}"}

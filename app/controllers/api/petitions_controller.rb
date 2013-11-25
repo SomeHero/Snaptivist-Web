@@ -67,7 +67,12 @@ class Api::PetitionsController < ApplicationController
     @signature.delivered = true
     @signature.delivered_at = Time.now
 
+    @signature.tweet = Tweet.create!(
+        message: params[:tweet]
+      )
+
     @signature.save!
+
 
     render_result()
 
@@ -384,11 +389,17 @@ class Api::PetitionsController < ApplicationController
       offset = params[:offset]
     end
 
-    @signatures_with_tweets = @petition.signatures.joins(:tweet).uniq.limit(page_size).offset(offset)
+    @signatures_with_tweets = @petition.signatures.limit(false).joins(:tweet).uniq.limit(page_size).offset(offset)
 
     result = {
-      tweets: @signatures_with_tweets.map { |s| s.tweet.to_api },
-      total: @petition.signatures.joins(:tweet).uniq.all.count
+      tweets: @signatures_with_tweets.map { |s| 
+        s.tweet.to_api.merge({
+            first_name: s.user.first_name,
+            last_name: s.user.last_name,
+            avatar_url: s.user.avatar_url
+          })
+      },
+      total: @petition.signatures.limit(false).joins(:tweet).uniq.all.count
     }
 
     render_result result

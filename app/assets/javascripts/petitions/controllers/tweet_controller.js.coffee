@@ -1,7 +1,10 @@
 @TweetController = ($scope, TweetServices, $http, $q, Util, $rootScope) ->
 			
 	$scope.get_avatar_url = (tweet) ->
-		return '/assets/jcc_avatar_logo.png'
+		if tweet.avatar_url 
+			return tweet.avatar_url + "?type=large"
+		else
+			return '/assets/jcc_avatar_logo.png'
 			  
 	$scope.display_location = (signature) ->
 		if signature.city && signature.state
@@ -20,7 +23,7 @@
 
 		$scope.tweets.offset = $scope.tweets.offset + 10
 
-		CommentServices.get_tweets($scope.petition.petition_id, $scope.comments.offset).then(save_tweets, error_tweets)
+		TweetServices.get_tweets($scope.petition.petition_id, $scope.comments.offset).then(save_tweets, error_tweets)
 
 	$scope.show_more_tweet_button = ->
 		return $scope.tweets.total < $scope.tweets.items.length + 1
