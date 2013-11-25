@@ -20,8 +20,9 @@
 								%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_text || ''"}
 						.form-group
 							.col-md-12
-								%textarea{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message"}
-									{{petition.default_tweet_text}}
+								.drop-shadow-full
+									%textarea.form-control{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115"}
+									#message-counter.text-right {{115 - tweet.message.length}}
 						.form-group
 							.col-md-12
 								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)"}

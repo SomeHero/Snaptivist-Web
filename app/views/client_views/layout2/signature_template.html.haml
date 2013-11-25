@@ -26,10 +26,10 @@
 									%span
 										Or
 							%div#sign-with-email-address-wrapper{"ng-switch"=>"is_admin"}
-								%form{"ng-switch-when"=>"false", "name"=>"sign_with_email_form"}
+								%form{"ng-switch-when"=>"false", "name"=>"sign_with_email_form", "novalidate"=>""}
 									.form-group.clearfix
 										.col-md-6.text-left#first-name-wrapper
-											%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name"}
+											%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name", "required"=>""}
 										.col-md-6.text-left#last-name-wrapper
 											%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name"}
 									.form-group

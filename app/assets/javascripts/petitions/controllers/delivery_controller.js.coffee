@@ -4,7 +4,7 @@
 
   $scope.signature = PetitionFactory.signature
   $scope.tweet = {
-    message: ''
+    message: $scope.petition.default_tweet_text
   }
 
   $scope.get_avatar_url = (signature) ->
