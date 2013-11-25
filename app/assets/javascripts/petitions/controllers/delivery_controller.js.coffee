@@ -81,3 +81,10 @@
     {
       'background-image': 'url(' + $scope.petition.premium_image_full_url + ')'
     }
+
+  $scope.get_number_of_tweets = ->
+    $scope.tweets.total
+
+  $scope.calculate_petition_tweet_percentage = ->
+    $scope.tweets.total/$scope.petition.target_count*100
+
