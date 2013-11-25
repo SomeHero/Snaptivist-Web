@@ -205,6 +205,8 @@ class Api::PetitionsController < ApplicationController
       user.save!
 
     else
+      binding.pry
+      
       user = User.new
       user.email =  facebook_profile["email"]
       user.first_name = facebook_profile['first_name']
