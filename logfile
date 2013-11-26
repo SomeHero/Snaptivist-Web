@@ -653,3 +653,11 @@ LOG:  autovacuum launcher shutting down
 LOG:  received smart shutdown request
 LOG:  shutting down
 LOG:  database system is shut down
+LOG:  database system was interrupted; last known up at 2013-11-25 15:25:03 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/221A0460
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist

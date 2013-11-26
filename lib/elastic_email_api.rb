@@ -1,7 +1,7 @@
 require 'net/http'
 require 'uri'
 
-USERNAME = 'james@snaptivist.com' 
+USERNAME = '9a97db59-3bf2-4034-9375-882841679dfe' 
 API_KEY = '9a97db59-3bf2-4034-9375-882841679dfe' 
 API_URI = URI.parse( 'http://api.elasticemail.com/mailer/send' )
 SUCCESS_MATCH_PATTERN = '^[0-9|a-f]{8}-[0-9|a-f]{4}-[0-9|a-f]{4}-[0-9|a-f]{4}-[0-9|a-f]{12}$' 
@@ -11,7 +11,7 @@ class ElasticEmailApi
 
 	class << self
 
-		def send_email(to_addr, subject, template_name, from_addr, from_name, merge_fields, reply_to_email=nil, reply_to_name=nil, channel=nil )
+		def send_email(to_addr, subject, template_name, from_addr, from_name, merge_fields, reply_to_email="", reply_to_name="", channel="" )
 			Rails.logger.debug 'Attempting to post to Elastic Email'
 
 			msg_info = { 
