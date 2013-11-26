@@ -12,7 +12,7 @@ module UserNotification
 
     def send_notification(notification_type, params_hash)
       Rails.logger.debug "ElasticEmailUserNotififer attempting to send '#{notification_type}' notification using params: #{params_hash.inspect}"
-      binding.pry
+      
       result = ""
       case notification_type
       when UserNotification::Notification::USER_WELCOME  

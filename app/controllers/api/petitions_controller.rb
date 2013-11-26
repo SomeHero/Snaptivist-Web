@@ -205,8 +205,7 @@ class Api::PetitionsController < ApplicationController
       user.save!
 
     else
-      binding.pry
-      
+
       raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
 
       user = User.new
