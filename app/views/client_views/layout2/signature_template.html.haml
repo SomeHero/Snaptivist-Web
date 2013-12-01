@@ -72,7 +72,7 @@
 				%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
 					%div.media.thumbnail
 						%a.pull-left
-							%img.media-object.avatar{"ng-src" => "{{get_avatar_url(signature)}}"}
+							.media-object.avatar{"ng-style" => "get_avatar_url(signature)"}
 						.media-body
 							.comment
 								.row
