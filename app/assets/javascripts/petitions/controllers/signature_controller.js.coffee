@@ -1,6 +1,8 @@
-@SignatureController = ($scope, PetitionServices, $http, Util, $rootScope) ->
+@SignatureController = ($scope, PetitionServices, $http, Util, $rootScope, $timeout) ->
 
   window.scope = $scope
+  $scope.form_submitted = false
+  $scope.show_errors = false
 
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
@@ -8,11 +10,13 @@
     Util.push_ga_event("Petition", "Sign With Email", "Clicked (Pre Form Validation)")
    
     form.submitted = true
+    $scope.form_submitted = true
 
     if form.$valid
     
       Util.push_ga_event("Petition", "Sign With Email", "Clicked (Post Form Validation)")
    
+      $scope.show_errors = false
       $scope.loading.show_spinner = true
 
       petition_id = $scope.petition.petition_id
@@ -33,6 +37,8 @@
         Util.push_ga_event("Petition", "Sign With Email", "Failed")
    
         $scope.loading.show_spinner = false
+    else
+      $scope.show_errors = true
 
   $scope.sign_with_facebook = (auth)->
     console.log "Facebook Login Success"
@@ -111,6 +117,18 @@
   $scope.calulate_petition_signature_percentage = ->
     return $scope.petition.signature_count/$scope.petition.target_count*100
 
+  remove_errors = () ->
+    $scope.show_errors = false
 
-  $scope.go_to_delivery = ->
-    Util.navigate "/deliver"
+  $scope.display_error_popover = () ->
+    if $scope.show_errors
+      $timeout(remove_errors, 2000);
+    $scope.show_errors
+
+  $scope.form_styling = ->
+    if $scope.form_submitted
+      return "submitted"
+    return ""
+
+
+

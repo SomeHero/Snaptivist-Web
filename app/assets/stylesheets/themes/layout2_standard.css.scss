@@ -32,6 +32,11 @@ body {
 		font-size: 24px;
 		line-height: 24px;
 	}
+	form.submitted {
+		.ng-invalid {
+			border: solid 1px red;
+		}
+	}
 	.section-header {
 		background-color: #666666;
 		color: #ffffff;

@@ -1,4 +1,4 @@
-@app = angular.module('petition', ['ui.bootstrap'])
+@app = angular.module('petition', ['ui.bootstrap.tpls', 'ui.bootstrap', 'custom.bootstrap'])
 	.value('$anchorScroll', angular.noop)
 
 @app.config ['$routeProvider', ($routeProvider) ->
