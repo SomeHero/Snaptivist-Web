@@ -1,9 +1,9 @@
 require 'koala'
-
+require 'nation_builder_crm_notifier.rb'
 
 class Api::PetitionsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :share, :sign_another]
-
+  after_filter :sync_crm, :only => [:sign, :sign_with_facebook]
   respond_to :json
 
   #the version of the API
@@ -92,27 +92,27 @@ class Api::PetitionsController < ApplicationController
 
       if params[:email_address]
 
-        @user = User.find_by_email(params[:email_address])
+        user = User.find_by_email(params[:email_address])
 
-        if @user
-          @user.first_name = params[:first_name]
-          @user.last_name = params[:last_name]
-          @user.zip_code = params[:zip_code]
+        if user
+          user.first_name = params[:first_name]
+          user.last_name = params[:last_name]
+          user.zip_code = params[:zip_code]
           
-          if @user.action_tags && @petition.action_tags
+          if user.action_tags && petition.action_tags
             action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
-            current_tags = Array.wrap(@user.action_tags.split(",")).collect{|x| x.strip}
+            current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
         
             action_tags.each do |action_tag|
-              @user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+              user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
             end
           else
-            @user.action_tags = @petition.action_tags
+            user.action_tags = @petition.action_tags
           end
-          @user.save!
+          user.save!
 
         else
-         @user = User.new do |u|
+         user = User.new do |u|
           u.first_name = params[:first_name]
           u.last_name = params[:last_name]
           u.email = params[:email_address]
@@ -122,7 +122,7 @@ class Api::PetitionsController < ApplicationController
           u.action_tags = @petition.action_tags
           end
 
-          @user.save!
+          user.save!
 
         end
 
@@ -143,6 +143,9 @@ class Api::PetitionsController < ApplicationController
      return render_result({}, 400, 'Error Signing Petition')
     end
 
+    #now add the new user to configured CRM
+    Rails.logger.debug "Syncing new user to CRM"
+
     #return if error_messages?(:config)
     @petition.save
     @petition.reload
@@ -160,7 +163,7 @@ class Api::PetitionsController < ApplicationController
         })
     end
 
-    sign_in @user
+    sign_in user
 
     render_result({ 'petition' => @petition.to_api,
                     'signature' => signature.to_api})
@@ -437,6 +440,21 @@ class Api::PetitionsController < ApplicationController
     }
 
     render_result(result)
+
+  end
+
+  def sync_crm
+
+    #now add the new user to configured CRM
+    Rails.logger.debug "Syncing new user to CRM"
+
+    crm = CrmNotification::NationBuilderCrmNotifier.new
+    result = crm.create_or_update_supporter(current_user)
+
+    if result
+      current_user.external_id = result.id
+      current_user.save!
+    end
 
   end
 

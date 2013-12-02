@@ -49,7 +49,7 @@ gem 'koala', '~> 1.4'
 gem "ym4r"
 gem "sunlight"
 gem "json"
-gem "bitly", "~> 0.8.1"
+gem "bitly"
 gem 'carmen-rails', '~> 1.0.0.beta3'
 gem 'nifty-generators'
 gem 'hashr'
@@ -66,8 +66,8 @@ gem 'grape'
 gem 'grape-rabl'
 gem 'geocoder'
 gem 'rack-cors', :require => 'rack/cors'
-gem  'awesome_print'
-
+gem 'awesome_print'
+gem 'nationbuilder', :git => "https://github.com/jrhodes621/nationbuilder"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

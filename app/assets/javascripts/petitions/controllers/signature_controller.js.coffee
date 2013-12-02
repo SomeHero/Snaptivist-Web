@@ -30,7 +30,7 @@
         result = response.result
 
         $rootScope.$broadcast('signedPetition', result.signature)
-        
+ 
       .error ->
         console.log "signature failed"
 

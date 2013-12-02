@@ -661,3 +661,31 @@ LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
 FATAL:  database "snaptivist_development" does not exist
 FATAL:  database "snaptivist_test" does not exist
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+LOG:  database system was interrupted; last known up at 2013-11-30 22:43:10 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/223CB518
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 570) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+LOG:  database system was interrupted; last known up at 2013-12-01 21:23:35 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/223D7BC8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2013-12-01 22:07:06 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/223D7C28
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
