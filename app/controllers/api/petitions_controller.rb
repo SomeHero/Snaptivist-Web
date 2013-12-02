@@ -88,6 +88,8 @@ class Api::PetitionsController < ApplicationController
 
       @petition = Petition.find(params[:id]);
 
+      binding.pry
+    
       raise "Unable to find petition" unless @petition
 
       if params[:email_address]
@@ -99,7 +101,7 @@ class Api::PetitionsController < ApplicationController
           user.last_name = params[:last_name]
           user.zip_code = params[:zip_code]
           
-          if user.action_tags && petition.action_tags
+          if user.action_tags && @petition.action_tags
             action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
             current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
         
@@ -129,7 +131,7 @@ class Api::PetitionsController < ApplicationController
       end
 
       signature = @petition.signatures.new do |s|
-        s.user = @user
+        s.user = user
         s.signature_method = "Email"
         s.latitude = params[:latitude]
         s.longitude = params[:longitude]
@@ -152,16 +154,18 @@ class Api::PetitionsController < ApplicationController
 
     #send petition action email
     if signature.opt_in
-      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => @user, :merge_fields => {
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
             "merge_petitiontitle" => @petition.title,
-            "merge_firstname" => @user.first_name,
-            "merge_lastname" => @user.last_name,
+            "merge_firstname" => user.first_name,
+            "merge_lastname" => user.last_name,
             "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
             "merge_shorturl" => @petition.short_url,
             "merge_organizationname" => @petition.client.name,
             "merge_organizationavatar" => @petition.client.avatar("medium")
         })
     end
+
+    binding.pry
 
     sign_in user
 
@@ -447,6 +451,8 @@ class Api::PetitionsController < ApplicationController
 
     #now add the new user to configured CRM
     Rails.logger.debug "Syncing new user to CRM"
+
+    binding.pry
 
     crm = CrmNotification::NationBuilderCrmNotifier.new
     result = crm.create_or_update_supporter(current_user)
