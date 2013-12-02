@@ -88,8 +88,6 @@ class Api::PetitionsController < ApplicationController
 
       @petition = Petition.find(params[:id]);
 
-      binding.pry
-    
       raise "Unable to find petition" unless @petition
 
       if params[:email_address]
@@ -164,8 +162,6 @@ class Api::PetitionsController < ApplicationController
             "merge_organizationavatar" => @petition.client.avatar("medium")
         })
     end
-
-    binding.pry
 
     sign_in user
 
@@ -451,8 +447,6 @@ class Api::PetitionsController < ApplicationController
 
     #now add the new user to configured CRM
     Rails.logger.debug "Syncing new user to CRM"
-
-    binding.pry
 
     crm = CrmNotification::NationBuilderCrmNotifier.new
     result = crm.create_or_update_supporter(current_user)
