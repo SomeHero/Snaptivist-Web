@@ -16,11 +16,12 @@ module CrmNotification
                 :client_id => "fca8f40ae0dba84cb81e8f4975b4759b4debeb4424c54e204105096a36d50a86",
                 :client_secret => "22760ba29c759804929487f4fa935ac7744aa698700398a622fdb1d4edc0af14",
                 :access_token => "ce97fd95b4a8a3b2003c00f5c30ccdcdb0710486509ea2b8acac0fd7f2336a2c",
-                :redirect_uri => "http://localhost:3000/oauth_callback"
+                :redirect_uri => "http://www.snaptivist.org/oauth_callback"
             )
 
             facebook = user.authentications.find_by_provider("facebook")
-            
+            Rails.logger.error "We got this far"
+
             result = NationBuilder::People.update_or_create({
                 :external_id => user.id,
                 :first_name => user.first_name,
@@ -30,9 +31,13 @@ module CrmNotification
                 :tags => ["test1","test2"]
             })
 
+            Rails.logger.error "We got even further"
+            
+
           return result
         rescue => e
             Rails.logger.error e
+            return false
         end
 
     end

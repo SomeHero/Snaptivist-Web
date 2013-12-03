@@ -48,7 +48,7 @@
 				%li.user-signature-item{"ng-repeat" => "tweet in tweets.items | orderBy: 'created_at':true"}
 					%div.media.thumbnail
 						%a.pull-left
-							%img.media-object.avatar{"ng-src" => "{{get_avatar_url(tweet)}}"}
+							%img.media-object.avatar{"ng-style" => "get_avatar_url(tweet)"}
 						.media-body
 							%div.comment
 								%div.user-name

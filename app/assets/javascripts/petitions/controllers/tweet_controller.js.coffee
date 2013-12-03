@@ -1,11 +1,5 @@
 @TweetController = ($scope, TweetServices, $http, $q, Util, $rootScope) ->
-			
-	$scope.get_avatar_url = (tweet) ->
-		if tweet.avatar_url 
-			return tweet.avatar_url + "?type=large"
-		else
-			return '/assets/jcc_avatar_logo.png'
-			  
+	  
 	$scope.display_location = (signature) ->
 		if signature.city && signature.state
 			return "in " + signature.city + ", " + signature.state
@@ -41,5 +35,35 @@
 		
 	error_tweets = (response) ->
 		console.log "Failed GettingTweets"
+
+	$scope.get_avatar_url = (tweet) ->
+		if !tweet.user
+			{
+				'background-image': 'url(/assets/jcc_avatar_logo.png)',
+				'width': '128px',
+				'height': '123px',
+				'background-size': 'cover',
+				'background-repeat': 'no-repeat',
+				'background-position': '50% 50%'
+			}
+
+		if tweet.user.avatar_url 
+			{
+				'background-image': 'url(' + tweet.user.avatar_url + '?type=large)',
+				'width': '128px',
+				'height': '123px',
+				'background-size': 'cover',
+				'background-repeat': 'no-repeat',
+				'background-position': '50% 50%'
+			}
+		else
+			{
+				'background-image': 'url(/assets/jcc_avatar_logo.png)',
+				'width': '128px',
+				'height': '123px',
+				'background-size': 'cover',
+				'background-repeat': 'no-repeat',
+				'background-position': '50% 50%'
+			}
 
 	TweetServices.get_tweets($scope.petition.petition_id, $scope.tweets.offset).then(save_tweets, error_tweets)
