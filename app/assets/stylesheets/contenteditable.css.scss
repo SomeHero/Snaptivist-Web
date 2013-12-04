@@ -64,3 +64,24 @@
     outline: solid 1px rgba(0, 0, 0, 0)\9;
     z-index: 5;
 }
+.image-upload-overlay {
+  z-index: 1005;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #36A9E1;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  p.note {
+    color: white;
+    line-height: normal;
+    font-size: .92em;
+    margin-bottom: 0px;
+  }
+  h5 {
+    color: white;
+    margin-bottom: 0px;
+  }
+}

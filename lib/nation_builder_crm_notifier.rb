@@ -20,7 +20,6 @@ module CrmNotification
             )
 
             facebook = user.authentications.find_by_provider("facebook")
-            Rails.logger.error "We got this far"
 
             result = NationBuilder::People.update_or_create({
                 :external_id => user.id,
@@ -28,11 +27,8 @@ module CrmNotification
                 :last_name => user.last_name,
                 :email => user.email,
                 #:facebook_address => facebook ? "http://www.facebook.com/" + facebook.uid : nil,
-                :tags => ["test1","test2"]
+                :tags => user.action_tags
             })
-
-            Rails.logger.error "We got even further"
-            
 
           return result
         rescue => e

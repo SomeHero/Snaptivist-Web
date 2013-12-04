@@ -81,6 +81,8 @@
     {
       'background-image': 'url(' + $scope.petition.premium_image_full_url + ')'
     }
+  $scope.get_tweet_message_length = () ->
+    $scope.tweet.message.length
 
   $scope.get_number_of_tweets = ->
     $scope.tweets.total

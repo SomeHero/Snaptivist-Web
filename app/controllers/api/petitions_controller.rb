@@ -59,7 +59,7 @@ class Api::PetitionsController < ApplicationController
       config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
       config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
       config.oauth_token = token
-     config.oauth_token_secret = token_secret
+      config.oauth_token_secret = token_secret
 
     Twitter.update(params[:tweet])
 

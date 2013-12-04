@@ -137,6 +137,12 @@
 	$scope.client_image_url = () ->
 		$scope.client.image_large
 
+	$scope.get_tweet_message_length = () ->
+		if $scope.petition.default_tweet_text
+			return $scope.petition.default_tweet_text.length
+		else
+			return 0
+
 	$scope.signature_image_styling = ->
 		{
 			'background-image': 'url(' + $scope.image_full_url + ')'
