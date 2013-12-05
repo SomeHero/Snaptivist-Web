@@ -266,8 +266,8 @@ class Api::PetitionsController < ApplicationController
             "merge_lastname" => user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name,
-            "merge_organizationavatar" => petition.user.organization_avatar("medium")
+            "merge_organizationname" => petition.client.name,
+            "merge_organizationavatar" => petition.client.avatar("medium")
         })
       end
 
@@ -352,8 +352,8 @@ class Api::PetitionsController < ApplicationController
             "merge_lastname" => current_user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name,
-            "merge_organizationavatar" => petition.user.organization_avatar("medium")
+            "merge_organizationname" => petition.client.name,
+            "merge_organizationavatar" => petition.client.avatar("medium")
         })
       end
 
