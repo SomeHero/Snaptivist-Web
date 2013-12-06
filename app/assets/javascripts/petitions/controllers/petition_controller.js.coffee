@@ -6,6 +6,9 @@
   $scope.layout = 'layout2'
   $scope.theme = 'standard'
 
+  $scope.loading = 
+    show_spinner: false
+
   $scope.petition = petition
   $scope.signature = {}
 
@@ -88,9 +91,6 @@
 
   $scope.more_actions = []
   $scope.isCollapsed = true
-
-  $scope.loading =
-    show_spinner: false
 
   window.scope = $scope
 

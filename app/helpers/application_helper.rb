@@ -3,12 +3,13 @@ module ApplicationHelper
   def angular_templates(path)
     path_base = "#{Rails.root}/app/views/"
     out = []
+    
     Dir.glob("#{path_base}#{path}/**.ng.*").each do |template_path|
       local_path = template_path.gsub(path_base, '')
       partial_path = local_path.sub(/\/_/, '/')
       name_path = partial_path.sub(/\..*$/, '')
 
-      out << %Q{<script type="text/ng-template" id="#{name_path}">}
+      out << %Q{<script type="text/ng-template" id="/#{name_path}">}
       out << render(partial_path)
       out << %Q{</script>}
     end

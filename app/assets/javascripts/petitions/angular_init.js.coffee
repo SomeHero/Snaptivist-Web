@@ -93,12 +93,12 @@
         channelUrl: "//localhost:3000/channel.html" # Channel File
         status: true # check login status
         cookie: true # enable cookies to allow the server to access the session
-        oauth: true
         xfbml: true # parse XFBML
 
       
       # Additional init code here
       FB.getLoginStatus (response) ->
+        console.log "Response Status is " + response.status
         if response.status is "connected"
           
           Util.push_ga_event("Petition", "Facebook Status", "Connected")
@@ -115,6 +115,9 @@
           # not_logged_in
         scope.login_status = response.status
         scope.$apply()
+
+      return null
+    return null
 
 
 # end of fbAsyncInit

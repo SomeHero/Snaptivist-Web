@@ -31,7 +31,7 @@
     = javascript_include_tag 'petitions.js'
     = content_for :head
 
-  %body#ng-app{'ng-cloak' => ""}
+  %body{'ng-cloak' => ""}
     %span{:style => "position:relative"}
       #fb-root
     - if flash[:notice]
