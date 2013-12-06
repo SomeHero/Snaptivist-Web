@@ -11,8 +11,6 @@ module CrmNotification
     def create_or_update_supporter(authentication, user)
         begin
 
-            binding.pry
-            
             NationBuilder.configure(
                 :nation_name => authentication.nation_name, 
                 :client_id => authentication.client_app_id,
