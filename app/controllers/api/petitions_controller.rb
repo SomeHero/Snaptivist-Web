@@ -217,7 +217,7 @@ class Api::PetitionsController < ApplicationController
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
       user.password = "James123"
-      user.action_tags = petition.action_tags
+      user.action_tags = @petition.action_tags
       
       user.authentications.build(
           :provider => 'facebook', 
