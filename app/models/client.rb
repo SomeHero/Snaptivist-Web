@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
 
   devise :database_authenticatable, :timeoutable
 
+  belongs_to :nation_builder_crm_authentication
   has_attached_file :avatar, styles: {
     small: '128x128',
     medium: '256x256',

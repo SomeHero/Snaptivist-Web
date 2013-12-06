@@ -9,21 +9,53 @@ image_dir = File.expand_path("../images", __FILE__)
 
 admin_user = AdminUser.create({email:'admin@snaptivist.com',password:'password'})
 
-jcc_user = User.create!(
+snaptivist_user = User.create!(
 	id: 1,
-	email: "james+100@snaptivist.com",
+	email: "james@snaptivist.com",
 	password: "Sn@p424#",
-	first_name: "Test",
-	last_name: "User 1",
+	first_name: "James",
+	last_name: "Rhodes",
+	organization_name: "Snaptivist",
+	zip_code: "23221"
+)
+jcc_user = User.create!(
+	id: 2,
+	email: "josh@johncornyn.com",
+	password: "Sn@p424#",
+	first_name: "Josh",
+	last_name: "Eboch",
 	organization_name: "John Cornyn Campaign",
 	zip_code: "23221"
 )
 #create some client users
+snaptivist = Client.create!(
+	name: 'Snaptivist',
+	avatar: File.open(File.join(image_dir, 'jcc_campaign_logo.png'))
+).tap { |c| 
+	c.nation_builder_crm_authentication = NationBuilderCrmAuthentication.create!(
+		nation_name: "rva",
+		client_app_id: "fca8f40ae0dba84cb81e8f4975b4759b4debeb4424c54e204105096a36d50a86",
+		client_secret: "22760ba29c759804929487f4fa935ac7744aa698700398a622fdb1d4edc0af14",
+		access_token: "ce97fd95b4a8a3b2003c00f5c30ccdcdb0710486509ea2b8acac0fd7f2336a2c",
+		redirect_uri: "http://www.snaptivist.org/oauth_callback"
+	)
+
+	c.save!
+}
 jcc = Client.create!(
 	name: 'John Cornyn Campaign',
 	avatar: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+).tap { |c| 
+	c.nation_builder_crm_authentication = NationBuilderCrmAuthentication.create!(
+		nation_name: "johncornyn",
+		client_app_id: "68901bc276106d14b291cc51f0cb94f2f3833cf6abf83928de4645fe7d50493f",
+		client_secret: "ac99fcc17e84b365ac0becc6a7396295f1079ff5c950c68176338844c2e128fc",
+		access_token: "68d3371a7b2729d4ce115a3d5e131cf37fb18cbed94e25f1ea7da742e87d9a4f",
+		redirect_uri: "http://www.snaptivist.org/oauth_callback"
+	)
 
-)
+	c.save!
+}
 #seeding in layout, pages and themes
 standard_layout = Layout.create!(
 	id: 1,
@@ -111,8 +143,8 @@ Petition.create!(
 	tweet_cta_button_text: 'Tweet',
 	active: true,
 	unsponsored: false,
-	client: jcc,
-	user: jcc_user,
+	client: snaptivist,
+	user: snaptivist_user,
 	layout: jcc_layout,
 	theme: theme_a,
 	donation_page_url: "https://johncornyn.nationbuilder.com/donation_landing_page"
@@ -170,8 +202,8 @@ Petition.create!(
 	tweet_cta_button_text: 'Tweet',
 	active: true,
 	unsponsored: false,
-	client: jcc,
-	user: jcc_user,
+	client: snaptivist,
+	user: snaptivist_user,
 	layout: jcc_layout,
 	theme: theme_a
 ).tap { |p| 

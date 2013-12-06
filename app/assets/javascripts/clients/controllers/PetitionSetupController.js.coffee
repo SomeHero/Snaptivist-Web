@@ -120,9 +120,8 @@
 
 	$scope.submit_petition = () ->
 
-		client_id = 1
 
-		PetitionServices.create(client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
+		PetitionServices.create($scope.client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
 			console.log "petition created"
 			
 			$scope.petition.id = response.id

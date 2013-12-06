@@ -13,7 +13,7 @@ PetitionController.resolve =
   petitions: ['PetitionServices', '$q', (PetitionServices, $q) ->
     deferred = $q.defer()
 
-    PetitionServices.get(1).then (response) ->
+    PetitionServices.get(client.client_id).then (response) ->
       deferred.resolve(response)
 
     deferred.promise

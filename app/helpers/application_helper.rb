@@ -9,7 +9,7 @@ module ApplicationHelper
       partial_path = local_path.sub(/\/_/, '/')
       name_path = partial_path.sub(/\..*$/, '')
 
-      out << %Q{<script type="text/ng-template" id="/#{name_path}">}
+      out << %Q{<script type="text/ng-template" id="#{name_path}">}
       out << render(partial_path)
       out << %Q{</script>}
     end

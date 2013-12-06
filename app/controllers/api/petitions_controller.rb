@@ -449,7 +449,7 @@ class Api::PetitionsController < ApplicationController
     Rails.logger.debug "Syncing new user to CRM"
 
     crm = CrmNotification::NationBuilderCrmNotifier.new
-    result = crm.create_or_update_supporter(current_user)
+    result = crm.create_or_update_supporter(@petition.client.nation_builder_crm_authentication, current_user)
 
     if result
       current_user.external_id = result.id
