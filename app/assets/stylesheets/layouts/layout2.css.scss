@@ -91,7 +91,7 @@
 		}
 	}
 	#user-signature-wrapper {
-		padding: 0px 20px;
+		padding: 0px 0px;
 		p {
 			margin-top: 10px;
 			margin-bottom: 20px;
@@ -113,6 +113,7 @@
 			border-left: none;
 			border-top: none;
 			border-radius: 0px;
+			margin-bottom: 0px;
 		}
 		.avatar {
 			width: 128px;

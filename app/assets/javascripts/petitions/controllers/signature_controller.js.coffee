@@ -130,5 +130,15 @@
       return "submitted"
     return ""
 
+  $scope.format_signature_location = (signature) ->
+    location = ""
+    if signature.city
+      location = signature.city
+
+    if signature.city && signature.state
+      location += ", " + signature.state
+    else if signature.state
+      location = signature.state
+
 
 

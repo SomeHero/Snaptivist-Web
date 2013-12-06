@@ -19,6 +19,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'angularjs-rails', '>= 1.2.0.rc2'
+  gem "font-awesome-rails", "~> 3.2"
 end
 
 group :development do
