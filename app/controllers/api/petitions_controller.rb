@@ -175,9 +175,9 @@ class Api::PetitionsController < ApplicationController
   #sign the petition; otherwise just sign
   def sign_with_facebook
     
-    petition = Petition.find(params[:id])
+    @petition = Petition.find(params[:id])
     
-    raise "Unable to find petition" unless petition
+    raise "Unable to find petition" unless @petition
 
     Rails.logger.debug "The access token is " + params[:accessToken]
 
@@ -233,10 +233,10 @@ class Api::PetitionsController < ApplicationController
 
     raise "Unable to find user" unless user
 
-    signature = user.signatures.find_by_petition_id(petition.id)
+    signature = user.signatures.find_by_petition_id(@petition.id)
 
     unless signature
-      signature = petition.signatures.new do |s|
+      signature = @petition.signatures.new do |s|
         s.user = user
         s.signature_method = "Facebook"
         s.latitude = params[:latitude]
@@ -256,18 +256,18 @@ class Api::PetitionsController < ApplicationController
       end
 
       #return if error_messages?(:config)
-      petition.save
+      @petition.save
 
       #send petition action email
       if signature.opt_in
         UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
-            "merge_petitiontitle" => petition.title,
+            "merge_petitiontitle" => 2petition.title,
             "merge_firstname" => user.first_name,
             "merge_lastname" => user.last_name,
-            "merge_targetname" => petition.target.title + " " + petition.target.last_name,
-            "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.client.name,
-            "merge_organizationavatar" => petition.client.avatar("medium")
+            "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
+            "merge_shorturl" => @petition.short_url,
+            "merge_organizationname" => @petition.client.name,
+            "merge_organizationavatar" => @petition.client.avatar("medium")
         })
       end
 
@@ -275,7 +275,7 @@ class Api::PetitionsController < ApplicationController
 
     sign_in user
 
-    render_result({ 'petition' => petition.to_api,
+    render_result({ 'petition' => @petition.to_api,
       'signature' => signature.to_api})
 
   end
