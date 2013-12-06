@@ -113,8 +113,8 @@
           Util.push_ga_event("Petition", "Facebook Status", "Not Logged In")
         
           # not_logged_in
-          scope.login_status = response.status
-          scope.$apply()
+        scope.login_status = response.status
+        scope.$apply()
 
 
 # end of fbAsyncInit
