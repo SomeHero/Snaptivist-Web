@@ -22,8 +22,6 @@ module CrmNotification
             facebook = user.authentications.find_by_provider("facebook")
             twitter = user.authentications.find_by_provider("twitter")
 
-            binding.pry
-
             result = NationBuilder::People.update_or_create({
                 :external_id => user.id,
                 :first_name => user.first_name,

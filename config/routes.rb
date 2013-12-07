@@ -1,5 +1,7 @@
 SnaptivistWeb::Application.routes.draw do
 
+  devise_for :clients
+
   mount API => "/api", :at => '/'
 
   namespace :api do
@@ -125,6 +127,8 @@ SnaptivistWeb::Application.routes.draw do
   resources :clients do
     member do
       get :login
+      post :login
+      get :logout
     end
     collection do
       post :confirm

@@ -1,6 +1,11 @@
 class Client < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
-  devise :database_authenticatable, :timeoutable
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :avatar, :email, :password, :password_confirmation, :remember_me
 
   belongs_to :nation_builder_crm_authentication
   has_attached_file :avatar, styles: {

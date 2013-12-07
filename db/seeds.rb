@@ -30,7 +30,9 @@ jcc_user = User.create!(
 #create some client users
 snaptivist = Client.create!(
 	name: 'Snaptivist',
-	avatar: File.open(File.join(image_dir, 'jcc_campaign_logo.png'))
+	avatar: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+	email: "james@snaptivist.com",
+	password: "Sebastian10s",
 ).tap { |c| 
 	c.nation_builder_crm_authentication = NationBuilderCrmAuthentication.create!(
 		nation_name: "rva",
@@ -45,6 +47,8 @@ snaptivist = Client.create!(
 jcc = Client.create!(
 	name: 'John Cornyn Campaign',
 	avatar: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+	email: "josh@johncornyn.com",
+	password: "Sn@p424#",
 ).tap { |c| 
 	c.nation_builder_crm_authentication = NationBuilderCrmAuthentication.create!(
 		nation_name: "johncornyn",
