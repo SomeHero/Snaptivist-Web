@@ -35,6 +35,8 @@ class AddDeviseToClients < ActiveRecord::Migration
       # t.timestamps
     end
 
+    Client.delete_all
+    
     add_index :clients, :email,                :unique => true
     add_index :clients, :reset_password_token, :unique => true
     # add_index :clients, :confirmation_token,   :unique => true
