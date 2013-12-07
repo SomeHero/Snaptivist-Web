@@ -22,8 +22,8 @@
       name: 'Delivery Page'
       page_url: 'delivery_template'
     }, {
-      name: 'Premium Page'
-      page_url: 'premium_template'
+      name: 'Donation Page Redirect'
+      page_url: 'donation_redirect_template'
     }]
 
   $scope.update_page_list = () ->
