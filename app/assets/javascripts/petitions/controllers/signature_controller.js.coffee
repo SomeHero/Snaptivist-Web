@@ -2,13 +2,18 @@
 
   window.scope = $scope
   $scope.form_submitted = false
-  $scope.show_errors = false
+
+  $scope.error_messages =
+    sign_with_facebook: ""
+    sign_with_email_address: ""
 
   $scope.sign_with_email_address = (form) ->
     console.log("signing petition with email address")
 
     Util.push_ga_event("Petition", "Sign With Email", "Clicked (Pre Form Validation)")
    
+    $scope.loading.show_spinner = true
+
     form.submitted = true
     $scope.form_submitted = true
 
@@ -16,9 +21,6 @@
     
       Util.push_ga_event("Petition", "Sign With Email", "Clicked (Post Form Validation)")
    
-      $scope.show_errors = false
-      $scope.loading.show_spinner = true
-
       petition_id = $scope.petition.petition_id
 
       PetitionServices.sign_with_email_address(petition_id, $scope.signature).success (response) ->
@@ -31,14 +33,21 @@
 
         $rootScope.$broadcast('signedPetition', result.signature)
  
-      .error ->
-        console.log "signature failed"
+      .error (response) ->
+        console.log "signature failed: " + response
 
         Util.push_ga_event("Petition", "Sign With Email", "Failed")
    
         $scope.loading.show_spinner = false
+        
+        $scope.error_messages.sign_with_email_address = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
+        $scope.clear_errors()
+
     else
-      $scope.show_errors = true
+      $scope.loading.show_spinner = false
+
+      $scope.error_messages.sign_with_email_address = "All fields are required."
+      $scope.clear_errors()
 
   $scope.sign_with_facebook = (auth)->
     console.log "Facebook Login Success"
@@ -94,10 +103,16 @@
 
             Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
 
+            $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
+            $scope.clear_errors()
+
         .error (response) ->
           console.log "signature failed: " + response
 
           Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
+
+          $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
+          $scope.clear_errors()
 
           $rootScope.$broadcast('signedPetitionWithFacebookFailed')
 
@@ -118,12 +133,11 @@
     return $scope.petition.signature_count/$scope.petition.target_count*100
 
   remove_errors = () ->
-    $scope.show_errors = false
+    $scope.error_messages.sign_with_email_address = ""
+    $scope.error_messages.sign_with_facebook = ""
 
-  $scope.display_error_popover = () ->
-    if $scope.show_errors
-      $timeout(remove_errors, 2000);
-    $scope.show_errors
+  $scope.clear_errors = () ->
+    $timeout(remove_errors, 4000);
 
   $scope.form_styling = ->
     if $scope.form_submitted

@@ -3,7 +3,7 @@ require 'nation_builder_crm_notifier.rb'
 
 class Api::PetitionsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :share, :sign_another]
-  after_filter :sync_crm, :only => [:sign, :sign_with_facebook]
+  after_filter :sync_crm, :only => [:sign, :sign_with_facebook, :share]
   respond_to :json
 
   #the version of the API
@@ -55,13 +55,15 @@ class Api::PetitionsController < ApplicationController
     token = current_user.authentications.find_by_provider("twitter").token
     token_secret = current_user.authentications.find_by_provider("twitter").token_secret
 
-    Twitter.configure do |config|
+    client = Twitter::REST::Client.new do |config|
       config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
       config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
-      config.oauth_token = token
-      config.oauth_token_secret = token_secret
+      config.access_token = token
+      config.access_token_secret = token_secret
+    end
 
-    Twitter.update(params[:tweet])
+    binding.pry
+    client.update(params[:tweet])
 
     #add tweet record
     @signature.delivered = true
@@ -76,7 +78,6 @@ class Api::PetitionsController < ApplicationController
 
     render_result()
 
-    end
   end
 
   #adds a Signature to a petition
@@ -203,7 +204,7 @@ class Api::PetitionsController < ApplicationController
             user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
           end
       else
-        user.action_tags = @petition.action_tags
+        user.action_tags = @ppetition.action_tags
       end
       user.save!
 
@@ -443,20 +444,6 @@ class Api::PetitionsController < ApplicationController
 
   end
 
-  def sync_crm
-
-    #now add the new user to configured CRM
-    Rails.logger.debug "Syncing new user to CRM"
-
-    crm = CrmNotification::NationBuilderCrmNotifier.new
-    result = crm.create_or_update_supporter(@petition.client.nation_builder_crm_authentication, current_user)
-
-    if result
-      current_user.external_id = result.id
-      current_user.save!
-    end
-
-  end
 
 	# render a result in the appropriate format
   # TODO: move to some base class or something

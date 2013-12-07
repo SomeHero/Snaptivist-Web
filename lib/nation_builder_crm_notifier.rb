@@ -20,6 +20,9 @@ module CrmNotification
             )
 
             facebook = user.authentications.find_by_provider("facebook")
+            twitter = user.authentications.find_by_provider("twitter")
+
+            binding.pry
 
             result = NationBuilder::People.update_or_create({
                 :external_id => user.id,
@@ -27,7 +30,14 @@ module CrmNotification
                 :last_name => user.last_name,
                 :email => user.email,
                 #:facebook_address => facebook ? "http://www.facebook.com/" + facebook.uid : nil,
-                :tags => user.action_tags
+                #:twitter_id => twitter ? twitter.uid : nil,
+                :tags => user.action_tags,
+                #:primary_address => {
+                    #:city => user.city,
+                    #:state => user.state,
+                    #:latitude => user.latitude,
+                    #:longitude => user.longitude
+                #}
             })
 
           return result

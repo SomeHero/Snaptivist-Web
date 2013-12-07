@@ -22,12 +22,12 @@
 							.col-md-12
 								.drop-shadow-full
 									%div{"ng-switch"=>"is_admin"}
-										%textarea.form-control{"ng-switch-when"=>"false", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115"}
+										%textarea.form-control{"ng-switch-when"=>"false", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
 										%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "ng-switch-when"=>"true", "contenteditable"=>"{{is_admin}}", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
 									#message-counter.text-right {{115 - get_tweet_message_length()}}
 						.form-group
 							.col-md-12
-								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)"}
+								%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
 									%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "ng-bind"=>"!is_admin && petition.delivery_call_to_action_button_text || ''"}
 						.form-group
 							.col-md-12

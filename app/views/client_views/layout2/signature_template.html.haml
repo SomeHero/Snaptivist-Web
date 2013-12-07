@@ -19,7 +19,7 @@
 						#signature-form-container
 							.row.bottom-margin
 								.col-md-12.text-center
-									%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()"}
+									%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()", "custompopover" => "{{error_messages.sign_with_facebook}}",  "custompopover-toggle" =>"error_messages.sign_with_facebook.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "bottom"}
 										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_facebook_cta_button_text || ''", "name"=>"sign_with_facebook_cta_button_text", "required"=>""}
 							.row.text-center.bottom-margin#signature-form-or-container
 								%h6
@@ -36,7 +36,7 @@
 										%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address", "required"=>""}
 									.form-group
 										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required"=>""}
-									%button.btn.btn-primary#sign-with-email-address-button{"ng-click"=>"sign_with_email_address(sign_with_email_form)", "custompopover" => "All fields are required.",  "custompopover-toggle" =>"display_error_popover()", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+									%button.btn.btn-primary#sign-with-email-address-button{"ng-click"=>"sign_with_email_address(sign_with_email_form)", "custompopover" => "{{error_messages.sign_with_email_address}}",  "custompopover-toggle" =>"error_messages.sign_with_email_address.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
 										%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "ng-bind"=>"!is_admin && petition.sign_with_email_cta_button_text || ''", "name"=>"sign_with_email_cta_button_text", "required"=>""}
 								%div{"ng-switch-when"=>"true"}
 									.form-group.clearfix
@@ -84,7 +84,7 @@
 											{{format_signature_location(signature)}}
 								.comment-timeago
 									Signed {{signature.created_at | fromNow }}         
-			%p.text-left{"ng-hide"=>"comments.items.length > 0"}
+			%p.text-left{:style=>"padding: 0px 20px", "ng-hide"=>"comments.items.length > 0"}
 				Be the first to sign this petition.
 		.bottom-margin#more-signers-button-wrapper
 			%button.btn.btn-primary#more-signers-button{"ng-hide"=>"comments.items.length >= comments.total", "ng-click"=>"show_more_signatures_click()"}
