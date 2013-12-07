@@ -1,12 +1,12 @@
-@DeliveryController = ($scope, PetitionServices, PetitionFactory, $http, $q, Util, $rootScope) ->
+@DeliveryController = ($scope, PetitionServices, PetitionFactory, $http, $q, Util, $rootScope, $interpolate) ->
 
   window.scope = $scope
 
   $scope.signature = PetitionFactory.signature
   $scope.tweet = {
-    message: $scope.petition.default_tweet_text
+    message: $interpolate($scope.petition.default_tweet_text|| "")($scope)
   }
-
+  
   $scope.get_avatar_url = (signature) ->
     if !signature.user
       return '/assets/avatar.png'
