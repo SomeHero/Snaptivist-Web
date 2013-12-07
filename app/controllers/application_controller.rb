@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_client
-    @user ||= User.find(session[:user_id]) if session[:user_id]
+    @client ||= Client.find(session[:client_id]) if session[:client_id]
     #@user ||= User.find_by_session_token!(cookies[:session_token]) if cookies[:session_token]
-    @user
+    @client
   end
   helper_method :current_user
 

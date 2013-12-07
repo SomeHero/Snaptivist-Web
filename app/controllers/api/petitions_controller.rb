@@ -62,7 +62,6 @@ class Api::PetitionsController < ApplicationController
       config.access_token_secret = token_secret
     end
 
-    binding.pry
     client.update(params[:tweet])
 
     #add tweet record

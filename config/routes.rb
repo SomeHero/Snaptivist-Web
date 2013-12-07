@@ -127,7 +127,7 @@ SnaptivistWeb::Application.routes.draw do
   resources :clients do
     member do
       get :login
-      post :login
+      post :validate
       get :logout
     end
     collection do
