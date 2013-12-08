@@ -7,6 +7,7 @@
 	$scope.edit_petition = (petition) ->
 		ClientFactory.petition = petition
 
+		$location.hash("")
 		Util.navigate('/petition_setup')
 
 PetitionController.resolve =
