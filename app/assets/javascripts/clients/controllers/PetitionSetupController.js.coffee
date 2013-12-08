@@ -9,10 +9,11 @@
 		new_tag: ""
 		list: []
 	}
-	for tag in $scope.petition.action_tags.split(',')
-		$scope.action_tags.list.push({
-			name: tag
-		})	
+	if $scope.petition.action_tags
+		for tag in $scope.petition.action_tags.split(',')
+			$scope.action_tags.list.push({
+				name: tag
+			})	
 
 	if $location.hash()
 		$scope.step = parseInt($location.hash())
