@@ -167,6 +167,10 @@
 PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'layouts']
 
 PetitionSetupController.resolve =
+  clear_petition: ['ClientFactory', (ClientFactory) ->
+  	ClientFactory.petition = {}
+  ]
+  	
   layouts: ['LayoutServices', '$q', (LayoutServices, $q) ->
     deferred = $q.defer()
 
