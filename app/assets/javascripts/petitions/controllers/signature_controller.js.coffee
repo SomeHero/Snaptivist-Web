@@ -39,7 +39,7 @@
         Util.push_ga_event("Petition", "Sign With Email", "Failed")
    
         $scope.loading.show_spinner = false
-        
+
         $scope.error_messages.sign_with_email_address = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
         $scope.clear_errors()
 
@@ -54,67 +54,63 @@
 
     $scope.auth = auth
 
-    $scope.$apply ->
-      PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature).success (response) ->
-          if response.statusCode is 200
-            console.log "signature complete; trying to Share via FB"
+    PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature).success (response) ->
+        if response.statusCode is 200
+          console.log "signature complete; trying to Share via FB"
+        
+          Util.push_ga_event("Petition", "Sign With Facebook", "Success")
           
-            Util.push_ga_event("Petition", "Sign With Facebook", "Success")
-            
-            result = response.result
-            signature = result.signature
+          result = response.result
+          signature = result.signature
 
-            fb_message_obj =
-              method: 'feed'
-              redirect_uri: 'YOUR URL HERE'
-              link: $scope.petition.short_url
-              name: 'Sign the Petition'
-              caption: $scope.petition.title
-              description: $scope.petition.summary,
+          fb_message_obj =
+            method: 'feed'
+            redirect_uri: 'YOUR URL HERE'
+            link: $scope.petition.short_url
+            name: 'Sign the Petition'
+            caption: $scope.petition.title
+            description: $scope.petition.summary,
 
-            if scope.petition.image_square
-              $.extend true, fb_message_obj, { picture: $scope.petition.image_square }
-            else  
-              $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
-            
-            scroll = $(window).scrollTop()
+          if scope.petition.image_square
+            $.extend true, fb_message_obj, { picture: $scope.petition.image_square }
+          else  
+            $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
+          
+          FB.ui fb_message_obj, (response) ->
 
-            FB.ui fb_message_obj, (response) ->
-              $(window).scrollTop scroll
+            if response
+              console.log "share complete"
+
+              Util.push_ga_event("Petition", "Facebook Share", "Success")
+
+              signature.shared = true
+              $rootScope.$broadcast('signedPetitionWithFacebook', signature)
+        
+            else
+              console.log "error sharing"
+
+              Util.push_ga_event("Petition", "Facebook Share", "Failed")
               
-              if response
-                console.log "share complete"
-
-                Util.push_ga_event("Petition", "Facebook Share", "Success")
-
-                signature.shared = true
-                $rootScope.$broadcast('signedPetitionWithFacebook', signature)
-          
-              else
-                console.log "error sharing"
-
-                Util.push_ga_event("Petition", "Facebook Share", "Failed")
-                
-                signature.shared = false
-                $rootScope.$broadcast('signedPetitionWithFacebook', signature)
-          
-          else
-            console.log "error: " + response
-
-            Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
-
-            $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
-            $scope.clear_errors()
-
-        .error (response) ->
-          console.log "signature failed: " + response
+              signature.shared = false
+              $rootScope.$broadcast('signedPetitionWithFacebook', signature)
+        
+        else
+          console.log "error: " + response
 
           Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
 
           $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
           $scope.clear_errors()
 
-          $rootScope.$broadcast('signedPetitionWithFacebookFailed')
+      .error (response) ->
+        console.log "signature failed: " + response
+
+        Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
+
+        $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
+        $scope.clear_errors()
+
+        $rootScope.$broadcast('signedPetitionWithFacebookFailed')
 
   $scope.sign_with_facebook_cancelled = ->
       Util.push_ga_event("Petition", "Sign With Facebook", "Cancelled")
