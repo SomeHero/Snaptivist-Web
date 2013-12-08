@@ -211,14 +211,24 @@ class Api::PetitionsController < ApplicationController
 
       raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
 
-      user = User.new
-      user.email =  facebook_profile["email"]
-      user.first_name = facebook_profile['first_name']
-      user.last_name = facebook_profile['last_name']
-      user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-      user.password = "James123"
-      user.action_tags = @petition.action_tags
+      #so we haven't seen the facebook account before, but let's check the email address because we require them to be unique
+      user = User.find_by_email(facebook_profile["email"])
+
+      if !user
+        user = User.new
+        user.email =  facebook_profile["email"]
+        user.first_name = facebook_profile['first_name']
+        user.last_name = facebook_profile['last_name']
+        user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
+        user.password = "James123"
+        user.action_tags = @petition.action_tags
+      else
+        #TODO
+        #we need to append the action tags
+        user.action_tags = @petition.action_tags
       
+      end
+      #associate the facebook auth with this user
       user.authentications.build(
           :provider => 'facebook', 
           :uid => params[:userID], 
@@ -227,12 +237,11 @@ class Api::PetitionsController < ApplicationController
 
       user.save!
 
-
-
     end
 
     raise "Unable to find user" unless user
 
+    #let's check to see if that user has already signed, if so don't sign again but send them to the next page anyway
     signature = user.signatures.find_by_petition_id(@petition.id)
 
     unless signature
