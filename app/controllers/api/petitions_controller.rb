@@ -197,13 +197,13 @@ class Api::PetitionsController < ApplicationController
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
 
       if user.action_tags  && @petition.action_tags
-          action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
+          action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
           current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
           action_tags.each do |action_tag|
             user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
           end
       else
-        user.action_tags = @ppetition.action_tags
+        user.action_tags = @petition.action_tags
       end
       user.save!
 
