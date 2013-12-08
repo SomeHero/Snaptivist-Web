@@ -55,7 +55,7 @@
 
       console.log "Signing with Facebook"
 
-      $scope.sign_with_facebook(response.authResponse)
+      $scope.sign_with_facebook($scope.auth)
 
 
     ((d) ->

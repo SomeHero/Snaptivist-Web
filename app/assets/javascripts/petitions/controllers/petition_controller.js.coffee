@@ -171,10 +171,6 @@
   $scope.$on '$viewContentLoaded', ->
     console.log 'view loaded'
 
-  $scope.$on 'handleFacebookAuth', (event, source) ->
-    console.log "Facebook Login Success"
-
-
   $scope.load_progress_marker()
 
   $scope.client_image_url = () ->
