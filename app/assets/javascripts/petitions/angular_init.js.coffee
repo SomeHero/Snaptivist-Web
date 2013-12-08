@@ -55,7 +55,7 @@
 
       console.log "Signing with Facebook"
 
-      scope.$broadcast('handleFacebookAuth')
+      $scope.sign_with_facebook(response.authResponse)
 
 
     ((d) ->
@@ -76,7 +76,7 @@
 
       if $scope.login_status is "connected"
         console.log "fetch"
-        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In")
+        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In)")
    
         fetch()
       else
