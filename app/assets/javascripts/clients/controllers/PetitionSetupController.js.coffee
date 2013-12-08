@@ -5,6 +5,10 @@
 	$scope.is_admin = true
 	$scope.layouts = layouts
 	$scope.petition = ClientFactory.petition
+	$scope.action_tags = {
+		new_tag: ""
+		list: []
+	}
 
 	if $location.hash()
 		$scope.step = parseInt($location.hash())
@@ -158,6 +162,27 @@
 		$scope.settings.layout = layout.url_fragment
 		$scope.update_page_list()
 		$scope.update_stylesheet_list()
+
+	$scope.add_action_tag = () ->
+		new_tag = $scope.action_tags.new_tag
+		$scope.action_tags.list.push({
+			name: new_tag
+		})
+		$scope.action_tags.new_tag = ""
+		if $scope.petition.action_tags
+			$scope.petition.action_tags += "," + new_tag	
+		else
+			$scope.petition.action_tags = new_tag
+
+	$scope.delete_action_tag = (tag) ->
+		$scope.action_tags.list.splice($scope.action_tags.list.indexOf(tag), 1)	
+
+		$scope.petition.action_tags = ""
+		for tag in $scope.action_tags.list
+			if $scope.petition.action_tags
+				$scope.petition.action_tags += "," + tag.name	
+			else
+				$scope.petition.action_tags = tag.name			
 
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
