@@ -255,8 +255,8 @@ staging:
   twilio_number: 2028038459
 
 production:
-  path: snaptivist.com
-  host: snaptivist.com
+  path: snaptivist.org
+  host: snaptivist.org
   protocol: http://
   default_from: admin@snaptivist.com
   default_from_name: Snaptivist
