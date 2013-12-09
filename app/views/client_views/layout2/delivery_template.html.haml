@@ -20,7 +20,7 @@
 								%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline"}
 						.form-group
 							.col-md-12
-								.drop-shadow-full
+								.drop-shadow-full{:style=>"margin-bottom: 20px;"}
 									%div{"ng-switch"=>"is_admin"}
 										%textarea.form-control{"ng-switch-when"=>"false", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
 										%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "ng-switch-when"=>"true", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
