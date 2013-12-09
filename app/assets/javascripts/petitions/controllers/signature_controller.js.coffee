@@ -71,8 +71,8 @@
             caption: $scope.petition.title
             description: $scope.petition.summary,
 
-          if scope.petition.image_square
-            $.extend true, fb_message_obj, { picture: $scope.petition.image_square }
+          if scope.petition.image_square_url
+            $.extend true, fb_message_obj, { picture: $scope.petition.image_square_url }
           else  
             $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
           

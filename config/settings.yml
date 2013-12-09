@@ -148,7 +148,7 @@ development:
   host: localhost:3000
   protocol: http://
   default_from: admin@snaptivist.com
-  default_from_name : Snaptivist Dev
+  default_from_name : Senator John Cornyn
   skip_hostcheck: true
   help_email: help@snaptivist.com
   allow_mobile: true            
@@ -259,7 +259,7 @@ production:
   host: snaptivist.org
   protocol: http://
   default_from: admin@snaptivist.com
-  default_from_name: Snaptivist
+  default_from_name: Senator John Cornyn
   skip_hostcheck: false
   help_email: help@snaptivist.com
   allow_mobile: true        
