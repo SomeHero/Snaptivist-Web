@@ -122,7 +122,7 @@ class Petition < ActiveRecord::Base
         'target_count' => target_count,
         'short_url' => short_url,
         'subdomain' => subdomain,
-        'target' => target.to_api,
+        'target' => target ? target.to_api : nil,
         'creator' => user ? user.to_api : nil,
         'client' => client ? client.to_api : nil,
         'comment' => comment,

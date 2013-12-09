@@ -2,13 +2,13 @@
 %html{"xmlns:ng" => "http://angularjs.org", 'ng-app' => 'petition', "ng-controller" => "PetitionController"}
   %head
     %title
-      = @petition.target_headline_text || @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title
+      = @petition.headline_primary
     %meta{"name" => "description", "content" => @petition.summary}
-    %meta{"property" => "og:title", "content" => "Tell " + @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title }
+    %meta{"property" => "og:title", "content" => @petition.headline_primary}
     %meta{"property" => "og:type", "content" => "cause"}
     %meta{"property" => "og:url", "content" => @petition.short_url}
     %meta{"property" => "og:image", "content" => @petition.header_image("full_size")}
-    %meta{"property" => "og:site_name", "content" => "www.snaptivist.com"}
+    %meta{"property" => "og:site_name", "content" => "www.snaptivist.org"}
     %meta{"property" => "og:locale", "content" => "en_US"}
 
     = render partial: 'layouts/actions_head'

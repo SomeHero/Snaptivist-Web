@@ -30,7 +30,7 @@ class API < Grape::API
       client = Client.find(params[:id])
       @petition = Petition.new(JSON.parse(params[:petition]))
 
-      @petition.target = Target.first
+      #@petition.target = Target.first
       @petition.title = @petition.name
       @petition.client = client
 
