@@ -57,8 +57,8 @@
 									{{tweet.first_name}} {{tweet.last_name}}
 								%div.tweet-message
 									{{tweet.message}}
-							%div.comment-timeago
-								Tweeted {{tweet.created_at | fromNow }} 
+								%div.comment-timeago{:style=>"margin-top: 8px; font-size: .92em"}
+									Tweeted {{tweet.created_at | fromNow }} 
 
 		.bottom-margin#more-tweets-button-wrapper
 			%button.btn.btn-primary#more-tweets-button{"ng-hide"=>"tweets.items.length >= tweets.total", "ng-click"=>"show_more_tweets_click()"}
