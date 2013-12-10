@@ -3,8 +3,7 @@ class PetitionsController < InheritedResources::Base
 
 	def view
 
-        binding.pry
-		if params[:action_title].to_i != 0
+        if params[:action_title].to_i != 0
 			@petition = Petition.includes(:target).includes(:signatures).find(params[:action_title].to_i)
 		else
 			@petition = Petition.includes(:target).includes(:signatures)

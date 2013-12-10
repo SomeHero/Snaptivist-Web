@@ -145,6 +145,12 @@
 				Util.navigate('petitions')
 
 			.error ->
+				console.log "create petition failed".success (response) ->
+				console.log "petition created"
+
+				Util.navigate('petitions')
+
+			.error ->
 				console.log "create petition failed"
 
 	$scope.client_image_url = () ->

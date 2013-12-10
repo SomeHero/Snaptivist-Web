@@ -58,8 +58,7 @@
                 
                 $scope.loading.show_spinner = false
 
-                $scope.error_messages.deliver_tweet = "We're sorry. We're unable to deliver your signature. Please, try again later."
-                $scope.clear_errors()
+                  
 
             , (response) ->
               console.log "failed check for twitter credentials"
