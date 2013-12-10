@@ -24,6 +24,8 @@ angular.module("contenteditable", []).directive "contenteditable", ["$timeout", 
         html = $element.html()
         rerender = false
         html = html.replace(/<br>$/, "")  if attrs.stripBr and attrs.stripBr isnt "false"
+        html = html.replace(/<br>/g, "<br><br>")
+        html = html.replace(/<div>/g, "").replace(/<\/div>/g, "")
         if attrs.noLineBreaks and attrs.noLineBreaks isnt "false"
           html2 = html.replace(/<div>/g, "").replace(/<br>/g, "").replace(/<\/div>/g, "")
           if html2 isnt html
