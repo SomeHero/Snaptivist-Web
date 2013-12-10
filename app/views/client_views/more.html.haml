@@ -1,35 +1,32 @@
 .row-fluid.more-actions{:style => "margin: 20px 0px 20px 0px"}
-	%h4.text-center
-		Thanks for Signing
-	%h5.text-center
-		Here are some other actions that need your support
-	%div{"ng-repeat" => "action in more_actions", :style => "margin-bottom: 40px"}
-		%div.action-wrapper.solid-white-back.drop-shadow-full{:style => "padding: 10px; margin: 10px; position: relative; width: 650px; margin: 10px auto;", "data-petition-id" => "{{action.petition_id}}"}
-			%div.action-detail{:style => "padding: 0px 10px;"}
-				%h2{:style => "margin-bottom: 4px;"}
-					{{action.target_headline_text}}
-				%h1{:style => "font-size: 24px; line-height: 28px; margin-bottom:20px;"}
-					{{action.title}}
-				.row-fluid
-					%p.description
-						%span{:style => "display: block;"}
-							{{action.summary}}
-				.row-fluid
-					%button.btn{"ng-click" => "read_more(action)"}
-						Read More
-				.row-fluid
-					%h4{:style => "margin-bottom: 40px;"}
-						{{action.signature_count}} 
-						.span{:style => "font-size: 18px; display: inline;"}
-							signers
-			%span{:style => "width: 550px; display: block; margin: 0px auto;"}
-				#sign-why.solid-white-back{:style => "text-align: left;"}
-					%textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "{{action.signature_comment_placeholder_text || 'Tell Us Why Your Signing...'}}"}
-					#message-counter.text-right {{115 - signature_form.comment.length}}
-				%button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_another(action, subForm)"}
-					Add My Name
-				%span
-					%input#chkEmailSignUp{"checked" => "true", :type => "checkbox"}
-						%span{:style => "color: #768286; font-size: 12px; line-height: 15px;"}
-							Update me on the results of this campaign and others from
-							%span{:style => "font-weight: bold;"} {{action.creator.organization_name}}
+	#action-wrapper
+		%h2
+			Your voice has been heard
+		%p.description
+			We appreciate your support on the related actions below
+		%div{"ng-repeat" => "action in more_actions", :style => "margin-bottom: 40px"}
+			%div.action-wrapper.solid-white-back.drop-shadow-full{:style => "padding: 10px; margin: 10px; position: relative; max-width: 650px; margin: 10px auto;", "data-petition-id" => "{{action.petition_id}}"}
+				%div.action-detail{:style => "padding: 0px 10px;"}
+					%h2{:style => "margin-bottom: 4px;"}
+						{{action.target_headline_text}}
+					%h1{:style => "font-size: 24px; line-height: 28px; margin-bottom:20px;"}
+						{{action.title}}
+					.row-fluid
+						%button.btn{"ng-click" => "read_more(action)"}
+							Read More
+					.row-fluid
+						%h4{:style => "margin-bottom: 40px;"}
+							{{action.signature_count}} 
+							.span{:style => "font-size: 18px; display: inline;"}
+								signers
+				%span{:style => "max-width: 550px; display: block; margin: 0px auto;"}
+					#sign-why.solid-white-back{:style => "text-align: left;"}
+						%textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "{{action.signature_comment_placeholder_text || 'Tell Us Why Your Signing...'}}"}
+						#message-counter.text-right {{115 - signature_form.comment.length}}
+					%button#sign-petition-user-name.button.orange{:style => "width: 100%", "ng-click" => "sign_another(action, subForm)"}
+						Add My Name
+					%span.text-left
+						%input#chkEmailSignUp{"checked" => "true", :type => "checkbox"}
+							%span.copy-opt-in.text-left
+								Update me on the results of this campaign and others from
+								%span{:style => "font-weight: bold;"} {{action.creator.organization_name}}

@@ -11,6 +11,10 @@ class ActionsController < InheritedResources::Base
 		@poll = Poll.includes(:choices)
 		.find_by_subdomain(request.subdomain)
 
+		if params[:signature_id]
+			@signature = Signature.find_by_id(params[:signature_id])
+		end
+		
 		if @petition
 			render 'petitions/show', :layout => 'petitions' 
 		elsif @phonecampaign

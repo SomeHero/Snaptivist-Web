@@ -2,19 +2,20 @@ ActiveAdmin.register Petition do
   	index do
 		selectable_column
 		column :id
+		column :client
 		column :title
 		column :short_url
 		column :subdomain
-		column :created_at
-		column :updated_at
 		column :signatures_count
-		column("Share Count") { |petition| petition.signatures.where("shared = true").count }
-		column("Delivery Count") { |petition| petition.signatures.where("delivered = true").count }
+		column("Share Count") { |petition| petition.signatures.limit(nil).where("shared = true").count }
+		column("Delivery Count") { |petition| petition.signatures.limit(nil).where("delivered = true").count }
+		column :active
 		default_actions
 	end
 
 	form :html => { :enctype => "multipart/form-data" } do |f|
 		f.inputs "Details" do
+			f.input :client
 			f.input :user, :collection => User.where("organization_name is not null")
 			f.input :target, :collection => Target.order("targetgroup_id").order("last_name").order("first_name").all
 			f.input :subdomain
@@ -31,6 +32,7 @@ ActiveAdmin.register Petition do
 			f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
     		f.input :action_tags
     		f.input :comment
+    		f.input :active
 	end
 	f.buttons
    end

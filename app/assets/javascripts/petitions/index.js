@@ -3,6 +3,7 @@
 //
 //= require ./angular_init
 //= require ./fb_init
+//= require_directory ../libs
 //= require_directory ./controllers
 //= require_directory ../services
 //= require_directory ./services

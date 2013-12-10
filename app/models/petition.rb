@@ -3,6 +3,7 @@ require 'bitly'
 class Petition < ActiveRecord::Base
   belongs_to :target
   belongs_to :user
+  belongs_to :client
   has_many :signatures, :order => 'created_at DESC', :limit => 10
   validates :title, :presence => true
   validates :summary, :presence => true
@@ -77,6 +78,7 @@ class Petition < ActiveRecord::Base
         'subdomain' => subdomain,
         'target' => target.to_api,
         'creator' => user.to_api,
+        'client' => client ? client.to_api : nil,
         'comment' => comment,
         'created_at' => created_at,
         'updated_at' => updated_at,

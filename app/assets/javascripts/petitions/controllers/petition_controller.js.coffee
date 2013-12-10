@@ -12,8 +12,17 @@
     deliver_url: '/client_views/deliver'
     more_actions_url: '/client_views/more'
   }
+  $scope.get_call_to_action_button_copy = ->
+    if $scope.show.more_actions
+      return "Take More Actions"
+    else if $scope.show.deliver
+      return "Deliver Your Signature"
+    else
+     return scope.petition.call_to_action_button_text || "Sign Petition"
+
   $scope.petition = petition
   $scope.signature = {}
+
   $scope.deliver = {
     tweet: $interpolate($scope.petition.default_tweet_text || "")($scope)
   }
@@ -84,14 +93,16 @@
       top: $("#action-slider").position().top - $("#sign-panel").height()
     }, 500, "linear", -> $('#actions-container').animate {
       height: $("#deliver-panel").height()
-    }, 300
+    }, 300, "linear", -> $('body,html').animate
+      scrollTop: $("#actions-container").offset().top
 
   $scope.scroll_to_more_actions= ->
     $('#action-slider').animate {
       top: $("#action-slider").position().top - $("#deliver-panel").height()
     }, 500, "linear", -> $('#actions-container').animate {
       height: $("#more-actions-panel").height()
-    }, 300
+    }, 300, "linear", -> $('body,html').animate
+      scrollTop: $("#actions-container").offset().top
 
   $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'
@@ -114,6 +125,16 @@
       $scope.show.deliver = true
 
     $scope.scroll_to_deliver()
+
+  $scope.$on 'signedPetitionWithFacebookFailed', (event) ->
+    console.log 'petition signed with facebook failed'
+
+    unless $scope.$$phase
+      $scope.$apply ->
+        $scope.loading.show_spinner = false
+    else
+      $scope.loading.show_spinner = false
+
 
   $scope.$on 'deliveredPetition', ->
     console.log 'petition delivered'
@@ -161,22 +182,22 @@
     else
       $scope.summary_more_text = "Less"
 
+  $scope.has_sponsor = ->
+    return $scope.petition.client
+
   $scope.$on '$viewContentLoaded', ->
     console.log 'view loaded'
-
-    new_height = $(".view-enter#loaded-view").height()
-    if $(".with-rs-slider").length
-      new_height += 450 
-
-    $("#view-container").animate({
-      height: new_height
-    }, 1000, ->
-      $scope.$apply ->
-        $scope.loading.show_spinner = false
-    )
 
   $scope.$on 'handleFacebookAuth', (event, source) ->
     console.log "Facebook Login Success"
 
 
   $scope.load_progress_marker()
+
+  if signature
+    $scope.signature = signature
+
+    $scope.show.signature = false
+    $scope.show.deliver = true
+
+    $scope.scroll_to_deliver()

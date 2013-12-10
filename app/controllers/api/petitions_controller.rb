@@ -92,8 +92,14 @@ class Api::PetitionsController < ApplicationController
           @user.first_name = params[:first_name]
           @user.last_name = params[:last_name]
           @user.zip_code = params[:zip_code]
-          if @user.action_tags
-            @user.action_tags += "," + @petition.action_tags
+          
+          if @user.action_tags && @petition.action_tags
+            action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
+            current_tags = Array.wrap(@user.action_tags.split(",")).collect{|x| x.strip}
+        
+            action_tags.each do |action_tag|
+              @user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+            end
           else
             @user.action_tags = @petition.action_tags
           end
@@ -118,6 +124,7 @@ class Api::PetitionsController < ApplicationController
 
       signature = @petition.signatures.new do |s|
         s.user = @user
+        s.signature_method = "Email"
         s.latitude = params[:latitude]
         s.longitude = params[:longitude]
         s.zip_code = params[:zip_code]
@@ -142,7 +149,8 @@ class Api::PetitionsController < ApplicationController
             "merge_lastname" => @user.last_name,
             "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
             "merge_shorturl" => @petition.short_url,
-            "merge_organizationname" => @petition.user.organization_name
+            "merge_organizationname" => @petition.user.organization_name,
+            "merge_organizationavatar" => @petition.user.organization_avatar("medium")
         })
     end
 
@@ -178,8 +186,13 @@ class Api::PetitionsController < ApplicationController
       user.first_name = facebook_profile['first_name']
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-      if user.action_tags
-        user.action_tags += "," + petition.action_tags
+
+      if user.action_tags  && petition.action_tags
+          action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
+          current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
+          action_tags.each do |action_tag|
+            user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+          end
       else
         user.action_tags = petition.action_tags
       end
@@ -212,6 +225,7 @@ class Api::PetitionsController < ApplicationController
     unless signature
       signature = petition.signatures.new do |s|
         s.user = user
+        s.signature_method = "Facebook"
         s.latitude = params[:latitude]
         s.longitude = params[:longitude]
         s.comment = params[:comment]
@@ -239,7 +253,8 @@ class Api::PetitionsController < ApplicationController
             "merge_lastname" => user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name
+            "merge_organizationname" => petition.user.organization_name,
+            "merge_organizationavatar" => petition.user.organization_avatar("medium")
         })
       end
 
@@ -275,7 +290,30 @@ class Api::PetitionsController < ApplicationController
 
     raise "Unable to find petition" unless petition
 
+    if petition.action_tags
+      if current_user.action_tags
+        action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
+        current_tags = Array.wrap(current_user.action_tags.split(",")).collect{|x| x.strip}
+        action_tags.each do |action_tag|
+          Rails.logger.debug "Action Tag is " + action_tag
+
+          current_user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+        end
+      else
+        current_user.action_tags = petition.action_tags
+      end
+
+      current_user.save!
+    end
+
     signature = current_user.signatures.find_by_petition_id(petition.id)
+    last_signature = current_user.signatures.last
+
+    signature_method = ""
+
+    if last_signature 
+      signature_method = last_signature.signature_method
+    end
 
     unless signature
       signature = petition.signatures.new do |s|
@@ -283,6 +321,7 @@ class Api::PetitionsController < ApplicationController
         s.zip_code = current_user.zip_code
         s.comment = params[:comment]
         s.opt_in = params[:opt_in]
+        s.signature_method = signature_method
       end
 
       if !signature.valid?
@@ -300,7 +339,8 @@ class Api::PetitionsController < ApplicationController
             "merge_lastname" => current_user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name
+            "merge_organizationname" => petition.user.organization_name,
+            "merge_organizationavatar" => petition.user.organization_avatar("medium")
         })
       end
 
@@ -353,7 +393,7 @@ class Api::PetitionsController < ApplicationController
   end
 
   def more
-    @petitions = Petition.all()
+    @petitions = Petition.where(:active => true)
 
     result = {
       petitions: @petitions.map { |p| p.to_api }

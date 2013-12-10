@@ -1,3 +1,4 @@
+
 #header-image {
     -webkit-box-shadow: 0 8px 6px -5px #9e9e9e;
     -moz-box-shadow: 0 8px 6px -5px #9e9e9e;
@@ -10,44 +11,49 @@ p {
     margin: 5px auto;
 }
 h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 36px;
+    font-family: 'Oswald-Regular', sans-serif;
+    font-size: 2.57em;
+    line-height: 1.15;
     color: #1d3037;
     margin: 0px 0px 40px 0px;
 }
 h2 {
     font-family: 'Lato-Black', sans-serif;
-    font-size: 18px;
+    font-size: 1.28em;
+    line-height: 1.15;
     font-weight: bold;
     color: #f35b00;
     text-transform: uppercase;
     letter-spacing: 4px;
     padding: 0px 0px 4px 0px;
-    margin-bottom: 10px;
+    margin-bottom: .71em;
 }
 h3 {
     font-family: 'Lato-Light', sans-serif;
-    font-size: 36px;
+    font-size: 2.57em;
+    line-height: 1.15;
     color: #757a80;
-    margin-bottom: 24px;
+    margin-bottom: 2em
 }
 h4 {
     font-family: 'Lato-Light', sans-serif;
-    font-size: 36px;
+    font-size: 1.8em;
+    line-height: 1.15;
     color: #757a80;
-    margin-bottom: 24px;
     font-weight: normal;
 }
 h5 {
     font-family: 'Lato-Regular', sans-serif;
-    font-size: 18px;
+    font-size: 1.15em;
+    line-height: 1.4;
     color: #757a80;
-    margin-bottom: 36px;
+    margin-bottom: 1em;
     font-weight: normal;
 }
 h6 {
     font-family: 'Lato-Regular', sans-serif;
-    font-size: 12px;
+    font-size: .85em;
+    line-height: 1;
     color: #757a80;
     margin-bottom: 36px;
     font-weight: normal;
@@ -55,20 +61,19 @@ h6 {
 h1.title {
     max-width: 560px;
     margin: 0px auto 10px auto;
-    line-height: 44px;
 }
 h2.target-name {
     display: inline-block; 
     padding-left: 18px; 
     padding-right: 18px; 
     border-bottom: inset 1px #dedede;
-
+    padding: 10px 0px;
 }
 p.description {
     max-width: 728px;
     margin: 0px auto 20px auto;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 1.28em;
+    line-height: 1.4;
 }
 .drop-shadow-full {
     -moz-box-shadow:0px 0px 14px 3px rgba(0, 0, 0, 0.25);
@@ -84,6 +89,7 @@ p.description {
 #action-wrapper {
     max-width: 620px;
     margin: 0px auto;
+    padding: 0px 10px;
 }
 #loaded-view-wrapper {
     -moz-box-shadow:0px 0px 14px 8px rgba(0, 0, 0, 0.25);
@@ -110,7 +116,7 @@ p.description {
     box-shadow: none;
     resize: none;
     height: 120px;
-    font-size: 15px;
+    font-size: 1em;
     font-family: 'Lato-Regular', sans-serif;
     color: #757a80;
 }
@@ -150,14 +156,61 @@ p.description {
     display: block; 
 }
 .copy-or {
-    font-family: 'Oswald', sans-serif;
-    font-size: 24px;
+    font-family: 'Oswald-Reqular', sans-serif;
+    font-size: 1.24em;
     letter-spacing: 2px;
-    margin-bottom: 30px;
+    margin: 20px 0px;
 }
-.sign-with-fb-button {
+.copy-opt-in {
+    color: #768286;
+    font-size: .85em;
+    line-height: 1.15;
+    font-weight: 300;
+}
+#call-to-action-button {
+    padding: 20px 10%;
+    font-size: 1.28em;
+    font-family: 'Lato-Light', sans-serif;
+    
+}
+#sign-with-fb-button, #deliver-signature {
     display: block;
-    margin: 0px auto 40px auto;
+    min-height: 100px;
+    padding: 20px 10%;
+    width: 100%;
+    color: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#13b6e5), to(#0c9dcb));
+    background: -moz-linear-gradient(top,  #13b6e5,  #0c9dcb);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#13b6e5', endColorstr='#0c9dcb');
+    font-size: 2.5em;
+    line-height: 1;
+    font-family: 'Lato-Light', sans-serif;
+}
+#sign-with-fb-button {
+    margin: 40px auto 0px auto;
+}
+#sign-with-fb-button span:before {
+    font-family: "FontAwesome";
+     content: "\f09a";
+     color: #ffffff;
+     font-size: 1.15em;
+     margin-right: 20px;
+}
+#deliver-signature {
+    margin: 0px auto 10px auto;
+}
+#deliver-signature span:before {
+    font-family: "FontAwesome";
+     content: "\f099";
+     color: #ffffff;
+     font-size: 1.15em;
+     margin-right: 20px;
+}
+#sign-petition-user-name {
+    min-width: 280px;
+    padding: 20px 10%;
+    font-size: 1.4em;
+    font-family: 'Lato-Light', sans-serif;
 }
 /********** Button Styles ****************/
 .button {
@@ -166,9 +219,7 @@ p.description {
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    font: 18px/100% 'Lato-Light', sans-serif;
     letter-spacing: 4px;
-    padding: .5em 2em .55em;
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
     -webkit-border-radius: 0em; 
     -moz-border-radius: 0em;
@@ -217,42 +268,21 @@ p.description {
     background: #1d3037;
 }
 .action-button {
-    background: url(../../assets/action-button-background.png);
-    width: 100%;
-    color: #fff;
-    font-size: 50px;
-    font-family: 'Lato-Light', sans-serif;
     border: none;
+    -webkit-text-stroke-width: 0.1px;
     padding: none;
     text-shadow: none;
     -webkit-border-radius: 0em;
     -moz-border-radius: 0em;
     border-radius: 0em;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-.action-button.icon {
-    padding-left: 11px;
-}
-.action-button.icon span{
-    padding-left: 60px;
-    line-height: 130px;
-    background-position: left;
-}
-#sign-petition-facebook-button.action-button.icon span {
-    background: url(../../assets/facebook_icon.png);
-    background-repeat: no-repeat;
-}
-#deliver-signature.action-button.icon span{
-    background: url(../../assets/twitter-icon.png);
-    background-repeat: no-repeat;
-   
+    -webkit-box-shadow: 0 8px 6px -5px #9e9e9e;
+    -moz-box-shadow: 0 8px 6px -5px #9e9e9e;
+    box-shadow: 0 8px 6px -5px #9e9e9e;
 }
 /************************************/
 
 input.register-textfield {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato-Regular', sans-serif;
     font-size: 14px;
     color: #444444;
     width: 100%; 
@@ -280,7 +310,7 @@ legend + .control-group {
     margin-bottom: 20px;
     width: 96%;
     max-width: 668px;
-    font-family: font-family: 'Oswald-Regular', sans-serif;
+    font-family: 'Oswald-Regular', sans-serif;
 }
 #target-count-progress-wrapper {
     position:relative;
@@ -383,7 +413,7 @@ legend + .control-group {
 }
 #target-phone-number {
     position: relative;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald-Regular', sans-serif;
     font-size: 88px;
     background-color: #1d3037;
     color: #fff;
@@ -447,18 +477,17 @@ legend + .control-group {
 #see-more-container #see-more-button {
     position: relative;
     height: 78px;
-    line-height: 70px;
+    line-height: 2;
     padding: 0px;
-    font-size: 45px;
+    font-size: 1.28em;
     font-family: 'Lato-Light', sans-serif;
+    padding: 20px 10%;
 }
-#see-more-container #see-more-button span:after {
+#see-more-container #see-more-button span span:after {
      font-family: "FontAwesome";
      content: "\f0da";
      color: #ffffff;
-     position: absolute;
-     font-size: 18px;
-     padding-top: 6px;
+     font-size: 1em;
      padding-left: 12px;
 
 }
@@ -611,43 +640,47 @@ legend + .control-group {
     }
 }
 /* Large desktop */
+@media (min-width: 980px) { body { font-size:100%; line-height: 100%;} }
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { body { font-size:90%; line-height: 80%;} .navbar-fixed-top {margin-bottom: 0px;} }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { body { font-size:80%; } }
+
+/* Landscape phones and down */
+@media (max-width: 480px) { body { font-size:80%; line-height: 50%; } }
+/* Large desktop */
 @media (min-width: 1200px) { 
-    .action-button {
-        font-size: 50px !important;
-    }
-    #see-more-button {
-        font-size: 45px !important;
+    .comment-container .avatar {
+        max-width: 128px;
     }
     .comment-container .pull-left {
         float: left !important;
-    }
-    .comment-container .comment-username {
-        font-size: 18px;
-    }
-    .comment-container .comment-timeago {
-        font-size: 14px;
     }
     .comment-wrapper .comment-container.comment {
         width: 100%;
     }
 }
- 
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { 
-    .action-button {
-        font-size: 40px !important;
-    }
-    #see-more-button {
-        font-size: 35px !important;
+ /* Small desktop */
+@media (min-width: 980px) { 
+    .comment-container .avatar {
+        max-width: 128px;
     }
     .comment-container .pull-left {
         float: left !important;
     }
-    .comment-container .comment-username {
-        font-size: 16px;
+    .comment-wrapper .comment-container.comment {
+        width: 100%;
     }
-    .comment-container .comment-timeago {
-        font-size: 13px;
+}
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+    .comment-container .avatar {
+        max-width: 128px;
+    }
+    .comment-container .pull-left {
+        float: left !important;
     }
     .comment-wrapper .comment-container.comment {
         width: 100%;
@@ -656,20 +689,11 @@ legend + .control-group {
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-    .action-button {
-        font-size: 40px !important;
-    }
-    #see-more-button {
-        font-size: 35px !important;
+    .comment-container .avatar {
+        max-width: 128px;
     }
     .comment-container .pull-left {
         float: left !important;
-    }
-    .comment-container .comment-username {
-        font-size: 16px;
-    }
-    .comment-container .comment-timeago {
-        font-size: 13px;
     }
     .comment-wrapper .comment-container.comment {
         width: 100%;
@@ -678,11 +702,18 @@ legend + .control-group {
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
-    .action-button {
-        font-size: 30px !important;
+    .action-button { -webkit-text-size-adjust:100% } 
+    #header-image {
+        display: none;
     }
-    #see-more-button {
-        font-size: 25px !important;
+    #sign-why {
+        height: 100px;
+    }
+    #sign-why textarea {
+        height: 80px;
+    }
+    .comment-container .avatar {
+        max-width: 75px;
     }
     .comment-container {
         height: 75px;
@@ -698,11 +729,14 @@ legend + .control-group {
         float: left !important;
         margin-right: 6px;
     }
-    .comment-container .comment-username {
-        font-size: 14px;
+    #sponsor-comment .comment-container .comment-timeago {
+        display: none;
     }
-    .comment-container .comment-timeago {
-        font-size: 12px;
+    .comment-location {
+        display: none;
+    }
+    #sponsor-comment .comment-location {
+        display: block;
     }
     .comment-container .avatar {
         max-width: 75px;

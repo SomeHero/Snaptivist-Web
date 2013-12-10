@@ -58,7 +58,8 @@ SnaptivistWeb::Application.configure do
   router.enable_notifications({ 
                                 UserNotification::Notification::APP_LINK => true, 
                                 UserNotification::Notification::USER_INVITE => true, 
-                                UserNotification::Notification::USER_WELCOME => true
+                                UserNotification::Notification::USER_WELCOME => true,
+                                UserNotification::Notification::SIGNATURE_CONFIRMATION => true
                                 })
   #TWITTER STUFF
   TWITTER_CONSUMER_KEY = Settings.twitter_app_key
