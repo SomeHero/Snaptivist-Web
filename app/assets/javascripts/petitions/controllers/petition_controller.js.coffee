@@ -6,6 +6,9 @@
   $scope.layout = 'layout2'
   $scope.theme = 'standard'
 
+  $scope.loading = 
+    show_spinner: false
+
   $scope.petition = petition
   $scope.signature = {}
 
@@ -89,9 +92,6 @@
   $scope.more_actions = []
   $scope.isCollapsed = true
 
-  $scope.loading =
-    show_spinner: false
-
   window.scope = $scope
 
   $scope.change_page = () ->
@@ -170,10 +170,6 @@
 
   $scope.$on '$viewContentLoaded', ->
     console.log 'view loaded'
-
-  $scope.$on 'handleFacebookAuth', (event, source) ->
-    console.log "Facebook Login Success"
-
 
   $scope.load_progress_marker()
 

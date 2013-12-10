@@ -1,12 +1,30 @@
 .form-group
 	%label
 		Petition Sub Domain
-	%input.form-control{"type"=>"text", "placeholder"=>"http://mypetition.snaptivist.com", "ng-model"=>"petition.subdomain", "name"=>"subdomain", "required"=>""}
-
+	.row
+		.col-md-3
+			%input.form-control{"type"=>"text", "placeholder"=>"Sub Domain", "ng-model"=>"petition.subdomain", "name"=>"subdomain", "required"=>""}
+		.col-md-9.notes
+			%div{"ng-show"=>"petition.subdomain.length > 0"}
+				Your petition url will be: http://{{petition.subdomain}}.snaptivist.org
+.form-group
 	%label
 		Petition Target
 	%input.form-control{"type"=>"text"}
-
+.form-group
 	%label
 		Action Tags
-	%input.form-control{"type"=>"text"}	
+	.row
+		.col-md-6
+			#action-tags.input-group
+				%input.form-control{"type"=>"text", "ng-model"=>"action_tags.new_tag", "placeholder"=>"Type a Tag Name"}
+				%span.input-group-btn
+					%button.btn{"type"=>"button", "ng-click"=>"add_action_tag()"}
+						Add
+						%i.icon-plus
+			%ul#action-tags-cloud
+				%li.tag-cloud{:style=>"padding: 4px 8px", "ng-repeat"=>"tag in action_tags.list"}
+					%button.close{:style=>"padding-left: 10px", "type"=>"button","aria-hidden"=>"true","ng-click"=>"delete_action_tag(tag)"}
+						&times;
+					%span.tag-cloud-info
+						{{tag.name}}

@@ -3,7 +3,7 @@ require 'nation_builder_crm_notifier.rb'
 
 class Api::PetitionsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :share, :sign_another]
-  after_filter :sync_crm, :only => [:sign, :sign_with_facebook]
+  after_filter :sync_crm, :only => [:sign, :sign_with_facebook, :share]
   respond_to :json
 
   #the version of the API
@@ -55,13 +55,14 @@ class Api::PetitionsController < ApplicationController
     token = current_user.authentications.find_by_provider("twitter").token
     token_secret = current_user.authentications.find_by_provider("twitter").token_secret
 
-    Twitter.configure do |config|
+    client = Twitter::REST::Client.new do |config|
       config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
       config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
-      config.oauth_token = token
-     config.oauth_token_secret = token_secret
+      config.access_token = token
+      config.access_token_secret = token_secret
+    end
 
-    Twitter.update(params[:tweet])
+    client.update(params[:tweet])
 
     #add tweet record
     @signature.delivered = true
@@ -76,7 +77,6 @@ class Api::PetitionsController < ApplicationController
 
     render_result()
 
-    end
   end
 
   #adds a Signature to a petition
@@ -156,7 +156,7 @@ class Api::PetitionsController < ApplicationController
             "merge_petitiontitle" => @petition.title,
             "merge_firstname" => user.first_name,
             "merge_lastname" => user.last_name,
-            "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
+            #"merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
             "merge_shorturl" => @petition.short_url,
             "merge_organizationname" => @petition.client.name,
             "merge_organizationavatar" => @petition.client.avatar("medium")
@@ -175,9 +175,9 @@ class Api::PetitionsController < ApplicationController
   #sign the petition; otherwise just sign
   def sign_with_facebook
     
-    petition = Petition.find(params[:id])
+    @petition = Petition.find(params[:id])
     
-    raise "Unable to find petition" unless petition
+    raise "Unable to find petition" unless @petition
 
     Rails.logger.debug "The access token is " + params[:accessToken]
 
@@ -196,14 +196,14 @@ class Api::PetitionsController < ApplicationController
       user.last_name = facebook_profile['last_name']
       user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
 
-      if user.action_tags  && petition.action_tags
-          action_tags = Array.wrap(petition.action_tags.split(",").collect{|x| x.strip})
+      if user.action_tags  && @petition.action_tags
+          action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
           current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
           action_tags.each do |action_tag|
             user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
           end
       else
-        user.action_tags = petition.action_tags
+        user.action_tags = @petition.action_tags
       end
       user.save!
 
@@ -211,14 +211,24 @@ class Api::PetitionsController < ApplicationController
 
       raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
 
-      user = User.new
-      user.email =  facebook_profile["email"]
-      user.first_name = facebook_profile['first_name']
-      user.last_name = facebook_profile['last_name']
-      user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-      user.password = "James123"
-      user.action_tags = petition.action_tags
+      #so we haven't seen the facebook account before, but let's check the email address because we require them to be unique
+      user = User.find_by_email(facebook_profile["email"])
+
+      if !user
+        user = User.new
+        user.email =  facebook_profile["email"]
+        user.first_name = facebook_profile['first_name']
+        user.last_name = facebook_profile['last_name']
+        user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
+        user.password = "James123"
+        user.action_tags = @petition.action_tags
+      else
+        #TODO
+        #we need to append the action tags
+        user.action_tags = @petition.action_tags
       
+      end
+      #associate the facebook auth with this user
       user.authentications.build(
           :provider => 'facebook', 
           :uid => params[:userID], 
@@ -227,16 +237,15 @@ class Api::PetitionsController < ApplicationController
 
       user.save!
 
-
-
     end
 
     raise "Unable to find user" unless user
 
-    signature = user.signatures.find_by_petition_id(petition.id)
+    #let's check to see if that user has already signed, if so don't sign again but send them to the next page anyway
+    signature = user.signatures.find_by_petition_id(@petition.id)
 
     unless signature
-      signature = petition.signatures.new do |s|
+      signature = @petition.signatures.new do |s|
         s.user = user
         s.signature_method = "Facebook"
         s.latitude = params[:latitude]
@@ -256,18 +265,18 @@ class Api::PetitionsController < ApplicationController
       end
 
       #return if error_messages?(:config)
-      petition.save
+      @petition.save
 
       #send petition action email
       if signature.opt_in
         UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
-            "merge_petitiontitle" => petition.title,
+            "merge_petitiontitle" => @petition.title,
             "merge_firstname" => user.first_name,
             "merge_lastname" => user.last_name,
-            "merge_targetname" => petition.target.title + " " + petition.target.last_name,
-            "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name,
-            "merge_organizationavatar" => petition.user.organization_avatar("medium")
+            "merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
+            "merge_shorturl" => @petition.short_url,
+            "merge_organizationname" => @petition.client.name,
+            "merge_organizationavatar" => @petition.client.avatar("medium")
         })
       end
 
@@ -275,7 +284,7 @@ class Api::PetitionsController < ApplicationController
 
     sign_in user
 
-    render_result({ 'petition' => petition.to_api,
+    render_result({ 'petition' => @petition.to_api,
       'signature' => signature.to_api})
 
   end
@@ -352,8 +361,8 @@ class Api::PetitionsController < ApplicationController
             "merge_lastname" => current_user.last_name,
             "merge_targetname" => petition.target.title + " " + petition.target.last_name,
             "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.user.organization_name,
-            "merge_organizationavatar" => petition.user.organization_avatar("medium")
+            "merge_organizationname" => petition.client.name,
+            "merge_organizationavatar" => petition.client.avatar("medium")
         })
       end
 
@@ -443,20 +452,6 @@ class Api::PetitionsController < ApplicationController
 
   end
 
-  def sync_crm
-
-    #now add the new user to configured CRM
-    Rails.logger.debug "Syncing new user to CRM"
-
-    crm = CrmNotification::NationBuilderCrmNotifier.new
-    result = crm.create_or_update_supporter(current_user)
-
-    if result
-      current_user.external_id = result.id
-      current_user.save!
-    end
-
-  end
 
 	# render a result in the appropriate format
   # TODO: move to some base class or something

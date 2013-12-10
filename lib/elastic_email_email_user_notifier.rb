@@ -18,14 +18,15 @@ module UserNotification
       when UserNotification::Notification::USER_WELCOME  
         user = params_hash[:user]
         template_name = "PetitionSignature"
-        subject = "You just signed a petition using Snaptivist."
+        #subject = "You just signed a petition using Snaptivist."
+        subject = "Your petition signature"
 
         merge_fields = params_hash[:merge_fields]
         result = ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields)
       when UserNotification::Notification::SIGNATURE_CONFIRMATION 
         user = params_hash[:user]
         template_name = "Signature Confirmation"
-        subject = "You just signed a petition using Snaptivist."
+        subject = "Your petition signature"
 
         merge_fields = params_hash[:merge_fields]
         result = ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields)

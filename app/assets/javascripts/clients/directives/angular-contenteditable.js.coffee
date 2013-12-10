@@ -12,6 +12,9 @@ angular.module("contenteditable", []).directive "contenteditable", ["$timeout", 
     # dont do anything unless this is actually bound to a model
     return  unless ngModel
     
+    if !$scope.is_admin
+      $element.removeAttr('contenteditable')
+
     # view -> model
     $element.bind "input", (e) ->
       $scope.$apply ->

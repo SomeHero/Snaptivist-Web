@@ -2,9 +2,9 @@
 %html{"xmlns:ng" => "http://angularjs.org", 'ng-app' => 'petition', "ng-controller" => "PetitionController"}
   %head
     %title
-      = @petition.target_headline_text || @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title
+      = @petition.headline_primary
     %meta{"name" => "description", "content" => @petition.summary}
-    %meta{"property" => "og:title", "content" => "Tell " + @petition.target.first_name + " " + @petition.target.last_name + ": " + @petition.title }
+    %meta{"property" => "og:title", "content" => @petition.headline_primary}
     %meta{"property" => "og:type", "content" => "cause"}
     %meta{"property" => "og:url", "content" => @petition.short_url}
     %meta{"property" => "og:image", "content" => @petition.header_image("full")}
@@ -31,7 +31,7 @@
     = javascript_include_tag 'petitions.js'
     = content_for :head
 
-  %body#ng-app{'ng-cloak' => ""}
+  %body{'ng-cloak' => ""}
     %span{:style => "position:relative"}
       #fb-root
     - if flash[:notice]

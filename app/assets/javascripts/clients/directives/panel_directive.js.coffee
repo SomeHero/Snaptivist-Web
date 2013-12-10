@@ -2,7 +2,9 @@
   restrict: 'EA'
   templateUrl: 'clients/partials/panel'
   replace: false
-  scope: true
+  scope: {
+    petition: '='
+  }
   link: postLink = (scope, element, attrs) ->
 
     #Assign icon values
@@ -13,7 +15,7 @@
 
     #Assign the value
     set_value = ->
-      element.find('.value').text 1
+      element.find('.value').text scope.$eval(attrs.panel) || 0
 
     scope.$watch 'give_flow', ->
       set_value()

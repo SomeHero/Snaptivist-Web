@@ -7,13 +7,14 @@
 	$scope.edit_petition = (petition) ->
 		ClientFactory.petition = petition
 
+		$location.hash("")
 		Util.navigate('/petition_setup')
 
 PetitionController.resolve =
   petitions: ['PetitionServices', '$q', (PetitionServices, $q) ->
     deferred = $q.defer()
 
-    PetitionServices.get(1).then (response) ->
+    PetitionServices.get(client.client_id).then (response) ->
       deferred.resolve(response)
 
     deferred.promise

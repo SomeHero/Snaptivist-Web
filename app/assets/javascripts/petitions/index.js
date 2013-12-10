@@ -16,4 +16,3 @@
 //= require ./libs/modules/jquery.rs.active-class.js
 //= require ./libs/modules/jquery.rs.thumbnails.js
 //= require ./directives/royal_slider_directive
-//= require ../clients/directives/angular-contenteditable

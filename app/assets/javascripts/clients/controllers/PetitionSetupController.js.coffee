@@ -1,10 +1,19 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, layouts) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, layouts) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
 	$scope.is_admin = true
 	$scope.layouts = layouts
 	$scope.petition = ClientFactory.petition
+	$scope.action_tags = {
+		new_tag: ""
+		list: []
+	}
+	if $scope.petition.action_tags
+		for tag in $scope.petition.action_tags.split(',')
+			$scope.action_tags.list.push({
+				name: tag
+			})	
 
 	if $location.hash()
 		$scope.step = parseInt($location.hash())
@@ -120,27 +129,48 @@
 
 	$scope.submit_petition = () ->
 
-		client_id = 1
+		if $scope.petition.id
+			console.log "update petition"
+			PetitionServices.update($scope.client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
+				console.log "petition update success"
 
-		PetitionServices.create(client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
-			console.log "petition created"
-			
-			$scope.petition.id = response.id
+				Util.navigate('petitions')
 
-			$scope.step += 1
-		
-			$location.hash($scope.step)
+			.error ->
+				console.log "petition update failed"
+		else
+			PetitionServices.create($scope.client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
+				console.log "petition created"
 
-		.error ->
-			console.log "create give flow failed"
+				Util.navigate('petitions')
+
+			.error ->
+				console.log "create petition failed".success (response) ->
+				console.log "petition created"
+
+				Util.navigate('petitions')
+
+			.error ->
+				console.log "create petition failed"
 
 	$scope.client_image_url = () ->
 		$scope.client.image_large
 
+	$scope.get_tweet_message_length = () ->
+		if $scope.petition.default_tweet_text
+			return $scope.petition.default_tweet_text.length
+		else
+			return 0
+
 	$scope.signature_image_styling = ->
-		{
-			'background-image': 'url(' + $scope.image_full_url + ')'
-		}
+		if $scope.image_full_url
+			{
+				'background-image': 'url(' + $scope.image_full_url + ')'
+			}
+		else
+			{
+      			'background-image': 'url(' + $scope.petition.image_full_url + ')'
+    		}
 
 	$scope.premium_image_styling = ->
 		{
@@ -154,14 +184,36 @@
 		$scope.update_page_list()
 		$scope.update_stylesheet_list()
 
+	$scope.add_action_tag = () ->
+		new_tag = $scope.action_tags.new_tag
+		$scope.action_tags.list.push({
+			name: new_tag
+		})
+		$scope.action_tags.new_tag = ""
+		if $scope.petition.action_tags
+			$scope.petition.action_tags += "," + new_tag	
+		else
+			$scope.petition.action_tags = new_tag
+
+	$scope.delete_action_tag = (tag) ->
+		$scope.action_tags.list.splice($scope.action_tags.list.indexOf(tag), 1)	
+
+		$scope.petition.action_tags = ""
+		for tag in $scope.action_tags.list
+			if $scope.petition.action_tags
+				$scope.petition.action_tags += "," + tag.name	
+			else
+				$scope.petition.action_tags = tag.name			
+
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
 		if $route.current.templateUrl == 'clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'layouts']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'layouts']
 
 PetitionSetupController.resolve =
+  	
   layouts: ['LayoutServices', '$q', (LayoutServices, $q) ->
     deferred = $q.defer()
 

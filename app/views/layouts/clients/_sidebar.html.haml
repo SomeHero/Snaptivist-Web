@@ -1,4 +1,4 @@
-#sidebar-left.col-md-2.no-gutter{"ng-controller" => "SidebarController", "resize"=>"content"}
+#sidebar-left.col-md-2.no-gutter{"ng-controller" => "SidebarController", "size-column"=>""}
   .nav-collapse.sidebar-nav
     %ul.nav.nav-tabs.nav-stacked.main-menu
       %li
@@ -16,7 +16,7 @@
               %i.icon-list-alt
               %span.hidden-tablet {{petition.name}}
       %li
-        %a{'href' => '#/petition_setup'}
+        %a{"ng-click"=>"new_petition_clicked()"}
           %i.icon-list-alt
           %span.hidden-tablet New Petition
       %li

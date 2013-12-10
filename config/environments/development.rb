@@ -68,6 +68,13 @@ SnaptivistWeb::Application.configure do
   FACEBOOK_APP_ID = Settings.facebook_app_id
   FACEBOOK_APP_SECRET = Settings.facebook_secret_key
 
+  #NATION BUILDER SETTINGS
+  NB_NATION_NAME = "rva", 
+  NB_CLIENT_ID = "fca8f40ae0dba84cb81e8f4975b4759b4debeb4424c54e204105096a36d50a86",
+  NB_CLIENT_SECRET = "22760ba29c759804929487f4fa935ac7744aa698700398a622fdb1d4edc0af14",
+  NB_CLIENT_ACCESS_TOKEN = "ce97fd95b4a8a3b2003c00f5c30ccdcdb0710486509ea2b8acac0fd7f2336a2c",
+  NB_CLIENT_REDIRECT_URL = "http://www.snaptivist.org/oauth_callback"
+
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {

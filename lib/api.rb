@@ -30,9 +30,34 @@ class API < Grape::API
       client = Client.find(params[:id])
       @petition = Petition.new(JSON.parse(params[:petition]))
 
-      @petition.target = Target.first
+      #@petition.target = Target.first
       @petition.title = @petition.name
       @petition.client = client
+
+      if params[:file_image]
+        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
+      end
+
+      if params[:file_premium_image]
+        @petition.premium_image = ActionDispatch::Http::UploadedFile.new(params[:file_premium_image])
+      end
+
+      @petition.save!
+    end
+
+    desc "Updates a petition for the specified client"
+    put "/:client_id/petitions/:id", :rabl => "petition" do
+
+      client = Client.find(params[:client_id])
+      @petition = Petition.find(params[:id])
+    
+      #TODO: This is kind of a hack
+      attributes = JSON.parse(params[:petition])
+      attributes.delete("share_count")
+      attributes.delete("delivery_count")
+      attributes.delete("image_full_url")
+
+      @petition.update_attributes(attributes)
 
       if params[:file_image]
         @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])

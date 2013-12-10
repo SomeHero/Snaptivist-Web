@@ -19,6 +19,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'angularjs-rails', '>= 1.2.0.rc2'
+  gem "font-awesome-rails", "~> 3.2"
 end
 
 group :development do
@@ -68,6 +69,7 @@ gem 'geocoder'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'awesome_print'
 gem 'nationbuilder', :git => "https://github.com/jrhodes621/nationbuilder"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

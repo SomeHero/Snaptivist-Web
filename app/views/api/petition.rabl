@@ -2,6 +2,7 @@ object @petition
 attributes :id, 
   :name,
   :target_headline_text,
+  :action_tags,
   :title,
   :headline_primary,
   :headline_secondary,
@@ -30,9 +31,25 @@ attributes :id,
   :premium_skip_button_text,
   :default_tweet_text,
   :tweet_cta_button_text,
-  :signature_count,
+  :signatures_count,
   :target_count,
   :short_url,
   :subdomain,
+  :donation_page_url,
+  :image_thumb_url,
+  :image_square_url,
+  :image_medium_url,
+  :image_full_url,
   :created_at,
   :updated_at
+
+  node :share_count do |petition|
+    petition.share_count
+  end
+  node :delivery_count do |petition|
+    petition.delivery_count
+  end
+  node :image_full_url do |petition|
+    petition.petition_image_url
+  end
+

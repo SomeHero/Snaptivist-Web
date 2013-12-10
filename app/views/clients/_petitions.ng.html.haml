@@ -1,22 +1,21 @@
 .row
 	.col-md-8.col-md-offset-1
-		%h2
+		%h1
 			Your Petitions
-		.panel{"ng-repeat"=>"petition in petitions"}
-			%h4 {{petition.name}}
-			%h6 {{petition.headline_primary}}
+		.panel{:style=>"padding: 10px;", "ng-repeat"=>"petition in petitions"}
+			%h2{:style=>"margin-top: 0px; margin-bottom: 2px;k"} 
+				{{petition.name}}
+			%h3{:style=>"margin-top: 0px; margin-bottom: 20px;"} 
+				{{petition.headline_primary}}
 
 			.row-wrapper-fluid
 				.row
 					.col-md-12
 						.row-wrapper-fluid
 							.row
-								.col-md-4.no-gutter{"panel" => "promo_participants()", "icon" => "icon-group",
-								  "color" => "red", "title" => "Signatures"}
-								.col-md-4.no-gutter-right{"panel" => "treats_given()", "icon" => "icon-gift",
-								  "color" => "lightBlue", "title" => "Shares"}
-								.col-md-4.no-gutter-right{"panel" => "treats_viewed()", "icon" => "icon-eye-open",
-								  "color" => "green", "title" => "Delivered"}
+								.col-md-4.no-gutter{"panel" => "petition.signatures_count", "petition"=>"petition", "icon" => "icon-group", "color" => "red", "title" => "Signatures"}
+								.col-md-4.no-gutter-right{"panel" => "petition.share_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Shares"}
+								.col-md-4.no-gutter-right{"panel" => "petition.delivery_count", "petition"=>"petition", "icon" => "icon-eye-open", "color" => "green", "title" => "Delivered"}
 
 			%div
 				%a{"ng-click"=>"edit_petition(petition)"}

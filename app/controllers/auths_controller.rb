@@ -109,11 +109,14 @@ class AuthsController < ApplicationController
   end
 
   def clear_user_session
+
     cookies.delete(:session_token)
     session[:user_id] = nil
+    session[:client_id] = nil
     session[:external_account_id] = nil
     session[:admin_logged_in] = nil
     @user = nil
+    @client = nil
   end
 
   def after_auth(on_complete_url)

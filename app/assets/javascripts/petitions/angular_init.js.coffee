@@ -55,7 +55,7 @@
 
       console.log "Signing with Facebook"
 
-      scope.$broadcast('handleFacebookAuth')
+      $scope.sign_with_facebook($scope.auth)
 
 
     ((d) ->
@@ -76,7 +76,7 @@
 
       if $scope.login_status is "connected"
         console.log "fetch"
-        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In")
+        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In)")
    
         fetch()
       else
@@ -93,12 +93,12 @@
         channelUrl: "//localhost:3000/channel.html" # Channel File
         status: true # check login status
         cookie: true # enable cookies to allow the server to access the session
-        oauth: true
         xfbml: true # parse XFBML
 
       
       # Additional init code here
       FB.getLoginStatus (response) ->
+        console.log "Response Status is " + response.status
         if response.status is "connected"
           
           Util.push_ga_event("Petition", "Facebook Status", "Connected")
@@ -113,8 +113,11 @@
           Util.push_ga_event("Petition", "Facebook Status", "Not Logged In")
         
           # not_logged_in
-          scope.login_status = response.status
-          scope.$apply()
+        scope.login_status = response.status
+        scope.$apply()
+
+      return null
+    return null
 
 
 # end of fbAsyncInit

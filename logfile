@@ -695,3 +695,13 @@ LOG:  record with zero length at 0/2242ADE8
 LOG:  redo is not required
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+LOG:  database system was interrupted; last known up at 2013-12-05 22:13:28 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/2286F9C8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

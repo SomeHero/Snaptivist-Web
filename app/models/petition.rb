@@ -72,6 +72,18 @@ class Petition < ActiveRecord::Base
       end
     end
 
+    def share_count
+      signatures.limit(nil).where("shared = true").count 
+    end
+
+    def delivery_count
+      signatures.limit(nil).where("delivered = true").count
+    end
+
+    def petition_image_url
+      header_image("full")
+    end
+
      # generate the petition
     def to_api
 
@@ -110,7 +122,7 @@ class Petition < ActiveRecord::Base
         'target_count' => target_count,
         'short_url' => short_url,
         'subdomain' => subdomain,
-        'target' => target.to_api,
+        'target' => target ? target.to_api : nil,
         'creator' => user ? user.to_api : nil,
         'client' => client ? client.to_api : nil,
         'comment' => comment,
@@ -118,6 +130,9 @@ class Petition < ActiveRecord::Base
         'donation_page_url' => donation_page_url,
         'created_at' => created_at,
         'updated_at' => updated_at,
+        'signature_count' => signatures_count,
+        'delivery_count' => 0,
+        'share_count' => 0
       }
 
       Petition::IMAGE_SIZES.each do |label, size|

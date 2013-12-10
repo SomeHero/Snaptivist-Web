@@ -1,4 +1,4 @@
-@ClientsController = ($scope, $rootScope, ClientFactory) ->
+@ClientsController = ($scope, $rootScope, ClientFactory, Util) ->
   window.scope = $scope
   $scope.client = client
 
@@ -22,8 +22,8 @@
       name: 'Delivery Page'
       page_url: 'delivery_template'
     }, {
-      name: 'Premium Page'
-      page_url: 'premium_template'
+      name: 'Donation Page Redirect'
+      page_url: 'donation_redirect_template'
     }]
 
   $scope.update_page_list = () ->
@@ -45,8 +45,12 @@
       href: '/assets/themes/' + $scope.settings.layout + '_' + $scope.settings.theme + '.css'
     })
 
+  $scope.new_petition_clicked = () ->
+    ClientFactory.petition = {}
+
+    Util.navigate('petition_setup')
 
   $scope.update_page_list()
   $scope.update_stylesheet_list()
 
-ClientsController.$inject = ['$scope', '$rootScope', 'ClientFactory']
+ClientsController.$inject = ['$scope', '$rootScope', 'ClientFactory', 'Util']

@@ -7,7 +7,7 @@
 
 @app.directive "loadingScreen", ->
   restrict: 'EA'
-  templateUrl: '/client_views/loading_screen'
+  templateUrl: 'client_views/loading_screen'
   replace: true
   scope: true
   link: postLink = (scope, element, attrs) ->
