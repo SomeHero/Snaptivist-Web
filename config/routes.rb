@@ -47,6 +47,7 @@ SnaptivistWeb::Application.routes.draw do
   match 'polls/:action_title', :to =>'polls#view'
   match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view'
   
+  match 'oauth/nb' => 'oauth#nation_builder'
   match "auth/check/:provider" => 'authentications#check' 
 
   resources :authentications
@@ -127,6 +128,7 @@ SnaptivistWeb::Application.routes.draw do
   resources :clients do
     member do
       get :login
+      get :crm_setup
       post :validate
       get :logout
     end
