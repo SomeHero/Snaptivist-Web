@@ -46,6 +46,8 @@
     else
       $scope.loading.show_spinner = false
 
+      Util.push_ga_event("Petition", "Sign With Email", "Clicked (Form Invalid)")
+   
       if form.email_address.$error['email']
         $scope.error_messages.sign_with_email_address = "The email address is invalid.  Please type your email again."
       else
