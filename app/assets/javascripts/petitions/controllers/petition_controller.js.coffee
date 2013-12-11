@@ -43,7 +43,10 @@
     },
     {
       href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '.css'
+    }, {
+      href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '-responsive.css'
     }]
+
 
   $scope.stylesheets = () ->
     return $scope.stylesheet_list

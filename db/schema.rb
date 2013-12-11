@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20131207052019) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.integer  "question_id"
+    t.integer  "poll_id"
     t.integer  "choice_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "authentications", :force => true do |t|
@@ -85,24 +85,6 @@ ActiveRecord::Schema.define(:version => 20131207052019) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "client_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
-
-  add_index "client_users", ["email"], :name => "index_client_users_on_email", :unique => true
-  add_index "client_users", ["reset_password_token"], :name => "index_client_users_on_reset_password_token", :unique => true
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -234,7 +216,6 @@ ActiveRecord::Schema.define(:version => 20131207052019) do
     t.string   "premium_call_to_action_text"
     t.string   "premium_call_to_action_button_text"
     t.string   "premium_skip_button_text"
-    t.string   "premium_more_tweets_button_text"
     t.string   "signature_more_signers_button_text"
     t.string   "premium_image_file_name"
     t.string   "premium_image_content_type"

@@ -3,13 +3,21 @@
 @media only screen and (max-width:959px) {
   /*@import 'size/mobile';*/
   	#client-logo-top img {
-		max-width: 350px;
+		max-width: 300px;
 	}
 	#client-logo-bottom img {
 		max-width: 350px;
 		height: 50px;
 	}
 	#petition-container {
+		#petition-image {
+			background-size: 250px 250px;
+			background-repeat: no-repeat;
+			height: 250px;
+		}
+		.top-content-wrapper {
+			min-height: 0px;
+		}
 		#petition-image-wrapper {
 			margin-bottom: 20px;
 		}
