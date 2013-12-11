@@ -89,7 +89,7 @@
             else
               console.log "error sharing"
 
-              Util.push_ga_event("Petition", "Facebook Share", "Failed")
+              Util.push_ga_event("Petition", "Facebook Share", "Cancelled")
               
               signature.shared = false
               $rootScope.$broadcast('signedPetitionWithFacebook', signature)
