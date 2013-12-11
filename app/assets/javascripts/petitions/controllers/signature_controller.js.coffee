@@ -46,7 +46,10 @@
     else
       $scope.loading.show_spinner = false
 
-      $scope.error_messages.sign_with_email_address = "All fields are required."
+      if form.email_address.$error['email']
+        $scope.error_messages.sign_with_email_address = "The email address is invalid.  Please type your email again."
+      else
+        $scope.error_messages.sign_with_email_address = "All fields are required."
       $scope.clear_errors()
 
   $scope.sign_with_facebook = (auth)->

@@ -33,7 +33,7 @@
 										.col-md-6.text-left#last-name-wrapper
 											%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name", "required"=>""}
 									.form-group
-										%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address", "required"=>""}
+										%input.form-control{"ng-model"=>"signature.email_address","type"=>"email","placeholder"=>"Email Address", "required"=>"", "name"=>"email_address"}
 									.form-group
 										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required"=>""}
 									%button.btn.btn-primary#sign-with-email-address-button{"ng-click"=>"sign_with_email_address(sign_with_email_form)", "custompopover" => "{{error_messages.sign_with_email_address}}",  "custompopover-toggle" =>"error_messages.sign_with_email_address.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
@@ -45,7 +45,7 @@
 										.col-md-6.text-left#last-name-wrapper
 											%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name"}
 									.form-group
-										%input.form-control{"ng-model"=>"signature.email_address","type"=>"text","placeholder"=>"Email Address"}
+										%input.form-control{"ng-model"=>"signature.email_address","type"=>"email","placeholder"=>"Email Address", "name"=>"email_address"}
 									.form-group
 										%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code"}
 									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
