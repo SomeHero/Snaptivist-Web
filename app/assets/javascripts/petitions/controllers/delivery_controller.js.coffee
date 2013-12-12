@@ -1,5 +1,7 @@
 @DeliveryController = ($scope, PetitionServices, PetitionFactory, $http, $q, Util, $rootScope, $interpolate, $timeout) ->
 
+  Util.push_ga_event("Petition", "Load", "Delivery")
+   
   window.scope = $scope
 
   $scope.signature = PetitionFactory.signature

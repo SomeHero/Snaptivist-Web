@@ -1,7 +1,5 @@
 @PetitionController = ($scope, PetitionServices, $http, Util, PetitionFactory, $rootScope, $interpolate) ->
 
-  Util.push_ga_event("Petition", "Load", "Sign")
-  
   $scope.is_admin = false
   $scope.layout = 'layout2'
   $scope.theme = 'standard'
