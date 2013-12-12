@@ -29,7 +29,7 @@ module CrmNotification
                 :email => user.email,
                 #:facebook_address => facebook ? "http://www.facebook.com/" + facebook.uid : nil,
                 #:twitter_id => twitter ? twitter.uid : nil,
-                :tags => user.action_tags,
+                #:tags => user.action_tags,
                 #:primary_address => {
                     #:city => user.city,
                     #:state => user.state,
@@ -37,6 +37,9 @@ module CrmNotification
                     #:longitude => user.longitude
                 #}
             })
+
+            binding.pry
+            result.add_tags!(user.action_tags.split(',')) if result
 
           return result
         rescue => e
