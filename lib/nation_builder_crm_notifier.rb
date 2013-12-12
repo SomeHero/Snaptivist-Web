@@ -38,7 +38,6 @@ module CrmNotification
                 #}
             })
 
-            binding.pry
             result.add_tags!(user.action_tags.split(',')) if result
 
           return result
