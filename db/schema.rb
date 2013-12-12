@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131207052019) do
+ActiveRecord::Schema.define(:version => 20131212001253) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -111,6 +111,29 @@ ActiveRecord::Schema.define(:version => 20131207052019) do
   add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
   add_index "clients", ["reset_password_token"], :name => "index_clients_on_reset_password_token", :unique => true
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
+
+  create_table "email_configurations", :force => true do |t|
+    t.integer  "email_type_id"
+    t.integer  "client_id"
+    t.string   "from_name"
+    t.string   "from_address"
+    t.string   "subject"
+    t.string   "email_template"
+    t.string   "last_id_sent"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "email_configurations", ["client_id"], :name => "index_email_configurations_on_client_id"
+  add_index "email_configurations", ["email_type_id"], :name => "index_email_configurations_on_email_type_id"
+
+  create_table "email_types", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "default_email_template"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
   create_table "external_accounts", :force => true do |t|
     t.string   "type"
