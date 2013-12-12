@@ -205,6 +205,16 @@
 			else
 				$scope.petition.action_tags = tag.name			
 
+	$scope.email_types = [{
+			name: "Signature Confirmation Email",
+			description: "The signature confirmation email is delivered to a petition signer immediately after the petition is signed.  The signature confirmation email is sent to all signers",
+			send: true
+		}, {
+			name: "Donation Reminder Email",
+			description: "The donation reminder email is sent daily to all petition signers in the previous 24 hours.",
+			send: false
+		}]
+
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
 		if $route.current.templateUrl == 'clients/petition_setup'

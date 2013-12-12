@@ -115,6 +115,9 @@
         scope.login_status = response.status
         scope.$apply()
 
+      FB.Event.subscribe "edge.create", (response) ->
+        window.top.location.href = "url"
+
       return null
     return null
 

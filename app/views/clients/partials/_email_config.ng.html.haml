@@ -1,2 +1,28 @@
 %h2
 	Email Configuration
+
+.panel.panel-default{"ng-repeat"=>"email_type in email_types"}
+	.panel-heading
+		.row
+			.col-md-9
+				{{email_type.name}}
+			.col-md-3
+				.text-right
+					%toggle-switch{"model"=>"email_type.send"}
+	.panel-body
+		.panel.panel-default
+			.panel-body
+				{{email_type.description}}
+		%form{"role"=>"form"}
+			.form-group
+				%label
+					From Name
+				%input.form-control{"type"=>"text"}
+			.form-group
+				%label
+					From Address
+				%input.form-control{"type"=>"text"}
+			.form-group
+				%label
+					Subject:
+				%input.form-control{"type"=>"text"}

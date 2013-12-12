@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
 
   create_table "email_configurations", :force => true do |t|
     t.integer  "email_type_id"
-    t.integer  "client_id"
+    t.integer  "petition_id"
     t.string   "from_name"
     t.string   "from_address"
     t.string   "subject"
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "email_configurations", ["client_id"], :name => "index_email_configurations_on_client_id"
   add_index "email_configurations", ["email_type_id"], :name => "index_email_configurations_on_email_type_id"
+  add_index "email_configurations", ["petition_id"], :name => "index_email_configurations_on_petition_id"
 
   create_table "email_types", :force => true do |t|
     t.string   "name"

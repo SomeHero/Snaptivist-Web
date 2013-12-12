@@ -1,0 +1,27 @@
+{
+  "name": "angular-toggle-switch",
+  "version": "0.2.4",
+  "main": "angular-toggle-switch.js",
+  "dependencies": {
+    "angular": ">=1.0.6 <1.2"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.0.6 <1.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/cgarvis/angular-toggle-switch",
+  "_release": "0.2.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.4",
+    "commit": "4ce2285ed4dcd7f5949deb2f710187f05f84c207"
+  },
+  "_source": "git://github.com/cgarvis/angular-toggle-switch.git",
+  "_target": "~0.2.4",
+  "_originalSource": "angular-toggle-switch",
+  "_direct": true
+}
