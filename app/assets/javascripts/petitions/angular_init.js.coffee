@@ -71,8 +71,6 @@
     $scope.fetch = ->
       Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
    
-      $scope.loading.show_spinner = true
-
       if $scope.login_status is "connected"
         console.log "fetch"
         Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In)")

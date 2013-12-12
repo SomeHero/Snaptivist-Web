@@ -59,12 +59,16 @@
   $scope.sign_with_facebook = (auth)->
     console.log "Facebook Login Success"
 
+    $scope.loading.show_spinner = true
+
     $scope.auth = auth
 
     PetitionServices.sign_with_facebook($scope.auth, $scope.petition.petition_id, $scope.signature).success (response) ->
         if response.statusCode is 200
           console.log "signature complete; trying to Share via FB"
         
+          $scope.loading.show_spinner = false
+
           Util.push_ga_event("Petition", "Sign With Facebook", "Success")
           
           result = response.result
@@ -104,6 +108,8 @@
         else
           console.log "error: " + response
 
+          $scope.loading.show_spinner = false
+
           Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
 
           $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
@@ -111,6 +117,8 @@
 
       .error (response) ->
         console.log "signature failed: " + response
+
+        $scope.loading.show_spinner = false
 
         Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
 
