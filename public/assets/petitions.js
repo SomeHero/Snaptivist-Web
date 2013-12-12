@@ -93,7 +93,7 @@
         window.fbAsyncInit = function() {
           FB.init({
             appId: attrs.facebook,
-            channelUrl: "//localhost:3000/channel.html",
+            channelUrl: "//dev.snaptivist.com/channel.html",
             status: true,
             cookie: true,
             xfbml: true

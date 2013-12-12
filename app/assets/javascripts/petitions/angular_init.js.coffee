@@ -87,7 +87,7 @@
     window.fbAsyncInit = ->
       FB.init
         appId: attrs.facebook # App ID
-        channelUrl: "//localhost:3000/channel.html" # Channel File
+        channelUrl: "//dev.snaptivist.com/channel.html" # Channel File
         status: true # check login status
         cookie: true # enable cookies to allow the server to access the session
         xfbml: true # parse XFBML

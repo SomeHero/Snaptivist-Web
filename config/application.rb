@@ -98,6 +98,10 @@ module SnaptivistWeb
         env['api.tilt.root'] = Rails.root.join "app", "views", "api"
     end
 
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+    }
+
   end
 
   

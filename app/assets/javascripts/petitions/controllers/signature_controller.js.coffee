@@ -80,8 +80,7 @@
             link: $scope.petition.short_url
             name: 'Sign the Petition'
             caption: $scope.petition.title,
-            description: $scope.petition.summary,
-            display: 'popup'
+            description: $scope.petition.summar
 
           if scope.petition.image_square_url
             $.extend true, fb_message_obj, { picture: $scope.petition.image_square_url }

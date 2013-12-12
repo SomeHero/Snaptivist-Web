@@ -315,8 +315,8 @@ libs/plugins/msgbox/images/question.png: libs/plugins/msgbox/images/question-acc
 libs/plugins/msgbox/images/question/index.png: libs/plugins/msgbox/images/question-acc0802e79987edcecaf6a5387a29754.png
 moment.js: moment-399bb4d0603636a762588f850980a7e6.js
 moment/index.js: moment-399bb4d0603636a762588f850980a7e6.js
-petitions.js: petitions-1287a382d2c375d2c6546667d872b946.js
-petitions/index.js: petitions-1287a382d2c375d2c6546667d872b946.js
+petitions.js: petitions-943c6dba1e0d04399245a260364ff8e4.js
+petitions/index.js: petitions-943c6dba1e0d04399245a260364ff8e4.js
 phonecampaigns.js: phonecampaigns-8b05173f950a68c295d1ee35af4a3061.js
 phonecampaigns/index.js: phonecampaigns-8b05173f950a68c295d1ee35af4a3061.js
 polls.js: polls-baea094462cae20ce330622fd216c1aa.js
