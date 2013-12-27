@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  source: MyString
+  amount: 9.99
+  submitted_date: 2013-12-20 16:47:42
+  cancelled_date: 2013-12-20 16:47:42
+  donation_status: MyString
+  string: MyString
+
+two:
+  user: 
+  source: MyString
+  amount: 9.99
+  submitted_date: 2013-12-20 16:47:42
+  cancelled_date: 2013-12-20 16:47:42
+  donation_status: MyString
+  string: MyString

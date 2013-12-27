@@ -1,5 +1,6 @@
 %h6
 	Layout Configuration
-%div{:style=>"height: 80px; padding: 4px 8px;", "ng-repeat"=>"layout in layouts", "ng-click"=>"set_layout(layout)"}
-	%h5 {{layout.name}}
-	%p {{layout.description}}
+%div.side-bar-item{"ng-repeat"=>"layout in layouts", "ng-click"=>"set_layout(layout)", "ng-style"=>"set_layout_item_styling(layout)"}
+	.side-bar-text
+		%h5 {{layout.name}}
+		%p {{layout.description}}

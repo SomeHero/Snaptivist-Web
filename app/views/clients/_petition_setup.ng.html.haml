@@ -4,7 +4,7 @@
 			.row{"size-column"=>""}
 				.col-md-9.no-gutter{"size-column"=>""}
 					%div
-						%div#left-nav
+						%div#left-nav{"ng-controller"=>"NavigationController"}
 							%ul.nav.steps-menu-items.pull-left
 								%li.text-center
 								%li.text-center
@@ -12,24 +12,24 @@
 										%i.icon-large.icon-cogs{"ng-style"=>"highlight_step(1)"}
 
 								%li.text-center
-									%a{"ng-click"=>"goto_step_clicked(2)"}
-										%i.icon-large.icon-building{"ng-style"=>"highlight_step(2)"}
+									%a{"ng-click"=>"goto_step_clicked(2)", "ng-disabled"=>"!enable_layout_step()"}
+										%i.icon-large.icon-building{"ng-style"=>"highlight_step(2); disabled_step_styling(2)"}
 
 								%li.text-center
-									%a{"ng-click"=>"goto_step_clicked(3)"}
-										%i.icon-large.icon-tint{"ng-style"=>"highlight_step(3)"}
+									%a{"ng-click"=>"goto_step_clicked(3)", "ng-disabled"=>"!enable_theme_step()"}
+										%i.icon-large.icon-tint{"ng-style"=>"highlight_step(3); disabled_step_styling(3)"}
 
 								%li.text-center
 									%a{"ng-click"=>"goto_step_clicked(4)"}
-										%i.icon-large.icon-file{"ng-style"=>"highlight_step(4)"}
+										%i.icon-large.icon-file{"ng-style"=>"highlight_step(4); disabled_step_styling(4)"}
 
 								%li.text-center
 									%a{"ng-click"=>"goto_step_clicked(5)"}
-										%i.icon-large.icon-envelope{"ng-style"=>"highlight_step(5)"}
+										%i.icon-large.icon-envelope{"ng-style"=>"highlight_step(5); disabled_step_styling(5)"}
 
 								%li.text-center
 									%a{"ng-click"=>"goto_step_clicked(6)"}
-										%i.icon-large.icon-bullhorn{"ng-style"=>"highlight_step(6)"}
+										%i.icon-large.icon-bullhorn{"ng-style"=>"highlight_step(6); disabled_step_styling(6)"}
 					%div{:style=>"position: absolute; top: 0px; left: 100px; width: 100%; padding-right: 100px;"}
 						%form{"name"=>"petition_setup", "novalidate" => "", "role"=>"form"}
 							%div
@@ -45,15 +45,15 @@
 										Next!
 				.col-md-3.no-gutter{"size-column"=>""}
 					%ul.nav.action-menu-items
-						%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;"}
+						%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;", "ng-click"=>"save_clicked()"}
 							%i.glyphicon.glyphicon-save{:style=>"font-size: 30px;"}
 							.text-center{:style=>"margin-top: 10px"}
 								Save
-						%li.pull-left.text-center{:style=>"width:34%; height: 80px; padding: 10px 0px;"}
+						%li.pull-left.text-center{:style=>"width:34%; height: 80px; padding: 10px 0px;", "ng-click"=>"cancel_clicked()"}
 							%i.glyphicon.glyphicon-ban-circle{:style=>"font-size: 30px;"}
 							.text-center{:style=>"margin-top: 10px"}
 							Cancel
-						%li.pull-left.text-center{:style=>"width:33%; height: 80px;  padding: 10px 0px;"}
+						%li.pull-left.text-center{:style=>"width:33%; height: 80px;  padding: 10px 0px;", "ng-click"=>"publish_clicked()"}
 							%i.glyphicon.glyphicon-ok{:style=>"font-size: 30px;"}
 							.text-center{:style=>"margin-top: 10px"}
 							Publish
@@ -61,7 +61,7 @@
 						%div{:style=>"background: #FF9900; color: white; border-bottom: solid 1px #ccc; height: 80px;"}
 							.text-center{:style=>"font-size: 32px; line-height: 80px;"}
 								DRAFT
-						%div{:style=>"margin: 10px"}
+						%div#side-bar
 							%div{"ng-include"=>"", "src"=>"sidebar_template_urls()"}
 
 

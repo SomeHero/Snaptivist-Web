@@ -20,7 +20,7 @@
   navigate_back: -> $window.history.back()
 
   navigate_absolute: (url, hash, new_window) ->
-    url += hash if hash
+    url += "#" + hash if hash
     if new_window is true
       $window.open url
     else

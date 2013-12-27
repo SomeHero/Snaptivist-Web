@@ -55,7 +55,8 @@ SnaptivistWeb::Application.configure do
   router.enable_notifications({ 
                                 UserNotification::Notification::APP_LINK => true, 
                                 UserNotification::Notification::USER_INVITE => true, 
-                                UserNotification::Notification::USER_WELCOME => true
+                                UserNotification::Notification::USER_WELCOME => true,
+                                UserNotification::Notification::DONATION_REMINDER => true
                                 })
 
   #TWITTER STUFF

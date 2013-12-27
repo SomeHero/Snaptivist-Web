@@ -59,7 +59,8 @@ SnaptivistWeb::Application.configure do
                                 UserNotification::Notification::APP_LINK => true, 
                                 UserNotification::Notification::USER_INVITE => true, 
                                 UserNotification::Notification::USER_WELCOME => true,
-                                UserNotification::Notification::SIGNATURE_CONFIRMATION => true
+                                UserNotification::Notification::SIGNATURE_CONFIRMATION => true,
+                                UserNotification::Notification::DONATION_REMINDER => true
                                 })
   #TWITTER STUFF
   TWITTER_CONSUMER_KEY = Settings.twitter_app_key
@@ -78,10 +79,13 @@ SnaptivistWeb::Application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => "snaptivist-dev",
+    :bucket => "snaptivist",
     :access_key_id => "AKIAIKSNRNLLIFLI7AMA",
     :secret_access_key => "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"
   }
 }
+
+ENV["REDISTOGO_URL"] = 'redis://redistogo:346b27529b87e240da71e294ed319233@albacore.redistogo.com:9574/'
+
 
 end

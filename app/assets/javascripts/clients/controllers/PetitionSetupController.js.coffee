@@ -1,10 +1,64 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, layouts) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts, pages, themes) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
 	$scope.is_admin = true
+	$scope.email_types = email_types
 	$scope.layouts = layouts
+	$scope.themes = themes
+	$scope.pages = pages
+
+	$scope.settings = {
+		layout: null
+		theme: null
+		step: 1
+		pages_list: []
+	}
+
+	$scope.update_petition_pages = () ->
+		$scope.petition.petition_pages_attributes = []
+
+		i = 1
+		for page_item in $scope.settings.pages_list
+			$scope.petition.petition_pages_attributes.push({
+				page_id: page_item.id
+				position: i
+			})
+			i++
+
+	$scope.update_stylesheet_list = () ->
+		$scope.styles.stylesheet_list = []
+		if $scope.settings.layout
+			$scope.styles.stylesheet_list.push({
+				href: '/assets/layouts/' + $scope.settings.layout.url_fragment + '.css'
+			})
+			$scope.styles.stylesheet_list.push({
+				href: '/assets/layouts/' + $scope.settings.layout.url_fragment + '-responsive.css'
+			})
+			if $scope.settings.theme
+				$scope.styles.stylesheet_list.push({
+					href: '/assets/themes/' + $scope.settings.layout.url_fragment + '/' + $scope.settings.theme.url_fragment + '/style.css' 
+				})
+				$scope.styles.stylesheet_list.push({
+					href: '/assets/themes/' + $scope.settings.layout.url_fragment + '/' + $scope.settings.theme.url_fragment + '/style-responsive.css'
+				})
+
 	$scope.petition = ClientFactory.petition
+	$scope.petition.petition_pages_attributes = [] if !$scope.petition.petition_pages_attributes
+	$scope.settings.pages_list = [] if !$scope.settings.pages_list
+	
+	if $scope.petition.layout
+		$scope.settings.layout = $scope.petition.layout
+		$scope.update_stylesheet_list()
+
+	if $scope.petition.theme
+		$scope.settings.theme = $scope.petition.theme
+		$scope.update_stylesheet_list()
+
+	if $scope.petition.pages
+		for page in $scope.petition.pages
+			$scope.settings.pages_list.push(page)
+
 	$scope.action_tags = {
 		new_tag: ""
 		list: []
@@ -14,48 +68,76 @@
 			$scope.action_tags.list.push({
 				name: tag
 			})	
+	if !$scope.petition.email_configurations_attributes || $scope.petition.email_configurations_attributes.length == 0
+		$scope.petition.email_configurations_attributes = []
+		for email_type in $scope.email_types
+			$scope.petition.email_configurations_attributes.push({
+				email_type: email_type
+				email_type_id: email_type.id
+				enabled: email_type.default_state
+				from_address: $scope.client.email || "admin@snaptivist.com"
+				from_name: $scope.client.name
+				subject: email_type.default_subject
+			})
 
 	if $location.hash()
-		$scope.step = parseInt($location.hash())
+		$scope.settings.step = parseInt($location.hash())
 	else
-		$scope.step = 1
+		$scope.settings.step = 1
 
-	$scope.goto_step_clicked = (step) ->
-		console.log("step clicked")
-		$scope.step = step
+	$scope.set_layout_item_styling = (layout) ->
+		if $scope.settings.layout == layout
+	  		{
+	  			'border': 'dashed 1px green';
+	  		}
 
-		$location.hash($scope.step)
+	$scope.set_theme_item_styling = (theme) ->
+		if $scope.settings.theme == theme
+	  		{
+	  			'border': 'dashed 1px green';
+	  		}
+
+	$scope.save_clicked = () ->
+		console.log "save clicked"
+
+	$scope.cancel_clicked = () ->
+		console.log "cancel clicked"
+
+		Util.navigate('petitions')
+
+	$scope.publish_clicked = () ->
+		console.log "publish clicked"
 
 	$scope.highlight_step = (step) ->
-		if step == $scope.step
+		if step == $scope.settings.step
 			return {
 				'color':  '#eae874'
 			}
 
 	$scope.content_template_urls = () ->
-		if $scope.step == 6
+		if $scope.settings.step == 6
 			return "clients/partials/publish"
-		else if $scope.step == 5
+		else if $scope.settings.step == 5
 			return "clients/partials/email_config"
-		else if $scope.step == 4
+		else if $scope.settings.step == 4
 			return "clients/partials/pages"
-		else if $scope.step == 3
+		else if $scope.settings.step == 3
 			return "clients/partials/theme"
-		else if $scope.step == 2
+		else if $scope.settings.step == 2
 			return "clients/partials/layout"
 		else
 			return "clients/partials/configure"
 
 	$scope.sidebar_template_urls = () ->
-		if $scope.step == 6
+		if $scope.settings.step == 6
 			return "clients/partials/publish_sidebar"
-		else if $scope.step == 5
+		else if $scope.settings.step == 5
 			return "clients/partials/email_config_sidebar"
-		else if $scope.step == 4
+		else if $scope.settings.step == 4
 			return "clients/partials/pages_sidebar"
-		else if $scope.step == 3
+		else if $scope.settings.step == 3
 			return "clients/partials/theme_sidebar"
-		else if $scope.step == 2
+		else if $scope.settings.step == 2
 			return "clients/partials/layout_sidebar"
 		else
 			return "clients/partials/configure_sidebar"
@@ -65,36 +147,50 @@
 	$scope.next_step_clicked = (form) ->
 		console.log("next clicked")
 
-		if form.$valid
+		if form.$valid && validate_step($scope.settings.step)
 
-			if $scope.step == 5
+			if $scope.settings.step == 5
+				$scope.petition.layout_id = $scope.settings.layout.id
+				$scope.petition.theme_id = $scope.settings.theme.id
+
+				delete $scope.petition["layout"]
+				delete $scope.petition["theme"]
+				delete $scope.petition["pages"]
+
 				$scope.submit_petition()
 			else
-				$scope.step = parseInt($scope.step) + 1
-				
-				$location.hash($scope.step)
+				$scope.settings.step = parseInt($scope.settings.step) + 1
+					
+				$location.hash($scope.settings.step)
 		else
 			errors = []
 
-			if $scope.step == 1
+			if $scope.settings.step == 1
 				if form.petition_name.$error['required']
-					errors.push("You must specify a name fom your petition.")
+					errors.push("You must specify a name for your petition.")
 				if form.subdomain.$error['required']
 					errors.push("You must specify a subdomain fom your petition.")
-			else if $scope.step == 4
-				if form.headline_primary.$error['required']
-					errors.push("You must specify the text for the 'Petition Headline'.")
-				if form.sign_with_facebook_cta_button_text.$error['required']
-					errors.push("You must specify the text for the 'Sign with Facebook' button.")
-				if form.sign_with_email_cta_button_text.$error['required']
-					errors.push("You must specify the text for the 'Sign with Email Address' button.")
-				if form.target_count.$error['required']
-					errors.push("You must specify the target number of signatures your petition is attempting to collect.")
-				if form.summary.$error['required']
-					errors.push("You must specify the summary text for your petition.")
-				if form.signature_more_signers_button_text.$error['required']
-					errors.push("You must specify the text for the 'More Signers' button.")
-
+			else if $scope.settings.step == 2
+				errors.push("You must select a layout for your petition from the layouts on the right.")
+			else if $scope.settings.step == 3
+				errors.push("You must select a theme for your petition from the themes on the right.")
+			else if $scope.settings.step == 4
+				if $scope.settings.pages_list.length == 0
+					errors.push("You must add atleast 1 page to your petition. Select a page to add from the list of pages on the right.")
+				else 
+					if form.headline_primary.$error['required']
+						errors.push("You must specify the text for the 'Petition Headline'.")
+					if form.sign_with_facebook_cta_button_text.$error['required']
+						errors.push("You must specify the text for the 'Sign with Facebook' button.")
+					if form.sign_with_email_cta_button_text.$error['required']
+						errors.push("You must specify the text for the 'Sign with Email Address' button.")
+					if form.target_count.$error['required']
+						errors.push("You must specify the target number of signatures your petition is attempting to collect.")
+					if form.summary.$error['required']
+						errors.push("You must specify the summary text for your petition.")
+					if form.signature_more_signers_button_text.$error['required']
+						errors.push("You must specify the text for the 'More Signers' button.")
+				
 			modalInstance = $modal.open(
 			    templateUrl: 'clients/partials/modal_template'
 			    controller: ModalInstanceController
@@ -180,9 +276,15 @@
 		$location.protocol() + "://" + $location.host() + "/petitions/" + $scope.petition.id
 
 	$scope.set_layout = (layout) ->
-		$scope.settings.layout = layout.url_fragment
-		$scope.update_page_list()
+		$scope.settings.layout = layout
 		$scope.update_stylesheet_list()
+
+	$scope.set_theme = (theme) ->
+		$scope.settings.theme = theme
+		$scope.update_stylesheet_list()
+
+	$scope.get_page_template = (template_name) ->
+		"/client_views/" + $scope.settings.layout.url_fragment + "/" + template_name
 
 	$scope.add_action_tag = () ->
 		new_tag = $scope.action_tags.new_tag
@@ -205,25 +307,40 @@
 			else
 				$scope.petition.action_tags = tag.name			
 
-	$scope.email_types = [{
-			name: "Signature Confirmation Email",
-			description: "The signature confirmation email is delivered to a petition signer immediately after the petition is signed.  The signature confirmation email is sent to all signers",
-			send: true
-		}, {
-			name: "Donation Reminder Email",
-			description: "The donation reminder email is sent daily to all petition signers in the previous 24 hours.",
-			send: false
-		}]
+	validate_step = (step) ->
+		if step == 1
+			return $scope.petition.name && $scope.petition.subdomain || false
+		else if step == 2
+			return $scope.settings.layout || false
+		else if step == 3
+			return $scope.settings.theme || false
+		else if step == 4
+			return $scope.settings.pages_list.length > 0
+		else if step == 5
+			return $scope.settings.pages_list.length > 0
+		else if step == 6
+			return $scope.settings.pages_list.length > 0
+
+		return true
 
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
 		if $route.current.templateUrl == 'clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'layouts']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts', 'pages', 'themes']
 
 PetitionSetupController.resolve =
   	
+  email_types: ['EmailTypeServices', '$q', (EmailTypeServices, $q) ->
+    deferred = $q.defer()
+
+    EmailTypeServices.get_email_types().then (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+  ]
+
   layouts: ['LayoutServices', '$q', (LayoutServices, $q) ->
     deferred = $q.defer()
 
@@ -232,5 +349,26 @@ PetitionSetupController.resolve =
 
     deferred.promise
 
-    ]
+  ]
+
+
+  pages: ['PageServices', '$q', (PageServices, $q) ->
+    deferred = $q.defer()
+
+    PageServices.get_pages(2).then (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+
+  ]
+
+  themes: ['ThemeServices', '$q', (ThemeServices, $q) ->
+    deferred = $q.defer()
+
+    ThemeServices.get_themes(2).then (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+
+  ]
 

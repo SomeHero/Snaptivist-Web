@@ -1,8 +1,8 @@
 @app = angular.module('petition', ['ui.bootstrap.tpls', 'ui.bootstrap', 'custom.bootstrap'])
 
 @app.config ['$routeProvider', ($routeProvider) ->
-  layout = 'layout2'
-  base_page_url = '/sign'
+  layout = window.petition.layout.url_fragment
+  base_page_url = window.petition.pages[0].url_fragment || '/sign'
   $routeProvider.when('/sign',
     templateUrl: '/client_views/' + layout + '/signature_template'
     controller: SignatureController 

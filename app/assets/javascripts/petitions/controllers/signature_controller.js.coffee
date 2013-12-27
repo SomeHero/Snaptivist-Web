@@ -1,6 +1,7 @@
 @SignatureController = ($scope, PetitionServices, $http, Util, $rootScope, $timeout) ->
 
   window.scope = $scope
+  
   $scope.form_submitted = false
 
   $scope.error_messages =
@@ -14,7 +15,6 @@
    
     $scope.loading.show_spinner = true
 
-    form.submitted = true
     $scope.form_submitted = true
 
     if form.$valid

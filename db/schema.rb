@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212001253) do
+ActiveRecord::Schema.define(:version => 20131227205647) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.integer  "poll_id"
+    t.integer  "question_id"
     t.integer  "choice_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "authentications", :force => true do |t|
@@ -108,9 +108,21 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
-  add_index "clients", ["reset_password_token"], :name => "index_clients_on_reset_password_token", :unique => true
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
+
+  create_table "donations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "source"
+    t.decimal  "amount"
+    t.datetime "submitted_date"
+    t.datetime "cancelled_date"
+    t.string   "donation_status"
+    t.string   "string"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "donations", ["user_id"], :name => "index_donations_on_user_id"
 
   create_table "email_configurations", :force => true do |t|
     t.integer  "email_type_id"
@@ -122,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.string   "last_id_sent"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "enabled"
   end
 
   add_index "email_configurations", ["email_type_id"], :name => "index_email_configurations_on_email_type_id"
@@ -133,6 +146,9 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.string   "default_email_template"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.string   "default_subject"
+    t.boolean  "default_state"
+    t.integer  "position"
   end
 
   create_table "external_accounts", :force => true do |t|
@@ -186,11 +202,26 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.string   "description"
     t.string   "template_name"
     t.integer  "layout_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "url_fragment"
+    t.boolean  "url_redirect",          :default => false
+    t.string   "url_redirect_property"
+    t.integer  "position"
   end
 
   add_index "pages", ["layout_id"], :name => "index_pages_on_layout_id"
+
+  create_table "petition_pages", :force => true do |t|
+    t.integer  "petition_id"
+    t.integer  "page_id"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "petition_pages", ["page_id"], :name => "index_petition_pages_on_page_id"
+  add_index "petition_pages", ["petition_id"], :name => "index_petition_pages_on_petition_id"
 
   create_table "petitions", :force => true do |t|
     t.string   "title"
@@ -246,6 +277,8 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.datetime "premium_image_updated_at"
     t.string   "name"
     t.string   "donation_page_url"
+    t.string   "delivery_summary"
+    t.string   "disclaimer_text"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -395,8 +428,10 @@ ActiveRecord::Schema.define(:version => 20131212001253) do
     t.string   "name"
     t.string   "description"
     t.string   "css_file"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "layout_id"
+    t.string   "url_fragment"
   end
 
   create_table "tweets", :force => true do |t|
