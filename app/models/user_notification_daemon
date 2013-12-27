@@ -1,0 +1,32 @@
+# A utility class holding methods to check for various time-based UserNotification notifications. 
+#
+# Main method is designed to be run daily at whatever time via the heroku scheduler.
+#
+class UserNotificationDaemon
+
+  def self.run
+    notify_signature_delivery_reminders
+  end
+  
+  private 
+  
+
+  # 
+  #
+  def self.notify_signature_delivery_reminders
+    Rails.logger.debug "Checking for undelivered signatures"
+
+    # Get all signatures created since the beginning of time ()
+    #threshold = Date.today-7
+    signatures = Signature.find(:all, :conditions => "delivered is false or delivered is null")
+    
+    # For each, send a notification to the giver that it hasn't been delivered (which makes sure not to dupe it)
+    signatures.each do |signature|
+      params = {:petition => signature.petition, :signature => signature, :user => signature.user}
+      Rails.logger.debug "Attempting to signature delivery reminder notification for signature #{signature.id} (created #{signature.created_at})..."
+      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::SIGNATURE_DELIVERY_REMINDER, params)
+    end
+    return
+  end
+    
+end

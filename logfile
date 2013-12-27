@@ -484,3 +484,225 @@ ERROR:  cannot drop the currently open database
 STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "give_flows".* FROM "give_flows"  WHERE "give_flows"."id" = $1 LIMIT 1
+LOG:  database system was shut down at 2013-08-09 09:34:34 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+ERROR:  cannot drop the currently open database
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+LOG:  database system was shut down at 2013-10-17 00:25:33 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column signatures.tweet_id does not exist at character 90
+STATEMENT:  SELECT  DISTINCT "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+ERROR:  column signatures.tweet_id does not exist at character 90
+STATEMENT:  SELECT  DISTINCT "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 2 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 2 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column tweets.signature_id does not exist at character 41
+STATEMENT:  SELECT  "tweets".* FROM "tweets"  WHERE "tweets"."signature_id" = 1 LIMIT 1
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  column signatures.tweet_id does not exist at character 90
+STATEMENT:  SELECT  DISTINCT "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+ERROR:  column signatures.tweet_id does not exist at character 81
+STATEMENT:  SELECT  "signatures".* FROM "signatures" INNER JOIN "tweets" ON "tweets"."id" = "signatures"."tweet_id" WHERE "signatures"."petition_id" = 1 ORDER BY created_at DESC LIMIT 10
+ERROR:  relation "signature" does not exist
+STATEMENT:  ALTER TABLE "signature" DROP "tweet_id"
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  relation "impressions" does not exist at character 315
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+	                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"impressions"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "impressions" does not exist at character 315
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+	                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"impressions"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-18 15:30:40 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2013-11-12 09:37:19 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  database "treater_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "treater_development"
+FATAL:  database "treater_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+ERROR:  database "snaptivist_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "snaptivist_development"
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_test" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_test" does not exist
+FATAL:  database "treater_development" does not exist
+FATAL:  database "treater_test" does not exist
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+FATAL:  terminating autovacuum process due to administrator command
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-15 08:34:52 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was interrupted; last known up at 2013-11-25 15:25:03 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/221A0460
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 999) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+LOG:  database system was interrupted; last known up at 2013-11-30 22:43:10 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/223CB518
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 570) running in data directory "/Users/jrhodes2705/projects/postgresdb"?
+LOG:  database system was interrupted; last known up at 2013-12-01 21:23:35 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/223D7BC8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2013-12-01 22:07:06 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/223D7C28
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2013-12-02 12:17:23 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/2242ADE8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+FATAL:  database "snaptivist_development" does not exist
+FATAL:  database "snaptivist_test" does not exist
+LOG:  database system was interrupted; last known up at 2013-12-05 22:13:28 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/2286F9C8
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+postgres cannot access the server configuration file "/Users/jrhodes2705/projects/postgresdb/postgresql.conf": No such file or directory

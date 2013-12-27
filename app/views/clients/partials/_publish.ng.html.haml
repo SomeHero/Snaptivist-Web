@@ -1,0 +1,9 @@
+.panel
+	%h4 {{ petition.name }}
+	.row.clearfix
+		.col-md-6
+			%a{"ng-src"=>"{{petition_url()}}"}
+				{{petition_url()}}
+		.col-md-6
+			%a{"ng-src"=>"{{petition.shorturl}}"}
+				{{petition.shorturl}}

@@ -1,0 +1,274 @@
+/* line 1, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+body {
+  background: url("../layout2/background_pattern.png") repeat;
+  font-family: "Raleway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 400;
+}
+
+/* line 6, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+.circularG {
+  background-color: #ff0000;
+}
+
+/* line 9, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+.client-logo-wrapper {
+  display: table;
+  width: 100%;
+}
+
+/* line 13, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+.client-logo {
+  display: table-cell;
+  vertical-align: middle;
+  background: #333333;
+  padding: 10px 0px;
+}
+
+/* line 19, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+.disclaimer {
+  font-size: .92em;
+  color: #5e5e5e;
+  border: solid 1px #5e5e5e;
+}
+
+/* line 24, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container, #premium-container {
+  /* shared with before and after */
+}
+/* line 25, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container h1, #petition-container h2, #petition-container h3, #petition-container h4, #petition-container h5, #petition-container h6, #petition-container p, #petition-container .section-header, #petition-container button, #premium-container h1, #premium-container h2, #premium-container h3, #premium-container h4, #premium-container h5, #premium-container h6, #premium-container p, #premium-container .section-header, #premium-container button {
+  font-family: "Raleway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+/* line 28, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container h2, #premium-container h2 {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 64px;
+}
+/* line 33, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container h4, #premium-container h4 {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 32px;
+}
+/* line 38, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container h5, #premium-container h5 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+/* line 44, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container form.submitted .ng-invalid, #premium-container form.submitted .ng-invalid {
+  border: solid 1px red;
+}
+/* line 48, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .section-header, #premium-container .section-header {
+  background-color: #666666;
+  color: #ffffff;
+  font-size: 1.8em;
+  font-weight: 300;
+  padding: 2px 22px;
+  position: relative;
+  z-index: 1000;
+  letter-spacing: 4px;
+}
+/* line 58, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container button, #premium-container button {
+  font-weight: 300;
+}
+/* line 61, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .btn-primary, #premium-container .btn-primary {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0033cc), color-stop(1, #008bcc));
+  background-image: -o-linear-gradient(top, #0033cc 0%, #008bcc 100%);
+  background-image: -moz-linear-gradient(top, #0033cc 0%, #008bcc 100%);
+  background-image: -webkit-linear-gradient(top, #0033cc 0%, #008bcc 100%);
+  background-image: -ms-linear-gradient(top, #0033cc 0%, #008bcc 100%);
+  background-image: linear-gradient(to top, #0033cc 0%, #008bcc 100%);
+}
+/* line 75, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .btn-primary:hover, #petition-container .btn-primary:focus, #premium-container .btn-primary:hover, #premium-container .btn-primary:focus {
+  background-position: 0px;
+}
+/* line 78, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .btn-primary:hover, #premium-container .btn-primary:hover {
+  text-decoration: none;
+  background: #0033cc;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #0033cc 0%, #0033cc 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0033cc), color-stop(100%, #0033cc));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #0033cc 0%, #0033cc 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #0033cc 0%, #0033cc 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #0033cc 0%, #0033cc 100%);
+  /* IE10+ */
+  background: linear-gradient(top, #0033cc 0%, #0033cc 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0033cc', endColorstr='#0033cc',GradientType=0 );
+  /* IE6-9 */
+}
+/* line 89, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .btn-primary:active, #premium-container .btn-primary:active {
+  -webkit-box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+/* line 95, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .drop-shadow-full, #premium-container .drop-shadow-full {
+  -moz-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.25);
+}
+/* line 99, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .drop-shadow-full textarea, #premium-container .drop-shadow-full textarea {
+  padding: 10px;
+  color: #757a80;
+  border: none;
+  box-shadow: none;
+  resize: none;
+  height: 120px;
+  font-size: 15px;
+  font-family: 'Lato-Regular', sans-serif;
+}
+/* line 109, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .drop-shadow-full #message-counter, #premium-container .drop-shadow-full #message-counter {
+  padding-right: 0.935em;
+  padding-bottom: 4px;
+}
+/* line 114, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .panel, #premium-container .panel {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+/* line 120, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .panel-indented, #premium-container .panel-indented {
+  padding: 0px 5% 20px 5%;
+}
+/* line 123, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #petition-headline, #petition-container #delivery-headline, #petition-container #premium-headline, #premium-container #petition-headline, #premium-container #delivery-headline, #premium-container #premium-headline {
+  background-color: #ff0000;
+  color: #ffffff;
+  margin: 18px 0px 0px 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-bottom: 10px;
+}
+/* line 130, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #petition-headline h2, #petition-container #delivery-headline h2, #petition-container #premium-headline h2, #premium-container #petition-headline h2, #premium-container #delivery-headline h2, #premium-container #premium-headline h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/* line 134, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #petition-headline h5, #petition-container #delivery-headline h5, #petition-container #premium-headline h5, #premium-container #petition-headline h5, #premium-container #delivery-headline h5, #premium-container #premium-headline h5 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/* line 140, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #petition-subheadline h4, #premium-container #petition-subheadline h4 {
+  margin: 16px 0px 20px 0px;
+}
+/* line 144, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #petition-headline:before, #petition-container #delivery-headline:before, #petition-container #premium-headline:before, #premium-container #petition-headline:before, #premium-container #delivery-headline:before, #premium-container #premium-headline:before {
+  border-top: 0px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 36px solid #070707;
+  bottom: -20px;
+  right: -36px;
+}
+/* line 152, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #petition-headline:after, #petition-container #delivery-headline:after, #petition-container #premium-headline:after, #premium-container #petition-headline:after, #premium-container #delivery-headline:after, #premium-container #premium-headline:after {
+  border-top: 0px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 36px solid #070707;
+  bottom: -20px;
+  left: -36px;
+}
+/* line 160, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #signature-container-wrapper .panel-indented, #premium-container #signature-container-wrapper .panel-indented {
+  padding-bottom: 50px;
+}
+/* line 164, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .progress-wrapper, #premium-container .progress-wrapper {
+  position: relative;
+  border-radius: 21px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, #838487), color-stop(0.67, #d0d1d2));
+  background-image: -moz-linear-gradient(center bottom, #838487 33%, #d0d1d2 67%);
+  padding: 4px 3px;
+}
+/* line 171, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .progress, #premium-container .progress {
+  position: relative;
+  height: 42px;
+  border-radius: 21px;
+  margin: 0px 1px;
+  /* fallback */
+  background-color: #d0d1d3;
+  background: url(images/linear_bg_2.png);
+  background-repeat: repeat-x;
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d0d1d3), to(#858689));
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #858689, #d0d1d3);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #858689, #d0d1d3);
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #858689, #d0d1d3);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #858689, #d0d1d3);
+}
+/* line 196, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .progress-bar, #premium-container .progress-bar {
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ed3d32), to(#a31e21));
+  background-image: -webkit-linear-gradient(top, #ed3d32, 0%, #a31e21, 100%);
+  background-image: -moz-linear-gradient(top, #ed3d32 0%, #a31e21 100%);
+  background-image: linear-gradient(to bottom, #ed3d32 0%, #a31e21 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFed3d32, endColorstr=#FFa31e21, GradientType=0);
+  border-bottom: 2px solid #8c1a1d;
+}
+/* line 205, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container .target-count, #premium-container .target-count {
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  line-height: 41px;
+  color: #ed0000;
+  font-size: 1.4em;
+  font-weight: 800;
+}
+/* line 214, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #signature-count, #premium-container #signature-count {
+  position: absolute;
+  left: 2%;
+  width: 50px;
+  margin-top: 10px;
+  background: #00a3d2;
+  color: white;
+  z-index: 20000;
+  margin-left: -23px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+}
+/* line 229, ../../../app/assets/stylesheets/themes/layout2_standard.css.scss */
+#petition-container #signature-count:after, #premium-container #signature-count:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 10px solid transparent;
+  /* arrow size */
+  border-bottom-color: #00a3d2;
+  /* arrow color */
+  /* positioning */
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  z-index: 2;
+}

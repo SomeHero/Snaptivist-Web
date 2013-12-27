@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  notification_type: MyString
+  notification_uri: MyString
+  sent: false
+  test: false
+
+two:
+  user: 
+  notification_type: MyString
+  notification_uri: MyString
+  sent: false
+  test: false

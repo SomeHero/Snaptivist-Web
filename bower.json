@@ -1,0 +1,7 @@
+{
+  "name": "foo",
+  "dependencies": {
+  	"angular-ui-bootstrap3": "*",
+    "normalize-css": "*"
+  }
+}

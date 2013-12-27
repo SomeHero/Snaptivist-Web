@@ -1,13 +1,16 @@
-@app = angular.module('petition', ['ui.bootstrap'])
-	.value('$anchorScroll', angular.noop)
+@app = angular.module('petition', ['ui.bootstrap.tpls', 'ui.bootstrap', 'custom.bootstrap'])
 
 @app.config ['$routeProvider', ($routeProvider) ->
+  layout = 'layout2'
   base_page_url = '/sign'
   $routeProvider.when('/sign',
-    templateUrl: '/client_views/sign'
+    templateUrl: '/client_views/' + layout + '/signature_template'
     controller: SignatureController 
   ).when('/deliver',
-    templateUrl: '/client_views/deliver'
+    templateUrl: '/client_views/' + layout + '/delivery_template'
+    controller: DeliveryController 
+  ).when('/premium',
+    templateUrl: '/client_views/' + layout + '/premium_template'
     controller: DeliveryController 
   ).when('/complete',
     templateUrl: '/client_views/more'
@@ -51,7 +54,7 @@
 
       console.log "Signing with Facebook"
 
-      scope.$broadcast('handleFacebookAuth')
+      $scope.sign_with_facebook($scope.auth)
 
 
     ((d) ->
@@ -68,11 +71,9 @@
     $scope.fetch = ->
       Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
    
-      $scope.loading.show_spinner = true
-
       if $scope.login_status is "connected"
         console.log "fetch"
-        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In")
+        Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In)")
    
         fetch()
       else
@@ -86,15 +87,15 @@
     window.fbAsyncInit = ->
       FB.init
         appId: attrs.facebook # App ID
-        channelUrl: "//localhost:3000/channel.html" # Channel File
+        channelUrl: "//dev.snaptivist.com/channel.html" # Channel File
         status: true # check login status
         cookie: true # enable cookies to allow the server to access the session
-        oauth: true
         xfbml: true # parse XFBML
 
       
       # Additional init code here
       FB.getLoginStatus (response) ->
+        console.log "Response Status is " + response.status
         if response.status is "connected"
           
           Util.push_ga_event("Petition", "Facebook Status", "Connected")
@@ -109,8 +110,15 @@
           Util.push_ga_event("Petition", "Facebook Status", "Not Logged In")
         
           # not_logged_in
-          scope.login_status = response.status
-          scope.$apply()
+        scope.login_status = response.status
+        scope.$apply()
+
+      FB.Event.subscribe "edge.create", (response) ->
+        window.top.location.href = "url"
+
+
+      return null
+    return null
 
 
 # end of fbAsyncInit

@@ -1,0 +1,7 @@
+%span{"ng-transclude"=>""}
+.image-upload-overlay{:style=>"display: none;"}
+	%h5
+		{{title}}
+	%input{:style=>"width: 100%;","ng-file-select" => "onFileSelect($files)", type: "file", "image-name" => "{{imageName}}"}
+	%p.note
+		{{notes}}

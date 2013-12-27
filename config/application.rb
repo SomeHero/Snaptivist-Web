@@ -38,6 +38,7 @@ module SnaptivistWeb
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    config.assets.initialize_on_precompile = false
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
@@ -67,6 +68,39 @@ module SnaptivistWeb
     config.assets.paths << Rails.root.join('public', 'merchants', 'assets')
 
     config.assets.paths << Rails.root.join("app", "assets", "images", "mobile", "media_images")
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+
+    config.paths.add "app/api", glob: "**/*.rb"
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/api/*)
+    
+    # via https://github.com/sstephenson/sprockets/issues/347#issuecomment-25543201
+    # We don't want the default of everything that isn't js or css, because it pulls too many things in
+    config.assets.precompile.shift
+
+    # Explicitly register the extensions we are interested in compiling
+    config.assets.precompile.push(Proc.new do |path|
+      File.extname(path).in? [
+        '.html', '.erb', '.haml',                 # Templates
+        '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+        '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+      ]
+    end)
+
+    config.middleware.use Rack::Cors do
+        allow do
+          origins '*'
+          # location of your API
+          resource '/*', :headers => :any, :methods => [:get, :post, :options, :put, :delete]
+        end
+    end
+
+    config.middleware.use(Rack::Config) do |env|
+        env['api.tilt.root'] = Rails.root.join "app", "views", "api"
+    end
+
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+    }
 
   end
 

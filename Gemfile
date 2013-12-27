@@ -1,3 +1,5 @@
+ruby "2.0.0"
+
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
@@ -7,21 +9,34 @@ gem 'rails', '3.2.11'
 
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'uglifier',     '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'bootstrap-sass-rails', '~> 3.0'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
+  gem 'angularjs-rails', '>= 1.2.0.rc2'
+  gem "font-awesome-rails", "~> 3.2"
+end
 
-  gem 'uglifier', '>= 1.0.3'
+group :development do
+  gem 'guard-rspec'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'terminal-notifier'
+  gem 'quiet_assets'
+  gem 'letter_opener'
+  gem "meta_request"
+  gem "pry", "~> 0.9"
+  gem "pry-nav", "~> 0.2"
+  gem 'pry-rails'
+  gem 'pry-remote'
 end
 
 gem 'jquery-rails'
 
-gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'omniauth-twitter'
@@ -35,7 +50,7 @@ gem 'koala', '~> 1.4'
 gem "ym4r"
 gem "sunlight"
 gem "json"
-gem "bitly", "~> 0.8.1"
+gem "bitly"
 gem 'carmen-rails', '~> 1.0.0.beta3'
 gem 'nifty-generators'
 gem 'hashr'
@@ -46,6 +61,14 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'newrelic_rpm'
 gem 'airbrake'
+gem 'rufus-scheduler'
+gem 'rabl-rails'
+gem 'grape'
+gem 'grape-rabl'
+gem 'geocoder'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'awesome_print'
+gem 'nationbuilder', :git => "https://github.com/jrhodes621/nationbuilder"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,0 +1,5 @@
+%h6
+	Layout Configuration
+%div{:style=>"height: 80px; padding: 4px 8px;", "ng-repeat"=>"layout in layouts", "ng-click"=>"set_layout(layout)"}
+	%h5 {{layout.name}}
+	%p {{layout.description}}

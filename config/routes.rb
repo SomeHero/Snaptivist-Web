@@ -1,5 +1,9 @@
 SnaptivistWeb::Application.routes.draw do
 
+  devise_for :clients
+
+  mount API => "/api", :at => '/'
+
   namespace :api do
     match 'petitions/more', :to => 'petitions#more'
   
@@ -11,6 +15,7 @@ SnaptivistWeb::Application.routes.draw do
         post 'sign_with_facebook'
         post 'share_with_facebook'
         get 'signatures'
+        get 'tweets'
       end
     end
     resources :phonecampaigns do
@@ -25,9 +30,14 @@ SnaptivistWeb::Application.routes.draw do
     resources :targets
   end
   
+  namespace :dashboard do
+    resources :clients
+    resources :widgets
+    resources :client_views, only: [:show]
+  end
 
-  resources :client_views, only: [:show]
 
+  match 'client_views/:layout/:template', :to => 'client_views#show'
   match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
   match '/welcome' => 'home#welcome'
   
@@ -47,6 +57,7 @@ SnaptivistWeb::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  get 'dashboard/clients/sign_up' => 'dashboard/clients/registrations#new_client', :as => 'new_client_registration'
   get "home/index"
 
   get "home/welcome"
@@ -105,6 +116,32 @@ SnaptivistWeb::Application.routes.draw do
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
 
   resources :users
+
+
+  resource :auth do
+    collection do
+      post :login
+      get :logout
+    end
+  end
+  resources :clients do
+    member do
+      get :login
+      post :validate
+      get :logout
+    end
+    collection do
+      post :confirm
+      get :demo
+      get :customers
+      get :twitter_support
+    end
+    member do
+      get :customers
+    end
+  end
+
+
   
   # Let's add the root route
   root :to => "home#index"

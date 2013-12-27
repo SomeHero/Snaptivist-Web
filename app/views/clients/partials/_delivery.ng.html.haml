@@ -1,0 +1,56 @@
+.container#petition-container
+	.row.text-left
+		%h2.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.delivery.headline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Headline to Your Tweet Delivery Page"}
+			Thanks for Signing!
+	.row
+		%div.well#delivery-container
+			.row
+				.col-md-6.top-content-wrapper
+					%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
+				.col-md-6.top-content-wrapper.vertical-middle-table.well
+					%div.delivery-form-container.vertical-middle-cell
+						%form{:name => "myForm", "novalidate" => true, "role"=>"form"}
+							.form-group.text-center
+								.col-md-12.text-center
+									%h4.contenteditable{:style => "font-size: 1.4em","contenteditable"=>"true", "ng-model" => "petition.delivery.sub_headline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+							.form-group.text-center
+								.col-md-12
+									%textarea.contenteditable{:style=>"width: 96%", "rows"=>"5", "contenteditable"=>"true", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+							.form-group.text-center
+								.col-md-12
+									%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_premium()"}
+										%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.delivery.tweet_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+							.form-group.text-center
+								.col-md-12
+									%button.btn.btn-link{"ng-click" => "go_to_premium()"}
+										%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.delivery.tweet_skip_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+			.row#signature-count-wrapper
+				.col-md-12
+					%div.progress
+						%div.progress-bar{:style => "width: {{calulate_petition_signature_percentage()}}%"}
+					.row
+						.col-md-6.text-left#signers-count
+							Signers:  {{petition.signature_count || 0 }}
+						.col-md-6.text-right#target-count
+							Goal: {{petition.target_count || 1000 }}
+	.row.bottom-margin#user-signature-wrapper
+		%ul#user-signature-list
+			%li.user-signature-item{"ng-repeat" => "tweet in tweets.items | orderBy: 'created_at':true"}
+				%div.media.thumbnail
+					%a.pull-left
+						%img.media-object.avatar{"ng-src" => "{{get_avatar_url(tweet)}}"}
+					.media-body
+						%div.comment
+							%div.user-name
+								Test U
+							%div.tweet-message
+								{{tweet.message}}
+						%div.comment-timeago
+							Tweeted {{tweet.created_at }} 
+
+	.row.text-center.bottom-margin#more-tweets-button-wrapper
+		%button.btn.btn-primary#more-tweets-button
+			%span.contenteditable{"contenteditable"=>"true", "ng-model" => "petition.delivery.more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Add a Call to Action for Facebook Signatures"}
+	.row.bottom-margin#client-logo-wrapper
+		.col-md-12.text-center
+			%img{"ng-src" => "{{petition.client.image_small}}"}

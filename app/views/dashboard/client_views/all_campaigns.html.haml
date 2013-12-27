@@ -1,0 +1,15 @@
+.widget-header
+  %i.icon-star
+  %h3 All Campaigns
+.widget-content
+  .row
+    .span3.text-center.well{{"ng-repeat"=>"petition in petitions"}}
+      %i.icon-pencil.icon-4x
+      %h3 {{petition.target_headline_text}}
+      %h4 {{petition.title}}
+      %div
+        %a View
+        %span 
+          |
+        %a Edit
+      %span.stats 102 | 24 | 12

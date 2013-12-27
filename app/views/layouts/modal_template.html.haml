@@ -1,0 +1,9 @@
+James
+.modal-header
+    %h3 I'm a modal!
+.modal-body
+    %ul
+        %li{"ng-repeat"=>"item in items"}
+.modal-footer
+    %button.btn.btn-primary{"ng-click"=>"ok()"}
+    %button.btn.btn-warning{"ng-click"=>"cancel()"}

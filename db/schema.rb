@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805012341) do
+ActiveRecord::Schema.define(:version => 20131207052019) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.integer  "question_id"
+    t.integer  "poll_id"
     t.integer  "choice_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "authentications", :force => true do |t|
@@ -89,14 +89,27 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "nation_builder_crm_authentication_id"
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                        :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
+  add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
+  add_index "clients", ["reset_password_token"], :name => "index_clients_on_reset_password_token", :unique => true
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
 
   create_table "external_accounts", :force => true do |t|
@@ -112,15 +125,59 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
 
   add_index "external_accounts", ["user_id"], :name => "index_external_accounts_on_user_id"
 
+  create_table "layouts", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "url_fragment"
+  end
+
+  create_table "mailing_addresses", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "city"
+    t.string   "string"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "phone_number"
+    t.string   "email_address"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "nation_builder_crm_authentications", :force => true do |t|
+    t.string   "nation_name"
+    t.string   "client_app_id"
+    t.string   "client_secret"
+    t.string   "access_token"
+    t.string   "redirect_uri"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "template_name"
+    t.integer  "layout_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "pages", ["layout_id"], :name => "index_pages_on_layout_id"
+
   create_table "petitions", :force => true do |t|
     t.string   "title"
-    t.string   "summary"
+    t.text     "summary"
     t.integer  "target_count"
     t.integer  "target_id"
     t.string   "short_url"
     t.string   "rewrite_url_key"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
     t.integer  "signatures_count"
     t.integer  "user_id"
     t.string   "header_image_file_name"
@@ -137,9 +194,35 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
     t.string   "default_tweet_text"
     t.string   "action_tags"
     t.string   "tweet_cta_button_text"
-    t.boolean  "active",                             :default => false
-    t.boolean  "unsponsored",                        :default => false
+    t.boolean  "active",                              :default => false
+    t.boolean  "unsponsored",                         :default => false
     t.integer  "client_id"
+    t.integer  "layout_id"
+    t.integer  "theme_id"
+    t.integer  "premium_offer_id"
+    t.string   "headline_primary"
+    t.string   "headline_secondary"
+    t.string   "subheadline"
+    t.string   "delivery_headline_primary"
+    t.string   "delivery_headline_secondary"
+    t.string   "delivery_subheadline"
+    t.string   "premium_headline_primary"
+    t.string   "premium_headline_secondary"
+    t.string   "premium_subheadline"
+    t.string   "delivery_call_to_action_text"
+    t.string   "delivery_call_to_action_button_text"
+    t.string   "delivery_skip_button_text"
+    t.string   "delivery_more_tweets_button_text"
+    t.string   "premium_call_to_action_text"
+    t.string   "premium_call_to_action_button_text"
+    t.string   "premium_skip_button_text"
+    t.string   "signature_more_signers_button_text"
+    t.string   "premium_image_file_name"
+    t.string   "premium_image_content_type"
+    t.integer  "premium_image_file_size"
+    t.datetime "premium_image_updated_at"
+    t.string   "name"
+    t.string   "donation_page_url"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -191,6 +274,26 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
     t.string   "comment"
   end
 
+  create_table "premium_gives", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "signature_id"
+    t.integer  "mailing_address_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "premium_gives", ["mailing_address_id"], :name => "index_premium_gives_on_mailing_address_id"
+  add_index "premium_gives", ["signature_id"], :name => "index_premium_gives_on_signature_id"
+  add_index "premium_gives", ["user_id"], :name => "index_premium_gives_on_user_id"
+
+  create_table "premium_offers", :force => true do |t|
+    t.string   "name"
+    t.string   "headline_text"
+    t.string   "call_to_action_button_text"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "signatures", :force => true do |t|
     t.integer  "user_id"
     t.integer  "petition_id"
@@ -209,6 +312,7 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
     t.boolean  "shared"
     t.datetime "shared_at"
     t.string   "signature_method"
+    t.integer  "tweet_id"
   end
 
   add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"
@@ -264,6 +368,32 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
     t.integer  "state_information_id"
   end
 
+  create_table "themes", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "css_file"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tweets", :force => true do |t|
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_notification_logs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "notification_type"
+    t.string   "notification_uri"
+    t.boolean  "sent"
+    t.boolean  "test"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "user_notification_logs", ["user_id"], :name => "index_user_notification_logs_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                            :default => "", :null => false
     t.string   "encrypted_password",               :default => "", :null => false
@@ -289,6 +419,7 @@ ActiveRecord::Schema.define(:version => 20130805012341) do
     t.integer  "organization_avatar_file_size"
     t.datetime "organization_avatar_updated_at"
     t.string   "action_tags"
+    t.string   "external_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

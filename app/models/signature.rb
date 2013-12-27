@@ -1,7 +1,9 @@
 class Signature < ActiveRecord::Base
   belongs_to :user
   belongs_to :petition, :counter_cache => true
-  attr_accessible :comment
+  belongs_to :tweet
+  
+  attr_accessible :user, :comment
 
   validates :user, :presence => true
 
@@ -9,7 +11,8 @@ class Signature < ActiveRecord::Base
     if geo = results.first
       # populate your model
       obj.city    = geo.city
-      obj.state= geo.state #geo.state_code
+      #obj.state = geo.state
+      obj.state= geo.state_code
       obj.country = geo.country_code
     end
   end
@@ -22,7 +25,7 @@ class Signature < ActiveRecord::Base
   end
   after_validation :geocode, :reverse_geocode
   
-     # generate the petition
+  # generate the petition
   def to_api
 
     results = {

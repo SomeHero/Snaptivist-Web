@@ -46,6 +46,14 @@ module UserNotification
     #   :user => The User we are welcoming
     SIGNATURE_CONFIRMATION = :signature_confirmation
 
+    # Signature delivery reminder.
+    # Params 
+    # :user => The user that signed the petition
+    # :client => The client who is sponsoring the petition
+    # :petition => The petition
+    # :signature => The signature
+    SIGNATURE_DELIVERY_REMINDER = :signature_delivery_reminder
+
   end
 
   # Notification channel types

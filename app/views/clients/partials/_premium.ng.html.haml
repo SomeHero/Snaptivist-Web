@@ -1,0 +1,45 @@
+.container#petition-container{:style => "text-align:center;"}
+	.row
+		%h2.text-left
+			{{petition.premium_offer.headline_text}}
+	.row
+		%div.well.signature-container
+			.row
+				.col-md-6.top-content-wrapper
+					%div#petition-image-wrapper
+						%div#petition-image{:style=>"background-image: url({{petition.image_full}});"}
+				.col-md-6.vertical-middle-table.well
+					%div.signature-form-container.vertical-middle-cell
+						.form-group.clearfix
+							.col-md-6.text-left{:style=>"padding-right: 5px"}
+								%input.form-control{"type"=>"text", "placeholder"=>"First Name"}
+							.col-md-6.text-left{:style=>"padding-left: 5px"}
+								%input.form-control{"type"=>"text", "placeholder"=>"Last Name"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%", "type"=>"text","placeholder"=>"Street Address 1"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Zip Code"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Phone Number"}
+						.form-group
+							.col-md-12.text-left
+								%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address"}
+						.form-group
+							.col-md-12.text-center
+								%button.btn.btn-primary
+									Send My Magnet
+	.row-fluid.bottom-margin#client-logo-wrapper
+		.span12.text-center
+			%img{"ng-src" => "{{petition.client.image_small}}"}

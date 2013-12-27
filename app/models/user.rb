@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   IMAGE_SIZES = {"small" => "128x128",
                 "medium" => "256x256",
-                "medium" => "512x512"}
+                "large" => "512x512"}
     # note that the user has authenticated
   # def process_authentication
   #   if (is_gifter || Parameter.is_set?(Parameter::OPEN_BETA)) && welcomed_at.nil? && !email.blank?

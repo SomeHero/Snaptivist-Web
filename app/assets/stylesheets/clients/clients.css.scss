@@ -1,0 +1,118 @@
+body {
+ 	background: #f4f4f4
+}
+.row-wrapper-fluid {
+	padding: 0 15px;
+}
+.no-gutter[class*='col-md-'] {
+	padding-right: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+#petition-container.container {
+    width: 100% !important;
+}
+.navbar {
+	margin-bottom: 0px;
+}
+ul.action-menu-items {
+	width: 100%;
+	display: block;
+	li {
+		display: block;
+		height: 80px;
+		border-right: 1px solid #ccc;
+		border-left: 1px solid white;
+		border-bottom: 1px solid #ccc;
+		border-top: 1px solid #ccc;
+		width: 100%;
+		background: #efefef;
+	}
+}
+#left-nav {
+  z-index: 10001;
+  display: block;
+  height: 100%;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  width: 100px;
+  background: #232323;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #424242), color-stop(1, #292929));
+  background: -ms-linear-gradient(left, #424242, #292929);
+  background: -moz-linear-gradient(center left, #424242 0%, #292929 100%);
+  ul.steps-menu-items {
+    li {
+      display: block;
+      width: 100px;
+      height: 80px;
+      a {
+      	padding: 0px;
+      }
+      a:hover {
+        cursor: pointer;
+      	.icon-large {
+      		color: #FF9900;
+      	}
+      }
+      .icon-large {
+        display: block;
+        width: 100px;
+        height: 80px;
+        color: white;
+        font-size: 28px;
+        vertical-align: middle;
+        display: table-cell;
+      }
+    }
+  }
+}
+.petition-title {
+	display: block;
+	padding: 0px 20px;
+	border-bottom: 1px solid white;
+	border-radius: 0;
+	font-size: 40px;
+	line-height: 80px;
+	margin-top: 0px;
+	width: 100%;
+	z-index: 1000;
+}
+#action-tags-cloud {
+  width: 285px;
+  margin-top: 10px;
+  margin-left: 0;
+  padding-left: 0px;
+}
+.tag-cloud {
+    background-color: #999999;
+    -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 21px;
+    margin: 2px 3px 2px 2px;
+    padding: 1px 4px 2px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+}
+.tag-cloud.tag-cloud-info {
+    background-color: #3A87AD;
+}
+.tag-cloud.tag-cloud-success {
+    background-color: #468847;
+}
+.tag-cloud.tag-cloud-warning {
+    background-color: #F89406;
+}
+.tag-cloud.tag-cloud-danger {
+    background-color: #B94A48;
+}
+.tag-cloud.tag-cloud-inverse {
+    background-color: #333333;
+}

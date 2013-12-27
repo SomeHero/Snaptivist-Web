@@ -139,13 +139,16 @@ common:
   # Notification time thresholds
   notification_giver_treat_unviewed_threshold: 5 
   notification_giver_treat_unviewed_repeat_every: 100
+  #Nation Build API Configuration
+  nation_builder_uid: cc2280d2ccd036385f201b748b9874421dac6c3d101f4c689fd6737948263819
+  nation_builder_secret: 79ec71253f20bb397961318a86af8fd0477d20af50d0901beca490a822314783
   
 development:
   path: localhost:3000
   host: localhost:3000
   protocol: http://
   default_from: admin@snaptivist.com
-  default_from_name : Snaptivist Dev
+  default_from_name : Senator John Cornyn
   skip_hostcheck: true
   help_email: help@snaptivist.com
   allow_mobile: true            
@@ -187,9 +190,9 @@ sandbox:
   linked_in_app_secret: yAlQwONFxmEhwG70
   twitter_app_key: JRkoDk6R3BxPpmu5sIsKLA
   twitter_app_secret: AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo  
-  facebook_app_id: 100940330104294
-  facebook_secret_key: 541dba3520805d93dacdc078417b4b63
-  facebook_callback_url: http://sandbox.snaptivist.com/
+  facebook_app_id: 175645112634819
+  facebook_secret_key: 2a59cfd93ae96c13966a4a341565b4c5
+  facebook_callback_url: http://www.snaptivist.org/
   sms_service_class: TwilioSmsService
   apple_service_class: GrocerAppleService    
   google_service_class: GcmGoogleService
@@ -252,11 +255,11 @@ staging:
   twilio_number: 2028038459
 
 production:
-  path: snaptivist.com
-  host: snaptivist.com
+  path: snaptivist.org
+  host: snaptivist.org
   protocol: http://
   default_from: admin@snaptivist.com
-  default_from_name: Snaptivist
+  default_from_name: Senator John Cornyn
   skip_hostcheck: false
   help_email: help@snaptivist.com
   allow_mobile: true        

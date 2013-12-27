@@ -1,4 +1,4 @@
-ActiveAdmin.register Petition do
+	ActiveAdmin.register Petition do
   	index do
 		selectable_column
 		column :id

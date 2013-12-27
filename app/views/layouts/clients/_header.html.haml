@@ -1,0 +1,30 @@
+.navbar{:style => "min-height: 0px; border: none;"}
+  .navbar-inner
+    .row-wrapper-fluid
+      %button.navbar-toggle{"data-toggle" => "collapse", "data-target" => ".top-nav.nav-collapse,.sidebar-nav.nav-collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        
+      // Logo
+      .row.no-gutter
+        %a.brand.col-md-2
+          = image_tag 'logo_text_only_300x87.png', :height => 18
+        %a#main-menu-toggle.hidden-phone.open
+          %i.icon-reorder
+
+      .nav-no-collapse.header-nav
+        %ul.nav.pull-right
+          %li.dropdown
+            %a.btn.account.dropdown-toggle{"data-toggle" => "dropdown"}
+              - if @current_client
+                .avatar
+                .user
+                  %span.hello Welcome
+                  %span.name= @current_client.name
+            %ul.dropdown-menu{:style=>"width: 100%"}
+              %li.dropdown-menu-title
+              %li
+                %a{"href" => "/auth/logout"}
+                  %i.icon-off.pull-left
+                  = "Logout"

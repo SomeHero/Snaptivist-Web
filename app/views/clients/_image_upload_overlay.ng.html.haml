@@ -1,0 +1,8 @@
+%span{"ng-transclude"=>""}
+.image-upload-overlay{:style=>"display: none;"}
+	%h5
+		Add a Product Image
+	%input{:style=>"width: 100%;","ng-file-select" => "onFileSelect($files)", type: "file"}
+	%div{"ng-file-drag-over-class" => "optional-css-class", "ng-file-drop" => "onFileSelect($files)", "ng-show" => "dropSupported"} drop files here
+	%p.note
+		Product image will be used at several sizes of up to 350x350, all square

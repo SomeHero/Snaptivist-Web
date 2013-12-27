@@ -1,0 +1,67 @@
+.setup_give_flow{"size-column"=>""}
+	%div.top-nav{:style => "min-height: 35px"}
+		.row-wrapper-fluid
+			.row{"size-column"=>""}
+				.col-md-9.no-gutter{"size-column"=>""}
+					%div
+						%div#left-nav
+							%ul.nav.steps-menu-items.pull-left
+								%li.text-center
+								%li.text-center
+									%a{"ng-click"=>"goto_step_clicked(1)"}
+										%i.icon-large.icon-cogs{"ng-style"=>"highlight_step(1)"}
+
+								%li.text-center
+									%a{"ng-click"=>"goto_step_clicked(2)"}
+										%i.icon-large.icon-building{"ng-style"=>"highlight_step(2)"}
+
+								%li.text-center
+									%a{"ng-click"=>"goto_step_clicked(3)"}
+										%i.icon-large.icon-tint{"ng-style"=>"highlight_step(3)"}
+
+								%li.text-center
+									%a{"ng-click"=>"goto_step_clicked(4)"}
+										%i.icon-large.icon-file{"ng-style"=>"highlight_step(4)"}
+
+								%li.text-center
+									%a{"ng-click"=>"goto_step_clicked(5)"}
+										%i.icon-large.icon-envelope{"ng-style"=>"highlight_step(5)"}
+
+								%li.text-center
+									%a{"ng-click"=>"goto_step_clicked(6)"}
+										%i.icon-large.icon-bullhorn{"ng-style"=>"highlight_step(6)"}
+					%div{:style=>"position: absolute; top: 0px; left: 100px; width: 100%; padding-right: 100px;"}
+						%form{"name"=>"petition_setup", "novalidate" => "", "role"=>"form"}
+							%div
+								%h2.contenteditable.petition-title{:style=>"display: inline-block;", "contenteditable"=>"true", "ng-model" => "petition.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Give Your Campaign a Name", "name"=>"petition_name", "required"=>""}
+									New Campaign Name
+							%div
+								%ul.nav.action-menu-items.pull-left
+									
+								%div{:style=>"margin: 20px;"}		
+									%div{"ng-include"=>"", "src"=>"content_template_urls()"}
+								%div.text-right{:style => "margin-right: 20px;"}
+									%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked(petition_setup)", :style=>"width: 100px"}
+										Next!
+				.col-md-3.no-gutter{"size-column"=>""}
+					%ul.nav.action-menu-items
+						%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;"}
+							%i.glyphicon.glyphicon-save{:style=>"font-size: 30px;"}
+							.text-center{:style=>"margin-top: 10px"}
+								Save
+						%li.pull-left.text-center{:style=>"width:34%; height: 80px; padding: 10px 0px;"}
+							%i.glyphicon.glyphicon-ban-circle{:style=>"font-size: 30px;"}
+							.text-center{:style=>"margin-top: 10px"}
+							Cancel
+						%li.pull-left.text-center{:style=>"width:33%; height: 80px;  padding: 10px 0px;"}
+							%i.glyphicon.glyphicon-ok{:style=>"font-size: 30px;"}
+							.text-center{:style=>"margin-top: 10px"}
+							Publish
+					%div{:style=>"border-left: solid 1px white;"}
+						%div{:style=>"background: #FF9900; color: white; border-bottom: solid 1px #ccc; height: 80px;"}
+							.text-center{:style=>"font-size: 32px; line-height: 80px;"}
+								DRAFT
+						%div{:style=>"margin: 10px"}
+							%div{"ng-include"=>"", "src"=>"sidebar_template_urls()"}
+
+
