@@ -13,3 +13,4 @@
 //= require_directory ./libs
 //= require_directory ../services
 //= require ../moment
+//= require angular-toggle-switch/angular-toggle-switch.min.js

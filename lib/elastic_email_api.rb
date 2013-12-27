@@ -11,7 +11,7 @@ class ElasticEmailApi
 
 	class << self
 
-		def send_email(to_addr, subject, template_name, from_addr, from_name, merge_fields, reply_to_email="", reply_to_name="", channel="" )
+		def send_email(to_addr, subject, template_name, from_addr, from_name, merge_fields, reply_to_email="", reply_to_name="", channel="", time_offset_minutes = 0)
 			Rails.logger.debug 'Attempting to post to Elastic Email'
 
 			msg_info = { 
@@ -24,7 +24,8 @@ class ElasticEmailApi
 				'template' => template_name,
 				'reply_to' => reply_to_email,
 				'reply_to_name' => reply_to_name,
-				'channel' => channel 
+				'channel' => channel,
+				'time_offset_minutes' => time_offset_minutes
 			}
 			merge_fields.each do |key,value| 
 				msg_info[key] = value 

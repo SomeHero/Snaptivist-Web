@@ -1,0 +1,1 @@
+@EmailConfigurationController = ($scope, $rootScope) ->

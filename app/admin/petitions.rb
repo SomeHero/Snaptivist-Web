@@ -16,6 +16,8 @@
 	form :html => { :enctype => "multipart/form-data" } do |f|
 		f.inputs "Details" do
 			f.input :client
+			f.input :layout, :collection => Layout.all
+			f.input :theme, :collection => Theme.all
 			f.input :user, :collection => User.where("organization_name is not null")
 			f.input :target, :collection => Target.order("targetgroup_id").order("last_name").order("first_name").all
 			f.input :subdomain
@@ -33,7 +35,18 @@
     		f.input :action_tags
     		f.input :comment
     		f.input :active
-	end
+		end
+		f.inputs "Email Configurations" do 
+			f.has_many :email_configurations, :allow_destroy => false, :heading => false, :new_record => false do |email_config|
+		      email_config.input :email_type
+		      email_config.input :from_name
+		      email_config.input :from_address
+		      email_config.input :subject
+		      email_config.input :email_template
+		      email_config.input :enabled
+		      #repeat as necessary for all fields
+			end
+		end
 	f.buttons
    end
 

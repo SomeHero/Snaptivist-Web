@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  signature: 
+  email_type: 
+  sent: false
+  sent_at: 2013-12-14 21:19:50
+
+two:
+  signature: 
+  email_type: 
+  sent: false
+  sent_at: 2013-12-14 21:19:50

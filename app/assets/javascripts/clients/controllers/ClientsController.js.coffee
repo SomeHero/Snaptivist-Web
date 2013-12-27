@@ -1,56 +1,16 @@
 @ClientsController = ($scope, $rootScope, ClientFactory, Util) ->
   window.scope = $scope
   $scope.client = client
-
-  $scope.settings = {
-    layout: 'layout2',
-    theme: 'standard'
+  $scope.styles = {
+    stylesheet_list: []
   }
-  $scope.theme = 'standard'
-
-  $scope.stylesheet_list = []
 
   $scope.stylesheets = () ->
-  	return $scope.stylesheet_list
-
-  $scope.page_list = []
-
-  $scope.pages = [{
-      name: 'Signature Page'
-      page_url: 'signature_template'
-    }, {
-      name: 'Delivery Page'
-      page_url: 'delivery_template'
-    }, {
-      name: 'Donation Page Redirect'
-      page_url: 'donation_redirect_template'
-    }]
-
-  $scope.update_page_list = () ->
-    $scope.page_list = []
-    for page in $scope.pages
-      $scope.page_list.push({
-        title: page.name,
-        url: '/client_views/' + $scope.settings.layout + '/' + page.page_url
-      })
-
-  $scope.update_stylesheet_list = () ->
-    $scope.stylesheet_list.push({
-      href: '/assets/layouts/' + $scope.settings.layout + '.css'
-    })
-    $scope.stylesheet_list.push({
-      href: '/assets/layouts/' + $scope.settings.layout + '-responsive.css'
-    })
-    $scope.stylesheet_list.push({
-      href: '/assets/themes/' + $scope.settings.layout + '_' + $scope.settings.theme + '.css'
-    })
+    return $scope.styles.stylesheet_list
 
   $scope.new_petition_clicked = () ->
     ClientFactory.petition = {}
 
-    Util.navigate('petition_setup')
-
-  $scope.update_page_list()
-  $scope.update_stylesheet_list()
+    Util.navigate_absolute('/clients/' + $scope.client.client_id + '/', 'petition_setup', false)
 
 ClientsController.$inject = ['$scope', '$rootScope', 'ClientFactory', 'Util']

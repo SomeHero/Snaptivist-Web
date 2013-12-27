@@ -5,15 +5,25 @@ class Petition < ActiveRecord::Base
   belongs_to :user
   belongs_to :client
   has_many :signatures, :order => 'created_at DESC', :limit => 10
+  has_many :petition_pages
+  has_many :pages, :through => :petition_pages, :order => 'petition_pages.position'
+  accepts_nested_attributes_for :petition_pages, :reject_if => :all_blank, :allow_destroy => true
   
+  has_many :email_configurations
+
   belongs_to :layout
   belongs_to :theme
   belongs_to :premium_offer
 
   #validates :title, :presence => true
-  validates :summary, :presence => true
-  validates :target_count, :numericality => { :only_integer => true }
+  #validates :summary, :presence => true
+  #validates :target_count, :numericality => { :only_integer => true }
 
+  accepts_nested_attributes_for :petition_pages
+  accepts_nested_attributes_for :email_configurations
+  accepts_nested_attributes_for :layout
+  accepts_nested_attributes_for :theme
+  
   has_attached_file :header_image, styles: {
     thumb: '100x100>',
     square: '200x200#',
@@ -132,7 +142,12 @@ class Petition < ActiveRecord::Base
         'updated_at' => updated_at,
         'signature_count' => signatures_count,
         'delivery_count' => 0,
-        'share_count' => 0
+        'share_count' => 0,
+        'email_configurations' => email_configurations.map { |config| config.to_api },
+        'layout' => layout ? layout.to_api : nil,
+        'theme' => theme ? theme.to_api : nil,
+        'pages' => pages.map { |page| page.to_api },
+        'disclaimer_text' => disclaimer_text
       }
 
       Petition::IMAGE_SIZES.each do |label, size|

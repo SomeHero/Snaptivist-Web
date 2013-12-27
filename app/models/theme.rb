@@ -1,5 +1,6 @@
 class Theme < ActiveRecord::Base
-  attr_accessible :css_file, :description, :name
+  belongs_to :layout
+  attr_accessible :layout, :css_file, :description, :name, :url_fragment
 
   # generate the theme json
   def to_api
@@ -8,7 +9,8 @@ class Theme < ActiveRecord::Base
       'theme_id' => id,
       'name' => name,
       'description' => description,
-      'css_file' => css_file
+      'css_file' => css_file,
+      'url_fragment' => url_fragment
     }
 
     return results;

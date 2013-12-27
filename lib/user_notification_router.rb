@@ -72,6 +72,10 @@ module UserNotification
          when UserNotification::Notification::SIGNATURE_CONFIRMATION 
           channel_type = channel_type ? channel_type : UserNotification::Channel::EMAIL
           user = params_hash[:user]
+        when UserNotification::Notification::DONATION_REMINDER
+          channel_type = channel_type ? channel_type : UserNotification::Channel::EMAIL
+          user = params_hash[:user]
+
         else
           raise "Unknown/invalid notification type: '#{notification_type}'"
         end

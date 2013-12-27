@@ -9,6 +9,24 @@ image_dir = File.expand_path("../images", __FILE__)
 
 admin_user = AdminUser.create({email:'admin@snaptivist.com',password:'password'})
 
+signature_confirmation_email = EmailType.create!(
+	id: 1,
+	name: 'Signature Confirmation Email',
+	description: 'The signature confirmation email is delivered to a petition signer immediately after the petition is signed. The signature confirmation email is sent to all signers.',
+	default_email_template: 'Signature Confirmation Email',
+	default_subject: 'Your Petition Signature',
+	default_state: true,
+	position: 1
+)
+donation_reminder_email = EmailType.create!(
+	id: 2,
+	name: 'Donation Reminder Email',
+	description: 'The donation reminder email is sent daily to all petition signers in the previous 24 hours.',
+	default_email_template: 'Donation Reminder Email',
+	default_subject: 'Can You Help?',
+	default_state: false,
+	position: 2
+)
 snaptivist_user = User.create!(
 	id: 1,
 	email: "james@snaptivist.com",
@@ -67,37 +85,114 @@ standard_layout = Layout.create!(
 	url_fragment: 'layout1',
 	description: "Standard Layout for Petitions"
 )
+standard_sign_page = standard_layout.pages.create!(
+	name: "Signature Page",
+	description: "seeded signature page for JCC layout",
+	template_name: "signature_template",
+	url_fragment: "/sign",
+	position: 1
+)
+standard_deliver_page = standard_layout.pages.create!(
+	name: "Tweet Page",
+	description: "seeded tweet delivery page for JCC layout",
+	template_name: "tweet_template",
+	url_fragment: "/deliver",
+	position: 2
+)
+standard_premium_page = standard_layout.pages.create!(
+	name: "Premium Page",
+	description: "seeded premium page for JCC layout",
+	template_name: "premium_template",
+	url_fragment: "/premium",
+	position: 3
+)
+standard_donate_page = standard_layout.pages.create!(
+	name: "Donation Page",
+	description: "seeded donation page for JCC layout",
+	template_name: "donation_template",
+	url_fragment: "/donate",
+	position: 4
+)
+
 jcc_layout = Layout.create!(
 	id: 2,
 	name: "JCC Layout",
 	url_fragment: 'layout2',
 	description: "Seeded layout for JCC campaign",
-).tap { |p|
-	p.pages.create!(
-		name: "Signature Page",
-		description: "seeded signature page for JCC layout",
-		template_name: "signature_template"
-	)
-	p.pages.create!(
-		name: "Tweet Page",
-		description: "seeded tweet delivery page for JCC layout",
-		template_name: "tweet_template"
-	)
-	p.pages.create!(
-		name: "Premium Page",
-		description: "seeded premium page for JCC layout",
-		template_name: "premium_template"
-	)
-	p.pages.create!(
-		name: "Donation Page",
-		description: "seeded donation page for JCC layout",
-		template_name: "donation_template"
-	)
-}
-theme_a = Theme.create!(
-	name: "Lazy Rain",
-	description: "Seeded theme",
-	css_file: "lazy_rain.css"
+)
+jcc_sign_page = jcc_layout.pages.create!(
+	name: "Signature Page",
+	description: "seeded signature page for JCC layout",
+	template_name: "signature_template",
+	url_fragment: "/sign",
+	position: 1
+)
+jcc_deliver_page = jcc_layout.pages.create!(
+	name: "Tweet Page",
+	description: "seeded tweet delivery page for JCC layout",
+	template_name: "delivery_template",
+	url_fragment: "/deliver",
+	position: 2
+)
+jcc_premium_page = jcc_layout.pages.create!(
+	name: "Premium Page",
+	description: "seeded premium page for JCC layout",
+	template_name: "premium_template",
+	url_fragment: "/premium",
+	position: 3
+)
+jcc_donation_page = jcc_layout.pages.create!(
+	name: "Donation Page",
+	description: "seeded donation page for JCC layout",
+	template_name: "donation_redirect_template",
+	url_fragment: "",
+	url_redirect: true,
+	url_redirect_property: "donation_page_url",
+	position: 4
+)
+
+theme_a_layout_1 = Theme.create!(
+	layout: standard_layout,
+	name: "Theme A",
+	description: "Seeded theme A for standard layout",
+	css_file: "layout1/theme-a.css",
+	url_fragment: 'theme-a'
+)
+theme_b_layout_1 = Theme.create!(
+	layout: standard_layout,
+	name: "Theme B",
+	description: "Seeded theme B for standard layout",
+	css_file: "layout1/theme-b.css",
+	url_fragment: 'theme-b'
+)
+theme_c_layout_1 = Theme.create!(
+	layout: standard_layout,
+	name: "Theme C",
+	description: "Seeded theme C for standard layout",
+	css_file: "layout1/theme-c.css",
+	url_fragment: 'theme-c'
+)
+
+theme_a_layout_2 = Theme.create!(
+	layout: jcc_layout,
+	name: "Theme A",
+	description: "Seeded theme A for jcc layout",
+	css_file: "layout2/theme-a.css",
+	url_fragment: 'theme-a'
+)
+theme_b_layout_2 = Theme.create!(
+	layout: jcc_layout,
+	name: "Theme B",
+	description: "Seeded theme B for jcc layout",
+	css_file: "layout2/theme-b.css",
+	url_fragment: 'theme-b'
+)
+theme_c_layout_1 = Theme.create!(
+	layout: jcc_layout,
+	name: "Theme C",
+	description: "Seeded theme C for jcc layout",
+	css_file: "layout2/theme-c.css",
+	url_fragment: 'theme-c'
 )
 
 #let's import targets
@@ -114,6 +209,7 @@ Rake::Task['import_state_hashtags'].invoke
 #Stop  the Drone Assassinations
 Petition.create!(
 	id: 1,
+	name: 'Petition 1',
 	title: 'Tell President Obama: Stop the Drone Assassinations of American Citizens',
 	headline_primary: 'Tell President Obama',
 	headline_secondary: 'Stop the Drone Assassinations of American Citizens',
@@ -150,9 +246,14 @@ Petition.create!(
 	client: snaptivist,
 	user: snaptivist_user,
 	layout: jcc_layout,
-	theme: theme_a,
-	donation_page_url: "https://johncornyn.nationbuilder.com/donation_landing_page"
+	theme: theme_a_layout_2,
+	donation_page_url: "https://johncornyn.nationbuilder.com/donation_landing_page",
+	disclaimer_text: 'Paid for By Texans for Senator John Cornyn, Inc.'
 ).tap { |p| 
+	p.petition_pages.build(:page => jcc_sign_page, :position => 1)
+	p.petition_pages.build(:page => jcc_deliver_page, :position => 2)
+	p.petition_pages.build(:page => jcc_donation_page, :position => 3)
+
 	#seed in some signers
 	20.times do |index|
 		p.signatures.create!(
@@ -174,15 +275,31 @@ Petition.create!(
 			sig.save!
 		end
 	}
+
+	end
+
 	p.premium_offer = PremiumOffer.create!(
 		name: "Bumper Magnet",
 		headline_text: "Thanks for 	Signing! Complete the Form below to Request Your Free Bumper Magnet",
 		call_to_action_button_text: "Send My Magnet"
 	)
+	p.email_configurations.push(EmailConfiguration.create!(
+			email_type:signature_confirmation_email,
+			from_name: "Snaptivist",
+			from_address: "admin@snaptivist.com",
+			subject: "Your Petition Signature",
+			enabled: true
+		))
+	p.email_configurations.push(EmailConfiguration.create!(
+			email_type:donation_reminder_email,
+			from_name: "Snaptivist",
+			from_address: "admin@snaptivist.com",
+			subject: "Your Petition Signature",
+			enabled: false
+		))
+
 
 	p.save!
-
-	end
 }
 #Fire Holder
 Petition.create!(
@@ -209,8 +326,13 @@ Petition.create!(
 	client: snaptivist,
 	user: snaptivist_user,
 	layout: jcc_layout,
-	theme: theme_a
+	theme: theme_a_layout_2,
+	disclaimer_text: 'Paid for By Texans for Senator John Cornyn, Inc.'
 ).tap { |p| 
+	p.petition_pages.build(:page => jcc_sign_page, :position => 1)
+	p.petition_pages.build(:page => jcc_deliver_page, :position => 2)
+	p.petition_pages.build(:page => jcc_donation_page, :position => 3)
+
 	#seed in some signers
 	20.times do |index|
 		p.signatures.create!(
@@ -232,14 +354,30 @@ Petition.create!(
 			sig.save!
 		end
 	}
+
+	end
+
 	p.premium_offer = PremiumOffer.create!(
 		name: "Bumper Magnet",
 		headline_text: "Thanks for 	Signing! Complete the Form below to Request Your Free Bumper Magnet",
 		call_to_action_button_text: "Send My Magnet"
 	)
+	p.email_configurations.push(EmailConfiguration.create!(
+		email_type:  signature_confirmation_email,
+		from_name: "Snaptivist",
+		from_address: "admin@snaptivist.com",
+		subject: "Your Petition Signature",
+		enabled: true
+	))
+	p.email_configurations.push(EmailConfiguration.create!(
+		email_type:donation_reminder_email,
+		from_name: "Snaptivist",
+		from_address: "admin@snaptivist.com",
+		subject: "Your Petition Signature",
+		enabled: false
+	))
+
 
 	p.save!
-
-	end
 }
 

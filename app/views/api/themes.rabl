@@ -1,4 +1,6 @@
 collection @themes
 attributes :id, 
   :name, 
-  :description
+  :description,
+  :css_file,
+  :url_fragment

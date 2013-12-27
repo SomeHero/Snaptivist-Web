@@ -1,7 +1,8 @@
 {
   "name": "foo",
   "dependencies": {
-  	"angular-ui-bootstrap3": "*",
-    "normalize-css": "*"
+    "angular-ui-bootstrap3": "*",
+    "normalize-css": "*",
+    "angular-toggle-switch": "~0.2.4"
   }
 }

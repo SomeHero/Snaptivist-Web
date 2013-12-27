@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email_type: 
+  client: 
+  from_name: MyString
+  from_address: MyString
+  subject: MyString
+  email_template: MyString
+  last_id_sent: MyString
+
+two:
+  email_type: 
+  client: 
+  from_name: MyString
+  from_address: MyString
+  subject: MyString
+  email_template: MyString
+  last_id_sent: MyString

@@ -3,6 +3,8 @@ require 'nation_builder_crm_notifier.rb'
 
 class Api::PetitionsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :share, :sign_another]
+  after_filter :send_transaction_email, :only => [:sign, :sign_with_facebook]
+  after_filter :schedule_donation_reminder_email, :only => [:sign, :sign_with_facebook]
   after_filter :sync_crm, :only => [:sign, :sign_with_facebook, :share]
   respond_to :json
 
@@ -128,7 +130,7 @@ class Api::PetitionsController < ApplicationController
 
       end
 
-      signature = @petition.signatures.new do |s|
+      @signature = @petition.signatures.new do |s|
         s.user = user
         s.signature_method = "Email"
         s.latitude = params[:latitude]
@@ -139,34 +141,18 @@ class Api::PetitionsController < ApplicationController
       end
 
 
-    if !signature.valid?
+    if !@signature.valid?
      return render_result({}, 400, 'Error Signing Petition')
     end
-
-    #now add the new user to configured CRM
-    Rails.logger.debug "Syncing new user to CRM"
 
     #return if error_messages?(:config)
     @petition.save
     @petition.reload
 
-    #send petition action email
-    if signature.opt_in
-      UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
-            "merge_petitiontitle" => @petition.title,
-            "merge_firstname" => user.first_name,
-            "merge_lastname" => user.last_name,
-            #"merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
-            "merge_shorturl" => @petition.short_url,
-            "merge_organizationname" => @petition.client.name,
-            "merge_organizationavatar" => @petition.client.avatar("medium")
-        })
-    end
-
     sign_in user
 
     render_result({ 'petition' => @petition.to_api,
-                    'signature' => signature.to_api})
+                    'signature' => @signature.to_api})
 
   end
 
@@ -242,10 +228,10 @@ class Api::PetitionsController < ApplicationController
     raise "Unable to find user" unless user
 
     #let's check to see if that user has already signed, if so don't sign again but send them to the next page anyway
-    signature = user.signatures.find_by_petition_id(@petition.id)
+    @signature = user.signatures.find_by_petition_id(@petition.id)
 
-    unless signature
-      signature = @petition.signatures.new do |s|
+    unless @signature
+      @signature = @petition.signatures.new do |s|
         s.user = user
         s.signature_method = "Facebook"
         s.latitude = params[:latitude]
@@ -260,32 +246,19 @@ class Api::PetitionsController < ApplicationController
       end
 
 
-      if !signature.valid?
+      if !@signature.valid?
         return render_result({}, 400, 'Error Signing Petition')
       end
 
       #return if error_messages?(:config)
       @petition.save
 
-      #send petition action email
-      if signature.opt_in
-        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => user, :merge_fields => {
-            "merge_petitiontitle" => @petition.title,
-            "merge_firstname" => user.first_name,
-            "merge_lastname" => user.last_name,
-            #"merge_targetname" => @petition.target.title + " " + @petition.target.last_name,
-            "merge_shorturl" => @petition.short_url,
-            "merge_organizationname" => @petition.client.name,
-            "merge_organizationavatar" => @petition.client.avatar("medium")
-        })
-      end
-
     end
 
     sign_in user
 
     render_result({ 'petition' => @petition.to_api,
-      'signature' => signature.to_api})
+      'signature' => @signature.to_api})
 
   end
 
@@ -308,7 +281,7 @@ class Api::PetitionsController < ApplicationController
 
   def sign_another
 
-    petition = Petition.find(params[:id]);
+    @petition = Petition.find(params[:id]);
 
     raise "Unable to find petition" unless petition
 
@@ -328,7 +301,7 @@ class Api::PetitionsController < ApplicationController
       current_user.save!
     end
 
-    signature = current_user.signatures.find_by_petition_id(petition.id)
+    signature = current_user.signatures.find_by_petition_id(@petition.id)
     last_signature = current_user.signatures.last
 
     signature_method = ""
@@ -338,7 +311,7 @@ class Api::PetitionsController < ApplicationController
     end
 
     unless signature
-      signature = petition.signatures.new do |s|
+      signature = @petition.signatures.new do |s|
         s.user = current_user
         s.zip_code = current_user.zip_code
         s.comment = params[:comment]
@@ -350,21 +323,7 @@ class Api::PetitionsController < ApplicationController
         return render_result({}, 400, 'Error Signing Petition')
       end
 
-      #return if error_messages?(:config)
-      petition.save
-
-      if signature.opt_in
-      #send petition action email
-        UserNotification::UserNotificationRouter.instance.notify_user(UserNotification::Notification::USER_WELCOME, :user => current_user, :merge_fields => {
-            "merge_petitiontitle" => petition.title,
-            "merge_firstname" => current_user.first_name,
-            "merge_lastname" => current_user.last_name,
-            #"merge_targetname" => petition.target.title + " " + petition.target.last_name,
-            "merge_shorturl" => petition.short_url,
-            "merge_organizationname" => petition.client.name,
-            "merge_organizationavatar" => petition.client.avatar("medium")
-        })
-      end
+      @petition.save
 
     end
 

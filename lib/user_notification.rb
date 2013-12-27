@@ -53,6 +53,7 @@ module UserNotification
     # :petition => The petition
     # :signature => The signature
     SIGNATURE_DELIVERY_REMINDER = :signature_delivery_reminder
+    DONATION_REMINDER = :donation_reminder
 
   end
 

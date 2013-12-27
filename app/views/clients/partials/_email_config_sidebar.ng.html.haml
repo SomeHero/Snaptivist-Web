@@ -1,0 +1,5 @@
+%h6
+	Email Configuration
+%div{:style=>"padding: 4px 8px;", "ng-repeat"=>"email_type in email_types"}
+	%h5 {{email_type.name}}
+	%p {{email_type.description}}

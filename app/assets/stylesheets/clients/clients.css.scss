@@ -1,9 +1,6 @@
 body {
  	background: #f4f4f4
 }
-.row-wrapper-fluid {
-	padding: 0 15px;
-}
 .no-gutter[class*='col-md-'] {
 	padding-right: 0px;
 	margin-right: 0px;
@@ -29,6 +26,50 @@ ul.action-menu-items {
 		width: 100%;
 		background: #efefef;
 	}
+  li:hover {
+    background: #e8e8e8;
+  }
+}
+#side-bar {
+  .side-bar-item {
+      border-bottom: 1px solid #ccc;
+      padding: 20px 8px;
+  }
+  .side-bar-item:hover {
+    background-color: #e8e8e8;
+  }
+  .side-bar-item:before {
+      font-family: "FontAwesome";
+      content: "\f10c";
+      color: #000;
+      font-size: 1.15em;
+      float: left;
+  }
+  .side-bar-text {
+    display: block;
+    margin-left: 25px;
+    h5 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+  h6 {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    background: #bdbdbd;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d0d0d0), color-stop(1, #acacac));
+    background: -ms-linear-gradient(top, #d0d0d0, #acacac);
+    background: -moz-linear-gradient(center top, #d0d0d0 0%, #acacac 100%);
+    color: #5a5a5a;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px 0 0 7px;
+    text-shadow: #dddddd 0 1px 1px;
+  }
 }
 #left-nav {
   z-index: 10001;
@@ -115,4 +156,78 @@ ul.action-menu-items {
 }
 .tag-cloud.tag-cloud-inverse {
     background-color: #333333;
+}
+.page-header {
+  background: #36a9e1;
+  color: white;
+  padding: 4px 12px;
+}
+.switch {
+    border: 1px solid;
+    cursor: pointer;
+    display: inline-block;
+    text-align: left;
+    overflow: hidden;
+    line-height: 8px;
+    min-width: 100px;
+}
+
+.switch span {
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 100%;
+    line-height: 20px;
+    padding: 4px;
+    text-align: center;
+    width: 33%;
+    white-space: nowrap;
+
+    box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.switch > div {
+    position: relative;
+    width: 150%;
+}
+
+.switch .knob {
+    background: red;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background-color: #f5f5f5;
+    width: 34%;
+    z-index: 100;
+}
+
+.switch .switch-on {
+    left: 0%;
+}
+
+.switch .switch-off {
+    left: -50%
+}
+
+.switch .swtich-left, .switch .switch-right {
+    z-index: 1;
+}
+
+.switch .switch-left {
+    color: #fff;
+    background: #005fcc;
+}
+
+.switch .switch-right {
+    color: #333;
+    background: #f0f0f0;
+}
+
+.switch-animate {
+    transition: left 0.5s;
+    -o-transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -webkit-transition: left 0.5s;
 }
