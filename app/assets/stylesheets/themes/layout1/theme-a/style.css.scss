@@ -1,0 +1,35 @@
+#action-container {
+	h2 {
+		color: #f35b00
+	}
+	#petition-target-count-goal {
+		color: #ffffff;
+		background: #14b9d6;
+	}
+	#petition-target-count-goal:before {
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-right: 10px solid #14b9d6;
+	}
+	#sign-with-fb-button, #deliver-signature {
+		color: #fff;
+	    background: -webkit-gradient(linear, left top, left bottom, from(#13b6e5), to(#0c9dcb));
+	    background: -moz-linear-gradient(top,  #13b6e5,  #0c9dcb);
+	    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#13b6e5', endColorstr='#0c9dcb');
+    }
+    #sign-petition-user-name {
+    	color: #ffffff;
+    	border: solid 1px #fdbe99;
+	    background: #ff5f00;
+	    background: -webkit-gradient(linear, left top, left bottom, from(#ff5f00), to(#ff3100));
+	    background: -moz-linear-gradient(top,  #ff5f00,  #ff3100);
+	    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5f00', endColorstr='#ff3100');
+    }
+    #copy-opt-in {
+    	color: #768286;
+    }
+    #see-more-button {
+    	color: #ffffff;
+    	background: #1d3037
+    }
+}	

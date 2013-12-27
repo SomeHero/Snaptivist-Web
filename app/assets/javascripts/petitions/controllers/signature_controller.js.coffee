@@ -3,6 +3,7 @@
   Util.push_ga_event("Petition", "Load", "Sign")
   
   window.scope = $scope
+  
   $scope.form_submitted = false
 
   $scope.error_messages =
@@ -16,7 +17,6 @@
    
     $scope.loading.show_spinner = true
 
-    form.submitted = true
     $scope.form_submitted = true
 
     if form.$valid

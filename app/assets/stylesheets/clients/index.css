@@ -8,4 +8,5 @@
  *= require ./template/retina.css
  *= require ./clients.css.scss
  *= require ../contenteditable
+ *= require angular-toggle-switch/angular-toggle-switch.css
 */

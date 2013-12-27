@@ -8,6 +8,7 @@
     show_spinner: false
 
   $scope.petition = petition
+
   $scope.signature = {}
 
   $scope.deliver = {
@@ -34,15 +35,15 @@
   
   $scope.stylesheet_list = 
     [{
-      href: '/assets/layouts/' + $scope.layout + '.css'
+      href: '/assets/layouts/' + $scope.petition.layout.url_fragment + '.css'
     },
     {
-      href: '/assets/layouts/' + $scope.layout + '-responsive.css'
+      href: '/assets/layouts/' + $scope.petition.layout.url_fragment + '-responsive.css'
     },
     {
-      href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '.css'
+      href: '/assets/themes/' + $scope.petition.layout.url_fragment + '/' + $scope.petition.theme.url_fragment + '/style.css'
     }, {
-      href: '/assets/themes/' + $scope.layout + '_' + $scope.theme + '-responsive.css'
+      href: '/assets/themes/' + $scope.petition.layout.url_fragment + '/' + $scope.petition.theme.url_fragment + '/style-responsive.css'
     }]
 
 
@@ -96,13 +97,12 @@
   window.scope = $scope
 
   $scope.change_page = () ->
-    page = $scope.page_list[$scope.page_index++]
+    page= $scope.petition.pages[$scope.page_index++]
 
-    if page.route.length > 0
-      Util.navigate page.route
+    if page.url_redirect
+      Util.navigate_absolute $scope.petition[page.url_redirect_property], "", false
     else
-      Util.navigate_absolute page.url, "", false
-
+      Util.navigate page.url_fragment
 
   $scope.$on 'signedPetition', (event, signature) ->
     console.log 'petition signed'

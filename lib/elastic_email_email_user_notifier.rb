@@ -17,12 +17,15 @@ module UserNotification
       case notification_type
       when UserNotification::Notification::USER_WELCOME  
         user = params_hash[:user]
-        template_name = "PetitionSignature"
+        binding.pry
+        template_name = params_hash[:template_name] || "PetitionSignature"
         #subject = "You just signed a petition using Snaptivist."
-        subject = "Your petition signature"
+        from_address = params_hash[:from_address] || Settings.default_from
+        from_name = params_hash[:from_name]|| Settings.default_from_name
+        subject = params_hash[:subject] ||  "Your petition signature"
 
         merge_fields = params_hash[:merge_fields]
-        result = ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields)
+        result = ElasticEmailApi.send_email(user.email, subject, template_name, from_address, from_name, merge_fields)
       when UserNotification::Notification::SIGNATURE_CONFIRMATION 
         user = params_hash[:user]
         template_name = "Signature Confirmation"
@@ -37,6 +40,15 @@ module UserNotification
 
         merge_fields = params_hash[:merge_fields]
         result = ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields)
+      when UserNotification::Notification::DONATION_REMINDER
+        user = params_hash[:user]
+        template_name = params_hash[:template_name] || "Test Donation Reminder Email"
+        subject = params_hash[:subject] || "Donation Reminder Email"
+        time_offset_minutes = params_hash[:time_offset_minutes]
+
+        merge_fields = params_hash[:merge_fields]
+        result = ElasticEmailApi.send_email(user.email, subject, template_name, Settings.default_from, Settings.default_from_name, merge_fields,
+          "", "", "", time_offset_minutes)
       else
           raise "I don't know how to handle notifications of type '#{notification_type}'!"
       end

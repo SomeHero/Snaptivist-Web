@@ -1,8 +1,8 @@
 @app = angular.module('petition', ['ui.bootstrap.tpls', 'ui.bootstrap', 'custom.bootstrap'])
 
 @app.config ['$routeProvider', ($routeProvider) ->
-  layout = 'layout2'
-  base_page_url = '/sign'
+  layout = window.petition.layout.url_fragment
+  base_page_url = window.petition.pages[0].url_fragment || '/sign'
   $routeProvider.when('/sign',
     templateUrl: '/client_views/' + layout + '/signature_template'
     controller: SignatureController 
@@ -71,6 +71,8 @@
     $scope.fetch = ->
       Util.push_ga_event("Petition", "Sign With Facebook", "Clicked")
    
+      $scope.loading.show_spinner = true
+
       if $scope.login_status is "connected"
         console.log "fetch"
         Util.push_ga_event("Petition", "Sign With Facebook", "Fetching (Already Logged In)")
@@ -87,7 +89,7 @@
     window.fbAsyncInit = ->
       FB.init
         appId: attrs.facebook # App ID
-        channelUrl: "//dev.snaptivist.com/channel.html" # Channel File
+        channelUrl: "//localhost:3000/channel.html" # Channel File
         status: true # check login status
         cookie: true # enable cookies to allow the server to access the session
         xfbml: true # parse XFBML
@@ -115,7 +117,6 @@
 
       FB.Event.subscribe "edge.create", (response) ->
         window.top.location.href = "url"
-
 
       return null
     return null

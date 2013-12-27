@@ -1,3 +1,5 @@
-%div.panel{:style=>"padding: 50px 40px"}
+%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.theme || false"}
 	%p{:style=>"margin-bottom: 0px"}
 		Apply a theme to your layout, by selecting the theme on the right >>
+%div#action-container{:style=>"background-color: #fff;", "ng-controller"=>"SamplePetitionController", "ng-show"=>"settings.theme || false"}
+	%div{"ng-include"=>"sample_page_template()"}

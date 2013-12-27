@@ -40,6 +40,7 @@ attributes :id,
   :image_square_url,
   :image_medium_url,
   :image_full_url,
+  :disclaimer_text,
   :created_at,
   :updated_at
 
@@ -52,4 +53,48 @@ attributes :id,
   node :image_full_url do |petition|
     petition.petition_image_url
   end
+
+  child :email_configurations => :email_configurations_attributes do
+    attributes :id,
+    :email_type_id,
+    :subject,
+    :from_name,
+    :from_address,
+    :enabled
+    child :email_type do
+      attributes :id,
+      :name,
+      :description
+    end
+  end
+  child :layout do
+    attributes :id, 
+      :name, 
+      :url_fragment,
+      :description  
+  end
+  child :theme do
+    attributes :id, 
+      :name, 
+      :description,
+      :css_file,
+      :url_fragment
+  end
+  child :petition_pages => :petition_pages_attributes do
+    attributes :id, 
+    :page_id, 
+    :position
+  end
+  child :pages do
+    attributes :id, 
+    :name, 
+    :description,
+    :template_name,
+    :url_fragment,
+    :url_redirect,
+    :url_redirect_property
+  end
+
+
+
 

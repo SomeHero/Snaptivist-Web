@@ -25,7 +25,8 @@ class Client < ActiveRecord::Base
 
     results = {
       'client_id' => id,
-      'name' => name
+      'name' => name,
+      'email' => email
     }
 
     Client::IMAGE_SIZES.each do |label, size|
