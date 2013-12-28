@@ -207,8 +207,43 @@
         width: 90%;
         float: left;
     }
+
+    #target-count-wrapper .progress {
+        height: 15px;
+        border-radius: 8px; 
+        background-image: linear-gradient(to bottom, #757a80, #757a80);
+    }
+    #target-count-wrapper .progress-white
+    {
+        background-image: linear-gradient(to bottom, #ffffff, #ffffff);    
+    }
+    #target-count-wrapper .progress-green 
+    {
+          background-image: linear-gradient(to bottom, #757a80, #757a80);  
+    }
+    #target-count-wrapper .orange-bar {
+        background-color: #ff6f00;
+        height: 20px;
+    }
+    #target-count-wrapper .blue-bar {
+        background-color: #11e6f6;
+    }
+    #target-count-wrapper .mark {
+        position: absolute;
+        content: ' ';
+        top: 17px;
+        width: 20px;
+        height: 20px;
+        background: #ffffff;
+        -moz-border-radius: 12px;
+        -webkit-border-radius: 12px;
+        border-radius: 12px;
+        border: solid 6px #434446;
+        z-index: 1001;
+    }
+
     #progress-bar-outer-wrapper {
-        margin: 20px;
+        margin: 20px 0px;
     }
     #progress-bar-wrapper {
         margin-bottom: 0px;
@@ -248,19 +283,6 @@
     #target-count-wrapper .progress-green 
     {
           background-image: linear-gradient(to bottom, #757a80, #757a80);  
-    }
-    #target-count-wrapper .mark {
-        position: absolute;
-        content: ' ';
-        top: 16px;
-        width: 12px;
-        height: 12px;
-        background: #ffffff;
-        -moz-border-radius: 12px;
-        -webkit-border-radius: 12px;
-        border-radius: 12px;
-        border: solid 6px #434446;
-        z-index: 1001;
     }
     #target-count-wrapper .action-count {
         font-family: 'Lato-Regular', sans-serif;
