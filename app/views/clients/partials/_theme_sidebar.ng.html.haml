@@ -1,6 +1,7 @@
-%h6
-	Theme Configuration
-%div.side-bar-item{"ng-repeat"=>"theme in themes", "ng-click"=>"set_theme(theme)", "ng-style"=>"set_theme_item_styling(theme)"}
-	.side-bar-text
-		%h5 {{theme.name}}
-		%p {{theme.description}}
+%div{"ng-controller"=>"ThemeConfigurationController"}
+	%h6
+		Theme Configuration
+	%div.side-bar-item{"ng-repeat"=>"theme in system.themes", "ng-click"=>"set_theme(theme)", "ng-style"=>"set_theme_item_styling(theme)"}
+		.side-bar-text
+			%h5 {{theme.name}}
+			%p {{theme.description}}

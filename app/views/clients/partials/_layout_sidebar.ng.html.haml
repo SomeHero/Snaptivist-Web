@@ -1,6 +1,7 @@
-%h6
-	Layout Configuration
-%div.side-bar-item{"ng-repeat"=>"layout in layouts", "ng-click"=>"set_layout(layout)", "ng-style"=>"set_layout_item_styling(layout)"}
-	.side-bar-text
-		%h5 {{layout.name}}
-		%p {{layout.description}}
+%div{"ng-controller"=>"LayoutConfigurationController"}
+	%h6
+		Layout Configuration
+	%div.side-bar-item{"ng-repeat"=>"layout in system.layouts", "ng-click"=>"set_layout(layout)", "ng-style"=>"set_layout_item_styling(layout)"}
+		.side-bar-text
+			%h5 {{layout.name}}
+			%p {{layout.description}}

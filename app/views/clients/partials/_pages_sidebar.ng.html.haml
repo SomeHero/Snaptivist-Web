@@ -1,7 +1,7 @@
 %div{"ng-controller"=>"PagesConfigurationController"}
 	%h6
 		Pages Configuration
-	%div.side-bar-item{"ng-repeat"=>"page in pages", "ng-click"=>"add_page(page)"}
+	%div.side-bar-item{"ng-repeat"=>"page in system.pages", "ng-click"=>"add_page(page)"}
 		.side-bar-text
 			%h5 {{page.name}}
 			%p {{page.description}}

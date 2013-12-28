@@ -1,7 +1,7 @@
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-top
 		%img{"ng-src" => "{{client_image_url()}}"}
-.container#petition-container
+#petition-container
 	#delivery-headline.section-header.text-center
 		%h2.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline"}
 		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_secondary || ''"}

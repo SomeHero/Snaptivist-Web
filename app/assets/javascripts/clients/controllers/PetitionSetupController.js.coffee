@@ -1,12 +1,14 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts, pages, themes) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
 	$scope.is_admin = true
-	$scope.email_types = email_types
-	$scope.layouts = layouts
-	$scope.themes = themes
-	$scope.pages = pages
+	$scope.system = {
+		email_types: email_types
+		layouts: layouts
+		themes: []
+		pages: []
+	}
 
 	$scope.settings = {
 		layout: null
@@ -70,7 +72,7 @@
 			})	
 	if !$scope.petition.email_configurations_attributes || $scope.petition.email_configurations_attributes.length == 0
 		$scope.petition.email_configurations_attributes = []
-		for email_type in $scope.email_types
+		for email_type in $scope.system.email_types
 			$scope.petition.email_configurations_attributes.push({
 				email_type: email_type
 				email_type_id: email_type.id
@@ -84,18 +86,6 @@
 		$scope.settings.step = parseInt($location.hash())
 	else
 		$scope.settings.step = 1
-
-	$scope.set_layout_item_styling = (layout) ->
-		if $scope.settings.layout == layout
-	  		{
-	  			'border': 'dashed 1px green';
-	  		}
-
-	$scope.set_theme_item_styling = (theme) ->
-		if $scope.settings.theme == theme
-	  		{
-	  			'border': 'dashed 1px green';
-	  		}
 
 	$scope.save_clicked = () ->
 		console.log "save clicked"
@@ -277,6 +267,7 @@
 
 	$scope.set_layout = (layout) ->
 		$scope.settings.layout = layout
+		$scope.settings.theme = null
 		$scope.update_stylesheet_list()
 
 	$scope.set_theme = (theme) ->
@@ -328,7 +319,7 @@
 		if $route.current.templateUrl == 'clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts', 'pages', 'themes']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts']
 
 PetitionSetupController.resolve =
   	
@@ -345,27 +336,6 @@ PetitionSetupController.resolve =
     deferred = $q.defer()
 
     LayoutServices.get_layouts().then (response) ->
-      deferred.resolve(response)
-
-    deferred.promise
-
-  ]
-
-
-  pages: ['PageServices', '$q', (PageServices, $q) ->
-    deferred = $q.defer()
-
-    PageServices.get_pages(2).then (response) ->
-      deferred.resolve(response)
-
-    deferred.promise
-
-  ]
-
-  themes: ['ThemeServices', '$q', (ThemeServices, $q) ->
-    deferred = $q.defer()
-
-    ThemeServices.get_themes(2).then (response) ->
       deferred.resolve(response)
 
     deferred.promise

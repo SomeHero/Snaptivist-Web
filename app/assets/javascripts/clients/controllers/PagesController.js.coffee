@@ -1,4 +1,4 @@
-@PagesController = ($scope, $rootScope, $location) ->
+@PagesController = ($scope, $rootScope, PageServices) ->
 
 	$scope.remove_page = (page) ->
 		for page_item, i in scope.settings.pages_list

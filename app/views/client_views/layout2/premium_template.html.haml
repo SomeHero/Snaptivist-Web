@@ -1,7 +1,7 @@
 .client-logo-wrapper
 	.client-logo.text-center#client-logo-top
 		%img{"ng-src" => "{{client_image_url()}}"}
-.container#petition-container
+#petition-container
 	#premium-headline.section-header.text-center
 		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
 		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_headline_secondary || ''"}
