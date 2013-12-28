@@ -2,8 +2,8 @@
 	%h4 {{ petition.name }}
 	.row.clearfix
 		.col-md-6
-			%a{"ng-src"=>"{{petition_url()}}"}
+			%a{"ng-href"=>"{{petition_url()}}"}
 				{{petition_url()}}
 		.col-md-6
-			%a{"ng-src"=>"{{petition.shorturl}}"}
-				{{petition.shorturl}}
+			%a{"ng-href"=>"{{petition.shorturl}}"}
+				{{petition.short_url}}
