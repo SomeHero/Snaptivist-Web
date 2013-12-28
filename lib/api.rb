@@ -29,7 +29,7 @@ class API < Grape::API
     post "/:id/petitions", :rabl => "petition" do
 
       client = Client.find(params[:id])
-      binding.pry
+
       #TODO: This is kind of a hack
       attributes = JSON.parse(params[:petition])
 
@@ -59,7 +59,6 @@ class API < Grape::API
     desc "Updates a petition for the specified client"
     put "/:client_id/petitions/:id", :rabl => "petition" do
 
-      binding.pry
       client = Client.find(params[:client_id])
       @petition = Petition.find(params[:id])
     

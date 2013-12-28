@@ -1,6 +1,5 @@
 class AddLayouts < ActiveRecord::Migration
   def up
-  	binding.pry
   	#seeding in layout, pages and themes
 	standard_layout = Layout.create!(
 		id: 1,

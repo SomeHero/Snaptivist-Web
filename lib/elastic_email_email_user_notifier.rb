@@ -17,7 +17,7 @@ module UserNotification
       case notification_type
       when UserNotification::Notification::USER_WELCOME  
         user = params_hash[:user]
-        binding.pry
+
         template_name = params_hash[:template_name] || "PetitionSignature"
         #subject = "You just signed a petition using Snaptivist."
         from_address = params_hash[:from_address] || Settings.default_from
