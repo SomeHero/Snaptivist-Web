@@ -11,7 +11,7 @@
 				.col-md-12
 					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline"}
 			.row
-				.col-md-6.top-content-wrapper#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Petition Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"image_full"}
+				.col-md-6.top-content-wrapper#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Petition Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"image_full", "is-admin"=>"is_admin"}
 					.panel.panel-sub
 						#petition-image{"ng-style" => "signature_image_styling()"}
 				.col-md-6.top-content-wrapper#signature-form-wrapper

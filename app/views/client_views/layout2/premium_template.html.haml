@@ -11,7 +11,7 @@
 				%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_subheadline || ''"}
 		.row
 			.col-md-6.top-content-wrapper
-				%div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image"}
+				%div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}
 					%div#petition-image{"ng-style" => "premium_image_styling()"}
 			.col-md-6.top-content-wrapper#premium-form-wrapper
 				%div.signature-form-container.vertical-middle-cell

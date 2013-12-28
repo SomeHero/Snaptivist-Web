@@ -1,5 +1,5 @@
 .text-center
-  %div{"image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"image_full"}
+  %div{"image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"image_full", "is-admin"=>"is_admin"}
     .drop-shadow.lifted{"ng-style" => "signature_image_styling()"}
   %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "name"=>"delivery_headline_primary", "required"=>""}
   %h1.title.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline (Secondary)", "name"=>"delivery_headline_secondary", "required"=>""}
@@ -7,7 +7,7 @@
     %span.contenteditable.placeholer-showing{:style=>"display: block", "contenteditable"=>"", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "name"=>"summary", "required"=>""}
   .row
     .col-md-6.top-content-wrapper
-      %div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image"}
+      %div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}
         %div#petition-image{"ng-style" => "premium_image_styling()"}
     .col-md-6.top-content-wrapper#premium-form-wrapper
       %div.signature-form-container.vertical-middle-cell
