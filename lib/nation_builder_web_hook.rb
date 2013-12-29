@@ -26,7 +26,7 @@ module CrmWebHook
 		else
 			user.email = external_user.email1,
 			user.first_name = external_user.first_name,
-			user.last_name = external_user.last_name,
+			user.last_name = external_user.last_name
 			#user.zip_code = external_user.address.zip
   		end
 
