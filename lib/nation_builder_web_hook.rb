@@ -56,13 +56,15 @@ module CrmWebHook
 				last_name: external_user.last_name,
 				organization_name: "",
 				#zip_code: "23221",
-				external_id: external_id
+				external_id: user_external_id
 			)
   		else
-			user.email = external_user.email1,
-			user.first_name = external_user.first_name,
+			user.email = external_user.email1
+			user.first_name = external_user.first_name
 			user.last_name = external_user.last_name
 			#user.zip_code = external_user.address.zip
+
+			user.save
   		end
 
   		donation = Donation.find_by_external_id(donation_external_id)
