@@ -41,10 +41,10 @@ module CrmWebHook
   		Rails.logger.debug "Processing Nation Builder Donation Success Web Hook"
 
   		external_donation = payload.donation
-  		donation_external_id = external_donation.donation_nationbuilder_id
+  		donation_external_id = external_donation.donation_nationbuilder_id.to_s
 
   		external_user = external_donation.signup	
-  		user_external_id = external_user.nationbuilder_id
+  		user_external_id = external_user.nationbuilder_id.to_s
 
   		user = User.find_by_external_id(user_external_id)
 
@@ -80,7 +80,7 @@ module CrmWebHook
 	  		donation.amount = external_donation.amount
 	  	end
       
-        REDIS.set("donation-" + donation.id, external_donation)
+        REDIS.set("donation-" + donation.id.to_s, external_donation)
   	end
 
   end
