@@ -9,7 +9,7 @@ module CrmWebHook
   		Rails.logger.debug "Processing Nation Builder User Created Web Hook"
       
   		external_user = payload.signup
-  		external_id = user.nationbuilder_id
+  		external_id = external_user.nationbuilder_id
 
   		user = User.find_by_external_id(external_id)
 
