@@ -24,6 +24,8 @@ module CrmWebHook
 				external_id: external_id
 			)
 		else
+			puts external_user.email1
+			
 			user.email = external_user.email1,
 			user.first_name = external_user.first_name,
 			user.last_name = external_user.last_name
