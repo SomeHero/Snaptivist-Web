@@ -17,7 +17,7 @@ module CrmWebHook
   			user = User.create!(
 				email: external_user.email1,
 				password: "password",
-				first_name: exteranl_user.first_name,
+				first_name: external_user.first_name,
 				last_name: external_user.last_name,
 				organization_name: "",
 				zip_code: external_user.address.zip,
