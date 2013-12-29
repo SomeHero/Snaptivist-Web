@@ -30,7 +30,7 @@ module CrmWebHook
 			#user.zip_code = external_user.address.zip
   		end
 
-  		Redis.set("user-" + user.id, external_user)
+  		Redis.set("user-" + user.id.to_s, external_user)
   	end
 
   	def create_or_update_donation(payload)
