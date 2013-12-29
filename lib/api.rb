@@ -87,7 +87,7 @@ class API < Grape::API
     end
 
     desc "crm webhook to add or update a user"
-    post "/:client_id/webhooks/user"
+    post "/:client_id/webhooks/user" do
       client = Client.find(params[:client_id])
       
       puts params[:payload]
@@ -96,15 +96,13 @@ class API < Grape::API
     end
 
     desc "crm webhook to add or update a donation"
-    post "/:client_id/webhooks/donation"
+    post "/:client_id/webhooks/donation" do
       client = Client.find(params[:client_id])
       
       puts params[:payload]
       CrmWebHook::NationBuilderCrmWebHook.create_of_update_donation(params[:payload])
 
     end
-
-
 
 
 
