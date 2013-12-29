@@ -92,7 +92,7 @@ class API < Grape::API
       client = Client.find(params[:client_id])
       
       puts params[:payload]
-      webhook = CrmWebHook::NationBuilderCrmWebHook
+      webhook = CrmWebHook::NationBuilderCrmWebHook.new
       webhook.create_or_update_user(params[:payload])
 
     end
@@ -102,7 +102,7 @@ class API < Grape::API
       client = Client.find(params[:client_id])
       
       puts params[:payload]
-      webhook = CrmWebHook::NationBuilderCrmWebHook
+      webhook = CrmWebHook::NationBuilderCrmWebHook.new
       webhook.create_or_update_donation(params[:payload])
 
     end
