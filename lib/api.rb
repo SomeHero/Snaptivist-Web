@@ -86,6 +86,28 @@ class API < Grape::API
       @petition.save!
     end
 
+    desc "crm webhook to add or update a user"
+    post "/:client_id/webhooks/user"
+      client = Client.find(params[:client_id])
+      
+      puts params[:payload]
+      CrmWebHook::NationBuilderCrmWebHook.create_of_update_user(params[:payload])
+
+    end
+
+    desc "crm webhook to add or update a donation"
+    post "/:client_id/webhooks/donation"
+      client = Client.find(params[:client_id])
+      
+      puts params[:payload]
+      CrmWebHook::NationBuilderCrmWebHook.create_of_update_donation(params[:payload])
+
+    end
+
+
+
+
+
   end
 
   resource :layouts do
@@ -144,5 +166,6 @@ class API < Grape::API
     end
 
   end
+
 
 end
