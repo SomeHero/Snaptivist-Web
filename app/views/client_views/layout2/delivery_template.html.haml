@@ -22,9 +22,9 @@
 							.form-group
 								.col-md-12
 									.drop-shadow-full{:style=>"margin-bottom: 20px;"}
-										%div{"ng-switch"=>"is_admin"}
-											%textarea.form-control{"ng-switch-when"=>"false", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
-											%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "ng-switch-when"=>"true", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
+										%div{"ng-switch"=>"disable_forms"}
+											%textarea.form-control{"ng-switch-when"=>"true", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
+											%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "ng-switch-when"=>"false", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
 										#message-counter.text-right {{115 - get_tweet_message_length()}}
 							.form-group
 								.col-md-12

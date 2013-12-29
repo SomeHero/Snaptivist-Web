@@ -1,4 +1,4 @@
-.text-center
+.container.text-center{:style=>"width: auto"}
   %div{"image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"image_full", "is-admin"=>"is_admin"}
     .drop-shadow.lifted#header-image{"ng-style" => "signature_image_styling()"}
   %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Signature Headline", "name"=>"headline_primary", "required"=>""}
@@ -16,7 +16,7 @@
             %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_facebook_cta_button_text", "required"=>""}
         %div#copy-or
           \-OR-
-        #sign-petition{"ng-switch"=>"is_admin"}
+        #sign-petition{"ng-switch"=>"disable_forms"}
           %form{"ng-switch-when"=>"false", :name => "myForm", "novalidate" => true, :style => "margin: 0px;", "role"=>"form"}
             .form-group.row
               .col-md-6

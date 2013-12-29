@@ -3,6 +3,7 @@
 
 	$scope.client_id = $scope.client.client_id
 	$scope.is_admin = true
+	$scope.disable_forms = true
 	$scope.system = {
 		email_types: email_types
 		layouts: layouts

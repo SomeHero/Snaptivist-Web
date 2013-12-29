@@ -1,4 +1,4 @@
-.text-center
+.container.text-center
   %div{"image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"image_full", "is-admin"=>"is_admin"}
     .drop-shadow.lifted#header-image{"ng-style" => "signature_image_styling()"}
   %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "name"=>"delivery_headline_primary", "required"=>""}
@@ -6,17 +6,27 @@
   %p.description
     %span.contenteditable.placeholer-showing{:style=>"display: block", "contenteditable"=>"", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "name"=>"summary", "required"=>""}
   #action-wrapper
-    #sign-panel{:style => "margin: 20px 0px 40px 0px"}
-      #share-comment.drop-shadow-full.solid-white-back.text-left
-        %div{"ng-switch"=>"is_admin"}
-          %textarea.form-control{"ng-switch-when"=>"false", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
-          %div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "ng-switch-when"=>"true", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
-        #message-counter.text-right {{115 - tweet.length}}
-      %button#deliver-signature.action-button.icon{"ng-click" => "deliver_action()"}
-        %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text"}
-      .text-center
-        %a{"ng-click" => "skip_delivery()"}
-          Not Right Now
+    #sign-panel{:style => "margin: 20px 0px 40px 0px", "ng-switch"=>"disable_forms"}
+      %form{"ng-switch-when"=>"false", "name"=>"tweet_form", "novalidate"=>"", "ng-class"=>"form_styling()", "role"=>"form"}
+        #share-comment.drop-shadow-full.solid-white-back.text-left
+          %textarea.form-control{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
+            .contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
+          #message-counter.text-right {{115 - tweet.length}}
+        %button#deliver-signature.action-button.icon{"ng-click" => "deliver_action(tweet_form)"}
+          %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text"}
+        .text-center
+          %a{"ng-click" => "skip_delivery()"}
+            Not Right Now
+      %div{"ng-switch-when"=>"true"}
+        #share-comment.drop-shadow-full.solid-white-back.text-left
+          %textarea.form-control{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
+            .contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
+          #message-counter.text-right {{115 - tweet.length}}
+        %button#deliver-signature.action-button.icon{"ng-click" => "deliver_action(tweet_form)"}
+          %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text"}
+        .text-center
+          %a{"ng-click" => "skip_delivery()"}
+            Not Right Now
     #target-count-wrapper{:style => "margin: 0px auto 10px auto;"}
       .row
         #target-count-progress-wrapper.col-md-11.solid-white-back.drop-shadow-full
@@ -36,11 +46,11 @@
         .col-md-6.action-count{:style => "text-align: right; padding-right: 44px"}
           Goal: 
           %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures","name"=>"target_count", "required"=>""}
-    #comment-container.comment-wrapper{:style => "margin-bottom: 40px;", "ng-controller" => "TweetController"}
+    #comment-container.comment-wrapper{:style => "margin-bottom: 40px;", "ng-controller" => "CommentController"}
       %div{:style => "margin-bottom: 25px", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
         .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
           %a.pull-left
-            %img.media-object.avatar{"ng-style" => "get_avatar_url(tweet)"}
+            %img.media-object.avatar{"ng-style" => "get_avatar_url(signature)"}
           .media-body{:style => "text-align: left;"}
             %span.comment-username
               {{signature.user.first_name}}
@@ -49,7 +59,7 @@
               signed {{signature.created_at | fromNow }} 
             %span.comment-location{"ng-bind" => "display_location(signature)"}
             %span.comment
-              {{signature.comment}}
+              {{signature.tweet.message}}
         .delivery-status.row.text-right
           .devivered{"ng-show" => "show_signature_delivered(signature)"}
             %span.delivery-status-text

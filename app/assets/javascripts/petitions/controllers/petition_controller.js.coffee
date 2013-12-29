@@ -1,6 +1,8 @@
 @PetitionController = ($scope, PetitionServices, $http, Util, PetitionFactory, $rootScope, $interpolate) ->
 
   $scope.is_admin = false
+  $scope.disable_forms = false
+  
   $scope.layout = 'layout1'
   $scope.theme = 'standard'
 

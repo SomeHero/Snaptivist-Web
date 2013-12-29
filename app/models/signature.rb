@@ -40,7 +40,8 @@ class Signature < ActiveRecord::Base
       'updated_at' => updated_at,
       'user' => user.to_api,
       'delivered' => delivered,
-      'delivered_at' => delivered_at
+      'delivered_at' => delivered_at,
+      'tweet' => tweet ? tweet.to_api : nil,
     }
 
     return results;

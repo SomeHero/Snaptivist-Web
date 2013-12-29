@@ -1,5 +1,9 @@
-%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.layout || false"}
+.panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.layout || false"}
 	%p{:style=>"margin-bottom: 0px"}
 		Select a layout on the right to start your petition >>
-%div#action-container{:style=>"background-color: #fff;", "ng-controller"=>"SamplePetitionController", "ng-show"=>"settings.layout || false"}
-	%div{"ng-include"=>"sample_page_template()"}
+%div{"ng-show"=>"settings.layout || false"}
+	.panel{:style=>"padding: 50px 40px"}
+		%p{:style=>"margin-bottom: 0px"}
+			Great! Your petition will look like the sample petiton below.  We'll add some color's in the next step.
+	#action-container{:style=>"background-color: #fff;", "ng-controller"=>"SamplePetitionController"}
+		%div{"ng-include"=>"sample_page_template()"}

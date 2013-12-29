@@ -1,7 +1,7 @@
 @SamplePetitionController = ($scope, $rootScope) ->
 
 	$scope.is_admin = false
-	
+
 	$scope.petition = {
 		headline_primary: 'Tell Barack Obama'
 		headline_secondary: 'Stop the Drone Assassinations of American Citizens'
@@ -14,5 +14,6 @@
 		summary: 'The IRS has been targeting Americans for their political beliefs and using their power to intimidate law-abiding citizens and chill their freedom of speech. It is time to get rid of this corrupt agency and start over again with a flat or fair tax system.'
 		disclaimer_text: 'Paid for by Texans for John Cornyn'
 	}
+
 	$scope.sample_page_template = ->
 		return "/client_views/" + $scope.settings.layout.url_fragment + "/signature_template"

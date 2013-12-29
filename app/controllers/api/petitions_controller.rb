@@ -50,13 +50,13 @@ class Api::PetitionsController < ApplicationController
     @petition = Petition.find(params[:id]); 
     raise "Unable to find petition" unless @petition
 
-    @signature = Signature.find(params[:signature_id])
-    raise "Unable to find signature" unless @signature
     #handle to tweating here
     #if params[:tweet]
     token = current_user.authentications.find_by_provider("twitter").token
     token_secret = current_user.authentications.find_by_provider("twitter").token_secret
 
+    binding.pry
+    
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
       config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
@@ -64,18 +64,51 @@ class Api::PetitionsController < ApplicationController
       config.access_token_secret = token_secret
     end
 
+    if !current_user
+      twitter_user = client.user
+
+      user = User.new do |u|
+        u.first_name = twitter_user.name.split[0]
+        u.last_name = twitter_user.name.split[1]
+        u.email = twitter_user.screen_name + "@twitter.com"
+        u.password = "password"
+        u.password_confirmation = "password"
+        u.action_tags = @petition.action_tags
+      end
+
+      user.save!
+
+      sign_in user
+
+    end
+
+    raise "Unable to find user" unless current_user
+
+    signatures = Signature.where(:user_id => current_user.id, :petition_id => @petition.id)
+
+    if signatures.count == 0
+      @signature = @petition.signatures.new do |s|
+        s.user = current_user
+        s.signature_method = "Tweet"
+        s.opt_in = true
+
+      end
+    else
+      @signature = signatures.first
+    end
+
+    raise "Unable to find signature" unless @signature
+
     client.update(params[:tweet])
 
     #add tweet record
+    @signature.tweet = Tweet.create!(
+      message: params[:tweet]
+    )
     @signature.delivered = true
     @signature.delivered_at = Time.now
 
-    @signature.tweet = Tweet.create!(
-        message: params[:tweet]
-      )
-
     @signature.save!
-
 
     render_result()
 
