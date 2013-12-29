@@ -20,14 +20,14 @@ module CrmWebHook
 				first_name: external_user.first_name,
 				last_name: external_user.last_name,
 				organization_name: "",
-				zip_code: external_user.address.zip,
+				#zip_code: external_user.address.zip,
 				external_id: external_id
 			)
 		else
 			user.email = external_user.email1,
 			user.first_name = external_user.first_name,
 			user.last_name = external_user.last_name,
-			user.zip_code = external_user.address.zip
+			#user.zip_code = external_user.address.zip
   		end
 
   		Redis.set("user-" + user.id, external_user)
