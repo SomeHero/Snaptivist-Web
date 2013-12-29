@@ -50,26 +50,26 @@ module CrmWebHook
 
   		if !user
   			user = User.create!(
-				email: user.email1,
+				email: external_user.email1,
 				password: "password",
-				first_name: user.first_name,
-				last_name: user.last_name,
+				first_name: external_user.first_name,
+				last_name: external_user.last_name,
 				organization_name: "",
-				zip_code: "23221",
+				#zip_code: "23221",
 				external_id: external_id
 			)
   		else
 			user.email = external_user.email1,
 			user.first_name = external_user.first_name,
 			user.last_name = external_user.last_name,
-			user.zip_code = external_user.address.zip
+			#user.zip_code = external_user.address.zip
   		end
 
   		donation = Donation.find_by_external_id(donation_external_id)
 
   		if !donation
 	  		donation = Donation.create!(
-	  				external_id: external_id.donation_nationbuilder_id,
+	  				external_id: donation_nationbuilder_id,
 	  				amount: external_donation.amount,
 	  				user: user,
 	  				source: "NationBuilder",
@@ -78,6 +78,8 @@ module CrmWebHook
 	  			)
 	  	else
 	  		donation.amount = external_donation.amount
+
+	  		donation.save
 	  	end
       
         REDIS.set("donation-" + donation.id.to_s, external_donation)
