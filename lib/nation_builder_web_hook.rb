@@ -63,6 +63,8 @@ module CrmWebHook
 				)
 			else
 				user.external_id = user_external_id
+
+				user.save
 			end
   		else
 			user.email = external_user.email1
