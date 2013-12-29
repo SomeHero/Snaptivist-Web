@@ -1,4 +1,5 @@
 # this is a publicly available API. As yet there is no authentication.
+require 'nation_builder_web_hook.rb'
 
 class API < Grape::API
   version 'v1', using: :header, vendor: "Snaptivist"
