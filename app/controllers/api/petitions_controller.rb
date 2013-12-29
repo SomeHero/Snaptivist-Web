@@ -55,8 +55,6 @@ class Api::PetitionsController < ApplicationController
     token = current_user.authentications.find_by_provider("twitter").token
     token_secret = current_user.authentications.find_by_provider("twitter").token_secret
 
-    binding.pry
-    
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = 'JRkoDk6R3BxPpmu5sIsKLA'
       config.consumer_secret = 'AUApr8ShZz9qGT0Xfsq6GKruD0rxunZGUCJUs0wXmo'
