@@ -49,15 +49,21 @@ module CrmWebHook
   		user = User.find_by_external_id(user_external_id)
 
   		if !user
-  			user = User.create!(
-				email: external_user.email1,
-				password: "password",
-				first_name: external_user.first_name,
-				last_name: external_user.last_name,
-				organization_name: "",
-				#zip_code: "23221",
-				external_id: user_external_id
-			)
+  			user = User.find_by_email(external_user.email1)
+
+  			if !user
+	  			user = User.create!(
+					email: external_user.email1,
+					password: "password",
+					first_name: external_user.first_name,
+					last_name: external_user.last_name,
+					organization_name: "",
+					#zip_code: "23221",
+					external_id: user_external_id
+				)
+			else
+				user.external_id = user_external_id
+			end
   		else
 			user.email = external_user.email1
 			user.first_name = external_user.first_name
