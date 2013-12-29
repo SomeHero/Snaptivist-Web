@@ -126,5 +126,8 @@ SnaptivistWeb::Application.configure do
     :access_key_id => "AKIAIKSNRNLLIFLI7AMA",
     :secret_access_key => "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"
   }
+
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:346b27529b87e240da71e294ed319233@albacore.redistogo.com:9574/'
+
 }
 end
