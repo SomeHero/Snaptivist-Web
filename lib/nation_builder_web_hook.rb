@@ -79,7 +79,7 @@ module CrmWebHook
 
   		if !donation
 	  		donation = Donation.create!(
-	  				external_id: donation_nationbuilder_id,
+	  				external_id: donation_external_id,
 	  				amount: external_donation.amount,
 	  				user: user,
 	  				source: "NationBuilder",
