@@ -21,6 +21,10 @@
 	button {
 		font-weight: 300;
 	}
+	.container {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
 	.panel {
 		border-top-right-radius: 0px;
 		border-top-left-radius: 0px;
@@ -34,6 +38,7 @@
 	.client-logo-wrapper {
         display: table;
         width: 100%;
+        position: relative;
     }
     .client-logo {
         display: table-cell;
@@ -61,6 +66,14 @@
 		font-size: .92em;
 		color: #5e5e5e;
 		border: solid 1px #5e5e5e;
+	}
+	#header-image {
+		height: 100px;
+		background-size: contain;
+	}
+	#footer-image {
+		height: 50px;
+		background-size: contain;
 	}
 	#petition-container, #delivery-container, #premium-container {
 		h2 {
@@ -156,8 +169,9 @@
 			min-height: 350px;
 		}
 		#petition-image {
-			background-size: 350px 350px;
+			background-size: contain;
 			background-repeat: no-repeat;
+			background-position: 50% 50%;
 			height: 350px;
 		}
 		#delivery-container {

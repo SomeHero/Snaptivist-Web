@@ -1,40 +1,58 @@
-.text-center
-  %div{"image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"image_full", "is-admin"=>"is_admin"}
-    .drop-shadow.lifted{"ng-style" => "signature_image_styling()"}
-  %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "name"=>"delivery_headline_primary", "required"=>""}
-  %h1.title.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline (Secondary)", "name"=>"delivery_headline_secondary", "required"=>""}
+.container.text-center
+  %div{"image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"header_image_full", "is-admin"=>"is_admin"}
+    .drop-shadow.lifted#header-image{"ng-style" => "header_image_styling()"}
+  %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "name"=>"premium_headline_primary", "required"=>""}
+  %h1.title.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline (Secondary)", "name"=>"premium_headline_secondary", "required"=>""}
   %p.description
-    %span.contenteditable.placeholer-showing{:style=>"display: block", "contenteditable"=>"", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "name"=>"summary", "required"=>""}
-  .row
-    .col-md-6.top-content-wrapper
-      %div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}
-        %div#petition-image{"ng-style" => "premium_image_styling()"}
-    .col-md-6.top-content-wrapper#premium-form-wrapper
-      %div.signature-form-container.vertical-middle-cell
-        .form-group.clearfix
+    %span.contenteditable.placeholer-showing{:style=>"display: block", "contenteditable"=>"", "ng-model" => "petition.premium_summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Summary", "name"=>"summary", "required"=>""}
+  #premium-form-wrapper.row
+    .signature-form-container.vertical-middle-cell.col-md-8.col-md-offset-2{"ng-switch"=>"disable_forms"}
+      %form{"ng-switch-when"=>"false", :name => "myForm", "novalidate" => true, :style => "margin: 0px;", "role"=>"form"}
+        .form-group.row.clearfix
           .col-md-6.text-left#first-name-wrapper
-            %input.form-control{"type"=>"text", "placeholder"=>"First Name"}
+            %input.form-control{"type"=>"text", "placeholder"=>"First Name", "required"=>"", "ng-model"=>"premium_registration.first_name"}
           .col-md-6.text-left#last-name-wrapper
-            %input.form-control{"type"=>"text", "placeholder"=>"Last Name"}
+            %input.form-control{"type"=>"text", "placeholder"=>"Last Name", "required"=>"", "ng-model"=>"premium_registration.last_name"}
         .form-group
-          %input.form-control{:style=>"width: 100%", "type"=>"text","placeholder"=>"Street Address 1"}
+          %input.form-control{:style=>"width: 100%", "type"=>"text","placeholder"=>"Street Address 1", "required"=>"", "ng-model"=>"premium_registration.street_address_1"}
         .form-group
-          %input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2"}
+          %input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2", "ng-model"=>"premium_registration.street_address_2"}
         .form-group.clearfix
-          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City"}
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City", "required"=>"", "ng-model"=>"premium_registration.city"}
         .form-group.clearfix
-          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State"}
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State", "required"=>"", "ng-model"=>"premium_registration.state"}
         .form-group.clearfix
-          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Zip Code"}
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Zip Code", "required"=>"", "ng-model"=>"premium_registration.zip_code"}
         .form-group
-          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Phone Number"}
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Phone Number", "ng-model"=>"premium_registration.phone_number"}
         .form-group
-          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address"}
-  %button.action-button
-    %span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button", "ng-bind"=>"!is_admin && petition.premium_call_to_action_button_text || ''"}
-.row
-  #powered-by-wrapper
-    %a#powered-by-container.row.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
-      = image_tag "powered_by.png"
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address", "required"=>"", "ng-model"=>"premium_registration.email_address"}
+        %button.drop-shadow.lifted.action-button.icon#sign-with-fb-button{"ng-click"=>"premium_submit_clicked(myForm)"}
+          %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button"}
+      %div{"ng-switch-when"=>"true"}
+        .form-group.row.clearfix
+          .col-md-6.text-left#first-name-wrapper
+            %input.form-control{"type"=>"text", "placeholder"=>"Frst Name", "ng-model"=>"premium_registration.first_name"}
+          .col-md-6.text-left#last-name-wrapper
+            %input.form-control{"type"=>"text", "placeholder"=>"Last Name", "ng-model"=>"premium_registration.last_name"}
+        .form-group
+          %input.form-control{:style=>"width: 100%", "type"=>"text","placeholder"=>"Street Address 1", "ng-model"=>"premium_registration.street_address_1"}
+        .form-group
+          %input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2", "ng-model"=>"premium_registration.street_address_2"}
+        .form-group.clearfix
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City", "ng-model"=>"premium_registration.city"}
+        .form-group.clearfix
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State", "ng-model"=>"premium_registration.state"}
+        .form-group.clearfix
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Zip Code", "ng-model"=>"premium_registration.zip_code"}
+        .form-group
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Phone Number", "ng-model"=>"premium_registration.phone_number"}
+        .form-group
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address", "ng-model"=>"premium_registration.email_address"}
+        %button.drop-shadow.lifted.action-button.icon#sign-with-fb-button{"ng-click"=>"premium_submit_clicked(myForm)"}
+          %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button"}
 
   %div{"loading-screen" => "loading.show_spinner"}
+#powered-by-wrapper
+  %a#powered-by-container.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
+    = image_tag "powered_by.png"

@@ -11,7 +11,7 @@
     controller: DeliveryController 
   ).when('/premium',
     templateUrl: '/client_views/' + layout + '/premium_template'
-    controller: DeliveryController 
+    controller: PremiumController 
   ).when('/complete',
     templateUrl: '/client_views/more'
     controller: MoreActionController 

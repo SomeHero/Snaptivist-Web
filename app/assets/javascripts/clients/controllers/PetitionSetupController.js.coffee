@@ -1,7 +1,9 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, petition, email_types, layouts) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
+	$scope.petition = {}
+	$scope.petition = petition if petition
 	$scope.is_admin = true
 	$scope.disable_forms = true
 	$scope.system = {
@@ -46,7 +48,6 @@
 					href: '/assets/themes/' + $scope.settings.layout.url_fragment + '/' + $scope.settings.theme.url_fragment + '/style-responsive.css'
 				})
 
-	$scope.petition = ClientFactory.petition
 	$scope.petition.petition_pages_attributes = [] if !$scope.petition.petition_pages_attributes
 	$scope.settings.pages_list = [] if !$scope.settings.pages_list
 	
@@ -147,6 +148,11 @@
 				delete $scope.petition["layout"]
 				delete $scope.petition["theme"]
 				delete $scope.petition["pages"]
+				delete $scope.petition["signature_image_full_url"]
+				delete $scope.petition["delivery_image_full_url"]
+				delete $scope.petition["premium_image_full_url"]
+				delete $scope.petition["header_image_full_url"]
+				delete $scope.petition["footer_image_full_url"]
 
 				$scope.submit_petition()
 			else
@@ -218,7 +224,7 @@
 
 		if $scope.petition.id
 			console.log "update petition"
-			PetitionServices.update($scope.client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
+			PetitionServices.update($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.premium_image).success (response) ->
 				console.log "petition update success"
 
 				Util.navigate('petitions')
@@ -226,7 +232,7 @@
 			.error ->
 				console.log "petition update failed"
 		else
-			PetitionServices.create($scope.client_id, $scope.petition, $scope.image_full, $scope.premium_image).success (response) ->
+			PetitionServices.create($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.premium_image).success (response) ->
 				console.log "petition created"
 
 				Util.navigate('petitions')
@@ -249,6 +255,34 @@
 		else
 			return 0
 
+	$scope.header_image_styling = ->
+		if $scope.header_image_full_url
+			{
+				'background-image': 'url(' + $scope.header_image_full_url + ')'
+				'background-repeat': 'no-repeat'
+				'background-position': '50% 50%'
+			}
+		else
+			{
+				'background-image': 'url(' + $scope.petition.header_image_full_url + ')'
+				'background-repeat': 'no-repeat'
+				'background-position': '50% 50%'
+			}
+	$scope.footer_image_styling = ->
+		if $scope.header_image_full_url
+			{
+				'background-image': 'url(' + $scope.footer_image_full_url + ')'
+				'background-repeat': 'no-repeat'
+				'background-position': '50% 50%'
+			}
+		else
+			{
+				'background-image': 'url(' + $scope.petition.footer_image_full_url + ')'
+				'background-repeat': 'no-repeat'
+				'background-position': '50% 50%'
+			}
+
+
 	$scope.signature_image_styling = ->
 		if $scope.image_full_url
 			{
@@ -256,7 +290,7 @@
 			}
 		else
 			{
-      			'background-image': 'url(' + $scope.petition.image_full_url + ')'
+      			'background-image': 'url(' + $scope.petition.signature_image_full_url + ')'
     		}
 
 	$scope.premium_image_styling = ->
@@ -320,10 +354,23 @@
 		if $route.current.templateUrl == 'clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'petition', 'email_types', 'layouts']
 
 PetitionSetupController.resolve =
   	
+  petition: ['PetitionServices', '$q', '$route', (PetitionServices, $q, $route) ->
+
+    if $route.current.params.petition_id
+	    petition_id = $route.current.params.petition_id
+	    
+	    deferred = $q.defer()
+
+	    PetitionServices.get_petition(petition_id).then (response) ->
+	      deferred.resolve(response)
+
+	    deferred.promise
+    ]
+
   email_types: ['EmailTypeServices', '$q', (EmailTypeServices, $q) ->
     deferred = $q.defer()
 

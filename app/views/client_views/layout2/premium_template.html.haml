@@ -1,52 +1,44 @@
-.client-logo-wrapper
-	.client-logo.text-center#client-logo-top
-		%img{"ng-src" => "{{client_image_url()}}"}
-#petition-container
-	#premium-headline.section-header.text-center
-		%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
-		%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_headline_secondary || ''"}
-	.panel.panel-default.panel-indented
-		.row#petition-subheadline
-			.col-md-12
-				%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_subheadline || ''"}
-		.row
-			.col-md-6.top-content-wrapper
-				%div#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}
-					%div#petition-image{"ng-style" => "premium_image_styling()"}
-			.col-md-6.top-content-wrapper#premium-form-wrapper
-				%div.signature-form-container.vertical-middle-cell
-					.form-group.clearfix
-						.col-md-6.text-left#first-name-wrapper
-							%input.form-control{"type"=>"text", "placeholder"=>"First Name"}
-						.col-md-6.text-left#last-name-wrapper
-							%input.form-control{"type"=>"text", "placeholder"=>"Last Name"}
-					.form-group
-						.col-md-12.text-left
+.container.text-center{:style=>"width: auto"}
+	.client-logo-wrapper
+		.client-logo{:style=>"height: 100px", "image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"header_image_full", "is-admin"=>"is_admin"}
+			#header-image{"ng-style" => "header_image_styling()"}
+	#petition-container
+		#premium-headline.section-header.text-center
+			%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
+			%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_headline_secondary || ''"}
+		.panel.panel-default.panel-indented
+			.row#petition-subheadline
+				.col-md-12
+					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_subheadline || ''"}
+			.row
+				.col-md-6.top-content-wrapper
+					#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}
+						%div#petition-image{"ng-style" => "premium_image_styling()"}
+				.col-md-6.top-content-wrapper#premium-form-wrapper
+					.signature-form-container.vertical-middle-cell
+						.row.form-group.clearfix
+							.col-md-6.text-left#first-name-wrapper
+								%input.form-control{"type"=>"text", "placeholder"=>"First Name"}
+							.col-md-6.text-left#last-name-wrapper
+								%input.form-control{"type"=>"text", "placeholder"=>"Last Name"}
+						.form-group
 							%input.form-control{:style=>"width: 100%", "type"=>"text","placeholder"=>"Street Address 1"}
-					.form-group
-						.col-md-12.text-left
+						.form-group
 							%input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2"}
-					.form-group
-						.col-md-12.text-left
+						.form-group
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City"}
-					.form-group
-						.col-md-12.text-left
+						.form-group
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State"}
-					.form-group
-						.col-md-12.text-left
+						.form-group
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Zip Code"}
-					.form-group
-						.col-md-12.text-left
+						.form-group
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Phone Number"}
-					.form-group
-						.col-md-12.text-left
+						.form-group
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address"}
-					.form-group
-						.col-md-12.text-center
+						.form-group
 							%button.btn.btn-primary
 								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button", "ng-bind"=>"!is_admin && petition.premium_call_to_action_button_text || ''"}
-.client-logo-wrapper
-	.client-logo.text-center#client-logo-bottom
-		%img{"ng-src" => "{{client_image_url()}}"}
-		.disclaimer
-			Paid for By Texans for Senator John Cornyn, Inc.
+	.client-logo-wrapper
+		.client-logo.text-center#client-logo-bottom{:style=>"height: 50px", "image-upload-overlay"=>"", "title"=>"Add Footer Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"footer_image_full", "is-admin"=>"is_admin"}
+			#footer-image{"ng-style" => "footer_image_styling()"}
+			.disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Disclaimer Text", "name"=>"disclaimer_text","required"=>""}

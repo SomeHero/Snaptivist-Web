@@ -134,7 +134,7 @@
 
   $scope.signature_image_styling = ->
     {
-      'background-image': 'url(' + $scope.petition.image_full_url + ')'
+      'background-image': 'url(' + $scope.petition.signature_image_full_url + ')'
     }
 
   $scope.get_number_of_signatures = () ->

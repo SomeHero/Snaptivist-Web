@@ -1,0 +1,25 @@
+.row
+	.col-md-10.col-md-offset-1
+		%h1
+			Petition Deliveries
+		.panel.panel-default{:style=>"padding: 10px;"}
+			%table.table.table-striped
+				%tr
+					%th Id
+					%th Name
+					%th Message
+					%th Address/Location
+					%th Email Address
+					%th Delivery Date
+				%tr{"ng-repeat"=>"signature in signatures"}
+					%td {{signature.id}}
+					%td {{signature.user.first_name}} {{signature.user.last_name}}
+					%td {{signature.tweet.message}}
+					%td 
+						%dl
+							%dd {{signature.city}}, {{signature.state}} {{signature.user.zip_code}}
+					%td {{signature.user.email}}
+					%td {{signature.tweet.created_at}}
+					%td
+
+			%pagination{"total-items"=>"totalItems", "page"=>"currentPage", "on-select-page"=>"change_page(page)"}

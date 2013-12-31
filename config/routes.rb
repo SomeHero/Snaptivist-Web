@@ -14,6 +14,7 @@ SnaptivistWeb::Application.routes.draw do
         post 'sign_another'
         post 'sign_with_facebook'
         post 'share_with_facebook'
+        post 'send_premium'
         get 'signatures'
         get 'tweets'
       end

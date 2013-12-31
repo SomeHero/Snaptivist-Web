@@ -45,8 +45,15 @@ class API < Grape::API
       @petition.title = @petition.name
       @petition.client = client
 
+      binding.pry
+      if params[:file_header_image]
+        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_header_image])
+      end
+      if params[:file_footer_image]
+        @petition.footer_image = ActionDispatch::Http::UploadedFile.new(params[:file_footer_image])
+      end
       if params[:file_image]
-        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
+        @petition.signature_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
       end
 
       if params[:file_premium_image]
@@ -76,8 +83,15 @@ class API < Grape::API
 
       @petition.update_attributes(attributes)
 
+      binding.pry
+      if params[:file_header_image]
+        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_header_image])
+      end
+      if params[:file_footer_image]
+        @petition.footer_image = ActionDispatch::Http::UploadedFile.new(params[:file_footer_image])
+      end
       if params[:file_image]
-        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
+        @petition.signature_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
       end
 
       if params[:file_premium_image]
@@ -91,7 +105,6 @@ class API < Grape::API
     post "/:client_id/webhooks/user" do
       client = Client.find(params[:client_id])
       
-      puts params[:payload]
       webhook = CrmWebHook::NationBuilderCrmWebHook.new
       webhook.create_or_update_user(params[:payload])
 
@@ -101,13 +114,27 @@ class API < Grape::API
     post "/:client_id/webhooks/donation" do
       client = Client.find(params[:client_id])
       
-      puts params[:payload]
       webhook = CrmWebHook::NationBuilderCrmWebHook.new
       webhook.create_or_update_donation(params[:payload])
 
     end
 
 
+    desc "get supporters for a client"
+    get "/:client_id/supporters", :rabl => "supporters" do
+
+      page_size = 10
+      offset = 0
+
+      if params[:offset]
+        offset = params[:offset]
+      end
+
+      client = Client.find(params[:client_id])
+      
+      @supporters = client.supporters.limit(page_size).offset(offset)
+      @total = client.supporters.count
+    end
 
   end
 
@@ -154,6 +181,70 @@ class API < Grape::API
     get "/:id", :rabl => "petition" do
       @petition = Petition.find(params[:id])   
      
+    end
+
+    desc "get signatures for a petition"
+    get "/:id/signatures", :rabl => "signatures" do
+
+      page_size = 10
+      offset = 0
+
+      if params[:offset]
+        offset = params[:offset]
+      end
+
+      @petition = Petition.find(params[:id])   
+     
+      @signatures = @petition.signatures.limit(page_size).offset(offset)
+      @total = @petition.signatures.count
+    end
+
+    desc "get shares for a petition"
+    get "/:id/shares", :rabl => "shares" do
+
+      page_size = 10
+      offset = 0
+
+      if params[:offset]
+        offset = params[:offset]
+      end
+
+      @petition = Petition.find(params[:id])   
+     
+      @shares = @petition.signatures.where(:shared => true).limit(page_size).offset(offset)
+      @total = @petition.signatures.where(:shared => true).count
+    end
+
+    desc "get tweet for a petition"
+    get "/:id/tweets", :rabl => "tweets" do
+
+      page_size = 10
+      offset = 0
+
+      if params[:offset]
+        offset = params[:offset]
+      end
+
+      @petition = Petition.find(params[:id])   
+     
+      @signatures = @petition.signatures.where(:delivered => true).limit(page_size).offset(offset)
+      @total = @petition.signatures.where(:delivered => true).count
+    end
+
+    desc "get premium redemptions for a petition"
+    get "/:id/premiums", :rabl => "premiums" do
+
+      page_size = 10
+      offset = 0
+
+      if params[:offset]
+        offset = params[:offset]
+      end
+
+      @petition = Petition.find(params[:id])   
+     
+      @premiums = @petition.premium_redemptions.limit(page_size).offset(offset)
+      @total = @petition.premium_redemptions.count
     end
 
   end

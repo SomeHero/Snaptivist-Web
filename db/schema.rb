@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131229063106) do
+ActiveRecord::Schema.define(:version => 20131231021349) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(:version => 20131229063106) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "client_supporters", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "client_supporters", ["client_id"], :name => "index_client_supporters_on_client_id"
+  add_index "client_supporters", ["user_id"], :name => "index_client_supporters_on_user_id"
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -280,6 +290,19 @@ ActiveRecord::Schema.define(:version => 20131229063106) do
     t.string   "donation_page_url"
     t.string   "delivery_summary"
     t.string   "disclaimer_text"
+    t.string   "footer_image_file_name"
+    t.string   "footer_image_content_type"
+    t.integer  "footer_image_file_size"
+    t.datetime "footer_image_updated_at"
+    t.string   "delivery_image_file_name"
+    t.string   "delivery_image_content_type"
+    t.integer  "delivery_image_file_size"
+    t.datetime "delivery_image_updated_at"
+    t.string   "signature_image_file_name"
+    t.string   "signature_image_content_type"
+    t.integer  "signature_image_file_size"
+    t.datetime "signature_image_updated_at"
+    t.string   "premium_summary"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -333,14 +356,13 @@ ActiveRecord::Schema.define(:version => 20131229063106) do
 
   create_table "premium_gives", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "signature_id"
     t.integer  "mailing_address_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "petition_id"
   end
 
   add_index "premium_gives", ["mailing_address_id"], :name => "index_premium_gives_on_mailing_address_id"
-  add_index "premium_gives", ["signature_id"], :name => "index_premium_gives_on_signature_id"
   add_index "premium_gives", ["user_id"], :name => "index_premium_gives_on_user_id"
 
   create_table "premium_offers", :force => true do |t|
@@ -382,6 +404,16 @@ ActiveRecord::Schema.define(:version => 20131229063106) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  create_table "supporters", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "supporters", ["client_id"], :name => "index_supporters_on_client_id"
+  add_index "supporters", ["user_id"], :name => "index_supporters_on_user_id"
 
   create_table "target_groups", :force => true do |t|
     t.string   "name"

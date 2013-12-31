@@ -1,0 +1,25 @@
+.row
+	.col-md-10.col-md-offset-1
+		%h1
+			Petition Shares
+		.panel.panel-default{:style=>"padding: 10px;"}
+			%table.table.table-striped
+				%tr
+					%th Id
+					%th Name
+					%th Comment
+					%th Address/Location
+					%th Email Address
+					%th Share Date
+				%tr{"ng-repeat"=>"share in shares"}
+					%td {{share.id}}
+					%td {{share.user.first_name}} {{share.user.last_name}}
+					%td {{share.comment}}
+					%td 
+						%dl
+							%dd {{share.city}}, {{share.state}} {{share.user.zip_code}}
+					%td {{share.user.email}}
+					%td {{share.created_at}}
+					%td
+
+			%pagination{"total-items"=>"totalItems", "page"=>"currentPage", "on-select-page"=>"change_page(page)"}

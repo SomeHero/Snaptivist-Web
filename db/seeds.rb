@@ -215,7 +215,9 @@ Petition.create!(
 	headline_secondary: 'Stop the Drone Assassinations of American Citizens',
 	subheadline: 'Demand Your Right Due Process',
 	signature_more_signers_button_text: 'More Signers',
-	header_image: File.open(File.join(image_dir, 'obama_drone.jpg')),
+	header_image: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+	footer_image: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+	signature_image: File.open(File.join(image_dir, 'obama_drone.jpg')),
 	summary: 'The IRS has been targeting Americans for their political beliefs and using their power to intimidate law-abiding citizens and chill their freedom of speech. It is time to get rid of this corrupt agency and start over again with a flat or fair tax system.',
 	target: Target.first,
 	target_count: 1000,
@@ -272,8 +274,18 @@ Petition.create!(
 			sig.tweet = Tweet.create!(
 				message: "Hey @BarackObama stop killing people with flying robots! Sign the petition: http://sign.ru/p232a"
 			)
+			sig.delivered = true
+			sig.delivered_at = DateTime.now
 			sig.save!
 		end
+		if [true, false].sample
+			sig.shared = true
+			sig.shared_at = DateTime.now
+			sig.save!
+		end
+		snaptivist.client_supporters.create!(
+			user: sig.user
+		)
 	}
 
 	end
@@ -308,7 +320,9 @@ Petition.create!(
 	headline_primary: 'Fire Eric Holder',
 	headline_secondary: 'Tell President Obama that America Deserves Better',
 	subheadline: 'It’s Time for Eric Holder to Go',
-	header_image: File.open(File.join(image_dir, 'holder_fired_petition.png')),
+	header_image: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+	footer_image: File.open(File.join(image_dir, 'jcc_campaign_logo.png')),
+	signature_image: File.open(File.join(image_dir, 'holder_fired_petition.png')),
 	summary: 'From the Fast and Furious gun-walking scandal that resulted in the death of a U.S. Border Patrol Agent, to attacks on the First Amendment by targeting journalists for retribution, Eric Holder\'s Justice Department has abused its power and failed to carry out its duty to enforce the laws of the United States.<br /><br />Therefore, we demand that President Obama fire Eric Holder immediately and replace him with an Attorney General who will uphold the law and honor his or her oath to the U.S. Constitution.',
 	target: Target.first,
 	target_count: 1000,
@@ -351,8 +365,18 @@ Petition.create!(
 			sig.tweet = Tweet.create!(
 				message: 'Hey @BarackObama America Deserves Better.  Fire Eric Holder. ! Sign the petition: http://sign.ru/p232a'
 			)
+			sig.delivered = true
+			sig.delivered_at = DateTime.now
 			sig.save!
 		end
+		if [true, false].sample
+			sig.shared = true
+			sig.shared_at = DateTime.now
+			sig.save!
+		end
+		snaptivist.client_supporters.create!(
+			user: sig.user
+		)
 	}
 
 	end

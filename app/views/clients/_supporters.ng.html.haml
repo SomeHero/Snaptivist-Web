@@ -1,0 +1,20 @@
+.row
+	.col-md-8.col-md-offset-1
+		%h1
+			Your Supporters
+		.panel{:style=>"padding: 10px;", "ng-repeat"=>"supporter in supporters"}
+			.row
+				.col-md-6
+					.avatar{:style=>"float: left; margin-right: 10px;", "ng-style"=>"get_avatar_url(supporter)"}
+					%dl
+						%dd
+							{{supporter.first_name}} {{supporter.last_name}}
+						%dd
+							Address 1
+						%dd
+							Address Line 2
+						%dd
+							City, State Zip Code
+				.col-md-4
+					Acquisition/Engagement
+		%pagination{"total-items"=>"totalItems", "page"=>"currentPage", "on-select-page"=>"change_page(page)"}

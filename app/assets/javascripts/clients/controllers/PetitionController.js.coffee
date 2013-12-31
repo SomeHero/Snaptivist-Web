@@ -16,6 +16,7 @@
 
 PetitionController.resolve =
   petitions: ['PetitionServices', '$q', (PetitionServices, $q) ->
+    
     deferred = $q.defer()
 
     PetitionServices.get(client.client_id).then (response) ->

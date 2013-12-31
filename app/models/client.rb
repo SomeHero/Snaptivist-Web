@@ -7,6 +7,8 @@ class Client < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar, :email, :password, :password_confirmation, :remember_me
 
+  has_many :client_supporters
+  has_many :supporters, through: :client_supporters, source: :user
   belongs_to :nation_builder_crm_authentication
   has_attached_file :avatar, styles: {
     small: '128x128',

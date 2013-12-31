@@ -112,6 +112,57 @@ class Api::PetitionsController < ApplicationController
 
   end
 
+  def send_premium
+    binding.pry
+
+    @petition = Petition.find(params[:id]); 
+    raise "Unable to find petition" unless @petition
+
+    registration = params["premium_registration"]
+    #if !current_user
+    #create a user
+    if !current_user
+      
+      user = User.new do |u|
+        u.first_name = registration["first_name"]
+        u.last_name = registration["last_name"]
+        u.email = registration["email_address"]
+        u.password = "password"
+        u.password_confirmation = "password"
+        u.action_tags = @petition.action_tags
+      end
+
+      user.save!
+
+      sign_in user
+
+    end
+
+    raise "Unable to find user" unless current_user
+
+    #now add the premium
+    @premium_redemption = PremiumGive.new do |p|
+      p.user = current_user
+      p.petition = @petition
+      p.mailing_address = MailingAddress.create!(
+          first_name: registration["first_name"],
+          last_name: registration["last_name"],
+          street_address_1: registration["street_address_1"],
+          street_address_2: registration["steet_address_2"],
+          city: registration["city"],
+          state: registration["state"],
+          zip_code: registration["zip_code"],
+          phone_number: registration["phone_number"],
+          email_address: registration["email_address"]
+        )
+    end
+
+    raise "Error Creating Premium Redemption" if !@premium_redemption.valid?
+
+    @premium_redemption.save!
+      
+  end
+
   #adds a Signature to a petition
   #can be called with email address in which case we will look for the user account
   #with that email address or create a new one

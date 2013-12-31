@@ -4,7 +4,7 @@ class Petition < ActiveRecord::Base
   belongs_to :target
   belongs_to :user
   belongs_to :client
-  has_many :signatures, :order => 'created_at DESC', :limit => 10
+  has_many :signatures, :order => 'created_at DESC'
   has_many :petition_pages
   has_many :pages, :through => :petition_pages, :order => 'petition_pages.position'
   accepts_nested_attributes_for :petition_pages, :reject_if => :all_blank, :allow_destroy => true
@@ -15,6 +15,7 @@ class Petition < ActiveRecord::Base
   belongs_to :theme
   belongs_to :premium_offer
 
+  has_many :premium_redemptions, :class_name => "PremiumGive"
   #validates :title, :presence => true
   #validates :summary, :presence => true
   #validates :target_count, :numericality => { :only_integer => true }
@@ -25,6 +26,33 @@ class Petition < ActiveRecord::Base
   accepts_nested_attributes_for :theme
   
   has_attached_file :header_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  has_attached_file :footer_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  has_attached_file :signature_image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>',
+    full: '782x271'
+  },
+  :url => ':s3_domain_url',
+  :path => "/:class/:id/:style_:filename"
+
+  has_attached_file :delivery_image, styles: {
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>',
@@ -90,8 +118,28 @@ class Petition < ActiveRecord::Base
       signatures.limit(nil).where("delivered = true").count
     end
 
-    def petition_image_url
+    def premium_count
+      premium_redemptions.count
+    end
+
+    def header_image_url
       header_image("full")
+    end
+
+    def footer_image_url      
+      footer_image("full")
+    end
+
+    def signature_image_url
+      signature_image("full")
+    end
+
+    def delivery_image_url
+      delivery_image("full")
+    end
+
+    def premium_image_url
+      premium_image("full")
     end
 
      # generate the petition
@@ -152,7 +200,25 @@ class Petition < ActiveRecord::Base
 
       Petition::IMAGE_SIZES.each do |label, size|
         if header_image_file_name
-          results["image_#{label}_url"] = header_image(label)
+          results["header_image_#{label}_url"] = header_image(label)
+        end
+      end
+
+      Petition::IMAGE_SIZES.each do |label, size|
+        if footer_image_file_name
+          results["footer_image_#{label}_url"] = footer_image(label)
+        end
+      end
+
+      Petition::IMAGE_SIZES.each do |label, size|
+        if signature_image_file_name
+          results["signature_image_#{label}_url"] = signature_image(label)
+        end
+      end
+
+      Petition::IMAGE_SIZES.each do |label, size|
+        if delivery_image_file_name
+          results["delivery_image_#{label}_url"] = delivery_image(label)
         end
       end
 

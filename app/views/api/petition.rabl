@@ -26,6 +26,7 @@ attributes :id,
   :premium_headline_primary,
   :premium_headline_secondary,
   :premium_subheadline,
+  :premium_summary,
   :premium_call_to_action_text,
   :premium_call_to_action_button_text,
   :premium_skip_button_text,
@@ -50,8 +51,23 @@ attributes :id,
   node :delivery_count do |petition|
     petition.delivery_count
   end
-  node :image_full_url do |petition|
-    petition.petition_image_url
+  node :premium_count do |petition|
+    petition.premium_count
+  end
+  node :signature_image_full_url do |petition|
+    petition.signature_image_url
+  end
+  node :delivery_image_full_url do |petition|
+    petition.delivery_image_url
+  end
+  node :premium_image_full_url do |petition|
+    petition.premium_image_url
+  end
+  node :header_image_full_url do |petition|
+    petition.header_image_url
+  end
+  node :footer_image_full_url do |petition|
+    petition.footer_image_url
   end
 
   child :email_configurations => :email_configurations_attributes do

@@ -56,6 +56,16 @@
    
     $http.post("/api/petitions/" + petition_id + "/share", data)
 
+  send_premium: (petition_id, signature_id, premium_registration) ->
+    console.log "Submitting Premium: ", petition_id
+    
+    data = {} 
+    data = $.extend true, data, { 'premium_registration': premium_registration }
+    data = $.extend true, data, { 'signature_id': signature_id }
+   
+    $http.post("/api/petitions/" + petition_id + "/send_premium", data)
+
+
   get_more_petitions: () ->
     console.log "getting some more petitions"
 

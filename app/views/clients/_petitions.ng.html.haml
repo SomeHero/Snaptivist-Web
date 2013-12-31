@@ -23,10 +23,20 @@
 					.col-md-12
 						.row-wrapper-fluid
 							.row
-								.col-md-4.no-gutter{"panel" => "petition.signatures_count", "petition"=>"petition", "icon" => "icon-group", "color" => "red", "title" => "Signatures"}
-								.col-md-4.no-gutter-right{"panel" => "petition.share_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Shares"}
-								.col-md-4.no-gutter-right{"panel" => "petition.delivery_count", "petition"=>"petition", "icon" => "icon-eye-open", "color" => "green", "title" => "Delivered"}
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/signatures"}
+									.col-md-4.no-gutter{"panel" => "petition.signatures_count", "petition"=>"petition", "icon" => "icon-group", "color" => "red", "title" => "Signatures"}
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/shares"}
+									.col-md-4.no-gutter-right{"panel" => "petition.share_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Shares"}
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/deliveries"}
+									.col-md-4.no-gutter-right{"panel" => "petition.delivery_count", "petition"=>"petition", "icon" => "icon-eye-open", "color" => "green", "title" => "Delivered"}
+				.row
+					.col-md-12
+						.row-wrapper-fluid
+							.row
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/premiums"}
+									.col-md-4.no-gutter{"panel" => "petition.premium_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Premiums", "ng-click"=>"show"}
 
-			%div
-				%a{"ng-click"=>"edit_petition(petition)"}
-					Edit
+			%div.text-right
+				%a{"ng-href"=>"#/petitions/{{petition.id}}/edit"}
+					%button.btn.btn-primary.btn-lg{"ng-click"=>"edit_petition(petition)"}
+						Edit

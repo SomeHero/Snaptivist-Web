@@ -1,0 +1,26 @@
+.row
+	.col-md-10.col-md-offset-1
+		%h1
+			Premium Signups
+		.panel.panel-default{:style=>"padding: 10px;"}
+			%table.table.table-striped
+				%tr
+					%th Id
+					%th Name
+					%th Mailing Address
+					%th Email Address
+					%th Phone Number
+					%th Signup Date
+				%tr{"ng-repeat"=>"premium in premiums"}
+					%td {{premium.id}}
+					%td {{premium.user.first_name}} {{premium.user.last_name}}
+					%td 
+						%dl
+							%dd {{premium.mailing_address.street_address_1}}
+							%dd {{premium.mailing_address.street_address_2}}
+							%dd {{premium.mailing_address.city}}, {{premium.mailing_address.state}} {{premium.mailing_address.zip_code}}
+					%td {{premium.mailing_address.email_address}}
+					%td {{premium.mailing_address.phone_number}}
+					%td
+
+			%pagination{"total-items"=>"totalItems", "page"=>"currentPage", "on-select-page"=>"change_page(page)"}

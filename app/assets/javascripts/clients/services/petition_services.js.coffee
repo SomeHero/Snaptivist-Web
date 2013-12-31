@@ -8,13 +8,31 @@
 
     deferred.promise
 
-  create: (client_id, petition, signature_image, premium_image) ->
+  get_petition: (petition_id) ->
+    console.log "Getting Petition"
+    deferred = $q.defer()
+    $http.get('/api/petitions/' + petition_id).success (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+
+  create: (client_id, petition, header_image, footer_image, signature_image, premium_image) ->
 
     data = {}
     data = $.extend true, data, { 'petition': petition }
 
     files = []
 
+    if header_image
+      files.push({
+        name: 'header_image'
+        file: header_image
+      })
+    if footer_image
+      files.push({
+        name: 'footer_image'
+        file: footer_image
+      })
     if signature_image
       files.push({
         name: 'image'
@@ -49,13 +67,23 @@
 
     })
 
-  update: (client_id, petition, signature_image, premium_image) ->
+  update: (client_id, petition, header_image, footer_image, signature_image, premium_image) ->
 
     data = {}
     data = $.extend true, data, { 'petition': petition }
 
     files = []
 
+    if header_image
+      files.push({
+        name: 'header_image'
+        file: header_image
+      })
+    if footer_image
+      files.push({
+        name: 'footer_image'
+        file: footer_image
+      })
     if signature_image
       files.push({
         name: 'image'
@@ -89,4 +117,52 @@
         files: files
 
     })
+
+  get_signatures: (petition_id, offset) ->
+    console.log "Fetch premiums for petition: ", petition_id
+
+    deferred = $q.defer()
+    $http.get('/api/petitions/' + petition_id + '/signatures?offset=' + offset)
+        .success (response) ->
+          deferred.resolve(response)
+        .error (response) ->
+            deferred.reject(response)
+
+    deferred.promise
+
+  get_shares: (petition_id, offset) ->
+    console.log "Fetch share for petition: ", petition_id
+
+    deferred = $q.defer()
+    $http.get('/api/petitions/' + petition_id + '/shares?offset=' + offset)
+        .success (response) ->
+          deferred.resolve(response)
+        .error (response) ->
+            deferred.reject(response)
+
+    deferred.promise
+
+  get_tweets: (petition_id, offset) ->
+    console.log "Fetch premiums for petition: ", petition_id
+
+    deferred = $q.defer()
+    $http.get('/api/petitions/' + petition_id + '/tweets?offset=' + offset)
+        .success (response) ->
+          deferred.resolve(response)
+        .error (response) ->
+            deferred.reject(response)
+
+    deferred.promise
+
+  get_premiums: (petition_id, offset) ->
+    console.log "Fetch premiums for petition: ", petition_id
+
+    deferred = $q.defer()
+    $http.get('/api/petitions/' + petition_id + '/premiums?offset=' + offset)
+        .success (response) ->
+          deferred.resolve(response)
+        .error (response) ->
+            deferred.reject(response)
+
+    deferred.promise
 ]

@@ -2,7 +2,7 @@
 
   $scope.is_admin = false
   $scope.disable_forms = false
-  
+
   $scope.layout = 'layout1'
   $scope.theme = 'standard'
 
@@ -97,6 +97,19 @@
   $scope.isCollapsed = true
 
   window.scope = $scope
+
+  $scope.header_image_styling = ->
+    {
+      'background-image': 'url(' + $scope.petition.header_image_full_url + ')'
+      'background-repeat': 'no-repeat'
+      'background-position': '50% 50%'
+    }
+  $scope.footer_image_styling = ->
+    {
+      'background-image': 'url(' + $scope.petition.footer_image_full_url + ')'
+      'background-repeat': 'no-repeat'
+      'background-position': '50% 50%'
+    }
 
   $scope.change_page = () ->
     page= $scope.petition.pages[$scope.page_index++]
