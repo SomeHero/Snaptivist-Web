@@ -9,6 +9,7 @@ class Api::AuthenticationsController < ApplicationController
   end
   
   def twitter
+    binding.pry
     raise "Unable to find user" unless current_user
 
     #raise omni = request.env["omniauth.auth"].to_yaml

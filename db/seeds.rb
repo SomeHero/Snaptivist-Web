@@ -95,7 +95,7 @@ standard_sign_page = standard_layout.pages.create!(
 standard_deliver_page = standard_layout.pages.create!(
 	name: "Tweet Page",
 	description: "seeded tweet delivery page for JCC layout",
-	template_name: "tweet_template",
+	template_name: "delivery_template",
 	url_fragment: "/deliver",
 	position: 2
 )

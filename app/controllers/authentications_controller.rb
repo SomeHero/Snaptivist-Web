@@ -1,5 +1,5 @@
 class AuthenticationsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:twitter]
+  #before_filter :authenticate_user!, :only => [:twitter]
 
   def index
     @authentications = current_user.authentications.all
@@ -11,19 +11,79 @@ class AuthenticationsController < ApplicationController
   
   def twitter
 
+   binding.pry
    omni = request.env["omniauth.auth"]
     
    token = omni['credentials'].token
    token_secret = omni['credentials'].secret
 
-   current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
-   #flash[:notice] = "Authentication successful."
+    authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
 
-   return render 'oauth_popup_close', :layout => false            
+    if authentication
+       #flash[:notice] = "Logged in Successfully"
+       user = User.find(authentication.user_id)
+       user.first_name = omni['extra']['raw_info'].first_name
+       user.last_name = omni['extra']['raw_info'].last_name
+       user.avatar_url = omni['info'].image
+
+       user.save
+
+       sign_in user
+
+       return render 'oauth_popup_close', :layout => false  
+
+    elsif current_user  && current_user.email == omni['extra']['raw_info'].email 
+
+       token = omni['credentials'].token
+       token_secret = ""
+
+       current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
+
+       #flash[:notice] = "Authentication successful."
+       sign_in current_user
+
+       return render 'oauth_popup_close', :layout => false            
+
+    else
+
+      user = User.find_by_email(omni['extra']['raw_info'].email)
+
+      if user 
+
+        token = omni['credentials'].token
+        token_secret = ""
+
+        user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
+
+        sign_in user
+
+        return render 'oauth_popup_close', :layout => false 
+
+      end
+
+      user = User.new
+      user.email = omni['extra']['raw_info'].screen_name + "@twitter.com"
+      user.first_name = omni['extra']['raw_info'].first_name
+      user.last_name = omni['extra']['raw_info'].last_name
+      user.avatar_url = omni['info'].image
+
+      user.apply_omniauth(omni)
+
+      if user.save
+       flash[:notice] = "Logged in."
+       sign_in user
+
+       return render 'oauth_popup_close', :layout => false            
+
+      else
+        session[:omniauth] = omni.except('extra')
+        redirect_to new_user_registration_path
+      end
+    
+    end
    
-  
    end
-   
+
    def destroy
      @authentication = Authentication.find(params[:id])
      @authentication.destroy
@@ -76,6 +136,7 @@ class AuthenticationsController < ApplicationController
         return render 'oauth_popup_close', :layout => false 
 
       end
+
       user = User.new
       user.email = omni['extra']['raw_info'].email 
       user.first_name = omni['extra']['raw_info'].first_name
@@ -98,6 +159,7 @@ class AuthenticationsController < ApplicationController
  end
 
   def check
+    binding.pry
     if current_user and auth = current_user.authentications.where(:provider => params[:provider]).first
       render :json => { :authed => true, :authentication => auth }
     elsif session[params[:provider] + "_omniauth_success"]
