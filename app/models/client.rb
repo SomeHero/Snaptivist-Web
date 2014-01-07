@@ -9,6 +9,9 @@ class Client < ActiveRecord::Base
 
   has_many :client_supporters
   has_many :supporters, through: :client_supporters, source: :user
+  has_many :client_users
+  has_many :admin_users, through: :client_users, source: :user
+
   belongs_to :nation_builder_crm_authentication
   has_attached_file :avatar, styles: {
     small: '128x128',

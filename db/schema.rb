@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131231021349) do
+ActiveRecord::Schema.define(:version => 20140107191652) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(:version => 20131231021349) do
 
   add_index "client_supporters", ["client_id"], :name => "index_client_supporters_on_client_id"
   add_index "client_supporters", ["user_id"], :name => "index_client_supporters_on_user_id"
+
+  create_table "client_users", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "client_users", ["client_id"], :name => "index_client_users_on_client_id"
+  add_index "client_users", ["user_id"], :name => "index_client_users_on_user_id"
 
   create_table "clients", :force => true do |t|
     t.string   "name"

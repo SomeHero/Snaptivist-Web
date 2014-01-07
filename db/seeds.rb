@@ -59,6 +59,7 @@ snaptivist = Client.create!(
 		access_token: "ce97fd95b4a8a3b2003c00f5c30ccdcdb0710486509ea2b8acac0fd7f2336a2c",
 		redirect_uri: "http://www.snaptivist.org/oauth_callback"
 	)
+	c.admin_users << snaptivist_user
 
 	c.save!
 }
@@ -75,6 +76,7 @@ jcc = Client.create!(
 		access_token: "68d3371a7b2729d4ce115a3d5e131cf37fb18cbed94e25f1ea7da742e87d9a4f",
 		redirect_uri: "http://www.snaptivist.org/oauth_callback"
 	)
+	c.admin_users << jcc_user
 
 	c.save!
 }

@@ -33,11 +33,15 @@ class ClientsController < ApplicationController
 
     return render_response(status: 401, notice: 'Missing email address', url: login_client_path) unless params[:email]
 
-    client = Client.find_by_email(params[:email])
+    client = Client.find(params[:id])
+    
+    return render_response(status: 401, notice: 'Invalid client', url: login_client_path) unless client
 
-    return render_response(status: 401, notice: 'Invalid email address or password', url: login_client_path) unless client
+    user = User.find_by_email(params[:email])
 
-    if client && client.valid_password?(params[:password])
+    return render_response(status: 401, notice: 'Invalid email address or password', url: login_client_path) unless user
+
+    if client && user.valid_password?(params[:password])  && user.is_admin_user(client)
       session[:client_id] = client.id
       session[:client_url] = params[:on_complete_url]
 
