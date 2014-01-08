@@ -45,7 +45,6 @@ class API < Grape::API
       @petition.title = @petition.name
       @petition.client = client
 
-      binding.pry
       if params[:file_header_image]
         @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_header_image])
       end
@@ -75,6 +74,7 @@ class API < Grape::API
       attributes.delete("share_count")
       attributes.delete("delivery_count")
       attributes.delete("image_full_url")
+      attributes.delete("premium_count")
 
       attributes["email_configurations_attributes"].each do |config|
         config.delete("email_type")
@@ -83,7 +83,6 @@ class API < Grape::API
 
       @petition.update_attributes(attributes)
 
-      binding.pry
       if params[:file_header_image]
         @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_header_image])
       end

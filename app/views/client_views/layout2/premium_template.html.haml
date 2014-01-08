@@ -4,12 +4,12 @@
 			#header-image{"ng-style" => "header_image_styling()"}
 	#petition-container
 		#premium-headline.section-header.text-center
-			%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_primary || ''"}
-			%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_headline_secondary || ''"}
+			%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "name"=>"premium_headline_primary"=>"true", "required"=>""}
+			%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "name"=>"premium_headline_secondary", "required"=>""}
 		.panel.panel-default.panel-indented
 			.row#petition-subheadline
 				.col-md-12
-					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "ng-bind"=>"!is_admin && petition.premium_subheadline || ''"}
+					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline","name"=>"premium_subheadline", "required"=>""}
 			.row
 				.col-md-6.top-content-wrapper
 					#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}
@@ -37,8 +37,8 @@
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address"}
 						.form-group
 							%button.btn.btn-primary
-								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button", "ng-bind"=>"!is_admin && petition.premium_call_to_action_button_text || ''"}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button", "name"=>"premium_call_to_action_button_text", "required"=>""}
 	.client-logo-wrapper
 		.client-logo.text-center#client-logo-bottom{:style=>"height: 50px", "image-upload-overlay"=>"", "title"=>"Add Footer Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"footer_image_full", "is-admin"=>"is_admin"}
 			#footer-image{"ng-style" => "footer_image_styling()"}
-			.disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Disclaimer Text", "name"=>"disclaimer_text","required"=>""}
+			.disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Disclaimer Text", "name"=>"disclaimer_text"}

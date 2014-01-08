@@ -113,7 +113,6 @@ class Api::PetitionsController < ApplicationController
   end
 
   def send_premium
-    binding.pry
 
     @petition = Petition.find(params[:id]); 
     raise "Unable to find petition" unless @petition

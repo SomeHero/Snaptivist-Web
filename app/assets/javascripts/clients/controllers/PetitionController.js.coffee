@@ -5,8 +5,12 @@
 	ClientFactory.petitions = petitions
 
 	$scope.petition_url = (petition) ->
-		$location.protocol() + "://" + $location.host() + "/petitions/" + petition.id
+		port = $location.port()
 
+		host = $location.host()
+		host += ":" + port if port
+
+		$location.protocol() + "://" + host + "/petitions/" + petition.id
 
 	$scope.edit_petition = (petition) ->
 		ClientFactory.petition = petition

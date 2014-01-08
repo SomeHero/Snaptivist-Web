@@ -111,7 +111,7 @@ standard_premium_page = standard_layout.pages.create!(
 standard_donate_page = standard_layout.pages.create!(
 	name: "Donation Page",
 	description: "seeded donation page for JCC layout",
-	template_name: "donation_template",
+	template_name: "donation_redirect_template",
 	url_fragment: "/donate",
 	position: 4
 )
@@ -252,7 +252,8 @@ Petition.create!(
 	layout: jcc_layout,
 	theme: theme_a_layout_2,
 	donation_page_url: "https://johncornyn.nationbuilder.com/donation_landing_page",
-	disclaimer_text: 'Paid for By Texans for Senator John Cornyn, Inc.'
+	disclaimer_text: 'Paid for By Texans for Senator John Cornyn, Inc.',
+	status: 'Published'
 ).tap { |p| 
 	p.petition_pages.build(:page => jcc_sign_page, :position => 1)
 	p.petition_pages.build(:page => jcc_deliver_page, :position => 2)
@@ -343,7 +344,8 @@ Petition.create!(
 	user: snaptivist_user,
 	layout: jcc_layout,
 	theme: theme_a_layout_2,
-	disclaimer_text: 'Paid for By Texans for Senator John Cornyn, Inc.'
+	disclaimer_text: 'Paid for By Texans for Senator John Cornyn, Inc.',
+	status: 'Published'
 ).tap { |p| 
 	p.petition_pages.build(:page => jcc_sign_page, :position => 1)
 	p.petition_pages.build(:page => jcc_deliver_page, :position => 2)

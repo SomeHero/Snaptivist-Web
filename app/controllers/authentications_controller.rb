@@ -11,7 +11,6 @@ class AuthenticationsController < ApplicationController
   
   def twitter
 
-   binding.pry
    omni = request.env["omniauth.auth"]
     
    token = omni['credentials'].token
@@ -159,7 +158,7 @@ class AuthenticationsController < ApplicationController
  end
 
   def check
-    binding.pry
+
     if current_user and auth = current_user.authentications.where(:provider => params[:provider]).first
       render :json => { :authed => true, :authentication => auth }
     elsif session[params[:provider] + "_omniauth_success"]

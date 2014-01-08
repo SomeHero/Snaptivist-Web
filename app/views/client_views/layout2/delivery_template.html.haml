@@ -4,44 +4,56 @@
 			#header-image{"ng-style" => "header_image_styling()"}
 	#petition-container
 		#delivery-headline.section-header.text-center
-			%h2.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline"}
-			%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "ng-bind"=>"!is_admin && petition.delivery_headline_secondary || ''"}
+			%h2.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Headline", "name"=>"delivery_headline_primary", "required"=>""}
+			%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.delivery_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "name"=>"delivery_headline_secondary", "required"=>""}
 		#delivery-container-wrapper
 			.panel.panel-default.panel-indented
 				.row#petition-subheadline
 					.col-md-12
-						%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline"}
+						%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "name"=>"delivery_sub_headline"}
 				.row
 					.col-md-6.top-content-wrapper
 						%div#petition-image{"ng-style" => "signature_image_styling()"}
 					.col-md-6.top-content-wrapper
 						%div.delivery-form-container
-							%form{:name => "form", "novalidate" => true, "role"=>"form"}
-								.form-group
-									.col-md-12
-										%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline"}
-								.form-group
-									.col-md-12
-										.drop-shadow-full{:style=>"margin-bottom: 20px;"}
-											%div{"ng-switch"=>"disable_forms"}
-												%textarea.form-control{"ng-switch-when"=>"true", :style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
-												%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "ng-switch-when"=>"false", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message"}
-											#message-counter.text-right {{115 - get_tweet_message_length()}}
-								.form-group
-									.col-md-12
-										%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
-											%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text"}
-								.form-group
-									.col-md-12
-										%button.btn.btn-link{"ng-click" => "skip_delivery()"}
-											%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text"}
+							%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline", "name"=>"delivery_call_to_action_text", "required"=>""}
+							%div{"ng-switch"=>"disable_forms"}
+								%form{"ng-switch-when"=>"false", :name => "tweet_form", "novalidate" => true, "role"=>"form"}		
+									.form-group
+										.col-md-12
+											.drop-shadow-full{:style=>"margin-bottom: 20px;"}
+												%textarea.form-control{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
+												#message-counter.text-right {{115 - get_tweet_message_length()}}
+									.form-group
+										.col-md-12
+											%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+												%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "name"=>"delivery_call_to_action_button_text", "required"=>""}
+									.form-group
+										.col-md-12
+											%button.btn.btn-link{"ng-click" => "skip_delivery()"}
+												%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text", "name"=>"delivery_skip_button_text", "required"=>""}
+								%div{"ng-switch-when"=>"true"}		
+									.form-group
+										.col-md-12
+											.drop-shadow-full{:style=>"margin-bottom: 20px;"}
+												%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "contenteditable"=>"", "ng-model"=>"petition.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message", "name"=>"default_tweet_text", "required"=>""}
+												#message-counter.text-right {{115 - get_tweet_message_length()}}	
+									.form-group
+										.col-md-12
+											%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+												%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "name"=>"delivery_call_to_action_button_text", "required"=>""}
+									.form-group
+										.col-md-12
+											%button.btn-link{"ng-click" => "skip_delivery()"}
+												%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text", "name"=>"delivery_skip_button_text", "required"=>""}
+
 				#signature-count-outer-wrapper
 					#signature-count-wrapper
 						.progress-wrapper
 							.progress
 								.progress-bar{:style => "width: {{calculate_petition_tweet_percentage()}}%;", "role"=>"progressbar", "aria-valuenow"=>"{{calculate_petition_tweet_percentage()}}", "aria-valuemin"=>"0", "aria-valuemax"=>"100"}
 								.target-count
-									%span.contenteditable.placeholder-showing{"contenteditable"=>"false", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures"}
+									%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures", "name"=>"target_count","required"=>""}
 							#signature-count
 								{{get_number_of_tweets()}}
 		#user-signature-header.section-header.text-left
@@ -65,8 +77,8 @@
 					Be the first to deliver your message.
 			.bottom-margin#more-tweets-button-wrapper
 				%button.btn.btn-primary#more-tweets-button{"ng-hide"=>"tweets.items.length >= tweets.total", "ng-click"=>"show_more_tweets_click()"}
-					%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text"}
+					%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text", "name"=>"delivery_more_tweets_button_text","required"=>""}
 	.client-logo-wrapper
 		.client-logo.text-center#client-logo-bottom{:style=>"height: 50px", "image-upload-overlay"=>"", "title"=>"Add Footer Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"footer_image_full", "is-admin"=>"is_admin"}
 			#footer-image{"ng-style" => "footer_image_styling()"}
-			.disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Disclaimer Text", "name"=>"disclaimer_text","required"=>""}
+			.disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Disclaimer Text", "name"=>"disclaimer_text"}

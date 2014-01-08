@@ -40,7 +40,7 @@
 									
 								%div{:style=>"margin: 20px;"}		
 									%div{"ng-include"=>"", "src"=>"content_template_urls()"}
-								%div.text-right{:style => "margin-right: 20px;"}
+								%div.text-right{:style => "margin-right: 20px;", "ng-show"=>"show_next_button()"}
 									%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked(petition_setup)", :style=>"width: 100px"}
 										Next!
 				.col-md-3.no-gutter{"size-column"=>""}
@@ -60,7 +60,7 @@
 					%div{:style=>"border-left: solid 1px white;"}
 						%div{:style=>"background: #FF9900; color: white; border-bottom: solid 1px #ccc; height: 80px;"}
 							.text-center{:style=>"font-size: 32px; line-height: 80px;"}
-								DRAFT
+								{{petition.status || 'Draft'}}
 						%div#side-bar
 							%div{"ng-include"=>"", "src"=>"sidebar_template_urls()"}
 

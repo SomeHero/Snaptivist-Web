@@ -1,9 +1,15 @@
-.panel
-	%h4 {{ petition.name }}
-	.row.clearfix
-		.col-md-6
-			%a{"ng-href"=>"{{petition_url()}}"}
-				{{petition_url()}}
-		.col-md-6
-			%a{"ng-href"=>"{{petition.shorturl}}"}
-				{{petition.short_url}}
+.panel{:style=>"padding: 50px 40px"}
+	%p
+		Awesome. You completed your petition.  Now you need to publish it to the web.  If you are not ready to publish quite yet, just click the 'Just Save It' button for now and you can publish it later. >>
+
+	.row
+		.col-md-8.col-md-offset-2
+			.row
+				.col-md-6
+					%button.btn.btn-primary.btn-lg{"ng-click"=>"publish_clicked()"}
+						I'm Ready to Publish
+				.col-md-6
+					%button.btn-link{"ng-click"=>"save_clicked()"}
+						Just Save It
+					
+

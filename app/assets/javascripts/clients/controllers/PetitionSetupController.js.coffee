@@ -18,6 +18,7 @@
 		theme: null
 		step: 1
 		pages_list: []
+		show_spinner: true
 	}
 
 	$scope.update_petition_pages = () ->
@@ -89,22 +90,33 @@
 	else
 		$scope.settings.step = 1
 
+	$scope.publish_clicked = () ->
+		console.log "publish clicked"
+
+		$scope.petition.status = "Published"
+		$scope.submit_petition()
+
 	$scope.save_clicked = () ->
 		console.log "save clicked"
+
+		$scope.submit_petition()
 
 	$scope.cancel_clicked = () ->
 		console.log "cancel clicked"
 
 		Util.navigate('petitions')
 
-	$scope.publish_clicked = () ->
-		console.log "publish clicked"
-
 	$scope.highlight_step = (step) ->
 		if step == $scope.settings.step
 			return {
 				'color':  '#eae874'
 			}
+
+	$scope.show_next_button = () ->
+		if $scope.settings.step == 6
+			return false
+
+		return true
 
 	$scope.content_template_urls = () ->
 		if $scope.settings.step == 6
@@ -136,58 +148,106 @@
 
 	$scope.items = ['item1', 'item2', 'item3'];
 
+	errorMessages =
+		petition_name: ->
+			required = "You must specify a name for your petition."
+			required: required
+		subdomain: ->
+			required = "You must specify a subdomain for your petition"
+			pattern = "The subdomain cannot contain special characters"
+			required: required
+			pattern: pattern
+		headline_primary: ->
+			required = "You must specify the text for the 'Signature Headline'."
+			required: required
+		headline_secondary: ->
+			required = "You must specify the text for the 'Signature Headline (Secondary)'."
+			required: required
+		sign_with_facebook_cta_button_text: ->
+			required = "You must specify the text for the 'Sign with Facebook' button."
+			required: required
+		sign_with_email_cta_button_text: ->
+			required = "You must specify the text for the 'Sign with Email Address' button."
+			required: required
+		target_count: ->
+			required = "You must specify the target number of signatures your petition is attempting to collect."
+			required: required
+		summary: ->
+			required = "You must specify the text for 'Petition Summary'."
+			required: required
+		signature_more_signers_button_text: ->
+			required = "You must specify the text for the 'More Signers' button."
+			required: required
+		delivery_headline_primary: ->
+			required = "You must specify the delivery headline for your petition."
+			required: required
+		delivery_headline_secondary: ->
+			required = "You must specify the delivery secondary headline for your petition."
+			required: required
+		delivery_summary: ->
+			required = "You must specify the text for 'Delivery Summary'."
+			required: required
+		delivery_call_to_action_text: ->
+			required = "You must specify the delivery call to action text."
+			required: required
+		default_tweet_text: ->
+			required = "You must specify the default tweet message for your petition."
+			required: required
+		delivery_call_to_action_button_text: ->
+			required = "You must specify the delivery call to action button text for your petition."
+			required: required
+		delivery_skip_button_text: ->
+			required = "You must specify the delivery skip button text for your petition."
+			required: required
+		delivery_more_tweets_button_text: ->
+			required = "You must specify the delivery more tweets button text for your petition."
+			required: required
+		premium_headline_primary: ->
+			required = "You must specify the premium headline text for your petition."
+			required: required
+		premium_headline_secondary: ->
+			required = "You must specify the premium headline secondary for your petition."
+			required: required
+		premium_summary: ->
+			required = "You must specify the premium summary for your petition."
+			required: required
+		premium_call_to_action_button_text: ->
+			required = "You must specify the premium call to action button text for your petition."
+			required: required
+		donation_page_url: ->
+			required = "You must set the Donation Redirect URL for your petition"
+			required: required
+
 	$scope.next_step_clicked = (form) ->
 		console.log("next clicked")
 
 		if form.$valid && validate_step($scope.settings.step)
 
-			if $scope.settings.step == 5
-				$scope.petition.layout_id = $scope.settings.layout.id
-				$scope.petition.theme_id = $scope.settings.theme.id
-
-				delete $scope.petition["layout"]
-				delete $scope.petition["theme"]
-				delete $scope.petition["pages"]
-				delete $scope.petition["signature_image_full_url"]
-				delete $scope.petition["delivery_image_full_url"]
-				delete $scope.petition["premium_image_full_url"]
-				delete $scope.petition["header_image_full_url"]
-				delete $scope.petition["footer_image_full_url"]
-
-				$scope.submit_petition()
-			else
-				$scope.settings.step = parseInt($scope.settings.step) + 1
+			$scope.settings.step = parseInt($scope.settings.step) + 1
 					
-				$location.hash($scope.settings.step)
+			$location.hash($scope.settings.step)
+
 		else
+
 			errors = []
 
-			if $scope.settings.step == 1
-				if form.petition_name.$error['required']
-					errors.push("You must specify a name for your petition.")
-				if form.subdomain.$error['required']
-					errors.push("You must specify a subdomain fom your petition.")
-			else if $scope.settings.step == 2
+			for validations of form.$error
+				  count = 0
+				  while count < form.$error[validations].length
+				  	error_message = errorMessages[form.$error[validations][count].$name]()[validations]
+				  	if errors.indexOf(error_message) < 0
+				    	errors.push error_message
+				    count++
+
+			if $scope.settings.step == 2
 				errors.push("You must select a layout for your petition from the layouts on the right.")
 			else if $scope.settings.step == 3
 				errors.push("You must select a theme for your petition from the themes on the right.")
 			else if $scope.settings.step == 4
 				if $scope.settings.pages_list.length == 0
 					errors.push("You must add atleast 1 page to your petition. Select a page to add from the list of pages on the right.")
-				else 
-					if form.headline_primary.$error['required']
-						errors.push("You must specify the text for the 'Petition Headline'.")
-					if form.sign_with_facebook_cta_button_text.$error['required']
-						errors.push("You must specify the text for the 'Sign with Facebook' button.")
-					if form.sign_with_email_cta_button_text.$error['required']
-						errors.push("You must specify the text for the 'Sign with Email Address' button.")
-					if form.target_count.$error['required']
-						errors.push("You must specify the target number of signatures your petition is attempting to collect.")
-					if form.summary.$error['required']
-						errors.push("You must specify the summary text for your petition.")
-					if form.signature_more_signers_button_text.$error['required']
-						errors.push("You must specify the text for the 'More Signers' button.")
-				
+				else
+
 			modalInstance = $modal.open(
 			    templateUrl: 'clients/partials/modal_template'
 			    controller: ModalInstanceController
@@ -222,24 +282,39 @@
 
 	$scope.submit_petition = () ->
 
+		$scope.loading.show_spinner = true
+
+		delete $scope.petition["layout"]
+		delete $scope.petition["theme"]
+		delete $scope.petition["pages"]
+		delete $scope.petition["signature_image_full_url"]
+		delete $scope.petition["delivery_image_full_url"]
+		delete $scope.petition["premium_image_full_url"]
+		delete $scope.petition["header_image_full_url"]
+		delete $scope.petition["footer_image_full_url"]
+		delete $scope.petition["share_count"]
+		delete $scope.petition["delivery_count"]
+		delete $scope.petition["premium_count"]
+
 		if $scope.petition.id
 			console.log "update petition"
 			PetitionServices.update($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.premium_image).success (response) ->
 				console.log "petition update success"
 
+				$scope.loading.show_spinner = false
+
 				Util.navigate('petitions')
 
 			.error ->
 				console.log "petition update failed"
+
+				$scope.loading.show_spinner = false
+
 		else
 			PetitionServices.create($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.premium_image).success (response) ->
 				console.log "petition created"
 
-				Util.navigate('petitions')
-
-			.error ->
-				console.log "create petition failed".success (response) ->
-				console.log "petition created"
+				$scope.loading.show_spinner = false
 
 				Util.navigate('petitions')
 
@@ -255,6 +330,8 @@
 		else
 			return 0
 
+	$scope.has_header_image = ->
+		true
 	$scope.header_image_styling = ->
 		if $scope.header_image_full_url
 			{
@@ -268,6 +345,9 @@
 				'background-repeat': 'no-repeat'
 				'background-position': '50% 50%'
 			}
+	$scope.has_footer_image = ->
+		true
+
 	$scope.footer_image_styling = ->
 		if $scope.header_image_full_url
 			{
@@ -298,7 +378,9 @@
 			'background-image': 'url(' + $scope.premium_image_url + ')'
 		}
 	$scope.petition_url = () ->
-		$location.protocol() + "://" + $location.host() + "/petitions/" + $scope.petition.id
+		port = $location.port
+
+		$location.protocol() + "://" + $location.host() + (port ? ":" + port : "") + "/petitions/" + $scope.petition.id
 
 	$scope.set_layout = (layout) ->
 		$scope.settings.layout = layout

@@ -42,6 +42,7 @@ attributes :id,
   :image_medium_url,
   :image_full_url,
   :disclaimer_text,
+  :status,
   :created_at,
   :updated_at
 
@@ -83,13 +84,13 @@ attributes :id,
       :description
     end
   end
-  child :layout do
+  child :layout => :layout do
     attributes :id, 
       :name, 
       :url_fragment,
       :description  
   end
-  child :theme do
+  child :theme => :theme do
     attributes :id, 
       :name, 
       :description,

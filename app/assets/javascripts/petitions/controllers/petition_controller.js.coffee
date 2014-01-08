@@ -98,12 +98,19 @@
 
   window.scope = $scope
 
+  $scope.has_header_image = ->
+    return $scope.petition.header_image_full_url
+
   $scope.header_image_styling = ->
     {
       'background-image': 'url(' + $scope.petition.header_image_full_url + ')'
       'background-repeat': 'no-repeat'
       'background-position': '50% 50%'
     }
+
+  $scope.has_footer_image = ->
+    return $scope.petition.footer_image_full_url
+
   $scope.footer_image_styling = ->
     {
       'background-image': 'url(' + $scope.petition.footer_image_full_url + ')'

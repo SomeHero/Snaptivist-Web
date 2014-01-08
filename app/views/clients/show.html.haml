@@ -2,4 +2,7 @@
 #content.col-md-10.no-gutter{"size-column"=>""}
 	%ng-view
 = angular_templates 'clients'
+= angular_templates 'client_views'
 = angular_templates 'clients/partials'
+
+%div{"loading-screen" => "loading.show_spinner"}
