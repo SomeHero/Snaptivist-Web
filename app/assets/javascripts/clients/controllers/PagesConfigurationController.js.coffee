@@ -6,5 +6,9 @@
 	$scope.add_page = (page) ->
 		page.expanded = true
 		$scope.settings.pages_list.push(page)
-		$scope.update_petition_pages()
+		
+		$scope.petition.petition_pages_attributes.push({
+          page_id: page.id,
+          position: $scope.petition.petition_pages_attributes.length + 1
+        });
 

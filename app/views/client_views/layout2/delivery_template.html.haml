@@ -26,7 +26,7 @@
 												#message-counter.text-right {{115 - get_tweet_message_length()}}
 									.form-group
 										.col-md-12
-											%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+											%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(tweet_form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
 												%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "name"=>"delivery_call_to_action_button_text", "required"=>""}
 									.form-group
 										.col-md-12

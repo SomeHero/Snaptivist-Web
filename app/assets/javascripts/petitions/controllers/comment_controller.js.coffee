@@ -68,8 +68,8 @@
 
 		i = 0
 
-		while i < response.result.signatures.length
-			$scope.comments.items.push response.result.signatures[i]
+		while i < response.results.length
+			$scope.comments.items.push response.results[i]
 			i++	
 
 		$scope.comments.total = response.result.total

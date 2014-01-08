@@ -284,6 +284,9 @@
 
 		$scope.loading.show_spinner = true
 
+		$scope.petition.layout_id = $scope.settings.layout.id
+		$scope.petition.theme_id = $scope.settings.theme.id
+
 		delete $scope.petition["layout"]
 		delete $scope.petition["theme"]
 		delete $scope.petition["pages"]
