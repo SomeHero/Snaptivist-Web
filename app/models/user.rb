@@ -40,6 +40,17 @@ class User < ActiveRecord::Base
   #     save
   #   end
   # end
+#validates :username, presence: false
+validates :username, uniqueness: true, if: -> { self.username.present? }
+
+def email_required?
+  false
+end
+
+def email_changed?
+  false
+end
+
 def display_name
   self.organization_name
 end
