@@ -22,7 +22,8 @@ class OauthController < ApplicationController
 	jsonObject = JSON.parse response.body
 	access_token = jsonObject['access_token']
 
-	client.nation_builder_crm_authentication = NationBuilderCrmAuthentication.create!(
+	NationBuilderCrmAuthentication.create!(
+		client: client,
 		nation_name: session['nation_name'],
 		client_app_id: session['client_app_id'],
 		client_secret: session['client_secret'],
