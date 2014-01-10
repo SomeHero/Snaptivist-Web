@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110152259) do
+ActiveRecord::Schema.define(:version => 20140110155450) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -497,7 +497,7 @@ ActiveRecord::Schema.define(:version => 20140110152259) do
   add_index "user_notification_logs", ["user_id"], :name => "index_user_notification_logs_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                            :default => "", :null => false
+    t.string   "email"
     t.string   "encrypted_password",               :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
