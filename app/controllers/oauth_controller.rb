@@ -9,6 +9,8 @@ class OauthController < ApplicationController
 
   	client = Client.find(session["client_id"])
 
+  	raise "Invalid client" unless client
+
   	params = {
   		'client_id' => session['client_app_id'],
 		'redirect_uri' => session['redirect_uri'],
