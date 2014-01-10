@@ -24,7 +24,7 @@ class OauthController < ApplicationController
 	jsonObject = JSON.parse response.body
 	access_token = jsonObject['access_token']
 
-	NationBuilderCrmAuthentication.create!(
+	client.nation_builder_crm_authentication = NationBuilderCrmAuthentication.new(
 		client: client,
 		nation_name: session['nation_name'],
 		client_app_id: session['client_app_id'],
@@ -32,6 +32,8 @@ class OauthController < ApplicationController
 		access_token: access_token,
 		redirect_uri: session['redirect_uri']
 	)
+
+	client.save!
 	
 	return render 'oauth_popup_close', :layout => false 
 
