@@ -5,7 +5,7 @@ module CrmWebHook
   
   class NationBuilderCrmWebHook
   	
-  	def create_or_update_user(payload)
+  	def create_or_update_user(payload, client)
   		Rails.logger.debug "Processing Nation Builder User Created Web Hook"
       
   		external_user = payload.signup
@@ -34,10 +34,12 @@ module CrmWebHook
 			user.save
   		end
 
+  		client.supporters << user
+
   		REDIS.set("user-" + user.id.to_s, external_user)
   	end
 
-  	def create_or_update_donation(payload)
+  	def create_or_update_donation(payload, client)
   		Rails.logger.debug "Processing Nation Builder Donation Success Web Hook"
 
   		external_donation = payload.donation
