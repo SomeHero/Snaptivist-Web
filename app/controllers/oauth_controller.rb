@@ -17,11 +17,13 @@ class OauthController < ApplicationController
 		'code'=>request.params[:code]
 	}
 
-	response = Net::HTTP.post_form(URI.parse('https://rva.nationbuilder.com/oauth/token'), params)
+	response = Net::HTTP.post_form(URI.parse('https://' + session['nation_name'] + '.nationbuilder.com/oauth/token'), params)
 
 	jsonObject = JSON.parse response.body
 	access_token = jsonObject['access_token']
 
+	binding.pry
+	
 	client.nation_builder_crm_authentication = NationBuilderCrmAuthentication.create!(
 		nation_name: session['nation_name'],
 		client_app_id: session['client_app_id'],

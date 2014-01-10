@@ -109,7 +109,7 @@ class API < Grape::API
 
       session['nation_name'] = params[:nation_name]
       session['client_app_id'] = params[:client_uid]
-      session['client_secret'] = params[:client_services]
+      session['client_secret'] = params[:client_secret]
       session['redirect_uri'] = params[:redirect_uri]
 
     end
