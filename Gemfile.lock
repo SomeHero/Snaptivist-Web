@@ -418,6 +418,7 @@ DEPENDENCIES
   nationbuilder!
   newrelic_rpm
   nifty-generators
+  omniauth
   omniauth-facebook
   omniauth-twitter
   paperclip

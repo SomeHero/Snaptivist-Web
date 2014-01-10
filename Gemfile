@@ -39,6 +39,7 @@ gem 'jquery-rails'
 
 gem 'simple_form'
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'twitter'
