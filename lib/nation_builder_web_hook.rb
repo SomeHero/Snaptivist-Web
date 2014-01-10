@@ -23,18 +23,18 @@ module CrmWebHook
 				#zip_code: external_user.address.zip,
 				external_id: external_id
 			)
-		else
-			puts external_user.email1
 
+			client.supporters << user
+
+		else
 			user.email = external_user.email1
 			user.first_name = external_user.first_name
 			user.last_name = external_user.last_name
 			#user.zip_code = external_user.address.zip
 
+			#we need to check that the user supports client
 			user.save
   		end
-
-  		client.supporters << user
 
   		REDIS.set("user-" + user.id.to_s, external_user)
   	end
