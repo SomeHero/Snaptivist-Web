@@ -31,7 +31,8 @@ class Client < ActiveRecord::Base
     results = {
       'client_id' => id,
       'name' => name,
-      'email' => email
+      'email' => email,
+  	  'nation_builder' => nation_builder_crm_authentication ? nation_builder_crm_authentication.to_api : nil
     }
 
     Client::IMAGE_SIZES.each do |label, size|

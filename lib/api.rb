@@ -100,6 +100,20 @@ class API < Grape::API
       @petition.save!
     end
 
+	desc "Saves Nation Builder OAuth Credentials for the specified client"
+    post "/:client_id/nation_builder_oauth_credentials" do
+
+      session = env['rack.session']
+
+      client = Client.find(params[:client_id])
+
+      session['nation_name'] = params[:nation_name]
+      session['client_app_id'] = params[:client_uid]
+      session['client_secret'] = params[:client_services]
+      session['redirect_uri'] = params[:redirect_uri]
+
+    end
+
     desc "crm webhook to add or update a user"
     post "/:client_id/webhooks/user" do
       client = Client.find(params[:client_id])

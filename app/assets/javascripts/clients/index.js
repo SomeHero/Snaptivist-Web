@@ -7,6 +7,7 @@
 //= require ../bootstrap-dropdown
 //= require ./angular_init
 //= require_directory ./controllers
+//= require_directory ./controllers/crms
 //= require_directory ./directives
 //= require_directory ./services
 //= require_directory ./factories

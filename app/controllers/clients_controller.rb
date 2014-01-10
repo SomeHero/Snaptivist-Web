@@ -2,12 +2,17 @@ class ClientsController < ApplicationController
   respond_to :json, :html
 
   #caches_action :show, :cache_path => :show_cache_path.to_proc, :expires_in => 10.seconds
-  before_filter :get_client, only: [:show, :login, :confirm]
+  before_filter :get_client, only: [:show, :crm_setup, :login, :confirm]
   before_filter :require_current_client_user!, only: [:show]
 
   layout 'clients'
 
   def show
+    @client_data = @client.to_api
+    @current_client = current_client
+  end
+
+  def crm_setup
     @client_data = @client.to_api
     @current_client = current_client
   end

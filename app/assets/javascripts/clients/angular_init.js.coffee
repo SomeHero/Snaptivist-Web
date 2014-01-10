@@ -9,6 +9,10 @@
     templateUrl: 'clients/petitions'
     controller: PetitionController
     resolve: PetitionController.resolve
+  ).when('/crm_setup',
+    templateUrl: 'clients/partials/crms/crm_list'
+  ).when('/nation_builder',
+    templateUrl: 'clients/partials/crms/nation_builder'
   ).when('/petitions/:petition_id/edit',
     templateUrl: 'clients/petition_setup'
     controller: PetitionSetupController

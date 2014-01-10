@@ -1,0 +1,34 @@
+.row{"ng-controller"=>"NationBuilderController"}
+	.col-md-10.col-md-offset-1
+		%h1 Configure Nation Builder
+	.row
+		.col-md-10.col-md-offset-1
+			.box
+				.box-header
+					%h2
+						%i.icon-user
+						App Settings - Get these from your Nation Builder Account
+				.box-content
+					.row
+						.col-md-3.text-center
+							%img{"src"=>"/assets/nationbuilder-logo.jpg"}
+						.col-md-9
+							%form{"role"=>"form"}
+								.form-group
+									%label{"for"=>"uid"}
+										Nation Name
+									%input.form-control#uid{"type"=>"text", "name"=>"uid", "required"=>"", "placeholder"=>"Enter Your Nation Name", "ng-model"=>"nation_builder.nation_name"}
+								.form-group
+									%label{"for"=>"uid"}
+										Client UID
+									%input.form-control#uid{"type"=>"text", "name"=>"uid", "required"=>"", "placeholder"=>"Enter Your Client UID", "ng-model"=>"nation_builder.client_app_id"}
+								.form-group
+									%label{"for"=>"uid"}
+										Client Secret
+									%input.form-control#uid{"type"=>"text", "name"=>"uid", "required"=>"", "placeholder"=>"Enter Your Client Secret", "ng-model"=>"nation_builder.client_secret"}
+								.form-group
+									%label{"for"=>"uid"}
+										Redirect URI
+									%input.form-control#uid{"type"=>"text", "name"=>"uid", "required"=>"", "placeholder"=>"Enter Your Redirect URI", "ng-model"=>"nation_builder.redirect_uri"}
+								%button.btn.btn-default{"ng-click"=>"authenicate_clicked()"}
+									Authenticate							
