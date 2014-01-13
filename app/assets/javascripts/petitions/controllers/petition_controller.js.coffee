@@ -121,9 +121,11 @@
   $scope.change_page = () ->
     page= $scope.petition.pages[$scope.page_index++]
 
+    $scope.loading.show_spinner = false
+    
     if !page
       return
-      
+
     if page.url_redirect
       Util.navigate_absolute $scope.petition[page.url_redirect_property], "", false
     else
@@ -164,9 +166,6 @@
     $scope.change_page()
 
   $scope.$on 'skipDelivery', ->
-
-    PetitionServices.get_more_petitions().then (petitions) ->
-      console.log "got some other actions"
 
     $scope.change_page()
 

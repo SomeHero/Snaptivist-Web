@@ -301,7 +301,7 @@
 
 		if $scope.petition.id
 			console.log "update petition"
-			PetitionServices.update($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.premium_image).success (response) ->
+			PetitionServices.update($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.delivery_image, $scope.premium_image).success (response) ->
 				console.log "petition update success"
 
 				$scope.loading.show_spinner = false
@@ -314,7 +314,7 @@
 				$scope.loading.show_spinner = false
 
 		else
-			PetitionServices.create($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.premium_image).success (response) ->
+			PetitionServices.create($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.delivery_image, $scope.premium_image).success (response) ->
 				console.log "petition created"
 
 				$scope.loading.show_spinner = false

@@ -16,7 +16,7 @@
 
     deferred.promise
 
-  create: (client_id, petition, header_image, footer_image, signature_image, premium_image) ->
+  create: (client_id, petition, header_image, footer_image, signature_image, delivery_image, premium_image) ->
 
     data = {}
     data = $.extend true, data, { 'petition': petition }
@@ -37,6 +37,11 @@
       files.push({
         name: 'image'
         file: signature_image
+      })
+    if delivery_image
+      files.push({
+        name: 'delivery_image'
+        file: delivery_image
       })
     if premium_image
       files.push({
@@ -67,7 +72,7 @@
 
     })
 
-  update: (client_id, petition, header_image, footer_image, signature_image, premium_image) ->
+  update: (client_id, petition, header_image, footer_image, signature_image, delivery_image, premium_image) ->
 
     data = {}
     data = $.extend true, data, { 'petition': petition }
@@ -88,6 +93,11 @@
       files.push({
         name: 'image'
         file: signature_image
+      })
+    if delivery_image
+      files.push({
+        name: 'delivery_image'
+        file: delivery_image
       })
     if premium_image
       files.push({

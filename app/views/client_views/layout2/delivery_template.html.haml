@@ -1,4 +1,4 @@
-.container.text-center{:style=>"width: auto"}
+.container.text-center{:style=>"width: auto;", "ng-controller"=>"DeliveryController"}
 	.client-logo-wrapper{"ng-show"=>"has_header_image()"}
 		.client-logo{:style=>"height: 100px", "image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"header_image_full", "is-admin"=>"is_admin"}
 			#header-image{"ng-style" => "header_image_styling()"}
@@ -12,9 +12,10 @@
 					.col-md-12
 						%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Sub-Headline", "name"=>"delivery_sub_headline"}
 				.row
-					.col-md-6.top-content-wrapper
-						%div#petition-image{"ng-style" => "signature_image_styling()"}
-					.col-md-6.top-content-wrapper
+					.col-md-6.top-content-wrapper{"ng-show"=>"has_delivery_image()"}
+						%div{"image-upload-overlay"=>"", "title"=>"Add Delivery Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"delivery_image", "is-admin"=>"is_admin"}
+							%div#petition-image{"ng-style" => "delivery_image_styling()"}
+					.top-content-wrapper{"ng-class"=>"set_content_width()"}
 						%div.delivery-form-container
 							%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"", "ng-model" => "petition.delivery_call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline", "name"=>"delivery_call_to_action_text", "required"=>""}
 							%div{"ng-switch"=>"disable_forms"}

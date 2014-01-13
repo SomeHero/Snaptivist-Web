@@ -4,12 +4,12 @@
 			#header-image{"ng-style" => "header_image_styling()"}
 	#petition-container
 		#premium-headline.section-header.text-center
-			%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "name"=>"premium_headline_primary"=>"true", "required"=>""}
+			%h2.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Headline", "name"=>"premium_headline_primary", "required"=>""}
 			%h5.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline", "name"=>"premium_headline_secondary", "required"=>""}
 		.panel.panel-default.panel-indented
 			.row#petition-subheadline
 				.col-md-12
-					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline","name"=>"premium_subheadline", "required"=>""}
+					%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Premium Sub-Headline","name"=>"premium_subheadline"}
 			.row
 				.col-md-6.top-content-wrapper
 					#petition-image-wrapper{"image-upload-overlay"=>"", "title"=>"Add Premium Image", "notes"=>"Recommended image size: 350x350px", "image-name"=>"premium_image", "is-admin"=>"is_admin"}

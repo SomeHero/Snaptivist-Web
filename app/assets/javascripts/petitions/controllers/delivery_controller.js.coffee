@@ -2,7 +2,7 @@
 
   Util.push_ga_event("Petition", "Load", "Delivery")
    
-  window.scope = $scope
+  window.delivery_scope = $scope
 
   $scope.signature = PetitionFactory.signature
   $scope.tweet = {
@@ -88,14 +88,9 @@
 
     $rootScope.$broadcast('skipDelivery')
         
-  $scope.signature_image_styling = ->
+  $scope.delivery_image_styling = ->
     {
-      'background-image': 'url(' + $scope.petition.image_full_url + ')'
-    }
-
-  $scope.premium_image_styling = ->
-    {
-      'background-image': 'url(' + $scope.petition.premium_image_full_url + ')'
+      'background-image': 'url(' + $scope.petition.delivery_image_full_url + ')'
     }
 
   $scope.get_tweet_message_length = () ->
@@ -103,6 +98,15 @@
       $scope.tweet.message.length
     else
       0
+
+  $scope.set_content_width = () ->
+    if $scope.has_delivery_image()
+      return "col-md-6";
+    else
+      return "col-md-8 col-md-offset-2"
+
+  $scope.has_delivery_image = ->
+    return $scope.petition.delivery_image_full_url && $scope.petition.delivery_image_full_url.length > 0
 
   remove_errors = () ->
     $scope.error_messages.deliver_tweet = ""

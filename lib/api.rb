@@ -54,7 +54,9 @@ class API < Grape::API
       if params[:file_image]
         @petition.signature_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
       end
-
+      if params[:file_delivery_image]
+        @petition.delivery_image = ActionDispatch::Http::UploadedFile.new(params[:file_delivery_image])
+      end
       if params[:file_premium_image]
         @petition.premium_image = ActionDispatch::Http::UploadedFile.new(params[:file_premium_image])
       end
@@ -92,7 +94,9 @@ class API < Grape::API
       if params[:file_image]
         @petition.signature_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
       end
-
+      if params[:file_delivery_image]
+        @petition.delivery_image = ActionDispatch::Http::UploadedFile.new(params[:file_delivery_image])
+      end
       if params[:file_premium_image]
         @petition.premium_image = ActionDispatch::Http::UploadedFile.new(params[:file_premium_image])
       end
