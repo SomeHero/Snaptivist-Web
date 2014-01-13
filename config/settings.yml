@@ -255,11 +255,11 @@ staging:
   twilio_number: 2028038459
 
 production:
-  path: snaptivist.org
-  host: snaptivist.org
+  path: snaptivist.com
+  host: snaptivist.com
   protocol: http://
   default_from: admin@snaptivist.com
-  default_from_name: Senator John Cornyn
+  default_from_name: Snaptivist
   skip_hostcheck: false
   help_email: help@snaptivist.com
   allow_mobile: true        
