@@ -36,7 +36,7 @@
 						.form-group
 							%input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address"}
 						.form-group
-							%button.btn.btn-primary
+							%button.btn.btn-primary{"ng-click"=>"premium_submit_clicked(myForm)"}
 								%span.contenteditable.placeholder-showing{"contenteditable"=>"{{is_admin}}", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button", "name"=>"premium_call_to_action_button_text", "required"=>""}
 	.client-logo-wrapper
 		.client-logo.text-center#client-logo-bottom{:style=>"height: 50px", "image-upload-overlay"=>"", "title"=>"Add Footer Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"footer_image_full", "is-admin"=>"is_admin"}

@@ -16,6 +16,11 @@
     'email_address': 'james@somehero.com'
   }
 
+  $scope.premium_image_styling = ->
+    {
+      'background-image': 'url(' + $scope.petition.premium_image_full_url + ')'
+    }
+
   $scope.premium_submit_clicked = (form) ->
     console.log("premium button clicked")
 
