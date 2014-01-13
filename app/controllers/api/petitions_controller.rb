@@ -116,24 +116,38 @@ class Api::PetitionsController < ApplicationController
 
     @petition = Petition.find(params[:id]); 
     raise "Unable to find petition" unless @petition
-
+    
     registration = params["premium_registration"]
+    email_address = registration["email_address"]
+
     #if !current_user
-    #create a user
-    if !current_user
-      
-      user = User.new do |u|
-        u.first_name = registration["first_name"]
-        u.last_name = registration["last_name"]
-        u.email = registration["email_address"]
-        u.password = "password"
-        u.password_confirmation = "password"
-        u.action_tags = @petition.action_tags
+    #see if there is a user in the database with the same email address
+    #if there is not create a user else use the matching user
+    #if current_user
+    #check to see if the email addresses match
+    #if not create a new user 
+    #else use the current_user
+    if !current_user || (current_user && current_user.email != email_address)
+
+      user = User.find_by_email(email_address)
+
+      if user
+        sign_in user
+      else
+        user = User.new do |u|
+          u.first_name = registration["first_name"]
+          u.last_name = registration["last_name"]
+          u.email = registration["email_address"]
+          u.password = "password"
+          u.password_confirmation = "password"
+          u.action_tags = @petition.action_tags
+        end
+
+        user.save!
+
+        sign_in user
+
       end
-
-      user.save!
-
-      sign_in user
 
     end
 

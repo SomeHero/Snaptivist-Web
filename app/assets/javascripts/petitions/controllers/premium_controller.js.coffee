@@ -5,15 +5,6 @@
   window.scope = $scope
 
   $scope.premium_registration = {
-    'first_name': 'James'
-    'last_name': 'Rhodes'
-    'street_address_1': '424 Roseneath Rd'
-    'street_address_2': ''
-    'city': 'Richmond'
-    'state': 'VA'
-    'zip_code': '23221'
-    'phone_number': '804-387-9693'
-    'email_address': 'james@somehero.com'
   }
 
   $scope.premium_image_styling = ->
