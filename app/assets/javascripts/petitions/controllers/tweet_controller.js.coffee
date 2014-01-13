@@ -27,11 +27,11 @@
 
 		i = 0
 
-		while i < response.result.tweets.length
-  			$scope.tweets.items.push response.result.tweets[i]
+		while i < response.results.length
+  			$scope.tweets.items.push response.results[i]
   			i++	
 
-  		$scope.tweets.total = response.result.total
+  		$scope.tweets.total = response.total
 		
 	error_tweets = (response) ->
 		console.log "Failed GettingTweets"

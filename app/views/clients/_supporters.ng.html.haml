@@ -10,11 +10,6 @@
 						%dd
 							{{supporter.first_name}} {{supporter.last_name}}
 						%dd
-							Address 1
-						%dd
-							Address Line 2
-						%dd
-							City, State Zip Code
-				.col-md-4
-					Acquisition/Engagement
+							{{supporter.email}}
+				
 		%pagination{"total-items"=>"totalItems", "page"=>"currentPage", "on-select-page"=>"change_page(page)"}

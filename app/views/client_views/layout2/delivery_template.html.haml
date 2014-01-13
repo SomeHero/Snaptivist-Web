@@ -1,5 +1,5 @@
 .container.text-center{:style=>"width: auto"}
-	.client-logo-wrapper
+	.client-logo-wrapper{"ng-show"=>"has_header_image()"}
 		.client-logo{:style=>"height: 100px", "image-upload-overlay"=>"", "title"=>"Add Header Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"header_image_full", "is-admin"=>"is_admin"}
 			#header-image{"ng-style" => "header_image_styling()"}
 	#petition-container
@@ -78,7 +78,7 @@
 			.bottom-margin#more-tweets-button-wrapper
 				%button.btn.btn-primary#more-tweets-button{"ng-hide"=>"tweets.items.length >= tweets.total", "ng-click"=>"show_more_tweets_click()"}
 					%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery More Tweets Button Text", "name"=>"delivery_more_tweets_button_text","required"=>""}
-	.client-logo-wrapper
+	.client-logo-wrapper{"ng-show"=>"has_header_image()"}
 		.client-logo.text-center#client-logo-bottom{:style=>"height: 50px", "image-upload-overlay"=>"", "title"=>"Add Footer Image", "notes"=>"Recommended image size: 950x250px", "image-name"=>"footer_image_full", "is-admin"=>"is_admin"}
 			#footer-image{"ng-style" => "footer_image_styling()"}
 			.disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Disclaimer Text", "name"=>"disclaimer_text"}

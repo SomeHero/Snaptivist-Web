@@ -121,6 +121,9 @@
   $scope.change_page = () ->
     page= $scope.petition.pages[$scope.page_index++]
 
+    if !page
+      return
+      
     if page.url_redirect
       Util.navigate_absolute $scope.petition[page.url_redirect_property], "", false
     else
