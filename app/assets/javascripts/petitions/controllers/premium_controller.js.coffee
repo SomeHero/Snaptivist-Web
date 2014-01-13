@@ -32,11 +32,11 @@
       petition_id = $scope.petition.petition_id
 
       PetitionServices.send_premium(petition_id, "", $scope.premium_registration).success (response) ->
-        console.log "send premium complete"
-        
+        $scope.loading.show_spinner = false
+
         Util.push_ga_event("Premium", "Send Premium", "Success")
    
-      $scope.loading.show_spinner = false
+        $rootScope.$broadcast('premiumComplete')
 
     else
       $scope.loading.show_spinner = false

@@ -122,7 +122,7 @@
     page= $scope.petition.pages[$scope.page_index++]
 
     $scope.loading.show_spinner = false
-    
+
     if !page
       return
 
@@ -166,6 +166,11 @@
     $scope.change_page()
 
   $scope.$on 'skipDelivery', ->
+
+    $scope.change_page()
+
+  $scope.$on 'premiumComplete', ->
+    console.log 'premium Complete'
 
     $scope.change_page()
 

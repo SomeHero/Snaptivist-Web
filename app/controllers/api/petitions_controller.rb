@@ -159,6 +159,8 @@ class Api::PetitionsController < ApplicationController
     raise "Error Creating Premium Redemption" if !@premium_redemption.valid?
 
     @premium_redemption.save!
+
+    render_result({ 'petition' => @petition.to_api })
       
   end
 
