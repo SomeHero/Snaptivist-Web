@@ -6,13 +6,13 @@ class ActionsController < InheritedResources::Base
 		subdomain.slice! "www."
 		
 		@petition = Petition.includes(:target).includes(:signatures)
-		.find_by_subdomain(subdomain)
+		.find_by_subdomain(subdomain, :conditions => [ "lower(name) = ?", subdomain.downcase ])
 
 		@phonecampaign = PhoneCampaign.includes(:target).includes(:call_results)
-		.find_by_subdomain(subdomain)
+		.find_by_subdomain(subdomain, :conditions => [ "lower(name) = ?", subdomain.downcase ])
 
 		@poll = Poll.includes(:choices)
-		.find_by_subdomain(subdomain)
+		.find_by_subdomain(subdomain, :conditions => [ "lower(name) = ?", subdomain.downcase ])
 
 		if params[:signature_id]
 			@signature = Signature.find_by_id(params[:signature_id])
