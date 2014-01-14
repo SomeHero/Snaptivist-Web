@@ -248,7 +248,7 @@ class Api::PetitionsController < ApplicationController
 
     sign_in user
 
-    binding.pry
+    #notify via hip chant
     Resque.enqueue(Hipchat, @petition, @signature)
 
     render_result({ 'petition' => @petition.to_api,
