@@ -11,4 +11,7 @@ use Rack::Cors do
   end
 end
 
-run SnaptivistWeb::Application
+require 'resque/server'
+run Rack::URLMap.new \
+  "/"       => SnaptivistWeb::Application,
+  "/resque" => Resque::Server.new

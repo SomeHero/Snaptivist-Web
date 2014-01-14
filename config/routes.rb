@@ -148,7 +148,7 @@ SnaptivistWeb::Application.routes.draw do
   
   # Let's add the root route
   root :to => "home#index"
-
+  match 'eat/:food' => 'eat#food'
 
   # See how all your routes lay out with "rake routes"
 
