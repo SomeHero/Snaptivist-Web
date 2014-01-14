@@ -72,6 +72,7 @@ gem 'awesome_print'
 gem 'nationbuilder', :git => "https://github.com/jrhodes621/nationbuilder"
 gem 'redis'
 gem 'resque'
+gem 'hipchat-api'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

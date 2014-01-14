@@ -116,7 +116,7 @@ class Api::PetitionsController < ApplicationController
 
     @petition = Petition.find(params[:id]); 
     raise "Unable to find petition" unless @petition
-    
+
     registration = params["premium_registration"]
     email_address = registration["email_address"]
 
@@ -247,6 +247,9 @@ class Api::PetitionsController < ApplicationController
     @petition.reload
 
     sign_in user
+
+    binding.pry
+    Resque.enqueue(Hipchat, @petition, @signature)
 
     render_result({ 'petition' => @petition.to_api,
                     'signature' => @signature.to_api})

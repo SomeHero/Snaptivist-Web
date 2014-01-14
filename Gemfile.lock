@@ -159,6 +159,8 @@ GEM
     hashie (2.0.5)
     hashr (0.0.22)
     hike (1.2.3)
+    hipchat-api (1.0.5)
+      httparty
     http (0.5.0)
       http_parser.rb
     http_parser.rb (0.5.3)
@@ -426,6 +428,7 @@ DEPENDENCIES
   guard-rspec
   haml
   hashr
+  hipchat-api
   jquery-rails
   jquery-ui-rails
   json
