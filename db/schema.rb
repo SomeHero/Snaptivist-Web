@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110155450) do
+ActiveRecord::Schema.define(:version => 20140114011315) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -298,7 +298,7 @@ ActiveRecord::Schema.define(:version => 20140110155450) do
     t.datetime "premium_image_updated_at"
     t.string   "name"
     t.string   "donation_page_url"
-    t.string   "delivery_summary"
+    t.text     "delivery_summary"
     t.string   "disclaimer_text"
     t.string   "footer_image_file_name"
     t.string   "footer_image_content_type"
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(:version => 20140110155450) do
     t.string   "signature_image_content_type"
     t.integer  "signature_image_file_size"
     t.datetime "signature_image_updated_at"
-    t.string   "premium_summary"
+    t.text     "premium_summary"
     t.string   "status",                              :default => "Draft"
   end
 
