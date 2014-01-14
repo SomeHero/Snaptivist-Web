@@ -43,7 +43,7 @@
 								%div.text-right{:style => "margin-right: 20px;", "ng-show"=>"show_next_button()"}
 									%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked(petition_setup)", :style=>"width: 100px"}
 										Next!
-				.col-md-3.no-gutter{"size-column"=>""}
+				.col-md-3.no-gutter{:style=>"border-left: solid 1px white;", "size-column"=>""}
 					%ul.nav.action-menu-items
 						%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;", "ng-click"=>"save_clicked()"}
 							%i.glyphicon.glyphicon-save{:style=>"font-size: 30px;"}
@@ -57,11 +57,9 @@
 							%i.glyphicon.glyphicon-ok{:style=>"font-size: 30px;"}
 							.text-center{:style=>"margin-top: 10px"}
 							Publish
-					%div{:style=>"border-left: solid 1px white;"}
+					%div
 						%div{:style=>"background: #FF9900; color: white; border-bottom: solid 1px #ccc; height: 80px;"}
 							.text-center{:style=>"font-size: 32px; line-height: 80px;"}
 								{{petition.status || 'Draft'}}
 						%div#side-bar
 							%div{"ng-include"=>"", "src"=>"sidebar_template_urls()"}
-
-
