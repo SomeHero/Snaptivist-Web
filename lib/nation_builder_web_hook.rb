@@ -8,35 +8,35 @@ module CrmWebHook
   	def create_or_update_user(payload, client)
   		Rails.logger.debug "Processing Nation Builder User Created Web Hook"
       
-  # 		external_user = payload.signup
-  # 		external_id = external_user.nationbuilder_id.to_s
+  		external_user = payload.signup
+  		external_id = external_user.nationbuilder_id.to_s
 
-  # 		user = User.find_by_external_id(external_id)
+  		user = User.find_by_external_id(external_id)
 
-  # 		if !user
-  # 			user = User.create!(
-		# 		email: external_user.email1,
-		# 		password: "password",
-		# 		first_name: external_user.first_name,
-		# 		last_name: external_user.last_name,
-		# 		organization_name: "",
-		# 		#zip_code: external_user.address.zip,
-		# 		external_id: external_id
-		# 	)
+  		if !user
+  			user = User.create!(
+				email: external_user.email1,
+				password: "password",
+				first_name: external_user.first_name,
+				last_name: external_user.last_name,
+				organization_name: "",
+				#zip_code: external_user.address.zip,
+				external_id: external_id
+			)
 
-		# 	client.supporters << user
+			client.supporters << user
 
-		# else
-		# 	user.email = external_user.email1
-		# 	user.first_name = external_user.first_name
-		# 	user.last_name = external_user.last_name
-		# 	#user.zip_code = external_user.address.zip
+		else
+			user.email = external_user.email1
+			user.first_name = external_user.first_name
+			user.last_name = external_user.last_name
+			#user.zip_code = external_user.address.zip
 
-		# 	#we need to check that the user supports client
-		# 	user.save
-  # 		end
+			#we need to check that the user supports client
+			user.save
+  		end
 
-  		#REDIS.set("user-" + user.id.to_s, payload.to_json	)
+  		REDIS.set("user-" + user.id.to_s, payload.to_json	)
   	end
 
   	def create_or_update_donation(payload, client)
