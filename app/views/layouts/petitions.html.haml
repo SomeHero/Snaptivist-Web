@@ -3,8 +3,8 @@
   %head
     %title
       = @petition.headline_primary
-    %meta{"name" => "description", "content" => @petition.summary}
-    %meta{"property" => "og:title", "content" => @petition.headline_primary}
+    %meta{"name" => "description", "content" => strip_tags(@petition.summary)}
+    %meta{"property" => "og:title", "content" => strip_tags(@petition.headline_primary)}
     %meta{"property" => "og:type", "content" => "cause"}
     %meta{"property" => "og:url", "content" => @petition.short_url}
     %meta{"property" => "og:image", "content" => @petition.header_image("square")}
