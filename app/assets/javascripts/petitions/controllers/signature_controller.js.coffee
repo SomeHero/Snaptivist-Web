@@ -77,14 +77,13 @@
           fb_message_obj =
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
-            picture: scope.petition.signature_image_square_url
             link: $scope.petition.short_url
             name: 'Sign the Petition'
             caption: $scope.petition.title,
             description: $scope.petition.summar
 
-          if scope.petition.image_square_url
-            $.extend true, fb_message_obj, { picture: $scope.petition.image_square_url }
+          if $scope.petition.signature_image_square_url
+            $.extend true, fb_message_obj, { picture: $scope.petition.signature_image_square_url }
           else  
             $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
           
