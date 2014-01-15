@@ -11,9 +11,12 @@ attributes :id,
 child :user do
 	attributes :id,
 		:first_name,
-		:last_name,
 		:email,
 		:zip_code
+
+	node :last_name do |user|
+		user.last_name[0,1]
+	end
 end
 
 child :tweet do

@@ -248,7 +248,7 @@ class Api::PetitionsController < ApplicationController
 
     sign_in user
 
-    #notify via hip chant
+    #notify hip chat room
     Resque.enqueue(Hipchat, @petition, @signature)
 
     render_result({ 'petition' => @petition.to_api,
