@@ -10,7 +10,13 @@ attributes :id,
 
 child :user do |user|
 	attributes :id,
-		:first_name,
+	node :first_name do
+		if user && user.first_name
+			user.first_name
+		else
+			"Anonymous"
+		end
+	end
 		:email,
 		:zip_code
 	node :last_name do
