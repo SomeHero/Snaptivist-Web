@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
               #"merge_targetname" => petition.target.title + " " + petition.target.last_name,
               "merge_shorturl" => @petition.short_url,
               "merge_organizationname" => @petition.client.name,
-              "merge_organizationavatar" => @petition.client.avatar("medium"),
+              "merge_organizationavatar" => @petition.client.avatar("medium")
               "merge_disclaimertext" => @petition.disclaimer_text
           })
         end
