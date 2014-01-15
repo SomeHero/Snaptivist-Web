@@ -77,6 +77,7 @@
           fb_message_obj =
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
+            picture: scope.petition.signature_image_square_url
             link: $scope.petition.short_url
             name: 'Sign the Petition'
             caption: $scope.petition.title,
