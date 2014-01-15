@@ -1,9 +1,9 @@
 object false
 
-node :results do 
-	partial('signature', :object => @signatures)
-end
-
 node :total	do
 	@total
+end
+
+node :results do |s|
+	partial('signature', :object => @signatures)
 end

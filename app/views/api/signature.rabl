@@ -8,13 +8,17 @@ attributes :id,
 	:updated_at,
 	:signature_method
 
-child :user do
+child :user do |user|
 	attributes :id,
 		:first_name,
 		:email,
 		:zip_code
-	node :last_name do |user|
-		user.last_name[0,1]
+	node :last_name do
+		if user && user.last_name
+			user.last_name[0,1]
+		else
+			""
+		end
 	end
 
 end

@@ -72,7 +72,7 @@
 			$scope.comments.items.push response.results[i]
 			i++	
 
-		$scope.comments.total = response.total
+		$scope.comments.total = response.result.total
 		
 	error_comments = (response) ->
 		console.log "Failed Getting Comments"
