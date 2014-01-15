@@ -12,7 +12,8 @@ child :user do
 	attributes :id,
 		:first_name,
 		:email,
-		:zip_code
+		:zip_code,
+		:avatar_url
 
 	node :last_name do |user|
 		user.last_name[0,1]

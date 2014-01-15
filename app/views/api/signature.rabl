@@ -11,7 +11,8 @@ attributes :id,
 child :user do |user|
 	attributes :id,
 		:email,
-		:zip_code
+		:zip_code,
+		:avatar_url
 	node :first_name do
 		if user && user.first_name
 			user.first_name
