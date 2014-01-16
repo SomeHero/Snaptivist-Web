@@ -14,7 +14,7 @@ module CrmWebHook
   		user = User.find_by_external_id(external_id)
   		user.raw_data << RawData.new(
   					type: "User",
-  					attribute: "NationBuilder",
+  					source: "NationBuilder",
   					raw_data: payload.to_json
   				)
 
