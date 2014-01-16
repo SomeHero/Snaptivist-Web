@@ -1,7 +1,7 @@
 require 'hipchat-api'
 
 module Hipchat
-  @queue = :food
+  @queue = :hipchat
 
   def self.perform(petition, signature)
     hipchat_api = HipChat::API.new('41115733635e0917d7debfc51848c4')

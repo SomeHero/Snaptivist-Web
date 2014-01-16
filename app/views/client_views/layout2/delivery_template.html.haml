@@ -71,7 +71,7 @@
 									%div.user-name
 										{{tweet.user.first_name}} {{tweet.user.last_name}}
 									%div.tweet-message
-										{{tweet.comment}}
+										{{tweet.message.comment}}
 									%div.comment-timeago{:style=>"margin-top: 8px; font-size: .92em"}
 										Tweeted {{tweet.created_at | fromNow }} 
 				%p.text-left{:style=>"padding: 0px 20px", "ng-hide"=>"tweets.items.length > 0"}

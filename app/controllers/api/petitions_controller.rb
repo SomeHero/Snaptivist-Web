@@ -6,6 +6,8 @@ class Api::PetitionsController < ApplicationController
   after_filter :send_transaction_email, :only => [:sign, :sign_with_facebook]
   after_filter :schedule_donation_reminder_email, :only => [:sign, :sign_with_facebook]
   after_filter :sync_crm, :only => [:sign, :sign_with_facebook, :share]
+  after_filter :process_hip_chat_job,  => [:sign, :sign_with_facebook]
+
   respond_to :json
 
   #the version of the API
@@ -247,9 +249,6 @@ class Api::PetitionsController < ApplicationController
     @petition.reload
 
     sign_in user
-
-    #notify hip chat room
-    Resque.enqueue(Hipchat, @petition, @signature)
 
     render_result({ 'petition' => @petition.to_api,
                     'signature' => @signature.to_api})
@@ -511,6 +510,12 @@ class Api::PetitionsController < ApplicationController
 
   end
 
+
+  #jobs
+  def process_hip_chat_job
+    #notify hip chat room
+    Resque.enqueue(Hipchat, @petition, @signature)
+  end
 
 	# render a result in the appropriate format
   # TODO: move to some base class or something
