@@ -8,7 +8,7 @@ attributes :id,
 	:updated_at,
 	:signature_method
 
-child :user do
+child :user do |user|
 	attributes :id,
 		:email,
 		:zip_code,
