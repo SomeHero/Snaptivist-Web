@@ -1,3 +1,3 @@
 class RawData < ActiveRecord::Base
-  attr_accessible :attribute, :raw_data, :type
+  attr_accessible :source, :raw_data, :type
 end
