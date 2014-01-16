@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_many :signatures, :dependent => :destroy
   has_many :call_results, :dependent => :destroy
 
+  has_many :user_raw_data, :class_name => "UserRawData"
+  has_many :raw_data, through: :user_raw_data, source: :user, :class_name => "RawData"
+  
   has_attached_file :organization_avatar, styles: {
     small: '128x128',
     medium: '256x256',

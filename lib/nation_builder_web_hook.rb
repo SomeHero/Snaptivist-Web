@@ -12,6 +12,7 @@ module CrmWebHook
   		external_id = external_user["nationbuilder_id"].to_s
 
   		user = User.find_by_external_id(external_id)
+  		user.raw_data << payload.to_json
 
   		if !user
   			user = User.create!(
@@ -36,7 +37,7 @@ module CrmWebHook
 			user.save
   		end
 
-  		REDIS.set("user-" + user.id.to_s, payload.to_json)
+  		#REDIS.set("user-" + user.id.to_s, payload.to_json)
   	end
 
   	def create_or_update_donation(payload, client)

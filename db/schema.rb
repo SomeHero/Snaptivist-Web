@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115181300) do
+ActiveRecord::Schema.define(:version => 20140116053138) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -385,6 +385,14 @@ ActiveRecord::Schema.define(:version => 20140115181300) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "raw_data", :force => true do |t|
+    t.string   "type"
+    t.string   "attribute"
+    t.text     "raw_data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "signatures", :force => true do |t|
     t.integer  "user_id"
     t.integer  "petition_id"
@@ -496,6 +504,16 @@ ActiveRecord::Schema.define(:version => 20140115181300) do
   end
 
   add_index "user_notification_logs", ["user_id"], :name => "index_user_notification_logs_on_user_id"
+
+  create_table "user_raw_data", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "raw_data_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "user_raw_data", ["raw_data_id"], :name => "index_user_raw_data_on_raw_data_id"
+  add_index "user_raw_data", ["user_id"], :name => "index_user_raw_data_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
