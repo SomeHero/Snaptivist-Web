@@ -119,10 +119,10 @@ class API < Grape::API
 
     end
 
-    desc "crm webhook to add or update a user"
-    post "/:client_id/webhooks/user" do
-      Resque.enqueue(Nationbuilder, params[:client_id], params[:payload])
-    end
+    # desc "crm webhook to add or update a user"
+    # post "/:client_id/webhooks/user" do
+    #   Resque.enqueue(Nationbuilder, params[:client_id], params[:payload])
+    # end
 
     desc "crm webhook to add or update a donation"
     post "/:client_id/webhooks/donation" do
