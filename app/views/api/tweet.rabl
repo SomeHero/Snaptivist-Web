@@ -10,14 +10,26 @@ attributes :id,
 
 child :user do
 	attributes :id,
-		:first_name,
 		:email,
 		:zip_code,
 		:avatar_url
 
-	node :last_name do |user|
-		user.last_name[0,1]
+	node :first_name do
+		if user && user.first_name
+			user.first_name
+		else
+			"Anonymous"
+		end
 	end
+
+	node :last_name do
+		if user && user.last_name
+			user.last_name[0,1]
+		else
+			""
+		end
+	end
+
 end
 
 child :tweet do
