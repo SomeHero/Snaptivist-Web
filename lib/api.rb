@@ -145,8 +145,8 @@ class API < Grape::API
       end
 
       client = Client.find(params[:client_id])
-      
-      @supporters = client.supporters.limit(page_size).offset(offset)
+      order_column = "last_name"
+      @supporters = client.supporters.order(order_column).limit(page_size).offset(offset)
       @total = client.supporters.count
     end
 
