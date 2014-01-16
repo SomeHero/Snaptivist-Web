@@ -36,7 +36,7 @@ module CrmWebHook
 			user.save
   		end
 
-  		REDIS.set("user-" + user.id.to_s, payload.)
+  		REDIS.set("user-" + user.id.to_s, payload)
   	end
 
   	def create_or_update_donation(payload, client)
