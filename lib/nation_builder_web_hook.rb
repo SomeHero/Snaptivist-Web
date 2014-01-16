@@ -12,11 +12,6 @@ module CrmWebHook
   		external_id = external_user["nationbuilder_id"].to_s
 
   		user = User.find_by_external_id(external_id)
-  		user.raw_data << RawData.new(
-  					type: "User",
-  					source: "NationBuilder",
-  					raw_data: payload.to_json
-  				)
 
   		if !user
   			user = User.create!(
@@ -28,6 +23,11 @@ module CrmWebHook
 				#zip_code: external_user.address.zip,
 				external_id: external_id
 			)
+		  	user.raw_data << RawData.new(
+				type: "User",
+				source: "NationBuilder",
+				raw_data: payload.to_json
+			)
 
 			client.supporters << user
 
@@ -36,7 +36,11 @@ module CrmWebHook
 			user.first_name = external_user["first_name"]
 			user.last_name = external_user["last_name"]
 			#user.zip_code = external_user.address.zip
-
+		  	user.raw_data << RawData.new(
+				type: "User",
+				source: "NationBuilder",
+				raw_data: payload.to_json
+			)
 			#we need to check that the user supports client
 			user.save
   		end
