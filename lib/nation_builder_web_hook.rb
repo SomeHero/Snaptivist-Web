@@ -12,7 +12,11 @@ module CrmWebHook
   		external_id = external_user["nationbuilder_id"].to_s
 
   		user = User.find_by_external_id(external_id)
-  		user.raw_data << payload.to_json
+  		user.raw_data << RawData.new(
+  					type: "User",
+  					attribute: "NationBuilder",
+  					raw_data: payload.to_json
+  				)
 
   		if !user
   			user = User.create!(
