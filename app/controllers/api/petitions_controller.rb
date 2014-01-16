@@ -6,7 +6,7 @@ class Api::PetitionsController < ApplicationController
   after_filter :send_transaction_email, :only => [:sign, :sign_with_facebook]
   after_filter :schedule_donation_reminder_email, :only => [:sign, :sign_with_facebook]
   after_filter :sync_crm, :only => [:sign, :sign_with_facebook, :share]
-  after_filter :process_hip_chat_job,  => [:sign, :sign_with_facebook]
+  after_filter :process_hip_chat_job, :only  => [:sign, :sign_with_facebook]
 
   respond_to :json
 
