@@ -1,5 +1,5 @@
 module Nationbuilder
-  @queue = :food
+  @queue = :crm
 
   def self.perform(client_id, payload)
       client = Client.find(client_id)
