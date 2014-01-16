@@ -14,7 +14,7 @@ module CrmWebHook
   		user = User.find_by_external_id(external_id)
 
   		if !user
-  			user = User.create!(
+  			user = User.new(
 				email: external_user["email1"],
 				password: "password",
 				first_name: external_user["first_name"],
@@ -42,8 +42,9 @@ module CrmWebHook
 				raw_data: payload.to_json
 			)
 			#we need to check that the user supports client
-			user.save
-  		end
+		end
+
+		user.save
 
   		#REDIS.set("user-" + user.id.to_s, payload.to_json)
   	end
