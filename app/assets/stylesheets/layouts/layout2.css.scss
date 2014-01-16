@@ -361,6 +361,23 @@
 					font-weight: 300;
 				}
 			}
+			.tweet-comment {
+				padding: 20px 4% 10% 0;
+				.user-name {
+					font-size: 1.5em; 
+					line-height: 1.0em;
+					font-weight: 800;
+					color: #27aae1;
+				}
+				.location {
+					font-size: 1.2em;
+					font-weight: 300;
+				}
+				.comment-timeago {
+					font-size: 1.2em;
+					font-weight: 300;
+				}
+			}
 			
 		}
 		#more-signers-button-wrapper {
