@@ -17,7 +17,6 @@ index do
 
 	form :html => { :enctype => "multipart/form-data" } do |f|
 		f.inputs "Details" do
-		f.input :user, :collection => User.where("organization_name is not null")
 		f.input :question
 		f.input :subdomain
 		f.input :header_image, :as => :file, :hint => f.template.image_tag(f.object.header_image.url(:medium))
