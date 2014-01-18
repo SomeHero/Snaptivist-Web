@@ -1,4 +1,5 @@
 ActiveAdmin.register PhoneCampaign do
+    config.filters = false
     index do
 		selectable_column
 		column :id

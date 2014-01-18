@@ -1,4 +1,5 @@
 ActiveAdmin.register Layout do
+  config.filters = false
   menu :parent => "Settings"
 
   form :html => { :enctype => "multipart/form-data" } do |f|

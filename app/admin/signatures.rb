@@ -1,4 +1,5 @@
 ActiveAdmin.register Signature do
+     config.filters = false
      menu :parent => "Petitions"
 
      csv do

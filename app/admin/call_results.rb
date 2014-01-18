@@ -1,3 +1,4 @@
 ActiveAdmin.register CallResult do
-     menu :parent => "Phone Campaigns"
+    config.filters = false
+    menu :parent => "Phone Campaigns"
 end

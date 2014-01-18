@@ -1,4 +1,6 @@
 ActiveAdmin.register Client do
+	config.filters = false
+	
   	form :html => { :enctype => "multipart/form-data" } do |f|
 		f.inputs "Details" do
 			f.input :user
