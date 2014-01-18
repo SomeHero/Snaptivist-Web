@@ -1,6 +1,6 @@
 	ActiveAdmin.register Petition do
   	config.filters = false
-  	
+
   	index do
 		selectable_column
 		column :id
@@ -20,7 +20,6 @@
 			f.input :client
 			f.input :layout, :collection => Layout.all
 			f.input :theme, :collection => Theme.all
-			f.input :user, :collection => User.where("organization_name is not null")
 			f.input :target, :collection => Target.order("targetgroup_id").order("last_name").order("first_name").all
 			f.input :subdomain
 			f.input :target_count
