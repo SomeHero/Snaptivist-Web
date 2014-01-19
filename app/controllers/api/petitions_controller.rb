@@ -1,12 +1,12 @@
 require 'koala'
 require 'nation_builder_crm_notifier.rb'
+require 'jobs/signature_email_processor.rb'
+require 'jobs/hipchat.rb'
+require 'jobs/sync_crm.rb'
 
 class Api::PetitionsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :share, :sign_another]
-  after_filter :send_transaction_email, :only => [:sign, :sign_with_facebook]
-  after_filter :schedule_donation_reminder_email, :only => [:sign, :sign_with_facebook]
-  after_filter :sync_crm, :only => [:sign, :sign_with_facebook, :share]
-  after_filter :process_hip_chat_job, :only  => [:sign, :sign_with_facebook]
+  after_filter :queue_new_signature_jobs, :only => [:sign, :sign_with_facebook]
 
   respond_to :json
 
@@ -512,9 +512,13 @@ class Api::PetitionsController < ApplicationController
 
 
   #jobs
-  def process_hip_chat_job
-    #notify hip chat room
-    Resque.enqueue(Hipchat, @petition, @signature)
+  def queue_new_signature_jobs
+    #Send Emails
+    Resque.enqueue(SignatureEmailProcessor, @petition.id, @signature.id)
+    #Sync CRM
+    Resque.enqueue(SyncCrm, @petition.client.id, @signature.user.id)
+    #Post to Hipchat
+    Resque.enqueue(Hipchat, @petition.id, @signature.user.id)
   end
 
 	# render a result in the appropriate format
