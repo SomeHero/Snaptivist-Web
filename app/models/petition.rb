@@ -142,6 +142,13 @@ class Petition < ActiveRecord::Base
       premium_image("full")
     end
 
+    def open_graph_image
+      if signature_image.exists?
+        signature_image("square")
+      else
+        client.avatar("square")
+      end
+    end
      # generate the petition
     def to_api
 

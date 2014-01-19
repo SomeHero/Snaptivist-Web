@@ -7,7 +7,7 @@
     %meta{"property" => "og:title", "content" => strip_tags(@petition.headline_primary)}
     %meta{"property" => "og:type", "content" => "cause"}
     %meta{"property" => "og:url", "content" => @petition.short_url}
-    %meta{"property" => "og:image", "content" => @petition.signature_image("square")}
+    %meta{"property" => "og:image", "content" => @petition.open_graph_image}
     %meta{"property" => "og:site_name", "content" => "www.snaptivist.com"}
     %meta{"property" => "og:locale", "content" => "en_US"}
 
