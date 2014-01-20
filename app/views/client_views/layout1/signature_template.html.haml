@@ -88,11 +88,11 @@
           {{ get_percentage_signed(petition.signature_count, petition.target_count) }}
           \%
     .row
-      .col-md-6.action-count{:style => "text-align: left; padding-left: 22px;"}
+      .col-md-6.col-sm-6.col-xs-6.action-count{:style => "text-align: left; padding-left: 22px;"}
         Signers:
         %span#signature_count
           {{petition.signature_count}}
-      .col-md-6.action-count{:style => "text-align: right; padding-right: 44px"}
+      .col-md-6.col-sm-6.col-xs-6.action-count{:style => "text-align: right; padding-right: 44px"}
         Goal: 
         %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures","name"=>"target_count", "required"=>""}
   #comment-container.comment-wrapper{:style => "margin-bottom: 40px;", "ng-controller" => "CommentController"}
