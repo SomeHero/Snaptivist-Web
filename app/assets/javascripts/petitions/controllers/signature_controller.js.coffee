@@ -78,9 +78,9 @@
             method: 'feed'
             redirect_uri: 'YOUR URL HERE'
             link: $scope.petition.short_url
-            name: 'Sign the Petition'
+            name: 'Add Your Voice'
             caption: $scope.petition.title,
-            description: $scope.petition.summar
+            description: $scope.petition.summary
 
           if $scope.petition.signature_image_square_url
             $.extend true, fb_message_obj, { picture: $scope.petition.signature_image_square_url }
