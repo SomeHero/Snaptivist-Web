@@ -42,12 +42,6 @@
               .col-md-12
                 %button#sign-petition-user-name.button.action-button{:style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
                   %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_email_cta_button_text", "required"=>""}
-                .controls{:style => "padding: 0px 20px"}
-                  %label.checkbox{:style => "text-align: left"}
-                    %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}
-                      %div#copy-opt-in
-                        Update me on the results of this campaign and others from
-                        %b {{petition.creator.organization_name}}
 
           %div{"ng-switch-when"=>"true"}
             .form-group.row
