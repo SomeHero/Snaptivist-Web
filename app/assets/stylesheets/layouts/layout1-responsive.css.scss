@@ -2,6 +2,9 @@
 /*This creates the responsive design*/
 @media only screen and (max-width:959px) {
   /*@import 'size/mobile';*/
+}
+@media only screen and (max-width:449px) {
+  /*@import 'size/portrait';*/
 	  #action-container {
 	  	#header-image {
 	  		height: 88px;
@@ -17,4 +20,26 @@
 			font-size: 20px;
 		}
 	}
+}
+@media only screen and (min-width:450px) and (max-width:959px) {
+  /*@import 'size/landscape';*/
+	  #action-container {
+	  	#header-image {
+	  		height: 88px;
+	  		width: auto;
+			max-width: 450px;
+		}
+		#sign-with-fb-button {
+			white-space: nowrap;
+			font-size: 20px;
+		}
+		#deliver-signature {
+			white-space: nowrap;
+			font-size: 20px;
+		}
+	}
+}
+
+@media only screen and (min-width:960px) {
+
 }
