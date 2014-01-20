@@ -1,5 +1,6 @@
 #action-container {
     position:relative;
+    padding: 0px 10px;
     body {
     	height: 100%;
     	font-family: 'Lato', sans-serif;
@@ -145,7 +146,6 @@
     #action-wrapper {
         max-width: 620px;
         margin: 0px auto;
-        padding: 0px 10px;
     }
     #sign-petition-signature {
       max-width: 528px; 
