@@ -72,6 +72,8 @@
     #see-more-container{"ng-hide"=>"tweets.items.length >= tweets.total"}
       %button#see-more-button.button.action-button.green{:style => "width: 100%", "ng-click" => "show_more_signatures_click()"}
         %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.delivery_more_tweets_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Tweets Button Text"}
+  #disclaimer-text
+    .disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Disclaimer Text", "name"=>"disclaimer_text"}
   #powered-by-wrapper
     %a#powered-by-container.row.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
       = image_tag "powered_by.png"

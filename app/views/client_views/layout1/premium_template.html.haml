@@ -53,6 +53,8 @@
           %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button"}
 
   %div{"loading-screen" => "loading.show_spinner"}
+#disclaimer-text
+  .disclaimer.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.disclaimer_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Disclaimer Text", "name"=>"disclaimer_text"}
 #powered-by-wrapper
   %a#powered-by-container.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
     = image_tag "powered_by.png"
