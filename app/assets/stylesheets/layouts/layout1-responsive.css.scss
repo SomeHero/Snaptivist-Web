@@ -19,6 +19,15 @@
 			white-space: nowrap;
 			font-size: 20px;
 		}
+		#comment-container {
+			.comment {
+				margin-bottom: 5px;
+				.avatar {
+					width: 90px;
+					height: 90px;
+				}
+			}
+		}
 	}
 }
 @media only screen and (min-width:450px) and (max-width:959px) {
@@ -36,6 +45,15 @@
 		#deliver-signature {
 			white-space: nowrap;
 			font-size: 20px;
+		}
+		#comment-container {
+			.comment {
+				margin-bottom: 5px;
+				.avatar {
+					width: 90px;
+					height: 90px;
+				}
+			}
 		}
 	}
 }
