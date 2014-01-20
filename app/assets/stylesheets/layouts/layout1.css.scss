@@ -134,6 +134,7 @@
         padding-right: 18px; 
         border-bottom: inset 1px #dedede;
         padding: 10px 0px;
+        min-width: 250px;
     }
     #call-to-action-button {
         padding: 20px 10%;
@@ -161,6 +162,7 @@
         box-shadow: none;
         resize: none;
         height: 120px;
+        background-color: transparent;
     }
 
     #sign-with-fb-button, #deliver-signature {
