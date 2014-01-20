@@ -1,0 +1,19 @@
+/*Imported styles based on screen size of viewing device*/
+/*This creates the responsive design*/
+@media only screen and (max-width:959px) {
+  /*@import 'size/mobile';*/
+  #action-container {
+  	#header-logo {
+  		height: 88px;
+  		width: auto;
+		max-width: 300px;
+	}
+	#sign-with-fb-button {
+		white-space: nowrap;
+		font-size: 20px;
+	}
+	#deliver-signature {
+		white-space: nowrap;
+		font-size: 20px;
+	}
+}
