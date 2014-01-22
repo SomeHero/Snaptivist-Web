@@ -222,17 +222,26 @@ class Petition < ActiveRecord::Base
           results["signature_image_#{label}_url"] = signature_image(label)
         end
       end
+      if signature_image_file_name
+        results["signature_image_original_url"] = signature_image(:original)
+      end
 
       Petition::IMAGE_SIZES.each do |label, size|
         if delivery_image_file_name
           results["delivery_image_#{label}_url"] = delivery_image(label)
         end
       end
+      if delivery_image_file_name
+        results["delivery_image_original_url"] = delivery_image(:original)
+      end
 
       Petition::IMAGE_SIZES.each do |label, size|
         if premium_image_file_name
           results["premium_image_#{label}_url"] = premium_image(label)
         end
+      end
+      if premium_image_file_name
+        results["premium_image_original_url"] = premium_image(:original)
       end
 
       return results;

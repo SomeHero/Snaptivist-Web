@@ -9,7 +9,7 @@
 
   $scope.premium_image_styling = ->
     {
-      'background-image': 'url(' + $scope.petition.premium_image_full_url + ')'
+      'background-image': 'url(' + $scope.petition.premium_image_original_url + ')'
     }
 
   $scope.premium_submit_clicked = (form) ->

@@ -90,7 +90,7 @@
         
   $scope.delivery_image_styling = ->
     {
-      'background-image': 'url(' + $scope.petition.delivery_image_full_url + ')'
+      'background-image': 'url(' + $scope.petition.delivery_image_original_url + ')'
     }
 
   $scope.get_tweet_message_length = () ->
