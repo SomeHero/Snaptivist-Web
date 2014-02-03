@@ -264,7 +264,6 @@ class Api::PetitionsController < ApplicationController
     
     raise "Unable to find petition" unless @petition
 
-    binding.pry
     Rails.logger.debug "The access token is " + params[:accessToken]
 
     #see if we have this FB user in the authentications table
