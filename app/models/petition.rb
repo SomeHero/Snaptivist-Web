@@ -7,10 +7,9 @@ class Petition < ActiveRecord::Base
   has_many :signatures, :order => 'created_at DESC'
   has_many :petition_pages
   has_many :pages, :through => :petition_pages, :order => 'petition_pages.position'
-  accepts_nested_attributes_for :petition_pages, :reject_if => :all_blank, :allow_destroy => true
   
   has_many :email_configurations
-
+  has_many :conditional_action_tags 
   belongs_to :layout
   belongs_to :theme
   belongs_to :premium_offer
@@ -20,8 +19,10 @@ class Petition < ActiveRecord::Base
   #validates :summary, :presence => true
   #validates :target_count, :numericality => { :only_integer => true }
 
-  accepts_nested_attributes_for :petition_pages
+  #accepts_nested_attributes_for :petition_pages, allow_destroy: true
+  accepts_nested_attributes_for :petition_pages, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :email_configurations
+  accepts_nested_attributes_for :conditional_action_tags
   accepts_nested_attributes_for :layout
   accepts_nested_attributes_for :theme
   
@@ -156,6 +157,7 @@ class Petition < ActiveRecord::Base
         'petition_id' => id,
         'target_headline_text' => target_headline_text,
         'title' => title,
+        'action_type_header_name' => action_type_header_name,
         'headline_primary' => headline_primary,
         'headline_secondary' => headline_secondary,
         'subheadline' => subheadline,
@@ -167,6 +169,7 @@ class Petition < ActiveRecord::Base
         'signature_comment_placeholder_text' => signature_comment_placeholder_text,
         'sign_with_facebook_cta_button_text' => sign_with_facebook_cta_button_text,
         'sign_with_email_cta_button_text' => sign_with_email_cta_button_text,
+        'signer_type_header_name' => signer_type_header_name,
         'signature_more_signers_button_text' => signature_more_signers_button_text,
         'delivery_headline_primary' => delivery_headline_primary,
         'delivery_headline_secondary' => delivery_headline_secondary,

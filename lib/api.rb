@@ -38,6 +38,9 @@ class API < Grape::API
       attributes["email_configurations_attributes"].each do |config|
         config.delete("email_type")
       end
+      attributes["conditional_action_tags_attributes"].each do |config|
+        config.delete("conditional_action_tag_type")
+      end
       ### END HACK ####
 
       @petition = Petition.new(attributes)
@@ -81,6 +84,12 @@ class API < Grape::API
 
       attributes["email_configurations_attributes"].each do |config|
         config.delete("email_type")
+      end
+      attributes["conditional_action_tags_attributes"].each do |config|
+        config.delete("conditional_action_tag_type")
+      end
+      attributes["petition_pages_attributes"].each do |petition_page|
+        petition_page.delete("page")
       end
       ### END HACK ####
 
@@ -172,6 +181,17 @@ class API < Grape::API
     end
 
   end    
+
+  resource :conditional_action_tag_types do
+
+    desc "Return all conditional action tag types."
+    get "/", :rabl => "conditional_action_tag_types" do
+      @conditional_action_tag_types = ConditionalActionTagType.all
+                        
+    end
+
+  end    
+
 
   resource :pages do
 

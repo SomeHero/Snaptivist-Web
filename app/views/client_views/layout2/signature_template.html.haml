@@ -62,11 +62,11 @@
 							#signature-count{:style=>"left: {{calulate_petition_signature_percentage()}}%"}
 								{{get_number_of_signatures()}}
 		#petition-summary-header.section-header.text-left
-			Petition
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.action_type_header_name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Action Type Heading Text", "name"=>"action_type_header_name", "required"=>""}
 		#petition-summary-wrapper.panel.panel-default.panel-indented
 			%p.text-left.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.summary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Summary", "name"=>"summary", "required"=>""}
 		#user-signature-header.section-header.text-left
-			Signers
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.signer_type_header_name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Signer Type Heading Text", "name"=>"signer_type_header_name", "required"=>""}
 		%div{"ng-controller" => "CommentController"}
 			#user-signature-wrapper.panel.panel-default.panel-indented.clearfix
 				%ul#user-signature-list{"ng-show"=>"comments.items.length > 0"}

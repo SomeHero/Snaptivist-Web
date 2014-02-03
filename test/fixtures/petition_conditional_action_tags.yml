@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  petition: 
+  conditional_action_type_type: 
+  action_tags: MyString
+
+two:
+  petition: 
+  conditional_action_type_type: 
+  action_tags: MyString

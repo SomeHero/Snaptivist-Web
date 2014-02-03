@@ -264,6 +264,7 @@ class Api::PetitionsController < ApplicationController
     
     raise "Unable to find petition" unless @petition
 
+    binding.pry
     Rails.logger.debug "The access token is " + params[:accessToken]
 
     #see if we have this FB user in the authentications table
@@ -513,10 +514,8 @@ class Api::PetitionsController < ApplicationController
 
   #jobs
   def queue_new_signature_jobs
-    #Send Emails
+    #Process New Signature
     Resque.enqueue(SignatureEmailProcessor, @petition.id, @signature.id)
-    #Sync CRM
-    Resque.enqueue(SyncCrm, @petition.client.id, @signature.user.id)
     #Post to Hipchat
     Resque.enqueue(Hipchat, @petition.id, @signature.user.id)
   end

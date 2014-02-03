@@ -1,4 +1,4 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, petition, email_types, layouts) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, petition, email_types, layouts, conditional_action_tag_types) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
@@ -8,6 +8,7 @@
 	$scope.disable_forms = true
 	$scope.system = {
 		email_types: email_types
+		conditional_action_tag_types: conditional_action_tag_types
 		layouts: layouts
 		themes: []
 		pages: []
@@ -18,6 +19,7 @@
 		theme: null
 		step: 1
 		pages_list: []
+		conditional_action_tags: []
 		show_spinner: true
 	}
 
@@ -60,9 +62,15 @@
 		$scope.settings.theme = $scope.petition.theme
 		$scope.update_stylesheet_list()
 
-	if $scope.petition.pages
-		for page in $scope.petition.pages
-			$scope.settings.pages_list.push(page)
+	if $scope.petition.petition_pages_attributes
+		for petition_page, i in $scope.petition.petition_pages_attributes
+			$scope.settings.pages_list.push({
+				page_id: petition_page.page.id
+				petition_page_id: petition_page.id
+				page: petition_page.page
+				position: i
+				expanded: false
+			})
 
 	$scope.action_tags = {
 		new_tag: ""
@@ -84,6 +92,36 @@
 				from_name: $scope.client.name
 				subject: email_type.default_subject
 			})
+
+	if !$scope.petition.conditional_action_tags_attributes || $scope.petition.conditional_action_tags_attributes.length == 0
+		$scope.petition.conditional_action_tags_attributes = []
+		for conditional_action_tag_type, i in $scope.system.conditional_action_tag_types
+			$scope.petition.conditional_action_tags_attributes.push({
+				action_tags: ""
+				conditional_action_tag_type_id: conditional_action_tag_type.id
+				conditional_action_tag_type: conditional_action_tag_type
+			})
+			$scope.settings.conditional_action_tags.push({
+				index: i
+				new_tag: ""
+				list: []
+				conditional_action_tag_type: conditional_action_tag_type
+			})
+	else
+		for conditional_action_tag_attribute, i in $scope.petition.conditional_action_tags_attributes
+			$scope.settings.conditional_action_tags.push({
+				index: i
+				new_tag: ""
+				list: []
+				conditional_action_tag_type: conditional_action_tag_attribute.conditional_action_tag_type
+			})
+
+			if conditional_action_tag_attribute.action_tags
+				for tag in conditional_action_tag_attribute.action_tags.split(',')
+					$scope.settings.conditional_action_tags[i].list.push({
+						name: tag
+					})	
+
 
 	if $location.hash()
 		$scope.settings.step = parseInt($location.hash())
@@ -416,7 +454,31 @@
 			if $scope.petition.action_tags
 				$scope.petition.action_tags += "," + tag.name	
 			else
-				$scope.petition.action_tags = tag.name			
+				$scope.petition.action_tags = tag.name
+
+	$scope.add_conditional_action_tag = (conditional_action_tag) ->
+		new_tag = conditional_action_tag.new_tag
+		if !conditional_action_tag.list
+			conditional_action_tag.list = []
+
+		conditional_action_tag.list.push({
+			name: new_tag
+		})
+		conditional_action_tag.new_tag = ""
+		if $scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags
+			$scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags += "," + new_tag	
+		else
+			$scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags = new_tag
+
+	$scope.delete_conditional_action_tag = (conditional_action_tag, tag) ->
+		conditional_action_tag.list.splice(conditional_action_tag.list.indexOf(tag), 1)	
+
+		$scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags = ""
+		for tag in conditional_action_tag.list
+			if $scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags
+				$scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags += "," + tag.name	
+			else
+				$scope.petition.conditional_action_tags_attributes[conditional_action_tag.index].action_tags = tag.name
 
 	validate_step = (step) ->
 		if step == 1
@@ -439,7 +501,7 @@
 		if $route.current.templateUrl == 'clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'petition', 'email_types', 'layouts']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'petition', 'email_types', 'layouts', 'conditional_action_tag_types']
 
 PetitionSetupController.resolve =
   	
@@ -469,6 +531,16 @@ PetitionSetupController.resolve =
     deferred = $q.defer()
 
     LayoutServices.get_layouts().then (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+
+  ]
+
+  conditional_action_tag_types: ['ConditionalActionTagTypeServices', '$q', (ConditionalActionTagTypeServices, $q) ->
+    deferred = $q.defer()
+
+    ConditionalActionTagTypeServices.get_conditional_action_tag_types().then (response) ->
       deferred.resolve(response)
 
     deferred.promise

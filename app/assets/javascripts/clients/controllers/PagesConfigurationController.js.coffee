@@ -4,8 +4,12 @@
 		$scope.system.pages = response
 
 	$scope.add_page = (page) ->
-		page.expanded = true
-		$scope.settings.pages_list.push(page)
+		$scope.settings.pages_list.push({
+			page_id: page.id
+			page: page
+			position: $scope.settings.pages_list.length + 1
+			expanded: true
+		})
 		
 		$scope.petition.petition_pages_attributes.push({
           page_id: page.id,

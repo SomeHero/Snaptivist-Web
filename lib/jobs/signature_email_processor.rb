@@ -7,8 +7,10 @@ module SignatureEmailProcessor
  
     self.send_transaction_email petition, signature
     self.schedule_donation_reminder_email petition, signature
+    self.process_conditional_action_tags petition, signature
+    self.sync_crm petition, signature
 
-    puts "Processed Signature Emails"
+    puts "Processed Signature"
 
   end
 
@@ -78,6 +80,47 @@ module SignatureEmailProcessor
       difference_in_hours += 24 if difference_in_hours < 6
 
       return difference_in_hours*60
+
+    end
+
+    def self.process_conditional_action_tags petition, signature
+
+      petition.conditional_action_tags.each do |conditional_action_tag|
+        
+        action_tags = Array.wrap(conditional_action_tag.action_tags.split(",").collect{|x| x.strip})
+        if(conditional_action_tag.conditional_action_tag_type.name == "Sign With Facebook Conditional Action")
+          if(signature.signature_method == "Facebook")
+            signature.user.append_action_tags action_tags
+          end
+        end
+        if(conditional_action_tag.conditional_action_tag_type.name == "Sign With Email Address Conditional Action")
+          if(signature.signature_method == "Email")
+            signature.user.append_action_tags action_tags
+          end
+        end
+
+          signature.user.save!
+      end
+
+
+    end
+
+    def self.sync_crm petition, signature
+        #now add the new user to configured CRM
+      Rails.logger.debug "Syncing new user to CRM"
+
+      client = petition.client
+      user = signature.user
+
+      crm = CrmNotification::NationBuilderCrmNotifier.new
+      result = crm.create_or_update_supporter(client.nation_builder_crm_authentication, user)
+
+      if result
+        user.external_id = result.id
+        user.save!
+      end
+
+      puts "Sync'd user to crm"
 
     end
 

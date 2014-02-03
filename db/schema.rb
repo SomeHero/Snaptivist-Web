@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116053138) do
+ActiveRecord::Schema.define(:version => 20140203033744) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -130,6 +130,25 @@ ActiveRecord::Schema.define(:version => 20140116053138) do
   end
 
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
+
+  create_table "conditional_action_tag_types", :force => true do |t|
+    t.string   "name"
+    t.string   "label"
+    t.string   "event_trigger"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "conditional_action_tags", :force => true do |t|
+    t.integer  "petition_id"
+    t.integer  "conditional_action_tag_type_id"
+    t.string   "action_tags"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "conditional_action_tags", ["conditional_action_tag_type_id"], :name => "conditional_action_tag_type_index"
+  add_index "conditional_action_tags", ["petition_id"], :name => "petition_conditional_action_tag_index"
 
   create_table "donations", :force => true do |t|
     t.integer  "user_id"
@@ -315,6 +334,8 @@ ActiveRecord::Schema.define(:version => 20140116053138) do
     t.datetime "signature_image_updated_at"
     t.text     "premium_summary"
     t.string   "status",                              :default => "Draft"
+    t.string   "action_type_header_name"
+    t.string   "signer_type_header_name"
   end
 
   add_index "petitions", ["target_id"], :name => "index_petitions_on_target_id"
@@ -387,7 +408,7 @@ ActiveRecord::Schema.define(:version => 20140116053138) do
 
   create_table "raw_data", :force => true do |t|
     t.string   "type"
-    t.string   "attribute"
+    t.string   "source"
     t.text     "raw_data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

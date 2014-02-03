@@ -54,6 +54,17 @@ def email_changed?
   false
 end
 
+def append_action_tags action_tags
+
+  action_tags.each do |action_tag|
+    if self.action_tags.length > 0
+      self.action_tags += ","
+    end
+    self.action_tags += action_tag
+  end
+end
+
+
 def display_name
   self.organization_name
 end

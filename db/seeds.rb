@@ -196,6 +196,16 @@ theme_c_layout_1 = Theme.create!(
 	css_file: "layout2/theme-c.css",
 	url_fragment: 'theme-c'
 )
+petition_facebook_signature_conditional_action_tag = ConditionalActionTagType.create!(
+		name: "Sign With Facebook Conditional Action",
+		label: "Add the following action tags to an action taker when they sign my petition with Facebook",
+		event_trigger: "signature_method == 'Facebook'"
+	)
+petition_email_signature_conditional_action_tag = ConditionalActionTagType.create!(
+		name: "Sign With Email Address Conditional Action",
+		label: "Add the following action tags to an action taker when they sign my petition with email address",
+		event_trigger: "signature_method == 'Email'"
+	)
 
 #let's import targets
 exe_target_group = TargetGroup.create({id:1, name:'Executive'})
@@ -312,7 +322,14 @@ Petition.create!(
 			subject: "Your Petition Signature",
 			enabled: false
 		))
-
+	p.conditional_action_tags.push(ConditionalActionTag.create!(
+			conditional_action_tag_type: petition_facebook_signature_conditional_action_tag,
+			action_tags: 'Signed with Facebook'
+		))
+	p.conditional_action_tags.push(ConditionalActionTag.create!(
+			conditional_action_tag_type: petition_email_signature_conditional_action_tag,
+			action_tags: 'Signed with Email'
+		))
 
 	p.save!
 }
@@ -404,6 +421,14 @@ Petition.create!(
 		subject: "Your Petition Signature",
 		enabled: false
 	))
+	p.conditional_action_tags.push(ConditionalActionTag.create!(
+			conditional_action_tag_type: petition_facebook_signature_conditional_action_tag,
+			action_tags: 'Signed with Facebook'
+		))
+	p.conditional_action_tags.push(ConditionalActionTag.create!(
+			conditional_action_tag_type: petition_email_signature_conditional_action_tag,
+			action_tags: 'Signed with Email'
+		))
 
 
 	p.save!

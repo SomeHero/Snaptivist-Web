@@ -4,6 +4,7 @@ attributes :id,
   :target_headline_text,
   :action_tags,
   :title,
+  :action_type_header_name,
   :headline_primary,
   :headline_secondary,
   :subheadline,
@@ -14,6 +15,7 @@ attributes :id,
   :signature_comment_placeholder_text,
   :sign_with_facebook_cta_button_text,
   :sign_with_email_cta_button_text,
+  :signer_type_header_name,
   :signature_more_signers_button_text,
   :delivery_headline_primary,
   :delivery_headline_secondary,
@@ -84,6 +86,17 @@ attributes :id,
       :description
     end
   end
+  child :conditional_action_tags => :conditional_action_tags_attributes do
+    attributes :id,
+    :action_tags
+    child :conditional_action_tag_type do
+      attributes :id,
+      :name,
+      :label,
+      :event_trigger
+    end
+  end
+
   child :layout => :layout do
     attributes :id, 
       :name, 
@@ -101,6 +114,16 @@ attributes :id,
     attributes :id, 
     :page_id, 
     :position
+
+    child :page => :page do
+      attributes :id, 
+      :name, 
+      :description,
+      :template_name,
+      :url_fragment,
+      :url_redirect,
+      :url_redirect_property
+    end
   end
   child :pages do
     attributes :id, 

@@ -11,9 +11,11 @@
 	%label
 		Petition Target
 	%input.form-control{"type"=>"text"}
-.form-group
-	%label
-		Action Tags
+%label
+	Action Tags
+%p
+	Add the following action tags to all action takers
+%div
 	.row
 		.col-md-6
 			#action-tags.input-group
@@ -22,9 +24,26 @@
 					%button.btn{"type"=>"button", "ng-click"=>"add_action_tag()"}
 						Add
 						%i.icon-plus
-			%ul#action-tags-cloud
-				%li.tag-cloud{:style=>"padding: 4px 8px", "ng-repeat"=>"tag in action_tags.list"}
-					%button.close{:style=>"padding-left: 10px", "type"=>"button","aria-hidden"=>"true","ng-click"=>"delete_action_tag(tag)"}
-						&times;
-					%span.tag-cloud-info
-						{{tag.name}}
+	%ul#action-tags-cloud
+		%li.tag-cloud{:style=>"padding: 4px 8px", "ng-repeat"=>"tag in action_tags.list"}
+			%button.close{:style=>"padding-left: 10px", "type"=>"button","aria-hidden"=>"true","ng-click"=>"delete_action_tag(tag)"}
+				&times;
+			%span.tag-cloud-info
+				{{tag.name}}
+%div{"ng-repeat"=>"conditional_action_tag in settings.conditional_action_tags"}
+	%p
+		{{conditional_action_tag.conditional_action_tag_type.label}}
+	.row
+		.col-md-6
+			#action-tags.input-group
+				%input.form-control{"type"=>"text", "ng-model"=>"conditional_action_tag.new_tag", "placeholder"=>"Type a Tag Name"}
+				%span.input-group-btn
+					%button.btn{"type"=>"button", "ng-click"=>"add_conditional_action_tag(conditional_action_tag)"}
+						Add
+						%i.icon-plus
+	%ul#action-tags-cloud
+		%li.tag-cloud{:style=>"padding: 4px 8px", "ng-repeat"=>"tag in conditional_action_tag.list"}
+			%button.close{:style=>"padding-left: 10px", "type"=>"button","aria-hidden"=>"true","ng-click"=>"delete_conditional_action_tag(conditional_action_tag, tag)"}
+				&times;
+			%span.tag-cloud-info
+				{{tag.name}}
