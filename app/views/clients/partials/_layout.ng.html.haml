@@ -1,9 +1,9 @@
 .panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.layout || false"}
 	%p{:style=>"margin-bottom: 0px"}
-		Select a layout on the right to start your petition >>
+		Select a layout on the right to start your action >>
 %div{"ng-show"=>"settings.layout || false"}
 	.panel{:style=>"padding: 50px 40px"}
 		%p{:style=>"margin-bottom: 0px"}
-			Great! Your petition will look like the sample petiton below.  We'll add some colors in the next step.
+			Great! Your action will look like the sample action below.  We'll add some colors in the next step.
 	#action-container{:style=>"background-color: #fff;", "ng-controller"=>"SamplePetitionController"}
 		%div{"ng-include"=>"sample_page_template()"}

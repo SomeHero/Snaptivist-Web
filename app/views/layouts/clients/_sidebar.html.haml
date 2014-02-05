@@ -8,7 +8,7 @@
       %li
         %a{'href' => '#/petitions'}
           %i.icon-bar-chart
-          %span.hidden-tablet Petitions
+          %span.hidden-tablet Actions
           %span.label {{client.petitions.length}}
         %ul
           %li{"ng-repeat" => "petition in cient.petitions"}
@@ -18,7 +18,7 @@
       %li
         %a{"ng-click"=>"new_petition_clicked()"}
           %i.icon-list-alt
-          %span.hidden-tablet New Petition
+          %span.hidden-tablet New Action
       %li
         %a{'href' => '#/supporters'}
           %i.icon-group

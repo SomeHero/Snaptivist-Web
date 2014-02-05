@@ -188,10 +188,10 @@
 
 	errorMessages =
 		petition_name: ->
-			required = "You must specify a name for your petition."
+			required = "You must specify a name for your action."
 			required: required
 		subdomain: ->
-			required = "You must specify a subdomain for your petition"
+			required = "You must specify a subdomain for your action"
 			pattern = "The subdomain cannot contain special characters"
 			required: required
 			pattern: pattern
@@ -211,49 +211,49 @@
 			required = "You must specify the target number of signatures your petition is attempting to collect."
 			required: required
 		summary: ->
-			required = "You must specify the text for 'Petition Summary'."
+			required = "You must specify the text for 'Action Summary'."
 			required: required
 		signature_more_signers_button_text: ->
 			required = "You must specify the text for the 'More Signers' button."
 			required: required
 		delivery_headline_primary: ->
-			required = "You must specify the delivery headline for your petition."
+			required = "You must specify the tweet headline for your petition."
 			required: required
 		delivery_headline_secondary: ->
-			required = "You must specify the delivery secondary headline for your petition."
+			required = "You must specify the tweet secondary headline for your action."
 			required: required
 		delivery_summary: ->
-			required = "You must specify the text for 'Delivery Summary'."
+			required = "You must specify the text for 'Tweet Summary'."
 			required: required
 		delivery_call_to_action_text: ->
-			required = "You must specify the delivery call to action text."
+			required = "You must specify the tweet call to action text."
 			required: required
 		default_tweet_text: ->
-			required = "You must specify the default tweet message for your petition."
+			required = "You must specify the default tweet message for your action."
 			required: required
 		delivery_call_to_action_button_text: ->
-			required = "You must specify the delivery call to action button text for your petition."
+			required = "You must specify the tweet call to action button text for your action."
 			required: required
 		delivery_skip_button_text: ->
-			required = "You must specify the delivery skip button text for your petition."
+			required = "You must specify the tweet skip button text for your action."
 			required: required
 		delivery_more_tweets_button_text: ->
-			required = "You must specify the delivery more tweets button text for your petition."
+			required = "You must specify the tweet more tweets button text for your action."
 			required: required
 		premium_headline_primary: ->
-			required = "You must specify the premium headline text for your petition."
+			required = "You must specify the premium headline text for your action."
 			required: required
 		premium_headline_secondary: ->
-			required = "You must specify the premium headline secondary for your petition."
+			required = "You must specify the premium headline secondary for your action."
 			required: required
 		premium_summary: ->
-			required = "You must specify the premium summary for your petition."
+			required = "You must specify the premium summary for your action."
 			required: required
 		premium_call_to_action_button_text: ->
-			required = "You must specify the premium call to action button text for your petition."
+			required = "You must specify the premium call to action button text for your action."
 			required: required
 		donation_page_url: ->
-			required = "You must set the Donation Redirect URL for your petition"
+			required = "You must set the Donation Redirect URL for your action"
 			required: required
 
 	$scope.next_step_clicked = (form) ->
@@ -278,12 +278,12 @@
 				    count++
 
 			if $scope.settings.step == 2
-				errors.push("You must select a layout for your petition from the layouts on the right.")
+				errors.push("You must select a layout for your action from the layouts on the right.")
 			else if $scope.settings.step == 3
-				errors.push("You must select a theme for your petition from the themes on the right.")
+				errors.push("You must select a theme for your action from the themes on the right.")
 			else if $scope.settings.step == 4
 				if $scope.settings.pages_list.length == 0
-					errors.push("You must add atleast 1 page to your petition. Select a page to add from the list of pages on the right.")
+					errors.push("You must add atleast 1 page to your action. Select a page to add from the list of pages on the right.")
 				else
 
 			modalInstance = $modal.open(

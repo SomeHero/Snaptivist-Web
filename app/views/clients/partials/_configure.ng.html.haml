@@ -1,20 +1,20 @@
 .form-group
 	%label
-		Petition Sub Domain
+		Action Sub Domain
 	.row
 		.col-md-3
 			%input.form-control{"type"=>"text", "placeholder"=>"Sub Domain", "ng-model"=>"petition.subdomain", "name"=>"subdomain", "required"=>""}
 		.col-md-9.notes
 			%div{"ng-show"=>"petition.subdomain.length > 0"}
-				Your petition url will be: http://{{petition.subdomain}}.snaptivist.org
+				Your action url will be: http://{{petition.subdomain}}.snaptivist.org
 .form-group
 	%label
-		Petition Target
+		Action Target
 	%input.form-control{"type"=>"text"}
 %label
-	Action Tags
+	Tags
 %p
-	Add the following action tags to all action takers
+	Add the following tags to all action takers
 %div
 	.row
 		.col-md-6
