@@ -109,17 +109,7 @@
           %span.comment-location{"ng-bind" => "display_location(signature)"}
           %span.comment
             {{signature.comment}}
-      .delivery-status.row.text-right
-        .devivered{"ng-show" => "show_signature_delivered(signature)"}
-          %span.delivery-status-text
-            STATUS: DELIVERED
-            %span
-              %img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-checked-delivery-status.png"}
-        .not-delivered{"ng-hide"  => "show_signature_delivered(signature)"}
-          %span.delivery-status-text
-            STATUS: PENDING
-            %span
-              %img.delivery-status-checkbox{"ng-src" => "/assets/checkbox-delivery-status.png"}
+      
     #see-more-container{"ng-hide"=>"comments.items.length >= comments.total"}
       %button#see-more-button.button.action-button{:style => "width: 100%", "ng-click" => "show_more_signatures_click()"}
         %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "petition.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "name"=>"signature_more_signers_button_text","required"=>""}
