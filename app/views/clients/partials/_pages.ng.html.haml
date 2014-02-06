@@ -1,7 +1,7 @@
 %div{"ng-controller"=>"PagesController"}
 	%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.pages_list.length > 0"}
 		%p{:style=>"margin-bottom: 0px"}
-			Start building your petition flow by adding pages from the right >>
+			Start building your action by adding pages from the right >>
 	%div{"ng-repeat"=>"page_item in settings.pages_list"}
 		%div.page-header{:style=>"cursor: pointer", "ng-click"=>"toggle_page(page_item)"}
 			.row
