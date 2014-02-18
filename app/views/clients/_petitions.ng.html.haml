@@ -41,6 +41,6 @@
 									.col-md-4.no-gutter{"panel" => "petition.premium_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Premiums", "ng-click"=>"show"}
 
 			%div.text-right
-				%a{"ng-href"=>"#/petitions/{{petition.id}}/edit"}
+				%a{"ng-href"=>"petitions/{{petition.petition_id}}#petitions/{{petition.petition_id}}"}
 					%button.btn.btn-primary.btn-lg{"ng-click"=>"edit_petition(petition)"}
 						Edit

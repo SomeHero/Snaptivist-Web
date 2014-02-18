@@ -10,6 +10,7 @@
     show_spinner: false
 
   $scope.petition = petition
+  $scope.content = content
 
   $scope.signature = {}
 

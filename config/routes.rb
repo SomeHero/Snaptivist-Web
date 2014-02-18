@@ -143,8 +143,10 @@ SnaptivistWeb::Application.routes.draw do
       get :customers
     end
   end
-
-
+  namespace 'clients' do
+    get '/:client_id/petitions', :to => 'petitions#index'
+    get  '/:client_id/petitions/:id', :to => 'petitions#show'
+  end
   
   # Let's add the root route
   root :to => "home#index"

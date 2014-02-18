@@ -16,10 +16,10 @@
 
     deferred.promise
 
-  create: (client_id, petition, header_image, footer_image, signature_image, delivery_image, premium_image) ->
+  create: (client_id, petition, content, header_image, footer_image, signature_image, delivery_image, premium_image) ->
 
     data = {}
-    data = $.extend true, data, { 'petition': petition }
+    data = $.extend true, data, { 'petition': petition, 'content': content }
 
     files = []
 
@@ -72,10 +72,10 @@
 
     })
 
-  update: (client_id, petition, header_image, footer_image, signature_image, delivery_image, premium_image) ->
+  update: (client_id, petition, content, header_image, footer_image, signature_image, delivery_image, premium_image) ->
 
     data = {}
-    data = $.extend true, data, { 'petition': petition }
+    data = $.extend true, data, { 'petition': petition, 'content': content }
 
     files = []
 
@@ -113,7 +113,8 @@
       transformRequest: (data) ->
         formData = new FormData()
         formData.append "petition", angular.toJson(data.model.petition)
-
+        formData.append("content", angular.toJson(data.model.content));
+              
         i = 0
         while i < data.files.length
           formData.append "file_" + data.files[i].name, data.files[i].file
@@ -122,7 +123,8 @@
 
       data:
         model: {
-          'petition': petition
+          'petition': petition,
+          'content': content
         },
         files: files
 

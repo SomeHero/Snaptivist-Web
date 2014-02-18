@@ -1,4 +1,4 @@
-@PetitionController = ($scope, $route, $modal, $log, $rootScope, $location, petitions, ClientFactory, Util) ->
+@PetitionController = ($scope, $route, $modal, $log, $rootScope, $location, ClientFactory, Util) ->
 	window.scope = $scope
 	$scope.petitions = petitions
 

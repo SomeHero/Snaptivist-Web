@@ -9,7 +9,7 @@
       notes: '@'
       isAdmin: '='
     }
-    templateUrl: 'clients/partials/image_upload_overlay'
+    templateUrl: '/clients/partials/image_upload_overlay'
     
     link: (scope, element, attr) ->
       return unless scope.isAdmin

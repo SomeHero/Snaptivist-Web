@@ -10,9 +10,6 @@
       .row.no-gutter
         %a.brand.col-md-2
           = image_tag 'logo_text_only_300x87.png', :height => 18
-        %a#main-menu-toggle.hidden-phone.open
-          %i.icon-reorder
-
       .nav-no-collapse.header-nav
         %ul.nav.pull-right
           %li.dropdown
@@ -24,6 +21,14 @@
                   %span.name= @current_client.name
             %ul.dropdown-menu{:style=>"width: 100%"}
               %li.dropdown-menu-title
+              %li
+                %a{"ng-href" => "/clients/{{client.client_id}}"}
+                  %i.icon-off.pull-left
+                  = "Home"
+              %li
+                %a{"ng-href" => "/clients/{{client.client_id}}/petitions"}
+                  %i.icon-off.pull-left
+                  = "Actions"
               %li
                 %a{"ng-href" => "/clients/{{client.client_id}}/crm_setup"}
                   %i.icon-off.pull-left

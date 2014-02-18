@@ -6,15 +6,17 @@
     .when('/home',
     templateUrl: 'clients/home'
   ).when('/petitions',
-    templateUrl: 'clients/petitions'
+    templateUrl: '/clients/petitions'
     controller: PetitionController
-    resolve: PetitionController.resolve
+  ).when('/petitions',
+    templateUrl: '/clients/petitions'
+    controller: PetitionController
   ).when('/crm_setup',
     templateUrl: 'clients/partials/crms/crm_list'
   ).when('/nation_builder',
     templateUrl: 'clients/partials/crms/nation_builder'
-  ).when('/petitions/:petition_id/edit',
-    templateUrl: 'clients/petition_setup'
+  ).when('/petitions/:petition_id',
+    templateUrl: '/clients/petition_setup'
     controller: PetitionSetupController
     resolve: PetitionSetupController.resolve
   ).when('/petitions/:petition_id/dashboard',

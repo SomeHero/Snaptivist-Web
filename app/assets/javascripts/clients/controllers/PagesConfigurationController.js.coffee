@@ -1,6 +1,6 @@
 @PagesConfigurationController = ($scope, $rootScope, PageServices) ->
 
-	PageServices.get_pages($scope.settings.layout.id).then (response) ->
+	PageServices.get_pages($scope.settings.layout.layout_id).then (response) ->
 		$scope.system.pages = response
 
 	$scope.add_page = (page) ->

@@ -1,3 +1,15 @@
 %script
   client =
   != (@client_data ? @client_data : nil).to_json
+
+  petitions =
+  != @petitions ? @petitions.map { |p| p.to_api }.to_json : nil
+
+  petition = 
+  != @petition ? @petition.to_api.to_json : nil
+
+  content = 
+  != @content ? JSON.parse(@content).to_json : {}
+
+  _test_env =
+  != (Rails.env == 'production' ? nil : 'testing' ).to_json

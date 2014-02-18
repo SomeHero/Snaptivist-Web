@@ -2,7 +2,7 @@
 	
 	validate_step = (step) ->
 		if step == 1
-			return $scope.petition.name && $scope.petition.subdomain || false
+			return $scope.petition.title && $scope.petition.subdomain || false
 		else if step == 2
 			return $scope.settings.layout || false
 		else if step == 3

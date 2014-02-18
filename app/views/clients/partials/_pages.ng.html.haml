@@ -12,3 +12,9 @@
 					%i.glyphicon.glyphicon-remove{style: "line-height: 30px; cursor: pointer", "ng-click"=>"remove_page(page_item)"}
 		.panel#action-container{:style=>"padding:10px; margin: 10px 0px;", "ng-show"=>"page_item.expanded"}
 			%div{"ng-include"=>"get_page_template(page_item.page.template_name)"}
+	.navbar.navbar-default.navbar-fixed-bottom
+		.container
+			%ul.list-inline
+				%li{"ng-repeat"=>"page in system.pages"}
+					%a{"ng-click"=>"add_page(page)"}
+						{{page.name}}

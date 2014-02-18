@@ -67,6 +67,8 @@ class API < Grape::API
 
       @petition.save!
 
+      REDIS.set("action-" + @petition.id, params[:content])
+
     end
 
     desc "Updates a petition for the specified client"
@@ -76,42 +78,10 @@ class API < Grape::API
       @petition = Petition.find(params[:id])
     
       #TODO: This is kind of a hack
-      attributes = JSON.parse(params[:petition])
-      attributes.delete("share_count")
-      attributes.delete("delivery_count")
-      attributes.delete("image_full_url")
-      attributes.delete("premium_count")
 
-      attributes["email_configurations_attributes"].each do |config|
-        config.delete("email_type")
-      end
-      attributes["conditional_action_tags_attributes"].each do |config|
-        config.delete("conditional_action_tag_type")
-      end
-      attributes["petition_pages_attributes"].each do |petition_page|
-        petition_page.delete("page")
-      end
-      ### END HACK ####
 
-      @petition.update_attributes(attributes)
+      REDIS.set("action-" + @petition.id.to_s, params[:content])
 
-      if params[:file_header_image]
-        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_header_image])
-      end
-      if params[:file_footer_image]
-        @petition.footer_image = ActionDispatch::Http::UploadedFile.new(params[:file_footer_image])
-      end
-      if params[:file_image]
-        @petition.signature_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
-      end
-      if params[:file_delivery_image]
-        @petition.delivery_image = ActionDispatch::Http::UploadedFile.new(params[:file_delivery_image])
-      end
-      if params[:file_premium_image]
-        @petition.premium_image = ActionDispatch::Http::UploadedFile.new(params[:file_premium_image])
-      end
-
-      @petition.save!
     end
 
 	desc "Saves Nation Builder OAuth Credentials for the specified client"
@@ -214,6 +184,7 @@ class API < Grape::API
     desc "Return the specified petition."
     get "/:id", :rabl => "petition" do
       @petition = Petition.find(params[:id])   
+      @content =  JSON.parse(REDIS.get("action-" + @petition.id.to_s))
      
     end
 

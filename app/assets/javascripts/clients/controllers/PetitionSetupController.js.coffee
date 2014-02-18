@@ -1,9 +1,10 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, petition, email_types, layouts, conditional_action_tag_types) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts, conditional_action_tag_types) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
-	$scope.petition = {}
-	$scope.petition = petition if petition
+	$scope.petition = petition
+	$scope.content = content
+	$scope.subview = 'Config'
 	$scope.is_admin = true
 	$scope.disable_forms = true
 	$scope.system = {
@@ -62,15 +63,20 @@
 		$scope.settings.theme = $scope.petition.theme
 		$scope.update_stylesheet_list()
 
-	if $scope.petition.petition_pages_attributes
-		for petition_page, i in $scope.petition.petition_pages_attributes
+	if $scope.petition.pages
+		for petition_page, i in $scope.petition.pages
+			if(!$scope.content[petition_page.page.template_name])
+				$scope.content[petition_page.page.template_name] = {}
 			$scope.settings.pages_list.push({
-				page_id: petition_page.page.id
-				petition_page_id: petition_page.id
+				page_id: petition_page.page.page_id
+				petition_page_id: petition_page.page_id
 				page: petition_page.page
-				position: i
+				position: petition_page.position
 				expanded: false
 			})
+
+	if $scope.settings.pages_list.length > 0
+		$scope.settings.pages_list[0].expanded = true
 
 	$scope.action_tags = {
 		new_tag: ""
@@ -158,31 +164,31 @@
 
 	$scope.content_template_urls = () ->
 		if $scope.settings.step == 6
-			return "clients/partials/publish"
+			return "/clients/partials/publish"
 		else if $scope.settings.step == 5
-			return "clients/partials/email_config"
+			return "/clients/partials/email_config"
 		else if $scope.settings.step == 4
-			return "clients/partials/pages"
+			return "/clients/partials/pages"
 		else if $scope.settings.step == 3
-			return "clients/partials/theme"
+			return "/clients/partials/theme"
 		else if $scope.settings.step == 2
-			return "clients/partials/layout"
+			return "/clients/partials/layout"
 		else
-			return "clients/partials/configure"
+			return "/clients/partials/configure"
 
 	$scope.sidebar_template_urls = () ->
 		if $scope.settings.step == 6
-			return "clients/partials/publish_sidebar"
+			return "/clients/partials/publish_sidebar"
 		else if $scope.settings.step == 5
-			return "clients/partials/email_config_sidebar"
+			return "/clients/partials/email_config_sidebar"
 		else if $scope.settings.step == 4
-			return "clients/partials/pages_sidebar"
+			return "/clients/partials/pages_sidebar"
 		else if $scope.settings.step == 3
-			return "clients/partials/theme_sidebar"
+			return "/clients/partials/theme_sidebar"
 		else if $scope.settings.step == 2
-			return "clients/partials/layout_sidebar"
+			return "/clients/partials/layout_sidebar"
 		else
-			return "clients/partials/configure_sidebar"
+			return "/clients/partials/configure_sidebar"
 
 	$scope.items = ['item1', 'item2', 'item3'];
 
@@ -339,7 +345,7 @@
 
 		if $scope.petition.id
 			console.log "update petition"
-			PetitionServices.update($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.delivery_image, $scope.premium_image).success (response) ->
+			PetitionServices.update($scope.client_id, $scope.petition, $scope.content, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.delivery_image, $scope.premium_image).success (response) ->
 				console.log "petition update success"
 
 				$scope.loading.show_spinner = false
@@ -352,7 +358,7 @@
 				$scope.loading.show_spinner = false
 
 		else
-			PetitionServices.create($scope.client_id, $scope.petition, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.delivery_image, $scope.premium_image).success (response) ->
+			PetitionServices.create($scope.client_id, $scope.petition, $scope.content, $scope.header_image_full, $scope.footer_image_full, $scope.image_full, $scope.delivery_image, $scope.premium_image).success (response) ->
 				console.log "petition created"
 
 				$scope.loading.show_spinner = false
@@ -482,7 +488,7 @@
 
 	validate_step = (step) ->
 		if step == 1
-			return $scope.petition.name && $scope.petition.subdomain || false
+			return $scope.petition.title && $scope.petition.subdomain || false
 		else if step == 2
 			return $scope.settings.layout || false
 		else if step == 3
@@ -498,25 +504,12 @@
 
 	lastRoute = $route.current
 	$scope.$on "$locationChangeSuccess", (event) ->
-		if $route.current.templateUrl == 'clients/petition_setup'
+		if $route.current.templateUrl == '/clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'petition', 'email_types', 'layouts', 'conditional_action_tag_types']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts', 'conditional_action_tag_types']
 
 PetitionSetupController.resolve =
-  	
-  petition: ['PetitionServices', '$q', '$route', (PetitionServices, $q, $route) ->
-
-    if $route.current.params.petition_id
-	    petition_id = $route.current.params.petition_id
-	    
-	    deferred = $q.defer()
-
-	    PetitionServices.get_petition(petition_id).then (response) ->
-	      deferred.resolve(response)
-
-	    deferred.promise
-    ]
 
   email_types: ['EmailTypeServices', '$q', (EmailTypeServices, $q) ->
     deferred = $q.defer()
