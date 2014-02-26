@@ -1,6 +1,8 @@
-#content.col-md-12.no-gutter
-	%ng-view
+#content.col-md-11.col-md-offset-1.no-gutter
+  %ng-view
 = angular_templates '/clients'
 = angular_templates '/client_views'
 = angular_templates '/clients/partials'
+
+%div{"loading-screen" => "loading.show_spinner"}z
 

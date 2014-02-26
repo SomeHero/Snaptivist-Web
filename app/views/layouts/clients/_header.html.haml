@@ -11,29 +11,32 @@
         %a.brand.col-md-2
           = image_tag 'logo_text_only_300x87.png', :height => 18
       .nav-no-collapse.header-nav
-        %ul.nav.pull-right
-          %li.dropdown
-            %a.btn.account.dropdown-toggle{"data-toggle" => "dropdown"}
-              - if @current_client
-                .avatar
-                .user
-                  %span.hello Welcome
-                  %span.name= @current_client.name
-            %ul.dropdown-menu{:style=>"width: 100%"}
-              %li.dropdown-menu-title
-              %li
-                %a{"ng-href" => "/clients/{{client.client_id}}"}
-                  %i.icon-off.pull-left
-                  = "Home"
-              %li
-                %a{"ng-href" => "/clients/{{client.client_id}}/petitions"}
-                  %i.icon-off.pull-left
-                  = "Actions"
-              %li
-                %a{"ng-href" => "/clients/{{client.client_id}}/crm_setup"}
-                  %i.icon-off.pull-left
-                  = "CRM Setup"
-              %li
-                %a{"href" => "/auth/logout"}
-                  %i.icon-off.pull-left
-                  = "Logout"
+        %span.pull-right
+          %a.pull-left{:style=>"color: #fff; line-height: 40px;"}
+            %span.entypo-plus{:style=>"font-size: 24px;", "ng-click"=>"new_petition_clicked()"}
+          %ul.nav.pull-right
+            %li.dropdown
+              %a.btn.account.dropdown-toggle{"data-toggle" => "dropdown"}
+                - if @current_client
+                  .avatar
+                  .user
+                    %span.hello Welcome
+                    %span.name= @current_client.name
+              %ul.dropdown-menu{:style=>"width: 100%"}
+                %li.dropdown-menu-title
+                %li
+                  %a{"ng-href" => "/clients/{{client.client_id}}"}
+                    %i.icon-off.pull-left
+                    = "Home"
+                %li
+                  %a{"ng-href" => "/clients/{{client.client_id}}/petitions"}
+                    %i.icon-off.pull-left
+                    = "Actions"
+                %li
+                  %a{"ng-href" => "/clients/{{client.client_id}}/crm_setup"}
+                    %i.icon-off.pull-left
+                    = "CRM Setup"
+                %li
+                  %a{"href" => "/auth/logout"}
+                    %i.icon-off.pull-left
+                    = "Logout"

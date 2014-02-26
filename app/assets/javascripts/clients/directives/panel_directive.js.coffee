@@ -1,6 +1,6 @@
 @app.directive 'panel', ['$timeout', '$window', ($timeout, $window) ->
   restrict: 'EA'
-  templateUrl: 'clients/partials/panel'
+  templateUrl: '/clients/partials/panel'
   replace: false
   scope: {
     petition: '='

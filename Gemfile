@@ -15,11 +15,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
   gem 'sass-rails'
-  gem 'bootstrap-sass-rails', '~> 3.0'
+  gem 'bootstrap-sass-rails', '3.0.0'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'angularjs-rails', '>= 1.2.0.rc2'
-  gem "font-awesome-rails", "~> 3.2"
+  gem "font-awesome-rails"
 end
 
 group :development do
@@ -74,6 +74,7 @@ gem 'redis'
 gem 'resque'
 gem 'hipchat-api'
 gem 'semantic-ui-sass', '~> 0.12.5.0'
+gem 'angular-ui-bootstrap-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

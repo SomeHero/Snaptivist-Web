@@ -8,5 +8,7 @@
  *= require ./template/retina.css
  *= require ./clients.css.scss
  *= require ../contenteditable
+ *= require ../polleditable
  *= require angular-toggle-switch/angular-toggle-switch.css
+ *= require_directory ../libs/stickit
 */

@@ -1,8 +1,7 @@
-= render 'layouts/clients/sidebar'
-#content.col-md-10.no-gutter{"size-column"=>""}
-	%ng-view
+#content.col-md-12.no-gutter
+  %ng-view
 = angular_templates 'clients'
 = angular_templates 'client_views'
 = angular_templates 'clients/partials'
+= angular_templates 'clients/partials/pages'
 
-%div{"loading-screen" => "loading.show_spinner"}

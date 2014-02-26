@@ -31,43 +31,19 @@ class API < Grape::API
     post "/:id/petitions", :rabl => "petition" do
 
       client = Client.find(params[:id])
+      layout = Layout.first
+      theme = layout.themes.first
 
-      #TODO: This is kind of a hack
-      attributes = JSON.parse(params[:petition])
+      #binding.pry
 
-      attributes["email_configurations_attributes"].each do |config|
-        config.delete("email_type")
-      end
-      attributes["conditional_action_tags_attributes"].each do |config|
-        config.delete("conditional_action_tag_type")
-      end
-      ### END HACK ####
+      @petition = Petition.create({
+          title: params[:title],
+          subdomain: params[:subdomain],
+          layout: layout,
+          theme: theme
+        })
 
-      @petition = Petition.new(attributes)
-
-      #@petition.target = Target.first
-      @petition.title = @petition.name
-      @petition.client = client
-
-      if params[:file_header_image]
-        @petition.header_image = ActionDispatch::Http::UploadedFile.new(params[:file_header_image])
-      end
-      if params[:file_footer_image]
-        @petition.footer_image = ActionDispatch::Http::UploadedFile.new(params[:file_footer_image])
-      end
-      if params[:file_image]
-        @petition.signature_image = ActionDispatch::Http::UploadedFile.new(params[:file_image])
-      end
-      if params[:file_delivery_image]
-        @petition.delivery_image = ActionDispatch::Http::UploadedFile.new(params[:file_delivery_image])
-      end
-      if params[:file_premium_image]
-        @petition.premium_image = ActionDispatch::Http::UploadedFile.new(params[:file_premium_image])
-      end
-
-      @petition.save!
-
-      REDIS.set("action-" + @petition.id, params[:content])
+      #REDIS.set("action-" + @petition.id, params[:content])
 
     end
 

@@ -16,60 +16,16 @@
 
     deferred.promise
 
-  create: (client_id, petition, content, header_image, footer_image, signature_image, delivery_image, premium_image) ->
+  create: (client_id, title, subdomain) ->
 
     data = {}
-    data = $.extend true, data, { 'petition': petition, 'content': content }
-
-    files = []
-
-    if header_image
-      files.push({
-        name: 'header_image'
-        file: header_image
-      })
-    if footer_image
-      files.push({
-        name: 'footer_image'
-        file: footer_image
-      })
-    if signature_image
-      files.push({
-        name: 'image'
-        file: signature_image
-      })
-    if delivery_image
-      files.push({
-        name: 'delivery_image'
-        file: delivery_image
-      })
-    if premium_image
-      files.push({
-        name: 'premium_image'
-        file: premium_image
-      })
+    data = $.extend true, data, { 'title': title, 'subdomain': subdomain }
 
     $http({
       method: 'POST'
       url: '/api/clients/' + client_id + '/petitions'
-      headers: 
-      	"Content-Type": false
-      transformRequest: (data) ->
-        formData = new FormData()
-        formData.append "petition", angular.toJson(data.model.petition)
 
-        i = 0
-        while i < data.files.length
-          formData.append "file_" + data.files[i].name, data.files[i].file
-          i++
-        return formData
-
-      data:
-        model: {
-          'petition': petition
-        },
-        files: files
-
+      data: data
     })
 
   update: (client_id, petition, content, header_image, footer_image, signature_image, delivery_image, premium_image) ->

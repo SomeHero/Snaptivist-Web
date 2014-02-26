@@ -3,14 +3,14 @@
 @app.config ['$routeProvider', ($routeProvider) ->
   base_page_url = '/home'
   $routeProvider
-    .when('/home',
-    templateUrl: 'clients/home'
+  .when('/home',
+    templateUrl: '/clients/petition_setup'
+    controller: PetitionSetupController
+    resolve: PetitionSetupController.resolve
   ).when('/petitions',
     templateUrl: '/clients/petitions'
     controller: PetitionController
-  ).when('/petitions',
-    templateUrl: '/clients/petitions'
-    controller: PetitionController
+    resolve: PetitionController.resolve
   ).when('/crm_setup',
     templateUrl: 'clients/partials/crms/crm_list'
   ).when('/nation_builder',

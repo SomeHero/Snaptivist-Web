@@ -1,25 +1,31 @@
-%h2
-	Email Configuration
-
-.panel.panel-default{"ng-repeat"=>"config in petition.email_configurations_attributes"}
-	.panel-heading
-		.row
-			.col-md-9{:style=>"height: 30px; line-height: 30px;"}
-				{{config.email_type.name}}
-			.col-md-3{:style=>"height: 30px; line-height: 30px;"}
-				.text-right
-					%toggle-switch{"model"=>"config.enabled", "ng-model"=>"config.enabled"}
-	.panel-body
-		%form{"role"=>"form"}
-			.form-group
-				%label
-					From Name
-				%input.form-control{"type"=>"text", "ng-model"=>"config.from_name"}
-			.form-group
-				%label
-					From Address
-				%input.form-control{"type"=>"text", "ng-model"=>"config.from_address"}
-			.form-group
-				%label
-					Subject:
-				%input.form-control{"type"=>"text", "ng-model"=>"config.subject"}
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	%h2.modal-title
+		Email Configuration
+.modal-body
+	.panel.panel-default{"ng-repeat"=>"config in petition.email_configurations_attributes"}
+		.panel-heading
+			.row
+				.col-md-9{:style=>"height: 30px; line-height: 30px;"}
+					{{config.email_type.name}}
+				.col-md-3{:style=>"height: 30px; line-height: 30px;"}
+					.text-right
+						%toggle-switch{"model"=>"config.enabled", "ng-model"=>"config.enabled"}
+		.panel-body
+			%form{"role"=>"form"}
+				.form-group
+					%label
+						From Name
+					%input.form-control{"type"=>"text", "ng-model"=>"config.from_name"}
+				.form-group
+					%label
+						From Address
+					%input.form-control{"type"=>"text", "ng-model"=>"config.from_address"}
+				.form-group
+					%label
+						Subject:
+					%input.form-control{"type"=>"text", "ng-model"=>"config.subject"}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok

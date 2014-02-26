@@ -1,4 +1,4 @@
-@PetitionController = ($scope, $route, $modal, $log, $rootScope, $location, ClientFactory, Util) ->
+@PetitionController = ($scope, $route, $modal, $log, $rootScope, $location, ClientFactory, Util, petitions) ->
 	window.scope = $scope
 	$scope.petitions = petitions
 
@@ -17,6 +17,8 @@
 
 		$location.hash("")
 		Util.navigate('/petition_setup')
+
+PetitionController.$inject = ['$scope', '$rootScope', '$modal', '$log', '$rootScope', '$location', 'ClientFactory', 'Util', 'petitions']
 
 PetitionController.resolve =
   petitions: ['PetitionServices', '$q', (PetitionServices, $q) ->

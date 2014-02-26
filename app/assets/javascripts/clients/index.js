@@ -4,7 +4,6 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require ../bootstrap-dropdown
 //= require ./angular_init
 //= require_directory ./controllers
 //= require_directory ./controllers/crms
@@ -16,3 +15,4 @@
 //= require_directory ../services
 //= require ../moment
 //= require angular-toggle-switch/angular-toggle-switch.min.js
+//= require angular-ui-bootstrap-tpls

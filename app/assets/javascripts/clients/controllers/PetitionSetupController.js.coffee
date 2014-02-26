@@ -1,4 +1,4 @@
-@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts, conditional_action_tag_types) ->
+@PetitionSetupController = ($scope, $route, $modal, $log, $rootScope, $location, fileReader, ClientFactory, PetitionServices, Util, email_types, layouts, themes, conditional_action_tag_types) ->
 	window.scope = $scope
 
 	$scope.client_id = $scope.client.client_id
@@ -11,10 +11,12 @@
 		email_types: email_types
 		conditional_action_tag_types: conditional_action_tag_types
 		layouts: layouts
-		themes: []
+		themes: themes
 		pages: []
 	}
-
+	$scope.poll = {
+		options: []
+	}
 	$scope.settings = {
 		layout: null
 		theme: null
@@ -87,6 +89,7 @@
 			$scope.action_tags.list.push({
 				name: tag
 			})	
+
 	if !$scope.petition.email_configurations_attributes || $scope.petition.email_configurations_attributes.length == 0
 		$scope.petition.email_configurations_attributes = []
 		for email_type in $scope.system.email_types
@@ -134,6 +137,63 @@
 	else
 		$scope.settings.step = 1
 
+	$scope.action_tags_clicked = () ->
+		console.log "action tags clicked"
+		modalInstance = $modal.open(
+			templateUrl: '/clients/partials/configure'
+			controller: ActionTagsController
+			resolve: 
+				petition: ->
+					$scope.petition
+		)
+
+	$scope.change_layout_clicked = () ->
+		console.log "change layout clicked"
+		modalInstance = $modal.open(
+			templateUrl: '/clients/partials/layout'
+			controller: ChangeLayoutController
+			resolve: 
+				layouts: ->
+					$scope.system.layouts
+				settings: ->
+					$scope.settings
+		)
+		modalInstance.result.then ((layout) ->
+			$scope.settings.layout = layout;
+			$scope.update_stylesheet_list();
+		), ->
+			console.log "Modal dismissed at: " + new Date()
+
+
+	$scope.change_theme_clicked = () ->
+		console.log "change theme clicked"
+		modalInstance = $modal.open(
+			templateUrl: '/clients/partials/theme',
+			controller: ChangeThemeController
+			resolve: 
+				themes: ->
+					$scope.system.themes
+		)
+		modalInstance.result.then ((theme) ->
+			$scope.settings.theme = theme;
+			$scope.update_stylesheet_list();
+		), ->
+			console.log "Modal dismissed at: " + new Date()
+
+	$scope.email_configurations_clicked = () ->
+		console.log "email configurations clicked"
+		modalInstance = $modal.open(
+			templateUrl: '/clients/partials/email_config',
+			controller: EmailConfigurationController
+		)
+
+	$scope.publish_settings_clicked = () ->
+		console.log "publish settings clicked"
+		modalInstance = $modal.open(
+			templateUrl: '/clients/partials/modal_template',
+			controller: PublishController
+		)
+
 	$scope.publish_clicked = () ->
 		console.log "publish clicked"
 
@@ -163,18 +223,7 @@
 		return true
 
 	$scope.content_template_urls = () ->
-		if $scope.settings.step == 6
-			return "/clients/partials/publish"
-		else if $scope.settings.step == 5
-			return "/clients/partials/email_config"
-		else if $scope.settings.step == 4
-			return "/clients/partials/pages"
-		else if $scope.settings.step == 3
-			return "/clients/partials/theme"
-		else if $scope.settings.step == 2
-			return "/clients/partials/layout"
-		else
-			return "/clients/partials/configure"
+		return "/clients/partials/pages"
 
 	$scope.sidebar_template_urls = () ->
 		if $scope.settings.step == 6
@@ -429,15 +478,6 @@
 
 		$location.protocol() + "://" + $location.host() + (port ? ":" + port : "") + "/petitions/" + $scope.petition.id
 
-	$scope.set_layout = (layout) ->
-		$scope.settings.layout = layout
-		$scope.settings.theme = null
-		$scope.update_stylesheet_list()
-
-	$scope.set_theme = (theme) ->
-		$scope.settings.theme = theme
-		$scope.update_stylesheet_list()
-
 	$scope.get_page_template = (template_name) ->
 		"/client_views/" + $scope.settings.layout.url_fragment + "/" + template_name
 
@@ -507,7 +547,7 @@
 		if $route.current.templateUrl == '/clients/petition_setup'
 	  		$route.current = lastRoute
 	
-PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts', 'conditional_action_tag_types']
+PetitionSetupController.$inject = ['$scope', '$route', '$modal', '$log', '$rootScope', '$location', 'fileReader', 'ClientFactory', 'PetitionServices', 'Util', 'email_types', 'layouts', 'themes', 'conditional_action_tag_types']
 
 PetitionSetupController.resolve =
 
@@ -524,6 +564,17 @@ PetitionSetupController.resolve =
     deferred = $q.defer()
 
     LayoutServices.get_layouts().then (response) ->
+      deferred.resolve(response)
+
+    deferred.promise
+
+  ]
+
+  themes: ['ThemeServices', '$q', (ThemeServices, $q) ->
+
+    deferred = $q.defer()
+
+    ThemeServices.get_themes(1).then (response) ->
       deferred.resolve(response)
 
     deferred.promise

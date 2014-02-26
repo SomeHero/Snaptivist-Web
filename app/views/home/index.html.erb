@@ -1,729 +1,283 @@
 
-<script id="target-template" type="text/x-handlebars-template">
-{{#each result}}
-  <div class="controls" style="margin-left: 0px;">
-		<label class="radio">
-			<input type="radio" name="target" class="target" id="target1" value="{{target_id}}">{{title}} - {{first_name}} {{last_name}}
-		</label>
-  </div>
-  {{/each}}
-</script>
-<script id="select-target-template" type="text/x-handlebars-template">
-		<div class="control-group">
-			<div class="controls" style="margin-left: 0px;">
-				<label class="radio">
-					<input type="radio" name="targetOption" id="target-group-the-white-house" data-target-group="1" value="state" class="target-group">The White House
-				</label>
-				<div id="target-group-the-white-house-items" class="control-group" style="margin-left: 20px; display: none;">
-					
-				</div>
-				<label class="radio">
-					<input type="radio" name="targetOption" id="target-group-congress" value="federal" class="target-group">Congress
-				</label>
-				<div id="target-group-congress-items" class="control-group" style="margin-left: 20px; display: none;">
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target1" value="state">The entire U.S. House
-						</label>
-					</div>
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target1" value="state">The entire U.S. Senate
-						</label>
-					</div>
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" id="target-group-congress-state-select" class="state-select" name="target" id="target1" value="state">A Specific Legislator
-						</label>
-					</div>
-					<div id="target-group-congress-state-select-items" class="control-group" style="margin-left: 20px; display:none;">
-						<div class="controls" style="margin-left: 0px;">
-							<%= subregion_select(:congress, :state_code, 'US', {:id => 'target-group-congress-select-state', :class => 'target-group-state-select', :prompt => 'Please select a state' }) %>
-						</div>
-						<div class="control-group" id="congress_state_code-items" style="margin-left: 20px; display: none;">
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">US Senator 1
-								</label>
-							</div>	
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">US Senator 2
-								</label>
-							</div>	
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">US Representative from District 1
-								</label>
-							</div>	
-<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">US Representative from District 2
-								</label>
-							</div>	
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">US Representative from District 3
-								</label>
-							</div>	
-					</div>
 
-				</div>
-			</div>
-			<label class="radio">
-				<input type="radio" name="targetOption" class="target-group" id="target-group-state" value="state">Your State Government
-			</label>
-			<div id="target-group-state-items" class="control-group" style="margin-left: 20px; display: none;">
-				<div class="controls" style="margin-left: 0px;">
-					<%= subregion_select(:state, :state_code, 'US', {:id => 'target-group-congress-select-state', :class => 'target-group-state-select', :prompt => 'Please select a state' }) %>
-				</div>
-				<div class="control-group" id="state_state_code-items" style="margin-left: 20px; display: none;">
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target1" value="state">Executive Branch
-						</label>
-						<div class="control-group" style="margin-left: 20px; display: none;">
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">Governor
-								</label>
-							</div>	
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">Lt. Governor
-								</label>
-							</div>	
-							<div class="controls" style="margin-left: 0px;">
-								<label class="radio">
-									<input type="radio" name="target" id="target1" value="state">Attorney General
-								</label>
-							</div>	
-						</div>
-					</div>	
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target1" value="state">The entire State House
-						</label>
-					</div>
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" id="target1" value="state">The entire State Senate
-						</label>
-					</div>
-					<div class="controls" style="margin-left: 0px;">
-						<label class="radio">
-							<input type="radio" name="target" class="target-group-other" id="target-group-state-other" value="state">A Specific Legislator
-						</label>
-					</div>
-					<div id="target-group-state-other-items" class="control-group" style="margin-left: 20px; display: none;">
-						<div class="controls" style="margin-left: 0px;">
-							<input type="text" placeholder="Name" />
-						</div>
-						<div class="controls" style="margin-left: 0px;">
-							<input type="text" placeholder="Title" />
-						</div>
-						<div class="controls" style="margin-left: 0px;">
-							<input type="text" placeholder="Email Address" />
-						</div>
-						<div class="controls" style="margin-left: 0px;">
-							<input type="text" placeholder="Twitter Handle" />
-						</div>
+<!-- activate scrollspy -->
 
-					</div>
-				</div>
-			</div>
-			<label class="radio">
-				<input type="radio" name="targetOption" class="target-group" id="target-group-other" value="other">Someone else
-			</label>
-			<div id="target-group-other-items" class="control-group" style="margin-left: 20px; display: none;">
-				<div class="controls" style="margin-left: 0px;">
-					<input type="text" placeholder="Name" />
-				</div>
-				<div class="controls" style="margin-left: 0px;">
-					<input type="text" placeholder="Title" />
-				</div>
-				<div class="controls" style="margin-left: 0px;">
-					<input type="text" placeholder="Email Address" />
-				</div>
-				<div class="controls" style="margin-left: 0px;">
-					<input type="text" placeholder="Twitter Handle" />
-				</div>
+<body id="top" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" style="height: 40px" href="#">The Story</a> 
+      </div>
+      <div id="nav-collapse" class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a title="Home page" class="scroll brand-1" href="#home">Home</a></li>
+          <li><a title="Check out our awesome services" href="#features" class=" scroll brand-4">Features</a></li>
+          <li><a title="Themes assets" href="#assets" class="scroll brand-3">Assets</a></li>
+          <li><a title="Who we are" href="#about" class="scroll fadeto brand-4"> About us</a></li>
+          <li><a title="Get in touch!" href="#contact" class="scroll brand-2">Contact</a></li>
+          <li><a title="External page sample" href="sample-page.html">Sample Page</a></li>
+        </ul>
+      </div>
+    </div><!-- /.navbar-container -->
+  </nav>
 
-			</div>
-		</div>
-</script>
-<script id="create-action-sign-in" type="text/x-handlers-template">
-<div id="create-action-sign-in-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-<div class="header" style="margin-bottom: 20px;">
-<h4 class="text-center">Sign in to an existing account</h4>
-</div>
-<div class="social-sign-in pull-left" style="width: 50%; margin: 10px;">
-  	<div class="control-group">
-		<div class="controls" style="margin-bottom: 20px;">
-			<button id="twitter-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:twitter) %>">Sign in with Twitter</button>
-		</div>
-		<div class="controls">
-			<button id="facebook-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>">Sign in with Facebook</button>
-		</div>
+  <!-- Home Page -->
+  <div id="home" class="page color-1">
+    <div class="inner-page">
+      <h2 class="page-headline large">Tell your projects awesome story.</h2>
     </div>
-</div>
-<div class="text-center pull-right" style="margin: 10px">
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-<fieldset>
-<div>
-<%= devise_error_messages! %>
- 
- <%= f.label :email, :class => "text-left" %>
- <%= f.email_field :email %></div>
- 
- <div><%= f.label :password, :class => "text-left" %>
- <%= f.password_field :password %></div>
-
-<button type="submit" class="btn btn-large btn-primary">Sign in</button>
-</fieldset>
-<% end %>
-</div>
-</div>
-</script>
-<script id="create-account-template" type="text/x-handlebars-template">
-<div id="create-account-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-<div class="header" style="margin-bottom: 20px;">
-<h4 class="text-center">Create a free account</h4>
-</div>
-<div class="social-sign-in pull-left" style="width: 50%; margin: 10px;">
-  	<div class="control-group">
-		<div class="controls" style="margin-bottom: 20px;">
-			<button id="twitter-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:twitter) %>"><i class="icon-twitter-sign icon-white" style="font-size: 24px"></i> Sign up with Twitter</button>
-		</div>
-		<div class="controls">
-			<button id="facebook-connect" class="btn btn-large btn-block btn-primary" href="<%= user_omniauth_authorize_path(:facebook) %>"><i class="icon-facebook-sign icon-white" style="font-size: 24px"></i> <span>Sign up with Facebook</span></button>
-		</div>
+    <div class="row inner-page">
+      <div class="col-md-8 col-md-push-4 lazy-container">
+        <img class="lazy" alt="Looks great on every device" src="assets/pixel.png" data-original="assets/home.png" />
+      </div>
+      <div class="col-md-4 col-md-pull-8">
+        <ul class="big-list">
+          <li><i class="fa fa-check"></i> Flat design</li>
+          <li><i class="fa fa-tablet"></i> Responsive</li>
+          <li><i class="fa fa-cloud"></i> Bootstrap 3</li>
+          <li><i class="fa fa-cog"></i> Built with LESS</li>
+        </ul>
+        <br />
+        <a href="#features" title="Check out more freatures!" class="scroll btn btn-primary btn-centered"><i class="fa fa-caret-down"></i> Learn more</a>
+      </div>
     </div>
-</div>
-<div class="text-center pull-right" style="margin: 10px">
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  </div> <!-- /#home -->
 
-<%= devise_error_messages! %>
- 
-<div>
- <%= f.label :email, :class => "text-left" %>
- <%= f.email_field :email %></div>
- 
- <div><%= f.label :password, :class => "text-left" %>
- <%= f.password_field :password %></div>
- 
-<div><%= f.label :password_confirmation, :class => "text-left" %>
- <%= f.password_field :password_confirmation %></div>
- 
-<div><%= f.submit "Sign up", :class => "btn btn-large btn-primary" %></div>
-<% end %>
- 
-</div>
-</div>
-</script>
-<script id="create-petition-template" type="text/x-handlebars-template">
-<div id="start-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<%= form_tag("/api/petitions", :method => "post", :id => "create-petition-form") do %>
-	<input type="hidden" id="target_id" name="target_id" />
-	<fieldset>
-		<legend>Who is the target of your petition?</legend>
-		{{> selectTarget}}
-</fieldset>
-<fieldset>
-	<legend>What do you want them to do?</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<input id="title" name="title" type="text" placeholder="Type your demand here" style="width: 98%">
-			<span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
-		</div>
-	</div>
-</fieldset>
-<fieldset>
-	<legend>Petition Text</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<textarea id="summary" name="summary" rows="6" style="width: 98%"></textarea>
-		</div>
-	</div>
-</fieldset>
-<button id="create-petition" class="btn btn-large btn-block btn-primary" type="submit">Create Petition</button>
-<% end %>
-</div>
-</script>
-<script id="tour-template" type="text/x-handlebars-template">
-	<div id="tour-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	Tour goes here
-	</div>	
-</script>
-<script id="pricing-template" type="text/x-handlebars-template">
-	<div id="pricing-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	Pricing goes here
-	</div>	
-</script>
-<script id="about-template" type="text/x-handlebars-template">
-	<div id="about-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	About goes here
-	</div>	
-</script>
-<script id="contact-template" type="text/x-handlebars-template">
-	<div id="contact-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	Contact Us Form goes here
-	</div>	
-</script>
-<script id="launch-petition-template" type="text/x-handlebars-template">
-<div id="launch-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-    <div class="input-prepend" style="width:95%;">
-      <span class="add-on"><i class="icon-globe"></i></span>
-      <input class="span2" id="inputIcon" type="text" value="http://dev.snaptivist.com/petitions/{{rewrite_url_key}}" style="width: 100%;" />
+  <!-- Sign up -->
+  <div class="sign-up color-2 visible-lg">
+    <div class="row inner-page">
+      <div class="col-md-12">
+        <h4 class="pull-left">They say visitors prefer scrolling rather than clicking. We combined both.</h4>
+        <a href="#features" class="scroll btn btn-primary pull-right" title="Check out more freatures!"><i class="fa fa-caret-down"></i> Scroll down</a>
+      </div>
     </div>
-	<%= image_tag "default_petition.png" %>
-	<div class="pull-right">
-		<a href="#">Edit</a>
-	</div>
-	<h2>{{target.title}} {{target.last_name}}: 
-	<br />{{title}}</h2>
-	<div class="well">
-		{{summary}}
-	</div>
-	<div class="control-group" style="display: none;">
+  </div> <!-- /.sign-up -->
 
-		<div class="controls" style="margin-left: 0px;">
-			<textarea id="summary-edit" rows="4" style="width: 98%">{{summary}}</textarea>
-		</div>
-	</div>
-	<div class="pull-right">
-		<a href="#">Edit</a>
-	</div>
-	<form class="form-horizontal" style="position: relative;">
-		<fieldset>
-			<legend>How many signatures do you need?</legend>
-			
-			<div class="control-group">
-				<div id="target-count-wrapper" class="clearfix">
-					<div class="progress">
-						<div class="bar" style="width: 1%;"></div>
-					</div>
-					<div class="pull-left">
-						Signers: 0
-					</div>
-					<div class="pull-right">
-						Goal: {{target_count}}
-					</div>
-				</div>
-			</div>
-			<div class="pull-right">
-				<a href="#">Edit</a>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Leave a brief comment about why you're signing this petition</legend>
-			
-			<div class="control-group">
-				<div class="controls" style="margin-left: 0px;">
-					<textarea rows="6" style="width: 98%" placeholder="Why are you creating the petition?"></textarea>
-				</div>
-			</div>
-		</fieldset>
-		<button id="launch-petition" class="btn btn-large btn-block btn-primary" type="button">Launch Petition</button>
-	</form>
-</div>
-</script>
-<script id="share-petition-template"  type="text/x-handlebars-template">
-<div id="share-petition-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<%= image_tag "default_petition.png" %>
-	<h2>{{target.title}} {{target.last_name}}<br />{{title}}</h2>
-	<p class="well">{{summary}}</p>
-	<div class="control-group">
-				<div id="target-count-wrapper" class="clearfix">
-					<div class="progress">
-						<div class="bar" style="width: 1%;"></div>
-					</div>
-					<div class="pull-left">
-						Signers: 1
-					</div>
-					<div class="pull-right">
-						Goal: {{target_count}}
-					</div>
-				</div>
-			</div>
-			<p class="text-center">Great Job!</p>
-			<p class="text-center">Now use Twitter to publicly notify the target of your petition.  Let the whole world see your demand and join your campaign!</p>
-			<form class="form-horizontal" style="position: relative;">
-				<fieldset>
-					<div class="control-group">
-						<div class="controls" style="margin-left: 0px;">
-							<textarea rows="3" style="width: 98%">I demand @{{target.twitter_handle}}: {{summary}} {{short_url}} #tlot</textarea>
-						</div>
-					</div>
-
-				</fieldset>
-				<fieldset>
-					<div class="control-group">
-						<div class="controls text-center" style="margin-left: 0px;">
-				<button id="twitter-connect" type="button" class="btn btn-success" style="opacity: 0.8">
-  <i class="icon-twitter-sign btn-tweet"></i> Tweet @{{target.twitter_handle}}
-</button>
-<p class="text-center">Connect Your Account</p>
-</div>
-</div>
-</fieldset>
-
-				<button id="share-petition" class="btn btn-large btn-block btn-primary" type="button">Share Petition</button>
-			</form>
-		</div>
-</script>
-<!-- end create petition templates -->
-<!-- start create phone campaign templates -->
-<script id="create-phone-campaign-template"  type="text/x-handlebars-template">
-<div id="start-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<%= form_tag("/api/phonecampaigns", :method => "post", :id => "create-phone-campaign-form") do %>
-	<input type="hidden" id="target_id" name="target_id" />
-	<fieldset>
-		<legend>Who is the target of your phone campaign?</legend>
-		{{> selectTarget}}
-</fieldset>
-<fieldset>
-	<legend>What do you want them to do?</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<input id="title" name="title" type="text" placeholder="Type your demand here" style="width: 98%">
-			<span class="help-block">Example: Stop the drone assassinations of American citizens.</span>
-		</div>
-	</div>
-</fieldset>
-<fieldset>
-	<legend>What should people say when they call?</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<textarea id="summary" name="summary" rows="6" style="width: 98%"></textarea>
-		</div>
-	</div>
-</fieldset>
-<button id="create-phone-campaign" class="btn btn-large btn-block btn-primary" type="submit">Create Phone Campaign</button>
-<% end %>
-</div>
-</script>
-<script id="launch-phone-campaign-template" type="text/x-handlebars-template">
-<div id="launch-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<div class="input-prepend" style="width:95%;">
-      <span class="add-on"><i class="icon-globe"></i></span>
-      <input class="span2" id="inputIcon" type="text" value="http://dev.snaptivist.com/phonecampaigns/{{rewrite_url_key}}" style="width: 100%;" />
+  <!-- Feature page-->
+  <div id="features" class="page color-4">
+    <div class="inner-page">
+      <h2 class="page-headline">Why should you choose The Story</h2>
     </div>
-	<%= image_tag "default_petition.png" %>
-	<div class="pull-right">
-		<a href="#">Edit</a>
-	</div>
-	<h2>{{target.first_name  target.last_name}}: {{title}}</h2>
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<textarea id="summary-edit" rows="4" style="width: 98%">{{summary}}</textarea>
-		</div>
-		<div class="pull-right">
-			<a href="#">Edit</a>
-		</div>
-	</div>
-	<form class="form-horizontal" style="position: relative;">
-		<fieldset>
-			<legend>How many calls do you need?</legend>
-			
-			<div class="control-group">
-				<div id="target-count-wrapper" class="clearfix">
-					<div class="progress">
-						<div class="bar" style="width: 1%;"></div>
-					</div>
-					<div class="pull-left">
-						Signers: 0
-					</div>
-					<div class="pull-right">
-						Goal: {{target_count}}
-					</div>
-				</div>
-			</div>
-			<div class="pull-right">
-				<a href="#">Edit</a>
-			</div>
-		</fieldset>
-		<h4>{{target.title}} {{target.last_name}}: {{target.phone}}</h4>
-		<button id="launch-phone-campaign" class="btn btn-large btn-block btn-primary" type="button">Launch Phone Campaign</button>
-	</form>
-</div>
-</script>
-<script id="share-phone-campaign-template"  type="text/x-handlebars-template">
-<div id="share-phone-campaign-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<h2>{{target.last_name}}: {{title}}</h2>
-	<p class="lead">{{summary}}
-		</p>
-			<form class="form-horizontal" style="position: relative;">
-				<fieldset>
-					<legend>Share with Your Network</legend>
-					<div class="control-group">
-						<div class="controls" style="margin-left: 0px;">
-							<textarea rows="3" style="width: 98%">I just told @{{target.twitter_handle}}: {{summary}}</textarea>
-						</div>
-					</div>
 
-				</fieldset>
-
-				<button id="share-phone-campaign" class="btn btn-large btn-block btn-primary" type="button">Share Phone Campaign</button>
-			</form>
-		</div>
-</script>
-<!-- end create phone campaign templates -->
-<!-- start create poll templates -->
-<script id="create-poll-template"  type="text/x-handlebars-template">
-<div id="start-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<%= form_tag("/api/polls", :method => "post", :id => "create-poll-form") do %>
-	<input type="hidden" id="target_id" name="target_id" />
-<fieldset>
-	<legend>Gauge Public Opinion</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<input id="question" name="title" type="text" placeholder="Type your multiple choice question here" style="width: 98%">
-		</div>
-	</div>
-</fieldset>
-<fieldset>
-	<legend>Choice 1</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<input id="choice1" name="title" type="text" placeholder="Type the first choice here" style="width: 98%">
-		</div>
-	</div>
-</fieldset>
-<fieldset>
-	<legend>Choice 2</legend>
-
-	<div class="control-group">
-		<div class="controls" style="margin-left: 0px;">
-			<input id="choice2" name="title" type="text" placeholder="Type your second choice here" style="width: 98%">
-		</div>
-	</div>
-</fieldset>
-<button id="create-poll" class="btn btn-large btn-block btn-primary" type="submit">Create Poll</button>
-<% end %>
-</div>
-</script>
-
-<script id="launch-poll-template" type="text/x-handlebars-template">
-<div id="launch-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	 <div class="input-prepend" style="width:95%;">
-      <span class="add-on"><i class="icon-globe"></i></span>
-      <input class="span2" id="inputIcon" type="text" value="http://dev.snaptivist.com/polls/{{rewrite_url_key}}" style="width: 100%;" />
+    <div class="inner-page row">
+      <ul class="features list-inline">
+        <li>
+          <h3><i class="fa fa-cog"></i> Make it your own</h3>
+          <p>Easily change every color, by changing just few variables. Add or remove pages, and choose from 600+ fonts.</p>
+        </li>
+        <li>
+          <h3><i class="fa fa-heart"></i> Page speed</h3>
+          <p>The theme is optimized to ensure fast loading time by lazy-loading of images and beeing minimal by design.</p>
+        </li>
+        <li>
+          <h3><i class="fa fa-tablet"></i> For every device.</h3>
+          <p>
+            <strong>The Story</strong>is built to look great on every device. Custom menu for mobile devices, to ensure the best expierence.</p>
+        </li>
+      </ul>
     </div>
-    <%= image_tag "default_petition.png" %>
-	<div class="pull-right">
-		<a href="#">Edit</a>
-	</div>
-	<h2>{{question}}</h2>
-    <div class="pull-right">
-			<a href="#">Edit</a>
-	</div>
-	<ul class="unstyled">
-		{{#each choices}}
-		<li>
-			<div class="well">
-				<input type="radio" name="choice" />{{choice}}
-			</div>
-			<div class="pull-right">
-				<a href="#">Edit</a>
-			</div>
-		</li>
-		{{/each}}
-	</ul>
 
-	<form class="form-horizontal" style="position: relative;">
-		<button id="launch-poll" class="btn btn-large btn-block btn-primary" type="button">Launch Poll</button>
-	</form>
-</div>
-</script>
-<script id="share-poll-template"  type="text/x-handlebars-template">
-<div id="share-poll-panel" style="border: solid 1px orange; position: absolute;left: 150%; width: 60%; z-index: 100; background:#fff; padding: 20px;">
-	<h2>{{question}}</h2>
-	<p class="lead">Answers</p>
-			<form class="form-horizontal" style="position: relative;">
-				<fieldset>
-					<legend>Share with Your Network</legend>
-					<div class="control-group">
-						<div class="controls" style="margin-left: 0px;">
-							<textarea rows="3" style="width: 98%">I just told @{{target.twitter_handle}}: {{summary}}</textarea>
-						</div>
-					</div>
+    <div class="row inner-page">
+      <div class="col-md-6 lazy-container">
+        <img class="figurette lazy" src="assets/pixel.png" data-original="assets/two-phones.png" alt="Zombie ipsum" />
+      </div>
+      <div class="col-md-6">
+        <h3>All artwork included</h3>
+        <p class="lead">Present your project properly. Create your own art from included templates</p>
+        <ul class="list-wide">
+          <li><i class="fa fa-check"></i> More than 300 awesome icons from <a href="http://fortawesome.github.io/Font-Awesome/" title="awesome font, awesome">Font-awesome</a>
+          </li>
+          <li><i class="fa fa-check"></i> Browser icons</li>
+          <li><i class="fa fa-check"></i> Phone, tablet, laptop, desktop vectors (SVG)</li>
+          <li><i class="fa fa-check"></i> 5 Layered PSD files.</li>
+        </ul>
+      </div>
+    </div>
 
-				</fieldset>
+    <hr>
 
-				<button id="share-poll" class="btn btn-large btn-block btn-primary" type="button">Share Poll</button>
-			</form>
-		</div>
-</script>
-<!-- end create poll templates -->
-<div class="hero-wrapper">
-	<div class="container">
-		<div class="hero-unit">
-			<h2>Snap In Speak Out</h2>
-			<p class="lead">
-				We're building a new kind of online activism platform, designed exclusively for the grassroots. The best part? You can use our free tools anywhere - but you can't get them anywhere else!
-			</p>
-			<p id="action-buttons" class="cta-actions">
-				<a id="start-petition" class="btn btn-primary btn-large">Start a Petition</a>&nbsp;
-				<a id="start-event" class="btn btn-primary btn-large">Start an Event</a>&nbsp;
-				<a id="start-phone-campaign" class="btn btn-primary btn-large">Start a Phone Campaign</a>&nbsp;
-				<a id="start-poll" class="btn btn-primary btn-large">Start a Poll</a>&nbsp;
-				<a id="start-bundle" class="btn btn-primary btn-large">Start a Bundle</a>&nbsp;
-			</p>
-		</div>
-		<!--/.hero-unit -->
-		<div class="hero-media">
-			<%= image_tag "mac.png" %>
-		</div>
-		<!--/.hero-media -->
-	</div>
-	<!--/.container -->
-</div>
-<!--/.hero-wrapper -->
-<div class="container">
-	<div class="row features">
-		<div class="headline headline-simple span12">
-			<h3>Explore Our Top Features</h3>
-		</div>
-		<!--/.headline -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-bell-alt"></i>
-			</div>
-			<h2>Simple & Clean</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-tablet"></i>
-			</div>
-			<h2>Responsive</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-beaker"></i>
-			</div>
-			<h2>A/B Tested</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-		<div class="span3">
-			<div class="icon">
-				<i class="icon-trophy"></i>
-			</div>
-			<h2>High Conversion rate</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus.
-			</p>
-		</div>
-		<!--/.span3 -->
-	</div>
-	<!-- /.features -->
-	<div class="row clients">
-		<div class="headline headline-simple span12">
-			<h3>Our Happy Clients</h3>
-		</div>
-		<!--/.headline -->
-		<div class="span2">
-			<%= image_tag "clients/01.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/02.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/03.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/04.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/05.png" %>
-		</div>
-		<!-- /.span2 -->
-		<div class="span2">
-			<%= image_tag "clients/06.png" %>
-		</div>
-		<!-- /.span2 -->
-	</div>
-	<!-- /.clients -->
-	<div class="testimonials">
-		<div class="container">
-			<div class="flexslider">
-				<ul class="slides">
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-					<li>
-						<blockquote>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim"
-							</p>
-							<small>Jon Doe</small>
-						</blockquote>
-					</li>
-				</ul>
-				<!--/.slides -->
-			</div>
-			<!--/.flexslider -->
-		</div>
-		<!--/.container -->
-	</div>
-	<!-- /.testimonials -->
-	<div class="row call-to-action">
-		<div class="span9">
-			<h4>Landing Page to Show The Power of Your Web App</h4>
-			<p>
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-			</p>
-		</div>
-		<!--/.span9 -->
-		<div class="span3">
-			<a class="btn btn-success btn-large btn-block">Sign up for Free</a>
-		</div>
-		<!--/.span3 -->
-	</div>
-	<!-- /.call-to-action -->
-</div>
-<!-- /container -->
-<div id="push">
-</div>
+    <!-- Video -->
+    <div class="row inner-page">
+      <div class="col-md-6 col-md-push-6">
+        <div class="btn-container figurette">
+          <img src="assets/video.png" alt="Play video" />
+          <a class="lightbox iframe btn-play" target="_blank" href="http://vimeo.com/61693087"><i class="fa fa-play"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-md-pull-6">
+        <ul class="big-list">
+          <li><i class="fa fa-check"></i> Always latest bootstrap</li>
+          <li><i class="fa fa-play"></i> Responsive video</li>
+          <li><i class="fa fa-expand"></i> Adaptive, smart lightbox</li>
+          <li><i class="fa fa-desktop"></i> All modern browsers supported</li>
+        </ul>
+        <br />
+        <a href="#assets" class="scroll btn btn-primary btn-centered"><i class="fa fa-caret-down"></i> Even more features</a>
+      </div>
+    </div>
+  </div> <!-- /#features -->
+  
+  <!-- Assets page -->
+  <div id="assets" class="page color-3">
+    <div class="inner-page">
+      <h2 class="page-headline">Page assets</h2>
+    </div>
+
+    <!-- Vectors -->
+    <div class="row inner-page">
+      <div class="col-md-6 lazy-container">
+        <img class="figurette lazy" alt="Original vectors" src="assets/pixel.png" data-original="assets/responsive-vectors.png" />
+      </div>
+      <div class="col-md-6">
+        <h3>5 vectors included</h3>
+        <p class="lead">Zombie ipsum
+          <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeirtis.</p>
+        <p>The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro..</p>
+      </div>
+    </div>  <!-- /vectors -->
+
+    <hr>
+
+    <!-- Big laptop -->
+    <div class="row inner-page">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="lazy-container lazy-large btn-container loaded">
+          <div class="btn-container">
+            <img class="figurette lazy " src="assets/laptop-blue@2x.png" data-original="assets/laptop-blue@2x.png" alt="view image in lightbox" style="display: inline;">
+            <a href="assets/superman.jpg" class="lightbox btn-play" target="_blank">
+              <i class="fa fa-search-plus"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clients -->
+    <div class="clients color-1">
+      <div class="inner-page">
+        <h2 class="page-headline">Who's using stories.</h2>
+      </div>
+      <div class="inner-page row">
+        <ul class="clients list-inline">
+          <li><i class="fa fa-globe"></i> Earth</li>
+          <li><i class="fa fa-heart"></i> Love</li>
+          <li><i class="fa fa-leaf"></i> Leaves</li>
+          <li><i class="fa fa-cloud"></i> Clouds</li>
+        </ul> 
+      </div>
+    </div>
+  </div> <!-- /#assets -->
+ 
+  <!-- About page -->
+  <div id="about" class="page color-4">
+    <div class="inner-page">
+      <h2 class="page-headline">Who are we and how it all got started. Our story.</h2>
+    </div>
+    <div class="row inner-page">
+      <div class="col-md-6  lazy-container">
+        <img class="figurette lazy" src="assets/pixel.png" data-original="assets/green-office.png" alt="Our workspace" />
+      </div>
+      <div class="col-md-6">
+        <h3>Zonbi tattered for solum.</h3>
+        <p class="lead">The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro.</p>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Team -->
+    <div class="row inner-page team">
+      <div class="col-md-6">
+        <img class="pull-left" src="assets/cookies2.png" alt="A cookie" />
+        <h4>Jane Doe</h4>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis.</p>
+        <ul>
+          <li><i class="fa fa-home"></i>  <a href="prettystrap.com">http://prettystrap.com</a>
+          </li>
+          <li><i class="fa fa-envelope-o"></i>  <a href="info@email.com">info@email.com</a>
+          </li>
+          <li class="social">
+            <a href="#about"><i class="fa fa-facebook-square"></i></a>
+            <a href="#about"><i class="fa fa-twitter"></i></a>
+            <a href="#about"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 team2">
+        <img class="pull-left" src="assets/cookies.png" alt="A cookie" />
+        <h4>John Doe</h4>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis.</p>
+        <ul>
+          <li><i class="fa fa-home"></i>  <a href="prettystrap.com">http://prettystrap.com</a>
+          </li>
+          <li><i class="fa fa-envelope-o"></i>  <a href="info@email.com">info@email.com</a>
+          </li>
+          <li class="social">
+            <a href="#about"><i class="fa fa-facebook-square"></i></a>
+            <a href="#about"><i class="fa fa-twitter"></i></a>
+            <a href="#about"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> <!-- /#about -->
+
+  <!-- Contact page -->
+  <div id="contact" class="page color-2">
+    <div class="inner-page">
+      <h2 class="page-headline">Get in touch and stay updated</h2>
+    </div>
+    <div class="row inner-page contact">
+      <div class="col-md-6">
+        <h3>What's on your mind?</h3>
+        <form id="contact-form">
+          <textarea rows="6" class="form-control" placeholder="Your story"></textarea>
+          <input type="text" class="form-control" placeholder="your@e-mail.com">
+          <input type="text" class="form-control" placeholder="Name">
+          <button class="btn btn-primary btn-centered">Contact us</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div class="btn-container centered lazy-container text-center">
+          <img src="assets/pixel.png" class="lazy figurette" alt="Open the map" data-original="assets/map.png" />
+          <a class="lightbox iframe  btn-map" target="blank" title="Open google maps" href="https://maps.google.com/maps?q=Stationsplein,+1012+Centrum,+Amsterdam,+Noord-Holland,+The+Netherlands&amp;hl=en"><i class="pull-left fa fa-map-marker"></i><div>Stationsplein, 1012 AB,<br />Amsterdam,<br /> The Netherlands</div></a>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /#contact -->
+
+  <!-- Newsletter -->
+  <div class="newsletter color-1">
+    <div class="inner-page row">
+      <div class="col-md-4">
+        <h4>
+          <strong>Be cool</strong>, subscribe to get our latest news</h4>
+      </div>
+      <div class="col-md-6">
+        <input type="email" placeholder="your@e-mail.com" name="EMAIL" class="subscribe">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary pull-right btn-block">Subscribe</button>
+      </div>
+    </div>
+  </div> <!-- /newsletter -->
+
+  <!-- The footer, social media icons, and copyright -->
+  <footer class="page color-5">
+    <div class="inner-page row">
+      <div class="col-md-6 social">
+        <a href="#contact"><i class="fa fa-twitter"></i></a>
+        <a href="#contact"><i class="fa fa-github-square"></i></a> 
+        <a href="#contact"><i class="fa fa-facebook-square"></i></a>
+        <a href="#contact"><i class="fa fa-google-plus-square"></i></a>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy; 2013 <a href="http://prettystrap.com" title="twitter bootstrap themes">prettystrap.com</a> | all rights reserved | <a href="#top" title="Got to top" class="scroll">To top <i class="fa fa-caret-up"></i></a>
+      </div>
+    </div>
+  </footer>

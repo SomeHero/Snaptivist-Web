@@ -1,9 +1,13 @@
-%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.theme || false"}
-	%p{:style=>"margin-bottom: 0px"}
-		Apply a theme to your layout, by selecting the theme on the right >>
-%div{"ng-show"=>"settings.theme || false"}
-	.panel{:style=>"padding: 50px 40px"}
-		%p{:style=>"margin-bottom: 0px"}
-			Great! Your action will look like the sample action below.  We'll add some pages to your action in the next step.
-	#action-container{:style=>"background-color: #fff;", "ng-controller"=>"SamplePetitionController", "ng-show"=>"settings.theme || false"}
-		%div{"ng-include"=>"sample_page_template()"}
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	%h3.modal-title
+		Change Theme
+.modal-body
+	%div.side-bar-item{"ng-repeat"=>"theme in themes", "ng-click"=>"set_theme(theme)", "ng-style"=>"set_theme_item_styling(theme)"}
+		.side-bar-text
+			%h5 {{theme.name}}
+			%p {{theme.description}}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok

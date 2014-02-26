@@ -1,0 +1,21 @@
+!!!
+%html{lang: "en"}
+  %head
+    %title The Story - responsive landing page
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{charset: "utf-8"}/
+    %meta{content: "Twitter bootstrap theme", name: "description"}/
+    %meta{content: "prettystrap", name: "author"}/
+    = stylesheet_link_tag "application", :media => "all"
+    / Load The Story
+    %link#the-story-css-file{href: "assets/the-story.min.css", media: "screen", rel: "stylesheet"}/
+    / Favicon
+    %link{href: "assets/favicon.ico", rel: "shortcut icon"}/
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="/assets/html5shiv.js"></script>
+      <script src="/assets/respond.min.js"></script>
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+  = yield 
+
+  = javascript_include_tag "application"

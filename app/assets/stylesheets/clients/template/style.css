@@ -37,13 +37,7 @@
 .noMarginLeft {
   margin-left: 0px !important;
 }
-body {
-  background: #f5f5f5;
-  color: #383e4b;
-  /*border: none;*/
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-}
+383e4b
 a {
   color: #383e4b;
 }
@@ -926,18 +920,6 @@ div.uploader {
 .label-info[href],
 .badge-info[href] {
   background: #67c2ef;
-}
-/* Footer
-=================================================================== */
-footer {
-  background: #383e4b;
-  color: white;
-  padding: 10px 20px 20px 20px!important;
-  margin: 0px !important;
-}
-footer a {
-  color: white;
-  font-weight: bold;
 }
 /* Main Chart
 =================================================================== */

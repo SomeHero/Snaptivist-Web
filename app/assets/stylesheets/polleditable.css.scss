@@ -1,0 +1,46 @@
+/* PollEditable Styles */
+::-webkit-input-placeholder {
+    color: #BBB;
+}
+.polleditable:not(.placeholder-showing):focus:before {
+    position: absolute;
+    content: attr(data-placeholder);
+    top: -20px;
+    left: 0;
+    color: white;
+    height: auto;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background: #12c2ff;
+    border-radius: 2px;
+    padding: 3px 6px;
+    line-height: normal!important;
+    white-space: nowrap;
+    z-index: 20000;
+    text-shadow: none !important;
+}
+.polleditable.editing-placeholder:not(.placeholder-showing):focus:before {
+    content: attr(data-editing-placeholder);
+}
+[polleditable]:hover:not(:focus) {
+  outline: 1px solid #ccc;
+}
+.polleditable {
+    position: relative;
+}
+.polleditable.placeholder-showing:before {
+    content: attr(data-placeholder);
+    text-transform: uppercase;
+    color: #C0C0C0;
+    background: #F9F9F9;
+    text-shadow: none !important;
+}
+.polleditable.placeholder-showing.right:before {
+    left: inherit;
+    right: 3px;
+}
+.polleditable.placeholder-showing:focus:before {
+    color: #12c2ff;
+}

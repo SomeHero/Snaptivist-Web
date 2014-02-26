@@ -3,39 +3,31 @@
 		.col-md-9
 			%h2.contenteditable.petition-title{:style=>"display: inline-block; line-height: 54px;", "contenteditable"=>"true", "ng-model" => "petition.title", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Give Your Campaign a Name", "name"=>"petition_name", "required"=>""}
 				New Campaign Name
-			%ul.nav.nav-tabs
-				%li.text-center{"ng-class"=>"{ active: (settings.step == 1)}"}
-					%a{"ng-click"=>"goto_step_clicked(1)"}
-						Config
-				%li.text-center{"ng-class"=>"{ active: (settings.step == 2)}"}
-					%a{"ng-click"=>"goto_step_clicked(2)", "ng-disabled"=>"!enable_layout_step()"}
-						Layout
-				%li.text-center{"ng-class"=>"{ active: (settings.step == 3)}"}
-					%a{"ng-click"=>"goto_step_clicked(3)", "ng-disabled"=>"!enable_theme_step()"}
-						Theme
-				%li.text-center{"ng-class"=>"{ active: (settings.step == 4)}"}
-					%a{"ng-click"=>"goto_step_clicked(4)"}
-						Pages
-				%li.text-center{"ng-class"=>"{ active: (settings.step == 5)}"}
-					%a{"ng-click"=>"goto_step_clicked(5)"}
-						Emails
-				%li.text-center{"ng-class"=>"{ active: (settings.step == 6)}"}
-					%a{"ng-click"=>"goto_step_clicked(6)"}
-						Publish
-		.col-md-3
-			%ul.nav.action-menu-items
-				%li.pull-left.text-center{:style=>"width:33%; height: 80px; padding: 10px 0px;", "ng-click"=>"save_clicked()"}
-					%i.glyphicon.glyphicon-save{:style=>"font-size: 30px;"}
-					.text-center{:style=>"margin-top: 10px"}
-						Save
-				%li.pull-left.text-center{:style=>"width:34%; height: 80px; padding: 10px 0px;", "ng-click"=>"cancel_clicked()"}
-					%i.glyphicon.glyphicon-ban-circle{:style=>"font-size: 30px;"}
-					.text-center{:style=>"margin-top: 10px"}
-					Cancel
-				%li.pull-left.text-center{:style=>"width:33%; height: 80px;  padding: 10px 0px;", "ng-click"=>"publish_clicked()"}
-					%i.glyphicon.glyphicon-ok{:style=>"font-size: 30px;"}
-					.text-center{:style=>"margin-top: 10px"}
-					Publish
+		.col-md-3#config
+			.navigation
+				/ Left multi level menu
+				.navigation.lvl-0
+					/ Menu main item
+					%a.main-item{href: "#"}
+						.entypo-cog{:style=>"font-size: 36px; color: #000;"}
+					/ Level 1 menu
+					.lvl-1.left{:style=>"margin-top: 20px"}
+						.box.arrow.bottom.left
+							/ Link 1
+							%a.first{"ng-click"=>"action_tags_clicked()"}
+								Action Tags
+							/ Link 2
+							%a.first{"ng-click"=>"change_layout_clicked()"}
+								Change Layout
+							/ Link 3
+							%a.first{"ng-click"=>"change_theme_clicked()"}
+								Change Theme
+							/ Link 4
+							%a.first{"ng-click"=>"email_configurations_clicked()"}
+								Email Configuration
+							/ Link 5
+							%a.first{"ng-click"=>"publish_settings_clicked()"}
+								Publish Settings
 .setup_give_flow
 	%div.top-nav{:style => "min-height: 35px"}
 		.row-wrapper-fluid
@@ -48,6 +40,5 @@
 									
 								%div{:style=>"margin: 20px;"}		
 									%div{"ng-include"=>"", "src"=>"content_template_urls()"}
-								%div.text-right{:style => "margin-right: 20px;", "ng-show"=>"show_next_button()"}
-									%button.btn.btn-lg.btn-success{"ng-click"=>"next_step_clicked(petition_setup)", :style=>"width: 100px"}
-										Next!
+								
+%footer{"ng-include"=>"", "src"=>"'/clients/partials/footer'"}

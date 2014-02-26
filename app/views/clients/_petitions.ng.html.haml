@@ -1,5 +1,5 @@
 .row
-	.col-md-8.col-md-offset-1
+	.col-md-8.col-md-offset-2	
 		%h1
 			Your Actions
 		.panel{:style=>"padding: 50px 40px", "ng-hide"=>"petitions.length > 0"}
@@ -40,7 +40,6 @@
 								%a{"ng-href"=>"#/petitions/{{petition.id}}/premiums"}
 									.col-md-4.no-gutter{"panel" => "petition.premium_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Premiums", "ng-click"=>"show"}
 
-			%div.text-right
-				%a{"ng-href"=>"petitions/{{petition.petition_id}}#petitions/{{petition.petition_id}}"}
-					%button.btn.btn-primary.btn-lg{"ng-click"=>"edit_petition(petition)"}
+				%a{"ng-href"=>"/clients/{{client.client_id}}/petitions/{{petition.id}}"}
+					%button.btn.btn-primary.btn-lg
 						Edit

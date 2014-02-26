@@ -48,11 +48,6 @@ attributes :id,
   :created_at,
   :updated_at
 
-binding.pry
-  @content.each do |post|
-    node(post.key) {{ title: post.title, created_at: post.created_at }}
-  end
-
   node :share_count do |petition|
     petition.share_count
   end
