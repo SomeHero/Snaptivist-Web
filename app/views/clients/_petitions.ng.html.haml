@@ -40,6 +40,6 @@
 								%a{"ng-href"=>"#/petitions/{{petition.id}}/premiums"}
 									.col-md-4.no-gutter{"panel" => "petition.premium_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Premiums", "ng-click"=>"show"}
 
-				%a{"ng-href"=>"/clients/{{client.client_id}}/petitions/{{petition.id}}"}
+				%a{"ng-href"=>"/clients/{{client.client_id}}/petitions/{{petition.id}}#/petitions/{{petition.id}}"}
 					%button.btn.btn-primary.btn-lg
 						Edit

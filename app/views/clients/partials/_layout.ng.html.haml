@@ -4,10 +4,12 @@
 	%h2.modal-title
 		Change Layout
 .modal-body
-	%div.side-bar-item{"ng-repeat"=>"layout in layouts", "ng-click"=>"set_layout(layout)", "ng-style"=>"set_layout_item_styling(layout)"}
-		.side-bar-text
-			%h5 {{layout.name}}
-			%p {{layout.description}}
+	.row
+		%div{"ng-repeat"=>"layout in layouts", "ng-click"=>"set_layout(layout)", "ng-style"=>"set_layout_item_styling(layout)"}
+			.col-md-4
+				.thumbnail.text-center
+					%h5 {{layout.name}}
+					%p {{layout.description}}
 .modal-footer
 	%button.btn.btn-primary{"ng-click"=>"ok()"}
 		Ok

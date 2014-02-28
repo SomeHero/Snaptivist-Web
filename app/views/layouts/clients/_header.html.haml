@@ -1,4 +1,4 @@
-.navbar{:style => "min-height: 0px; border: none;"}
+.navbar{:style => "min-height: 0px; border: none;", "ng-controller"=>"MainNavigationController"}
   .navbar-inner
     .row-wrapper-fluid
       %button.navbar-toggle{"data-toggle" => "collapse", "data-target" => ".top-nav.nav-collapse,.sidebar-nav.nav-collapse"}
@@ -25,13 +25,9 @@
               %ul.dropdown-menu{:style=>"width: 100%"}
                 %li.dropdown-menu-title
                 %li
-                  %a{"ng-href" => "/clients/{{client.client_id}}"}
-                    %i.icon-off.pull-left
-                    = "Home"
-                %li
                   %a{"ng-href" => "/clients/{{client.client_id}}/petitions"}
                     %i.icon-off.pull-left
-                    = "Actions"
+                    = "Home"
                 %li
                   %a{"ng-href" => "/clients/{{client.client_id}}/crm_setup"}
                     %i.icon-off.pull-left

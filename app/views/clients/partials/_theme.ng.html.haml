@@ -4,10 +4,12 @@
 	%h3.modal-title
 		Change Theme
 .modal-body
-	%div.side-bar-item{"ng-repeat"=>"theme in themes", "ng-click"=>"set_theme(theme)", "ng-style"=>"set_theme_item_styling(theme)"}
-		.side-bar-text
-			%h5 {{theme.name}}
-			%p {{theme.description}}
+	.row
+		%div{"ng-repeat"=>"theme in themes", "ng-click"=>"set_theme(theme)", "ng-style"=>"set_theme_item_styling(theme)"}
+			.col-md-4
+				.thumbnail.text-center
+					%h5 {{theme.name}}
+					%p {{theme.description}}
 .modal-footer
 	%button.btn.btn-primary{"ng-click"=>"ok()"}
 		Ok

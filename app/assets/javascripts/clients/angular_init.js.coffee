@@ -1,12 +1,11 @@
 @app = angular.module 'clients', ['contenteditable', 'angularFileUpload', 'ui.bootstrap', 'toggle-switch']
 
 @app.config ['$routeProvider', ($routeProvider) ->
-  base_page_url = '/home'
-  $routeProvider
-  .when('/home',
-    templateUrl: '/clients/petition_setup'
-    controller: PetitionSetupController
-    resolve: PetitionSetupController.resolve
+  base_page_url = '/petitions'
+  $routeProvider.when('/home',
+    templateUrl: '/clients/petitions'
+    controller: PetitionController
+    resolve: PetitionController.resolve
   ).when('/petitions',
     templateUrl: '/clients/petitions'
     controller: PetitionController
