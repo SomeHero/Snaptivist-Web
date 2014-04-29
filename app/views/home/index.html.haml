@@ -5,200 +5,76 @@
         %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
           %span.sr-only Toggle navigation
           %i.fa.fa-bars
-        %a.navbar-brand{href: "#", style: "height: 40px"} Snaptivist
+        %a.navbar-brand{href: "#", style: "height: 40px"} Snaptivist.com
       #nav-collapse.collapse.navbar-collapse.navbar-ex1-collapse
         %ul.nav.navbar-nav.navbar-right
-          %li.active
-            %a.scroll.brand-1{href: "#home", title: "Home page"} Home
           %li
-            %a.scroll.brand-4{href: "#features", title: "What Is It"} What Is Snaptivist?  
+            %a.scroll.brand-4{href: "#features", title: "What Is It"} What It Is  
           %li
-            %a.scroll.brand-1{href: "#video", title: "Web video"} How It Works
+            %a.scroll.brand-1{href: "#assets", title: "Features"} What It Does
           %li
-            %a.scroll.brand-4{href: "#assets", title: "Features"} Features
-          %li
-            %a.scroll.brand-1{href: "#about", title: "About Us"} About Us
-          %li
-            %a.scroll.brand-4{href: "#contact", title: "Get Started!"} Get Started  
+            %a.scroll.brand-4{href: "#contact", title: "Sign Up"} Try It Now  
     / /.navbar-container
-  / Home Page
-  #home.page.color-1
-    .inner-page
-      %h2.page-headline.large Empower Your People
-    .row.inner-page
-      .col-md-8.col-md-push-4.lazy-container
-        %img.lazy{alt: "Looks great on every device", "data-original" => "assets/home.png", src: "assets/pixel.png"}/
-      .col-md-4.col-md-pull-8
-        %ul.big-list
-          Launch Free Action Sites With Snaptivist:
-          %li
-            %i.fa.fa-check
-            Online Petitions 
-          %li
-            %i.fa.fa-check
-            Interactive Polls
-          %li
-            %i.fa.fa-check
-            Issue Surveys
-          %li
-            %i.fa.fa-check
-            Event Invites
-        %br/
-        %a.scroll.btn.btn-primary.btn-centered{href: "#video", title: "How It Works"}
-          %i.fa.fa-caret-down
-          How It Works
-  / /#home
   / Feature page
   #features.page.color-4
-    .inner-page        
-      %h2.page-headline Snaptivist Is A Web App Built for Digital Organizers
+    .inner-page       
+      %h2.page-headline Fast Action Sites For Digital Organizers
+      .inner-page.row 
+        .col-md-6.col-md-offset-3
+          %img{alt: "Sign the Petition", src: "assets/Snaptivist Screen Shot Vets.png"}/
+          %a.lightbox.iframe{href: "http://createaccount.snaptivist.com/", target: "_blank"} 
+      %a.scroll.btn.btn-primary.btn-centered{href: "#contact"}
+        %i.fa.fa-caret-down
+        Start A Campaign 
       %ul.features.list-inline
         %li
           %h3
             %i.fa.fa-check
-            Launch Advocacy Campaigns
-          %p Create unlimited custom action sites, including petitions, polls, events, and more for supporter acquisition and engagement.
+            Launch Advocacy Websites
+          %p Create customized action sites, including petitions, polls, events, and more, for supporter acquisition and engagement.
         %li
           %h3
             %i.fa.fa-tablet
-            Recruit Supporters
-          %p Learn about the interests, location, and even Facebook friends of your top supporters, as well as the best email address to contact them.
+            Recruit New Supporters
+          %p Learn about the interests, locations, and even Facebook friends of your supporters, as well as the best email address to contact them.
         %li
           %h3
             %i.fa.fa-heart
-            Increase Engagement
+            Build Better Relationships
           %p Ask supporters to share a link, volunteer time, donate money, or anything else after they show interest by taking action.
-        %hr/
-        %a.scroll.btn.btn-primary.btn-centered{href: "#contact"}
-          %i.fa.fa-caret-down
-          Get Started!
-  / /#features
-  / Video
-  #video.page.color-1
-    .row.inner-page
-      .col-md-offset-3.col-md-10
-        %img{alt: "Play video", src: "assets/video.png"}/
-        %a.lightbox.iframe.btn-play{href: "http://www.youtube.com/watch?v=ewey46RxXZk", target: "_blank"}
-          %i.fa.fa-play
-    .inner-page
-      %h2.page-headline Already Working With Snaptivist
-      %ul.clients.list-inline
-        %li
-          %img{alt: "John Cornyn for Senate", src: "assets/logos/john_cornyn_logo.png"}
-        %li
-          %img{alt: "Cuccinelli for Governor", src: "assets/logos/cuccinelli_logo.jpg"}
-        %li
-          %img{alt: "BearingDrift.com", src: "assets/logos/bearing_drift_logo.png"}             
-  / /#video
+        %hr/                
   / Assets page
-  #assets.page.color-4
+  #assets.page.color-1
     .inner-page
-    %h2.page-headline Right Message. Right Time. Right Audience. 
-    .row.inner-page
-      .col-md-6.lazy-container
-        %img.figurette.lazy{alt: "Original vectors", "data-original" => "assets/responsive-vectors.png", src: "assets/pixel.png"}/
-      .col-md-6
-        %h3 Never miss a news cycle. 
-        %p.lead
-          Launch world-class online advocacy campaigns in minutes with no technical skills required.
-        %ul.list
-          %li
-            %i.fa.fa-cog
-            Collect contact info when supporters take action using their email address or Facebook account.
-          %li
-            %i.fa.fa-cog
-            Publish your campaign as a microsite and/or Facebook Fan Page tab.
-          %li
-            %i.fa.fa-cog
-            Auto-tweet delivers a customized message on Twitter every time an action is taken.
-          %li
-            %i.fa.fa-cog
-            Embed custom graphics or web videos directly into your action page.
-          %li
-            %i.fa.fa-cog
-            Create a unique custom URL for every action.
-          %li
-            %i.fa.fa-cog
-            Track the number of actions taken and Facebook shares from your user dashboard.  
-          %li
-            %i.fa.fa-cog
-            Integrate directly with your CRM through our API or export data in CSV format.
-          %li
-            %i.fa.fa-cog
-            Redirect action-takers to any landing page you want.  
+      %h2.page-headline Watch The Video:
+      .inner-page.row 
+        .col-md-6.col-md-offset-3
+          %img{alt: "Play video", src: "assets/video.png"}/
+          %a.lightbox.iframe.btn-play{href: "http://www.youtube.com/watch?v=ewey46RxXZk", target: "_blank"}
+            %i.fa.fa-play 
+      .container.text-center     
+        %p Launch a professional online advocacy campaign in minutes, with no technical skills required.
+        %i.fa.fa-cog
+        %p Engage your top supporters on the issues they care about with high-quality content they will want to share.
+        %i.fa.fa-cog
+        %p Collect contact info when they take action using their email address or Facebook account.
+        %i.fa.fa-cog
+        %p Embed custom graphics or web videos directly into your action page.
+        %i.fa.fa-cog
+        %p Create a unique URL for every campaign.  
   / /#assets        
-  / About page
-  #about.page.color-1
-    .inner-page
-      %h2.page-headline Who are we and how it all got started. Our story.
-    .row.inner-page
-      .col-md-6.lazy-container
-        %img.figurette.lazy{alt: "Our workspace", "data-original" => "assets/green-office.png", src: "assets/pixel.png"}/
-      .col-md-6
-        %h3 Zonbi tattered for solum.
-        %p.lead The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro.
-        %p Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.
-    %hr/
-    / Team
-    .row.inner-page.team
-      .col-md-6
-        %img.pull-left{alt: "A cookie", src: "assets/cookies2.png"}/
-        %h4 Jane Doe
-        %p Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis.
-        %ul
-          %li
-            %i.fa.fa-home
-            %a{href: "prettystrap.com"} http://prettystrap.com
-          %li
-            %i.fa.fa-envelope-o
-            %a{href: "info@email.com"} info@email.com
-          %li.social
-            %a{href: "#about"}
-              %i.fa.fa-facebook-square
-            %a{href: "#about"}
-              %i.fa.fa-twitter
-            %a{href: "#about"}
-              %i.fa.fa-github-square
-      .col-md-6.team2
-        %img.pull-left{alt: "A cookie", src: "assets/cookies.png"}/
-        %h4 John Doe
-        %p Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis.
-        %ul
-          %li
-            %i.fa.fa-home
-            %a{href: "prettystrap.com"} http://prettystrap.com
-          %li
-            %i.fa.fa-envelope-o
-            %a{href: "info@email.com"} info@email.com
-          %li.social
-            %a{href: "#about"}
-              %i.fa.fa-facebook-square
-            %a{href: "#about"}
-              %i.fa.fa-twitter
-            %a{href: "#about"}
-              %i.fa.fa-github-square
-  / /#about
   / Contact page
   #contact.page.color-4 
-    .row.inner-page.contact
-      .col-md-6
-        %h3 Sign Up To Get Started
+    .inner-page
+      %h2.page-headline Request Your Free Account
+      .inner-page.row
+        .col-md-6
         %form#contact-form
-          %textarea.form-control{placeholder: "Tell us how Snaptivist can help you...", rows: "6"}
+          %textarea.form-control{placeholder: "What can Snaptivist do for you?", rows: "6"}
           %input.form-control{placeholder: "your@e-mail.com", type: "text"}/
-          %input.form-control{placeholder: "Name", type: "text"}/
+          %input.form-control{placeholder: "Full Name", type: "text"}/
           %button.btn.btn-primary.btn-centered Go
-      .col-md-6
-        .btn-container.centered.lazy-container.text-center
-          %img.lazy.figurette{alt: "Open the map", "data-original" => "assets/map.png", src: "assets/pixel.png"}/
-          %a.lightbox.iframe.btn-map{href: "https://maps.google.com/maps?t=m&sll=30.3077609,-97.7534014&sspn=0.4553753,0.7034114&q=Austin,+TX&output=classic&dg=opt", target: "blank", title: "Open google maps"}
-            %i.pull-left.fa.fa-map-marker
-            %div
-              Snaptivist HQ,
-              %br>/
-              Austin,
-              %br/
-              Texas
+  / /#contact
   / The footer, social media icons, and copyright
   %footer.page.color-5
     .inner-page.row
@@ -212,9 +88,9 @@
         %a{href: "#contact"}
           %i.fa.fa-google-plus-square
       .col-md-6.text-right.copyright
-        © 2013
-        %a{href: "http://prettystrap.com", title: "twitter bootstrap themes"} prettystrap.com
+        © 2014
+        %a{href: "http://snaptivist.com", title: "Snaptivist"} Snaptivist.com
         | all rights reserved |
-        %a.scroll{href: "#top", title: "Got to top"}
+        %a.scroll{href: "#top", title: "Go to top"}
           To top
           %i.fa.fa-caret-up
