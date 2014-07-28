@@ -1,0 +1,14 @@
+%h4{:style=>"font-size: 1.36em"}
+  Basic Information
+%div
+  With ngDialog you don't need jQuery or Bootstrap to create dialogs for
+  %code ng-app:
+%form{"role"=>"form"}
+  .form-group
+    %label{"for"=>"actionTitleInput"}
+      Action Title
+    %input.form-control#actionTitleInput{"type"=>"text","placeholder"=>"Enter Action Title","ng-model"=>"campaign.title"}
+  .form-group
+    %label{"for"=>"browserIconInput"}
+      Browser Icon (favicon)
+    %input.form-control#browserIconInput{"type"=>"file","placeholder"=>"Upload a Browoser Icon"}

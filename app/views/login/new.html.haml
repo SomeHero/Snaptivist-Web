@@ -1,5 +1,6 @@
-.login-box
-  %h2 Login to your Account
+#login.login-box
+  %div.title
+    Login to your Account
   = form_tag  login_path, method: 'post', class: 'form-horizontal' do |f|
     = hidden_field_tag :on_complete_url, @on_complete_url
     = hidden_field_tag :on_fail_url, @on_fail_url

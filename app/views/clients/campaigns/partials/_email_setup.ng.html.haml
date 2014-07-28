@@ -6,17 +6,15 @@
           Setup Campaign Emails
         %p{:style=>"font-size: .88em"}
           Setup auto-responder emails to send to your action takers
-        %ul.nav.nav-stacked.nav-pills
-          %li
-            %a Confirmation Email
-          %li
-            %a Donation Reminder Email
+        %ul.nav.nav-pills.nav-stacked
+          %li{"ng-repeat"=>"email_type in email_types", "ng-click"=>"set_selected_email_type($index)", "ng-class"=>"set_style($index)"}
+            %a{"href"=>"#"}
+              {{email_type.name}}
       .col-md-9
         %h4{:style=>"font-size: 1.36em"}
-          Confirmation Email Setup
+          {{selected_email_type.name}}
         %div
-          With ngDialog you don't need jQuery or Bootstrap to create dialogs for
-          %code ng-app:
+          {{selected_email_type.description}}
         
         %form{"role"=>"form"}
           .form-group
@@ -31,5 +29,3 @@
             %label
               Subject:
             %input.form-control{"type"=>"text", "ng-model"=>"config.subject"}
-.ngdialog-buttons.mt
-  %button.ngdialog-button.ngdialog-button-primary{"ng-click" => "next()", type: "button"} ►

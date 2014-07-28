@@ -1,4 +1,4 @@
-@CampaignController = ($scope, $route, $routeParams, $modal, $log, $rootScope, $location, CampaignServices, ClientFactory, CampaignFactory, Util, cssInjector, campaign, pages, layouts, themes, ngDialog) ->
+@CampaignController = ($scope, $route, $routeParams, $modal, $log, $rootScope, $location, CampaignServices, ClientFactory, CampaignFactory, Util, cssInjector, campaign, pages, layouts, themes, email_types, ngDialog) ->
 	window.scope = $scope
 
 	$scope.is_admin = true
@@ -20,6 +20,7 @@
 		pages: pages
 		layouts: layouts
 		themes: themes
+		email_types: email_types
 	}
 	$scope.settings = {}
 	$scope.styles = {
@@ -148,12 +149,15 @@
 			$scope.update_stylesheet_list()
 		), ->
 			console.log "Modal dismissed at: " + new Date()
-
+     
 	$scope.email_configurations_clicked = () ->
 		console.log "email configurations clicked"
+		$scope.email_types = email_types
+
 		modalInstance = $modal.open(
 			templateUrl: '/clients/partials/email_config',
 			controller: EmailConfigurationController
+			scope: $scope
 		)
 
 	$scope.publish_settings_clicked = () ->
@@ -169,7 +173,39 @@
 		CampaignServices.save(ClientFactory.client.client_id, $scope.campaign, $scope.settings.layout.id, $scope.settings.theme.id).then (response) ->
 			Util.navigate_absolute '/clients/' + ClientFactory.client.client_id + '/campaigns'
 
-CampaignController.$inject = ['$scope', '$route', '$routeParams', '$modal', '$log', '$rootScope', '$location', 'CampaignServices', 'ClientFactory', 'CampaignFactory', 'Util', 'cssInjector', 'campaign', 'pages', 'layouts', 'themes', 'ngDialog']
+	$scope.configuration_clicked = () ->
+    	ngDialog.open({ 
+    		template: '/clients/campaigns/partials/configuration'
+    		controller: 'CampaignConfigurationController'
+    		scope: $scope
+    	});
+
+	$scope.email_setup_clicked = () ->
+    	$scope.email_types = $scope.system.email_types
+    	
+    	ngDialog.open({ 
+    		template: '/clients/campaigns/partials/email_setup'
+    		controller: 'EmailConfigurationController'
+    		scope: $scope
+    	});
+
+    $scope.publishers_clicked = () ->
+    	ngDialog.open({ 
+    		template: '/clients/campaigns/partials/publishers' 
+    		controller: 'CampaignPublishersController'
+    		scope: $scope
+    	});
+
+    $scope.activity_clicked = () ->
+    	ngDialog.open({ 
+    		template: '/clients/campaigns/partials/activity' 
+    		controller: 'CampaignActivityController'
+    		scope: $scope
+    	});
+
+
+
+CampaignController.$inject = ['$scope', '$route', '$routeParams', '$modal', '$log', '$rootScope', '$location', 'CampaignServices', 'ClientFactory', 'CampaignFactory', 'Util', 'cssInjector', 'campaign', 'pages', 'layouts', 'themes', 'email_types', 'ngDialog']
 
 CampaignController.resolve =
 
@@ -207,6 +243,14 @@ CampaignController.resolve =
 		deferred = $q.defer()
 
 		LayoutServices.get_layouts().then (response) ->
+			deferred.resolve(response)
+
+		deferred.promise
+	]
+	email_types: ['EmailTypeServices', '$q', (EmailTypeServices, $q) ->
+		deferred = $q.defer()
+
+		EmailTypeServices.get_email_types().then (response) ->
 			deferred.resolve(response)
 
 		deferred.promise

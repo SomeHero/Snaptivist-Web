@@ -26,20 +26,4 @@
 	      CampaignFactory.campaign.action_tags = new_tag
 	    $scope.action_tags.new_tag = ""
 
-	$scope.configuration_clicked = () ->
-    	ngDialog.open({ 
-    		template: '/clients/campaigns/partials/configuration',
-    		scope: $scope
-    	});
-     
-    $scope.email_setup_clicked = () ->
-    	ngDialog.open({ template: '/clients/campaigns/partials/email_setup' });
-     
-	$scope.publishers_clicked = () ->
-    	ngDialog.open({ template: '/clients/campaigns/partials/publishers' });
-
-    $scope.activity_clicked = () ->
-    	ngDialog.open({ template: '/clients/campaigns/partials/activity' });
-
-
 CampaignNavigationController.$inject = ['$scope', '$route', '$routeParams', '$modal', '$log', '$rootScope', '$location', 'ClientFactory', 'CampaignFactory', 'ngDialog']

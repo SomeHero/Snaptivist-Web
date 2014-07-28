@@ -7,41 +7,11 @@
         %p{:style=>"font-size: .88em"}
           Publish your Action to make it available to others
         %ul.nav.nav-stacked.nav-pills
-          %li
-            %a Snaptivist
-          %li
-            %a Facebook
+          %li{"ng-click"=>"set_selected_index(0)", "ng-class"=>"set_style(0)"}
+            %a{"href"=>""}
+              Snaptivist
+          %li{"ng-click"=>"set_selected_index(1)","ng-class"=>"set_style(1)"}
+            %a{"href"=>""} 
+              Facebook
       .col-md-9
-        %div
-          With ngDialog you don't need jQuery or Bootstrap to create dialogs for
-          %code ng-app:
-        %ul.mt
-          %li Use it in controllers, factories or directives
-          %li Create your own directives
-          %li Style all UI and templates
-          %li Configure themes
-          %li Add animations and effects
-        %ul.mt
-          %li Use it in controllers, factories or directives
-          %li Create your own directives
-          %li Style all UI and templates
-          %li Configure themes
-          %li Add animations and effects
-        %ul.mt
-          %li Use it in controllers, factories or directives
-          %li Create your own directives
-          %li Style all UI and templates
-          %li Configure themes
-          %li Add animations and effects
-        %ul.mt
-          %li Use it in controllers, factories or directives
-          %li Create your own directives
-          %li Style all UI and templates
-          %li Configure themes
-          %li Add animations and effects
-        .mt
-          Module is shipped with both
-          %code ngDialog
-          service and default directive.
-.ngdialog-buttons.mt
-  %button.ngdialog-button.ngdialog-button-primary{"ng-click" => "next()", type: "button"} ►
+        %div{"ng-include"=>"get_template()"}
