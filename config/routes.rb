@@ -40,12 +40,13 @@ SnaptivistWeb::Application.routes.draw do
 
   match 'client_views/:layout/:template', :to => 'client_views#show'
   match 'client_views/:layout/segments/:segment', :to => 'client_views#segment'
-  match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
+  #match '/' => 'home#index', :constraints => { :subdomain => 'www' }
+  match '/' => 'home#index'
   match '/welcome' => 'home#welcome'
   
   match 'campaigns/:id', :to => 'campaigns#view'
   match '/deliver/:signature_id' => 'actions#view', :constraints => { :subdomain => /.+/ }
-  match '/' => 'actions#view', :constraints => { :subdomain => /.+/ }
+  #match '/' => 'actions#view', :constraints => { :subdomain => /.+/ }
   match 'petitions/:action_title', :to =>'petitions#view'
   match 'polls/:action_title', :to =>'polls#view'
   match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view'
@@ -153,7 +154,6 @@ SnaptivistWeb::Application.routes.draw do
   
   # Let's add the root route
   root :to => "home#index"
-  match 'eat/:food' => 'eat#food'
 
   get "signup" => "signup#new"
   post "signup" => "signup#create"
