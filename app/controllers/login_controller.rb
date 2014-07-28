@@ -12,7 +12,6 @@ class LoginController < ApplicationController
       .where("users.email" => params[:email])
       .first
 
-    binding.pry
     user = client_user.user
     if user.valid_password?(params[:password]) 
       @client = Client.find(client_user.client)
