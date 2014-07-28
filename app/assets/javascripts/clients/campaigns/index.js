@@ -11,10 +11,8 @@
 //= require_directory ./directives
 //= require_directory ../directives
 //= require_directory ../../directives
-//= require_directory ./services
 //= require_directory ../services
 //= require_directory ../../services
-//= require_directory ./factories
 //= require_directory ../factories
 //= require_directory ./libs
 //= require_directory ../libs
