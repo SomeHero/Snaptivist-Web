@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203033744) do
+ActiveRecord::Schema.define(:version => 20140728013740) do
+
+  create_table "actions", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -80,6 +87,41 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
 
   add_index "call_results", ["phone_campaign_id"], :name => "index_call_results_on_phone_campaign_id"
 
+  create_table "campaign_page_urls", :force => true do |t|
+    t.integer  "campaign_page_id"
+    t.integer  "url_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "campaign_page_urls", ["campaign_page_id"], :name => "index_campaign_page_urls_on_campaign_page_id"
+  add_index "campaign_page_urls", ["url_id"], :name => "index_campaign_page_urls_on_url_id"
+
+# Could not dump table "campaign_pages" because of following StandardError
+#   Unknown type 'json' for column 'content'
+
+  create_table "campaign_urls", :force => true do |t|
+    t.integer  "campaign_id"
+    t.integer  "url_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "campaign_urls", ["campaign_id"], :name => "index_campaign_urls_on_campaign_id"
+  add_index "campaign_urls", ["url_id"], :name => "index_campaign_urls_on_url_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "title"
+    t.string   "subdomain"
+    t.integer  "client_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "layout_id"
+    t.integer  "theme_id"
+  end
+
+  add_index "campaigns", ["client_id"], :name => "index_campaigns_on_client_id"
+
   create_table "choices", :force => true do |t|
     t.string   "choice"
     t.integer  "poll_id"
@@ -110,23 +152,13 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "nation_builder_crm_authentication_id"
-    t.string   "email",                                :default => "", :null => false
-    t.string   "encrypted_password",                   :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        :default => 0,  :null => false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
   end
 
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
@@ -167,7 +199,6 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
 
   create_table "email_configurations", :force => true do |t|
     t.integer  "email_type_id"
-    t.integer  "petition_id"
     t.string   "from_name"
     t.string   "from_address"
     t.string   "subject"
@@ -176,10 +207,11 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.boolean  "enabled"
+    t.integer  "campaign_id"
   end
 
+  add_index "email_configurations", ["campaign_id"], :name => "index_email_configurations_on_campaign_id"
   add_index "email_configurations", ["email_type_id"], :name => "index_email_configurations_on_email_type_id"
-  add_index "email_configurations", ["petition_id"], :name => "index_email_configurations_on_petition_id"
 
   create_table "email_types", :force => true do |t|
     t.string   "name"
@@ -204,6 +236,16 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
   end
 
   add_index "external_accounts", ["user_id"], :name => "index_external_accounts_on_user_id"
+
+  create_table "images", :force => true do |t|
+    t.string   "file_name"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
   create_table "layouts", :force => true do |t|
     t.string   "name"
@@ -252,6 +294,11 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
   end
 
   add_index "pages", ["layout_id"], :name => "index_pages_on_layout_id"
+
+  create_table "petition_actions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "petition_pages", :force => true do |t|
     t.integer  "petition_id"
@@ -361,6 +408,21 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
 
   add_index "phone_campaigns", ["target_id"], :name => "index_phone_campaigns_on_target_id"
 
+  create_table "poll_actions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "poll_choices", :force => true do |t|
+    t.string   "label"
+    t.integer  "position"
+    t.integer  "poll_action_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "poll_choices", ["poll_action_id"], :name => "index_poll_choices_on_poll_action_id"
+
   create_table "poll_responses", :force => true do |t|
     t.string   "comment"
     t.integer  "poll_id"
@@ -410,6 +472,11 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
     t.string   "type"
     t.string   "source"
     t.text     "raw_data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "signature_actions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -508,11 +575,58 @@ ActiveRecord::Schema.define(:version => 20140203033744) do
     t.string   "url_fragment"
   end
 
+  create_table "tweet_actions", :force => true do |t|
+    t.string   "twitter_handle"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "tweets", :force => true do |t|
     t.string   "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "urls", :force => true do |t|
+    t.string   "address"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_campaign_actions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "campaign_id"
+    t.integer  "action_id"
+    t.string   "type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "poll_choice_id"
+    t.string   "reason"
+  end
+
+  add_index "user_campaign_actions", ["action_id"], :name => "index_user_campaign_actions_on_action_id"
+  add_index "user_campaign_actions", ["campaign_id"], :name => "index_user_campaign_actions_on_campaign_id"
+  add_index "user_campaign_actions", ["user_id"], :name => "index_user_campaign_actions_on_user_id"
+
+  create_table "user_campaign_facebook_share_actions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_campaign_signature_actions", :force => true do |t|
+    t.string   "reason"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_campaign_vote_actions", :force => true do |t|
+    t.string   "reason"
+    t.integer  "poll_choice_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "user_campaign_vote_actions", ["poll_choice_id"], :name => "index_user_campaign_vote_actions_on_poll_choice_id"
 
   create_table "user_notification_logs", :force => true do |t|
     t.integer  "user_id"

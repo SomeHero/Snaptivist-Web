@@ -1,0 +1,38 @@
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	.modal-title
+		Select Segment Type
+.modal-body.no-padding{:style=>"height: 350px"}
+	%ul.thumbnails#segment-thumbnails
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;", "ng-click"=>"set_segment_type('disclaimer')"}
+			.entypo-quote.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Disclaimer Text
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;","ng-click"=>"set_segment_type('empty')"}
+			.entypo-video.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Empty
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;", "ng-click"=>"set_segment_type('action_guage')"}
+			.entypo-quote.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Guage
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;","ng-click"=>"set_segment_type('photo')"}
+			.entypo-camera.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Image
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;","ng-click"=>"set_segment_type('video')"}
+			.entypo-video.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Video
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;","ng-click"=>"set_segment_type('map')"}
+			.entypo-video.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Map
+		%li.thumbnail.col-md-3.text-center{:style=>"padding: 8px;", "ng-click"=>"set_segment_type('text')"}
+			.entypo-quote.type-icon{:style=>"font-size: 36px;"}
+			.type-name
+				Text
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok

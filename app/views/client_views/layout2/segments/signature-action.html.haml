@@ -1,0 +1,36 @@
+#signature-form-wrapper.segment-outer-wrapper
+	.segment-wrapper{"segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
+		#signature-form-container
+			.row.bottom-margin
+				.col-md-12.text-center
+					%button.btn.btn-primary#sign-with-facebook-button{"ng-click" => "fetch()", "custompopover" => "{{error_messages.sign_with_facebook}}",  "custompopover-toggle" =>"error_messages.sign_with_facebook.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "bottom"}
+						%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_facebook_cta_button_text", "required"=>""}
+			.row.text-center.bottom-margin#signature-form-or-container
+				%h6
+					%span
+						Or
+			%div#sign-with-email-address-wrapper{"ng-switch"=>"isAdmin"}
+				%form{"ng-switch-when"=>"false", "name"=>"sign_with_email_form", "novalidate"=>"", "ng-class"=>"form_styling()"}
+					.form-group.clearfix
+						.col-md-6.text-left#first-name-wrapper
+							%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name", "required"=>""}
+						.col-md-6.text-left#last-name-wrapper
+							%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name", "required"=>""}
+					.form-group
+						%input.form-control{"ng-model"=>"signature.email_address","type"=>"email","placeholder"=>"Email Address", "required"=>"", "name"=>"email_address"}
+					.form-group
+						%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code", "required"=>""}
+					%button.btn.btn-primary#sign-with-email-address-button{"ng-click"=>"sign_with_email_address(sign_with_email_form)", "custompopover" => "{{error_messages.sign_with_email_address}}",  "custompopover-toggle" =>"error_messages.sign_with_email_address.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+						%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_email_cta_button_text", "required"=>""}
+				%div{"ng-switch-when"=>"true"}
+					.form-group.clearfix
+						.col-md-6.text-left#first-name-wrapper
+							%input.form-control#first-name{"ng-model"=>"signature.first_name","type"=>"text", "placeholder"=>"First Name", "name"=>"first_name"}
+						.col-md-6.text-left#last-name-wrapper
+							%input.form-control#last-name{"ng-model"=>"signature.last_name","type"=>"text", "placeholder"=>"Last Name"}
+					.form-group
+						%input.form-control{"ng-model"=>"signature.email_address","type"=>"email","placeholder"=>"Email Address", "name"=>"email_address"}
+					.form-group
+						%input.form-control{"ng-model"=>"signature.zip_code","type"=>"text", "placeholder"=>"Zip Code"}
+					%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "go_to_delivery()"}
+						%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_email_cta_button_text", "required"=>""}

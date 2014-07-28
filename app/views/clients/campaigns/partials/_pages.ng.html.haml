@@ -1,0 +1,12 @@
+%div
+	%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"campaign.campaign_pages.length > 0"}
+		%p{:style=>"margin-bottom: 0px"}
+			Start building your action by adding pages from the right >>
+	%div{:style=>"padding: 40px;"}
+		%div{"ng-repeat"=>"campaign_page in campaign.campaign_pages", :style=>"margin: 20px;"}
+			%ul.page-toolbar
+				%li
+					%i.fa.fa-cog
+				%li
+					%i.fa.fa-times{"ng-click"=>"remove_page($index)"}
+			#action-container{:style=>"margin: 0px; 100px;", "ng-page"=>"", "page"=>"campaign_page", "is-admin"=>"is_admin", "layout"=>"settings.layout", "template-url"=>"page_item.page.template_url"}

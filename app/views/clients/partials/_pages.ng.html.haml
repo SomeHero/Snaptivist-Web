@@ -1,14 +1,5 @@
-%div{"ng-controller"=>"PagesController"}
-	%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"settings.pages_list.length > 0"}
+%div
+	%div.panel{:style=>"padding: 50px 40px", "ng-hide"=>"campaign.campaign_pages.length > 0"}
 		%p{:style=>"margin-bottom: 0px"}
 			Start building your action by adding pages from the right >>
-	%div{"ng-repeat"=>"page_item in settings.pages_list"}
-		%div.page-header{:style=>"cursor: pointer", "ng-click"=>"toggle_page(page_item)"}
-			.row
-				.col-md-9
-					%h4.page-header-name
-						{{page_item.page.name}}
-				.col-md-3.text-right
-					%i.glyphicon.glyphicon-remove{style: "line-height: 30px; cursor: pointer", "ng-click"=>"remove_page(page_item)"}
-		.panel#action-container{:style=>"padding:10px; margin: 10px 0px;", "ng-show"=>"page_item.expanded"}
-			%div{"ng-include"=>"get_page_template(page_item.page.template_name)"}
+	#action-container{:style=>"padding: 40px;", "ng-page"=>"", "page"=>"selected_page", "is-admin"=>"is_admin", "layout"=>"settings.layout", "template-url"=>"page_item.page.template_url"}

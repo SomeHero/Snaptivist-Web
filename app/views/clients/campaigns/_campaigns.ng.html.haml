@@ -1,0 +1,36 @@
+%section.wrap-inner
+	%h1
+		My Campaigns
+	%div.text-right
+		%button.btn.btn-primary.btn-lg{"ng-click"=>"new_project_clicked()"}
+			New Project
+	%div{:style=>"margin: 40px 0px;"}
+		.panel{:style=>"padding: 50px 40px", "ng-hide"=>"campaigns.length > 0"}
+			%p
+				Hey, it doesn't look like you have created any actions.  Create one >>
+		%ul.projects-list
+			%li.project-list-item.draggable{:style=>"position: relative;", "ng-repeat"=>"campaign in campaigns"}
+				.project-image{:style=>"height:240px; z-index: 91;"}
+					.overlay
+						%ul.tools
+							%li
+								%a{"tooltip"=>"Copy", "ng-click"=>"copy_project_clicked()"}
+									%i.fa.fa-files-o
+							%li
+								%a{"href"=>"#", "tooltip"=>"Archive", "ng-click"=>"archive_project_clicked()"}
+									%i.fa.fa-archive
+							%li
+								%a{"href"=>"#", "tooltip"=>"Delete", "ng-click"=>"delete_project_clicked(campaign.id)"}
+									%i.fa.fa-trash-o
+							%li 
+								%a{"href"=>"#", "tooltip"=>"Move"}
+									%i.fa.fa-arrows
+						%div.view-project
+							%a{"ng-href"=>"/clients/{{client.client_id}}/campaigns/{{campaign.id}}#/campaigns/{{campaign.id}}"}
+				.project-info
+					%h2{:style=>"margin-top: 0px; margin-bottom: 2px;"} 
+						{{campaign.title}}
+					%h3{:style=>"margin-top: 0px; margin-bottom: 20px;"} 
+						{{campaign.subdomain}}
+%div.push{:style=>"height: 100px;"}
+%footer{"ng-include"=>"", "src"=>"'/clients/campaigns/partials/footer'"}

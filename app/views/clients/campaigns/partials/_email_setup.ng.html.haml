@@ -1,0 +1,35 @@
+.ngdialog-message
+  .container
+    .row
+      .col-md-3
+        %h4{:style=>"font-size: 1.12em"}
+          Setup Campaign Emails
+        %p{:style=>"font-size: .88em"}
+          Setup auto-responder emails to send to your action takers
+        %ul.nav.nav-stacked.nav-pills
+          %li
+            %a Confirmation Email
+          %li
+            %a Donation Reminder Email
+      .col-md-9
+        %h4{:style=>"font-size: 1.36em"}
+          Confirmation Email Setup
+        %div
+          With ngDialog you don't need jQuery or Bootstrap to create dialogs for
+          %code ng-app:
+        
+        %form{"role"=>"form"}
+          .form-group
+            %label
+              From Name
+            %input.form-control{"type"=>"text", "ng-model"=>"config.from_name"}
+          .form-group
+            %label
+              From Address
+            %input.form-control{"type"=>"text", "ng-model"=>"config.from_address"}
+          .form-group
+            %label
+              Subject:
+            %input.form-control{"type"=>"text", "ng-model"=>"config.subject"}
+.ngdialog-buttons.mt
+  %button.ngdialog-button.ngdialog-button-primary{"ng-click" => "next()", type: "button"} ►

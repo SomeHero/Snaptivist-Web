@@ -1,0 +1,9 @@
+%div.wrap
+	%div.wrap.content
+		%ng-view
+
+= angular_templates '/clients/campaigns'
+= angular_templates '/clients/campaigns/partials'
+= angular_templates '/client_views'
+
+%div{"loading-screen" => "loading.show_spinner"}

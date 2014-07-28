@@ -1,0 +1,35 @@
+!!!
+%html{"xmlns:ng" => "http://angularjs.org", 'ng-app' => 'campaign'}
+  %head
+    %title
+      Campaigns
+    %meta{"property" => "og:type", "content" => "cause"}
+    %meta{"property" => "og:site_name", "content" => "www.snaptivist.com"}
+    %meta{"property" => "og:locale", "content" => "en_US"}
+
+    = render partial: 'layouts/actions_head'
+    = javascript_include_tag 'libs/modernizr-2.6.2.js'
+    = render partial: 'layouts/clients/footer' # Load angular
+    = render partial: 'layouts/actions_footer'
+    %script
+      _test_env =
+      != (Rails.env == 'production' ? nil : 'testing' ).to_json
+      
+      campaign = 
+      != @campaign ? @campaign : nil
+
+    = javascript_include_tag 'campaigns.js'
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag 'petitions/index.css'
+    = content_for :head
+
+  %body{'ng-cloak' => ""}
+    %span{:style => "position:relative"}
+      #fb-root
+    - if flash[:notice]
+      #notice.notice-box
+        = flash[:notice]
+    %container.angular-frame
+      = yield
+    %footer
+      = render partial: 'partials/google_analytics_init'

@@ -1,0 +1,15 @@
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	.modal-title
+		Select an Image
+.modal-body{:style=>"height: 350px"}
+	%div.form-group
+		%label
+			Upload an Image
+		%input.form-control{:style=>"width: 100%;","ng-file-select" => "onFileSelect($files)", type: "file", "image-name" => "{{imageName}}"}
+	%p.note
+		{{notes}}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok

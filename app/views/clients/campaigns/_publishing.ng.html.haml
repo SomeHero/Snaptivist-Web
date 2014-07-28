@@ -1,0 +1,30 @@
+.container
+	.row
+		.col-md-2
+			%div
+				Publishing
+		.col-md-10
+			.row{:style=>"margin-top: 40px"}
+				.col-md-8.col-md-offset-2
+					.panel.panel-default
+						.panel-heading
+							Snaptivist.com		
+						.panel-body
+							.row
+								.col-md-9
+									Make your campaign active on Snaptivist.  Making your campaign active on Snaptivist allows you to acquire new supporter and for your existing supporters to engage in actions.
+								.col-md-3.text-center
+									#signature-container{"data-facebook" => Settings.facebook_app_id, "ctrl-fn"=>"sign_with_facebook(auth)" }
+										%button.btn.btn-primary{"ng-click" => "fetch()"}
+											Publish
+					.panel.panel-default
+						.panel-heading
+							Facebook
+						.panel-body
+							.row
+								.col-md-9
+									Publish this campaign as a Facebook page
+								.col-md-3.text-center
+									#signature-container{"data-facebook" => Settings.facebook_app_id, "ctrl-fn"=>"sign_with_facebook(auth)" }
+										%button.btn.btn-primary{"ng-click" => "fetch()"}
+											Publish to Facebook

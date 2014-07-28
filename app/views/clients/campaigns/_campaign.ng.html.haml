@@ -1,0 +1,8 @@
+%div#main
+	%div.add-campaign-page{"ng-click"=>"add_page_clicked()"}
+		%i.fa.fa-plus
+	%form{"name"=>"petition_setup", "novalidate" => "", "role"=>"form"}	
+		%div{"ng-include"=>"", "src"=>"'/clients/campaigns/partials/pages'"}
+%div.push{:style=>"height: 100px;"}
+%footer
+	= render "/clients/campaigns/partials/campaign_footer"

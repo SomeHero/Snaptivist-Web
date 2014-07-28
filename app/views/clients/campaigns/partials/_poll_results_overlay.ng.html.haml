@@ -1,0 +1,14 @@
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	%h2.modal-title
+		{{title}}
+.modal-body{:style=>"height: 350px"}
+	%label
+		Poll
+	%select.form-controls{"ng-model"=>"selected_poll.poll", "ng-options"=>"p.name for p in polls"}
+	{{selected_poll.id}}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok
+

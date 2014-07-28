@@ -1,0 +1,12 @@
+%script
+  client =
+  != (@client_data ? @client_data : nil).to_json
+
+  campaigns =
+  != @campaigns ? @campaigns.map { |p| p.to_api }.to_json : nil
+
+  campaign =
+  != @campaign ? @campaign.to_api.to_json : nil
+
+  _test_env =
+  != (Rails.env == 'production' ? nil : 'testing' ).to_json

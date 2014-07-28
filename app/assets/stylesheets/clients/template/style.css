@@ -273,9 +273,9 @@ h6 {
 }
 .navbar-inner {
   margin-bottom: 0px;
-  min-height: 40px;
+  min-height: 60px;
   padding: 0px 20px;
-  background: #36a9e1;
+  background: #333c4e;
   border: none;
   color: #fff;
   -webkit-border-radius: 0px;
@@ -294,10 +294,9 @@ h6 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 a.brand {
-  background: #1e8fc6;
+  background: #333c4e;
   text-align: center;
-  border-bottom: 1px solid #1e8fc6;
-  padding: 10px 0px !important;
+  padding: 20px 0px !important;
 }
 a.brand span {
   font-family: 'Kaushan Script', cursive;
@@ -380,7 +379,7 @@ a.brand.noBg {
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
   color: white;
-  background-color: #1e8fc6;
+  background-color: #333c4e;
   outline: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;

@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_many :user_raw_datas
   has_many :raw_datas, through: :user_raw_datas
   
+  has_many :user_campaign_actions, :dependent => :destroy
+
   has_attached_file :organization_avatar, styles: {
     small: '128x128',
     medium: '256x256',

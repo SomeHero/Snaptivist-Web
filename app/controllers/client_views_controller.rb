@@ -27,4 +27,8 @@ class ClientViewsController < ApplicationController
 	def show 
 		render  "client_views/#{params[:layout]}/#{params[:template]}", layout: nil 
 	end
+
+  def segment
+    render  "client_views/#{params[:layout]}/segments/#{params[:segment]}", layout: nil 
+  end 
 end

@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  subdomain: MyString
+  name: MyString
   type: 
 
 two:
-  title: MyString
-  subdomain: MyString
+  name: MyString
   type: 

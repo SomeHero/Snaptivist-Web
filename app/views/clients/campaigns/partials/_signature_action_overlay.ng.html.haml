@@ -1,0 +1,14 @@
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	.modal-title
+		Configure Signature Action
+.modal-body{:style=>"height: 350px"}
+	%div.form-group
+		%label
+			Show Opt-In Checkbox
+		%input.form-control{type: "checkbox", "ng-model" => "segment.display_opt_in"}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok
+

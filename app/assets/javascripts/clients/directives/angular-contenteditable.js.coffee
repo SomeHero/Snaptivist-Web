@@ -3,16 +3,15 @@
 @see http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController
 @see https://github.com/angular/angular.js/issues/528#issuecomment-7573166
 ###
-angular.module("contenteditable", []).directive "contenteditable", ["$timeout", ($timeout) ->
+@app.directive "contenteditable", ["$timeout", ($timeout) ->
   restrict: "A"
   require: "?ngModel"
-
-  link: ($scope, $element, attrs, ngModel) ->
+  link: ($scope, $element, attrs, ngModel, isAdmin) ->
     
     # dont do anything unless this is actually bound to a model
     return  unless ngModel
     
-    if !$scope.is_admin
+    if !$scope.isAdmin
       $element.removeAttr('contenteditable')
 
     # view -> model
@@ -40,8 +39,8 @@ angular.module("contenteditable", []).directive "contenteditable", ["$timeout", 
           # the cursor disappears if the contents is empty
           # so we need to refocus
           $timeout ->
-            $element[0].blur()
-            $element[0].focus()
+            #$element[0].blur()
+            #$element[0].focus()
         else
           #remove data-placeholder
           $element.removeClass("placeholder-showing")
@@ -67,8 +66,8 @@ angular.module("contenteditable", []).directive "contenteditable", ["$timeout", 
         # the cursor disappears if the contents is empty
         # so we need to refocus
         $timeout ->
-          $element[0].blur()
-          $element[0].focus()
+          #$element[0].blur()
+          #$element[0].focus()
       else
         #remove data-placeholder
         $element.removeClass("placeholder-showing")

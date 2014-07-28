@@ -1,0 +1,22 @@
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	.modal-title
+		Add a Video
+.modal-body{:style=>"height: 350px"}
+	.form-group
+		%label
+			You Tube Embed Code
+		%input.form-control{"type"=>"text", "ng-model" => "video.embed_code"}
+	.form-group
+		%label
+			Height
+		%input.form-control{"type"=>"text", "ng-model"=> "video.height"}
+	.form-group
+		%label
+			Width
+		%input.form-control{"type"=>"type", "ng-model"=>"video.width"}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok
+

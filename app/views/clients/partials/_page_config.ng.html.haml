@@ -1,0 +1,51 @@
+%div{"ng-controller"=>"PageConfigurationController"}
+	%form{"name"=>"form", "no-validate"=>""}
+		.form-group
+			%label
+				Page Title:
+			%input.form-control{"type"=>"text", "name"=>"title", "ng-model"=>"new_page.page_config.title", "placeholder"=>"Type the Title of Your Action", "required"=>""}
+			%div{"ng-show"=>"form.title.$dirty && form.title.$invalid"}
+				%span{"ng-show"=>"form.title.$error.required"} An action title is required.
+		.form-group
+			%label
+				Page Description:
+			%input.form-control{"type"=>"text", "name"=>"subdomain", "ng-model"=>"new_page.page_config.description", "placeholder"=>"Add a Subdomain for your Action", "required"=>""}
+			%div{"ng-show"=>"form.subdomain.$dirty && form.subdomain.$invalid"}
+				%span{"ng-show"=>"form.subdomain.$error.required"} A subdomain for the action is required.
+		.form-group
+			%label
+				Open Graph Image
+			%input.form-control{"type"=>"file", "name"=>"og_image"}
+		.form-group
+			%label
+				Action
+			%ul.thumbnails#segment-thumbnails
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('donation')", :style=>"padding: 8px;","ng-click"=>"set_segment_type('donation')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						Donation
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('poll_action')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('poll_action')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						Poll
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('poll_results')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('poll_results')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						Poll Results
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('premium_action')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('premium_action')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						Premium
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('signature_action')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('signature_action')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						Signature
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('tweet_action')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('tweet_action')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						Tweet
+			%div.clearfix
+
+	.modal-footer
+		%button.btn.btn-primary{"ng-click"=>"ok()","ng-disabled"=>"form.$invalid"}
+			OK

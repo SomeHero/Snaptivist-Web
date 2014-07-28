@@ -1,18 +1,18 @@
 class Client < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :avatar, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :avatar, :admin_users_attributes
 
+  has_many :campaigns
   has_many :client_supporters
   has_many :supporters, through: :client_supporters, source: :user
   has_many :client_users
   has_many :admin_users, through: :client_users, source: :user
 
   belongs_to :nation_builder_crm_authentication
+
+  accepts_nested_attributes_for :admin_users, :allow_destroy => :true
+
   has_attached_file :avatar, styles: {
     small: '128x128',
     medium: '256x256',
@@ -31,8 +31,7 @@ class Client < ActiveRecord::Base
     results = {
       'client_id' => id,
       'name' => name,
-      'email' => email,
-  	  'nation_builder' => nation_builder_crm_authentication ? nation_builder_crm_authentication.to_api : nil
+      'nation_builder' => nation_builder_crm_authentication ? nation_builder_crm_authentication.to_api : nil
     }
 
     Client::IMAGE_SIZES.each do |label, size|

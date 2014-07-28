@@ -39,9 +39,11 @@ SnaptivistWeb::Application.routes.draw do
 
 
   match 'client_views/:layout/:template', :to => 'client_views#show'
+  match 'client_views/:layout/segments/:segment', :to => 'client_views#segment'
   match '/' => 'home#index', :constraints => { :subdomain => 'dev' }
   match '/welcome' => 'home#welcome'
   
+  match 'campaigns/:id', :to => 'campaigns#view'
   match '/deliver/:signature_id' => 'actions#view', :constraints => { :subdomain => /.+/ }
   match '/' => 'actions#view', :constraints => { :subdomain => /.+/ }
   match 'petitions/:action_title', :to =>'petitions#view'
@@ -127,14 +129,18 @@ SnaptivistWeb::Application.routes.draw do
     end
   end
   resources :clients do
+    resources :campaigns, :controller => "clients/campaigns"
+    
     member do
       get :login
+      get :signup
       get :crm_setup
       post :validate
       get :logout
     end
     collection do
       post :confirm
+      get :login
       get :demo
       get :customers
       get :twitter_support
@@ -143,15 +149,18 @@ SnaptivistWeb::Application.routes.draw do
       get :customers
     end
   end
-  namespace 'clients' do
-    get '/:client_id/petitions', :to => 'petitions#index'
-    get  '/:client_id/petitions/:id', :to => 'petitions#show'
-  end
+
   
   # Let's add the root route
   root :to => "home#index"
   match 'eat/:food' => 'eat#food'
 
+  get "signup" => "signup#new"
+  post "signup" => "signup#create"
+
+  get "login" => "login#new"
+  post "login" => "login#create"
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

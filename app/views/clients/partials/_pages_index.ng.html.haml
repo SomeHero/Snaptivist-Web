@@ -1,0 +1,3 @@
+%div{"ng-repeat"=>"page_item in campaign.campaign_pages | orderBy:'position'"}
+	%div{"style"=>"height: 180px; width: 140px; border: solid 1px red; margin: 20px 0px;", "ng-click"=>"set_selected_page_index($index)"}
+		{{page_item.page.name}}

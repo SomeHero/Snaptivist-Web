@@ -8,7 +8,7 @@
     $modalInstance.close($scope.selected.theme)
 
   $scope.cancel = () ->
-    $modalInstance.close()
+    $modalInstance.dismiss()
 
   $scope.set_theme = (theme) ->
     $scope.selected.theme = theme

@@ -1,0 +1,30 @@
+.container-fluid
+	.row
+		.col-md-2
+			%div{"style"=>"background: #F7F7F7; position: fixed; padding: 10px; width: 15%; border-right: solid 1px #e5e5e5;"}
+				%h4
+					Activity
+		.col-md-10
+			%div{"ng-show"=>"actions.length > 0"}
+				%table.table.table-striped
+					%tr
+						%th Id
+						%th Action Type
+						%th Name
+						%th Comment
+						%th Address/Location
+						%th Email Address
+						%th Action Date
+					%tr{"ng-repeat"=>"action in actions"}
+						%td {{action.id}}
+						%td {{action.type}}
+						%td {{action.user.first_name}} {{action.user.last_name}}
+						%td Comment
+						%td 
+							%dl
+								%dd City, State, Zip Code
+						%td {{action.user.email}}
+						%td {{action.created_at}}
+						%td
+
+				%pagination{"total-items"=>"totalItems", "page"=>"currentPage", "on-select-page"=>"change_page(page)"}

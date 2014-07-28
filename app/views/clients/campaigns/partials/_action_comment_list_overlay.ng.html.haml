@@ -1,0 +1,15 @@
+.modal-header
+	%button.close{"type"=>"button", "data-dismiss"=>"modal","aria-hidden"=>"true", "ng-click"=>"cancel()"}
+		&times;
+	.modal-title
+		Configure Comments List
+.modal-body{:style=>"height: 350px"}
+	%div.form-group
+		%label
+			Default Avatar Logo
+		%input.form-control{:style=>"width: 100%;","ng-file-select" => "onFileSelect($files)", type: "file", "image-name" => "{{imageName}}"}
+	%p.note
+		{{notes}}
+.modal-footer
+	%button.btn.btn-primary{"ng-click"=>"ok()"}
+		Ok

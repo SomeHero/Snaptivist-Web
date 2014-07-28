@@ -1,4 +1,4 @@
-@app = angular.module 'clients', ['contenteditable', 'angularFileUpload', 'ui.bootstrap', 'toggle-switch']
+@app = angular.module 'clients', ['ngRoute', 'ui.bootstrap', 'toggle-switch']
 
 @app.config ['$routeProvider', ($routeProvider) ->
   base_page_url = '/petitions'

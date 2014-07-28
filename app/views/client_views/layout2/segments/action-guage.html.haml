@@ -1,0 +1,10 @@
+#target-count-wrapper.segment-wrapper{"segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
+	#signature-count-outer-wrapper.segment-inner-wrapper
+		#signature-count-wrapper
+			.progress-wrapper
+				.progress
+					.progress-bar{:style => "width: {{calulate_petition_signature_percentage()}}%;", "role"=>"progressbar", "aria-valuenow"=>"{{calulate_petition_signature_percentage()}}", "aria-valuemin"=>"0", "aria-valuemax"=>"100"}
+					.target-count
+						%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures","name"=>"target_count", "required"=>""}
+				#signature-count{:style=>"left: {{calulate_petition_signature_percentage()}}%"}
+					{{get_number_of_signatures()}}

@@ -1,0 +1,15 @@
+.container
+	.row
+		.col-md-2
+			%div
+				Settings
+		.col-md-10
+			%form{"role"=>"form"}
+				.form-group
+					%label{"for"=>"actionTitleInput"}
+						Action Title
+					%input#actionTitleInput.form-control{"type"=>"text","placeholder"=>"Enter Action Title", "ng-model"=>"campaign.title"}
+				.form-group
+					%label{"for"=>"actionSubdomainInput"}
+						Action Subdomain
+					%input#actionSubdomainInput.form-control{"type"=>"text","placeholder"=>"Enter Subdomain", "ng-model"=>"campaign.subdomain"}

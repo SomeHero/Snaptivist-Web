@@ -1,12 +1,12 @@
-@ActionTagsController = ($scope, $rootScope,  $modalInstance, Util, petition) ->
+@ActionTagsController = ($scope, $rootScope,  $modalInstance, Util, campaign) ->
 
-  $scope.petition = petition
+  $scope.campaign = campaign
   $scope.action_tags = {
     new_tag: ""
     list: []
   }
-  if($scope.petition.action_tags)
-    for action_tag in $scope.petition.action_tags.split(',')
+  if($scope.campaign.action_tags)
+    for action_tag in $scope.campaign.action_tags.split(',')
       $scope.action_tags.list.push({
         name: action_tag
       })
@@ -15,17 +15,17 @@
     $modalInstance.close()
 
   $scope.cancel = () ->
-    $modalInstance.close()
+    $modalInstance.dismiss()
 
   $scope.add_action_tag = () ->
     new_tag = $scope.action_tags.new_tag
     $scope.action_tags.list.push({
       name: new_tag
     })
-    if $scope.petition.action_tags
-      $scope.petition.action_tags += "," + new_tag  
+    if $scope.campaign.action_tags
+      $scope.campaign.action_tags += "," + new_tag  
     else
-      $scope.petition.action_tags = new_tag
+      $scope.campaign.action_tags = new_tag
     $scope.action_tags.new_tag = ""
 
-ActionTagsController.$inject = ['$scope', '$rootScope', '$modalInstance', 'Util', 'petition']
+ActionTagsController.$inject = ['$scope', '$rootScope', '$modalInstance', 'Util', 'campaign']

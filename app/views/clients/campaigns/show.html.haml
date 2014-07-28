@@ -1,0 +1,12 @@
+%div
+	%aside#left-panel
+		= render "/clients/campaigns/partials/navigation"
+
+	%ng-view
+
+= angular_templates '/clients/campaigns'
+= angular_templates '/clients/campaigns/partials'
+= angular_templates '/clients/partials'
+= angular_templates '/clients/partials/pages'
+
+%div{"loading-screen" => "loading.show_spinner"}

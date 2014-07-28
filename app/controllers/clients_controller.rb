@@ -28,7 +28,9 @@ class ClientsController < ApplicationController
 
   def login
 
-    @on_complete_url = client_path(@client)
+    binding.pry 
+    
+    @on_complete_url = "/clients/" + @client.id.to_s + "/campaigns" 
     @on_fail_url = request.original_url
 
     return redirect_to client_path(@client) if client_admin?
@@ -53,8 +55,8 @@ class ClientsController < ApplicationController
       #sign_in user
 
       result = {}
-      result[:on_complete_url] = client_path(client)
-      render_response(obj: result, url: client_path(client))
+      result[:on_complete_url] = "/clients/" + client.id.to_s + "/campaigns"
+      render_response(obj: result, url: "/clients/" + client.id.to_s + "/campaigns")
 
       #return redirect_to client_path(client)
     else

@@ -1,0 +1,28 @@
+.container
+	.row
+		.col-md-2
+			%div
+				Emails
+		.col-md-10
+			.panel.panel-default{"ng-repeat"=>"config in campaign.email_configurations"}
+				.panel-heading
+					.row
+						.col-md-9{:style=>"height: 30px; line-height: 30px;"}
+							{{config.email_type.name}}
+						.col-md-3{:style=>"height: 30px; line-height: 30px;"}
+							.text-right
+								%toggle-switch{"model"=>"config.enabled", "ng-model"=>"config.enabled"}
+				.panel-body
+					%form{"role"=>"form"}
+						.form-group
+							%label
+								From Name
+							%input.form-control{"type"=>"text", "ng-model"=>"config.from_name"}
+						.form-group
+							%label
+								From Address
+							%input.form-control{"type"=>"text", "ng-model"=>"config.from_address"}
+						.form-group
+							%label
+								Subject:
+							%input.form-control{"type"=>"text", "ng-model"=>"config.subject"}

@@ -1,0 +1,12 @@
+= render partial: 'layouts/clients/seo_metatags'
+= javascript_include_tag 'libs/modernizr-2.6.2.js'
+= render partial: 'layouts/clients/footer' # Load angular
+= stylesheet_link_tag "application", :media => "all"
+%link{:href => "http://fonts.googleapis.com/css?family=Domine:400,700", :rel => "stylesheet", :type => "text/css"}
+<script src="/assets/moment.js"></script>
+= stylesheet_link_tag 'clients/index.css'
+= stylesheet_link_tag 'petitions'
+%link{"ng-repeat"=>"stylesheet in stylesheets()", "ng-href"=>"{{stylesheet.href}}", "type"=>"text/css", "rel"=>"stylesheet"}
+= javascript_include_tag 'clients/campaigns/index.js'
+= render partial: 'layouts/clients/campaigns/angular_setup'
+%base{"href"=>"/"}

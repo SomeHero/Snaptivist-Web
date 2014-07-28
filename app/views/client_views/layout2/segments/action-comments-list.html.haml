@@ -1,0 +1,25 @@
+.segment-wrapper.comment-wrapper{"segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
+	#comment-container{"ng-controller" => "CommentController"}
+		.segment-inner-wrapper
+			#user-signature-wrapper.panel.panel-default.panel-indented.clearfix
+				%ul#user-signature-list{"ng-show"=>"comments.items.length > 0"}
+					%li.user-signature-item{"ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+						%div.media.thumbnail{:style=>"margin-bottom: 0px"}
+							%a.pull-left
+								.media-object.avatar{"ng-style" => "get_avatar_url(signature, segment)"}
+							.media-body
+								.comment
+									.row
+										.col-md-6
+											.user-name
+												{{signature.user.first_name + " " + signature.user.last_name}}
+										.col-md-6.location-wrapper
+											.location
+												{{format_signature_location(signature)}}
+									.comment-timeago
+										Signed {{signature.created_at | fromNow }}         
+				%p.text-left{:style=>"padding: 0px 20px", "ng-hide"=>"comments.items.length > 0"}
+					Be the first to sign this petition.
+		.bottom-margin#more-signers-button-wrapper
+			%button.btn.btn-primary#more-signers-button{"ng-hide"=>"comments.items.length >= comments.total", "ng-click"=>"show_more_signatures_click()"}
+				%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "name"=>"signature_more_signers_button_text","required"=>""}

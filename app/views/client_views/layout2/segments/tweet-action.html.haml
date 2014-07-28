@@ -1,0 +1,33 @@
+#action-wrapper.segment-wrapper{"segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
+	.segment-inner-wrapper
+		%div.delivery-form-container
+			%h4.contenteditable.placeholder-showing{:style => "font-size: 1.4em", "contenteditable"=>"", "ng-model" => "page.content.call_to_action_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Headline", "name"=>"delivery_call_to_action_text", "required"=>""}
+			%div{"ng-switch"=>"isAdmin"}
+				%form{"ng-switch-when"=>"false", :name => "tweet_form", "novalidate" => true, "role"=>"form"}		
+					.form-group
+						.col-md-12
+							.drop-shadow-full{:style=>"margin-bottom: 20px;"}
+								%textarea.form-control{:style=>"width: 96%", "rows"=>"5", "name"=>"tweet", "ng-model"=>"tweet.message", :maxlength => "115", "required"=>""}
+								#message-counter.text-right {{115 - get_tweet_message_length()}}
+					.form-group
+						.col-md-12
+							%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(tweet_form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "name"=>"delivery_call_to_action_button_text", "required"=>""}
+					.form-group
+						.col-md-12
+							%button.btn.btn-link{"ng-click" => "skip_delivery()"}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text", "name"=>"delivery_skip_button_text", "required"=>""}
+				%div{"ng-switch-when"=>"true"}		
+					.form-group
+						.col-md-12
+							.drop-shadow-full{:style=>"margin-bottom: 20px;"}
+								%div.contenteditable.placeholder-showing.text-left{:style=>"height: 80px", "contenteditable"=>"", "ng-model"=>"page.content.default_tweet_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Default Tweet Message", "name"=>"default_tweet_text", "required"=>""}
+								#message-counter.text-right {{115 - get_tweet_message_length()}}	
+					.form-group
+						.col-md-12
+							%button.btn.btn-primary#sign-with-email-address-button{"ng-click" => "deliver_action(form)", "custompopover" => "{{error_messages.deliver_tweet}}",  "custompopover-toggle" =>"error_messages.deliver_tweet.length > 0", "custompopover-trigger" => "manual", "custompopover-placement" => "top"}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Call to Action Button Text", "name"=>"delivery_call_to_action_button_text", "required"=>""}
+					.form-group
+						.col-md-12
+							%button.btn-link{"ng-click" => "skip_delivery()"}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.skip_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Delivery Skip Button Text", "name"=>"delivery_skip_button_text", "required"=>""}

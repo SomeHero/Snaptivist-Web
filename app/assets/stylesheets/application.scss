@@ -10,5 +10,129 @@
  *
  *= require_self
  *= require font-awesome
+ *= require ngDialog
+ *= require ngDialog-theme-default
+ *= require ngDialog-theme-snap
  */
-@import "twitter/bootstrap"; 
+@import "twitter/bootstrap";
+#signup {
+	width: 500px;
+	text-align: center;
+	padding: 0px 50px;
+}
+.wrap {
+	float: left;
+clear: both;
+width: 100%;
+text-align: center;
+min-width: 1170px;
+}
+.wrap-inner {
+	width: 1170px;
+margin: 0 auto;
+text-align: left;
+}
+ul.projects-list {
+padding: 0;
+margin: 0;
+width: 1200px;
+float: left;
+clear: both;	
+} 
+ul.projects-list li.project-list-item {
+	width: 370px;
+float: left;
+padding: 0;
+margin: 30px 30px 0 0;
+overflow: hidden;
+position: relative;
+list-style: none;
+border-radius: 3px;
+}
+
+ul.projects-list li .project-info {
+	background: white;
+float: left;
+clear: both;
+width: 368px;
+position: relative;
+padding: 12px 19px 20px;
+border: 1px solid #dee3e9;
+border-top: 0;
+border-radius: 0 0 3px 3px;
+}
+ul.projects-list li  .project-image {
+	background: #323e50
+}
+ul.projects-list li .overlay {
+	opacity: 0
+}
+ul.projects-list li .project-image .overlay  .tools {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 23px 20px 0 0;
+	z-index: 1;
+}
+ul.projects-list li .project-image .overlay  .tools li {
+	float: left;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 10px;
+	color: #dee3e9;
+}
+ul.projects-list li  .project-image .overlay .tools li a {
+	color: #ffffff;
+	text-decoration: none;
+}
+ul.projects-list li:hover .overlay {
+	opacity: 1
+}
+ul.projects-list li .project-image .overlay .view-project {
+	width: 370px;
+height: 250px;
+top: 0;
+left: 0;
+position: absolute;
+z-index: 0;
+}
+ul.projects-list li .project-image .overlay .view-project a {
+width: 370px;
+height: 250px;
+display: block;
+}
+
+div.add-campaign-page {
+	position: fixed;
+	right: 60px;
+	padding: 6px 12px;
+	font-size: 35px;
+	z-index: 2001;
+	background: #ececec;
+}
+div.add-campaign-page:hover {
+	background: #B1B1B1;
+	color: #fff;
+}
+ul.page-toolbar {
+	font-size: 24px;
+	height: 44px;
+	margin: 0px;
+	padding: 0px;
+}
+ul.page-toolbar li {
+	float: left;
+	list-style: none;
+	padding: 10px;
+	background: #ececec;
+	height: 44px;
+}
+ul.page-toolbar li:hover {
+	background: #B1B1B1;
+	color: #fff;	
+}
+.campaign-toolbar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}

@@ -9,7 +9,7 @@
     $modalInstance.close($scope.selected.layout)
 
   $scope.cancel = () ->
-    $modalInstance.close()
+    $modalInstance.dismiss()
 
   $scope.set_layout = (layout) ->
     $scope.selected.layout = layout

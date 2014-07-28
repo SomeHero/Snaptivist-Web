@@ -1,0 +1,118 @@
+/ Trigger inputs for hiding and showing the footer
+%input#show-footer{checked: "checked", name: "hide-show", type: "radio"}/
+%input#hide-footer{name: "hide-show", type: "radio"}/
+/ Sticky footer
+%footer#stickit.collapsable
+  / Trigger labels for hiding and showing the footer
+  %label.icon.hide-lb.entypo-down-circled{for: "hide-footer"}
+  %label.icon.show-lb{for: "show-footer"}
+  / Trigger input for opening hidden menu
+  %input#expand-content{name: "expand", type: "checkbox"}/
+  / Inner footer elements
+  .footer-inner
+    / Home icon
+    %a.home.entypo-home{href: "/clients/1/campaigns"}
+    / Content menu
+    .lvl-0.has-tabs{:style => "margin-left: 40%"}
+      / Menu main item
+      
+      / Level 1 menu
+      .lvl-1.left
+        .box.arrow.bottom.left.fixed.w-658
+          / Tabs input selectors
+          %input#t-1{checked: "checked", name: "tabs-group", type: "radio"}/
+          %input#t-2{name: "tabs-group", type: "radio"}/
+          %input#t-3{name: "tabs-group", type: "radio"}/
+          %input#t-4.has-chart{name: "tabs-group", type: "radio"}/
+          %input#t-5{name: "tabs-group", type: "radio"}/
+          .tabs
+            / Tab 1
+            %div{"ng-repeat"=>"page in system.pages", "ng-class"=>"'tab-{{$index+1}}'"}
+              .pd-30.fl-left{"ng-include"=>"", "src"=>"'/clients/partials/pages/petition'"}
+          / Labels for the tabs
+          .tab-labels
+            %label{"ng-repeat"=>"page in system.pages", "for"=>"t-{{$index+1}}","ng-class"=>"'lb-{{$index+1}}'"} {{$index+1}}
+
+
+    / Social icons
+    .social.fl-right
+      / Facebook
+      %a.icon.has-tip.entypo-thumbs-up{href: "#"}
+        %span.stickit-tip.main Like us on Facebook
+      / Twitter
+      %a.icon.has-tip.entypo-twitter{href: "#"}
+        %span.stickit-tip.main Follow us on Twitter
+      / Google
+      %a.icon.has-tip.entypo-google-circles{href: "#"}
+        %span.stickit-tip.main Connect us on GPlus
+
+  / / Inner footer elements
+  / Expanded menu
+  %section#hidden-menu
+    / Expanded content
+    %article.hidden-content
+      .row.mt-30
+        .title.large Hey, you found a secret pocket
+        .clr.mt-10
+        %p.small
+          %b This is a hidden section with a grid for expanded content.
+          %br/
+          It's avaliable for you to present additional content, links, insert a quick contact form or suprise your visitors with a special offer. We'll leave imagination to you.
+      .clr.mt-20
+      / Fluid row 1
+      .row
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+      / Fluid row 2
+      .row
+        .fluid.w-32
+          %p.demo-fluid 32%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+      / Fluid row 3
+      .row
+        .fluid.w-49
+          %p.demo-fluid 49%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+      / Fluid row 4
+      .row
+        .fluid.w-66
+          %p.demo-fluid 66%
+        .fluid.w-15
+          %p.demo-fluid 15%
+        .fluid.w-15
+          %p.demo-fluid 15%
+      / Fluid row 5
+      .row
+        .fluid.w-83
+          %p.demo-fluid 83%
+        .fluid.w-15
+          %p.demo-fluid 15%
+      / Fluid row 6
+      .row
+        .fluid.w-100
+          %p.demo-fluid 100%
+      .clr.mt-30
+  / / Expanded menu
+/ / Sticky footer

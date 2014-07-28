@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reason: MyString
+  poll_choice: 
+
+two:
+  reason: MyString
+  poll_choice: 

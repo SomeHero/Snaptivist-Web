@@ -114,8 +114,17 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dragonfly (1.0.5)
+      multi_json (~> 1.0)
+      rack
+    dragonfly-s3_data_store (1.0.4)
+      dragonfly (~> 1.0)
+      fog
+    entypo-rails (2.2.1)
+      railties (>= 3.1, <= 5)
     equalizer (0.0.9)
     erubis (2.7.0)
+    excon (0.38.0)
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
@@ -125,6 +134,29 @@ GEM
       rack-oauth2 (>= 0.14.4)
       tzinfo
     ffi (1.9.3)
+    fog (1.23.0)
+      fog-brightbox
+      fog-core (~> 1.23)
+      fog-json
+      fog-softlayer
+      ipaddress (~> 0.5)
+      nokogiri (~> 1.5, >= 1.5.11)
+    fog-brightbox (0.1.1)
+      fog-core (~> 1.22)
+      fog-json
+      inflecto
+    fog-core (1.23.0)
+      builder
+      excon (~> 0.38)
+      formatador (~> 0.2)
+      mime-types
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+    fog-json (1.0.0)
+      multi_json (~> 1.0)
+    fog-softlayer (0.3.11)
+      fog-core
+      fog-json
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
@@ -174,9 +206,11 @@ GEM
     httpclient (2.3.4.1)
     i18n (0.6.9)
     ice_nine (0.11.0)
+    inflecto (0.0.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    ipaddress (0.8.0)
     journey (1.0.4)
     jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
@@ -229,6 +263,9 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
     newrelic_rpm (3.7.2.195)
     nifty-generators (0.4.6)
     nio4r (1.0.0)
@@ -326,6 +363,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
+    rb-readline (0.5.1)
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.0.7)
@@ -431,6 +469,9 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   coffee-script-source (~> 1.4.0)
   devise
+  dragonfly (~> 1.0)
+  dragonfly-s3_data_store
+  entypo-rails
   fb_graph
   font-awesome-rails
   geocoder
@@ -464,6 +505,7 @@ DEPENDENCIES
   rack-cors
   rails (= 3.2.11)
   rb-fsevent (~> 0.9.1)
+  rb-readline
   redis
   resque
   rmagick

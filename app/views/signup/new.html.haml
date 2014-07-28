@@ -1,0 +1,32 @@
+#signup.login-box
+  %h2
+    Sign up now!
+  = form_for @client, :url => signup_path, html: {class: 'sign_up_form' } do |f|
+    .form-group
+      = f.text_field :name, :class => "form-control input-large", :placeholder => "Enter Your Organization's Name"
+      .note.note-error
+        = f.object.errors[:name].first if f.object.errors[:name].present?
+    = f.fields_for :admin_users, @user do |u|
+      .form-group
+        = u.text_field :first_name, :class => "form-control input-large", :placeholder => "Enter First Name"
+        .note.note-error
+          = f.object.errors[:first_name].first if f.object.errors[:first_name].present?
+      .form-group
+        = u.text_field :last_name, :class => "form-control input-large", :placeholder => "Enter Last Name"
+        .note.note-error
+          = f.object.errors[:last_name].first if f.object.errors[:last_name].present?
+      .form-group
+        = u.text_field :email, :class => "form-control input-large", :placeholder => "Enter Email Address"
+        .note.note-error
+          = f.object.errors[:email].first if f.object.errors[:email].present?
+      .form-group
+        = u.text_field :password, :class => "form-control input-large", :placeholder => "Create a Password"
+        .note.note-error
+          = f.object.errors[:password].first if f.object.errors[:password].present?
+    %footer
+      = f.submit "Sign Up Free", :class => "btn btn-primary new-location-submit"
+      %div.small
+        By clicking "Sign Up Free" I agree to Snaptivist's Terms of Service.
+%div.text-center
+  Already have an account? 
+  = link_to "Login", login_path

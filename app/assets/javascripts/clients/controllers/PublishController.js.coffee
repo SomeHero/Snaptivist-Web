@@ -4,6 +4,6 @@
     $modalInstance.close()
 
   $scope.cancel = () ->
-    $modalInstance.close()
+    $modalInstance.dismiss()
 
 PublishController.$inject = ['$scope', '$rootScope', '$modalInstance', 'Util']

@@ -1,0 +1,11 @@
+%html{"ng-app" => "client_campaigns"}
+  %head
+    = render partial: 'layouts/clients/campaigns/head'
+
+  %body{"style"=>"padding-top: 60px;"}
+    = render partial: 'layouts/clients/header'
+    .row-wrapper-fluid
+      .row
+        = yield
+  = javascript_include_tag "application" 
+    

@@ -1,0 +1,35 @@
+%div{:style=>"background-color: #f0f1f6", "ng-controller"=>"NavigationController"}
+	.row.no-gutter{:style=>"min-height: 80px; width:1164; margin: 0px auto;"}
+		.col-md-9
+			%h2.contenteditable.petition-title{:style=>"display: inline-block; line-height: 54px;", "contenteditable"=>"true", "ng-model" => "petition.title", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Give Your Campaign a Name", "name"=>"petition_name", "required"=>""}
+				New Campaign Name
+		.col-md-3#config
+			.navigation
+				/ Left multi level menu
+				.navigation.lvl-0
+					/ Menu main item
+					%a.main-item{href: "#"}
+						.entypo-cog{:style=>"font-size: 36px; color: #000;"}
+					/ Level 1 menu
+					.lvl-1.left{:style=>"margin-top: 20px"}
+						.box.arrow.bottom.left
+							/ Link 1
+							%a.first{"ng-click"=>"action_tags_clicked()"}
+								Action Tags
+							/ Link 2
+							%a.first{"ng-click"=>"change_layout_clicked()"}
+								Change Layout
+.setup_give_flow
+	%div.top-nav{:style => "min-height: 35px"}
+		.row-wrapper-fluid
+			.row
+				.col-md-10.col-md-offset-1
+					%div
+						%form{"name"=>"petition_setup", "novalidate" => "", "role"=>"form"}
+							%div
+								%ul.nav.action-menu-items.pull-left
+									
+								%div{:style=>"margin: 20px;"}		
+									%div{"ng-include"=>"", "src"=>"content_template_urls()"}
+								
+%footer{"ng-include"=>"", "src"=>"'/clients/campaigns/partials/footer'"}

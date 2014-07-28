@@ -1,0 +1,45 @@
+.row
+	.col-md-8.col-md-offset-2	
+		%h1
+			Campaigns
+		.panel{:style=>"padding: 50px 40px", "ng-hide"=>"campaigns.length > 0"}
+			%p
+				Hey, it doesn't look like you have created any actions.  Create one >>
+
+		.panel{:style=>"padding: 10px;", "ng-repeat"=>"campaign in campaigns"}
+			.row-wrapper-fluid
+				.row
+					.col-md-6
+						%h2{:style=>"margin-top: 0px; margin-bottom: 2px;k"} 
+							{{campaign.title}}
+						%h3{:style=>"margin-top: 0px; margin-bottom: 20px;"} 
+							{{campaign.subdomain}}
+					.col-md-6.text-right
+						%ul.list-unstyled
+							%li
+								%a{"ng-href"=>"{{petition.short_url}}"}
+									{{petition.short_url}}
+							%li
+								%a{"ng-href"=>"{{petition_url(petition)}}"}
+									{{petition_url(petition)}}
+			.row-wrapper-fluid
+				.row
+					.col-md-12
+						.row-wrapper-fluid
+							.row
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/signatures"}
+									.col-md-4.no-gutter{"panel" => "petition.signatures_count", "petition"=>"petition", "icon" => "icon-group", "color" => "red", "title" => "Signatures"}
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/shares"}
+									.col-md-4.no-gutter-right{"panel" => "petition.share_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Shares"}
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/deliveries"}
+									.col-md-4.no-gutter-right{"panel" => "petition.delivery_count", "petition"=>"petition", "icon" => "icon-eye-open", "color" => "green", "title" => "Delivered"}
+				.row
+					.col-md-12
+						.row-wrapper-fluid
+							.row
+								%a{"ng-href"=>"#/petitions/{{petition.id}}/premiums"}
+									.col-md-4.no-gutter{"panel" => "petition.premium_count", "petition"=>"petition", "icon" => "icon-gift", "color" => "lightBlue", "title" => "Premiums", "ng-click"=>"show"}
+
+				%a{"ng-href"=>"/clients/{{client.client_id}}/petitions/{{petition.id}}#/petitions/{{petition.id}}"}
+					%button.btn.btn-primary.btn-lg
+						Edit

@@ -1,0 +1,31 @@
+.container.text-center{:style=>"width: auto"}
+	#petition-container
+		.client-logo-wrapper
+			%ng-segment.client-logo{"segment"=>"page.content.header_segment", "layout"=>"layout", "is-admin"=>"isAdmin", "segment-type"=>"photo"}
+		#petition-headline.section-header.text-center
+			%h2.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.headline_primary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Headline", "name"=>"headline_primary", "required"=>"", "is-admin"=>"true"}
+			%h5.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline"}
+		#signature-container-wrapper{"data-facebook" => Settings.facebook_app_id }
+			.panel.panel-default.panel-indented
+				.row#petition-subheadline
+					.col-md-12
+						%h4.text-center.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.subheadline", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Petition Sub-Headline"}
+				.row
+					.col-md-6.top-content-wrapper
+						%ng-segment{"segment"=>"page.content.action_content", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"photo", "placeholder"=>"Action Image", "image_overlay_title"=>"Add a Summary Image", "image_overlay_notes"=>"Recommend Image Size: 800x350"}
+					.col-md-6.top-content-wrapper
+						.panel.panel-sub
+							%ng-segment{"segment"=>"page.content.action", "action"=>"page.action",  "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"default_action"}
+
+				%ng-segment{"segment"=>"page.content.action_guage", "layout"=>"layout", "action"=>"page.action", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_guage"}
+		#petition-summary-header.section-header.text-left
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.action_type_header_name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Action Type Heading Text", "name"=>"action_type_header_name", "required"=>""}
+		#petition-summary-wrapper.panel.panel-default.panel-indented
+			%p.text-left
+				%ng-segment{"segment"=>"page.content.action_summary", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"text", "placeholder"=>"Action Summary", "image_overlay_title"=>"Add a Summary Image", "image_overlay_notes"=>"Recommend Image Size: 800x350"}
+		#user-signature-header.section-header.text-left
+			%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.signer_type_header_name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Signer Type Heading Text", "name"=>"signer_type_header_name", "required"=>""}
+		%ng-segment{"segment"=>"page.content.action_comments_list", "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_comments_list"}
+	.client-logo-wrapper
+		%ng-segment.client-logo{"segment"=>"page.content.footer_segment", "layout"=>"layout", "is-admin"=>"isAdmin", "segment-type"=>"photo"}
+	%ng-segment{"segment"=>"page.content.disclaimer", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"disclaimer", "placeholder"=>"Disclaimer Copy"}

@@ -1,4 +1,4 @@
-.navbar{:style => "min-height: 0px; border: none;", "ng-controller"=>"MainNavigationController"}
+.navbar.navbar-fixed-top{:style => "min-height: 0px; border: none;", "ng-controller"=>"MainNavigationController"}
   .navbar-inner
     .row-wrapper-fluid
       %button.navbar-toggle{"data-toggle" => "collapse", "data-target" => ".top-nav.nav-collapse,.sidebar-nav.nav-collapse"}
@@ -12,8 +12,6 @@
           = image_tag 'logo_text_only_300x87.png', :height => 18
       .nav-no-collapse.header-nav
         %span.pull-right
-          %a.pull-left{:style=>"color: #fff; line-height: 40px;"}
-            %span.entypo-plus{:style=>"font-size: 24px;", "ng-click"=>"new_petition_clicked()"}
           %ul.nav.pull-right
             %li.dropdown
               %a.btn.account.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -25,11 +23,11 @@
               %ul.dropdown-menu{:style=>"width: 100%"}
                 %li.dropdown-menu-title
                 %li
-                  %a{"ng-href" => "/clients/{{client.client_id}}/petitions"}
+                  %a{"ng-href" => "/clients/{{client.client_id}}/campaigns"}
                     %i.icon-off.pull-left
                     = "Home"
                 %li
-                  %a{"ng-href" => "/clients/{{client.client_id}}/crm_setup"}
+                  %a{"ng-href" => "/clients/{{client.client_id}}/crm_setup#/crm_setup"}
                     %i.icon-off.pull-left
                     = "CRM Setup"
                 %li

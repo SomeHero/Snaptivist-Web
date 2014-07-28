@@ -20,6 +20,7 @@ group :assets do
   gem 'jquery-ui-rails'
   gem 'angularjs-rails', '>= 1.2.0.rc2'
   gem "font-awesome-rails"
+  gem "entypo-rails"
 end
 
 group :development do
@@ -33,6 +34,7 @@ group :development do
   gem "pry-nav", "~> 0.2"
   gem 'pry-rails'
   gem 'pry-remote'
+  gem 'rb-readline'
 end
 
 gem 'jquery-rails'
@@ -75,6 +77,8 @@ gem 'resque'
 gem 'hipchat-api'
 gem 'semantic-ui-sass', '~> 0.12.5.0'
 gem 'angular-ui-bootstrap-rails'
+gem 'dragonfly',      '~> 1.0'
+gem 'dragonfly-s3_data_store'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

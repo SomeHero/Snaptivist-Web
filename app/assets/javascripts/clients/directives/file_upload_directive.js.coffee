@@ -45,10 +45,8 @@ AngularJS file upload/drop directive with http post and progress
             fileList.item(i).file_name = scope.imageName
             files.push fileList.item(i)
             i++
-        scope.$parent.$apply ->
-          fn scope.$parent,
-            $files: files
-            $event: evt
+        scope.$apply ->
+          scope.onFileSelect files
 
 
 

@@ -88,9 +88,6 @@
         -webkit-box-shadow: 0 8px 6px -5px #9e9e9e;
         -moz-box-shadow: 0 8px 6px -5px #9e9e9e;
         box-shadow: 0 8px 6px -5px #9e9e9e;
-        height: 236px;
-        width: 782px;
-        margin: 0px auto;
         background-position: 50% 50%;
         background-size: cover;
     }
@@ -122,9 +119,7 @@
         box-shadow: 0 8px 6px -5px #9e9e9e;
     }
     .disclaimer {
-        margin: 20px auto 10px auto;
         padding: 4px;
-        max-width: 300px;
         font-size: .92em;
         color: #5e5e5e;
         border: solid 1px #ACB3B6;
@@ -363,5 +358,22 @@
     #powered-by-wrapper {
         max-width: 950px;
         margin: 50px auto 20px auto;
+    }
+    .poll {
+        display: block;
+        margin: 0px 0px 60px 0px;
+    }
+    .poll-question {
+        width: 80%;
+        margin: 0px auto 20px auto;
+        font-size: 1.96em;
+        font-family: 'Oswald-Regular', sans-serif;
+    }
+    li.poll-choice {
+        list-style: none;
+        display: block;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        font-family: 'Oswald-Regular', sans-serif
     }
 }

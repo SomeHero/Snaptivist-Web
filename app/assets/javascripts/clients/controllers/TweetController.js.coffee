@@ -1,1 +1,0 @@
-@TweetController = ($scope, $rootScope) ->

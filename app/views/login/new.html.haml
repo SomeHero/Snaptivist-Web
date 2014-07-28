@@ -1,0 +1,14 @@
+.login-box
+  %h2 Login to your Account
+  = form_tag  login_path, method: 'post', class: 'form-horizontal' do |f|
+    = hidden_field_tag :on_complete_url, @on_complete_url
+    = hidden_field_tag :on_fail_url, @on_fail_url
+    %fieldset
+      = email_field_tag :email, '', class: 'input-large col-md-12', placeholder: 'Email Address', 'autofocus' => ''
+      = password_field_tag :password, '', class: 'input-large col-md-12', placeholder: 'Password'
+
+      .text-danger= flash[:notice]
+      = submit_tag :login, value: 'Log In', class: 'btn btn-primary col-md-12'
+%div.text-center
+  Don't have an account? 
+  = link_to "Get Started", signup_path

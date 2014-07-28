@@ -1,7 +1,7 @@
 class EmailConfiguration < ActiveRecord::Base
   belongs_to :email_type
-  belongs_to :petition
-  attr_accessible :email_type_id, :email_type, :email_template, :from_address, :from_name, :enabled, :last_id_sent, :subject
+  belongs_to :campaign
+  attr_accessible :email_type_id, :campaign, :email_type, :email_template, :from_address, :from_name, :enabled, :last_id_sent, :subject
 
   # generate json
   def to_api
