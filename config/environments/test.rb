@@ -42,6 +42,8 @@ SnaptivistWeb::Application.configure do
   # Log detail
   config.log_level = :debug
 
+  config.eager_load = false
+  
   ###########################################################################################################
   # User notifications
   #
