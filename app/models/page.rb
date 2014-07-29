@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :layout
-  attr_accessible :description, :name, :template_name, :url_fragment, :url_redirect, :url_redirect_property, :position
+  #attr_accessible :description, :name, :template_name, :url_fragment, :url_redirect, :url_redirect_property, :position
 
     # generate the theme json
   def to_api

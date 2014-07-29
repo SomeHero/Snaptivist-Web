@@ -3,7 +3,7 @@ class Signature < ActiveRecord::Base
   belongs_to :petition, :counter_cache => true
   belongs_to :tweet
   
-  attr_accessible :user, :comment
+  #attr_accessible :user, :comment
 
   validates :user, :presence => true
 

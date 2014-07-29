@@ -1,6 +1,6 @@
 class TargetGroup < ActiveRecord::Base
 	has_many :targets
-  attr_accessible :name
+  #attr_accessible :name
 
    # generate the target group
   def to_api

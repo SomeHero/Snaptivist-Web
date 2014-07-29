@@ -1,5 +1,5 @@
 class Tweet < ActiveRecord::Base
-  attr_accessible :message
+  #attr_accessible :message
 
   # generate the tweet
   def to_api

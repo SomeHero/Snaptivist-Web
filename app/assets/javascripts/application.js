@@ -10,10 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require lazyload
 //= require spin
 //= require lightbox
+//= require jquery
 //= require jquery.history
 //= require main
 //= require bootstrap-dropdown

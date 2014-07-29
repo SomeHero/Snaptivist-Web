@@ -1,6 +1,6 @@
 class Theme < ActiveRecord::Base
   belongs_to :layout
-  attr_accessible :layout, :css_file, :description, :name, :url_fragment
+  #attr_accessible :layout, :css_file, :description, :name, :url_fragment
 
   # generate the theme json
   def to_api

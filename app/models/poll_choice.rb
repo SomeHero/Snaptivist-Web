@@ -1,7 +1,7 @@
 class PollChoice < ActiveRecord::Base
   belongs_to :poll_action
 
-  attr_accessible :id, :label, :position
+  #attr_accessible :id, :label, :position
 
   def to_api
 

@@ -1,5 +1,5 @@
 class Choice < ActiveRecord::Base
-  attr_accessible :choice, :poll_id
+  #attr_accessible :choice, :poll_id
   belongs_to :poll
 
     # generate the poll

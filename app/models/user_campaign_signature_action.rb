@@ -1,3 +1,3 @@
 class UserCampaignSignatureAction < UserCampaignAction
-  attr_accessible :reason
+  #attr_accessible :reason
 end

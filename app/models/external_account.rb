@@ -1,6 +1,6 @@
 class ExternalAccount < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :allowed_at, :authenticated_at, :email, :external_id, :type
+  #attr_accessible :allowed_at, :authenticated_at, :email, :external_id, :type
 
     # default external account has no avatar
   def avatar_url

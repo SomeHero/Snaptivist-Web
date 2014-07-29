@@ -14,7 +14,8 @@
  *= require ngDialog-theme-default
  *= require ngDialog-theme-snap
  */
-@import "twitter/bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 body {
   font-family: "Open Sans", sans-serif;
 }

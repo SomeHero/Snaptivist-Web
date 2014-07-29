@@ -1,6 +1,6 @@
 class PollAction < Action
  has_many :poll_choices
- attr_accessible :id, :name, :poll_choices
+ #attr_accessible :id, :name, :poll_choices
 
   def to_api
 

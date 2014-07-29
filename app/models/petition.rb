@@ -4,9 +4,9 @@ class Petition < ActiveRecord::Base
   belongs_to :target
   belongs_to :user
   belongs_to :client
-  has_many :signatures, :order => 'created_at DESC'
+  has_many :signatures
   has_many :petition_pages
-  has_many :pages, :through => :petition_pages, :order => 'petition_pages.position'
+  has_many :pages, :through => :petition_pages
   
   has_many :email_configurations
   has_many :conditional_action_tags 

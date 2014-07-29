@@ -5,7 +5,7 @@ SnaptivistWeb::Application.routes.draw do
   mount API => "/api", :at => '/'
 
   namespace :api do
-    match 'petitions/more', :to => 'petitions#more'
+    match 'petitions/more', :to => 'petitions#more', via: :get
   
     resources :petitions do 
       member do
@@ -38,21 +38,21 @@ SnaptivistWeb::Application.routes.draw do
   end
 
 
-  match 'client_views/:layout/:template', :to => 'client_views#show'
-  match 'client_views/:layout/segments/:segment', :to => 'client_views#segment'
+  match 'client_views/:layout/:template', :to => 'client_views#show', via: :get
+  match 'client_views/:layout/segments/:segment', :to => 'client_views#segment', via: :get
   #match '/' => 'home#index', :constraints => { :subdomain => 'www' }
-  match '/' => 'home#index'
-  match '/welcome' => 'home#welcome'
+  match '/' => 'home#index', via: :get
+  match '/welcome' => 'home#welcome', via: :get
   
-  match 'campaigns/:id', :to => 'campaigns#view'
-  match '/deliver/:signature_id' => 'actions#view', :constraints => { :subdomain => /.+/ }
+  match 'campaigns/:id', :to => 'campaigns#view', via: :get
+  match '/deliver/:signature_id' => 'actions#view', :constraints => { :subdomain => /.+/ }, via: :get
   #match '/' => 'actions#view', :constraints => { :subdomain => /.+/ }
-  match 'petitions/:action_title', :to =>'petitions#view'
-  match 'polls/:action_title', :to =>'polls#view'
-  match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view'
+  match 'petitions/:action_title', :to =>'petitions#view', via: :get
+  match 'polls/:action_title', :to =>'polls#view', via: :get
+  match 'phonecampaigns/:action_title', :to => 'phonecampaigns#view', via: :get
   
-  match 'oauth/nb' => 'oauth#nation_builder'
-  match "auth/check/:provider" => 'authentications#check' 
+  match 'oauth/nb' => 'oauth#nation_builder', via: :post
+  match "auth/check/:provider" => 'authentications#check',  via: :get
 
   resources :authentications
   resources :targets

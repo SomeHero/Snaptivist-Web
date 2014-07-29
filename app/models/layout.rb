@@ -1,5 +1,5 @@
 class Layout < ActiveRecord::Base
-  attr_accessible :description, :name, :url_fragment
+  #attr_accessible :description, :name, :url_fragment
 
   has_many :pages
   has_many :themes

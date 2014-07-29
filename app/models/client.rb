@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :avatar, :admin_users_attributes
+  #attr_accessible :name, :avatar, :admin_users_attributes
 
   has_many :campaigns
   has_many :client_supporters

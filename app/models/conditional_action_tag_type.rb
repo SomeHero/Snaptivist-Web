@@ -1,3 +1,3 @@
 class ConditionalActionTagType < ActiveRecord::Base
-  attr_accessible :event_trigger, :label, :name
+  #attr_accessible :event_trigger, :label, :name
 end

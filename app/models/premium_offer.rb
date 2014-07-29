@@ -1,5 +1,5 @@
 class PremiumOffer < ActiveRecord::Base
-  attr_accessible :call_to_action_button_text, :headline_text, :name
+  #attr_accessible :call_to_action_button_text, :headline_text, :name
 
   # generate the premium offer json
   def to_api

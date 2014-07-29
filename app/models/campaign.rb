@@ -5,9 +5,8 @@ class Campaign < ActiveRecord::Base
   belongs_to :layout
   belongs_to :theme
   
-  has_many :campaign_pages, :order => "position ASC"
-  has_many :pages, :through => :campaign_pages, :order => 'campaign_pages.position'
-  
+  has_many :campaign_pages
+  has_many :pages, :through => :campaign_pages
   has_many :campaign_urls
   has_many :urls, :through => :campaign_urls
 
@@ -15,7 +14,7 @@ class Campaign < ActiveRecord::Base
 
   has_many :email_configurations
 
-  attr_accessible :subdomain, :title, :client, :page_attributes, :pages
+  #attr_accessible :subdomain, :title, :client, :page_attributes, :pages
 
   accepts_nested_attributes_for :campaign_pages, :reject_if => :all_blank, :allow_destroy => true
   

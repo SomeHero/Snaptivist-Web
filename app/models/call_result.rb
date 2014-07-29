@@ -1,7 +1,7 @@
 class CallResult < ActiveRecord::Base
   belongs_to :user
   belongs_to :phone_campaign, :counter_cache => true
-  attr_accessible :comment, :result
+  #attr_accessible :comment, :result
 
   validates :user, :presence => true
   

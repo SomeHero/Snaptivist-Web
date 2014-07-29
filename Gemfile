@@ -2,7 +2,7 @@ ruby "2.0.0"
 
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '4.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,17 +11,6 @@ gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
-  gem 'sass-rails'
-  gem 'bootstrap-sass-rails', '3.0.0'
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'angularjs-rails', '>= 1.2.0.rc2'
-  gem "font-awesome-rails"
-  gem "entypo-rails"
-end
 
 group :development do
   gem 'guard-rspec'
@@ -37,8 +26,16 @@ group :development do
   gem 'rb-readline'
 end
 
+gem 'coffee-rails'
+gem 'uglifier',     '>= 1.0.3'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'sass-rails', '>= 3.2'
+gem 'autoprefixer-rails'
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails', '~> 5.0'
+gem 'angularjs-rails', '>= 1.2.0.rc2'
+gem "font-awesome-rails"
+gem "entypo-rails"
 gem 'simple_form'
 gem 'devise'
 gem 'omniauth'
@@ -47,7 +44,7 @@ gem 'omniauth-facebook'
 gem 'twitter'
 gem 'twitter_oauth'
 gem 'fb_graph'
-gem 'activeadmin'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'coffee-script-source', '~> 1.4.0'
 gem 'koala', '~> 1.4'
 gem "ym4r"

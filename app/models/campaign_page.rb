@@ -6,7 +6,7 @@ class CampaignPage < ActiveRecord::Base
   has_many :campaign_page_urls
   has_many :urls, :through => :campaign_page_urls
 
-  attr_accessible :campaign_id, :page_id, :position, :action
+  #attr_accessible :campaign_id, :page_id, :position, :action
 
   after_create :create_short_url
 

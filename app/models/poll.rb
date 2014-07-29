@@ -1,5 +1,5 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :question, :rewrite_url_key, :short_url, :user_id,  :subdomain, :comment
+  #attr_accessible :question, :rewrite_url_key, :short_url, :user_id,  :subdomain, :comment
   belongs_to :user
   has_many :choices
 

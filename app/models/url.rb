@@ -1,3 +1,3 @@
 class Url < ActiveRecord::Base
-  attr_accessible :address
+  #attr_accessible :address
 end
