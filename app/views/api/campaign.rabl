@@ -21,7 +21,7 @@ child :campaign_pages do |campaign_page|
   attributes :id,
     :position
     node :content do |cp| 
-      cp.get_content()
+      cp.content
     end
     node :action do |cp|
       cp.get_action()
