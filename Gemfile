@@ -35,7 +35,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'angularjs-rails', '>= 1.2.0.rc2'
 gem "font-awesome-rails"
-gem "entypo-rails"
 gem 'simple_form'
 gem 'devise'
 gem 'omniauth'

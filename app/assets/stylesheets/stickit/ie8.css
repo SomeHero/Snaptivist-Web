@@ -1,0 +1,31 @@
+#stickit a.home {
+	color: #b11a1a;
+	font-size: 24px;
+	width: auto;
+	height: auto;
+	background: none;
+}
+#stickit a.home:hover {
+	background: none;
+	color: #fff;
+}
+#stickit .arrow:before {
+	display: none;
+}
+#stickit .fluid {
+	margin: 1% 0 1% 2%;
+}
+#stickit .fluid:first-child {
+	margin-left: 0;
+}
+#stickit .field {
+	margin-left: 0;
+}
+#stickit label.hide-lb,
+#stickit label.show-lb {
+	display: none;
+}
+#stickit .hide-it,
+#stickit .has-tabs {
+	display: none;
+}

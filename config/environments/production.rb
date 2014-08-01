@@ -132,5 +132,4 @@ SnaptivistWeb::Application.configure do
 
 ENV["REDISTOGO_URL"] = 'redis://redistogo:346b27529b87e240da71e294ed319233@albacore.redistogo.com:9574/'
 
-Entypo.charmap = true
 end

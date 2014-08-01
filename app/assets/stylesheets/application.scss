@@ -13,6 +13,7 @@
  *= require ngDialog
  *= require ngDialog-theme-default
  *= require ngDialog-theme-snap
+ *= require_directory ./stickit
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
