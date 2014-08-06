@@ -32,7 +32,7 @@
 			content: {}
 			expanded: true
 		})
-		if(page.template_name == "poll_template")
+		if(page.action= "poll_action")
 			$scope.campaign.campaign_pages[$scope.campaign.campaign_pages.length-1].action = {
 				name: ''
 				type: 'Poll'
@@ -47,7 +47,7 @@
 					position: 3
 				}]
 			}
-		if(page.template_name == "signature_template")
+		if(page.action == "signature_action")
 			$scope.campaign.campaign_pages[$scope.campaign.campaign_pages.length-1].action = {
 				name: ''
 				type: 'Petition'

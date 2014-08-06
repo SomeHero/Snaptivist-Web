@@ -1,3 +1,4 @@
+
 #login.login-box
   %div.title
     Login to your Account
@@ -8,7 +9,7 @@
       = email_field_tag :email, '', class: 'input-large col-md-12', placeholder: 'Email Address', 'autofocus' => ''
       = password_field_tag :password, '', class: 'input-large col-md-12', placeholder: 'Password'
 
-      .text-danger= flash[:notice]
+      .text-danger= flash[:error]
       = submit_tag :login, value: 'Log In', class: 'btn btn-primary col-md-12'
 %div.text-center
   Don't have an account? 
