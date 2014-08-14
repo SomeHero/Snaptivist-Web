@@ -3,15 +3,15 @@
   replace: true
   scope: {
     segment: '=segment'
-    action: '=action'
-    isAdmin: '=isAdmin'
+    action: '='
+    isAdmin: '='
   }
   templateUrl: '/clients/campaigns/partials/poll_template'
   link: (scope, element, attrs) ->
 
     if !scope.action
       scope.action = {
-        type: 'Poll'
+        type: 'poll_action'
         poll_choices: []
       }
 
@@ -35,9 +35,11 @@
     scope.remove_poll_choice_clicked = (poll_choice) ->
       console.log "number of options " + scope.action.poll_choices.length
 
-      scope.action.poll_choices.splice(scope.action.poll_choices.indexOf(poll_choice), 1) 
+      poll_choice._destroy = true
 
   controller: ($scope, $attrs) ->
+
+    console.log($scope.action)
 
     $scope.poll_choice_clicked = (poll_choice) ->
       console.log "poll choice clicked"
@@ -49,5 +51,7 @@
         return "fa-circle"
       else
         return "fa-circle-o"
+
+    window.poll_scope = $scope
 
 ]

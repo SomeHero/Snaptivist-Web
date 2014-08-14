@@ -4,7 +4,7 @@
   %h1.title.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "page.content.headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Secondary Headline", "name"=>"headline_secondary", "required"=>""}
   %p.description
     %ng-segment{"segment"=>"page.content.summary_segment", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"text", "placeholder"=>"Summary", "image_overlay_title"=>"Add a Summary Image", "image_overlay_notes"=>"Recommend Image Size: 800x350", "segment-height"=>"400px", "segment-width"=>"500px"}
-  %ng-segment{"segment"=>"page.content.action",  "action"=>"page.action",  "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"default_action"}
+  %ng-segment{"segment"=>"page.action", "content"=>"page.content", "action"=>"page.action",  "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"page.action.type"}
   %ng-segment{"segment"=>"page.content.action_guage", "layout"=>"layout", "action"=>"page.action", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_guage"}
   %ng-segment{"segment"=>"page.content.action_comments_list", "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_comments_list"}
   %ng-segment{"segment"=>"page.content.disclaimer", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"disclaimer", "placeholder"=>"Disclaimer Copy"}

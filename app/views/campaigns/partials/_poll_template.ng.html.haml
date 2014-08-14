@@ -1,9 +1,7 @@
 %div.poll
-	%span.contenteditable.placeholer-showing.poll-question{:style=>"display: block", "contenteditable"=>"", "ng-model" => "page.action.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Question/Title", "name"=>"poll_title", "required"=>""}
+	%span.contenteditable.placeholer-showing.poll-question{:style=>"display: block", "contenteditable"=>"", "ng-model" => "action.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Question/Title", "name"=>"poll_title", "required"=>""}
 	%ul
-		%li.poll-choice{"ng-repeat"=>"choice in page.action.poll_choices"}
-			%span{"ng-click"=>"poll_choice_clicked(choice)"}
-				%i.fa{"ng-class"=>"set_poll_choice_icon(choice)"}
+		%li.poll-choice{"ng-repeat"=>"choice in action.poll_choices_attributes"}
 			%span.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "choice.label", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Option {{$index + 1}}", "name"=>"poll_choice", "required"=>""}
 			%span{"ng-click"=>"remove_poll_choice_clicked(choice)", "ng-hide"=>"!isAdmin"}
 				%i.fa.fa-minus-circle

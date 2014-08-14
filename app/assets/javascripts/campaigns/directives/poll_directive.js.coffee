@@ -3,6 +3,7 @@
   replace: true
   scope: {
     page: '=page'
+    action: '=action'
     isAdmin: '=isAdmin'
   }
   templateUrl: '/campaigns/partials/poll_template'
@@ -12,15 +13,15 @@
 
       scope.page.action.poll_choices.splice(scope.page.action.poll_choices.indexOf(poll_choice), 1) 
   controller: ($scope, $attrs) ->
-    $scope.page.action.selected_poll_choice = $scope.page.action.poll_choices[0]
+    $scope.action.selected_poll_choice = $scope.action.poll_choices_attributes[0]
 
     $scope.poll_choice_clicked = (poll_choice) ->
       console.log "poll choice clicked"
 
-      $scope.page.action.selected_poll_choice = poll_choice
+      $scope.action.selected_poll_choice = poll_choice
 
     $scope.set_poll_choice_icon = (poll_choice) ->
-      if(poll_choice == $scope.page.action.selected_poll_choice)
+      if(poll_choice == $scope.action.selected_poll_choice)
         return "fa-circle"
       else
         return "fa-circle-o"

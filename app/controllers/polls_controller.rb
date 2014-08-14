@@ -6,4 +6,8 @@ class PollsController < InheritedResources::Base
 
 		render :show
 	end
+
+	 def params
+    	params.permit(:label, :position, :poll_choices)
+  	end
 end

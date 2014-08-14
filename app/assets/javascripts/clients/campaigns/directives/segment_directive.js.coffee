@@ -117,6 +117,7 @@
     transclude: false
     scope: {
       segment: '='
+      content: '='
       action: '='
       isAdmin: '='
       layout: '='

@@ -1,6 +1,6 @@
 @app.directive 'ngPage', ['$http', '$templateCache', '$compile', '$timeout', '$window', ($http, $templateCache, $compile, $timeout, $window) ->
   getTemplate = (layout) ->
-    baseUrl = "/client_views/" + layout.url_fragment + "/"
+    baseUrl = "/client_views/layout1/"
 
     templateUrl = baseUrl + 'page_template.html'
     $http.get(templateUrl,

@@ -42,51 +42,27 @@ class CampaignPage < ActiveRecord::Base
 
   def create_or_update_petition action
 
+    parameters = ActionController::Parameters.new(action)
+    params = parameters.permit(:name)
+
     if(self.action)
-      self.action.update_attributes({
-        name: action.name
-      })
+      self.action.update(params)
     else
-      self.action = PetitionAction.new({
-        name: action.name
-      })
+      self.action = PetitionAction.create(params)
     end
   end
 
   def create_or_update_poll action
 
+    parameters = ActionController::Parameters.new(action)
+    params = parameters.permit(:name, :poll_choices_attributes => [:id, :label, :position, :_destroy])
+
     if(self.action)
-      self.action.update_attributes({
-        name: action.name
-      })
+      self.action.update(params)
     else
-      self.action = PollAction.new({
-        name: action.name
-      })
+      self.action = PollAction.create(params)
     end
-
-    all_poll_choices = self.action.poll_choices.collect { |poll_choice| poll_choice.id }
-    action.poll_choices.each do |poll_choice|
-      if(poll_choice.id)
-        all_poll_choices.delete(poll_choice.id)
-        poll_choice = self.action.poll_choices.find(poll_choice.id)
-      
-        poll_choice.update_attributes({
-          label: poll_choice.label,
-          position: poll_choice.position
-        })
-      else
-        self.action.poll_choices.new({
-          label: poll_choice.label,
-          position: poll_choice.position
-        })
-      end
-
-    end
-
-    all_poll_choices.each do |poll_choice_id|
-      self.action.poll_choices.find(poll_choice_id).delete
-    end
+  
 
   end
 

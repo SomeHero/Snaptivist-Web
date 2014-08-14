@@ -32,11 +32,11 @@
 			content: {}
 			expanded: true
 		})
-		if(page.action= "poll_action")
+		if(page.action.type == "poll_action")
 			$scope.campaign.campaign_pages[$scope.campaign.campaign_pages.length-1].action = {
 				name: ''
-				type: 'Poll'
-				poll_choices: [{
+				type: 'poll_action'
+				poll_choices_attributes: [{
 					label: ""
 					position: 1
 				}, {
@@ -47,10 +47,10 @@
 					position: 3
 				}]
 			}
-		if(page.action == "signature_action")
+		if(page.action.type == "signature_action")
 			$scope.campaign.campaign_pages[$scope.campaign.campaign_pages.length-1].action = {
 				name: ''
-				type: 'Petition'
+				type: 'signature_action'
 			}
 
 		ngDialog.close()

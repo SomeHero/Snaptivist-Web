@@ -1,14 +1,17 @@
 class PollAction < Action
  has_many :poll_choices
- #attr_accessible :id, :name, :poll_choices
+ 
+ accepts_nested_attributes_for :poll_choices,
+ :reject_if => proc { |att| att['label'].blank? },
+ :allow_destroy => true
 
   def to_api
 
     results = {
       'id' => id,
-      'type' => 'Poll',
+      'type' => "poll_action",
       'name' => name,
-      'poll_choices' => poll_choices.map { |poll_choice| poll_choice.to_api },
+      'poll_choices_attributes' => poll_choices.map { |poll_choice| poll_choice.to_api },
       'count' => get_count
     }
 
@@ -16,36 +19,11 @@ class PollAction < Action
   end
 
   def self.create_or_update_poll action
-
-  	poll = nil
-  	if(action.id)
-  		poll = PollAction.find(action.id)
-  		poll.name = action.name
-  		action.poll_choices.each do |poll_choice|
-  		  if(poll_choice.id)
-  		  	pc = poll.poll_choices.find(poll_choice.id)
-
-  		  	pc.label = poll_choice.label
-  		  	pc.position = poll_choice.position
-  		  else
-	      	action.poll_choices.create!({
-	          label: poll_choice.label,
-	          position: poll_choice.position
-	        })
-	       end
-	    end
-  	else
-	  	poll = PollAction.new({
-	      name: action.name
-	    })
-	    action.poll_choices.each do |poll_choice|
-	      action.poll_choices.create!({
-	          label: poll_choice.label,
-	          position: poll_choice.position
-	        })
-	    end
-	end
-
-	return poll
+    self.update(action)
   end
+
+  def poll_action_params
+    params.require(:name)
+  end
+
 end

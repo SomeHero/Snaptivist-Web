@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   #protect_from_forgery
 
+  def permitted_params
+    @permitted_params ||= PermittedParams.new(params)
+  end
+  helper_method :permitted_params
+  
   def authenticate
     redirect_to :login unless User.find_by_provider_and_uid(auth["provider"], auth["uid"])
   end

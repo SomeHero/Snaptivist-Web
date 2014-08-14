@@ -1,6 +1,6 @@
 @app.directive 'ngSegment', ['$http', '$templateCache', '$compile', '$timeout', '$window', '$sce', ($http, $templateCache, $compile, $timeout, $window, $sce) ->
   getTemplate = (layout, contentType) ->
-    baseUrl = "/client_views/" + layout.url_fragment + "/segments/"
+    baseUrl = "/client_views/layout1/segments/"
 
     templateMap = {
       text: 'text.html',
@@ -70,7 +70,6 @@
       segment: '='
       action: '='
       isAdmin: '='
-      layout: '='
     }
     controller: ($scope, $attrs) ->
       $scope.get_placeholder_text = () ->

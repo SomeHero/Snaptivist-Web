@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729165706) do
+ActiveRecord::Schema.define(version: 20140813162610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140729165706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.json     "content"
+    t.integer  "action_id"
   end
 
   add_index "campaign_pages", ["campaign_id"], name: "index_campaign_pages_on_campaign_id", using: :btree
@@ -423,6 +424,7 @@ ActiveRecord::Schema.define(version: 20140729165706) do
   create_table "poll_actions", force: true do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "action_id"
   end
 
   create_table "poll_choices", force: true do |t|

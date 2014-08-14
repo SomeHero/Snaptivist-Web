@@ -101,7 +101,7 @@ class API < Grape::API
        end
 
         if(page.action) 
-          if(page.action.type === "Poll") 
+          if(page.action.type === "poll_action") 
             action = campaign_page.create_or_update_poll(page.action)
           elsif (page.action.type === "Petition")
             action = campaign_page.create_or_update_petition(page.action)
@@ -110,8 +110,6 @@ class API < Grape::API
 
         campaign_page.content = page.content.to_json
         campaign_page.save!
-
-        #REDIS.set("campaign-page-" + campaign_page.id.to_s, page.content.to_json)
 
       end
 

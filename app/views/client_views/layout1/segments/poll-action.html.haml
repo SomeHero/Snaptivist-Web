@@ -8,7 +8,7 @@
             %textarea#comment{:maxlength => "115", :style => "width: 90%", :placeholder => "{{page.content.signature_comment_placeholder_text || 'Tell Us Why You are Signing...'}}", "ng-model" => "signature.comment"}
             #message-counter.text-right {{115 - signature.comment.length}}
           %button.drop-shadow.lifted.action-button.icon#sign-with-fb-button{"ng-click" => "fetch()"}
-            %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_facebook_cta_button_text", "required"=>""}
+            %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.sign_with_facebook_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_facebook_cta_button_text", "required"=>""}
         #copy-or
           \-OR-
         #sign-petition{"ng-switch"=>"isAdmin"}
@@ -62,7 +62,7 @@
             .form-group.row
               .col-md-12
                 %button#sign-petition-user-name.button.action-button{:style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
-                  %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_email_cta_button_text", "required"=>""}
+                  %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_email_cta_button_text", "required"=>""}
                 .controls{:style => "padding: 0px 20px"}
                   %label.checkbox{:style => "text-align: left"}
                     %input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "signature.opt_in"}

@@ -48,7 +48,6 @@
           console.log "Modal dismissed at: " + new Date()
 
       $scope.edit_clicked = () ->
-        console.log 'edit clicked'
 
         if $scope.segment.type == 'photo'
           open_photo_edit_model()
