@@ -1,6 +1,7 @@
 # this is a publicly available API. As yet there is no authentication.
 require 'nation_builder_web_hook.rb'
 require 'jobs/nationbuilder.rb'
+require 'securerandom'
 
 class API < Grape::API
   version 'v1', using: :header, vendor: "Snaptivist"
@@ -269,6 +270,33 @@ class API < Grape::API
   end   
 
   resource :actions do
+
+    desc "Saves an action that a users takes to the database"
+    post "/:id" do
+      binding.pry
+
+      action = Action.find(params["action_id"])
+      type = params["type"]
+
+      user = User.new(
+        first_name: params["first_name"],
+        last_name: params["last_name"],
+        email: params["email_address"],
+        password:  SecureRandom.hex
+      )
+
+      if type == 'poll_action'
+        poll_choice =PollChoice.find(params["choice_id"])
+
+        PollResponse.create!(
+          action: action,
+          poll_choice: poll_choice,
+          comment: params["comment"],
+          user: user
+        )
+      end
+
+    end
 
     desc "Sign a petition action with Facebook"
     post "/:id/sign_with_facebook", :rabl => "user_campaign_action" do

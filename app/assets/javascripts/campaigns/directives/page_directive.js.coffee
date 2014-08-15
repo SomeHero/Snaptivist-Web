@@ -15,6 +15,7 @@
       )
 
   linker = (scope, element, attrs) ->
+
     scope.$watch 'layout', ((newValue, oldValue) ->
       if(newValue == oldValue) 
         return;

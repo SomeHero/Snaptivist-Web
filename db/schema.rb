@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813162610) do
+ActiveRecord::Schema.define(version: 20140815033444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_responses", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_address"
+    t.string   "zip_code"
+    t.integer  "user_id"
+    t.integer  "action_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+  end
+
+  add_index "action_responses", ["action_id"], name: "index_action_responses_on_action_id", using: :btree
+  add_index "action_responses", ["user_id"], name: "index_action_responses_on_user_id", using: :btree
 
   create_table "actions", force: true do |t|
     t.string   "name"
@@ -440,12 +455,12 @@ ActiveRecord::Schema.define(version: 20140813162610) do
   create_table "poll_responses", force: true do |t|
     t.string   "comment"
     t.integer  "poll_id"
-    t.integer  "choice_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "poll_choice_id"
   end
 
-  add_index "poll_responses", ["choice_id"], name: "index_poll_responses_on_choice_id", using: :btree
+  add_index "poll_responses", ["poll_choice_id"], name: "index_poll_responses_on_poll_choice_id", using: :btree
   add_index "poll_responses", ["poll_id"], name: "index_poll_responses_on_poll_id", using: :btree
 
   create_table "polls", force: true do |t|

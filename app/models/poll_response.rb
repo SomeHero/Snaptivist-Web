@@ -1,5 +1,5 @@
-class PollResponse < ActiveRecord::Base
+class PollResponse < ActionResponse
   belongs_to :poll
-  belongs_to :choice
+  belongs_to :poll_choice
   #attr_accessible :comment
 end

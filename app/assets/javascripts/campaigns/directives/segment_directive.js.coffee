@@ -68,8 +68,10 @@
     transclude: false
     scope: {
       segment: '='
+      content: '='
       action: '='
       isAdmin: '='
+      layout: '='
     }
     controller: ($scope, $attrs) ->
       $scope.get_placeholder_text = () ->
@@ -99,6 +101,8 @@
           return {
             'height': $scope.segment_height
           }
+      $scope.submit_action_with_email_address = (form) ->
+        console.log "Test"
 
     link: linker
   )

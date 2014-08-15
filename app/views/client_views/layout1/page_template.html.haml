@@ -1,13 +1,13 @@
 .text-center{:style=>"width: auto"}
-  %ng-segment{"segment"=>"page.content.header_image", "layout"=>"layout", "segment-position"=>"left", "is-admin"=>"isAdmin", "segment-type"=>"photo", "segment-width"=>"780px", "segment-height"=>"236px", "placeholder"=>"Header Image", "image_overlay_title"=>"Add a Header Image", "image_overlay_notes"=>"Recommend Image Size: 950x250"}
+  %ng-segment{"segment"=>"page.content.header_image",  "content"=>"page.content", "action"=>"page.action", "layout"=>"layout", "segment-position"=>"left", "is-admin"=>"isAdmin", "segment-type"=>"photo", "segment-width"=>"780px", "segment-height"=>"236px", "placeholder"=>"Header Image", "image_overlay_title"=>"Add a Header Image", "image_overlay_notes"=>"Recommend Image Size: 950x250"}
   %h2#petition-headline.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "page.content.headline_primary",  "is-admin"=>"isAdmin", "segment-type"=>"text-center",  "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Headline", "name"=>"headline_primary", "required"=>""}
   %h1.title.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "page.content.headline_secondary", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Secondary Headline", "name"=>"headline_secondary", "required"=>""}
   %p.description
-    %ng-segment{"segment"=>"page.content.summary_segment", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"text", "placeholder"=>"Summary", "image_overlay_title"=>"Add a Summary Image", "image_overlay_notes"=>"Recommend Image Size: 800x350", "segment-height"=>"400px", "segment-width"=>"500px"}
+    %ng-segment{"segment"=>"page.content.summary_segment", "content"=>"page.content", "action"=>"page.action", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"text", "placeholder"=>"Summary", "image_overlay_title"=>"Add a Summary Image", "image_overlay_notes"=>"Recommend Image Size: 800x350", "segment-height"=>"400px", "segment-width"=>"500px"}
   %ng-segment{"segment"=>"page.action", "content"=>"page.content", "action"=>"page.action",  "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"page.action.type"}
-  %ng-segment{"segment"=>"page.content.action_guage", "layout"=>"layout", "action"=>"page.action", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_guage"}
-  %ng-segment{"segment"=>"page.content.action_comments_list", "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_comments_list"}
-  %ng-segment{"segment"=>"page.content.disclaimer", "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"disclaimer", "placeholder"=>"Disclaimer Copy"}
+  %ng-segment{"segment"=>"page.content.action_guage",  "content"=>"page.content", "action"=>"page.action", "layout"=>"layout", "action"=>"page.action", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_guage"}
+  %ng-segment{"segment"=>"page.content.action_comments_list",  "content"=>"page.content", "action"=>"page.action", "layout"=>"layout", "segment-position"=>"right", "is-admin"=>"isAdmin", "segment-type"=>"action_comments_list"}
+  %ng-segment{"segment"=>"page.content.disclaimer",  "content"=>"page.content", "action"=>"page.action",  "layout"=>"layout", "segment-position"=>"bottom", "is-admin"=>"isAdmin", "segment-type"=>"disclaimer", "placeholder"=>"Disclaimer Copy"}
   #powered-by-wrapper
     %a#powered-by-container.row.text-right{"href" => "http://www.snaptivist.com", :style => "display: block"}
       = image_tag "powered_by.png"
