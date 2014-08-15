@@ -3,6 +3,7 @@
   replace: true
   scope: {
     segment: '=segment'
+    content: '='
     action: '='
     isAdmin: '='
   }
@@ -38,8 +39,6 @@
       poll_choice._destroy = true
 
   controller: ($scope, $attrs) ->
-
-    console.log($scope.action)
 
     $scope.poll_choice_clicked = (poll_choice) ->
       console.log "poll choice clicked"

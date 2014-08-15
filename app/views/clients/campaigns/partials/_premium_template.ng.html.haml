@@ -1,0 +1,26 @@
+%div
+  #premium-form-wrapper.row
+    .signature-form-container.vertical-middle-cell.col-md-8.col-md-offset-2
+      %form{:name => "myForm", "novalidate" => true, :style => "margin: 0px;", "role"=>"form"}
+        .form-group.row.clearfix
+          .col-md-6.text-left#first-name-wrapper
+            %input.form-control{"type"=>"text", "placeholder"=>"First Name", "required"=>"", "ng-model"=>"premium_registration.first_name"}
+          .col-md-6.text-left#last-name-wrapper
+            %input.form-control{"type"=>"text", "placeholder"=>"Last Name", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+        .form-group
+          %input.form-control{:style=>"width: 100%", "type"=>"text","placeholder"=>"Street Address 1", "required"=>"", "ng-model"=>"premium_registration.street_address_1"}
+        .form-group
+          %input.form-control{:style=>"width: 100%", "type"=>"text", "placeholder"=>"Street Address 2", "ng-model"=>"premium_registration.street_address_2"}
+        .form-group.clearfix
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"City", "required"=>"", "ng-model"=>"premium_registration.city"}
+        .form-group.clearfix
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"State", "required"=>"", "ng-model"=>"premium_registration.state"}
+        .form-group.clearfix
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Zip Code", "required"=>"", "ng-model"=>"premium_registration.zip_code"}
+        .form-group
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Phone Number", "ng-model"=>"premium_registration.phone_number"}
+        .form-group
+          %input.form-control{:style=>"width: 100%","type"=>"text", "placeholder"=>"Email Address", "required"=>"", "ng-model"=>"premium_registration.email_address"}
+        %button.drop-shadow.lifted.action-button.icon#sign-with-fb-button{"ng-click"=>"premium_submit_clicked(myForm)"}
+          %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "page.content.premium_call_to_action_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Button"}
+      

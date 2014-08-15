@@ -1,8 +1,2 @@
 %div{"segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
-	.poll-results.text-left{:style=>"margin-bottom: 80px"}
-		.poll-choice{"ng-repeat"=>"poll_choice in segment.poll.poll_choices"}
-			%label
-				{{poll_choice.label}}
-			.progress
-				.progress-bar{:style=>"width: {{poll_choice.percentage}}%", "role"=>"progressbar", "aria-valuenow"=>"60", "aria-valuemin"=>"0","aria-valuemax"=>"100"}
-					{{poll_choice.percentage}}%
+  %div{"ng-poll-results"=>"", "segment"=>"segment", "action"=>"action", "content"=>"content", "is-admin"=>"isAdmin"}

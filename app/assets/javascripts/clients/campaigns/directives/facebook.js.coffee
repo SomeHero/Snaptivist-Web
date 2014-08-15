@@ -25,6 +25,9 @@
 
     fetch = ->
 
+      if $scope.isAdmin
+        return;
+        
       console.log "Signing with Facebook"
 
       add_page_tab()

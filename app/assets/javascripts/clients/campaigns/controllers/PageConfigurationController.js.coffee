@@ -47,10 +47,14 @@
 					position: 3
 				}]
 			}
-		if(page.action.type == "signature_action")
+		else if(page.action.type == "signature_action")
 			$scope.campaign.campaign_pages[$scope.campaign.campaign_pages.length-1].action = {
 				name: ''
 				type: 'signature_action'
+			}
+		else 
+			$scope.campaign.campaign_pages[$scope.campaign.campaign_pages.length-1].action = {
+				type: page.action.type
 			}
 
 		ngDialog.close()

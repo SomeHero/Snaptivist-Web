@@ -6,7 +6,8 @@
       text: 'text.html',
       photo: 'photo.html',
       video: 'video.html',
-      disclaimer: 'disclaimer.html',
+      disclaimer: 'disclaimer.html'
+      donation: 'donation-action.html',
       signature_action: 'signature-action.html',
       poll_action: 'poll-action.html',
       poll_results: 'poll-results.html',
