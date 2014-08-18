@@ -1,20 +1,2 @@
-#target-count-wrapper.segment-wrapper{:style => "margin: 0px auto 10px auto;", "segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
-  .segment-inner-wrapper
-    .row
-      #target-count-progress-wrapper.col-md-11.solid-white-back.drop-shadow-full
-        #progress-bar-outer-wrapper
-          #progress-bar-wrapper.progress.progress-striped.progress-green
-            #progress-bar.bar.orange-bar{:style => "width: {{get_percentage_signed(action.count, segment.target_count)}}%;"}
-            %span#progress-marker.mark{:style => "left: {{load_progress_marker(action.count, segment.target_count)}}"}
-      #petition-target-count-goal.col-md-1.target-count-goal
-        %span.nobr
-          {{ get_percentage_signed(action.count, segment.target_count) }}
-          \%
-    .row
-      .col-md-6.col-sm-6.col-xs-6.action-count{:style => "text-align: left; padding-left: 22px;"}
-        Signers:
-        %span#signature_count
-          {{action.count}}
-      .col-md-6.col-sm-6.col-xs-6.action-count{:style => "text-align: right; padding-right: 44px"}
-        Goal: 
-        %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "segment.target_count", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Target Number of Signatures","name"=>"target_count", "required"=>""}
+%div{"segment-config"=>"", "segment"=>"segment", "is-admin"=>"isAdmin"}
+  %div{"ng-action-guage"=>"", "segment"=>"segment", "action"=>"action", "content"=>"content", "is-admin"=>"isAdmin"}

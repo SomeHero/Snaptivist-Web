@@ -1,0 +1,59 @@
+%div.donation-segment
+	%div.donation-container
+		.row
+			.col-md-4
+				.row
+					.col-md-6.donation-button-wrapper
+						.donation-button
+							$25
+					.col-md-6.donation-button-wrapper
+						.donation-button
+							$50
+				.row
+					.col-md-6.donation-button-wrapper
+						.donation-button
+							$100
+					.col-md-6.donation-button-wrapper
+						.donation-button
+							$500
+				.row
+					.col-md-6.donation-button-wrapper
+						.donation-button
+							$1000
+					.col-md-6.donation-button-wrapper
+						.donation-button
+							$2600
+			.col-md-8
+				%form{:name => "myForm", "novalidate" => true, :style => "margin: 0px;", "role"=>"form"}
+					.form-group.row.clearfix
+						.col-md-6.text-left#first-name-wrapper
+							%label First Name
+							%input.form-control{"type"=>"text", "placeholder"=>"First Name", "required"=>"", "ng-model"=>"premium_registration.first_name"}
+						.col-md-6.text-left#last-name-wrapper
+							%label Last Name
+							%input.form-control{"type"=>"text", "placeholder"=>"Last Name", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+					.form-group.row.clearfix
+						.col-md-12.text-left#address-wrapper
+							%label Address
+							%input.form-control{"type"=>"text", "placeholder"=>"Address ", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+					.form-group.row.clearfix
+						.col-md-6.text-left#address-wrapper
+							%label City
+							%input.form-control{"type"=>"text", "placeholder"=>"City", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+						.col-md-2.text-left#address-wrapper
+							%label State
+							%input.form-control{"type"=>"text", "placeholder"=>"State", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+						.col-md-4.text-left#address-wrapper
+							%label Zip Code
+							%input.form-control{"type"=>"text", "placeholder"=>"Zip Code", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+					.form-group.row.clearfix
+						.col-md-6.text-left#first-name-wrapper
+							%label Email Address
+							%input.form-control{"type"=>"text", "placeholder"=>"Email Address", "required"=>"", "ng-model"=>"premium_registration.first_name"}
+						.col-md-6.text-left#last-name-wrapper
+							%label Phone
+							%input.form-control{"type"=>"text", "placeholder"=>"Phone", "required"=>"", "ng-model"=>"premium_registration.last_name"}
+		.form-group.row
+			.col-md-12
+				%button#sign-petition-user-name.button.action-button{:type=>"submit", :style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
+					%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action Text", "name"=>"sign_with_email_cta_button_text", "required"=>""}

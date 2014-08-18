@@ -28,8 +28,6 @@ class ClientsController < ApplicationController
 
   def login
 
-    binding.pry 
-    
     @on_complete_url = "/clients/" + @client.id.to_s + "/campaigns" 
     @on_fail_url = request.original_url
 

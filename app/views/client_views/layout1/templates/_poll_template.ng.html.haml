@@ -1,8 +1,9 @@
 %div.poll
 	%span.contenteditable.placeholer-showing.poll-question{:style=>"display: block", "contenteditable"=>"", "ng-model" => "action.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Question/Title", "name"=>"poll_title", "required"=>""}
 	%ul
-		%li.poll-choice{"ng-repeat"=>"choice in action.poll_choices_attributes"}
-			%span.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "choice.label", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Option {{$index + 1}}", "name"=>"poll_choice", "required"=>""}
+		%li.poll-choice{"ng-repeat"=>"choice in action.poll_choices_attributes  | orderBy: 'position'"}
+			%i.fa{"ng-class"=>"set_poll_choice_icon(choice)", "ng-click"=>"poll_choice_clicked(choice)"}
+			%span.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "choice.label", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Option {{$index + 1}}", "name"=>"poll_choice", "required"=>"", "ng-click"=>"poll_choice_clicked(choice)"}
 			%span{"ng-click"=>"remove_poll_choice_clicked(choice)", "ng-hide"=>"!isAdmin"}
 				%i.fa.fa-minus-circle
 	#action-wrapper{:style => "margin-top: 40px;"}
@@ -46,4 +47,5 @@
 									%input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "action_response.opt_in"}
 										%div#copy-opt-in
 											Update me on the results of this campaign and others from
-											%b {{petition.creator.organization_name}}
+											%b
+												%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.opt_in_copy", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Your Organizations Name", "name"=>"opt_in_copy", "required"=>"", "is-admin"=>"isAdmin"}

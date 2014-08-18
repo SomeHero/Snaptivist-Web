@@ -17,6 +17,125 @@ class API < Grape::API
         error!('404 Not Found', 404)
       end
     end
+
+    def current_user
+
+      binding.pry
+
+      method = params[:action_method]
+      
+      if method == 'email'
+
+        user = User.find_by_email(params[:email_address])
+
+        if user
+          user.first_name = params[:first_name]
+          user.last_name = params[:last_name]
+          user.zip_code = params[:zip_code]
+          
+          # if user.action_tags && @petition.action_tags
+          #   action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
+          #   current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
+        
+          #   action_tags.each do |action_tag|
+          #     user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+          #   end
+          # else
+          #   user.action_tags = @petition.action_tags
+          # end
+          user.save!
+
+        else
+         user = User.new do |u|
+          u.first_name = params[:first_name]
+          u.last_name = params[:last_name]
+          u.email = params[:email_address]
+          u.password = "password"
+          u.password_confirmation = "password"
+          u.zip_code = params[:zip_code]
+          #u.action_tags = @petition.action_tags
+          end
+
+          user.save!
+
+        end
+
+      end
+
+      if method == 'facebook'
+
+        binding.pry 
+
+        auth = params[:auth]
+
+        #raise error if no auth
+        Rails.logger.debug "The access token is " + auth["accessToken"]
+
+        #see if we have this FB user in the authentications table
+        authentication = Authentication.find_by_provider_and_uid('facebook', auth["userID"])
+
+        @graph =Koala::Facebook::API.new(auth["accessToken"])
+        facebook_profile = @graph.get_object("me")
+
+        raise "Unable to retrieve Facebook profile" unless facebook_profile
+
+        if authentication
+          #flash[:notice] = "Logged in Successfully"
+          user = User.find(authentication.user_id)
+          user.first_name = facebook_profile['first_name']
+          user.last_name = facebook_profile['last_name']
+          user.avatar_url = "http://graph.facebook.com/" + auth["userID"] + "/picture"
+
+          # if user.action_tags  && @petition.action_tags
+          #     action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
+          #     current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
+          #     action_tags.each do |action_tag|
+          #       user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
+          #     end
+          # else
+          #   user.action_tags = @petition.action_tags
+          # end
+          user.save!
+
+        else
+
+          raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
+
+          binding.pry
+          #so we haven't seen the facebook account before, but let's check the email address because we require them to be unique
+          user = User.find_by_email(facebook_profile["email"])
+
+          if !user
+            user = User.new
+            user.email =  facebook_profile["email"]
+            user.first_name = facebook_profile['first_name']
+            user.last_name = facebook_profile['last_name']
+            user.avatar_url = "http://graph.facebook.com/" + auth["userID"] + "/picture"
+            user.password = "James123"
+            #user.action_tags = @petition.action_tags
+          else
+            #TODO
+            #we need to append the action tags
+            #user.action_tags = @petition.action_tags
+          
+          end
+          #associate the facebook auth with this user
+          user.authentications.build(
+              :provider => 'facebook', 
+              :uid => auth["userID"], 
+              :token => auth["accessToken"], 
+              :token_secret => auth["token_secret"])
+
+          user.save!
+
+        end
+
+      end
+
+      return user
+    
+    end
+
   end
 
   resource :images do
@@ -101,11 +220,20 @@ class API < Grape::API
 
        end
 
+       binding.pry
         if(page.action) 
           if(page.action.type === "poll_action") 
             action = campaign_page.create_or_update_poll(page.action)
-          elsif (page.action.type === "Petition")
+          elsif(page.action.type === "poll_results") 
+            action = campaign_page.create_or_update_poll_results(page.action)
+          elsif (page.action.type === "signature_action")
             action = campaign_page.create_or_update_petition(page.action)
+          elsif (page.action.type == "tweet_action")
+            action = campaign_page.create_or_update_tweet(page.action)
+          elsif (page.action.type == "premium_action")
+            action = campaign_page.create_or_update_premium(page.action)
+          elsif (page.action.type == "donation_action")
+            action = campaign_page.create_or_update_donation(page.action)
           end
         end
 
@@ -250,401 +378,68 @@ class API < Grape::API
   end 
 
   resource :campaigns do
-    desc "Returns all user actions for a campaign"
-    get "/:id/actions", :rabl => "user_campaign_actions" do
-      campaign = Campaign.find(params[:id])
+    
+    segment '/:campaign_id' do
 
-      page_size = 10
-      offset = 0
+      resource :actions do
 
-      if params[:offset]
-        offset = params[:offset]
+        desc "Saves an action that a users takes to the database"
+        post "/:id" do
+
+          campaign = Campaign.find(params[:campaign_id])
+          rails "Unable to find campaign" unless campaign
+
+          action = Action.find(params["action_id"])
+          rails "Unable to find action" unless action
+
+          user = current_user
+          rails "Unable to find or create a user" unless user
+
+          type = params["type"]
+
+          if type == 'poll_action'
+            poll_choice =PollChoice.find(params["choice_id"])
+
+            UserCampaignVoteAction.create!(
+              action: action,
+              poll_choice: poll_choice,
+              user: user
+            )
+          end
+          if type == 'signature_action'
+
+            UserCampaignSignatureAction.create!(
+              action:action,
+              reason: params["comment"],
+              user:user
+            )
+          end
+
+        end
+
+        desc "Returns all action responses for a given action"
+        get "/:id/responses", :rabl => "user_campaign_actions" do
+          campaign = Campaign.find(params[:campaign_id])
+          rails "Unable to find campaign" unless campaign
+
+          action = Action.find(params[:id])
+          rails "Unable to find action" unless action
+
+          page_size = 10
+          offset = 0
+
+          if params[:offset]
+            offset = params[:offset]
+          end
+
+          @user_campaign_actions = action.user_campaign_actions.order("created_at DESC").limit(page_size).offset(offset)
+          @total = action.user_campaign_actions.count
+        end
       end
-
-      rails "Unable to find campaign" unless campaign
-
-      @user_campaign_actions = campaign.user_campaign_actions.order("created_at DESC").limit(page_size).offset(offset)
-      @total = campaign.user_campaign_actions.count
-
+        
+    
     end
   end   
-
-  resource :actions do
-
-    desc "Saves an action that a users takes to the database"
-    post "/:id" do
-      binding.pry
-
-      action = Action.find(params["action_id"])
-      type = params["type"]
-
-      user = User.new(
-        first_name: params["first_name"],
-        last_name: params["last_name"],
-        email: params["email_address"],
-        password:  SecureRandom.hex
-      )
-
-      if type == 'poll_action'
-        poll_choice =PollChoice.find(params["choice_id"])
-
-        PollResponse.create!(
-          action: action,
-          poll_choice: poll_choice,
-          comment: params["comment"],
-          user: user
-        )
-      end
-
-    end
-
-    desc "Sign a petition action with Facebook"
-    post "/:id/sign_with_facebook", :rabl => "user_campaign_action" do
-
-      action = Action.find(params[:id])
-      @campaign = action.campaign_page.campaign
-    
-      raise "Unable to find action" unless action
-
-      Rails.logger.debug "The access token is " + params[:accessToken]
-
-      #see if we have this FB user in the authentications table
-      authentication = Authentication.find_by_provider_and_uid('facebook', params[:userID])
-
-      @graph =Koala::Facebook::API.new(params[:accessToken])
-      facebook_profile = @graph.get_object("me")
-
-      raise "Unable to retrieve Facebook profile" unless facebook_profile
-
-      if authentication
-        #flash[:notice] = "Logged in Successfully"
-        user = User.find(authentication.user_id)
-        user.first_name = facebook_profile['first_name']
-        user.last_name = facebook_profile['last_name']
-        user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-
-        # if user.action_tags  && @petition.action_tags
-        #     action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
-        #     current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
-        #     action_tags.each do |action_tag|
-        #       user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
-        #     end
-        # else
-        #   user.action_tags = @petition.action_tags
-        # end
-        user.save!
-
-      else
-
-        raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
-
-        #so we haven't seen the facebook account before, but let's check the email address because we require them to be unique
-        user = User.find_by_email(facebook_profile["email"]).first
-
-        if !user
-          user = User.new
-          user.email =  facebook_profile["email"]
-          user.first_name = facebook_profile['first_name']
-          user.last_name = facebook_profile['last_name']
-          user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-          user.password = "James123"
-          #user.action_tags = @petition.action_tags
-        else
-          #TODO
-          #we need to append the action tags
-          #user.action_tags = @petition.action_tags
-        
-        end
-        #associate the facebook auth with this user
-        user.authentications.build(
-            :provider => 'facebook', 
-            :uid => params[:userID], 
-            :token => params[:accessToken], 
-            :token_secret => params[:token_secret])
-
-        user.save!
-
-      end
-
-      raise "Unable to find user" unless user
-
-      #let's check to see if that user has already signed, if so don't sign again but send them to the next page anyway
-      #@signature = user.user_campaign_actions.find_by_campaign_id(@campaign.id)
-      @user_campaign_action = nil
-
-      unless @user_campaign_action
-        @user_campaign_action = UserCampaignSignatureAction.new({
-            :user => user,
-            :action => action
-          })
-
-        if !@user_campaign_action.valid?
-          return render_result({}, 400, 'Error Signing Action')
-        end
-
-        @campaign.user_campaign_actions << @user_campaign_action
-
-        #return if error_messages?(:config)
-        @campaign.save
-
-      end
-
-      #sign_in user
-
-    end
-
-    desc "Sign with Email Address"
-    post "/:id/sign_with_email", :rabl => "user_campaign_action" do
-
-      binding.pry
-
-      action = Action.find(params[:id])
-      raise "Unable to find action" unless action
-
-      @campaign = action.campaign_page.campaign
-      raise "Unable to find petition" unless @campaign
-
-      if params[:email_address]
-
-        user = User.find_by_email(params[:email_address])
-
-        if user
-          user.first_name = params[:first_name]
-          user.last_name = params[:last_name]
-          user.zip_code = params[:zip_code]
-          
-          # if user.action_tags && @petition.action_tags
-          #   action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
-          #   current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
-        
-          #   action_tags.each do |action_tag|
-          #     user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
-          #   end
-          # else
-          #   user.action_tags = @petition.action_tags
-          # end
-          user.save!
-
-        else
-         user = User.new do |u|
-          u.first_name = params[:first_name]
-          u.last_name = params[:last_name]
-          u.email = params[:email_address]
-          u.password = "password"
-          u.password_confirmation = "password"
-          u.zip_code = params[:zip_code]
-          #u.action_tags = @petition.action_tags
-          end
-
-          user.save!
-
-        end
-
-      end
-
-      @user_campaign_action = nil
-
-      unless @user_campaign_action
-        @user_campaign_action = UserCampaignSignatureAction.new({
-            :user => user,
-            :action => action
-          })
-
-        if !@user_campaign_action.valid?
-          return render_result({}, 400, 'Error Signing Action')
-        end
-
-        @campaign.user_campaign_actions << @user_campaign_action
-
-        #return if error_messages?(:config)
-        @campaign.save
-
-      end
-
-
-      #sign_in user
-
-    end
-
-    desc "Vote with Facebook"
-    post "/:id/vote_with_facebook", :rabl => "user_campaign_action" do
-
-      binding.pry
-
-      action = Action.find(params[:id])
-      @campaign = action.campaign_page.campaign
-    
-      raise "Unable to find action" unless action
-
-      poll_choice = action.poll_choices.find(params[:poll_choice_id])
-
-      raise "Unable to find specfiied poll choice" unless poll_choice
-      
-      Rails.logger.debug "The access token is " + params[:accessToken]
-
-      #see if we have this FB user in the authentications table
-      authentication = Authentication.find_by_provider_and_uid('facebook', params[:userID])
-
-      @graph =Koala::Facebook::API.new(params[:accessToken])
-      facebook_profile = @graph.get_object("me")
-
-      raise "Unable to retrieve Facebook profile" unless facebook_profile
-
-      if authentication
-        #flash[:notice] = "Logged in Successfully"
-        user = User.find(authentication.user_id)
-        user.first_name = facebook_profile['first_name']
-        user.last_name = facebook_profile['last_name']
-        user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-
-        # if user.action_tags  && @petition.action_tags
-        #     action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
-        #     current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
-        #     action_tags.each do |action_tag|
-        #       user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
-        #     end
-        # else
-        #   user.action_tags = @petition.action_tags
-        # end
-        user.save!
-
-      else
-
-        raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
-
-        #so we haven't seen the facebook account before, but let's check the email address because we require them to be unique
-        user = User.find_by_email(facebook_profile["email"]).first
-
-        if !user
-          user = User.new
-          user.email =  facebook_profile["email"]
-          user.first_name = facebook_profile['first_name']
-          user.last_name = facebook_profile['last_name']
-          user.avatar_url = "http://graph.facebook.com/" + params[:userID] + "/picture"
-          user.password = "James123"
-          #user.action_tags = @petition.action_tags
-        else
-          #TODO
-          #we need to append the action tags
-          #user.action_tags = @petition.action_tags
-        
-        end
-        #associate the facebook auth with this user
-        user.authentications.build(
-            :provider => 'facebook', 
-            :uid => params[:userID], 
-            :token => params[:accessToken], 
-            :token_secret => params[:token_secret])
-
-        user.save!
-
-      end
-
-      raise "Unable to find user" unless user
-
-      #let's check to see if that user has already signed, if so don't sign again but send them to the next page anyway
-      #@signature = user.user_campaign_actions.find_by_campaign_id(@campaign.id)
-      @user_campaign_action = nil
-
-      binding.pry
-
-      unless @user_campaign_action
-        @user_campaign_action = UserCampaignVoteAction.new({
-            :user => user,
-            :action => action,
-            :poll_choice => poll_choice
-          })
-
-        if !@user_campaign_action.valid?
-          return render_result({}, 400, 'Error Voting Action')
-        end
-
-        @campaign.user_campaign_actions << @user_campaign_action
-
-        #return if error_messages?(:config)
-        @campaign.save
-
-      end
-
-      #sign_in user
-
-    end
-
-    desc "Vote with Email Address"
-    post "/:id/vote_with_email", :rabl => "user_campaign_action" do
-
-      @campaign = Campaign.find(params[:id]);
-
-      raise "Unable to find action" unless action
-
-      poll_choice = action.poll_choices.find(params[:poll_choice_id])
-
-      raise "Unable to find specfiied poll choice" unless poll_choice
-      
-      if params[:email_address]
-
-        user = User.find_by_email(params[:email_address])
-
-        if user
-          user.first_name = params[:first_name]
-          user.last_name = params[:last_name]
-          user.zip_code = params[:zip_code]
-          
-          # if user.action_tags && @petition.action_tags
-          #   action_tags = Array.wrap(@petition.action_tags.split(",").collect{|x| x.strip})
-          #   current_tags = Array.wrap(user.action_tags.split(",")).collect{|x| x.strip}
-        
-          #   action_tags.each do |action_tag|
-          #     user.action_tags += "," + action_tag if !current_tags.include?(action_tag)
-          #   end
-          # else
-          #   user.action_tags = @petition.action_tags
-          # end
-          user.save!
-
-        else
-         user = User.new do |u|
-          u.first_name = params[:first_name]
-          u.last_name = params[:last_name]
-          u.email = params[:email_address]
-          u.password = "password"
-          u.password_confirmation = "password"
-          u.zip_code = params[:zip_code]
-          u.action_tags = @petition.action_tags
-          end
-
-          user.save!
-
-        end
-
-      end
-
-      @user_campaign_action = nil
-
-      unless @user_campaign_action
-        @user_campaign_action = UserCampaignVoteAction.new({
-            :user => user,
-            :action => action,
-            :poll_choice => poll_choice
-          })
-
-        if !@user_campaign_action.valid?
-          return render_result({}, 400, 'Error Voting')
-        end
-
-        @campaign.user_campaign_actions << @user_campaign_action
-
-        #return if error_messages?(:config)
-        @campaign.save
-
-      end
-
-
-      sign_in user
-
-    end
-
-  end
 
   resource :pages do
 

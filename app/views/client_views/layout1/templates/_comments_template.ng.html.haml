@@ -1,0 +1,20 @@
+.segment-wrapper.comment-wrapper{:style => "margin-bottom: 40px;"}
+  #comment-container
+    .segment-inner-wrapper
+      %div{:style => "margin-bottom: 25px", "ng-repeat" => "signature in comments.items | orderBy: 'created_at':true"}
+        .media.comment-container.comment.solid-white-back.drop-shadow-full.clear-fix
+          %a.pull-left
+            .media-object.avatar{"ng-style" => "get_avatar_url(signature, segment)"}
+          .media-body{:style => "text-align: left;"}
+            %span.comment-username
+              {{signature.user.first_name}}
+              {{signature.user.last_name}}
+            %span.comment-timeago
+              signed {{signature.created_at | fromNow }} 
+            %span.comment-location{"ng-bind" => "display_location(signature)"}
+            %span.comment
+              {{signature.comment}}
+        
+      #see-more-container{"ng-hide"=>"comments.items.length >= comments.total"}
+        %button#see-more-button.button.action-button{:style => "width: 100%", "ng-click" => "show_more_signatures_click()"}
+          %span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.signature_more_signers_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"More Signers Button Text", "name"=>"signature_more_signers_button_text","required"=>""}

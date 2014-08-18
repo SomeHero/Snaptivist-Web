@@ -22,8 +22,4 @@ class PollAction < Action
     self.update(action)
   end
 
-  def poll_action_params
-    params.require(:name)
-  end
-
 end

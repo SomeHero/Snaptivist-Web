@@ -1,16 +1,16 @@
-class ActionResponse < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :action
+class SignatureResponse < ActionResponse
+
 
   def to_api
 
     results = {
       'id' => id,
-      'type' => 'action',
+      'type' => 'signature_action',
       'user' => user
     }
 
     return results;
 
   end
+
 end

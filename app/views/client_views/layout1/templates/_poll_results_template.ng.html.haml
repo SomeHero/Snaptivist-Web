@@ -1,0 +1,9 @@
+%div.donation-segment
+	%div.donation-container
+		.poll-results.text-left{:style=>"margin-bottom: 80px"}
+			%div{"ng-repeat"=>"poll_choice in poll_choices | orderBy: 'position'"}
+				%strong
+					{{poll_choice.label}}
+				%span.pull-right {{poll_choice.percentage}}%
+				.progress
+					.progress-bar{:style=>"width: {{poll_choice.percentage}}%", "role"=>"progressbar", "aria-valuenow"=>"60", "aria-valuemin"=>"0","aria-valuemax"=>"100"}

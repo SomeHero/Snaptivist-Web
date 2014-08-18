@@ -52,6 +52,42 @@ class CampaignPage < ActiveRecord::Base
     end
   end
 
+  def create_or_update_tweet action
+
+    parameters = ActionController::Parameters.new(action)
+    params = parameters.permit(:name)
+
+    if(self.action)
+      self.action.update(params)
+    else
+      self.action = TweetAction.create(params)
+    end
+  end
+
+  def create_or_update_premium action
+
+    parameters = ActionController::Parameters.new(action)
+    params = parameters.permit(:name)
+
+    if(self.action)
+      self.action.update(params)
+    else
+      self.action = PremiumAction.create(params)
+    end
+  end
+
+  def create_or_update_donation action
+
+    parameters = ActionController::Parameters.new(action)
+    params = parameters.permit(:name)
+
+    if(self.action)
+      self.action.update(params)
+    else
+      self.action = DonationAction.create(params)
+    end
+  end
+
   def create_or_update_poll action
 
     parameters = ActionController::Parameters.new(action)
@@ -63,8 +99,26 @@ class CampaignPage < ActiveRecord::Base
       self.action = PollAction.create(params)
     end
   
+  end
+
+  def create_or_update_poll_results action
+
+    parameters = ActionController::Parameters.new(action)
+    params = parameters.permit(:name)
+
+    poll = PollAction.find(parameters[:poll_id])
+    binding.pry
+    if(self.action)
+      self.action.update(params)
+    else
+      self.action = PollResultAction.create({
+        poll: poll
+      })
+    end
+  
 
   end
+
 
   def create_short_url
 

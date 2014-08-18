@@ -4,7 +4,7 @@
 			%label
 				Action
 			%ul.thumbnails#segment-thumbnails
-				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('donation')", :style=>"padding: 8px;","ng-click"=>"set_segment_type('donation')"}
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('donation_action')", :style=>"padding: 8px;","ng-click"=>"set_segment_type('donation_action')"}
 					.entypo-video.type-icon{:style=>"font-size: 36px;"}
 					.type-name
 						Donation
@@ -20,6 +20,10 @@
 					.entypo-video.type-icon{:style=>"font-size: 36px;"}
 					.type-name
 						Premium
+				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('rsvp_action')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('rsvp_action')"}
+					.entypo-video.type-icon{:style=>"font-size: 36px;"}
+					.type-name
+						RSVP
 				%li.thumbnail.col-md-3.text-center{"ng-class"=>"set_segment_selected('signature_action')",:style=>"padding: 8px;","ng-click"=>"set_segment_type('signature_action')"}
 					.entypo-video.type-icon{:style=>"font-size: 36px;"}
 					.type-name

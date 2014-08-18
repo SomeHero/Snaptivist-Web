@@ -7,7 +7,7 @@
     content: '=content'
     isAdmin: '=isAdmin'
   }
-  templateUrl: '/campaigns/partials/poll_template'
+  templateUrl: '/client_views/layout1/templates/poll_template'
   link: (scope, element, attrs) ->
     scope.remove_poll_choice_clicked = (poll_choice) ->
       console.log "number of options " + scope.page.action.poll_choices.length
@@ -38,13 +38,77 @@
 
     $scope.set_poll_choice_icon = (poll_choice) ->
       if(poll_choice == $scope.action.selected_poll_choice)
-        return "fa-circle"
+        return "fa-circle poll-choice poll-choice-selected"
       else
-        return "fa-circle-o"
+        return "fa-circle-o poll-choice"
+
+    $scope.submit_action_with_facebook = (auth) ->
+      console.log "Facebook Login Success"
+
+      $scope.action_response.action_method = 'facebook'
+      $scope.action_response.choice_id = $scope.action.poll_choices_attributes[0].id
+
+      #$scope.loading.show_spinner = true
+
+      $scope.action_response.auth = auth
+
+      ActionServices.create(scope.campaign, $scope.action, $scope.action_response).success (response) ->
+
+          console.log "signature complete; trying to Share via FB"
+          
+          #$scope.loading.show_spinner = false
+
+          Util.push_ga_event("Action", "Sign With Facebook", "Success")
+            
+          fb_message_obj =
+            method: 'feed'
+            redirect_uri: 'YOUR URL HERE'
+            #link: $scope.petition.short_url
+            name: 'Add Your Voice'
+            caption: 'Test Campaign'
+            description: 'Description'
+
+          if $scope.campaign.signature_image_square_url
+            $.extend true, fb_message_obj, { picture: $scope.petition.signature_image_square_url }
+          else  
+            $.extend true, fb_message_obj, { picture: 'http://snaptivist.s3.amazonaws.com/assets/logo_120x118.png' }
+            
+          FB.ui fb_message_obj, (response) ->
+
+            if response
+              console.log "share complete"
+
+              Util.push_ga_event("Petition", "Facebook Share", "Success")
+
+              #signature.shared = true
+              $rootScope.$broadcast('signedPetitionWithFacebook', signature)
+          
+            else
+              console.log "error sharing"
+
+              Util.push_ga_event("Petition", "Facebook Share", "Cancelled")
+                
+              #signature.shared = false
+              #$rootScope.$broadcast('signedPetitionWithFacebook', signature)
+          
+              $scope.change_page()
+
+        .error (response) ->
+          console.log "signature failed: " + response
+
+          $scope.loading.show_spinner = false
+
+          Util.push_ga_event("Petition", "Sign With Facebook", "Failed")
+
+          $scope.error_messages.sign_with_facebook = "We're sorry.  We are unable to collect your signature at this time.  Please try again later."
+          $scope.clear_errors()
+
+          #$rootScope.$broadcast('signedPetitionWithFacebookFailed')
 
     $scope.submit_action_with_email_address = (form) ->
       console.log("submitting vote")
 
+      $scope.action_response.method = 'email'
       $scope.action_response.choice_id = $scope.action.poll_choices_attributes[0].id
     
       #Util.push_ga_event("Action", "Sign With Email", "Clicked (Pre Form Validation)")
@@ -57,7 +121,7 @@
     
         #Util.push_ga_event("Action", "Sign With Email", "Clicked (Post Form Validation)")
 
-        ActionServices.create($scope.action_response).success (response) ->
+        ActionServices.create(scope.campaign, $scope.action, $scope.action_response).success (response) ->
 
           console.log "signature complete"
           #Util.push_ga_event("Actions", "Sign With Email", "Success")

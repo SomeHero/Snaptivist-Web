@@ -11,10 +11,10 @@
           console.log "FB.login connected"
           Util.push_ga_event("Petition", "Facebook Login", "Connected")
    
-          if(scope.page.action.type == 'Petition')
-            scope.sign_with_facebook(response.authResponse)
-          else if(scope.page.action.type == 'Poll')
-            scope.vote_with_facebook(response.authResponse)
+          if(scope.page.action.type == 'signature_action')
+            $scope.submit_action_with_facebook(response.authResponse)
+          else if(scope.page.action.type == 'poll_action')
+            $scope.submit_action_with_facebook(response.authResponse)
 
         else
           console.log "FB.login cancelled"
@@ -30,9 +30,10 @@
 
       console.log "Signing with Facebook"
 
-      scope.sign_with_facebook($scope.auth)
-      #scope.vote_with_facebook($scope.auth)
-
+      if(scope.page.action.type == 'signature_action')
+        $scope.submit_action_with_facebook($scope.auth)
+      else if(scope.page.action.type == 'Poll')
+        scope.vote_with_facebook($scope.auth)
 
     ((d) ->
       js = undefined

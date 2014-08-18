@@ -1,11 +1,10 @@
-class PetitionAction < Action
-  # attr_accessible :title, :body
+class DonationAction < Action
 
   def to_api
 
     results = {
       'id' => id,
-      'type' => 'signature_action',
+      'type' => 'donation_action',
       'name' => name,
       'count' => get_count
     }
@@ -13,5 +12,6 @@ class PetitionAction < Action
     return results;
 
   end
+
 
 end

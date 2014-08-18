@@ -2128,6 +2128,7 @@ ul.tickets li.ticket .number {
 .progressYellow .ui-progressbar-value {
   background: #eae874;
 }
+/*
 .progress {
   background: #e4e6eb;
   border: none;
@@ -2205,6 +2206,7 @@ ul.tickets li.ticket .number {
   -moz-border-radius: 50em;
   border-radius: 50em;
 }
+*/
 /* Quick Buttons
 =================================================================== */
 .quick-button {

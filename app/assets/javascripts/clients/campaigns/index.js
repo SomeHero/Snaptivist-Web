@@ -11,6 +11,7 @@
 //= require_directory ./directives
 //= require_directory ../directives
 //= require_directory ../../directives
+//= require_directory ../../campaigns/directives
 //= require_directory ../services
 //= require_directory ../../services
 //= require_directory ../factories

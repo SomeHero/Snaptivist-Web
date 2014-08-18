@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815033444) do
+ActiveRecord::Schema.define(version: 20140818170754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140815033444) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.string   "comments"
   end
 
   add_index "action_responses", ["action_id"], name: "index_action_responses_on_action_id", using: :btree
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140815033444) do
     t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "poll_id"
   end
 
   create_table "active_admin_comments", force: true do |t|
@@ -209,6 +211,11 @@ ActiveRecord::Schema.define(version: 20140815033444) do
 
   add_index "conditional_action_tags", ["conditional_action_tag_type_id"], name: "conditional_action_tag_type_index", using: :btree
   add_index "conditional_action_tags", ["petition_id"], name: "petition_conditional_action_tag_index", using: :btree
+
+  create_table "donation_actions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "donations", force: true do |t|
     t.integer  "user_id"
@@ -463,6 +470,11 @@ ActiveRecord::Schema.define(version: 20140815033444) do
   add_index "poll_responses", ["poll_choice_id"], name: "index_poll_responses_on_poll_choice_id", using: :btree
   add_index "poll_responses", ["poll_id"], name: "index_poll_responses_on_poll_id", using: :btree
 
+  create_table "poll_result_actions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "polls", force: true do |t|
     t.string   "question"
     t.string   "short_url"
@@ -476,6 +488,11 @@ ActiveRecord::Schema.define(version: 20140815033444) do
     t.integer  "header_image_file_size"
     t.datetime "header_image_updated_at"
     t.string   "comment"
+  end
+
+  create_table "premium_actions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "premium_gives", force: true do |t|

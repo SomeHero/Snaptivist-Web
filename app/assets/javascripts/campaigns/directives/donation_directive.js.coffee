@@ -1,4 +1,4 @@
-@app.directive 'ngSignature', ['$timeout', '$window', ($timeout, $window) ->
+@app.directive 'ngDonation', ['$timeout', '$window', ($timeout, $window) ->
   restrict: "A"
   replace: true
   scope: {
@@ -7,7 +7,7 @@
     action: '='
     isAdmin: '='
   }
-  templateUrl: '/clients/campaigns/partials/signature_template'
+  templateUrl: '/client_views/layout1/templates/donation_template'
   link: (scope, element, attrs) ->
 
   controller: ($scope, $attrs) ->

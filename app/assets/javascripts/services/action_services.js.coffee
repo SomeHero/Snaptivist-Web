@@ -1,42 +1,14 @@
 @app.factory "ActionServices", ['$http', '$q', '$rootScope', ($http, $q, $rootScope) ->
 
-	create: (action_response) ->
+	create: (campaign, action, action_response) ->
 		console.log "saving action response"
 
-		$http.post("/api/actions/" + action_response.id, action_response)
+		$http.post("/api/campaigns/" + campaign.id + "/actions/" + action.id, action_response)
+
+	get_responses: (campaign, action) ->
+		console.log "saving action response"
+
+		$http.get("/api/campaigns/" + campaign.id + "/actions/" + action.id + "/responses")
+]
 		
-	sign_with_facebook: (action_id, auth, signature) ->
-		console.log "Signing with Facebook"
-
-		data = {} 
-		data = $.extend true, data, auth
-		data = $.extend true, data, signature
-
-		$http.post("/api/actions/" + action_id + "/sign_with_facebook", data)
-
-	sign_with_email: (action_id, signature) ->
-		console.log "Signing with Email Address"
-
-		data = {} 
-		data = $.extend true, data, signature
-
-		$http.post("/api/actions/" + action_id + "/sign_with_email", data)
-
-	vote_with_facebook: (action_id, poll_choice_id, auth) ->
-		console.log "Voting with Facebook"
-
-		data = {} 
-		data = $.extend true, data, {'poll_choice_id': poll_choice_id }
-		data = $.extend true, data, auth
-
-		$http.post("/api/actions/" + action_id + "/vote_with_facebook", data)
-
-	vote_with_email: (action_id, signature) ->
-		console.log "Voting with Email Address"
-
-		data = {} 
-		data = $.extend true, data, signature
-
-		$http.post("/api/actions/" + action_id + "/vote_with_email", data)
-
- ]
+	
