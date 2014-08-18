@@ -20,8 +20,6 @@ class API < Grape::API
 
     def current_user
 
-      binding.pry
-
       method = params[:action_method]
       
       if method == 'email'
@@ -64,8 +62,6 @@ class API < Grape::API
 
       if method == 'facebook'
 
-        binding.pry 
-
         auth = params[:auth]
 
         #raise error if no auth
@@ -101,7 +97,6 @@ class API < Grape::API
 
           raise "Unable to process your signature.  Email Address not specified." unless facebook_profile["email"]
 
-          binding.pry
           #so we haven't seen the facebook account before, but let's check the email address because we require them to be unique
           user = User.find_by_email(facebook_profile["email"])
 
@@ -220,7 +215,6 @@ class API < Grape::API
 
        end
 
-       binding.pry
         if(page.action) 
           if(page.action.type === "poll_action") 
             action = campaign_page.create_or_update_poll(page.action)

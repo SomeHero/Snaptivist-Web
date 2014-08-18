@@ -107,7 +107,7 @@ class CampaignPage < ActiveRecord::Base
     params = parameters.permit(:name)
 
     poll = PollAction.find(parameters[:poll_id])
-    binding.pry
+    
     if(self.action)
       self.action.update(params)
     else
