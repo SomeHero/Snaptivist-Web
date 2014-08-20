@@ -6,6 +6,9 @@
     # Load the SDK Asynchronously
     login = ->
 
+      if $scope.isAdmin
+        return
+        
       FB.login ((response) ->
         if response.authResponse
           console.log "FB.login connected"
