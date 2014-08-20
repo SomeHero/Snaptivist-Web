@@ -6,7 +6,7 @@
 			%span.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "choice.label", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Option {{$index + 1}}", "name"=>"poll_choice", "required"=>"", "ng-click"=>"poll_choice_clicked(choice)"}
 			%span{"ng-click"=>"remove_poll_choice_clicked(choice)", "ng-hide"=>"!isAdmin"}
 				%i.fa.fa-minus-circle.poll-choice-icons
-	%i.fa.fa-plus-circle.poll-choice-icons{"ng-click"=>"add_poll_choice_clicked()"}
+	%i.fa.fa-plus-circle.poll-choice-icons{"ng-click"=>"add_poll_choice_clicked()", "ng-hide"=>"!isAdmin"}
 	#action-wrapper{:style => "margin-top: 40px;"}
 		#sign-panel{:style => "margin: 20px 0px 40px 0px"}
 			#sign-petition-signature
@@ -42,7 +42,7 @@
 					.form-group.row
 						.col-md-12
 							%button#sign-petition-user-name.button.action-button{:type=>"submit", :style => "width: 100%", "ng-click" => "sign_with_email_address(myForm)"}
-								%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action (Email)", "name"=>"sign_with_email_cta_button_text", "required"=>""}
+								%span.contenteditable.placeholder-showing{"contenteditable"=>"", "ng-model" => "content.sign_with_email_cta_button_text", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Call to Action i(Email)", "name"=>"sign_with_email_cta_button_text", "required"=>""}
 							.controls{:style => "padding: 0px 20px"}
 								%label.checkbox{:style => "text-align: left"}
 									%input#chkEmailSignUp{:checked => "", :type => "checkbox", "ng-model" => "action_response.opt_in"}

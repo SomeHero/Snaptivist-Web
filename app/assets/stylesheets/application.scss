@@ -9,12 +9,17 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require ajax-spinner
  *= require font-awesome
  *= require ngDialog
  *= require ngDialog-theme-default
  *= require ngDialog-theme-snap
  *= require_directory ./stickit
- */
+ *= require lato-black
+ *= require lato-light
+ *= require lato-regular
+ *= require oswald-regular
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 body {

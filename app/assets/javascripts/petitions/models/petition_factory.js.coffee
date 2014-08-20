@@ -1,2 +1,0 @@
-@app.factory "PetitionFactory", ->
-  signature: {}

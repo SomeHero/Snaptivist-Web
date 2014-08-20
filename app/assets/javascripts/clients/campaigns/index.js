@@ -17,7 +17,6 @@
 //= require_directory ../factories
 //= require_directory ./libs
 //= require_directory ../libs
-//= require ../../petitions/directives/loading_screen
 //= require_directory ../../services
 //= require ../../moment
 //= require angular-toggle-switch/angular-toggle-switch.min.js
