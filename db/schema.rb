@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820153634) do
+ActiveRecord::Schema.define(version: 20140820202954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,19 +87,6 @@ ActiveRecord::Schema.define(version: 20140820153634) do
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
-  create_table "call_results", force: true do |t|
-    t.string   "result"
-    t.string   "comment"
-    t.integer  "phone_campaign_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "user_id"
-    t.boolean  "delivered"
-    t.datetime "delivered_at"
-  end
-
-  add_index "call_results", ["phone_campaign_id"], name: "index_call_results_on_phone_campaign_id", using: :btree
-
   create_table "campaign_page_urls", force: true do |t|
     t.integer  "campaign_page_id"
     t.integer  "url_id"
@@ -144,13 +131,6 @@ ActiveRecord::Schema.define(version: 20140820153634) do
   end
 
   add_index "campaigns", ["client_id"], name: "index_campaigns_on_client_id", using: :btree
-
-  create_table "choices", force: true do |t|
-    t.string   "choice"
-    t.integer  "poll_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "client_supporters", force: true do |t|
     t.integer  "client_id"
@@ -328,114 +308,6 @@ ActiveRecord::Schema.define(version: 20140820153634) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "petition_pages", force: true do |t|
-    t.integer  "petition_id"
-    t.integer  "page_id"
-    t.integer  "position"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "petition_pages", ["page_id"], name: "index_petition_pages_on_page_id", using: :btree
-  add_index "petition_pages", ["petition_id"], name: "index_petition_pages_on_petition_id", using: :btree
-
-  create_table "petitions", force: true do |t|
-    t.string   "title"
-    t.text     "summary"
-    t.integer  "target_count"
-    t.integer  "target_id"
-    t.string   "short_url"
-    t.string   "rewrite_url_key"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
-    t.integer  "signatures_count"
-    t.integer  "user_id"
-    t.string   "header_image_file_name"
-    t.string   "header_image_content_type"
-    t.integer  "header_image_file_size"
-    t.datetime "header_image_updated_at"
-    t.string   "subdomain"
-    t.string   "comment"
-    t.string   "target_headline_text"
-    t.string   "call_to_action_button_text"
-    t.string   "signature_comment_placeholder_text"
-    t.string   "sign_with_facebook_cta_button_text"
-    t.string   "sign_with_email_cta_button_text"
-    t.string   "default_tweet_text"
-    t.string   "action_tags"
-    t.string   "tweet_cta_button_text"
-    t.boolean  "active",                              default: false
-    t.boolean  "unsponsored",                         default: false
-    t.integer  "client_id"
-    t.integer  "layout_id"
-    t.integer  "theme_id"
-    t.integer  "premium_offer_id"
-    t.string   "headline_primary"
-    t.string   "headline_secondary"
-    t.string   "subheadline"
-    t.string   "delivery_headline_primary"
-    t.string   "delivery_headline_secondary"
-    t.string   "delivery_subheadline"
-    t.string   "premium_headline_primary"
-    t.string   "premium_headline_secondary"
-    t.string   "premium_subheadline"
-    t.string   "delivery_call_to_action_text"
-    t.string   "delivery_call_to_action_button_text"
-    t.string   "delivery_skip_button_text"
-    t.string   "delivery_more_tweets_button_text"
-    t.string   "premium_call_to_action_text"
-    t.string   "premium_call_to_action_button_text"
-    t.string   "premium_skip_button_text"
-    t.string   "signature_more_signers_button_text"
-    t.string   "premium_image_file_name"
-    t.string   "premium_image_content_type"
-    t.integer  "premium_image_file_size"
-    t.datetime "premium_image_updated_at"
-    t.string   "name"
-    t.string   "donation_page_url"
-    t.text     "delivery_summary"
-    t.string   "disclaimer_text"
-    t.string   "footer_image_file_name"
-    t.string   "footer_image_content_type"
-    t.integer  "footer_image_file_size"
-    t.datetime "footer_image_updated_at"
-    t.string   "delivery_image_file_name"
-    t.string   "delivery_image_content_type"
-    t.integer  "delivery_image_file_size"
-    t.datetime "delivery_image_updated_at"
-    t.string   "signature_image_file_name"
-    t.string   "signature_image_content_type"
-    t.integer  "signature_image_file_size"
-    t.datetime "signature_image_updated_at"
-    t.text     "premium_summary"
-    t.string   "status",                              default: "Draft"
-    t.string   "action_type_header_name"
-    t.string   "signer_type_header_name"
-  end
-
-  add_index "petitions", ["target_id"], name: "index_petitions_on_target_id", using: :btree
-
-  create_table "phone_campaigns", force: true do |t|
-    t.string   "title"
-    t.string   "summary"
-    t.integer  "target_count"
-    t.string   "short_url"
-    t.string   "rewrite_url_key"
-    t.integer  "target_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "user_id"
-    t.integer  "call_results_count"
-    t.string   "subdomain"
-    t.string   "header_image_file_name"
-    t.string   "header_image_content_type"
-    t.integer  "header_image_file_size"
-    t.datetime "header_image_updated_at"
-    t.string   "comment"
-  end
-
-  add_index "phone_campaigns", ["target_id"], name: "index_phone_campaigns_on_target_id", using: :btree
-
   create_table "poll_actions", force: true do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -468,43 +340,9 @@ ActiveRecord::Schema.define(version: 20140820153634) do
     t.datetime "updated_at"
   end
 
-  create_table "polls", force: true do |t|
-    t.string   "question"
-    t.string   "short_url"
-    t.string   "rewrite_url_key"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "user_id"
-    t.string   "subdomain"
-    t.string   "header_image_file_name"
-    t.string   "header_image_content_type"
-    t.integer  "header_image_file_size"
-    t.datetime "header_image_updated_at"
-    t.string   "comment"
-  end
-
   create_table "premium_actions", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "premium_gives", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "mailing_address_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "petition_id"
-  end
-
-  add_index "premium_gives", ["mailing_address_id"], name: "index_premium_gives_on_mailing_address_id", using: :btree
-  add_index "premium_gives", ["user_id"], name: "index_premium_gives_on_user_id", using: :btree
-
-  create_table "premium_offers", force: true do |t|
-    t.string   "name"
-    t.string   "headline_text"
-    t.string   "call_to_action_button_text"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
   end
 
   create_table "raw_data", force: true do |t|

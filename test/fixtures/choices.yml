@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  choice: MyString
-  poll_id: 1
-
-two:
-  choice: MyString
-  poll_id: 1
