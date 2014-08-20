@@ -21,4 +21,3 @@
 //= require ../../moment
 //= require angular-toggle-switch/angular-toggle-switch.min.js
 //= require angular-ui-bootstrap-tpls
-//= require bootstrap-dropdown

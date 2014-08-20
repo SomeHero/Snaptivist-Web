@@ -17,7 +17,6 @@
 //= require jquery
 //= require jquery.history
 //= require main
-//= require bootstrap-dropdown
 //= require ngDialog
 /*
  * VARIABLES
