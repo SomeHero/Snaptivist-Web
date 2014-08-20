@@ -1,11 +1,12 @@
 %div.poll
 	%span.contenteditable.placeholer-showing.poll-question{:style=>"display: block", "contenteditable"=>"", "ng-model" => "action.name", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Question/Title", "name"=>"poll_title", "required"=>""}
 	%ul
-		%li.poll-choice{"ng-repeat"=>"choice in action.poll_choices_attributes  | orderBy: 'position'"}
-			%i.fa{"ng-class"=>"set_poll_choice_icon(choice)", "ng-click"=>"poll_choice_clicked(choice)"}
+		%li.poll-choice{"ng-repeat"=>"choice in action.poll_choices_attributes | filter:{_destory:'!true'}  | orderBy: 'position'"}
+			%i.fa.poll-choice-icons{"ng-class"=>"set_poll_choice_icon(choice)", "ng-click"=>"poll_choice_clicked(choice)"}
 			%span.contenteditable.placeholer-showing{"contenteditable"=>"", "ng-model" => "choice.label", "strip-br"=>"true", "select-non-editable"=>"true", "data-placeholder"=>"Poll Option {{$index + 1}}", "name"=>"poll_choice", "required"=>"", "ng-click"=>"poll_choice_clicked(choice)"}
 			%span{"ng-click"=>"remove_poll_choice_clicked(choice)", "ng-hide"=>"!isAdmin"}
-				%i.fa.fa-minus-circle
+				%i.fa.fa-minus-circle.poll-choice-icons
+	%i.fa.fa-plus-circle.poll-choice-icons{"ng-click"=>"add_poll_choice_clicked()"}
 	#action-wrapper{:style => "margin-top: 40px;"}
 		#sign-panel{:style => "margin: 20px 0px 40px 0px"}
 			#sign-petition-signature

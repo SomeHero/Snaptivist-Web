@@ -9,32 +9,30 @@
   }
   templateUrl: '/client_views/layout1/templates/poll_template'
   link: (scope, element, attrs) ->
-    scope.remove_poll_choice_clicked = (poll_choice) ->
-      console.log "number of options " + scope.page.action.poll_choices.length
 
-      scope.page.action.poll_choices.splice(scope.page.action.poll_choices.indexOf(poll_choice), 1) 
-
-    scope.set_poll_choice_style = (poll_choice) ->
-      if(poll_choice == scope.action.selected_poll_choice)
-        "fa fa-dot-circle-o"
-      else
-        "fa fa-circle-o"
-
-    scope.set_selected_choice = (poll_choice) ->
-      scope.action.selected_poll_choice = poll_choice
-      
   controller: ($scope, $attrs) ->
     $scope.action_response = {
       action_id: $scope.action.id
       type: $scope.action.type
     }
 
-    $scope.action.selected_poll_choice = $scope.action.poll_choices_attributes[0]
+    if !$scope.isAdmin
+      $scope.action.selected_poll_choice = $scope.action.poll_choices_attributes[0]
 
     $scope.poll_choice_clicked = (poll_choice) ->
-      console.log "poll choice clicked"
+      if $scope.isAdmin
+        return
 
       $scope.action.selected_poll_choice = poll_choice
+    
+    $scope.add_poll_choice_clicked = () ->
+      $scope.action.poll_choices_attributes.push({
+        label: ""
+        position: $scope.action.poll_choices_attributes.length
+      })
+
+    $scope.remove_poll_choice_clicked = (poll_choice) ->
+      poll_choice._destory = true
 
     $scope.set_poll_choice_icon = (poll_choice) ->
       if(poll_choice == $scope.action.selected_poll_choice)
