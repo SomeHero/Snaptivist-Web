@@ -30,7 +30,8 @@
         if (action_count * 100) / action_target > 100
           return 100
         else
-          return (action_count * 100) / action_target
+          percentage = (action_count * 100) / action_target
+          percentage.toFixed(1)
 
       $scope.load_progress_marker = () ->
         console.log "load progress marker action.count, segment.target_count"

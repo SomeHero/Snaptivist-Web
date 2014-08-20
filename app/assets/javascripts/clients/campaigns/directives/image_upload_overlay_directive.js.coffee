@@ -13,8 +13,12 @@
     }
     templateUrl: '/clients/campaigns/partials/image_upload_overlay'
     controller: ($scope, $attrs) ->
+      $scope.uploadComplete = false
+
       $scope.onFileSelect = ($files) ->
   
+        $scope.uploadComplete = false
+        
         #$files: an array of files selected, each file has name, size, and type.
         i = 0
 
@@ -26,7 +30,7 @@
             url: '/api/images',
             file: $file
           ).success((data, status, headers, config) ->
-            console.log(data)
+            $scope.uploadComplete = true
             $scope.tempImage.data = data
           )
           #upload.php script, node.js route, or servlet upload url

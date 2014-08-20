@@ -1,5 +1,7 @@
 @ImageSegmentController = ($scope, $route, $routeParams, $modal, $log, $rootScope, $location, $q, $modalInstance, CampaignServices, ClientFactory, Util, cssInjector, $upload, fileReader) ->
 
+	$scope.uploadComplete = false
+        
 	$scope.image = {
 		tempImage: {}
 	}
@@ -7,7 +9,8 @@
 
 		#$files: an array of files selected, each file has name, size, and type.
 		i = 0
-
+		$scope.uploadComplete = false
+        
 		while i < $files.length
 			$file = $files[i]
 			$scope.file = $file
@@ -16,7 +19,7 @@
 				url: '/api/images',
 				file: $file
 			).success((data, status, headers, config) ->
-				console.log(data)
+				$scope.uploadComplete = true
 				$scope.image.data = data
 			)
 			#upload.php script, node.js route, or servlet upload url

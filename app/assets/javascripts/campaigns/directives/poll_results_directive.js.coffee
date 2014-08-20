@@ -44,8 +44,9 @@
   		if poll
   			$scope.action.poll_id = poll.id
   			for poll_choice in poll.poll_choices_attributes
-  				poll_choice.percentage = 1/poll.poll_choices_attributes.length * 100
-
+  				percentage = 1/poll.poll_choices_attributes.length * 100
+  				poll_choice.percentage = percentage.toFixed(2)
+  				
   			poll.poll_choices_attributes
   		else
   			default_poll_choices

@@ -11,5 +11,5 @@
 	%p.note
 		{{notes}}
 .modal-footer
-	%button.btn.btn-primary{"ng-click"=>"ok()"}
+	%button.btn.btn-primary{"ng-click"=>"ok()", "ng-disabled"=>"!uploadComplete"}
 		Ok
